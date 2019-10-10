@@ -1,22 +1,40 @@
 .App {
+  display: flex;
+  height: 100vh;
+  background-color: #000;
+}
+
+.Tree {
+  flex: 0 0 85%;
+  background-color: #838ca7;
+}
+
+#tree-commander {
+  border: 0.5px solid black;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+#tree-commander img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5vw;
+  height: 5vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Info {
+  flex: 1;
+  height: 50%;
+  background-color: rgb(146, 136, 0);
 }
 
-.App-link {
-  color: #09d3ac;
+.Info hr {
+  border: 0.5px solid black;
+  width: 75%;
 }
