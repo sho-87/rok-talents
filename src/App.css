@@ -5,27 +5,41 @@
 }
 
 .Tree {
+  border: 0.5px solid black;
   flex: 0 0 85%;
   background-color: #838ca7;
 }
 
 #tree-commander {
-  border: 0.5px solid black;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
-  text-align: center;
+  font-weight: bold;
 }
 
 #tree-commander img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   width: 5vw;
   height: 5vw;
+}
+
+.container {
+  border: 0.5px solid red;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.row {
+  border: 0.5px solid blue;
+}
+
+.col {
+  border: 0.5px solid green;
+}
+
+.sub-tree{
+  height:40%;
+}
+
+.sub-tree-col{
+  height:100%;
 }
 
 .Info {

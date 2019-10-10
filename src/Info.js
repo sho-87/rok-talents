@@ -40,6 +40,7 @@ class Info extends React.Component {
         <hr />
         <h1>Summary</h1>
         <p>Commander: {this.props.commander}</p>
+        <p>Link: {JSON.stringify(this.props)}</p>
       </div>
     );
   }
