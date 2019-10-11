@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row, Col } from 'reactstrap';
 
 // Talent tree container
 class Tree extends React.Component {
@@ -9,32 +10,32 @@ class Tree extends React.Component {
   render() {
     return (
       <div id="tree">
-        <div className="container">
-          <div className="row align-items-center sub-tree">
-            <div id="tree-red" className="col sub-tree-col">
+        <Container>
+          <Row className="align-items-center sub-tree">
+            <Col id="tree-red" className="sub-tree-col">
               {this.props.redTree}
-            </div>
-          </div>
+            </Col>
+          </Row>
 
-          <div className="row align-items-center">
-            <div id="tree-commander" className="col">
+          <Row className="align-items-center">
+            <Col id="tree-commander">
               <img
                 src={`images/commanders/${this.props.commander}.png`}
                 alt={this.props.commander}
               ></img>
               <div id="commander-name">{this.props.commander}</div>
-            </div>
-          </div>
+            </Col>
+          </Row>
 
-          <div className="row align-items-center sub-tree">
-            <div id="tree-yellow" className="col sub-tree-col">
+          <Row className="align-items-center sub-tree">
+            <Col id="tree-yellow" className="sub-tree-col">
               {this.props.yellowTree}
-            </div>
-            <div id="tree-blue" className="col sub-tree-col">
+            </Col>
+            <Col id="tree-blue" className="sub-tree-col">
               {this.props.blueTree}
-            </div>
-          </div>
-        </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

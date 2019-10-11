@@ -33,7 +33,6 @@ class App extends React.Component {
         this.setState(JSON.parse(window.atob(build)));
       } catch (err) {
         this.setState(this.getEmptyState(), () => this.updateURL('clear'));
-        console.error('Invalid build link');
       }
     }
   }
