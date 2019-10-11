@@ -3,8 +3,49 @@ import Menu from 'react-burger-menu/lib/menus/push';
 
 import data from './data.json';
 
-//Info and control panel
+//Sidebar and control panel
 class Sidebar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <Menu
+        id={'sidebar'}
+        left
+        noOverlay
+        disableCloseOnEsc
+        disableAutoFocus
+        width={'20%'}
+        isOpen={true}
+        pageWrapId={'tree'}
+        outerContainerId={'app'}
+      >
+        <h1>Options</h1>
+        <SidebarCommanderSelect
+          handleCommanderChange={this.props.handleCommanderChange}
+          commander={this.props.commander}
+        />
+        <br />
+        <span>
+          <button type="button" className="btn btn-sm btn-primary">
+            Copy Talents
+          </button>
+          <button type="button" className="btn btn-sm btn-danger">
+            Reset Talents
+          </button>
+        </span>
+        <hr />
+        <h1>Summary</h1>
+        <p>Commander: {this.props.commander}</p>
+        <p>Link: {JSON.stringify(this.props)}</p>
+      </Menu>
+    );
+  }
+}
+
+class SidebarCommanderSelect extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -29,30 +70,17 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <Menu
-        id={'sidebar'}
-        noOverlay
-        disableCloseOnEsc
-        disableAutoFocus
-        width={'20%'}
-        isOpen={true}
-        pageWrapId={'tree'}
-        outerContainerId={'app'}
-      >
-        <h1>Options</h1>
+      <div>
         <label htmlFor="select-commander">Commander: </label>
         <select
           id="select-commander"
+          className="form-control form-control-sm"
           value={this.props.commander}
           onChange={this.props.handleCommanderChange}
         >
           {this.createSelectItems()}
         </select>
-        <hr />
-        <h1>Summary</h1>
-        <p>Commander: {this.props.commander}</p>
-        <p>Link: {JSON.stringify(this.props)}</p>
-      </Menu>
+      </div>
     );
   }
 }

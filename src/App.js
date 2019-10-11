@@ -26,7 +26,9 @@ class App extends React.Component {
           handleCommanderChange={this.handleCommanderChange}
           commander={this.state.commander}
         />
-        <Tree commander={this.state.commander} />
+        <Tree
+          commander={this.state.commander}
+        />
       </div>
     );
   }

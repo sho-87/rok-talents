@@ -1,7 +1,7 @@
-// Talent Tree
 import React from 'react';
 import data from './data.json';
 
+// Talent tree container
 class Tree extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +21,7 @@ class Tree extends React.Component {
           <div className="row align-items-center sub-tree">
             <div id="tree-red" className="col sub-tree-col">
               {this.getTreeName('red')}
+              <div id="commander-name">{this.props.sidebarOpen}</div>
             </div>
           </div>
 
