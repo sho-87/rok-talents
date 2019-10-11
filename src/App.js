@@ -29,21 +29,41 @@ class App extends React.Component {
 
     if (urlParams.has('build')) {
       const build = urlParams.get('build');
-      this.setState(JSON.parse(window.atob(build)));
+      try {
+        this.setState(JSON.parse(window.atob(build)));
+      } catch (err) {
+        this.setState(this.getEmptyState(), () => this.updateURL('clear'));
+      }
     }
+  }
+
+  updateURL(method = 'update') {
+    const url = new URL(window.location.href);
+    switch (method) {
+      case 'update':
+        url.searchParams.set('build', window.btoa(JSON.stringify(this.state)));
+        break;
+      case 'clear':
+        url.searchParams.delete('build');
+        break;
+    }
+    window.history.pushState({ path: url.href }, '', url.href);
   }
 
   handleCommanderChange(e) {
     try {
       const commander = e.target.value;
-      this.setState({
-        commander: commander,
-        redTree: data.commanders[commander]['red'],
-        yellowTree: data.commanders[commander]['yellow'],
-        blueTree: data.commanders[commander]['blue']
-      });
+      this.setState(
+        {
+          commander: commander,
+          redTree: data.commanders[commander]['red'],
+          yellowTree: data.commanders[commander]['yellow'],
+          blueTree: data.commanders[commander]['blue']
+        },
+        () => this.updateURL()
+      );
     } catch (err) {
-      this.setState(this.getEmptyState());
+      this.setState(this.getEmptyState(), () => this.updateURL('clear'));
     }
   }
 
