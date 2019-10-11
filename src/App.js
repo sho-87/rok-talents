@@ -1,6 +1,7 @@
 import React from 'react';
 import Tree from './Tree.js';
 import Sidebar from './Sidebar.js';
+import InvalidBuild from './Modals.js';
 import data from './data.json';
 
 import './App.css';
@@ -11,6 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getEmptyState();
+    this.isInvalidBuild = false;
     this.handleCommanderChange = this.handleCommanderChange.bind(this);
   }
 
@@ -32,6 +34,8 @@ class App extends React.Component {
       try {
         this.setState(JSON.parse(window.atob(build)));
       } catch (err) {
+        // Invalid build
+        this.isInvalidBuild = true;
         this.setState(this.getEmptyState(), () => this.updateURL('clear'));
       }
     }
@@ -72,6 +76,8 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
+        {this.isInvalidBuild && <InvalidBuild />}
+
         <Sidebar
           handleCommanderChange={this.handleCommanderChange}
           {...this.state} //FIXME: does sidebar really need the entire state?
