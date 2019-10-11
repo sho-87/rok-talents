@@ -8,6 +8,7 @@ class Sidebar extends React.Component {
   }
 
   render() {
+    //TODO: hide sidebar on smaller screens. unmount tree component?
     return (
       <div id="sidebar">
         <h1>Options</h1>
@@ -26,7 +27,8 @@ class Sidebar extends React.Component {
         </span>
         <hr />
         <h1>Summary</h1>
-        <p>Commander: {this.props.commander}</p>
+        <p>Placeholder</p>
+        <h1>Debug</h1>
         <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
         <p>Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}</p>
       </div>
