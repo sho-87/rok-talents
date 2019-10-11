@@ -33,11 +33,12 @@ class App extends React.Component {
         this.setState(JSON.parse(window.atob(build)));
       } catch (err) {
         this.setState(this.getEmptyState(), () => this.updateURL('clear'));
+        console.error('Invalid build link');
       }
     }
   }
 
-  updateURL(method = 'update') {
+  updateURL(method) {
     const url = new URL(window.location.href);
     switch (method) {
       case 'update':
@@ -46,6 +47,8 @@ class App extends React.Component {
       case 'clear':
         url.searchParams.delete('build');
         break;
+      default:
+        console.warn('URL not updated');
     }
     window.history.pushState({ path: url.href }, '', url.href);
   }
@@ -60,7 +63,7 @@ class App extends React.Component {
           yellowTree: data.commanders[commander]['yellow'],
           blueTree: data.commanders[commander]['blue']
         },
-        () => this.updateURL()
+        () => this.updateURL('update')
       );
     } catch (err) {
       this.setState(this.getEmptyState(), () => this.updateURL('clear'));
