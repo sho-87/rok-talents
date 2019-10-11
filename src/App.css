@@ -1,12 +1,64 @@
-.App {
-  display: flex;
+/* Main app */
+#app {
   height: 100vh;
-  background-color: #000;
 }
 
-.Tree {
+/* Sidebar */
+#sidebar hr {
   border: 0.5px solid black;
-  flex: 0 0 85%;
+  width: 80%;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 20px;
+  top: 20px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+.bm-menu {
+  background: #636779;
+  border: 0.5px solid black;
+  padding: 2.5em 1.5em 0;
+}
+
+/* Talent tree */
+#tree {
+  width: 50%;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #838ca7;
 }
 
@@ -21,13 +73,8 @@
 
 .container {
   border: 0.5px solid red;
-  width: 100%;
   height: 100%;
   text-align: center;
-}
-
-.row {
-  border: 0.5px solid blue;
 }
 
 .col {
@@ -40,15 +87,4 @@
 
 .sub-tree-col{
   height:100%;
-}
-
-.Info {
-  flex: 1;
-  height: 50%;
-  background-color: rgb(146, 136, 0);
-}
-
-.Info hr {
-  border: 0.5px solid black;
-  width: 75%;
 }

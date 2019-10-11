@@ -1,8 +1,9 @@
 import React from 'react';
+import Tree from './Tree.js';
+import Sidebar from './Sidebar.js';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Tree from './Tree.js';
-import Info from './Info.js';
 
 // Top level talent builder logic
 class App extends React.Component {
@@ -20,10 +21,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Tree commander={this.state.commander} />
-        <Info
+      <div id="app">
+        <Sidebar
           handleCommanderChange={this.handleCommanderChange}
+          commander={this.state.commander}
+        />
+        <Tree
           commander={this.state.commander}
         />
       </div>
