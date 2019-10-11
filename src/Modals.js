@@ -26,10 +26,10 @@ export class InvalidBuildModal extends React.Component {
           toggle={this.toggle}
           unmountOnClose={true}
         >
-          <ModalHeader toggle={this.toggle}>Invalid Build</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Invalid Talent Build</ModalHeader>
           <ModalBody>
-            The build you're trying to view is invalid. Please make sure you've
-            correctly copied and pasted the link.
+            The talent build you're trying to view is invalid. Please make sure you've
+            copied and pasted the correct link.
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>
@@ -47,9 +47,9 @@ export class CopyToast extends React.Component {
     return (
       <div>
         <Toast isOpen={this.props.isOpen}>
-          <ToastHeader icon="success" >Build Copied</ToastHeader>
+          <ToastHeader icon="success" >Talent Build Copied</ToastHeader>
           <ToastBody>
-            Talent build link has been copied to your clipboard
+            The link to this talent build has been copied to your clipboard
           </ToastBody>
         </Toast>
       </div>

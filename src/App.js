@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = this.getEmptyState();
     this.invalidModalFlag = false;
     this.changeCommander = this.changeCommander.bind(this);
-    this.setEmptyState = this.setEmptyState.bind(this);
+    this.resetTalents = this.resetTalents.bind(this);
   }
 
   getEmptyState() {
@@ -44,7 +44,7 @@ class App extends React.Component {
     }
   }
 
-  //TODO: this should be automatic after any/every state change
+  //FIXME: this should be automatic after any/every state change
   updateURL(method) {
     const url = new URL(window.location.href);
     switch (method) {
@@ -69,6 +69,11 @@ class App extends React.Component {
     }
   }
 
+  //FIXME: reset button should only reset points, not commander selection
+  resetTalents(){
+    this.setEmptyState();
+  }
+
   render() {
     return (
       <div id="app">
@@ -76,7 +81,7 @@ class App extends React.Component {
 
         <Sidebar
           changeCommander={this.changeCommander}
-          setEmptyState={this.setEmptyState}
+          resetTalents={this.resetTalents}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
 

@@ -34,7 +34,7 @@ class Sidebar extends React.Component {
     return (
       <div id="sidebar">
         <CopyToast isOpen={this.state.copyToastFlag} />
-        
+
         <h1>Options</h1>
         <SidebarCommanderSelect
           changeCommander={this.props.changeCommander}
@@ -44,17 +44,19 @@ class Sidebar extends React.Component {
         <span>
           <button
             type="button"
+            disabled={this.props.commander ? false : true}
             className="btn btn-sm btn-primary"
             onClick={this.copyURL}
           >
-            Copy Build
+            Copy Talents
           </button>
           <button
             type="button"
+            disabled={this.props.commander ? false : true}
             className="btn btn-sm btn-danger"
-            onClick={this.props.setEmptyState}
+            onClick={this.props.resetTalents}
           >
-            Reset Build
+            Reset Talents
           </button>
         </span>
         <hr />

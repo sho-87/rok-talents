@@ -6,7 +6,7 @@
 
 .toast {
   position: absolute;
-  right:10px;
+  right: 10px;
 }
 
 /* Sidebar */
@@ -22,6 +22,11 @@
 #sidebar hr {
   border: 0.5px solid black;
   width: 80%;
+}
+
+#sidebar .btn.btn-sm:disabled {
+  -webkit-filter: saturate(30%);
+  filter: saturate(30%);
 }
 
 /* Talent tree */
