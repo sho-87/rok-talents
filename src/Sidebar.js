@@ -1,8 +1,10 @@
 import React from 'react';
+import Menu from 'react-burger-menu/lib/menus/push';
+
 import data from './data.json';
 
 //Info and control panel
-class Info extends React.Component {
+class Sidebar extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -27,7 +29,16 @@ class Info extends React.Component {
 
   render() {
     return (
-      <div className="Info">
+      <Menu
+        id={'sidebar'}
+        noOverlay
+        disableCloseOnEsc
+        disableAutoFocus
+        width={'20%'}
+        isOpen={true}
+        pageWrapId={'tree'}
+        outerContainerId={'app'}
+      >
         <h1>Options</h1>
         <label htmlFor="select-commander">Commander: </label>
         <select
@@ -41,9 +52,9 @@ class Info extends React.Component {
         <h1>Summary</h1>
         <p>Commander: {this.props.commander}</p>
         <p>Link: {JSON.stringify(this.props)}</p>
-      </div>
+      </Menu>
     );
   }
 }
 
-export default Info;
+export default Sidebar;

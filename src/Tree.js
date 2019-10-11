@@ -16,7 +16,7 @@ class Tree extends React.Component {
 
   render() {
     return (
-      <div className="Tree">
+      <div id="tree">
         <div className="container">
           <div className="row align-items-center sub-tree">
             <div id="tree-red" className="col sub-tree-col">
