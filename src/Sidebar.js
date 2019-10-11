@@ -13,16 +13,20 @@ class Sidebar extends React.Component {
       <div id="sidebar">
         <h1>Options</h1>
         <SidebarCommanderSelect
-          handleCommanderChange={this.props.handleCommanderChange}
+          changeCommander={this.props.changeCommander}
           commander={this.props.commander}
         />
         <br />
         <span>
           <button type="button" className="btn btn-sm btn-primary">
-            Copy Talents
+            Copy Build
           </button>
-          <button type="button" className="btn btn-sm btn-danger">
-            Reset Talents
+          <button
+            type="button"
+            className="btn btn-sm btn-danger"
+            onClick={this.props.setEmptyState}
+          >
+            Reset Build
           </button>
         </span>
         <hr />
@@ -67,7 +71,7 @@ class SidebarCommanderSelect extends React.Component {
           id="select-commander"
           className="form-control form-control-sm"
           value={this.props.commander}
-          onChange={this.props.handleCommanderChange}
+          onChange={this.props.changeCommander}
         >
           {this.createSelectItems()}
         </select>

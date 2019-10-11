@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-class InvalidBuild extends React.Component {
+class InvalidBuildModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,11 @@ class InvalidBuild extends React.Component {
   render() {
     return (
       <div>
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          unmountOnClose={true}
+        >
           <ModalHeader toggle={this.toggle}>Invalid Build</ModalHeader>
           <ModalBody>
             The build you're trying to view is invalid. Please make sure you've
@@ -37,4 +41,4 @@ class InvalidBuild extends React.Component {
   }
 }
 
-export default InvalidBuild;
+export default InvalidBuildModal;
