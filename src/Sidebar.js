@@ -7,6 +7,17 @@ class Sidebar extends React.Component {
     super(props);
   }
 
+  copyURL() {
+    var dummy = document.createElement('input'),
+      url = window.location.href;
+
+    document.body.appendChild(dummy);
+    dummy.value = url;
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+  }
+
   render() {
     //TODO: hide sidebar on smaller screens. unmount tree component?
     return (
@@ -18,7 +29,11 @@ class Sidebar extends React.Component {
         />
         <br />
         <span>
-          <button type="button" className="btn btn-sm btn-primary">
+          <button
+            type="button"
+            className="btn btn-sm btn-primary"
+            onClick={this.copyURL}
+          >
             Copy Build
           </button>
           <button
@@ -32,6 +47,7 @@ class Sidebar extends React.Component {
         <hr />
         <h1>Summary</h1>
         <p>Placeholder</p>
+        <hr />
         <h1>Debug</h1>
         <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
         <p>Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}</p>

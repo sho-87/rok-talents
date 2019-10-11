@@ -48,6 +48,7 @@ class App extends React.Component {
     }
   }
 
+  //TODO: this should be automatic after any/every state change
   updateURL(method) {
     const url = new URL(window.location.href);
     switch (method) {
