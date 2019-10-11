@@ -27,7 +27,6 @@ class Sidebar extends React.Component {
         </span>
         <hr />
         <h1>Summary</h1>
-        <p>Commander: {this.props.commander}</p>
         <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
         <p>Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}</p>
       </div>

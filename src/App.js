@@ -10,8 +10,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = this.getEmptyState();
     this.handleCommanderChange = this.handleCommanderChange.bind(this);
-    this.state = {
+  }
+
+  getEmptyState() {
+    return {
       commander: '',
       redTree: '',
       yellowTree: '',
@@ -20,7 +24,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('first load');
+    // Set initial state from query string
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.has('build')) {
+      const build = urlParams.get('build');
+      this.setState(JSON.parse(window.atob(build)));
+    }
   }
 
   handleCommanderChange(e) {
@@ -33,12 +43,7 @@ class App extends React.Component {
         blueTree: data.commanders[commander]['blue']
       });
     } catch (err) {
-      this.setState({
-        commander: '',
-        redTree: '',
-        yellowTree: '',
-        blueTree: ''
-      });
+      this.setState(this.getEmptyState());
     }
   }
 
