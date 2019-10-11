@@ -1,71 +1,29 @@
 /* Main app */
 #app {
   height: 100vh;
-}
-
-*:focus {
-  outline: none;
+  display: flex;
 }
 
 /* Sidebar */
+#sidebar {
+  flex: 0 0 20%;
+  background-color: #838ca7;
+  border: 0.5px solid black;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  padding: 10px;
+}
+
 #sidebar hr {
   border: 0.5px solid black;
   width: 80%;
 }
 
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 20px;
-  top: 20px;
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #373a47;
-}
-
-/* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-  background: #a90000;
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-  right: 15px !important;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #c7bdbd;
-}
-
-/*
-Sidebar wrapper styles
-*/
-.bm-menu-wrap {
-  position: fixed;
-  height: 100%;
-}
-
-.bm-menu {
-  background: #636779;
-  border: 0.5px solid black;
-  padding: 2.5em 1.5em 0;
-  overflow-wrap: break-word;
-}
-
 /* Talent tree */
 #tree {
-  width: 50%;
+  flex: 1;
   height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #838ca7;
+  background-color: white;
 }
 
 #tree-commander {

@@ -1,6 +1,4 @@
 import React from 'react';
-import Menu from 'react-burger-menu/lib/menus/push';
-
 import data from './data.json';
 
 //Sidebar and control panel
@@ -11,17 +9,7 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <Menu
-        id={'sidebar'}
-        left
-        noOverlay
-        disableCloseOnEsc
-        disableAutoFocus
-        width={'20%'}
-        isOpen={true}
-        pageWrapId={'tree'}
-        outerContainerId={'app'}
-      >
+      <div id="sidebar">
         <h1>Options</h1>
         <SidebarCommanderSelect
           handleCommanderChange={this.props.handleCommanderChange}
@@ -41,7 +29,7 @@ class Sidebar extends React.Component {
         <p>Commander: {this.props.commander}</p>
         <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
         <p>Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}</p>
-      </Menu>
+      </div>
     );
   }
 }
