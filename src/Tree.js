@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import data from './data.json';
+import commanders from './data/commanders.json';
 
 // Talent tree container
 class Tree extends React.Component {
@@ -9,7 +9,7 @@ class Tree extends React.Component {
   }
 
   getTreeName(color) {
-    const commander = data.commanders[this.props.commander];
+    const commander = commanders[this.props.commander];
     if (commander) {
       return commander[color];
     }
