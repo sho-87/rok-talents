@@ -19,14 +19,27 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log('first load');
+  }
+
   handleCommanderChange(e) {
-    const commander = e.target.value;
-    this.setState({
-      commander: commander,
-      redTree: data.commanders[commander]['red'],
-      yellowTree: data.commanders[commander]['yellow'],
-      blueTree: data.commanders[commander]['blue']
-    });
+    try {
+      const commander = e.target.value;
+      this.setState({
+        commander: commander,
+        redTree: data.commanders[commander]['red'],
+        yellowTree: data.commanders[commander]['yellow'],
+        blueTree: data.commanders[commander]['blue']
+      });
+    } catch (err) {
+      this.setState({
+        commander: '',
+        redTree: '',
+        yellowTree: '',
+        blueTree: ''
+      });
+    }
   }
 
   render() {
