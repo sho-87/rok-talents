@@ -8,6 +8,7 @@ class Sidebar extends React.Component {
   }
 
   render() {
+    //TODO: hide sidebar on smaller screens. unmount tree component?
     return (
       <div id="sidebar">
         <h1>Options</h1>

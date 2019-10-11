@@ -1,6 +1,7 @@
 import React from 'react';
 import Tree from './Tree.js';
 import Sidebar from './Sidebar.js';
+import data from './data.json';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,12 +12,21 @@ class App extends React.Component {
     super(props);
     this.handleCommanderChange = this.handleCommanderChange.bind(this);
     this.state = {
-      commander: ''
+      commander: '',
+      redTree: '',
+      yellowTree: '',
+      blueTree: ''
     };
   }
 
   handleCommanderChange(e) {
-    this.setState({ commander: e.target.value });
+    const commander = e.target.value;
+    this.setState({
+      commander: commander,
+      redTree: data.commanders[commander]['red'],
+      yellowTree: data.commanders[commander]['yellow'],
+      blueTree: data.commanders[commander]['blue']
+    });
   }
 
   render() {
@@ -24,10 +34,13 @@ class App extends React.Component {
       <div id="app">
         <Sidebar
           handleCommanderChange={this.handleCommanderChange}
-          commander={this.state.commander}
+          {...this.state} //FIXME: does sidebar really need the entire state?
         />
         <Tree
           commander={this.state.commander}
+          redTree={this.state.redTree}
+          yellowTree={this.state.yellowTree}
+          blueTree={this.state.blueTree}
         />
       </div>
     );
