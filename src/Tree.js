@@ -1,10 +1,18 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import data from './data.json';
 
 // Talent tree container
 class Tree extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  getTreeName(color) {
+    const commander = data.commanders[this.props.commander];
+    if (commander) {
+      return commander[color];
+    }
   }
 
   render() {
@@ -43,7 +51,7 @@ class Tree extends React.Component {
         <Container>
           <Row className="align-items-center sub-tree">
             <Col id="tree-red" className="sub-tree-col">
-              {this.props.redTree}
+              {this.getTreeName('red')}
             </Col>
           </Row>
 
@@ -59,10 +67,10 @@ class Tree extends React.Component {
 
           <Row className="align-items-center sub-tree">
             <Col id="tree-yellow" className="sub-tree-col">
-              {this.props.yellowTree}
+              {this.getTreeName('yellow')}
             </Col>
             <Col id="tree-blue" className="sub-tree-col">
-              {this.props.blueTree}
+              {this.getTreeName('blue')}
             </Col>
           </Row>
         </Container>

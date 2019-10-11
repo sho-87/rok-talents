@@ -2,7 +2,6 @@ import React from 'react';
 import Tree from './Tree.js';
 import Sidebar from './Sidebar.js';
 import InvalidBuildModal from './Modals.js';
-import data from './data.json';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,10 +18,7 @@ class App extends React.Component {
 
   getEmptyState() {
     return {
-      commander: '',
-      redTree: '',
-      yellowTree: '',
-      blueTree: ''
+      commander: ''
     };
   }
 
@@ -65,18 +61,10 @@ class App extends React.Component {
   }
 
   changeCommander(e) {
-    try {
-      const commander = e.target.value;
-      this.setState(
-        {
-          commander: commander,
-          redTree: data.commanders[commander]['red'],
-          yellowTree: data.commanders[commander]['yellow'],
-          blueTree: data.commanders[commander]['blue']
-        },
-        () => this.updateURL('update')
-      );
-    } catch (err) {
+    const commander = e.target.value;
+    if (commander) {
+      this.setState({ commander: commander }, () => this.updateURL('update'));
+    } else {
       this.setEmptyState();
     }
   }
@@ -91,12 +79,8 @@ class App extends React.Component {
           setEmptyState={this.setEmptyState}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
-        <Tree
-          commander={this.state.commander}
-          redTree={this.state.redTree}
-          yellowTree={this.state.yellowTree}
-          blueTree={this.state.blueTree}
-        />
+
+        <Tree commander={this.state.commander} />
       </div>
     );
   }

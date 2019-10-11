@@ -82,7 +82,7 @@ class SidebarCommanderSelect extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor="select-commander">Commander: </label>
+        <label htmlFor="select-commander">Commander:</label>
         <select
           id="select-commander"
           className="form-control form-control-sm"
