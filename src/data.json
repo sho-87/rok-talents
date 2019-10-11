@@ -5,9 +5,8 @@
   },
 
   "trees": {
-    "Garrison": [
-      {
-        "id": 1,
+    "Garrison": {
+      "1": {
         "name": "Defense (All Troops)",
         "values": [0.5],
         "stats": "Defense",
@@ -17,8 +16,7 @@
         "loc": [0.574, 0.368],
         "type": "Small"
       },
-      {
-        "id": 2,
+      "2": {
         "name": "Health (All Troops)",
         "values": [0.5],
         "stats": "Health",
@@ -28,8 +26,7 @@
         "loc": [0.5, 0.289],
         "type": "Small"
       },
-      {
-        "id": 3,
+      "3": {
         "name": "Empty Fortress Strategem",
         "values": [2, 4, 6],
         "stats": "",
@@ -39,8 +36,7 @@
         "loc": [0.546, 0.283],
         "type": "Large"
       },
-      {
-        "id": 4,
+      "4": {
         "name": "Attack (All Troops)",
         "values": [0.5, 1],
         "stats": "Attack",
@@ -50,8 +46,7 @@
         "loc": [0.615, 0.304],
         "type": "Small"
       },
-      {
-        "id": 5,
+      "5": {
         "name": "Impenetrable Fortifications",
         "values": [2, 4, 6],
         "stats": "",
@@ -61,8 +56,7 @@
         "loc": [0.651, 0.336],
         "type": "Large"
       },
-      {
-        "id": 6,
+      "6": {
         "name": "Defense (All Troops)",
         "values": [0.5],
         "stats": "Defense",
@@ -72,8 +66,7 @@
         "loc": [0.692, 0.386],
         "type": "Small"
       },
-      {
-        "id": 7,
+      "7": {
         "name": "Impregnable",
         "values": [5, 10, 15],
         "stats": "",
@@ -83,8 +76,7 @@
         "loc": [0.484, 0.218],
         "type": "Large"
       },
-      {
-        "id": 8,
+      "8": {
         "name": "Adamantine Walls",
         "values": [5, 10, 15],
         "stats": "",
@@ -94,8 +86,7 @@
         "loc": [0.605, 0.228],
         "type": "Large"
       },
-      {
-        "id": 9,
+      "9": {
         "name": "City Guardian",
         "values": [5, 10, 15],
         "stats": "",
@@ -105,8 +96,7 @@
         "loc": [0.672, 0.264],
         "type": "Large"
       },
-      {
-        "id": 10,
+      "10": {
         "name": "Nowhere To Turn",
         "values": [2, 4, 6],
         "stats": "",
@@ -116,8 +106,7 @@
         "loc": [0.747, 0.355],
         "type": "Large"
       },
-      {
-        "id": 11,
+      "11": {
         "name": "Health (All Troops)",
         "values": [0.5, 1],
         "stats": "Health",
@@ -127,8 +116,7 @@
         "loc": [0.492, 0.154],
         "type": "Small"
       },
-      {
-        "id": 12,
+      "12": {
         "name": "Attack (All Troops)",
         "values": [0.5, 1],
         "stats": "Attack",
@@ -138,8 +126,7 @@
         "loc": [0.563, 0.158],
         "type": "Small"
       },
-      {
-        "id": 13,
+      "13": {
         "name": "Attack (All Troops)",
         "values": [0.5, 1],
         "stats": "Attack",
@@ -149,8 +136,7 @@
         "loc": [0.652, 0.174],
         "type": "Small"
       },
-      {
-        "id": 14,
+      "14": {
         "name": "Defense (All Troops)",
         "values": [0.5, 1],
         "stats": "Defense",
@@ -160,8 +146,7 @@
         "loc": [0.719, 0.21],
         "type": "Small"
       },
-      {
-        "id": 15,
+      "15": {
         "name": "Defense (All Troops)",
         "values": [0.5, 1],
         "stats": "Defense",
@@ -171,8 +156,7 @@
         "loc": [0.776, 0.268],
         "type": "Small"
       },
-      {
-        "id": 16,
+      "16": {
         "name": "Health (All Troops)",
         "values": [0.5, 1],
         "stats": "Health",
@@ -182,8 +166,7 @@
         "loc": [0.82, 0.325],
         "type": "Small"
       },
-      {
-        "id": 17,
+      "17": {
         "name": "Know Thy Enemy",
         "values": [3, 6, 9],
         "stats": "",
@@ -193,8 +176,7 @@
         "loc": [0.593, 0.096],
         "type": "Large"
       },
-      {
-        "id": 18,
+      "18": {
         "name": "March Speed (All Troops)",
         "values": [3, 6],
         "stats": "March Speed",
@@ -204,8 +186,7 @@
         "loc": [0.711, 0.152],
         "type": "Small"
       },
-      {
-        "id": 19,
+      "19": {
         "name": "Kings Guard",
         "values": [1, 2, 3],
         "stats": "",
@@ -215,8 +196,7 @@
         "loc": [0.807, 0.206],
         "type": "Large"
       },
-      {
-        "id": 20,
+      "20": {
         "name": "Divine Favor",
         "values": [100, 200, 300, 400, 500],
         "stats": "",
@@ -226,10 +206,9 @@
         "loc": [0.741, 0.088],
         "type": "Large"
       }
-    ],
-    "Skill": [
-      {
-        "id": 1,
+    },
+    "Skill": {
+      "1": {
         "name": "Attack (All Troops)",
         "values": [0.5],
         "stats": "Attack",
@@ -239,8 +218,7 @@
         "loc": [0.578, 0.572],
         "type": "Small"
       },
-      {
-        "id": 2,
+      "2": {
         "name": "Burning Blood",
         "values": [3, 6, 9],
         "stats": "",
@@ -250,8 +228,7 @@
         "loc": [0.517, 0.635],
         "type": "Large"
       },
-      {
-        "id": 3,
+      "3": {
         "name": "Defense (All Troops)",
         "values": [0.5, 1, 1.5],
         "stats": "Defense",
@@ -261,8 +238,7 @@
         "loc": [0.611, 0.619],
         "type": "Small"
       },
-      {
-        "id": 4,
+      "4": {
         "name": "Heraldic Shield",
         "values": [2, 4, 6],
         "stats": "",
@@ -272,10 +248,9 @@
         "loc": [0.671, 0.563],
         "type": "Large"
       }
-    ],
-    "Defense": [
-      {
-        "id": 1,
+    },
+    "Defense": {
+      "1": {
         "name": "Defense (All Troops)",
         "values": [0.5],
         "stats": "Defense",
@@ -285,10 +260,9 @@
         "loc": [0.578, 0.572],
         "type": "Small"
       }
-    ],
-    "Infantry": [
-      {
-        "id": 1,
+    },
+    "Infantry": {
+      "1": {
         "name": "Defense (All Troops)",
         "values": [1],
         "stats": "Defense",
@@ -298,10 +272,9 @@
         "loc": [0.39, 0.466],
         "type": "Small"
       }
-    ],
-    "Archer": [
-      {
-        "id": 1,
+    },
+    "Archer": {
+      "1": {
         "name": "Attack (All Troops)",
         "values": [1],
         "stats": "Attack",
@@ -311,6 +284,6 @@
         "loc": [0.394, 0.47],
         "type": "Small"
       }
-    ]
+    }
   }
 }
