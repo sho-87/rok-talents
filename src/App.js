@@ -1,6 +1,7 @@
 import React from 'react';
 import Tree from './Tree.js';
 import Sidebar from './Sidebar.js';
+import InvalidBuildModal from './Modals.js';
 import data from './data.json';
 
 import './App.css';
@@ -11,7 +12,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getEmptyState();
-    this.handleCommanderChange = this.handleCommanderChange.bind(this);
+    this.showInvalidModal = false;
+    this.changeCommander = this.changeCommander.bind(this);
+    this.setEmptyState = this.setEmptyState.bind(this);
   }
 
   getEmptyState() {
@@ -23,6 +26,12 @@ class App extends React.Component {
     };
   }
 
+  setEmptyState() {
+    this.setState(this.getEmptyState(), () => {
+      this.updateURL('clear');
+    });
+  }
+
   componentDidMount() {
     // Set initial state from query string
     const urlParams = new URLSearchParams(window.location.search);
@@ -32,12 +41,14 @@ class App extends React.Component {
       try {
         this.setState(JSON.parse(window.atob(build)));
       } catch (err) {
-        this.setState(this.getEmptyState(), () => this.updateURL('clear'));
-        console.error('Invalid build link');
+        // Invalid build
+        this.showInvalidModal = true;
+        this.setEmptyState();
       }
     }
   }
 
+  //TODO: this should be automatic after any/every state change
   updateURL(method) {
     const url = new URL(window.location.href);
     switch (method) {
@@ -48,12 +59,12 @@ class App extends React.Component {
         url.searchParams.delete('build');
         break;
       default:
-        console.warn('URL not updated');
+        break;
     }
     window.history.pushState({ path: url.href }, '', url.href);
   }
 
-  handleCommanderChange(e) {
+  changeCommander(e) {
     try {
       const commander = e.target.value;
       this.setState(
@@ -66,15 +77,18 @@ class App extends React.Component {
         () => this.updateURL('update')
       );
     } catch (err) {
-      this.setState(this.getEmptyState(), () => this.updateURL('clear'));
+      this.setEmptyState();
     }
   }
 
   render() {
     return (
       <div id="app">
+        {this.showInvalidModal && <InvalidBuildModal />}
+
         <Sidebar
-          handleCommanderChange={this.handleCommanderChange}
+          changeCommander={this.changeCommander}
+          setEmptyState={this.setEmptyState}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
         <Tree
