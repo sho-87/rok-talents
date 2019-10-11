@@ -1,7 +1,7 @@
 import React from 'react';
-import Tree from './Tree.js';
 import Sidebar from './Sidebar.js';
-import InvalidBuildModal from './Modals.js';
+import Tree from './Tree.js';
+import { InvalidBuildModal } from './Modals.js';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getEmptyState();
-    this.showInvalidModal = false;
+    this.invalidModalFlag = false;
     this.changeCommander = this.changeCommander.bind(this);
     this.setEmptyState = this.setEmptyState.bind(this);
   }
@@ -38,7 +38,7 @@ class App extends React.Component {
         this.setState(JSON.parse(window.atob(build)));
       } catch (err) {
         // Invalid build
-        this.showInvalidModal = true;
+        this.invalidModalFlag = true;
         this.setEmptyState();
       }
     }
@@ -72,7 +72,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        {this.showInvalidModal && <InvalidBuildModal />}
+        {this.invalidModalFlag && <InvalidBuildModal />}
 
         <Sidebar
           changeCommander={this.changeCommander}

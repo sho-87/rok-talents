@@ -1,15 +1,26 @@
 import React from 'react';
+import { CopyToast } from './Modals.js';
 import data from './data.json';
 
 //Sidebar and control panel
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+    this.copyURL = this.copyURL.bind(this);
+    this.state = {
+      copyToastFlag: false
+    };
   }
 
   copyURL() {
-    var dummy = document.createElement('input'),
-      url = window.location.href;
+    this.setState({ copyToastFlag: true }, () => {
+      window.setTimeout(() => {
+        this.setState({ copyToastFlag: false });
+      }, 5000);
+    });
+
+    const dummy = document.createElement('input');
+    const url = window.location.href;
 
     document.body.appendChild(dummy);
     dummy.value = url;
@@ -22,6 +33,8 @@ class Sidebar extends React.Component {
     //TODO: hide sidebar on smaller screens. unmount tree component?
     return (
       <div id="sidebar">
+        <CopyToast isOpen={this.state.copyToastFlag} />
+        
         <h1>Options</h1>
         <SidebarCommanderSelect
           changeCommander={this.props.changeCommander}

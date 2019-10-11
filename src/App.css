@@ -4,6 +4,11 @@
   display: flex;
 }
 
+.toast {
+  position: absolute;
+  right:10px;
+}
+
 /* Sidebar */
 #sidebar {
   flex: 0 0 20%;
