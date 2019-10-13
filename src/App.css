@@ -1,4 +1,14 @@
-/* Main app */
+html,
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0px;
+}
+
 #app {
   height: 100vh;
   width: 100vw;
@@ -43,7 +53,6 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  background-color: grey;
 
   /* background-image: url('./template.jpg');
   background-repeat: no-repeat;

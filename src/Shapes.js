@@ -38,19 +38,25 @@ export class HexagonCommander extends React.Component {
 }
 
 export class Node extends React.Component {
+  decrease(e) {
+    e.preventDefault();
+    console.log('decrease');
+  }
+
   render() {
     return (
       <div
         id={this.props.id}
         className={'node ' + this.props.type}
         style={this.props.styles}
+        onContextMenu={this.decrease}
       >
         <div className="node-tooltip">
           <span className="node-tooltip-title">{this.props.name}</span>
           <br />
           {this.props.tooltip}
         </div>
-        
+
         <div className="node-value">
           {this.props.value + '/' + this.props.max}
         </div>
