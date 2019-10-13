@@ -41,7 +41,11 @@ body {
 /* Talent tree */
 #tree {
   flex: 1;
-  background-color: grey;
+
+  /* background-image: url('./template.jpg');
+  background-repeat: no-repeat;
+  background-size: 110%;
+  background-position: -79% -15%; */
 }
 
 .container {
@@ -64,9 +68,10 @@ body {
 }
 
 .hexagon-commander-wrapper img {
-  width: 5vw;
-  height: 5vw;
+  width: 4vw;
+  height: 4vw;
   z-index: 1;
+  opacity: 1;
 }
 
 .hexagon-label {
@@ -78,8 +83,8 @@ body {
   bottom: 0;
   left: 0;
   text-align: center;
-  font-size: 0.9vw;
-  font-weight: 600;
+  font-size: 0.6vw;
+  font-weight: 700;
   mix-blend-mode: multiply;
 }
 
@@ -98,7 +103,7 @@ body {
 .hexagon-talent-wrapper {
   position: relative;
   border: 1px solid black;
-  width: 25%; /* adjust to change overall hexagon size */
+  width: 24%; /* adjust to change overall hexagon size */
   margin: auto;
   display: flex;
   justify-content: center;
@@ -112,6 +117,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 1;
 }
 
 .hexagon-talent-red:before,
