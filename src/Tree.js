@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
 import HexagonCommander from './Shapes.js';
 import commanders from './data/commanders.json';
 
@@ -15,11 +14,12 @@ class Tree extends React.Component {
   render() {
     return (
       <div id="tree">
-        <div className="container">
-          <div className="row align-items-center sub-tree">
-            <div className="col sub-tree-col"></div>
-            <div id="tree-red" className="col-6 sub-tree-col"></div>
-            <div className="col sub-tree-col"></div>
+        <div className="container d-flex flex-column">
+
+          <div className="row align-items-center flex-fill">
+            <div className="col"></div>
+            <div id="tree-red" className="col-6 tree-col">a</div>
+            <div className="col"></div>
           </div>
 
           <div className="row align-items-center">
@@ -38,9 +38,9 @@ class Tree extends React.Component {
             </div>
           </div>
 
-          <div className="row align-items-center sub-tree">
-            <div id="tree-yellow" className="col sub-tree-col"></div>
-            <div id="tree-blue" className="col sub-tree-col"></div>
+          <div className="row align-items-center flex-fill">
+            <div id="tree-yellow" className="col tree-col">b</div>
+            <div id="tree-blue" className="col tree-col">c</div>
           </div>
         </div>
       </div>
