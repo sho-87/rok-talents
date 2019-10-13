@@ -1,4 +1,9 @@
 /* Main app */
+html,
+body {
+  margin: 0;
+}
+
 #app {
   height: 100vh;
   display: flex;
@@ -12,6 +17,7 @@
 /* Sidebar */
 #sidebar {
   flex: 0 0 20%;
+  height: 100%;
   background-color: #838ca7;
   border: 0.5px solid black;
   overflow-y: auto;
@@ -21,7 +27,6 @@
 
 #sidebar hr {
   border: 0.5px solid black;
-  width: 80%;
 }
 
 #sidebar .btn.btn-sm:disabled {
@@ -32,17 +37,8 @@
 /* Talent tree */
 #tree {
   flex: 1;
-  height: 100vh;
+  height: 100%;
   background-color: white;
-}
-
-#tree-commander {
-  font-weight: bold;
-}
-
-#tree-commander img {
-  width: 4vw;
-  height: 4vw;
 }
 
 .container {
@@ -61,4 +57,98 @@
 
 .sub-tree-col {
   height: 100%;
+}
+
+.hexagon-commander-wrapper {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hexagon-commander-wrapper img {
+  width: 5vw;
+  height: 5vw;
+  z-index: 1;
+}
+
+.hexagon-label {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 50%;
+  font-size: 1vw;
+  font-weight: 600;
+  mix-blend-mode: multiply;
+}
+
+.hexagon-label-red {
+  transform: translateY(-250%);
+}
+
+.hexagon-label-yellow {
+  transform: translateX(-3.5%) translateY(100%);
+}
+
+.hexagon-label-blue {
+  transform: translateX(3.5%) translateY(100%);
+}
+
+.hexagon-talent-wrapper {
+  position: relative;
+  border: 1px solid black;
+  width: 25%; /* adjust to change overall hexagon size */
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.hexagon-talent-red,
+.hexagon-talent-yellow,
+.hexagon-talent-blue {
+  width: 30%;
+  display: inline-flex;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hexagon-talent-red:before,
+.hexagon-talent-yellow:before,
+.hexagon-talent-blue:before {
+  content: '';
+  padding-top: 115.47%; /* 100/cos(30deg) */
+}
+
+.hexagon-talent-red {
+  position: absolute;
+  top: -25%;
+  transform-origin: left;
+  transform: rotate(-60deg) skewY(30deg);
+  background: linear-gradient(
+    45deg,
+    rgb(143, 47, 30) 0%,
+    rgba(255, 113, 73, 1) 100%
+  );
+}
+
+.hexagon-talent-yellow {
+  transform: skewY(30deg);
+  transform-origin: left;
+  background: linear-gradient(
+    -130deg,
+    rgba(183, 117, 4, 1) 0%,
+    rgba(248, 190, 3, 1) 100%
+  );
+}
+
+.hexagon-talent-blue {
+  transform: skewY(-30deg);
+  transform-origin: right;
+  background: linear-gradient(
+    130deg,
+    rgba(4, 125, 146, 1) 0%,
+    rgba(53, 222, 255, 1) 100%
+  );
 }

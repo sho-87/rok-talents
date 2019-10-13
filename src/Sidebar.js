@@ -72,10 +72,6 @@ class Sidebar extends React.Component {
 }
 
 class SidebarCommanderSelect extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   createSelectItems() {
     let items = [];
     items.push(
