@@ -13,16 +13,17 @@ class Tree extends React.Component {
   }
 
   render() {
-    // Move talent labels into hexagon component
     return (
       <div id="tree">
-        <Container>
-          <Row className="align-items-center sub-tree">
-            <Col id="tree-red" className="sub-tree-col"></Col>
-          </Row>
+        <div className="container">
+          <div className="row align-items-center sub-tree">
+            <div className="col sub-tree-col"></div>
+            <div id="tree-red" className="col-6 sub-tree-col"></div>
+            <div className="col sub-tree-col"></div>
+          </div>
 
-          <Row className="align-items-center">
-            <Col id="tree-commander">
+          <div className="row align-items-center">
+            <div id="tree-commander" className="col">
               <HexagonCommander commander={this.props.commander} />
 
               <div className="hexagon-label hexagon-label-red">
@@ -34,14 +35,14 @@ class Tree extends React.Component {
               <div className="hexagon-label hexagon-label-blue">
                 {this.getTreeName('blue')}
               </div>
-            </Col>
-          </Row>
+            </div>
+          </div>
 
-          <Row className="align-items-center sub-tree">
-            <Col id="tree-yellow" className="sub-tree-col"></Col>
-            <Col id="tree-blue" className="sub-tree-col"></Col>
-          </Row>
-        </Container>
+          <div className="row align-items-center sub-tree">
+            <div id="tree-yellow" className="col sub-tree-col"></div>
+            <div id="tree-blue" className="col sub-tree-col"></div>
+          </div>
+        </div>
       </div>
     );
   }
