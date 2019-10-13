@@ -1,8 +1,8 @@
 import React from 'react';
 
 // Talent tree container
+//TODO: add blank image when no commander is selected
 class HexagonCommander extends React.Component {
-  // TODO: Remove grid layout so the individual tree divs can be positioned manually?
   render() {
     return (
       <div id="tree-center">

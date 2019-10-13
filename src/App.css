@@ -40,22 +40,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
   width: 100%;
+  background-color: grey;
   /* background-image: url('./template.jpg');
   background-repeat: no-repeat;
   background-size: 112%;
   background-position: -60% -60%; */
 }
 
-.container {
-  height: 100vh;
-  border: 0.5px solid red;
+.tree-container {
+  position: absolute;
+  height: 50%;
+  width: 50%;
   text-align: center;
+  padding: 0px;
 }
 
-.tree-col {
-  height: 100%;
-  border: 0.5px solid green;
+#tree-red {
+  top: 0;
+  left: 50%;
+  border: 0.5px solid red;
+}
+
+#tree-yellow {
+  top: 50%;
+  left: 0;
+  border: 0.5px solid yellow;
+}
+
+#tree-blue {
+  top: 50%;
+  left: 50%;
+  border: 0.5px solid blue;
 }
 
 #tree-center {
@@ -151,7 +168,7 @@
   transform: skewY(30deg);
   transform-origin: left;
   background: linear-gradient(
-    -130deg,
+    -140deg,
     rgba(183, 117, 4, 1) 0%,
     rgba(248, 190, 3, 1) 100%
   );

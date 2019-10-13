@@ -19,24 +19,9 @@ class Tree extends React.Component {
   render() {
     return (
       <div id="tree-panel">
-        <div id="tree-grid" className="container d-flex flex-column">
-          <div className="row align-items-center flex-fill">
-            <div className="col"></div>
-            <div id="tree-red" className="col-6 tree-col">
-              a
-            </div>
-            <div className="col"></div>
-          </div>
-
-          <div className="row align-items-center flex-fill">
-            <div id="tree-yellow" className="col tree-col">
-              b
-            </div>
-            <div id="tree-blue" className="col tree-col">
-              c
-            </div>
-          </div>
-        </div>
+        <div id="tree-red" className="tree-container">a</div>
+        <div id="tree-yellow" className="tree-container">b</div>
+        <div id="tree-blue" className="tree-container">c</div>
         <HexagonCommander
           commander={this.props.commander}
           getTreeName={this.getTreeName}

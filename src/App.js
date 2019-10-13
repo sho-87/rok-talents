@@ -28,6 +28,7 @@ class App extends React.Component {
     });
   }
 
+  //TODO: change encoding method? base64, URI, lz-string
   componentDidMount() {
     // Set initial state from query string
     const urlParams = new URLSearchParams(window.location.search);
