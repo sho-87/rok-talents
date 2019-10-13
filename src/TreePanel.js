@@ -22,9 +22,15 @@ class TreePanel extends React.Component {
   render() {
     return (
       <div id="tree-panel">
-        <div id="tree-red" className="tree-container">a</div>
-        <div id="tree-yellow" className="tree-container">b</div>
-        <div id="tree-blue" className="tree-container">c</div>
+        <div id="tree-red" className="tree-container">
+          {this.props.red}
+        </div>
+        <div id="tree-yellow" className="tree-container">
+          {this.props.yellow}
+        </div>
+        <div id="tree-blue" className="tree-container">
+          {this.props.blue}
+        </div>
         <HexagonCommander
           commander={this.props.commander}
           getTreeName={this.getTreeName}

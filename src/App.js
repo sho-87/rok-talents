@@ -110,7 +110,12 @@ class App extends React.Component {
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
 
-        <TreePanel commander={this.state.commander} />
+        <TreePanel
+          commander={this.state.commander}
+          red={this.state.red}
+          yellow={this.state.yellow}
+          blue={this.state.blue}
+        />
       </div>
     );
   }
