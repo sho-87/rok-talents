@@ -1,9 +1,10 @@
 import React from 'react';
 import { CopyToast } from './Modals.js';
-import commanders from './data/commanders.json';
+
+import Commanders from './data/Commanders.json';
 
 //Sidebar and control panel
-class Sidebar extends React.Component {
+class SidebarPanel extends React.Component {
   constructor(props) {
     super(props);
     this.copyURL = this.copyURL.bind(this);
@@ -80,7 +81,7 @@ class SidebarCommanderSelect extends React.Component {
       </option>
     );
 
-    Object.keys(commanders).forEach(c => {
+    Object.keys(Commanders).forEach(c => {
       items.push(
         <option key={c} value={c}>
           {c}
@@ -107,4 +108,4 @@ class SidebarCommanderSelect extends React.Component {
   }
 }
 
-export default Sidebar;
+export default SidebarPanel;

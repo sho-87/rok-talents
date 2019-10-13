@@ -1,7 +1,10 @@
 import React from 'react';
-import Sidebar from './Sidebar.js';
-import Tree from './Tree.js';
+import SidebarPanel from './SidebarPanel.js';
+import TreePanel from './TreePanel.js';
 import { InvalidBuildModal } from './Modals.js';
+
+import Trees from './data/modules.js';
+import Commanders from './data/Commanders.json';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +21,10 @@ class App extends React.Component {
 
   getEmptyState() {
     return {
-      commander: ''
+      commander: '',
+      red: [],
+      yellow: [],
+      blue: []
     };
   }
 
@@ -61,18 +67,36 @@ class App extends React.Component {
     window.history.pushState({ path: url.href }, '', url.href);
   }
 
+  createZeroTalents() {
+    const commander = document.getElementById('select-commander').value;
+    const numRed = Object.keys(Trees[Commanders[commander]['red']]).length;
+    const numYellow = Object.keys(Trees[Commanders[commander]['yellow']])
+      .length;
+    const numBlue = Object.keys(Trees[Commanders[commander]['blue']]).length;
+
+    const zeroTalents = {
+      red: Array(numRed).fill(0),
+      yellow: Array(numYellow).fill(0),
+      blue: Array(numBlue).fill(0)
+    };
+
+    return zeroTalents;
+  }
+
+  resetTalents() {
+    this.setState(this.createZeroTalents(), () => this.updateURL('update'));
+  }
+
   changeCommander(e) {
     const commander = e.target.value;
     if (commander) {
-      this.setState({ commander: commander }, () => this.updateURL('update'));
+      const zeroTalents = this.createZeroTalents();
+      this.setState({ commander: commander, ...zeroTalents }, () =>
+        this.updateURL('update')
+      );
     } else {
       this.setEmptyState();
     }
-  }
-
-  //FIXME: reset button should only reset points, not commander selection
-  resetTalents(){
-    this.setEmptyState();
   }
 
   render() {
@@ -80,13 +104,13 @@ class App extends React.Component {
       <div id="app">
         {this.invalidModalFlag && <InvalidBuildModal />}
 
-        <Sidebar
+        <SidebarPanel
           changeCommander={this.changeCommander}
           resetTalents={this.resetTalents}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
 
-        <Tree commander={this.state.commander} />
+        <TreePanel commander={this.state.commander} />
       </div>
     );
   }
