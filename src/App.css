@@ -44,6 +44,7 @@
   height: 100%;
   width: 100%;
   background-color: grey;
+
   /* background-image: url('./template.jpg');
   background-repeat: no-repeat;
   background-size: 112%;
@@ -183,4 +184,41 @@
     rgba(4, 125, 146, 1) 0%,
     rgba(53, 222, 255, 1) 100%
   );
+}
+
+.node {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.node-tooltip-title {
+  font-weight: bold;
+}
+
+.node-tooltip {
+  visibility: hidden;
+  position: absolute;
+  left: 150%;
+  width: 15vw;
+  padding: 2px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid black;
+  text-align: left;
+  font-size: 0.8em;
+  z-index: 1;
+}
+
+.node:hover .node-tooltip {
+  visibility: visible;
+}
+
+.node-value {
+  display: absolute;
+  font-size: 0.8em;
+  color: black;
+  transform: translateY(90%);
 }

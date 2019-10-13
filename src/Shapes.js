@@ -1,7 +1,6 @@
 import React from 'react';
 
-// Talent tree container
-class HexagonCommander extends React.Component {
+export class HexagonCommander extends React.Component {
   render() {
     if (this.props.commander) {
       return (
@@ -38,4 +37,26 @@ class HexagonCommander extends React.Component {
   }
 }
 
-export default HexagonCommander;
+export class Node extends React.Component {
+  render() {
+    return (
+      <div
+        id={this.props.id}
+        className={'node ' + this.props.type}
+        style={this.props.styles}
+      >
+        <div className="node-tooltip">
+          <span className="node-tooltip-title">{this.props.name}</span>
+          <br />
+          {this.props.tooltip}
+        </div>
+        
+        <div className="node-value">
+          {this.props.value + '/' + this.props.max}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default { HexagonCommander, Node };

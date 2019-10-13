@@ -6,8 +6,8 @@
     "text": "Increases the attack of all units led by this commander by $%",
     "prereq": [],
     "dep": [3],
-    "loc": [0.578, 0.572],
-    "type": "Small"
+    "pos": [9, 12.4],
+    "type": "node-small"
   },
   "2": {
     "name": "Burning Blood",
@@ -16,8 +16,8 @@
     "text": "Normal attacks grant an additional $ rage",
     "prereq": [3],
     "dep": [],
-    "loc": [0.517, 0.635],
-    "type": "Large"
+    "pos": [-1, 21.5],
+    "type": "node-large"
   },
   "3": {
     "name": "Defense (All Troops)",
@@ -26,8 +26,8 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [1],
     "dep": [2, 4],
-    "loc": [0.611, 0.619],
-    "type": "Small"
+    "pos": [15.2, 18.5],
+    "type": "node-small"
   },
   "4": {
     "name": "Heraldic Shield",
@@ -36,7 +36,7 @@
     "text": "Reduces skill damage taken by $%",
     "prereq": [3],
     "dep": [],
-    "loc": [0.671, 0.563],
-    "type": "Large"
+    "pos": [29, 12],
+    "type": "node-large"
   }
 }
