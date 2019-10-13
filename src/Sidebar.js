@@ -32,7 +32,7 @@ class Sidebar extends React.Component {
   render() {
     //TODO: hide sidebar on smaller screens. unmount tree component?
     return (
-      <div id="sidebar">
+      <div id="sidebar-panel">
         <CopyToast isOpen={this.state.copyToastFlag} />
 
         <h1>Options</h1>

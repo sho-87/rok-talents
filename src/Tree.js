@@ -18,21 +18,14 @@ class Tree extends React.Component {
 
   render() {
     return (
-      <div id="tree">
-        <div className="container d-flex flex-column">
+      <div id="tree-panel">
+        <div id="tree-grid" className="container d-flex flex-column">
           <div className="row align-items-center flex-fill">
             <div className="col"></div>
             <div id="tree-red" className="col-6 tree-col">
               a
             </div>
             <div className="col"></div>
-          </div>
-
-          <div className="row align-items-center">
-            <HexagonCommander
-              commander={this.props.commander}
-              getTreeName={this.getTreeName}
-            />
           </div>
 
           <div className="row align-items-center flex-fill">
@@ -44,6 +37,10 @@ class Tree extends React.Component {
             </div>
           </div>
         </div>
+        <HexagonCommander
+          commander={this.props.commander}
+          getTreeName={this.getTreeName}
+        />
       </div>
     );
   }
