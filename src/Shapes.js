@@ -37,7 +37,16 @@ export class HexagonCommander extends React.Component {
   }
 }
 
+// https://reactjs.org/docs/composition-vs-inheritance.html#containment
 export class Node extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // This binding is necessary to make `this` work in the callback
+    this.decrease = this.decrease.bind(this);
+  }
+
+  // TODO: pass in an index to decrease
   decrease(e) {
     e.preventDefault();
     console.log('decrease');
