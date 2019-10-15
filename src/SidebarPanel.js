@@ -93,7 +93,6 @@ class SidebarControls extends React.Component {
   }
 }
 
-//TODO: focus select on new build
 class SidebarCommanderSelect extends React.Component {
   createSelectItems() {
     let items = [];
@@ -118,6 +117,7 @@ class SidebarCommanderSelect extends React.Component {
       <React.Fragment>
         <label htmlFor="select-commander">Commander:</label>
         <select
+          autoFocus
           id="select-commander"
           className="form-control form-control-sm"
           value={this.props.commander}
