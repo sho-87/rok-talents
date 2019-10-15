@@ -43,6 +43,7 @@ export class InvalidBuildModal extends React.Component {
   }
 }
 
+//FIXME: use a react fragment
 export class CopyToast extends React.Component {
   render() {
     return (

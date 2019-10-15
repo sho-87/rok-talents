@@ -4,6 +4,8 @@ import { HexagonCommander, Node } from './Shapes.js';
 import Trees from './data/modules.js';
 import Commanders from './data/Commanders.json';
 
+//TODO: lazy load large data modules
+
 // Talent tree container
 //TODO: add tree/game/data version to state and data files
 class TreePanel extends React.Component {
@@ -19,7 +21,9 @@ class TreePanel extends React.Component {
     }
   }
 
-  //FIXME: will this redraw every node when only 1 has changed?
+  //FIXME: will this redraw every node when only 1 has changed? 
+  // https://stackoverflow.com/questions/33080657/react-update-one-item-in-a-list-without-recreating-all-items
+  // https://reactjs.org/docs/lists-and-keys.html#rendering-multiple-components
   drawNodes(values, color) {
     let nodes = [];
     const treeName = this.getTreeName(color);
@@ -37,6 +41,7 @@ class TreePanel extends React.Component {
         Trees[treeName][i]['values'][values[i - 1]]
       );
 
+      // https://reactjs.org/docs/composition-vs-inheritance.html#containment
       nodes.push(
         <Node
           id={treeName + i}

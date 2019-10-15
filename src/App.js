@@ -19,6 +19,7 @@ class App extends React.Component {
     this.resetTalents = this.resetTalents.bind(this);
   }
 
+  //TODO: calculate stats on demand rather than storing in state
   getEmptyState() {
     return {
       commander: '',

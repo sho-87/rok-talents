@@ -3,7 +3,8 @@ import { CopyToast } from './Modals.js';
 
 import Commanders from './data/Commanders.json';
 
-//Sidebar and control panel
+//Sidebar and control 
+// https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy
 class SidebarPanel extends React.Component {
   constructor(props) {
     super(props);
@@ -72,6 +73,7 @@ class SidebarPanel extends React.Component {
   }
 }
 
+//TODO: focus select on new build
 class SidebarCommanderSelect extends React.Component {
   createSelectItems() {
     let items = [];
