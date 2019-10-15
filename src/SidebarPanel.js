@@ -4,7 +4,7 @@ import ErrorBoundary from './Error.js';
 
 import Commanders from './data/Commanders.json';
 
-//Sidebar and control 
+//Sidebar and control
 // https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy
 class SidebarPanel extends React.Component {
   constructor(props) {
@@ -38,6 +38,34 @@ class SidebarPanel extends React.Component {
       <div id="sidebar-panel">
         <CopyToast isOpen={this.state.copyToastFlag} />
 
+        <ErrorBoundary>
+          <SidebarControls
+            copyURL={this.copyURL}
+            changeCommander={this.props.changeCommander}
+            commander={this.props.commander}
+            resetTalents={this.props.resetTalents}
+          />
+        </ErrorBoundary>
+
+        <hr />
+
+        <ErrorBoundary>
+          <SidebarSummary />
+        </ErrorBoundary>
+
+        <hr />
+        <h1>Debug</h1>
+        <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
+        <p>Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}</p>
+      </div>
+    );
+  }
+}
+
+class SidebarControls extends React.Component {
+  render() {
+    return (
+      <div>
         <h1>Options</h1>
         <SidebarCommanderSelect
           changeCommander={this.props.changeCommander}
@@ -49,7 +77,7 @@ class SidebarPanel extends React.Component {
             type="button"
             disabled={this.props.commander ? false : true}
             className="btn btn-sm btn-primary"
-            onClick={this.copyURL}
+            onClick={this.props.copyURL}
           >
             Copy Talents
           </button>
@@ -62,13 +90,6 @@ class SidebarPanel extends React.Component {
             Reset Talents
           </button>
         </span>
-        <hr />
-        <h1>Summary</h1>
-        <p>Placeholder</p>
-        <hr />
-        <h1>Debug</h1>
-        <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
-        <p>Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}</p>
       </div>
     );
   }
@@ -106,6 +127,17 @@ class SidebarCommanderSelect extends React.Component {
         >
           {this.createSelectItems()}
         </select>
+      </div>
+    );
+  }
+}
+
+class SidebarSummary extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Summary</h1>
+        <p>Placeholder</p>
       </div>
     );
   }
