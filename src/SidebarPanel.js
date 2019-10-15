@@ -65,32 +65,30 @@ class SidebarPanel extends React.Component {
 class SidebarControls extends React.Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>Options</h1>
         <SidebarCommanderSelect
           changeCommander={this.props.changeCommander}
           commander={this.props.commander}
         />
         <br />
-        <span>
-          <button
-            type="button"
-            disabled={this.props.commander ? false : true}
-            className="btn btn-sm btn-primary"
-            onClick={this.props.copyURL}
-          >
-            Copy Talents
-          </button>
-          <button
-            type="button"
-            disabled={this.props.commander ? false : true}
-            className="btn btn-sm btn-danger"
-            onClick={this.props.resetTalents}
-          >
-            Reset Talents
-          </button>
-        </span>
-      </div>
+        <button
+          type="button"
+          disabled={this.props.commander ? false : true}
+          className="btn btn-sm btn-primary"
+          onClick={this.props.copyURL}
+        >
+          Copy Talents
+        </button>
+        <button
+          type="button"
+          disabled={this.props.commander ? false : true}
+          className="btn btn-sm btn-danger"
+          onClick={this.props.resetTalents}
+        >
+          Reset Talents
+        </button>
+      </React.Fragment>
     );
   }
 }
@@ -117,7 +115,7 @@ class SidebarCommanderSelect extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <label htmlFor="select-commander">Commander:</label>
         <select
           id="select-commander"
@@ -127,7 +125,7 @@ class SidebarCommanderSelect extends React.Component {
         >
           {this.createSelectItems()}
         </select>
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -135,10 +133,10 @@ class SidebarCommanderSelect extends React.Component {
 class SidebarSummary extends React.Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>Summary</h1>
         <p>Placeholder</p>
-      </div>
+      </React.Fragment>
     );
   }
 }

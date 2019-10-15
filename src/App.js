@@ -104,6 +104,7 @@ class App extends React.Component {
     return (
       <div id="app">
         {this.invalidModalFlag && <InvalidBuildModal />}
+        
         <SidebarPanel
           changeCommander={this.changeCommander}
           resetTalents={this.resetTalents}
