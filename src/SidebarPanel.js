@@ -1,5 +1,6 @@
 import React from 'react';
 import { CopyToast } from './Modals.js';
+import ErrorBoundary from './Error.js';
 
 import Commanders from './data/Commanders.json';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { HexagonCommander, Node } from './Shapes.js';
+import ErrorBoundary from './Error.js';
 
 import Trees from './data/modules.js';
 import Commanders from './data/Commanders.json';
@@ -21,7 +22,7 @@ class TreePanel extends React.Component {
     }
   }
 
-  //FIXME: will this redraw every node when only 1 has changed? 
+  //FIXME: will this redraw every node when only 1 has changed?
   // https://stackoverflow.com/questions/33080657/react-update-one-item-in-a-list-without-recreating-all-items
   // https://reactjs.org/docs/lists-and-keys.html#rendering-multiple-components
   drawNodes(values, color) {
@@ -71,10 +72,12 @@ class TreePanel extends React.Component {
         <div id="tree-blue" className="tree-container">
           {this.drawNodes(this.props.blue, 'blue')}
         </div>
-        <HexagonCommander
-          commander={this.props.commander}
-          getTreeName={this.getTreeName}
-        />
+        <ErrorBoundary>
+          <HexagonCommander
+            commander={this.props.commander}
+            getTreeName={this.getTreeName}
+          />
+        </ErrorBoundary>
       </div>
     );
   }
