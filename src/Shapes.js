@@ -46,7 +46,7 @@ export class Node extends Component {
     this.decrease = this.decrease.bind(this);
   }
 
-  // TODO: pass in an index to decrease
+  // TODO: pass down method from app.js
   decrease(e) {
     e.preventDefault();
     console.log('decrease');

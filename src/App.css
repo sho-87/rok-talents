@@ -6,7 +6,6 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin: 0px;
 }
 
 #app {
@@ -201,6 +200,8 @@ body {
   width: 20px;
   border-radius: 50%;
   text-align: center;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .node-tooltip-title {
@@ -212,13 +213,13 @@ body {
   position: absolute;
   left: 150%;
   width: 15vw;
-  padding: 2px;
-  border-radius: 2px;
+  padding: 4px;
+  border-radius: 5px;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid black;
   text-align: left;
   font-size: 0.8em;
-  z-index: 1;
+  z-index: 2;
 }
 
 .node:hover .node-tooltip {

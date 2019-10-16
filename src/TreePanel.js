@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Profiler } from 'react';
 import { HexagonCommander, Node } from './Shapes.js';
 import ErrorBoundary from './Error.js';
+import onRenderCallback from './Profiler.js';
 
 import Trees from './data/modules.js';
 import Commanders from './data/Commanders.json';
@@ -44,16 +45,21 @@ class TreePanel extends Component {
 
       // https://reactjs.org/docs/composition-vs-inheritance.html#containment
       nodes.push(
-        <Node
-          id={treeName + i}
+        <Profiler
           key={treeName + i}
-          styles={styles}
-          name={Trees[treeName][i]['name']}
-          tooltip={tooltip}
-          type={Trees[treeName][i]['type']}
-          value={values[i - 1]}
-          max={Trees[treeName][i]['values'].length}
-        />
+          id={treeName + i}
+          onRender={onRenderCallback}
+        >
+          <Node
+            id={treeName + i}
+            styles={styles}
+            name={Trees[treeName][i]['name']}
+            tooltip={tooltip}
+            type={Trees[treeName][i]['type']}
+            value={values[i - 1]}
+            max={Trees[treeName][i]['values'].length}
+          />
+        </Profiler>
       );
     }
 

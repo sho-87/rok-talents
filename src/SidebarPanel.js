@@ -6,6 +6,7 @@ import Commanders from './data/Commanders.json';
 
 //Sidebar and control
 // https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy
+//TODO: find library for dock/sidepanel
 class SidebarPanel extends Component {
   constructor(props) {
     super(props);
