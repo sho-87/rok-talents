@@ -31,12 +31,6 @@ class TreePanel extends Component {
     const treeName = this.getTreeName(color);
 
     for (let i = 1; i < values.length + 1; i++) {
-      const styles = {
-        top: Trees[treeName][i]['pos'][0] + '%',
-        left: Trees[treeName][i]['pos'][1] + '%',
-        backgroundColor: color
-      };
-
       //TODO: double check replacement value
       let tooltip = Trees[treeName][i]['text'].replace(
         '$',
@@ -52,12 +46,15 @@ class TreePanel extends Component {
         >
           <Node
             id={treeName + i}
-            styles={styles}
             name={Trees[treeName][i]['name']}
+            image={Trees[treeName][i]['image']}
             tooltip={tooltip}
             type={Trees[treeName][i]['type']}
             value={values[i - 1]}
             max={Trees[treeName][i]['values'].length}
+            top={Trees[treeName][i]['pos'][0] + '%'}
+            left={Trees[treeName][i]['pos'][1] + '%'}
+            backgroundColor={color}
           />
         </Profiler>
       );

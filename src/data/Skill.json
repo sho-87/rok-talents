@@ -17,7 +17,8 @@
     "prereq": [3],
     "dep": [],
     "pos": [-1, 21.5],
-    "type": "node-large"
+    "type": "node-large",
+    "image": "blueFlameSkull"
   },
   "3": {
     "name": "Defense (All Troops)",
@@ -37,6 +38,7 @@
     "prereq": [3],
     "dep": [],
     "pos": [29, 12],
-    "type": "node-large"
+    "type": "node-large",
+    "image": "blueCrossShield"
   }
 }

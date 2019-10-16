@@ -46,6 +46,36 @@ export class Node extends Component {
     this.decrease = this.decrease.bind(this);
   }
 
+  getStyle(element) {
+    let style = {};
+
+    switch (element) {
+      case 'node':
+        style.top = this.props.top;
+        style.left = this.props.left;
+
+        if (this.props.type === 'node-small') {
+          style.backgroundColor = this.props.backgroundColor;
+        } else if (this.props.type === 'node-large') {
+          style.backgroundImage = `url(images/talents/${this.props.image}.png)`;
+          style.backgroundSize = 'contain';
+          style.backgroundRepeat = 'no-repeat';
+          style.backgroundPosition = 'center center';
+        }
+        break;
+      case 'value':
+        if (this.props.type === 'node-small') {
+          style.transform = 'translateY(90%)';
+        } else if (this.props.type === 'node-large') {
+          style.transform = 'translateY(190%)';
+        }
+        break;
+      default:
+        break;
+    }
+    return style;
+  }
+
   // TODO: pass down method from app.js
   decrease(e) {
     e.preventDefault();
@@ -57,7 +87,7 @@ export class Node extends Component {
       <div
         id={this.props.id}
         className={'node ' + this.props.type}
-        style={this.props.styles}
+        style={this.getStyle('node')}
         onContextMenu={this.decrease}
       >
         <div className="node-tooltip">
@@ -66,7 +96,7 @@ export class Node extends Component {
           {this.props.tooltip}
         </div>
 
-        <div className="node-value">
+        <div className="node-value" style={this.getStyle('value')}>
           {this.props.value + '/' + this.props.max}
         </div>
       </div>
