@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SidebarPanel from './SidebarPanel.js';
 import TreePanel from './TreePanel.js';
 import { InvalidBuildModal } from './Modals.js';
@@ -10,7 +10,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Top level talent builder logic
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = this.getEmptyState();

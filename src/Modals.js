@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 
 //TODO: remove reactstrap?
-export class InvalidBuildModal extends React.Component {
+export class InvalidBuildModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,8 +41,7 @@ export class InvalidBuildModal extends React.Component {
   }
 }
 
-//FIXME: use a react fragment
-export class CopyToast extends React.Component {
+export class CopyToast extends Component {
   render() {
     return (
       <Toast isOpen={this.props.isOpen}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { HexagonCommander, Node } from './Shapes.js';
 import ErrorBoundary from './Error.js';
 
@@ -9,7 +9,7 @@ import Commanders from './data/Commanders.json';
 
 // Talent tree container
 //TODO: add tree/game/data version to state and data files
-class TreePanel extends React.Component {
+class TreePanel extends Component {
   constructor(props) {
     super(props);
     this.getTreeName = this.getTreeName.bind(this);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import { CopyToast } from './Modals.js';
 import ErrorBoundary from './Error.js';
 
@@ -6,7 +6,7 @@ import Commanders from './data/Commanders.json';
 
 //Sidebar and control
 // https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy
-class SidebarPanel extends React.Component {
+class SidebarPanel extends Component {
   constructor(props) {
     super(props);
     this.copyURL = this.copyURL.bind(this);
@@ -62,10 +62,10 @@ class SidebarPanel extends React.Component {
   }
 }
 
-class SidebarControls extends React.Component {
+class SidebarControls extends Component {
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <h1>Options</h1>
         <SidebarCommanderSelect
           changeCommander={this.props.changeCommander}
@@ -88,12 +88,12 @@ class SidebarControls extends React.Component {
         >
           Reset Talents
         </button>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
 
-class SidebarCommanderSelect extends React.Component {
+class SidebarCommanderSelect extends Component {
   createSelectItems() {
     let items = [];
     items.push(
@@ -114,7 +114,7 @@ class SidebarCommanderSelect extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <label htmlFor="select-commander">Commander:</label>
         <select
           autoFocus
@@ -125,18 +125,18 @@ class SidebarCommanderSelect extends React.Component {
         >
           {this.createSelectItems()}
         </select>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
 
-class SidebarSummary extends React.Component {
+class SidebarSummary extends Component {
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <h1>Summary</h1>
         <p>Placeholder</p>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

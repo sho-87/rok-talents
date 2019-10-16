@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export class HexagonCommander extends React.Component {
+export class HexagonCommander extends Component {
   render() {
     if (this.props.commander) {
       return (
@@ -38,7 +38,7 @@ export class HexagonCommander extends React.Component {
 }
 
 // https://reactjs.org/docs/composition-vs-inheritance.html#containment
-export class Node extends React.Component {
+export class Node extends Component {
   constructor(props) {
     super(props);
 
