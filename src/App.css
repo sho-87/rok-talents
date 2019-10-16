@@ -197,8 +197,8 @@ body {
 .node {
   position: absolute;
   text-align: center;
-  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
   z-index: 0;
   }
 
@@ -207,6 +207,7 @@ body {
   height: 1vw;
   border-radius: 50%;
   border: 1px solid black;
+  background-color: gray;
 }
 
 .node-large {

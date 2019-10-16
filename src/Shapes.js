@@ -55,7 +55,7 @@ export class Node extends Component {
         style.left = this.props.left;
 
         if (this.props.type === 'node-small') {
-          style.backgroundColor = this.props.backgroundColor;
+          break;
         } else if (this.props.type === 'node-large') {
           style.backgroundImage = `url(images/talents/${this.props.image}.png)`;
           style.backgroundSize = 'contain';
