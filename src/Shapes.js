@@ -65,9 +65,9 @@ export class Node extends Component {
         break;
       case 'value':
         if (this.props.type === 'node-small') {
-          style.transform = 'translateY(90%)';
+          style.transform = 'translateY(1.6vh)';
         } else if (this.props.type === 'node-large') {
-          style.transform = 'translateY(190%)';
+          style.transform = 'translateY(4vh)';
         }
         break;
       default:

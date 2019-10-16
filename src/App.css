@@ -203,8 +203,8 @@ body {
   }
 
 .node-small {
-  width: 20px;
-  height: 20px;
+  width: 1vw;
+  height: 1vw;
   border-radius: 50%;
   border: 1px solid black;
 }
