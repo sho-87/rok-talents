@@ -10,6 +10,8 @@ import Commanders from './data/Commanders.json';
 
 // Talent tree container
 //TODO: add tree/game/data version to state and data files
+//TODO: make tree panel zoomable
+//FIXME: zindex of nodes and tooltips
 class TreePanel extends Component {
   constructor(props) {
     super(props);
