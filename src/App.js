@@ -17,6 +17,8 @@ class App extends Component {
     this.invalidModalFlag = false;
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
+    this.talentIncrease = this.talentIncrease.bind(this);
+    this.talentDecrease = this.talentDecrease.bind(this);
   }
 
   //TODO: calculate stats on demand rather than storing in state
@@ -100,11 +102,35 @@ class App extends Component {
     }
   }
 
+  //FIXME: move to lower level component
+  talentIncrease(color, id) {
+    let curValue = this.state[color][id - 1];
+    let maxValue =
+      Trees[Commanders[this.state.commander][color]][id].values.length;
+
+    if (curValue < maxValue) {
+      let newArr = this.state[color];
+      newArr[id - 1] += 1;
+      this.setState({ [color]: newArr }, () => this.updateURL('update'));
+    }
+  }
+
+  talentDecrease(e, color, id) {
+    e.preventDefault();
+    let curValue = this.state[color][id - 1];
+
+    if (curValue > 0) {
+      let newArr = this.state[color];
+      newArr[id - 1] -= 1;
+      this.setState({ [color]: newArr }, () => this.updateURL('update'));
+    }
+  }
+
   render() {
     return (
       <div id="app">
         {this.invalidModalFlag && <InvalidBuildModal />}
-        
+
         <SidebarPanel
           changeCommander={this.changeCommander}
           resetTalents={this.resetTalents}
@@ -112,6 +138,8 @@ class App extends Component {
         />
 
         <TreePanel
+          talentIncrease={this.talentIncrease}
+          talentDecrease={this.talentDecrease}
           commander={this.state.commander}
           red={this.state.red}
           yellow={this.state.yellow}

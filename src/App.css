@@ -200,7 +200,7 @@ body {
   -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
   z-index: 0;
-  }
+}
 
 .node-small {
   width: 1vw;

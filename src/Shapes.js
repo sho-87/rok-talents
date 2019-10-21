@@ -39,13 +39,6 @@ export class HexagonCommander extends Component {
 
 // https://reactjs.org/docs/composition-vs-inheritance.html#containment
 export class Node extends Component {
-  constructor(props) {
-    super(props);
-
-    // This binding is necessary to make `this` work in the callback
-    this.decrease = this.decrease.bind(this);
-  }
-
   getStyle(element) {
     let style = {};
 
@@ -76,19 +69,18 @@ export class Node extends Component {
     return style;
   }
 
-  // TODO: pass down method from app.js
-  decrease(e) {
-    e.preventDefault();
-    console.log('decrease');
-  }
-
   render() {
     return (
       <div
         id={this.props.id}
         className={'node ' + this.props.type}
         style={this.getStyle('node')}
-        onContextMenu={this.decrease}
+        onClick={() =>
+          this.props.talentIncrease(this.props.color, this.props.num)
+        }
+        onContextMenu={e =>
+          this.props.talentDecrease(e, this.props.color, this.props.num)
+        }
       >
         <div className="node-tooltip">
           <span className="node-tooltip-title">{this.props.name}</span>

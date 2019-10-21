@@ -25,19 +25,26 @@ class TreePanel extends Component {
     }
   }
 
-  //FIXME: will this redraw every node when only 1 has changed?
-  // https://stackoverflow.com/questions/33080657/react-update-one-item-in-a-list-without-recreating-all-items
-  // https://reactjs.org/docs/lists-and-keys.html#rendering-multiple-components
   drawNodes(values, color) {
     let nodes = [];
     const treeName = this.getTreeName(color);
 
     for (let i = 1; i < values.length + 1; i++) {
-      //TODO: double check replacement value
-      let tooltip = Trees[treeName][i]['text'].replace(
-        '$',
-        Trees[treeName][i]['values'][values[i - 1]]
-      );
+      let maxValue = Trees[treeName][i].values.length;
+
+      let tooltip = Trees[treeName][i].text;
+
+      if (this.props[color][i - 1] === maxValue) {
+        tooltip = tooltip.replace(
+          '$',
+          Trees[treeName][i]['values'][maxValue - 1]
+        );
+      } else {
+        tooltip = tooltip.replace(
+          '$',
+          Trees[treeName][i]['values'][values[i - 1]]
+        );
+      }
 
       // https://reactjs.org/docs/composition-vs-inheritance.html#containment
       nodes.push(
@@ -47,7 +54,11 @@ class TreePanel extends Component {
           onRender={onRenderCallback}
         >
           <Node
+            talentIncrease={this.props.talentIncrease}
+            talentDecrease={this.props.talentDecrease}
             id={treeName + i}
+            key={treeName + i}
+            num={i}
             name={Trees[treeName][i]['name']}
             image={Trees[treeName][i]['image']}
             tooltip={tooltip}
@@ -56,7 +67,7 @@ class TreePanel extends Component {
             max={Trees[treeName][i]['values'].length}
             top={Trees[treeName][i]['pos'][0] + '%'}
             left={Trees[treeName][i]['pos'][1] + '%'}
-            backgroundColor={color}
+            color={color}
           />
         </Profiler>
       );
