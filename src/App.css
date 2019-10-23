@@ -213,6 +213,9 @@ body {
 .node-large {
   width: 4vh;
   height: 4vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .node-tooltip-title {
@@ -241,4 +244,12 @@ body {
   display: absolute;
   font-size: 0.8em;
   color: black;
+}
+
+.node-value-small {
+  transform: translateY(1.6vh);
+}
+
+.node-value-large {
+  transform: translateY(4vh);
 }

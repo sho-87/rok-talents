@@ -46,7 +46,6 @@ class TreePanel extends Component {
         );
       }
 
-      // https://reactjs.org/docs/composition-vs-inheritance.html#containment
       nodes.push(
         <Profiler
           key={treeName + i}

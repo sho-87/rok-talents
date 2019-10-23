@@ -42,30 +42,13 @@ export class Node extends Component {
   getStyle(element) {
     let style = {};
 
-    switch (element) {
-      case 'node':
-        style.top = this.props.top;
-        style.left = this.props.left;
+    style.top = this.props.top;
+    style.left = this.props.left;
 
-        if (this.props.type === 'node-small') {
-          break;
-        } else if (this.props.type === 'node-large') {
-          style.backgroundImage = `url(images/talents/${this.props.image}.png)`;
-          style.backgroundSize = 'contain';
-          style.backgroundRepeat = 'no-repeat';
-          style.backgroundPosition = 'center center';
-        }
-        break;
-      case 'value':
-        if (this.props.type === 'node-small') {
-          style.transform = 'translateY(1.6vh)';
-        } else if (this.props.type === 'node-large') {
-          style.transform = 'translateY(4vh)';
-        }
-        break;
-      default:
-        break;
+    if (this.props.type === 'node-large') {
+      style.backgroundImage = `url(images/talents/${this.props.image}.png)`;
     }
+
     return style;
   }
 
@@ -74,7 +57,7 @@ export class Node extends Component {
       <div
         id={this.props.id}
         className={'node ' + this.props.type}
-        style={this.getStyle('node')}
+        style={this.getStyle()}
         onClick={() =>
           this.props.talentIncrease(this.props.color, this.props.num)
         }
@@ -88,7 +71,13 @@ export class Node extends Component {
           {this.props.tooltip}
         </div>
 
-        <div className="node-value" style={this.getStyle('value')}>
+        <div
+          className={`node-value ${
+            this.props.type === 'node-small'
+              ? 'node-value-small'
+              : 'node-value-large'
+          }`}
+        >
           {this.props.value + '/' + this.props.max}
         </div>
       </div>
