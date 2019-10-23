@@ -1,7 +1,6 @@
-import React, { Component, Profiler } from 'react';
+import React, { Component } from 'react';
 import { HexagonCommander, Node } from './Shapes.js';
 import ErrorBoundary from './Error.js';
-import onRenderCallback from './Profiler.js';
 
 import Trees from './data/modules.js';
 import Commanders from './data/Commanders.json';
@@ -47,28 +46,22 @@ class TreePanel extends Component {
       }
 
       nodes.push(
-        <Profiler
-          key={treeName + i}
+        <Node
+          talentIncrease={this.props.talentIncrease}
+          talentDecrease={this.props.talentDecrease}
           id={treeName + i}
-          onRender={onRenderCallback}
-        >
-          <Node
-            talentIncrease={this.props.talentIncrease}
-            talentDecrease={this.props.talentDecrease}
-            id={treeName + i}
-            key={treeName + i}
-            num={i}
-            name={Trees[treeName][i]['name']}
-            image={Trees[treeName][i]['image']}
-            tooltip={tooltip}
-            type={Trees[treeName][i]['type']}
-            value={values[i - 1]}
-            max={Trees[treeName][i]['values'].length}
-            top={Trees[treeName][i]['pos'][0] + '%'}
-            left={Trees[treeName][i]['pos'][1] + '%'}
-            color={color}
-          />
-        </Profiler>
+          key={treeName + i}
+          num={i}
+          name={Trees[treeName][i]['name']}
+          image={Trees[treeName][i]['image']}
+          tooltip={tooltip}
+          type={Trees[treeName][i]['type']}
+          value={values[i - 1]}
+          max={Trees[treeName][i]['values'].length}
+          top={Trees[treeName][i]['pos'][0] + '%'}
+          left={Trees[treeName][i]['pos'][1] + '%'}
+          color={color}
+        />
       );
     }
 

@@ -39,7 +39,7 @@ export class HexagonCommander extends Component {
 
 // https://reactjs.org/docs/composition-vs-inheritance.html#containment
 export class Node extends Component {
-  getStyle(element) {
+  getStyle() {
     let style = {};
 
     style.top = this.props.top;
