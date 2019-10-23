@@ -54,4 +54,18 @@ export class CopyToast extends Component {
   }
 }
 
-export default { InvalidBuildModal, CopyToast };
+export class PrereqToast extends Component {
+  render() {
+    return (
+      <Toast isOpen={this.props.isOpen}>
+        <ToastHeader icon="danger">Missing Talents</ToastHeader>
+        <ToastBody>
+          Please complete the following prerequisite talents:
+          {this.props.msg}
+        </ToastBody>
+      </Toast>
+    );
+  }
+}
+
+export default { InvalidBuildModal, CopyToast, PrereqToast };

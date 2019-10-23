@@ -82,21 +82,31 @@ export class Node extends Component {
     const prereqs = Trees[this.props.treeName][this.props.idx].prereq;
 
     let prereqsOK = true;
+    let missingPrereqs = [];
 
     prereqs.forEach(idx => {
       const prereqValue = this.props.fullTree[idx - 1];
       const prereqMax = Trees[this.props.treeName][idx].values.length;
       if (prereqValue !== prereqMax) {
         prereqsOK = false;
+        missingPrereqs.push(
+          <li key={idx}>
+            <strong>{Trees[this.props.treeName][idx].name}</strong>
+          </li>
+        );
       }
     });
 
-    if (prereqsOK & (this.props.value < this.props.max)) {
-      this.props.changeTalentValue(
-        this.props.color,
-        this.props.idx,
-        'increase'
-      );
+    if (prereqsOK) {
+      if (this.props.value < this.props.max) {
+        this.props.changeTalentValue(
+          this.props.color,
+          this.props.idx,
+          'increase'
+        );
+      }
+    } else {
+      this.props.showPrereqToast(missingPrereqs);
     }
   }
 

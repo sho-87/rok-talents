@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HexagonCommander, Node } from './Shapes.js';
+import { PrereqToast } from './Modals.js';
 import ErrorBoundary from './Error.js';
 
 import Trees from './data/modules.js';
@@ -15,6 +16,11 @@ class TreePanel extends Component {
   constructor(props) {
     super(props);
     this.getTreeName = this.getTreeName.bind(this);
+    this.showPrereqToast = this.showPrereqToast.bind(this);
+    this.state = {
+      prereqToastFlag: false,
+      prereqMsg: ''
+    };
   }
 
   getTreeName(color) {
@@ -22,6 +28,14 @@ class TreePanel extends Component {
     if (commander) {
       return commander[color];
     }
+  }
+
+  showPrereqToast(msg) {
+    this.setState({ prereqToastFlag: true, prereqMsg: msg }, () => {
+      window.setTimeout(() => {
+        this.setState({ prereqToastFlag: false, prereqMsg: '' });
+      }, 8000);
+    });
   }
 
   drawNodes(values, color) {
@@ -32,6 +46,7 @@ class TreePanel extends Component {
       nodes.push(
         <Node
           changeTalentValue={this.props.changeTalentValue}
+          showPrereqToast={this.showPrereqToast}
           key={treeName + i}
           id={treeName + i}
           idx={i}
@@ -56,6 +71,11 @@ class TreePanel extends Component {
   render() {
     return (
       <div id="tree-panel">
+        <PrereqToast
+          isOpen={this.state.prereqToastFlag}
+          msg={this.state.prereqMsg}
+        />
+
         <div id="tree-red" className="tree-container">
           {this.drawNodes(this.props.red, 'red')}
         </div>
