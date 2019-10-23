@@ -53,6 +53,17 @@ export class Node extends Component {
     return style;
   }
 
+  getSmallColor() {
+    //FIXME: this is so hacky...
+    if ((this.props.type === 'node-small') & (this.props.value === 0)) {
+      return 'node-small-inactive';
+    } else if ((this.props.type === 'node-small') & (this.props.value > 0)) {
+      return `node-small-${this.props.color}`;
+    } else {
+      return '';
+    }
+  }
+
   getTooltip() {
     let tooltip = this.props.tooltip;
     let talentValues = Trees[this.props.tree][this.props.idx]['values'];
@@ -92,7 +103,9 @@ export class Node extends Component {
     return (
       <div
         id={this.props.id}
-        className={'node ' + this.props.type}
+        className={`node ${this.props.type} ${
+          this.props.value === 0 ? 'node-inactive' : ''
+        } ${this.getSmallColor()}`}
         style={this.getStyle()}
         onClick={() => this.talentIncrease()}
         onContextMenu={e => this.talentDecrease(e)}

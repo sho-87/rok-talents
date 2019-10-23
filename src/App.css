@@ -197,9 +197,30 @@ body {
 .node {
   position: absolute;
   text-align: center;
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+  z-index: 0;
+}
+
+.node-inactive {
   -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
-  z-index: 0;
+}
+
+.node-small-inactive {
+  background-color: gray;
+}
+
+.node-small-red {
+  background-color: red;
+}
+
+.node-small-yellow {
+  background-color: yellow;
+}
+
+.node-small-blue {
+  background-color: blue;
 }
 
 .node-small {
@@ -207,7 +228,6 @@ body {
   height: 1vw;
   border-radius: 50%;
   border: 1px solid black;
-  background-color: gray;
 }
 
 .node-large {
