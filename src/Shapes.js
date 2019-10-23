@@ -135,7 +135,6 @@ export class Node extends Component {
     }
   }
 
-  //TODO: use popper to align node values
   render() {
     return (
       <Fragment>
