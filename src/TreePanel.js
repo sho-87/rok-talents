@@ -35,13 +35,14 @@ class TreePanel extends Component {
           key={treeName + i}
           id={treeName + i}
           idx={i}
-          tree={treeName}
-          name={Trees[treeName][i]['name']}
+          treeName={treeName}
+          talentName={Trees[treeName][i]['name']}
           image={Trees[treeName][i]['image']}
           tooltip={Trees[treeName][i]['text']}
           type={Trees[treeName][i]['type']}
           value={values[i - 1]}
           max={Trees[treeName][i]['values'].length}
+          fullTree={this.props[color]}
           top={Trees[treeName][i]['pos'][0] + '%'}
           left={Trees[treeName][i]['pos'][1] + '%'}
           color={color}

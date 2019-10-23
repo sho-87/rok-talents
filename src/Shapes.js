@@ -66,7 +66,7 @@ export class Node extends Component {
 
   getTooltip() {
     let tooltip = this.props.tooltip;
-    let talentValues = Trees[this.props.tree][this.props.idx]['values'];
+    let talentValues = Trees[this.props.treeName][this.props.idx]['values'];
 
     if (this.props.value === this.props.max) {
       tooltip = tooltip.replace('$', talentValues[this.props.max - 1]);
@@ -78,7 +78,20 @@ export class Node extends Component {
   }
 
   talentIncrease() {
-    if (this.props.value < this.props.max) {
+    // Check prerequisites
+    const prereqs = Trees[this.props.treeName][this.props.idx].prereq;
+
+    let prereqsOK = true;
+
+    prereqs.forEach(idx => {
+      const prereqValue = this.props.fullTree[idx - 1];
+      const prereqMax = Trees[this.props.treeName][idx].values.length;
+      if (prereqValue !== prereqMax) {
+        prereqsOK = false;
+      }
+    });
+
+    if (prereqsOK & (this.props.value < this.props.max)) {
       this.props.changeTalentValue(
         this.props.color,
         this.props.idx,
@@ -90,7 +103,19 @@ export class Node extends Component {
   talentDecrease(e) {
     e.preventDefault();
 
-    if (this.props.value > 0) {
+    // Check dependent nodes
+    const deps = Trees[this.props.treeName][this.props.idx].dep;
+
+    let depsOK = true;
+
+    deps.forEach(idx => {
+      const depValue = this.props.fullTree[idx - 1];
+      if (depValue > 0) {
+        depsOK = false;
+      }
+    });
+
+    if (depsOK & (this.props.value > 0)) {
       this.props.changeTalentValue(
         this.props.color,
         this.props.idx,
@@ -111,7 +136,7 @@ export class Node extends Component {
         onContextMenu={e => this.talentDecrease(e)}
       >
         <div className="node-tooltip">
-          <span className="node-tooltip-title">{this.props.name}</span>
+          <span className="node-tooltip-title">{this.props.talentName}</span>
           <br />
           {this.getTooltip()}
         </div>
