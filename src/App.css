@@ -232,8 +232,8 @@ body {
 }
 
 .node-large {
-  width: 4vh;
-  height: 4vh;
+  width: 2vw;
+  height: 2vw;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -241,30 +241,16 @@ body {
 
 .node-tooltip-title {
   float: left;
-  font-weight: bold;
+  font-size: 0.9em;
 }
 
 .node-tooltip-title-value {
   float: right;
-  font-weight: bold;
+  font-size: 0.9em;
 }
 
-.node-tooltip {
-  visibility: hidden;
-  position: absolute;
-  left: 150%;
-  width: 15vw;
-  padding: 4px;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 1);
-  border: 1px solid black;
-  text-align: left;
-  font-size: 0.8em;
-  z-index: 2;
-}
-
-.node:hover .node-tooltip {
-  visibility: visible;
+.node-tooltip-body {
+  font-size: 0.9em;
 }
 
 .node-value {

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { TalentTooltip } from './Modals.js';
 import Trees from './data/modules.js';
 
 export class HexagonCommander extends Component {
@@ -134,36 +135,38 @@ export class Node extends Component {
     }
   }
 
+  //TODO: use popper to align node values
   render() {
     return (
-      <div
-        id={this.props.id}
-        className={`node ${this.props.type} ${
-          this.props.value === 0 ? 'node-inactive' : ''
-        } ${this.getSmallColor()}`}
-        style={this.getStyle()}
-        onClick={() => this.talentIncrease()}
-        onContextMenu={e => this.talentDecrease(e)}
-      >
-        <div className="node-tooltip">
-          <span className="node-tooltip-title">{this.props.talentName}</span>
-          <span className="node-tooltip-title-value">
+      <Fragment>
+        <div
+          id={this.props.id}
+          className={`node ${this.props.type} ${
+            this.props.value === 0 ? 'node-inactive' : ''
+          } ${this.getSmallColor()}`}
+          style={this.getStyle()}
+          onClick={() => this.talentIncrease()}
+          onContextMenu={e => this.talentDecrease(e)}
+        >
+          <div
+            className={`node-value ${
+              this.props.type === 'node-small'
+                ? 'node-value-small'
+                : 'node-value-large'
+            }`}
+          >
             {this.props.value + '/' + this.props.max}
-          </span>
-          <br />
-          {this.getTooltip()}
+          </div>
         </div>
 
-        <div
-          className={`node-value ${
-            this.props.type === 'node-small'
-              ? 'node-value-small'
-              : 'node-value-large'
-          }`}
-        >
-          {this.props.value + '/' + this.props.max}
-        </div>
-      </div>
+        <TalentTooltip
+          target={this.props.id}
+          talentName={this.props.talentName}
+          value={this.props.value}
+          max={this.props.max}
+          text={this.getTooltip()}
+        />
+      </Fragment>
     );
   }
 }

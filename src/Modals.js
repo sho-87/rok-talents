@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
+import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 
-//TODO: remove reactstrap?
 export class InvalidBuildModal extends Component {
   constructor(props) {
     super(props);
@@ -68,4 +68,33 @@ export class PrereqToast extends Component {
   }
 }
 
-export default { InvalidBuildModal, CopyToast, PrereqToast };
+export const TalentTooltip = props => {
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
+  const toggle = () => setPopoverOpen(!popoverOpen);
+
+  return (
+    <div>
+      <Popover
+        trigger="hover"
+        placement="right-start"
+        isOpen={popoverOpen}
+        target={props.target}
+        toggle={toggle}
+        hideArrow={false}
+        delay={{ show: 0, hide: 0 }}
+      >
+        <PopoverHeader>
+          <span className="node-tooltip-title">{props.talentName}</span>
+          <span className="node-tooltip-title-value">
+            {props.value + '/' + props.max}
+          </span>
+          <div style={{ clear: 'both' }}></div>
+        </PopoverHeader>
+        <PopoverBody className="node-tooltip-body">{props.text}</PopoverBody>
+      </Popover>
+    </div>
+  );
+};
+
+export default { InvalidBuildModal, CopyToast, PrereqToast, TalentTooltip };
