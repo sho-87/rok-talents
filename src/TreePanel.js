@@ -31,12 +31,11 @@ class TreePanel extends Component {
     for (let i = 1; i < values.length + 1; i++) {
       nodes.push(
         <Node
-          talentIncrease={this.props.talentIncrease}
-          talentDecrease={this.props.talentDecrease}
+          changeTalentValue={this.props.changeTalentValue}
           key={treeName + i}
           id={treeName + i}
+          idx={i}
           tree={treeName}
-          num={i}
           name={Trees[treeName][i]['name']}
           image={Trees[treeName][i]['image']}
           tooltip={Trees[treeName][i]['text']}

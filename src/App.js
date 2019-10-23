@@ -17,8 +17,7 @@ class App extends Component {
     this.invalidModalFlag = false;
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
-    this.talentIncrease = this.talentIncrease.bind(this);
-    this.talentDecrease = this.talentDecrease.bind(this);
+    this.changeTalentValue = this.changeTalentValue.bind(this);
   }
 
   //TODO: calculate stats on demand rather than storing in state
@@ -70,6 +69,18 @@ class App extends Component {
     window.history.pushState({ path: url.href }, '', url.href);
   }
 
+  changeCommander(e) {
+    const commander = e.target.value;
+    if (commander) {
+      const zeroTalents = this.createZeroTalents();
+      this.setState({ commander: commander, ...zeroTalents }, () =>
+        this.updateURL('update')
+      );
+    } else {
+      this.setEmptyState();
+    }
+  }
+
   createZeroTalents() {
     const commander = document.getElementById('select-commander').value;
     const numRed = Object.keys(Trees[Commanders[commander]['red']]).length;
@@ -90,40 +101,14 @@ class App extends Component {
     this.setState(this.createZeroTalents(), () => this.updateURL('update'));
   }
 
-  changeCommander(e) {
-    const commander = e.target.value;
-    if (commander) {
-      const zeroTalents = this.createZeroTalents();
-      this.setState({ commander: commander, ...zeroTalents }, () =>
-        this.updateURL('update')
-      );
-    } else {
-      this.setEmptyState();
+  changeTalentValue(color, idx, how) {
+    let newArr = this.state[color];
+    if (how === 'increase') {
+      newArr[idx - 1] += 1;
+    } else if (how === 'decrease') {
+      newArr[idx - 1] -= 1;
     }
-  }
-
-  //FIXME: move to lower level component
-  talentIncrease(color, id) {
-    let curValue = this.state[color][id - 1];
-    let maxValue =
-      Trees[Commanders[this.state.commander][color]][id].values.length;
-
-    if (curValue < maxValue) {
-      let newArr = this.state[color];
-      newArr[id - 1] += 1;
-      this.setState({ [color]: newArr }, () => this.updateURL('update'));
-    }
-  }
-
-  talentDecrease(e, color, id) {
-    e.preventDefault();
-    let curValue = this.state[color][id - 1];
-
-    if (curValue > 0) {
-      let newArr = this.state[color];
-      newArr[id - 1] -= 1;
-      this.setState({ [color]: newArr }, () => this.updateURL('update'));
-    }
+    this.setState({ [color]: newArr }, () => this.updateURL('update'));
   }
 
   render() {
@@ -138,8 +123,7 @@ class App extends Component {
         />
 
         <TreePanel
-          talentIncrease={this.talentIncrease}
-          talentDecrease={this.talentDecrease}
+          changeTalentValue={this.changeTalentValue}
           commander={this.state.commander}
           red={this.state.red}
           yellow={this.state.yellow}

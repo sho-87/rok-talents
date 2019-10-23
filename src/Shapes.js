@@ -55,7 +55,7 @@ export class Node extends Component {
 
   getTooltip() {
     let tooltip = this.props.tooltip;
-    let talentValues = Trees[this.props.tree][this.props.num]['values'];
+    let talentValues = Trees[this.props.tree][this.props.idx]['values'];
 
     if (this.props.value === this.props.max) {
       tooltip = tooltip.replace('$', talentValues[this.props.max - 1]);
@@ -66,18 +66,36 @@ export class Node extends Component {
     return tooltip;
   }
 
+  talentIncrease() {
+    if (this.props.value < this.props.max) {
+      this.props.changeTalentValue(
+        this.props.color,
+        this.props.idx,
+        'increase'
+      );
+    }
+  }
+
+  talentDecrease(e) {
+    e.preventDefault();
+
+    if (this.props.value > 0) {
+      this.props.changeTalentValue(
+        this.props.color,
+        this.props.idx,
+        'decrease'
+      );
+    }
+  }
+
   render() {
     return (
       <div
         id={this.props.id}
         className={'node ' + this.props.type}
         style={this.getStyle()}
-        onClick={() =>
-          this.props.talentIncrease(this.props.color, this.props.num)
-        }
-        onContextMenu={e =>
-          this.props.talentDecrease(e, this.props.color, this.props.num)
-        }
+        onClick={() => this.talentIncrease()}
+        onContextMenu={e => this.talentDecrease(e)}
       >
         <div className="node-tooltip">
           <span className="node-tooltip-title">{this.props.name}</span>
