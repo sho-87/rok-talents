@@ -137,6 +137,9 @@ export class Node extends Component {
       >
         <div className="node-tooltip">
           <span className="node-tooltip-title">{this.props.talentName}</span>
+          <span className="node-tooltip-title-value">
+            {this.props.value + '/' + this.props.max}
+          </span>
           <br />
           {this.getTooltip()}
         </div>
