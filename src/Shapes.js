@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Trees from './data/modules.js';
 
 export class HexagonCommander extends Component {
   render() {
@@ -52,6 +53,19 @@ export class Node extends Component {
     return style;
   }
 
+  getTooltip() {
+    let tooltip = this.props.tooltip;
+    let talentValues = Trees[this.props.tree][this.props.num]['values'];
+
+    if (this.props.value === this.props.max) {
+      tooltip = tooltip.replace('$', talentValues[this.props.max - 1]);
+    } else {
+      tooltip = tooltip.replace('$', talentValues[this.props.value]);
+    }
+
+    return tooltip;
+  }
+
   render() {
     return (
       <div
@@ -68,7 +82,7 @@ export class Node extends Component {
         <div className="node-tooltip">
           <span className="node-tooltip-title">{this.props.name}</span>
           <br />
-          {this.props.tooltip}
+          {this.getTooltip()}
         </div>
 
         <div

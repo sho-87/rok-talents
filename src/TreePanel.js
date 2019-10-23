@@ -29,32 +29,17 @@ class TreePanel extends Component {
     const treeName = this.getTreeName(color);
 
     for (let i = 1; i < values.length + 1; i++) {
-      let maxValue = Trees[treeName][i].values.length;
-
-      let tooltip = Trees[treeName][i].text;
-
-      if (this.props[color][i - 1] === maxValue) {
-        tooltip = tooltip.replace(
-          '$',
-          Trees[treeName][i]['values'][maxValue - 1]
-        );
-      } else {
-        tooltip = tooltip.replace(
-          '$',
-          Trees[treeName][i]['values'][values[i - 1]]
-        );
-      }
-
       nodes.push(
         <Node
           talentIncrease={this.props.talentIncrease}
           talentDecrease={this.props.talentDecrease}
-          id={treeName + i}
           key={treeName + i}
+          id={treeName + i}
+          tree={treeName}
           num={i}
           name={Trees[treeName][i]['name']}
           image={Trees[treeName][i]['image']}
-          tooltip={tooltip}
+          tooltip={Trees[treeName][i]['text']}
           type={Trees[treeName][i]['type']}
           value={values[i - 1]}
           max={Trees[treeName][i]['values'].length}
