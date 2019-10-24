@@ -110,6 +110,8 @@ export class Node extends Component {
       } else {
         this.props.showPrereqToast(missingPrereqs);
       }
+    } else {
+      this.props.showPointLimitToast();
     }
   }
 

@@ -20,7 +20,7 @@ class SidebarPanel extends Component {
     this.setState({ copyToastFlag: true }, () => {
       window.setTimeout(() => {
         this.setState({ copyToastFlag: false });
-      }, 5000);
+      }, 2000);
     });
 
     const dummy = document.createElement('input');

@@ -59,10 +59,23 @@ export class PrereqToast extends Component {
   render() {
     return (
       <Toast isOpen={this.props.isOpen}>
-        <ToastHeader icon="danger">Incomplete Talents</ToastHeader>
+        <ToastHeader icon="warning">Incomplete Talents</ToastHeader>
         <ToastBody>
           Please upgrade the following to the maximum skill level first:
           {this.props.msg}
+        </ToastBody>
+      </Toast>
+    );
+  }
+}
+
+export class PointLimitToast extends Component {
+  render() {
+    return (
+      <Toast isOpen={this.props.isOpen}>
+        <ToastHeader icon="danger">Talent Limit</ToastHeader>
+        <ToastBody>
+          You have spent the maximum number of talent points
         </ToastBody>
       </Toast>
     );
@@ -99,4 +112,10 @@ export const TalentTooltip = props => {
   );
 };
 
-export default { InvalidBuildModal, CopyToast, PrereqToast, TalentTooltip };
+export default {
+  InvalidBuildModal,
+  CopyToast,
+  PrereqToast,
+  PointLimitToast,
+  TalentTooltip
+};
