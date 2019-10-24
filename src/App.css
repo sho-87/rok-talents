@@ -53,6 +53,11 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
+  background-image: radial-gradient(
+    circle,
+    rgb(10, 72, 97) 30%,
+    rgb(8, 39, 57) 90%
+  );
 
   /* background-image: url('./template.jpg');
   background-repeat: no-repeat;
@@ -221,7 +226,7 @@ body {
 }
 
 .node-small-blue {
-  background-color: rgba(4, 125, 146, 1);
+  background-color: rgba(22, 159, 227, 1);
 }
 
 .node-small {
@@ -256,7 +261,7 @@ body {
 .node-value {
   display: absolute;
   font-size: 0.8em;
-  color: black;
+  color: rgb(216, 216, 216);
 }
 
 .node-value-small {
