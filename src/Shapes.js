@@ -151,15 +151,17 @@ export class Node extends Component {
           onClick={() => this.talentIncrease()}
           onContextMenu={e => this.talentDecrease(e)}
         >
-          <div
-            className={`node-value ${
-              this.props.type === 'node-small'
-                ? 'node-value-small'
-                : 'node-value-large'
-            }`}
-          >
-            {this.props.value + '/' + this.props.max}
-          </div>
+          {this.props.value !== 0 && (
+            <div
+              className={`node-value ${
+                this.props.type === 'node-small'
+                  ? 'node-value-small'
+                  : 'node-value-large'
+              }`}
+            >
+              {this.props.value + '/' + this.props.max}
+            </div>
+          )}
         </div>
 
         <TalentTooltip
