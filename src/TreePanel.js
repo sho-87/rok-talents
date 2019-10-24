@@ -6,9 +6,8 @@ import ErrorBoundary from './Error.js';
 import Trees from './data/modules.js';
 import Commanders from './data/Commanders.json';
 
-//TODO: lazy load large data modules
-
 // Talent tree container
+//TODO: lazy load large data modules
 //TODO: add tree/game/data version to state and data files
 //TODO: make tree panel zoomable
 //TODO: use media queries to set element sizes instead of vw/vh/%

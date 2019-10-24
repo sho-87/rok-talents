@@ -58,9 +58,9 @@ export class PrereqToast extends Component {
   render() {
     return (
       <Toast isOpen={this.props.isOpen}>
-        <ToastHeader icon="danger">Missing Talents</ToastHeader>
+        <ToastHeader icon="danger">Incomplete Talents</ToastHeader>
         <ToastBody>
-          Please complete the following prerequisite talents:
+          Please upgrade the following to the maximum skill level first:
           {this.props.msg}
         </ToastBody>
       </Toast>
@@ -83,6 +83,7 @@ export const TalentTooltip = props => {
         toggle={toggle}
         hideArrow={false}
         delay={{ show: 0, hide: 0 }}
+        fade={false}
       >
         <PopoverHeader>
           <span className="node-tooltip-title">{props.talentName}</span>

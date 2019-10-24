@@ -16,7 +16,7 @@
     "text": "Normal attacks grant an additional $ rage",
     "prereq": [3],
     "dep": [],
-    "pos": [-1, 21.5],
+    "pos": [-3.5, 20.3],
     "type": "node-large",
     "image": "blueFlameSkull"
   },
@@ -37,7 +37,7 @@
     "text": "Reduces skill damage taken by $%",
     "prereq": [3],
     "dep": [],
-    "pos": [29, 12],
+    "pos": [26.7, 10.7],
     "type": "node-large",
     "image": "blueCrossShield"
   }
