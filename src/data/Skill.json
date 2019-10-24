@@ -1,0 +1,44 @@
+{
+  "1": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by $%",
+    "prereq": [],
+    "dep": [3],
+    "pos": [9, 12.4],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Burning Blood",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Normal attacks grant an additional $ rage",
+    "prereq": [3],
+    "dep": [],
+    "pos": [-3.5, 20.3],
+    "type": "node-large",
+    "image": "blueFlameSkull"
+  },
+  "3": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by $%",
+    "prereq": [1],
+    "dep": [2, 4],
+    "pos": [15.2, 18.5],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Heraldic Shield",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "Reduces skill damage taken by $%",
+    "prereq": [3],
+    "dep": [],
+    "pos": [26.7, 10.7],
+    "type": "node-large",
+    "image": "blueCrossShield"
+  }
+}

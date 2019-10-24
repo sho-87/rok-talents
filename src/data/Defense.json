@@ -1,0 +1,12 @@
+{
+  "1": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by $%",
+    "prereq": [],
+    "dep": [],
+    "pos": [9, 12.4],
+    "type": "node-small"
+  }
+}

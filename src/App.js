@@ -1,24 +1,36 @@
-import React from 'react';
-import Sidebar from './Sidebar.js';
-import Tree from './Tree.js';
+import React, { Component } from 'react';
+import SidebarPanel from './SidebarPanel.js';
+import TreePanel from './TreePanel.js';
 import { InvalidBuildModal } from './Modals.js';
+
+import Trees from './data/modules.js';
+import Commanders from './data/Commanders.json';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Top level talent builder logic
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = this.getEmptyState();
     this.invalidModalFlag = false;
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
+    this.changeTalentValue = this.changeTalentValue.bind(this);
+    this.calcPointsSpent = this.calcPointsSpent.bind(this);
+    this.calcPointsRemaining = this.calcPointsRemaining.bind(this);
+
+    this.MAXPOINTS = 74;
   }
 
+  //TODO: calculate stats on demand rather than storing in state
   getEmptyState() {
     return {
-      commander: ''
+      commander: '',
+      red: [],
+      yellow: [],
+      blue: []
     };
   }
 
@@ -28,6 +40,7 @@ class App extends React.Component {
     });
   }
 
+  //TODO: change encoding method? base64, URI, lz-string
   componentDidMount() {
     // Set initial state from query string
     const urlParams = new URLSearchParams(window.location.search);
@@ -63,15 +76,57 @@ class App extends React.Component {
   changeCommander(e) {
     const commander = e.target.value;
     if (commander) {
-      this.setState({ commander: commander }, () => this.updateURL('update'));
+      const zeroTalents = this.createZeroTalents();
+      this.setState({ commander: commander, ...zeroTalents }, () =>
+        this.updateURL('update')
+      );
     } else {
       this.setEmptyState();
     }
   }
 
-  //FIXME: reset button should only reset points, not commander selection
-  resetTalents(){
-    this.setEmptyState();
+  createZeroTalents() {
+    const commander = document.getElementById('select-commander').value;
+    const numRed = Object.keys(Trees[Commanders[commander]['red']]).length;
+    const numYellow = Object.keys(Trees[Commanders[commander]['yellow']])
+      .length;
+    const numBlue = Object.keys(Trees[Commanders[commander]['blue']]).length;
+
+    const zeroTalents = {
+      red: Array(numRed).fill(0),
+      yellow: Array(numYellow).fill(0),
+      blue: Array(numBlue).fill(0)
+    };
+
+    return zeroTalents;
+  }
+
+  resetTalents() {
+    this.setState(this.createZeroTalents(), () => this.updateURL('update'));
+  }
+
+  changeTalentValue(color, idx, how) {
+    let newArr = this.state[color];
+    if (how === 'increase') {
+      newArr[idx - 1] += 1;
+    } else if (how === 'decrease') {
+      newArr[idx - 1] -= 1;
+    }
+    this.setState({ [color]: newArr }, () => this.updateURL('update'));
+  }
+
+  calcPointsSpent() {
+    const pointsSpent = [
+      ...this.state.red,
+      ...this.state.yellow,
+      ...this.state.blue
+    ].reduce((partial_sum, a) => partial_sum + a, 0);
+
+    return pointsSpent;
+  }
+
+  calcPointsRemaining() {
+    return this.MAXPOINTS - this.calcPointsSpent();
   }
 
   render() {
@@ -79,13 +134,22 @@ class App extends React.Component {
       <div id="app">
         {this.invalidModalFlag && <InvalidBuildModal />}
 
-        <Sidebar
+        <SidebarPanel
           changeCommander={this.changeCommander}
           resetTalents={this.resetTalents}
+          calcPointsSpent={this.calcPointsSpent}
+          calcPointsRemaining={this.calcPointsRemaining}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
 
-        <Tree commander={this.state.commander} />
+        <TreePanel
+          changeTalentValue={this.changeTalentValue}
+          calcPointsRemaining={this.calcPointsRemaining}
+          commander={this.state.commander}
+          red={this.state.red}
+          yellow={this.state.yellow}
+          blue={this.state.blue}
+        />
       </div>
     );
   }
