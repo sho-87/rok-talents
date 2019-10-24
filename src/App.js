@@ -21,7 +21,7 @@ class App extends Component {
     this.calcPointsSpent = this.calcPointsSpent.bind(this);
     this.calcPointsRemaining = this.calcPointsRemaining.bind(this);
 
-    this.MAXPOINTS = 4;
+    this.MAXPOINTS = 74;
   }
 
   //TODO: calculate stats on demand rather than storing in state
