@@ -106,7 +106,13 @@ export const TalentTooltip = props => {
           </span>
           <div style={{ clear: 'both' }}></div>
         </PopoverHeader>
-        <PopoverBody className="node-tooltip-body">{props.text}</PopoverBody>
+        <PopoverBody className="node-tooltip-body">
+          {props.text}
+          
+          {process.env.NODE_ENV === 'development' && (
+            <div className="node-tooltip-id">ID: {props.idx}</div>
+          )}
+        </PopoverBody>
       </Popover>
     </div>
   );

@@ -258,6 +258,13 @@ body {
   font-size: 0.8em;
 }
 
+.node-tooltip-id {
+  font-size: 0.7em;
+  margin-top: 5px;
+  text-align: right;
+  color: gray;
+}
+
 .node-value {
   display: absolute;
   font-size: 0.8em;

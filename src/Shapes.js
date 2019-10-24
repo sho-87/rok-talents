@@ -163,6 +163,7 @@ export class Node extends Component {
         </div>
 
         <TalentTooltip
+          idx={this.props.idx}
           target={this.props.id}
           talentName={this.props.talentName}
           value={this.props.value}

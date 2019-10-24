@@ -57,10 +57,15 @@ class SidebarPanel extends Component {
           />
         </ErrorBoundary>
 
-        <hr />
-        <h1>Debug</h1>
-        <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
-        <p>Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}</p>
+        {process.env.NODE_ENV === 'development' && (
+          <Fragment>
+            <h1>Debug</h1>
+            <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
+            <p>
+              Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}
+            </p>
+          </Fragment>
+        )}
       </div>
     );
   }
