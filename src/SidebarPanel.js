@@ -52,9 +52,8 @@ class SidebarPanel extends Component {
 
         <ErrorBoundary>
           <SidebarSummary
-            red={this.props.red}
-            yellow={this.props.yellow}
-            blue={this.props.blue}
+            calcPointsSpent={this.props.calcPointsSpent}
+            calcPointsRemaining={this.props.calcPointsRemaining}
           />
         </ErrorBoundary>
 
@@ -140,13 +139,8 @@ class SidebarSummary extends Component {
     return (
       <Fragment>
         <h1>Summary</h1>
-        <p>
-          Talent points spent:{' '}
-          {[...this.props.red, ...this.props.yellow, ...this.props.blue].reduce(
-            (partial_sum, a) => partial_sum + a,
-            0
-          )}
-        </p>
+        <p>Points remaining: {this.props.calcPointsRemaining()}</p>
+        <p>Points spent: {this.props.calcPointsSpent()}</p>
       </Fragment>
     );
   }

@@ -18,6 +18,10 @@ class App extends Component {
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
     this.changeTalentValue = this.changeTalentValue.bind(this);
+    this.calcPointsSpent = this.calcPointsSpent.bind(this);
+    this.calcPointsRemaining = this.calcPointsRemaining.bind(this);
+
+    this.MAXPOINTS = 74;
   }
 
   //TODO: calculate stats on demand rather than storing in state
@@ -111,6 +115,20 @@ class App extends Component {
     this.setState({ [color]: newArr }, () => this.updateURL('update'));
   }
 
+  calcPointsSpent() {
+    const pointsSpent = [
+      ...this.state.red,
+      ...this.state.yellow,
+      ...this.state.blue
+    ].reduce((partial_sum, a) => partial_sum + a, 0);
+
+    return pointsSpent;
+  }
+
+  calcPointsRemaining() {
+    return this.MAXPOINTS - this.calcPointsSpent();
+  }
+
   render() {
     return (
       <div id="app">
@@ -119,11 +137,14 @@ class App extends Component {
         <SidebarPanel
           changeCommander={this.changeCommander}
           resetTalents={this.resetTalents}
+          calcPointsSpent={this.calcPointsSpent}
+          calcPointsRemaining={this.calcPointsRemaining}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
 
         <TreePanel
           changeTalentValue={this.changeTalentValue}
+          calcPointsRemaining={this.calcPointsRemaining}
           commander={this.state.commander}
           red={this.state.red}
           yellow={this.state.yellow}

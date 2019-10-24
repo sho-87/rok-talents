@@ -45,6 +45,7 @@ class TreePanel extends Component {
       nodes.push(
         <Node
           changeTalentValue={this.props.changeTalentValue}
+          calcPointsRemaining={this.props.calcPointsRemaining}
           showPrereqToast={this.showPrereqToast}
           key={treeName + i}
           id={treeName + i}

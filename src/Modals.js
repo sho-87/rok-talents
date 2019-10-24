@@ -41,6 +41,7 @@ export class InvalidBuildModal extends Component {
   }
 }
 
+//TODO: combine the toasts modal
 export class CopyToast extends Component {
   render() {
     return (
