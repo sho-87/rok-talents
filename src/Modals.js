@@ -98,6 +98,7 @@ export const TalentTooltip = props => {
         hideArrow={false}
         delay={{ show: 0, hide: 0 }}
         fade={false}
+        offset={'0, 2'}
       >
         <PopoverHeader>
           <span className="node-tooltip-title">{props.talentName}</span>
@@ -110,7 +111,7 @@ export const TalentTooltip = props => {
           {props.text}
           
           {process.env.NODE_ENV === 'development' && (
-            <div className="node-tooltip-id">ID: {props.idx}</div>
+            <div className="node-tooltip-id">ID: {props.target}</div>
           )}
         </PopoverBody>
       </Popover>
