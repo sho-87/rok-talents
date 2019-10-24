@@ -40,7 +40,8 @@ class App extends Component {
     });
   }
 
-  //TODO: change encoding method? base64, URI, lz-string
+  //TODO: change encoding method? base64, URI, lz-string, url safe
+  // or use multiple query params instead of full object to save chars?
   componentDidMount() {
     // Set initial state from query string
     const urlParams = new URLSearchParams(window.location.search);
