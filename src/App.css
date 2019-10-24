@@ -214,6 +214,10 @@ body {
   opacity: 0.3;
 }
 
+.node-inactive:hover {
+  opacity: 1;
+}
+
 .node-small-inactive {
   background-color: rgb(177, 177, 177);
 }
