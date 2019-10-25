@@ -40,6 +40,7 @@ export class HexagonCommander extends Component {
 }
 
 // https://reactjs.org/docs/composition-vs-inheritance.html#containment
+//FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
 export class Node extends Component {
   getStyle() {
     let style = {};

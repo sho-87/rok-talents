@@ -28,7 +28,7 @@
     "dep": [2, 12],
     "pos": [2.4, 73.7],
     "type": "node-large",
-    "image": "yellowGenericLarge"
+    "image": "yellowTrap"
   },
   "4": {
     "name": "Attack (All Troops)",
@@ -49,7 +49,7 @@
     "dep": [6, 15],
     "pos": [22.9, 80.8],
     "type": "node-large",
-    "image": "yellowGenericLarge"
+    "image": "yellowArmor"
   },
   "6": {
     "name": "Defense (All Troops)",
@@ -81,7 +81,7 @@
     "dep": [13],
     "pos": [14, 66.5],
     "type": "node-large",
-    "image": "yellowGenericLarge"
+    "image": "yellowTower"
   },
   "9": {
     "name": "City Guardian",
@@ -92,7 +92,7 @@
     "dep": [14],
     "pos": [27, 71.1],
     "type": "node-large",
-    "image": "yellowGenericLarge"
+    "image": "yellowArrows"
   },
   "10": {
     "name": "Nowhere To Turn",
@@ -103,7 +103,7 @@
     "dep": [],
     "pos": [41.5, 83.3],
     "type": "node-large",
-    "image": "yellowFlameSkull"
+    "image": "yellowSkullFire"
   },
   "11": {
     "name": "Health (All Troops)",
@@ -174,7 +174,7 @@
     "dep": [20],
     "pos": [11.8, 49],
     "type": "node-large",
-    "image": "yellowGenericLarge"
+    "image": "yellowScope"
   },
   "18": {
     "name": "March Speed (All Troops)",
@@ -195,7 +195,7 @@
     "dep": [20],
     "pos": [53.3, 63.4],
     "type": "node-large",
-    "image": "yellowGenericLarge"
+    "image": "yellowHelmetFront2"
   },
   "20": {
     "name": "Divine Favor",
@@ -206,6 +206,6 @@
     "dep": [],
     "pos": [40.1, 47.7],
     "type": "node-large",
-    "image": "yellowGenericLarge"
+    "image": "yellowStaff"
   }
 }
