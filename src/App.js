@@ -24,7 +24,6 @@ class App extends Component {
     this.MAXPOINTS = 74;
   }
 
-  //TODO: calculate stats on demand rather than storing in state
   getEmptyState() {
     return {
       commander: '',
@@ -140,6 +139,9 @@ class App extends Component {
           resetTalents={this.resetTalents}
           calcPointsSpent={this.calcPointsSpent}
           calcPointsRemaining={this.calcPointsRemaining}
+          red={this.state.red}
+          yellow={this.state.yellow}
+          blue={this.state.blue}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
 

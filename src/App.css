@@ -44,6 +44,26 @@ body {
   filter: saturate(30%);
 }
 
+#sidebar-panel-summary p {
+  margin-bottom: 0px;
+}
+
+#sidebar-panel-stats p {
+  margin-bottom: 0px;
+}
+
+#sidebar-panel-bonus p {
+  font-size: 0.8em;
+}
+
+.sidebar-panel-arrow {
+  font-size: 0.5em;
+}
+
+.sidebar-panel-arrow:hover {
+  color: blue;
+}
+
 /* Talent tree */
 #tree-panel {
   flex: 1;
