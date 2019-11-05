@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import { UncontrolledTooltip } from 'reactstrap';
+import html2canvas from 'html2canvas';
 import { Collapse } from 'reactstrap';
 import { CopyToast } from './Modals.js';
 import ErrorBoundary from './Error.js';
@@ -13,10 +15,12 @@ import Trees from './data/modules.js';
 //TODO: hide sidebar on smaller screens. unmount tree component?
 //TODO: add undo/redo
 //TODO: track talent point selection order?
+//FIXME: screenshot does not support certain CSS props (e.g. blend mode, filter)
 class SidebarPanel extends Component {
   constructor(props) {
     super(props);
     this.copyURL = this.copyURL.bind(this);
+    this.takeScreenshot = this.takeScreenshot.bind(this);
     this.state = {
       copyToastFlag: false
     };
@@ -39,6 +43,18 @@ class SidebarPanel extends Component {
     document.body.removeChild(dummy);
   }
 
+  takeScreenshot() {
+    html2canvas(document.querySelector('#tree-panel')).then(canvas => {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL();
+      link.download = `${this.props.commander} talents.png`;
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
+
   render() {
     return (
       <div id="sidebar-panel">
@@ -47,6 +63,7 @@ class SidebarPanel extends Component {
         <ErrorBoundary>
           <SidebarControls
             copyURL={this.copyURL}
+            takeScreenshot={this.takeScreenshot}
             changeCommander={this.props.changeCommander}
             commander={this.props.commander}
             resetTalents={this.props.resetTalents}
@@ -93,7 +110,7 @@ class SidebarControls extends Component {
         <button
           type="button"
           disabled={this.props.commander ? false : true}
-          className="btn btn-sm btn-primary"
+          className="btn btn-sm btn-success"
           onClick={this.props.copyURL}
         >
           Copy Talents
@@ -106,6 +123,24 @@ class SidebarControls extends Component {
         >
           Reset Talents
         </button>
+        <br />
+
+        <button
+          id="button-screenshot"
+          type="button"
+          disabled={this.props.commander ? false : true}
+          className="btn btn-sm btn-primary"
+          onClick={this.props.takeScreenshot}
+        >
+          Screenshot
+        </button>
+        <UncontrolledTooltip
+          placement="right"
+          target="button-screenshot"
+          fade={false}
+        >
+          Experimental!
+        </UncontrolledTooltip>
       </Fragment>
     );
   }
