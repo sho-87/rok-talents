@@ -10,6 +10,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Top level talent builder logic
+//TODO: add tests
+//TODO: add tree/game/data version to state and data files
 class App extends Component {
   constructor(props) {
     super(props);

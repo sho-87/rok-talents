@@ -8,7 +8,11 @@ import Trees from './data/modules.js';
 
 //Sidebar and control
 // https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy
-//TODO: find library for dock/sidepanel
+//TODO: find library for dock/sidepanel?
+//TODO: add sidebar minimize button
+//TODO: hide sidebar on smaller screens. unmount tree component?
+//TODO: add undo/redo
+//TODO: track talent point selection order?
 class SidebarPanel extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +40,6 @@ class SidebarPanel extends Component {
   }
 
   render() {
-    //TODO: hide sidebar on smaller screens. unmount tree component?
     return (
       <div id="sidebar-panel">
         <CopyToast isOpen={this.state.copyToastFlag} />
