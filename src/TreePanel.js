@@ -8,9 +8,7 @@ import Commanders from './data/Commanders.json';
 
 // Talent tree container
 //TODO: lazy load large data modules
-//TODO: make tree panel zoomable?
 //TODO: use media queries to set element sizes instead of vw/vh/%
-//TODO: use center hexagon to select commander
 class TreePanel extends Component {
   constructor(props) {
     super(props);
@@ -81,30 +79,31 @@ class TreePanel extends Component {
 
   render() {
     return (
-      <div id="tree-panel">
-        <PrereqToast
-          isOpen={this.state.prereqToastFlag}
-          msg={this.state.prereqMsg}
-        />
-
-        <PointLimitToast isOpen={this.state.pointLimitToastFlag} />
-
-        <div id="tree-red" className="tree-container">
-          {this.drawNodes(this.props.red, 'red')}
-        </div>
-        <div id="tree-yellow" className="tree-container">
-          {this.drawNodes(this.props.yellow, 'yellow')}
-        </div>
-        <div id="tree-blue" className="tree-container">
-          {this.drawNodes(this.props.blue, 'blue')}
-        </div>
-        <ErrorBoundary>
-          <HexagonCommander
-            commander={this.props.commander}
-            getTreeName={this.getTreeName}
+        <div id="tree-panel">
+          <PrereqToast
+            isOpen={this.state.prereqToastFlag}
+            msg={this.state.prereqMsg}
           />
-        </ErrorBoundary>
-      </div>
+
+          <PointLimitToast isOpen={this.state.pointLimitToastFlag} />
+
+          <div id="tree-red" className="tree-container">
+            {this.drawNodes(this.props.red, 'red')}
+          </div>
+          <div id="tree-yellow" className="tree-container">
+            {this.drawNodes(this.props.yellow, 'yellow')}
+          </div>
+          <div id="tree-blue" className="tree-container">
+            {this.drawNodes(this.props.blue, 'blue')}
+          </div>
+
+          <ErrorBoundary>
+            <HexagonCommander
+              commander={this.props.commander}
+              getTreeName={this.getTreeName}
+            />
+          </ErrorBoundary>
+        </div>
     );
   }
 }

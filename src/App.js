@@ -150,7 +150,6 @@ class App extends Component {
           blue={this.state.blue}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
-
         <TreePanel
           changeTalentValue={this.changeTalentValue}
           calcPointsRemaining={this.calcPointsRemaining}
