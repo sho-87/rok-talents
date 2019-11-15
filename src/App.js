@@ -28,7 +28,7 @@ class App extends Component {
     this.calcPointsSpent = this.calcPointsSpent.bind(this);
     this.calcPointsRemaining = this.calcPointsRemaining.bind(this);
 
-    this.MAXPOINTS = 74;  // max number of points available in-game
+    this.MAXPOINTS = 74; // max number of points available in-game
   }
 
   getEmptyState() {
@@ -45,7 +45,6 @@ class App extends Component {
       this.updateURL('clear');
     });
   }
-
 
   componentDidMount() {
     // Set initial state from query string
@@ -142,7 +141,6 @@ class App extends Component {
 
         <SidebarPanel
           changeCommander={this.changeCommander}
-          resetTalents={this.resetTalents}
           calcPointsSpent={this.calcPointsSpent}
           calcPointsRemaining={this.calcPointsRemaining}
           red={this.state.red}
@@ -151,6 +149,7 @@ class App extends Component {
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
         <MainPanel
+          resetTalents={this.resetTalents}
           changeTalentValue={this.changeTalentValue}
           calcPointsRemaining={this.calcPointsRemaining}
           commander={this.state.commander}

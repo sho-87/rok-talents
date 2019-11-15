@@ -82,7 +82,12 @@ class MainPanel extends Component {
   render() {
     return (
       <div id="main-container">
-        <NavBar commander={this.props.commander} />
+        <ErrorBoundary>
+          <NavBar
+            commander={this.props.commander}
+            resetTalents={this.props.resetTalents}
+          />
+        </ErrorBoundary>
 
         <div id="tree-panel">
           <PrereqToast

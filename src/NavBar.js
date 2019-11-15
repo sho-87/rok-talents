@@ -1,12 +1,10 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
   UncontrolledTooltip,
   UncontrolledDropdown,
   DropdownToggle,
@@ -79,6 +77,17 @@ class NavBar extends Component {
           </UncontrolledTooltip>
 
           <Nav className="ml-auto" navbar>
+            <form className="form-inline">
+              <button
+                type="button"
+                className="btn btn-sm btn-danger"
+                disabled={this.props.commander ? false : true}
+                onClick={this.props.resetTalents}
+              >
+                Reset Talents
+              </button>
+            </form>
+
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Commander

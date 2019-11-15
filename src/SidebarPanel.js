@@ -6,7 +6,7 @@ import ErrorBoundary from './Error.js';
 import Commanders from './data/Commanders.json';
 import Trees from './data/modules.js';
 
-//Sidebar and control
+//Sidebar panel
 // https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy
 //TODO: find library for dock/sidepanel?
 //TODO: hide sidebar on smaller screens. unmount tree component?
@@ -46,7 +46,6 @@ class SidebarPanel extends Component {
             copyURL={this.copyURL}
             changeCommander={this.props.changeCommander}
             commander={this.props.commander}
-            resetTalents={this.props.resetTalents}
           />
         </ErrorBoundary>
 
@@ -94,14 +93,6 @@ class SidebarControls extends Component {
           onClick={this.props.copyURL}
         >
           Copy Talents
-        </button>
-        <button
-          type="button"
-          disabled={this.props.commander ? false : true}
-          className="btn btn-sm btn-danger"
-          onClick={this.props.resetTalents}
-        >
-          Reset Talents
         </button>
       </Fragment>
     );
