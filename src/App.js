@@ -17,6 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //TODO: url shortening using sqlite?
 //TODO: manually encode/shorten state containing repeat characters?
 //TODO: react router to store state/version as path instead of query?
+//FIXME: state doesnt update instantly from query string
 class App extends Component {
   constructor(props) {
     super(props);

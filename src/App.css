@@ -26,7 +26,8 @@ body {
 
 /* Sidebar */
 #sidebar-panel {
-  flex: 0 0 20%;
+  display: inline-block;
+  flex: 0 0 15%;
   height: 100%;
   background-color: #838ca7;
   border: 0.5px solid black;
@@ -68,13 +69,12 @@ body {
 }
 
 .navbar .btn {
-  margin-left: 1px;
-  margin-right: 1px;
+  margin: 1px;
 }
 
 .navbar .btn.btn-sm:disabled {
-  -webkit-filter: saturate(30%);
-  filter: saturate(30%);
+  -webkit-filter: saturate(10%);
+  filter: saturate(10%);
 }
 
 #tree-panel {
@@ -83,6 +83,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
   background-image: radial-gradient(
     circle,
     rgb(10, 72, 97) 30%,

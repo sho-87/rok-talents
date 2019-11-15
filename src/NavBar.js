@@ -6,12 +6,14 @@ import {
   NavbarBrand,
   Nav,
   UncontrolledTooltip,
-  UncontrolledDropdown,
+  Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
 import html2canvas from 'html2canvas';
+
+import Commanders from './data/Commanders.json';
 
 //TODO: add sidebar minimize button
 //TODO: add undo/redo
@@ -21,18 +23,26 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      navOpen: false,
+      selectOpen: false
     };
 
-    this.toggle = this.toggle.bind(this);
+    this.toggleNav = this.toggleNav.bind(this);
+    this.toggleSelect = this.toggleSelect.bind(this);
     this.takeScreenshot = this.takeScreenshot.bind(this);
     this.copyURL = this.copyURL.bind(this);
   }
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+  toggleNav() {
+    this.setState(prevState => ({
+      navOpen: !prevState.navOpen
+    }));
+  }
+
+  toggleSelect() {
+    this.setState(prevState => ({
+      selectOpen: !prevState.selectOpen
+    }));
   }
 
   takeScreenshot() {
@@ -60,14 +70,37 @@ class NavBar extends Component {
     document.body.removeChild(dummy);
   }
 
+  createSelectItems() {
+    let items = [];
+    Object.keys(Commanders).forEach(c => {
+      items.push(
+        <DropdownItem
+          key={c}
+          onClick={() => {
+            this.commanderSelect(c);
+          }}
+        >
+          {c}
+        </DropdownItem>
+      );
+    });
+    return items;
+  }
+
+  commanderSelect(c) {
+    console.log(c);
+  }
+
   render() {
     return (
       <Navbar color="light" light expand="md">
-        <NavbarBrand>Rise of Kingdoms Talent Builder &#x1F6C8;</NavbarBrand>
+        <NavbarBrand href="/">
+          Rise of Kingdoms Talent Builder &#x1F6C8;
+        </NavbarBrand>
 
-        <NavbarToggler onClick={this.toggle} />
+        <NavbarToggler onClick={this.toggleNav} />
 
-        <Collapse isOpen={this.state.isOpen} navbar>
+        <Collapse isOpen={this.state.navOpen} navbar>
           <Nav className="mr-auto" navbar>
             <form className="form-inline">
               <button
@@ -110,17 +143,18 @@ class NavBar extends Component {
               </button>
             </form>
 
-            <UncontrolledDropdown nav inNavbar>
+            <Dropdown
+              nav
+              inNavbar
+              isOpen={this.state.selectOpen}
+              toggle={this.toggleSelect}
+            >
               <DropdownToggle nav caret>
-                Commander
+                {this.props.commander ? this.props.commander : 'Commander'}
               </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+
+              <DropdownMenu right>{this.createSelectItems()}</DropdownMenu>
+            </Dropdown>
           </Nav>
         </Collapse>
       </Navbar>
