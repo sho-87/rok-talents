@@ -16,6 +16,7 @@ import Trees from './data/modules.js';
 //TODO: add undo/redo
 //TODO: track talent point selection order?
 //FIXME: screenshot does not support certain CSS props (e.g. blend mode, filter)
+//FIXME: don't use unsupported props to style nodes. use small node images?
 class SidebarPanel extends Component {
   constructor(props) {
     super(props);
@@ -139,7 +140,7 @@ class SidebarControls extends Component {
           target="button-screenshot"
           fade={false}
         >
-          Experimental!
+          ! Experimental !
         </UncontrolledTooltip>
       </Fragment>
     );

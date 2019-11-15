@@ -11,7 +11,6 @@ import Commanders from './data/Commanders.json';
 //TODO: make tree panel zoomable?
 //TODO: use media queries to set element sizes instead of vw/vh/%
 //TODO: use center hexagon to select commander
-//FIXME: dont re-render all nodes on every click
 class TreePanel extends Component {
   constructor(props) {
     super(props);

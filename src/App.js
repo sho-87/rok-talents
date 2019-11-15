@@ -12,6 +12,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Top level talent builder logic
 //TODO: add tests
 //TODO: add tree/game/data version to state and data files
+//TODO: change encoding method? base64, URI, lz-string, url safe
+// or use multiple query params instead of full object to save chars?
+//TODO: url shortening using sqlite?
+//TODO: manually encode/shorten state containing repeat characters?
+//TODO: react router to store state/version as path instead of query?
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +28,7 @@ class App extends Component {
     this.calcPointsSpent = this.calcPointsSpent.bind(this);
     this.calcPointsRemaining = this.calcPointsRemaining.bind(this);
 
-    this.MAXPOINTS = 74;
+    this.MAXPOINTS = 74;  // max number of points available in-game
   }
 
   getEmptyState() {
@@ -41,8 +46,7 @@ class App extends Component {
     });
   }
 
-  //TODO: change encoding method? base64, URI, lz-string, url safe
-  // or use multiple query params instead of full object to save chars?
+
   componentDidMount() {
     // Set initial state from query string
     const urlParams = new URLSearchParams(window.location.search);
