@@ -26,6 +26,7 @@ class NavBar extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.takeScreenshot = this.takeScreenshot.bind(this);
+    this.copyURL = this.copyURL.bind(this);
   }
 
   toggle() {
@@ -44,6 +45,19 @@ class NavBar extends Component {
       link.click();
       document.body.removeChild(link);
     });
+  }
+
+  copyURL() {
+    this.props.showCopyToast();
+
+    const dummy = document.createElement('input');
+    const url = window.location.href;
+
+    document.body.appendChild(dummy);
+    dummy.value = url;
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
   }
 
   render() {
@@ -78,6 +92,14 @@ class NavBar extends Component {
 
           <Nav className="ml-auto" navbar>
             <form className="form-inline">
+              <button
+                type="button"
+                disabled={this.props.commander ? false : true}
+                className="btn btn-sm btn-success"
+                onClick={this.copyURL}
+              >
+                Copy Talents
+              </button>
               <button
                 type="button"
                 className="btn btn-sm btn-danger"

@@ -67,6 +67,11 @@ body {
   z-index: 10;
 }
 
+.navbar .btn {
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
 .navbar .btn.btn-sm:disabled {
   -webkit-filter: saturate(30%);
   filter: saturate(30%);

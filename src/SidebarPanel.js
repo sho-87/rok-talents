@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Collapse } from 'reactstrap';
-import { CopyToast } from './Modals.js';
 import ErrorBoundary from './Error.js';
 
 import Commanders from './data/Commanders.json';
@@ -11,45 +10,13 @@ import Trees from './data/modules.js';
 //TODO: find library for dock/sidepanel?
 //TODO: hide sidebar on smaller screens. unmount tree component?
 class SidebarPanel extends Component {
-  constructor(props) {
-    super(props);
-    this.copyURL = this.copyURL.bind(this);
-    this.state = {
-      copyToastFlag: false
-    };
-  }
-
-  copyURL() {
-    this.setState({ copyToastFlag: true }, () => {
-      window.setTimeout(() => {
-        this.setState({ copyToastFlag: false });
-      }, 2000);
-    });
-
-    const dummy = document.createElement('input');
-    const url = window.location.href;
-
-    document.body.appendChild(dummy);
-    dummy.value = url;
-    dummy.select();
-    document.execCommand('copy');
-    document.body.removeChild(dummy);
-  }
-
   render() {
     return (
       <div id="sidebar-panel">
-        <CopyToast isOpen={this.state.copyToastFlag} />
-
-        <ErrorBoundary>
-          <SidebarControls
-            copyURL={this.copyURL}
-            changeCommander={this.props.changeCommander}
-            commander={this.props.commander}
-          />
-        </ErrorBoundary>
-
-        <hr />
+        <SidebarControls
+          changeCommander={this.props.changeCommander}
+          commander={this.props.commander}
+        />
 
         <ErrorBoundary>
           <SidebarSummary
@@ -79,22 +46,10 @@ class SidebarPanel extends Component {
 class SidebarControls extends Component {
   render() {
     return (
-      <Fragment>
-        <h1>Options</h1>
-        <SidebarCommanderSelect
-          changeCommander={this.props.changeCommander}
-          commander={this.props.commander}
-        />
-        <br />
-        <button
-          type="button"
-          disabled={this.props.commander ? false : true}
-          className="btn btn-sm btn-success"
-          onClick={this.props.copyURL}
-        >
-          Copy Talents
-        </button>
-      </Fragment>
+      <SidebarCommanderSelect
+        changeCommander={this.props.changeCommander}
+        commander={this.props.commander}
+      />
     );
   }
 }
@@ -121,7 +76,6 @@ class SidebarCommanderSelect extends Component {
   render() {
     return (
       <Fragment>
-        <label htmlFor="select-commander">Commander:</label>
         <select
           autoFocus
           id="select-commander"

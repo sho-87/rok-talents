@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar.js';
 import { HexagonCommander, Node } from './Shapes.js';
-import { PrereqToast, PointLimitToast } from './Modals.js';
+import { CopyToast, PrereqToast, PointLimitToast } from './Modals.js';
 import ErrorBoundary from './Error.js';
 
 import Trees from './data/modules.js';
@@ -15,9 +15,11 @@ class MainPanel extends Component {
   constructor(props) {
     super(props);
     this.getTreeName = this.getTreeName.bind(this);
+    this.showCopyToast = this.showCopyToast.bind(this);
     this.showPrereqToast = this.showPrereqToast.bind(this);
     this.showPointLimitToast = this.showPointLimitToast.bind(this);
     this.state = {
+      copyToastFlag: false,
       pointLimitToastFlag: false,
       prereqToastFlag: false,
       prereqMsg: ''
@@ -43,6 +45,14 @@ class MainPanel extends Component {
     this.setState({ pointLimitToastFlag: true }, () => {
       window.setTimeout(() => {
         this.setState({ pointLimitToastFlag: false });
+      }, 2000);
+    });
+  }
+
+  showCopyToast(msg) {
+    this.setState({ copyToastFlag: true }, () => {
+      window.setTimeout(() => {
+        this.setState({ copyToastFlag: false });
       }, 2000);
     });
   }
@@ -86,34 +96,37 @@ class MainPanel extends Component {
           <NavBar
             commander={this.props.commander}
             resetTalents={this.props.resetTalents}
+            showCopyToast={this.showCopyToast}
           />
         </ErrorBoundary>
-
-        <div id="tree-panel">
-          <PrereqToast
-            isOpen={this.state.prereqToastFlag}
-            msg={this.state.prereqMsg}
-          />
-
-          <PointLimitToast isOpen={this.state.pointLimitToastFlag} />
-
-          <div id="tree-red" className="tree-container">
-            {this.drawNodes(this.props.red, 'red')}
-          </div>
-          <div id="tree-yellow" className="tree-container">
-            {this.drawNodes(this.props.yellow, 'yellow')}
-          </div>
-          <div id="tree-blue" className="tree-container">
-            {this.drawNodes(this.props.blue, 'blue')}
-          </div>
-
-          <ErrorBoundary>
-            <HexagonCommander
-              commander={this.props.commander}
-              getTreeName={this.getTreeName}
+        
+        <ErrorBoundary>
+          <div id="tree-panel">
+            <CopyToast isOpen={this.state.copyToastFlag} />
+            <PrereqToast
+              isOpen={this.state.prereqToastFlag}
+              msg={this.state.prereqMsg}
             />
-          </ErrorBoundary>
-        </div>
+            <PointLimitToast isOpen={this.state.pointLimitToastFlag} />
+
+            <div id="tree-red" className="tree-container">
+              {this.drawNodes(this.props.red, 'red')}
+            </div>
+            <div id="tree-yellow" className="tree-container">
+              {this.drawNodes(this.props.yellow, 'yellow')}
+            </div>
+            <div id="tree-blue" className="tree-container">
+              {this.drawNodes(this.props.blue, 'blue')}
+            </div>
+
+            <ErrorBoundary>
+              <HexagonCommander
+                commander={this.props.commander}
+                getTreeName={this.getTreeName}
+              />
+            </ErrorBoundary>
+          </div>
+        </ErrorBoundary>
       </div>
     );
   }
