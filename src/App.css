@@ -35,15 +35,6 @@ body {
   padding: 10px;
 }
 
-#sidebar-panel hr {
-  border: 0.5px solid black;
-}
-
-#sidebar-panel .btn.btn-sm:disabled {
-  -webkit-filter: saturate(30%);
-  filter: saturate(30%);
-}
-
 #sidebar-panel-summary p {
   margin-bottom: 0px;
 }
@@ -74,6 +65,11 @@ body {
 
 .navbar {
   z-index: 10;
+}
+
+.navbar .btn.btn-sm:disabled {
+  -webkit-filter: saturate(30%);
+  filter: saturate(30%);
 }
 
 #tree-panel {

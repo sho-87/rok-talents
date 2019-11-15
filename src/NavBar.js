@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import {
   Collapse,
   Navbar,
@@ -7,51 +7,94 @@ import {
   Nav,
   NavItem,
   NavLink,
+  UncontrolledTooltip,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
+import html2canvas from 'html2canvas';
 
-const NavBar = props => {
-  const [isOpen, setIsOpen] = useState(false);
+//TODO: add sidebar minimize button
+//TODO: add undo/redo
+//FIXME: screenshot does not support certain CSS props (e.g. blend mode, filter)
+//FIXME: don't use unsupported props to style nodes. use small node images?
+class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    };
 
-  const toggle = () => setIsOpen(!isOpen);
+    this.toggle = this.toggle.bind(this);
+    this.takeScreenshot = this.takeScreenshot.bind(this);
+  }
 
-  return (
-    <Navbar color="light" light expand="md">
-      <NavbarBrand>Rise of Kingdoms Talent Builder &#x1F6C8;</NavbarBrand>
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
-      <NavbarToggler onClick={toggle} />
+  takeScreenshot() {
+    html2canvas(document.querySelector('#tree-panel')).then(canvas => {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL();
+      link.download = `${this.props.commander} talents.png`;
 
-      <Collapse isOpen={isOpen} navbar>
-        <Nav className="mr-auto" navbar>
-          <NavItem>
-            <NavLink href="/components/">Components</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="https://github.com/reactstrap/reactstrap">
-              GitHub
-            </NavLink>
-          </NavItem>
-        </Nav>
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
 
-        <Nav className="ml-auto" navbar>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-              Commander
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-        </Nav>
-      </Collapse>
-    </Navbar>
-  );
-};
+  render() {
+    return (
+      <Navbar color="light" light expand="md">
+        <NavbarBrand>Rise of Kingdoms Talent Builder &#x1F6C8;</NavbarBrand>
+
+        <NavbarToggler onClick={this.toggle} />
+
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            <form className="form-inline">
+              <button
+                id="button-screenshot"
+                type="button"
+                className="btn btn-sm btn-primary"
+                disabled={this.props.commander ? false : true}
+                onClick={this.takeScreenshot}
+              >
+                Screenshot
+              </button>
+            </form>
+          </Nav>
+
+          <UncontrolledTooltip
+            placement="right"
+            target="button-screenshot"
+            fade={false}
+          >
+            ! Experimental !
+          </UncontrolledTooltip>
+
+          <Nav className="ml-auto" navbar>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Commander
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>Reset</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    );
+  }
+}
 
 export default NavBar;

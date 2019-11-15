@@ -10,6 +10,7 @@ import Commanders from './data/Commanders.json';
 // Talent tree and nav bar
 //TODO: lazy load large data modules
 //TODO: use media queries to set element sizes instead of vw/vh/%
+//TODO: track talent point selection order?
 class MainPanel extends Component {
   constructor(props) {
     super(props);
@@ -81,8 +82,8 @@ class MainPanel extends Component {
   render() {
     return (
       <div id="main-container">
-        <NavBar />
-        
+        <NavBar commander={this.props.commander} />
+
         <div id="tree-panel">
           <PrereqToast
             isOpen={this.state.prereqToastFlag}
