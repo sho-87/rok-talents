@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SidebarPanel from './SidebarPanel.js';
-import TreePanel from './TreePanel.js';
+import MainPanel from './MainPanel.js';
 import { InvalidBuildModal } from './Modals.js';
 
 import Trees from './data/modules.js';
@@ -150,7 +150,7 @@ class App extends Component {
           blue={this.state.blue}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
-        <TreePanel
+        <MainPanel
           changeTalentValue={this.changeTalentValue}
           calcPointsRemaining={this.calcPointsRemaining}
           commander={this.state.commander}

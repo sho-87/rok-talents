@@ -65,14 +65,23 @@ body {
 }
 
 /* Talent tree */
-#tree-panel {
+#main-container {
   flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+}
+
+.navbar {
+  z-index: 10;
+}
+
+#tree-panel {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 100%;
   background-image: radial-gradient(
     circle,
     rgb(10, 72, 97) 30%,

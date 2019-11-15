@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NavBar from './NavBar.js';
 import { HexagonCommander, Node } from './Shapes.js';
 import { PrereqToast, PointLimitToast } from './Modals.js';
 import ErrorBoundary from './Error.js';
@@ -6,10 +7,10 @@ import ErrorBoundary from './Error.js';
 import Trees from './data/modules.js';
 import Commanders from './data/Commanders.json';
 
-// Talent tree container
+// Talent tree and nav bar
 //TODO: lazy load large data modules
 //TODO: use media queries to set element sizes instead of vw/vh/%
-class TreePanel extends Component {
+class MainPanel extends Component {
   constructor(props) {
     super(props);
     this.getTreeName = this.getTreeName.bind(this);
@@ -79,6 +80,9 @@ class TreePanel extends Component {
 
   render() {
     return (
+      <div id="main-container">
+        <NavBar />
+        
         <div id="tree-panel">
           <PrereqToast
             isOpen={this.state.prereqToastFlag}
@@ -104,8 +108,9 @@ class TreePanel extends Component {
             />
           </ErrorBoundary>
         </div>
+      </div>
     );
   }
 }
 
-export default TreePanel;
+export default MainPanel;
