@@ -12,7 +12,7 @@ import {
   DropdownItem
 } from 'reactstrap';
 import html2canvas from 'html2canvas';
-import { CopyToast } from './Modals.js';
+import { AboutModal, CopyToast } from './Modals.js';
 
 import Commanders from './data/Commanders.json';
 
@@ -22,6 +22,7 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      aboutModalFlag: false,
       copyToastFlag: false,
       navOpen: false,
       selectOpen: this.props.commander ? false : true
@@ -29,6 +30,7 @@ class NavBar extends Component {
 
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
+    this.showAbout = this.showAbout.bind(this);
     this.takeScreenshot = this.takeScreenshot.bind(this);
     this.copyURL = this.copyURL.bind(this);
   }
@@ -43,6 +45,12 @@ class NavBar extends Component {
     this.setState(prevState => ({
       selectOpen: !prevState.selectOpen
     }));
+  }
+
+  showAbout(state) {
+    this.setState({
+      aboutModalFlag: state
+    });
   }
 
   showCopyToast() {
@@ -98,11 +106,20 @@ class NavBar extends Component {
   render() {
     return (
       <React.Fragment>
+        {this.state.aboutModalFlag && <AboutModal showAbout={this.showAbout} />}
+
         <CopyToast isOpen={this.state.copyToastFlag} />
 
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">
-            Rise of Kingdoms Talent Builder &#x1F6C8;
+          <NavbarBrand>
+            Rise of Kingdoms Talent Builder{' '}
+            <span
+              id="about-icon"
+              style={{ cursor: 'pointer' }}
+              onClick={() => this.showAbout(true)}
+            >
+              &#x1F6C8;
+            </span>
           </NavbarBrand>
 
           <NavbarToggler onClick={this.toggleNav} />

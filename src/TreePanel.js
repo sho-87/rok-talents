@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HexagonCommander, Node } from './Shapes.js';
 import { PrereqToast, PointLimitToast } from './Modals.js';
+import ErrorBoundary from './Error.js';
 
 import Trees from './data/modules.js';
 import Commanders from './data/Commanders.json';
@@ -85,21 +86,31 @@ class TreePanel extends Component {
           msg={this.state.prereqMsg}
         />
         <PointLimitToast isOpen={this.state.pointLimitToastFlag} />
+        
+        <ErrorBoundary>
+          <div id="tree-red" className="tree-container">
+            {this.drawNodes(this.props.red, 'red')}
+          </div>
+        </ErrorBoundary>
 
-        <div id="tree-red" className="tree-container">
-          {this.drawNodes(this.props.red, 'red')}
-        </div>
-        <div id="tree-yellow" className="tree-container">
-          {this.drawNodes(this.props.yellow, 'yellow')}
-        </div>
-        <div id="tree-blue" className="tree-container">
-          {this.drawNodes(this.props.blue, 'blue')}
-        </div>
+        <ErrorBoundary>
+          <div id="tree-yellow" className="tree-container">
+            {this.drawNodes(this.props.yellow, 'yellow')}
+          </div>
+        </ErrorBoundary>
 
-        <HexagonCommander
-          commander={this.props.commander}
-          getTreeName={this.getTreeName}
-        />
+        <ErrorBoundary>
+          <div id="tree-blue" className="tree-container">
+            {this.drawNodes(this.props.blue, 'blue')}
+          </div>
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          <HexagonCommander
+            commander={this.props.commander}
+            getTreeName={this.getTreeName}
+          />
+        </ErrorBoundary>
       </div>
     );
   }

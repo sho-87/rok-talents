@@ -39,6 +39,10 @@ body {
   filter: saturate(10%);
 }
 
+#about-icon:hover {
+  color: blue;
+}
+
 /* Main panel container */
 #main-container {
   width: 100vw;

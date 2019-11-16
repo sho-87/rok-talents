@@ -41,6 +41,57 @@ export class InvalidBuildModal extends Component {
   }
 }
 
+export class AboutModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: true
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState(
+      prevState => ({
+        modal: !prevState.modal
+      }),
+      this.props.showAbout(false)
+    );
+  }
+
+  render() {
+    return (
+      <Modal
+        isOpen={this.state.modal}
+        toggle={this.toggle}
+        unmountOnClose={false}
+      >
+        <ModalHeader toggle={this.toggle}>
+          Rise of Kingdoms Talent Builder
+        </ModalHeader>
+        <ModalBody>
+          <p>About text</p>
+          <p>
+            <a
+              href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Link
+            </a>
+          </p>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="success" onClick={this.toggle}>
+            Close
+          </Button>
+        </ModalFooter>
+      </Modal>
+    );
+  }
+}
+
 //TODO: combine the toasts modal
 export class CopyToast extends Component {
   render() {
@@ -121,6 +172,7 @@ export const TalentTooltip = props => {
 
 export default {
   InvalidBuildModal,
+  AboutModal,
   CopyToast,
   PrereqToast,
   PointLimitToast,
