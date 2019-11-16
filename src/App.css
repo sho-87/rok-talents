@@ -39,7 +39,11 @@ body {
   filter: saturate(10%);
 }
 
-#about-icon:hover {
+#nav-icon {
+  color: black;
+}
+
+#nav-icon:hover {
   color: blue;
 }
 

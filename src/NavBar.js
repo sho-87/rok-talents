@@ -11,6 +11,15 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHome,
+  faInfoCircle,
+  faCamera,
+  faCopy,
+  faTrashAlt,
+  faUser
+} from '@fortawesome/free-solid-svg-icons';
 import html2canvas from 'html2canvas';
 import { AboutModal, CopyToast } from './Modals.js';
 
@@ -77,7 +86,7 @@ class NavBar extends Component {
   }
 
   /**
-   * Control visibility of a toast indicating that the talent build 
+   * Control visibility of a toast indicating that the talent build
    * has been copied/saved. Toast is automatically hidden after a delay
    *
    * @memberof NavBar
@@ -91,7 +100,7 @@ class NavBar extends Component {
   }
 
   /**
-   * Create a png screenshot of the tree panel. Offer to download/save the 
+   * Create a png screenshot of the tree panel. Offer to download/save the
    * generated screenshot.
    *
    * @memberof NavBar
@@ -157,22 +166,43 @@ class NavBar extends Component {
         <CopyToast isOpen={this.state.copyToastFlag} />
 
         <Navbar color="light" light expand="md">
-          <NavbarBrand>
-            Rise of Kingdoms Talent Builder{' '}
-            <span
-              id="about-icon"
-              style={{ cursor: 'pointer' }}
-              onClick={() => this.showAbout(true)}
-            >
-              &#x1F6C8;
-            </span>
+          <NavbarBrand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
+            <FontAwesomeIcon icon={faHome} />
           </NavbarBrand>
+
+          <NavbarBrand
+            id="nav-icon"
+            style={{ cursor: 'pointer' }}
+            onClick={() => this.showAbout(true)}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+          </NavbarBrand>
+
+          <NavbarBrand>Rise of Kingdoms Talent Builder</NavbarBrand>
 
           <NavbarToggler onClick={this.toggleNav} />
 
           <Collapse isOpen={this.state.navOpen} navbar>
-            <Nav className="mr-auto" navbar>
+            <Nav className="ml-auto" navbar>
               <form className="form-inline">
+                <button
+                  id="button-copy"
+                  type="button"
+                  disabled={this.props.commander ? false : true}
+                  className="btn btn-sm btn-success"
+                  onClick={this.copyURL}
+                >
+                  <FontAwesomeIcon icon={faCopy} /> Copy Talents
+                </button>
+                <button
+                  id="button-reset"
+                  type="button"
+                  className="btn btn-sm btn-danger"
+                  disabled={this.props.commander ? false : true}
+                  onClick={this.props.resetTalents}
+                >
+                  <FontAwesomeIcon icon={faTrashAlt} /> Reset Talents
+                </button>
                 <button
                   id="button-screenshot"
                   type="button"
@@ -180,38 +210,17 @@ class NavBar extends Component {
                   disabled={this.props.commander ? false : true}
                   onClick={this.takeScreenshot}
                 >
-                  Screenshot
+                  <FontAwesomeIcon icon={faCamera} /> Screenshot
                 </button>
               </form>
-            </Nav>
 
-            <UncontrolledTooltip
-              placement="right"
-              target="button-screenshot"
-              fade={false}
-            >
-              ! Experimental !
-            </UncontrolledTooltip>
-
-            <Nav className="ml-auto" navbar>
-              <form className="form-inline">
-                <button
-                  type="button"
-                  disabled={this.props.commander ? false : true}
-                  className="btn btn-sm btn-success"
-                  onClick={this.copyURL}
-                >
-                  Copy Talents
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-danger"
-                  disabled={this.props.commander ? false : true}
-                  onClick={this.props.resetTalents}
-                >
-                  Reset Talents
-                </button>
-              </form>
+              <UncontrolledTooltip
+                placement="bottom"
+                target="button-screenshot"
+                fade={false}
+              >
+                ! Experimental !
+              </UncontrolledTooltip>
 
               <Dropdown
                 nav
@@ -221,6 +230,7 @@ class NavBar extends Component {
                 toggle={this.toggleSelect}
               >
                 <DropdownToggle nav caret>
+                  <FontAwesomeIcon icon={faUser} />{' '}
                   {this.props.commander ? this.props.commander : 'Commander'}
                 </DropdownToggle>
 
