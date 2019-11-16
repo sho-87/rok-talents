@@ -4,23 +4,44 @@ import { Collapse } from 'reactstrap';
 import Commanders from './data/Commanders.json';
 import Trees from './data/modules.js';
 
+/**
+ * Side panel component displaying stats about the current talent build
+ *
+ * @class SidePanel
+ * @extends {Component}
+ */
 class SidePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
       bonusOpen: true
     };
-    
+
     // Context bindings
     this.toggleBonus = this.toggleBonus.bind(this);
   }
 
+  /**
+   * Toggles visibility of the bonus/additional info section
+   *
+   * @memberof SidePanel
+   */
   toggleBonus() {
     this.setState({ bonusOpen: !this.state.bonusOpen });
   }
 
+  //FIXME: super inefficient. each node checked multiple times for each stat
+
+  /**
+   * Calculate the total value of a given stat (e.g. attack, health). Additionally, 
+   * stores an array of the bonus stats that don't belong in any of the base state categories
+   *
+   * @param {string} stat Name of the stat to be calculated (e.g. Defense)
+   * @returns {(String[]|number)} Calculated value of the stat, or array of all selected 
+   * bonus stats
+   * @memberof SidePanel
+   */
   calcStats(stat) {
-    //FIXME: super inefficient. each node checked multiple times for each stat
     const commander = this.props.commander;
     let statValue = 0;
     let bonuses = [];

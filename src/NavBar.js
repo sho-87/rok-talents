@@ -18,6 +18,13 @@ import Commanders from './data/Commanders.json';
 
 //TODO: add sidebar minimize button
 //TODO: add undo/redo
+
+/**
+ * Nav bar component containing main application buttons/controls
+ *
+ * @class NavBar
+ * @extends {Component}
+ */
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -36,24 +43,45 @@ class NavBar extends Component {
     this.copyURL = this.copyURL.bind(this);
   }
 
+  /**
+   * Toggle visibility of the nav bar collapse/expand menu icon
+   *
+   * @memberof NavBar
+   */
   toggleNav() {
     this.setState(prevState => ({
       navOpen: !prevState.navOpen
     }));
   }
 
+  /**
+   * Toggle open state of the commander select dropdown
+   *
+   * @memberof NavBar
+   */
   toggleSelect() {
     this.setState(prevState => ({
       selectOpen: !prevState.selectOpen
     }));
   }
 
+  /**
+   * Control visibility of the "About" modal
+   *
+   * @memberof NavBar
+   */
   showAbout(state) {
     this.setState({
       aboutModalFlag: state
     });
   }
 
+  /**
+   * Control visibility of a toast indicating that the talent build 
+   * has been copied/saved. Toast is automatically hidden after a delay
+   *
+   * @memberof NavBar
+   */
   showCopyToast() {
     this.setState({ copyToastFlag: true }, () => {
       window.setTimeout(() => {
@@ -62,6 +90,12 @@ class NavBar extends Component {
     });
   }
 
+  /**
+   * Create a png screenshot of the tree panel. Offer to download/save the 
+   * generated screenshot.
+   *
+   * @memberof NavBar
+   */
   takeScreenshot() {
     html2canvas(document.querySelector('#tree-panel')).then(canvas => {
       const link = document.createElement('a');
@@ -74,6 +108,11 @@ class NavBar extends Component {
     });
   }
 
+  /**
+   * Copy the current application URL to clipboard
+   *
+   * @memberof NavBar
+   */
   copyURL() {
     this.showCopyToast();
 
@@ -87,6 +126,12 @@ class NavBar extends Component {
     document.body.removeChild(dummy);
   }
 
+  /**
+   * Create a list of all available commanders
+   *
+   * @returns {DropdownItem[]} Array of Dropdown items for all commanders
+   * @memberof NavBar
+   */
   createSelectItems() {
     let items = [];
     Object.keys(Commanders).forEach(c => {

@@ -2,6 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { TalentTooltip } from './Modals.js';
 import Trees from './data/modules.js';
 
+/**
+ * Component containing the central commander image and skill label hexagon
+ *
+ * @class HexagonCommander
+ * @extends {Component}
+ */
 export class HexagonCommander extends Component {
   render() {
     if (this.props.commander) {
@@ -39,10 +45,24 @@ export class HexagonCommander extends Component {
   }
 }
 
-// https://reactjs.org/docs/composition-vs-inheritance.html#containment
 //FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
 //FIXME: fix node value positioning
+
+/**
+ * Component for the individual talent nodes
+ *
+ * @class Node
+ * @extends {Component}
+ */
 export class Node extends Component {
+  /**
+   * Determine styling of the node. CSS style depends on whether the node is 
+   * a large skill node or a small stat node
+   *
+   * @returns {object} Object containing the CSS styles 
+   * (e.g. positioning, background image) for the node
+   * @memberof Node
+   */
   getStyle() {
     let style = {};
 
@@ -56,8 +76,17 @@ export class Node extends Component {
     return style;
   }
 
+  //FIXME: this is so hacky...
+
+  /**
+   * Set the CSS class of the node if it is a small node type. Applied 
+   * classes depend on both the node size, as well as whether 
+   * the node is currently active/selected
+   *
+   * @returns {string} String representing the CSS classes of the node
+   * @memberof Node
+   */
   getSmallColor() {
-    //FIXME: this is so hacky...
     if ((this.props.type === 'node-small') & (this.props.value === 0)) {
       return 'node-small-inactive';
     } else if ((this.props.type === 'node-small') & (this.props.value > 0)) {
@@ -67,7 +96,14 @@ export class Node extends Component {
     }
   }
 
-  getTooltip() {
+  /**
+   * Set tooltip for the node. Tooltip text is dynamic as it depends on the 
+   * current level of the node
+   *
+   * @returns {string} Updated tooltip text reflecting the level of the node
+   * @memberof Node
+   */
+  setTooltip() {
     let tooltip = this.props.tooltip;
     let talentValues = Trees[this.props.treeName][this.props.idx]['values'];
 
@@ -80,6 +116,15 @@ export class Node extends Component {
     return tooltip;
   }
 
+  /**
+   * Increase the value of the clicked node. Controls whether the node can 
+   * be increased (e.g. max level reached, max talent points spent), as well 
+   * as the display of associated toasts and missing prerequisite talents
+   * 
+   * Additionally, `this.state` is updated to reflect current node value
+   *
+   * @memberof Node
+   */
   talentIncrease() {
     if (this.props.calcPointsRemaining() > 0) {
       // Check prerequisites
@@ -117,6 +162,14 @@ export class Node extends Component {
     }
   }
 
+  /**
+   * Decrease value of the clicked node and update `this.state` to reflect 
+   * the new value. Checks whether the node can be decreased in the event of 
+   * having dependent nodes. Context menu is disabled
+   *
+   * @param {MouseEvent} e Mouse context event
+   * @memberof Node
+   */
   talentDecrease(e) {
     e.preventDefault();
 
@@ -172,7 +225,7 @@ export class Node extends Component {
           talentName={this.props.talentName}
           value={this.props.value}
           max={this.props.max}
-          text={this.getTooltip()}
+          text={this.setTooltip()}
         />
       </Fragment>
     );

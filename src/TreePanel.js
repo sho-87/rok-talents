@@ -10,6 +10,14 @@ import Commanders from './data/Commanders.json';
 //TODO: use media queries to set element sizes instead of vw/vh/%
 //FIXME: screenshot does not support certain CSS props (e.g. blend mode, filter)
 //FIXME: don't use unsupported props to style nodes. use small node images?
+
+/**
+ * Component for the main tree panel. Controls the display of all nodes and 
+ * node selections
+ *
+ * @class TreePanel
+ * @extends {Component}
+ */
 class TreePanel extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +33,14 @@ class TreePanel extends Component {
     this.showPointLimitToast = this.showPointLimitToast.bind(this);
   }
 
+  /**
+   * Get the full name of a talent tree (e.g. Skill, Garrison). The name 
+   * depends on the tree color and the currently selected commander
+   *
+   * @param {string} color Color of the tree to retrieve the name for
+   * @returns
+   * @memberof TreePanel
+   */
   getTreeName(color) {
     const commander = Commanders[this.props.commander];
     if (commander) {
@@ -32,6 +48,14 @@ class TreePanel extends Component {
     }
   }
 
+  /**
+   * Show a toast containing a list of missing prerequisite talents. Toast is 
+   * hidden automatically after a delay.
+   *
+   * @param {Array} msg Array of `li` elements containing the names of
+   *  the missing talents
+   * @memberof TreePanel
+   */
   showPrereqToast(msg) {
     this.setState({ prereqToastFlag: true, prereqMsg: msg }, () => {
       window.setTimeout(() => {
@@ -40,6 +64,12 @@ class TreePanel extends Component {
     });
   }
 
+  /**
+   * Show toast warning about reaching the maximum talent point limit. Toast 
+   * is hidden automatically after a delay.
+   *
+   * @memberof TreePanel
+   */
   showPointLimitToast() {
     this.setState({ pointLimitToastFlag: true }, () => {
       window.setTimeout(() => {
@@ -48,6 +78,15 @@ class TreePanel extends Component {
     });
   }
 
+  /**
+   * Create an array of all talent nodes for the current commander
+   *
+   * @param {number[]} values Array containing the node values stored 
+   * in `this.state` for a given tree color
+   * @param {string} color Color of the tree to generate nodes for
+   * @returns {Array} Array of `Node`'s for a given tree
+   * @memberof TreePanel
+   */
   drawNodes(values, color) {
     let nodes = [];
     const treeName = this.getTreeName(color);

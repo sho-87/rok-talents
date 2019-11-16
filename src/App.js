@@ -20,10 +20,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //TODO: react router to store state/version as path instead of query?
 //TODO: find library for dock/sidepanel?
 //TODO: hide side panel on smaller screens. unmount tree component?
+
+/**
+ * Main application component. Contains high level logic for managing application state
+ *
+ * @class App
+ * @extends {Component}
+ */
 class App extends Component {
   constructor(props) {
     super(props);
-    this.MAXPOINTS = 74; // max number of points available in-game
+
+    /** Maximum number of talent points available in the game */
+    this.MAXPOINTS = 74;
+    /** Flag controlling the visibility of the "Invalid build" modal */
     this.invalidModalFlag = false;
 
     // Context bindings
@@ -52,6 +62,12 @@ class App extends Component {
     }
   }
 
+  /**
+   * Get empty state values for new application instance
+   *
+   * @returns {object} Object containing blank state values
+   * @memberof App
+   */
   getEmptyState() {
     return {
       commander: '',
@@ -61,17 +77,36 @@ class App extends Component {
     };
   }
 
+  /**
+   * Set app state to empty and update the current URL
+   *
+   * @memberof App
+   */
   setEmptyState() {
     this.setState(this.getEmptyState(), () => {
       this.updateURL('clear');
     });
   }
 
+  /**
+   * Encode the app `this.state` object
+   *
+   * @returns {string} Encoded version of the current application state
+   * @memberof App
+   */
   encodeState() {
     // returns a string
     return window.btoa(JSON.stringify(this.state));
   }
 
+  /**
+   * Decode an encoded application state string
+   *
+   * @param {string} encoded Encoded form of the application state (`this.state`)
+   * @param {boolean} [parse=true] Should the decoded string be parsed as an object?
+   * @returns {(object|string)} Decode state as a string, or parsed as an object
+   * @memberof App
+   */
   decodeState(encoded, parse = true) {
     // returns a string or an object (parsed)
     const decoded = window.atob(encoded);
@@ -82,6 +117,13 @@ class App extends Component {
     }
   }
 
+  /**
+   * Update the current URL
+   *
+   * @param {string} method {update | clear} Should the new URL be updated
+   * with the new encoded state or cleared (new app state)?
+   * @memberof App
+   */
   updateURL(method) {
     const url = new URL(window.location.href);
     switch (method) {
@@ -97,6 +139,13 @@ class App extends Component {
     window.history.pushState({ path: url.href }, '', url.href);
   }
 
+  /**
+   * Set blank state object for the newly selected commander,
+   * followed by `this.updateURL()`
+   *
+   * @param {string} commander Name of the commander being changed to
+   * @memberof App
+   */
   changeCommander(commander) {
     const zeroTalents = this.createZeroTalents(commander);
     this.setState({ commander: commander, ...zeroTalents }, () =>
@@ -104,6 +153,14 @@ class App extends Component {
     );
   }
 
+  /**
+   * Create a new/blank state object for a commander. The individual talent
+   * tree arrays will be filled with an appropriate number of `0`
+   *
+   * @param {string} commander Name of commander to create empty talents for
+   * @returns {object} Object containing `0` arrays for each tree color
+   * @memberof App
+   */
   createZeroTalents(commander) {
     const numRed = Object.keys(Trees[Commanders[commander]['red']]).length;
     const numYellow = Object.keys(Trees[Commanders[commander]['yellow']])
@@ -119,12 +176,27 @@ class App extends Component {
     return zeroTalents;
   }
 
+  /**
+   * Set all tree node values to `0` for the currently selected commander. Followed
+   * by `this.updateURL()`
+   *
+   * @memberof App
+   */
   resetTalents() {
     this.setState(this.createZeroTalents(this.state.commander), () =>
       this.updateURL('update')
     );
   }
 
+  /**
+   * Change the value of a single talent node. Followed by `this.updateURL()`
+   *
+   * @param {string} color Color of the tree the node belongs to
+   * @param {number} idx Index of the node in the tree/color array.
+   * @param {string} how {increase | decrease} Should node value be increased
+   *  or decreased?
+   * @memberof App
+   */
   changeTalentValue(color, idx, how) {
     let newArr = this.state[color];
     if (how === 'increase') {
@@ -135,6 +207,13 @@ class App extends Component {
     this.setState({ [color]: newArr }, () => this.updateURL('update'));
   }
 
+  /**
+   * Calculate the total number of talent points spent. This is just a sum
+   * of all the color/tree array values
+   *
+   * @returns {number} Total number of talent points spent
+   * @memberof App
+   */
   calcPointsSpent() {
     const pointsSpent = [
       ...this.state.red,
@@ -145,6 +224,12 @@ class App extends Component {
     return pointsSpent;
   }
 
+  /**
+   * Calculate number of remaining talent points available to be spent
+   *
+   * @returns {number} Number of remaining talent points
+   * @memberof App
+   */
   calcPointsRemaining() {
     return this.MAXPOINTS - this.calcPointsSpent();
   }

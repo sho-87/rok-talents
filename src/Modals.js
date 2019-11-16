@@ -3,6 +3,12 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 
+/**
+ * Modal displaying warning about an invalid build retrived from URL
+ *
+ * @class InvalidBuildModal
+ * @extends {Component}
+ */
 export class InvalidBuildModal extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +47,12 @@ export class InvalidBuildModal extends Component {
   }
 }
 
+/**
+ * Modal displaying information about the application
+ *
+ * @class AboutModal
+ * @extends {Component}
+ */
 export class AboutModal extends Component {
   constructor(props) {
     super(props);
@@ -93,6 +105,13 @@ export class AboutModal extends Component {
 }
 
 //TODO: combine the toasts modal
+
+/**
+ * Toast showing message upon successful copy of the talent build URL
+ *
+ * @class CopyToast
+ * @extends {Component}
+ */
 export class CopyToast extends Component {
   render() {
     return (
@@ -106,6 +125,13 @@ export class CopyToast extends Component {
   }
 }
 
+/**
+ * Toast showing warning message about missing talents that need to be 
+ * completed prior to the select talent.
+ *
+ * @class PrereqToast
+ * @extends {Component}
+ */
 export class PrereqToast extends Component {
   render() {
     return (
@@ -120,6 +146,12 @@ export class PrereqToast extends Component {
   }
 }
 
+/**
+ * Toast warning message when the maximum number of talents points have been spent
+ *
+ * @class PointLimitToast
+ * @extends {Component}
+ */
 export class PointLimitToast extends Component {
   render() {
     return (
@@ -133,6 +165,11 @@ export class PointLimitToast extends Component {
   }
 }
 
+/**
+ * Tooltip containing information about each talent node. Displayed when 
+ user hovers over a talent
+ *
+ */
 export const TalentTooltip = props => {
   const [popoverOpen, setPopoverOpen] = useState(false);
 
