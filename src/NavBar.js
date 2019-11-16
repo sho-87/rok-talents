@@ -12,17 +12,17 @@ import {
   DropdownItem
 } from 'reactstrap';
 import html2canvas from 'html2canvas';
+import { CopyToast } from './Modals.js';
 
 import Commanders from './data/Commanders.json';
 
 //TODO: add sidebar minimize button
 //TODO: add undo/redo
-//FIXME: screenshot does not support certain CSS props (e.g. blend mode, filter)
-//FIXME: don't use unsupported props to style nodes. use small node images?
 class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      copyToastFlag: false,
       navOpen: false,
       selectOpen: this.props.commander ? false : true
     };
@@ -45,6 +45,14 @@ class NavBar extends Component {
     }));
   }
 
+  showCopyToast() {
+    this.setState({ copyToastFlag: true }, () => {
+      window.setTimeout(() => {
+        this.setState({ copyToastFlag: false });
+      }, 2000);
+    });
+  }
+
   takeScreenshot() {
     html2canvas(document.querySelector('#tree-panel')).then(canvas => {
       const link = document.createElement('a');
@@ -58,7 +66,7 @@ class NavBar extends Component {
   }
 
   copyURL() {
-    this.props.showCopyToast();
+    this.showCopyToast();
 
     const dummy = document.createElement('input');
     const url = window.location.href;
@@ -89,72 +97,76 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">
-          Rise of Kingdoms Talent Builder &#x1F6C8;
-        </NavbarBrand>
+      <React.Fragment>
+        <CopyToast isOpen={this.state.copyToastFlag} />
 
-        <NavbarToggler onClick={this.toggleNav} />
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">
+            Rise of Kingdoms Talent Builder &#x1F6C8;
+          </NavbarBrand>
 
-        <Collapse isOpen={this.state.navOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <form className="form-inline">
-              <button
-                id="button-screenshot"
-                type="button"
-                className="btn btn-sm btn-primary"
-                disabled={this.props.commander ? false : true}
-                onClick={this.takeScreenshot}
-              >
-                Screenshot
-              </button>
-            </form>
-          </Nav>
+          <NavbarToggler onClick={this.toggleNav} />
 
-          <UncontrolledTooltip
-            placement="right"
-            target="button-screenshot"
-            fade={false}
-          >
-            ! Experimental !
-          </UncontrolledTooltip>
+          <Collapse isOpen={this.state.navOpen} navbar>
+            <Nav className="mr-auto" navbar>
+              <form className="form-inline">
+                <button
+                  id="button-screenshot"
+                  type="button"
+                  className="btn btn-sm btn-primary"
+                  disabled={this.props.commander ? false : true}
+                  onClick={this.takeScreenshot}
+                >
+                  Screenshot
+                </button>
+              </form>
+            </Nav>
 
-          <Nav className="ml-auto" navbar>
-            <form className="form-inline">
-              <button
-                type="button"
-                disabled={this.props.commander ? false : true}
-                className="btn btn-sm btn-success"
-                onClick={this.copyURL}
-              >
-                Copy Talents
-              </button>
-              <button
-                type="button"
-                className="btn btn-sm btn-danger"
-                disabled={this.props.commander ? false : true}
-                onClick={this.props.resetTalents}
-              >
-                Reset Talents
-              </button>
-            </form>
-
-            <Dropdown
-              nav
-              inNavbar
-              id="select-commander"
-              isOpen={this.state.selectOpen}
-              toggle={this.toggleSelect}
+            <UncontrolledTooltip
+              placement="right"
+              target="button-screenshot"
+              fade={false}
             >
-              <DropdownToggle nav caret>
-                {this.props.commander ? this.props.commander : 'Commander'}
-              </DropdownToggle>
+              ! Experimental !
+            </UncontrolledTooltip>
 
-              <DropdownMenu right>{this.createSelectItems()}</DropdownMenu>
-            </Dropdown>
-          </Nav>
-        </Collapse>
-      </Navbar>
+            <Nav className="ml-auto" navbar>
+              <form className="form-inline">
+                <button
+                  type="button"
+                  disabled={this.props.commander ? false : true}
+                  className="btn btn-sm btn-success"
+                  onClick={this.copyURL}
+                >
+                  Copy Talents
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-danger"
+                  disabled={this.props.commander ? false : true}
+                  onClick={this.props.resetTalents}
+                >
+                  Reset Talents
+                </button>
+              </form>
+
+              <Dropdown
+                nav
+                inNavbar
+                id="select-commander"
+                isOpen={this.state.selectOpen}
+                toggle={this.toggleSelect}
+              >
+                <DropdownToggle nav caret>
+                  {this.props.commander ? this.props.commander : 'Commander'}
+                </DropdownToggle>
+
+                <DropdownMenu right>{this.createSelectItems()}</DropdownMenu>
+              </Dropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </React.Fragment>
     );
   }
 }

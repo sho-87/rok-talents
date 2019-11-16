@@ -1,28 +1,21 @@
 import React, { Component, Fragment } from 'react';
 import { Collapse } from 'reactstrap';
-import ErrorBoundary from './Error.js';
 
 import Commanders from './data/Commanders.json';
 import Trees from './data/modules.js';
 
-//Sidebar panel
-// https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy
-//TODO: find library for dock/sidepanel?
-//TODO: hide sidebar on smaller screens. unmount tree component?
-class SidebarPanel extends Component {
+class SidePanel extends Component {
   render() {
     return (
-      <div id="sidebar-panel">
-        <ErrorBoundary>
-          <SidebarSummary
-            calcPointsSpent={this.props.calcPointsSpent}
-            calcPointsRemaining={this.props.calcPointsRemaining}
-            commander={this.props.commander}
-            red={this.props.red}
-            yellow={this.props.yellow}
-            blue={this.props.blue}
-          />
-        </ErrorBoundary>
+      <div id="side-panel">
+        <SideSummary
+          calcPointsSpent={this.props.calcPointsSpent}
+          calcPointsRemaining={this.props.calcPointsRemaining}
+          commander={this.props.commander}
+          red={this.props.red}
+          yellow={this.props.yellow}
+          blue={this.props.blue}
+        />
 
         {process.env.NODE_ENV === 'development' && (
           <Fragment>
@@ -38,7 +31,7 @@ class SidebarPanel extends Component {
   }
 }
 
-class SidebarSummary extends Component {
+class SideSummary extends Component {
   constructor(props) {
     super(props);
     this.toggleBonus = this.toggleBonus.bind(this);
@@ -96,13 +89,13 @@ class SidebarSummary extends Component {
     return (
       <Fragment>
         <h1>Summary</h1>
-        <div id="sidebar-panel-summary">
+        <div id="side-panel-summary">
           <p>Points remaining: {this.props.calcPointsRemaining()}</p>
           <p>Points spent: {this.props.calcPointsSpent()}</p>
         </div>
 
         <h2>Stats</h2>
-        <div id="sidebar-panel-stats">
+        <div id="side-panel-stats">
           <p>Attack: {this.calcStats('Attack')}%</p>
           <p>Defense: {this.calcStats('Defense')}%</p>
           <p>Health: {this.calcStats('Health')}%</p>
@@ -110,14 +103,14 @@ class SidebarSummary extends Component {
         </div>
 
         <h2 onClick={this.toggleBonus}>
-          Bonus <span className="sidebar-panel-arrow">{arrow}</span>
+          Bonus <span className="side-panel-arrow">{arrow}</span>
         </h2>
         <Collapse isOpen={this.state.bonusOpen}>
-          <div id="sidebar-panel-bonus">{this.calcStats('Bonus')}</div>
+          <div id="side-panel-bonus">{this.calcStats('Bonus')}</div>
         </Collapse>
       </Fragment>
     );
   }
 }
 
-export default SidebarPanel;
+export default SidePanel;

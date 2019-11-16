@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import SidebarPanel from './SidebarPanel.js';
-import MainPanel from './MainPanel.js';
+import NavBar from './NavBar.js';
+import SidePanel from './SidePanel.js';
+import TreePanel from './TreePanel.js';
+import ErrorBoundary from './Error.js';
 import { InvalidBuildModal } from './Modals.js';
 
 import Trees from './data/modules.js';
@@ -9,7 +11,6 @@ import Commanders from './data/Commanders.json';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Top level talent builder logic
 //TODO: add tree/game/data version to state and data files
 //TODO: add app version?
 //TODO: change encoding method? base64, URI, lz-string, url safe
@@ -17,6 +18,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //TODO: url shortening using sqlite?
 //TODO: manually encode/shorten state containing repeat characters?
 //TODO: react router to store state/version as path instead of query?
+//TODO: find library for dock/sidepanel?
+//TODO: hide side panel on smaller screens. unmount tree component?
 class App extends Component {
   constructor(props) {
     super(props);
@@ -133,25 +136,39 @@ class App extends Component {
       <div id="app">
         {this.invalidModalFlag && <InvalidBuildModal />}
 
-        <SidebarPanel
-          calcPointsSpent={this.calcPointsSpent}
-          calcPointsRemaining={this.calcPointsRemaining}
-          red={this.state.red}
-          yellow={this.state.yellow}
-          blue={this.state.blue}
-          {...this.state} //FIXME: does sidebar really need the entire state?
-        />
+        <ErrorBoundary>
+          <NavBar
+            changeCommander={this.changeCommander}
+            commander={this.state.commander}
+            resetTalents={this.resetTalents}
+          />
+        </ErrorBoundary>
 
-        <MainPanel
-          changeCommander={this.changeCommander}
-          resetTalents={this.resetTalents}
-          changeTalentValue={this.changeTalentValue}
-          calcPointsRemaining={this.calcPointsRemaining}
-          commander={this.state.commander}
-          red={this.state.red}
-          yellow={this.state.yellow}
-          blue={this.state.blue}
-        />
+        <div id="main-container">
+          <ErrorBoundary>
+            <SidePanel
+              calcPointsSpent={this.calcPointsSpent}
+              calcPointsRemaining={this.calcPointsRemaining}
+              red={this.state.red}
+              yellow={this.state.yellow}
+              blue={this.state.blue}
+              {...this.state} //FIXME: does sidebar really need the entire state?
+            />
+          </ErrorBoundary>
+
+          <ErrorBoundary>
+            <TreePanel
+              changeCommander={this.changeCommander}
+              resetTalents={this.resetTalents}
+              changeTalentValue={this.changeTalentValue}
+              calcPointsRemaining={this.calcPointsRemaining}
+              commander={this.state.commander}
+              red={this.state.red}
+              yellow={this.state.yellow}
+              blue={this.state.blue}
+            />
+          </ErrorBoundary>
+        </div>
       </div>
     );
   }
