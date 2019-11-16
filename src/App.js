@@ -10,24 +10,38 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Top level talent builder logic
-//TODO: add tests
 //TODO: add tree/game/data version to state and data files
+//TODO: add app version?
 //TODO: change encoding method? base64, URI, lz-string, url safe
 // or use multiple query params instead of full object to save chars?
 //TODO: url shortening using sqlite?
 //TODO: manually encode/shorten state containing repeat characters?
 //TODO: react router to store state/version as path instead of query?
-//FIXME: state doesnt update instantly from query string
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = this.getEmptyState();
     this.invalidModalFlag = false;
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
     this.changeTalentValue = this.changeTalentValue.bind(this);
     this.calcPointsSpent = this.calcPointsSpent.bind(this);
     this.calcPointsRemaining = this.calcPointsRemaining.bind(this);
+
+    // Set initial state from query string
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('build')) {
+      const build = urlParams.get('build');
+      try {
+        this.state = JSON.parse(window.atob(build));
+      } catch (err) {
+        // Invalid build
+        this.invalidModalFlag = true;
+        this.state = this.getEmptyState();
+        this.updateURL('clear');
+      }
+    } else {
+      this.state = this.getEmptyState();
+    }
 
     this.MAXPOINTS = 74; // max number of points available in-game
   }
@@ -47,23 +61,6 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
-    // Set initial state from query string
-    const urlParams = new URLSearchParams(window.location.search);
-
-    if (urlParams.has('build')) {
-      const build = urlParams.get('build');
-      try {
-        this.setState(JSON.parse(window.atob(build)));
-      } catch (err) {
-        // Invalid build
-        this.invalidModalFlag = true;
-        this.setEmptyState();
-      }
-    }
-  }
-
-  //FIXME: this should be automatic after any/every state change
   updateURL(method) {
     const url = new URL(window.location.href);
     switch (method) {
@@ -79,20 +76,14 @@ class App extends Component {
     window.history.pushState({ path: url.href }, '', url.href);
   }
 
-  changeCommander(e) {
-    const commander = e.target.value;
-    if (commander) {
-      const zeroTalents = this.createZeroTalents();
-      this.setState({ commander: commander, ...zeroTalents }, () =>
-        this.updateURL('update')
-      );
-    } else {
-      this.setEmptyState();
-    }
+  changeCommander(commander) {
+    const zeroTalents = this.createZeroTalents(commander);
+    this.setState({ commander: commander, ...zeroTalents }, () =>
+      this.updateURL('update')
+    );
   }
 
-  createZeroTalents() {
-    const commander = document.getElementById('select-commander').value;
+  createZeroTalents(commander) {
     const numRed = Object.keys(Trees[Commanders[commander]['red']]).length;
     const numYellow = Object.keys(Trees[Commanders[commander]['yellow']])
       .length;
@@ -108,7 +99,9 @@ class App extends Component {
   }
 
   resetTalents() {
-    this.setState(this.createZeroTalents(), () => this.updateURL('update'));
+    this.setState(this.createZeroTalents(this.state.commander), () =>
+      this.updateURL('update')
+    );
   }
 
   changeTalentValue(color, idx, how) {
@@ -141,7 +134,6 @@ class App extends Component {
         {this.invalidModalFlag && <InvalidBuildModal />}
 
         <SidebarPanel
-          changeCommander={this.changeCommander}
           calcPointsSpent={this.calcPointsSpent}
           calcPointsRemaining={this.calcPointsRemaining}
           red={this.state.red}
@@ -149,7 +141,9 @@ class App extends Component {
           blue={this.state.blue}
           {...this.state} //FIXME: does sidebar really need the entire state?
         />
+
         <MainPanel
+          changeCommander={this.changeCommander}
           resetTalents={this.resetTalents}
           changeTalentValue={this.changeTalentValue}
           calcPointsRemaining={this.calcPointsRemaining}

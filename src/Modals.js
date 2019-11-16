@@ -109,7 +109,7 @@ export const TalentTooltip = props => {
         </PopoverHeader>
         <PopoverBody className="node-tooltip-body">
           {props.text}
-          
+
           {process.env.NODE_ENV === 'development' && (
             <div className="node-tooltip-id">ID: {props.target}</div>
           )}

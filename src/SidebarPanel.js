@@ -13,11 +13,6 @@ class SidebarPanel extends Component {
   render() {
     return (
       <div id="sidebar-panel">
-        <SidebarControls
-          changeCommander={this.props.changeCommander}
-          commander={this.props.commander}
-        />
-
         <ErrorBoundary>
           <SidebarSummary
             calcPointsSpent={this.props.calcPointsSpent}
@@ -39,53 +34,6 @@ class SidebarPanel extends Component {
           </Fragment>
         )}
       </div>
-    );
-  }
-}
-
-class SidebarControls extends Component {
-  render() {
-    return (
-      <SidebarCommanderSelect
-        changeCommander={this.props.changeCommander}
-        commander={this.props.commander}
-      />
-    );
-  }
-}
-
-class SidebarCommanderSelect extends Component {
-  createSelectItems() {
-    let items = [];
-    items.push(
-      <option key="" value="">
-        ---
-      </option>
-    );
-
-    Object.keys(Commanders).forEach(c => {
-      items.push(
-        <option key={c} value={c}>
-          {c}
-        </option>
-      );
-    });
-    return items;
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <select
-          autoFocus
-          id="select-commander"
-          className="form-control form-control-sm"
-          value={this.props.commander}
-          onChange={this.props.changeCommander}
-        >
-          {this.createSelectItems()}
-        </select>
-      </Fragment>
     );
   }
 }

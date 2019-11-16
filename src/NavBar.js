@@ -24,7 +24,7 @@ class NavBar extends Component {
     super(props);
     this.state = {
       navOpen: false,
-      selectOpen: false
+      selectOpen: this.props.commander ? false : true
     };
 
     this.toggleNav = this.toggleNav.bind(this);
@@ -77,7 +77,7 @@ class NavBar extends Component {
         <DropdownItem
           key={c}
           onClick={() => {
-            this.commanderSelect(c);
+            this.props.changeCommander(c);
           }}
         >
           {c}
@@ -85,10 +85,6 @@ class NavBar extends Component {
       );
     });
     return items;
-  }
-
-  commanderSelect(c) {
-    console.log(c);
   }
 
   render() {
@@ -146,6 +142,7 @@ class NavBar extends Component {
             <Dropdown
               nav
               inNavbar
+              id="select-commander"
               isOpen={this.state.selectOpen}
               toggle={this.toggleSelect}
             >
