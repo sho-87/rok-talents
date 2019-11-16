@@ -76,11 +76,11 @@ body {
   font-size: 0.8em;
 }
 
-.side-panel-arrow {
-  font-size: 0.5em;
+.side-panel-expand {
+  font-size: 0.4em;
 }
 
-.side-panel-arrow:hover {
+.side-panel-expand:hover {
   color: blue;
 }
 

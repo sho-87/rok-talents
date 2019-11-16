@@ -9,7 +9,7 @@ class SidePanel extends Component {
     super(props);
     this.toggleBonus = this.toggleBonus.bind(this);
     this.state = {
-      bonusOpen: false
+      bonusOpen: true
     };
   }
 
@@ -51,14 +51,6 @@ class SidePanel extends Component {
   }
 
   render() {
-    let arrow;
-
-    if (this.state.bonusOpen) {
-      arrow = '\u25B2';
-    } else {
-      arrow = '\u25BC';
-    }
-
     return (
       <div id="side-panel">
         <h2>Summary</h2>
@@ -76,7 +68,10 @@ class SidePanel extends Component {
         </div>
 
         <h3 onClick={this.toggleBonus}>
-          Bonus <span className="side-panel-arrow">{arrow}</span>
+          Additional Info{' '}
+          <span className="side-panel-expand">
+            {this.state.bonusOpen ? '(collapse)' : '(expand)'}
+          </span>
         </h3>
         <Collapse isOpen={this.state.bonusOpen}>
           <div id="side-panel-bonus">{this.calcStats('Bonus')}</div>
