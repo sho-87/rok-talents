@@ -52,7 +52,7 @@ body {
 #side-panel {
   display: inline-block;
   height: 100%;
-  flex: 0 0 15%;
+  flex: 0 0 20%;
   background-color: #838ca7;
   border: 0.5px solid black;
   overflow-y: auto;

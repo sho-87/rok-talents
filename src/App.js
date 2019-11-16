@@ -149,6 +149,7 @@ class App extends Component {
             <SidePanel
               calcPointsSpent={this.calcPointsSpent}
               calcPointsRemaining={this.calcPointsRemaining}
+              commander={this.state.commander}
               red={this.state.red}
               yellow={this.state.yellow}
               blue={this.state.blue}

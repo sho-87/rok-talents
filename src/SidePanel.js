@@ -5,33 +5,6 @@ import Commanders from './data/Commanders.json';
 import Trees from './data/modules.js';
 
 class SidePanel extends Component {
-  render() {
-    return (
-      <div id="side-panel">
-        <SideSummary
-          calcPointsSpent={this.props.calcPointsSpent}
-          calcPointsRemaining={this.props.calcPointsRemaining}
-          commander={this.props.commander}
-          red={this.props.red}
-          yellow={this.props.yellow}
-          blue={this.props.blue}
-        />
-
-        {process.env.NODE_ENV === 'development' && (
-          <Fragment>
-            <h1>Debug</h1>
-            <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
-            <p>
-              Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}
-            </p>
-          </Fragment>
-        )}
-      </div>
-    );
-  }
-}
-
-class SideSummary extends Component {
   constructor(props) {
     super(props);
     this.toggleBonus = this.toggleBonus.bind(this);
@@ -87,14 +60,14 @@ class SideSummary extends Component {
     }
 
     return (
-      <Fragment>
-        <h1>Summary</h1>
+      <div id="side-panel">
+        <h2>Summary</h2>
         <div id="side-panel-summary">
           <p>Points remaining: {this.props.calcPointsRemaining()}</p>
           <p>Points spent: {this.props.calcPointsSpent()}</p>
         </div>
 
-        <h2>Stats</h2>
+        <h3>Stats</h3>
         <div id="side-panel-stats">
           <p>Attack: {this.calcStats('Attack')}%</p>
           <p>Defense: {this.calcStats('Defense')}%</p>
@@ -102,13 +75,23 @@ class SideSummary extends Component {
           <p>March Speed: {this.calcStats('March Speed')}%</p>
         </div>
 
-        <h2 onClick={this.toggleBonus}>
+        <h3 onClick={this.toggleBonus}>
           Bonus <span className="side-panel-arrow">{arrow}</span>
-        </h2>
+        </h3>
         <Collapse isOpen={this.state.bonusOpen}>
           <div id="side-panel-bonus">{this.calcStats('Bonus')}</div>
         </Collapse>
-      </Fragment>
+
+        {process.env.NODE_ENV === 'development' && (
+          <Fragment>
+            <h2>Debug</h2>
+            <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
+            <p>
+              Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}
+            </p>
+          </Fragment>
+        )}
+      </div>
     );
   }
 }
