@@ -96,8 +96,8 @@ body {
 
   /* background-image: url('./template.jpg');
   background-repeat: no-repeat;
-  background-size: 112%;
-  background-position: -60% -60%; */
+  background-size: 101%;
+  background-position: -1145% 9%; */
 }
 
 .tree-container {
@@ -143,8 +143,8 @@ body {
 }
 
 .hexagon-commander-wrapper img {
-  width: 4vw;
-  height: 4vw;
+  width: 3.5vw;
+  height: 3.5vw;
   z-index: 1;
 }
 
@@ -159,22 +159,22 @@ body {
 .hexagon-label {
   position: absolute;
   width: 9%;
-  font-size: 0.6vw;
+  font-size: 0.5vw;
   font-weight: 700;
   text-align: center;
   mix-blend-mode: multiply;
 }
 
 .hexagon-label-red {
-  transform: translateY(-300%);
+  transform: translateY(-300%) translateY(-50%);
 }
 
 .hexagon-label-yellow {
-  transform: translateX(-60%) translateY(230%);
+  transform: translateX(-50%) translateY(230%);
 }
 
 .hexagon-label-blue {
-  transform: translateX(60%) translateY(230%);
+  transform: translateX(50%) translateY(230%);
 }
 
 .hexagon-talent-wrapper {
@@ -182,7 +182,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 17%; /* adjust to change overall hexagon size */
+  width: 15.5%; /* adjust to change overall hexagon size */
   opacity: 1;
 }
 
