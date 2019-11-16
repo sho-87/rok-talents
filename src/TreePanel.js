@@ -13,14 +13,16 @@ import Commanders from './data/Commanders.json';
 class TreePanel extends Component {
   constructor(props) {
     super(props);
-    this.getTreeName = this.getTreeName.bind(this);
-    this.showPrereqToast = this.showPrereqToast.bind(this);
-    this.showPointLimitToast = this.showPointLimitToast.bind(this);
     this.state = {
       pointLimitToastFlag: false,
       prereqToastFlag: false,
       prereqMsg: ''
     };
+
+    // Context bindings
+    this.getTreeName = this.getTreeName.bind(this);
+    this.showPrereqToast = this.showPrereqToast.bind(this);
+    this.showPointLimitToast = this.showPointLimitToast.bind(this);
   }
 
   getTreeName(color) {
@@ -86,7 +88,7 @@ class TreePanel extends Component {
           msg={this.state.prereqMsg}
         />
         <PointLimitToast isOpen={this.state.pointLimitToastFlag} />
-        
+
         <ErrorBoundary>
           <div id="tree-red" className="tree-container">
             {this.drawNodes(this.props.red, 'red')}

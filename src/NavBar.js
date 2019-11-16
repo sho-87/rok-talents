@@ -28,6 +28,7 @@ class NavBar extends Component {
       selectOpen: this.props.commander ? false : true
     };
 
+    // Context bindings
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.showAbout = this.showAbout.bind(this);

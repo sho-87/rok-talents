@@ -7,10 +7,12 @@ import Trees from './data/modules.js';
 class SidePanel extends Component {
   constructor(props) {
     super(props);
-    this.toggleBonus = this.toggleBonus.bind(this);
     this.state = {
       bonusOpen: true
     };
+    
+    // Context bindings
+    this.toggleBonus = this.toggleBonus.bind(this);
   }
 
   toggleBonus() {
@@ -80,9 +82,9 @@ class SidePanel extends Component {
         {process.env.NODE_ENV === 'development' && (
           <Fragment>
             <h2>Debug</h2>
-            <p>Base64: {window.btoa(JSON.stringify(this.props))}</p>
+            <p>Base64: {this.props.encodeState()}</p>
             <p>
-              Decoded: {window.atob(window.btoa(JSON.stringify(this.props)))}
+              Decoded: {this.props.decodeState(this.props.encodeState(), false)}
             </p>
           </Fragment>
         )}

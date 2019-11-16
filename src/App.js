@@ -23,7 +23,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.MAXPOINTS = 74; // max number of points available in-game
     this.invalidModalFlag = false;
+
+    // Context bindings
+    this.encodeState = this.encodeState.bind(this);
+    this.decodeState = this.decodeState.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
     this.changeTalentValue = this.changeTalentValue.bind(this);
@@ -35,7 +40,7 @@ class App extends Component {
     if (urlParams.has('build')) {
       const build = urlParams.get('build');
       try {
-        this.state = JSON.parse(window.atob(build));
+        this.state = this.decodeState(build);
       } catch (err) {
         // Invalid build
         this.invalidModalFlag = true;
@@ -45,8 +50,6 @@ class App extends Component {
     } else {
       this.state = this.getEmptyState();
     }
-
-    this.MAXPOINTS = 74; // max number of points available in-game
   }
 
   getEmptyState() {
@@ -64,11 +67,26 @@ class App extends Component {
     });
   }
 
+  encodeState() {
+    // returns a string
+    return window.btoa(JSON.stringify(this.state));
+  }
+
+  decodeState(encoded, parse = true) {
+    // returns a string or an object (parsed)
+    const decoded = window.atob(encoded);
+    if (parse) {
+      return JSON.parse(decoded);
+    } else {
+      return decoded;
+    }
+  }
+
   updateURL(method) {
     const url = new URL(window.location.href);
     switch (method) {
       case 'update':
-        url.searchParams.set('build', window.btoa(JSON.stringify(this.state)));
+        url.searchParams.set('build', this.encodeState());
         break;
       case 'clear':
         url.searchParams.delete('build');
@@ -139,21 +157,22 @@ class App extends Component {
         <ErrorBoundary>
           <NavBar
             changeCommander={this.changeCommander}
-            commander={this.state.commander}
             resetTalents={this.resetTalents}
+            commander={this.state.commander}
           />
         </ErrorBoundary>
 
         <div id="main-container">
           <ErrorBoundary>
             <SidePanel
+              encodeState={this.encodeState}
+              decodeState={this.decodeState}
               calcPointsSpent={this.calcPointsSpent}
               calcPointsRemaining={this.calcPointsRemaining}
               commander={this.state.commander}
               red={this.state.red}
               yellow={this.state.yellow}
               blue={this.state.blue}
-              {...this.state} //FIXME: does sidebar really need the entire state?
             />
           </ErrorBoundary>
 
