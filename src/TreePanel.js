@@ -160,6 +160,8 @@ class TreePanel extends Component {
   }
 
   render() {
+    let showTotals = this.state.showTotals && this.props.commander;
+
     return (
       <div id="tree-panel">
         <PrereqToast
@@ -173,7 +175,7 @@ class TreePanel extends Component {
 
         <ErrorBoundary>
           <div id="tree-red" className="tree-container">
-            {this.state.showTotals && (
+            {showTotals && (
               <span id="tree-red-total">{`${this.props.calcPointsSpent(
                 'red'
               )} points`}</span>
@@ -184,7 +186,7 @@ class TreePanel extends Component {
 
         <ErrorBoundary>
           <div id="tree-yellow" className="tree-container">
-            {this.state.showTotals && (
+            {showTotals && (
               <span id="tree-yellow-total">
                 {`${this.props.calcPointsSpent('yellow')} points`}
               </span>
@@ -195,7 +197,7 @@ class TreePanel extends Component {
 
         <ErrorBoundary>
           <div id="tree-blue" className="tree-container">
-            {this.state.showTotals && (
+            {showTotals && (
               <span id="tree-blue-total">
                 {`${this.props.calcPointsSpent('blue')} points`}
               </span>
