@@ -29,9 +29,9 @@ import { AboutModal, CopyToast } from './Modals.js';
 
 import Commanders from './data/Commanders.json';
 
-//TODO: add sidebar minimize button, or add option in settings
 //TODO: add undo/redo
-//TODO: move copy toast to tree panel using refs/temp component
+//TODO: move copy toast to tree panel using refs
+//TODO: move about modal to main app component using refs
 
 /**
  * Nav bar component containing main application buttons/controls
@@ -254,6 +254,13 @@ class NavBar extends Component {
                 <DropdownMenu right>
                   <Form>
                     <FormGroup id="settings-group">
+                    <CustomInput
+                        type="switch"
+                        id="settings-side-panel"
+                        label="Show side panel"
+                        defaultChecked={true}
+                        onChange={e => this.props.toggleSidePanel()}
+                      />
                       <CustomInput
                         type="switch"
                         id="settings-values"

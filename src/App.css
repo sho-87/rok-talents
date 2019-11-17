@@ -48,6 +48,7 @@ body {
 }
 
 #settings-group {
+  width: 160px;
   margin: 0px 10px 0px 10px;
 }
 
@@ -62,7 +63,6 @@ body {
 
 /* Side panel */
 #side-panel {
-  display: inline-block;
   height: 100%;
   flex: 0 0 20%;
   background-color: #838ca7;

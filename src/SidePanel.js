@@ -4,8 +4,8 @@ import { Collapse } from 'reactstrap';
 import Commanders from './data/Commanders.json';
 import Trees from './data/modules.js';
 
- //FIXME: calc stats is super inefficient. each node is checked 
- // multiple times for each stat
+//FIXME: calc stats is super inefficient. each node is checked
+// multiple times for each stat
 
 /**
  * Side panel component displaying stats about the current talent build
@@ -17,11 +17,24 @@ class SidePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sidePanelOpen: true,
       bonusOpen: true
     };
 
     // Context bindings
     this.toggleBonus = this.toggleBonus.bind(this);
+    this.toggleSidePanel = this.toggleSidePanel.bind(this);
+  }
+
+  /**
+   * Toggles visibility of the side panel
+   *
+   * @memberof SidePanel
+   */
+  toggleSidePanel() {
+    this.setState(prevState => ({
+      sidePanelOpen: !prevState.sidePanelOpen
+    }));
   }
 
   /**
@@ -30,15 +43,17 @@ class SidePanel extends Component {
    * @memberof SidePanel
    */
   toggleBonus() {
-    this.setState({ bonusOpen: !this.state.bonusOpen });
+    this.setState(prevState => ({
+      bonusOpen: !prevState.bonusOpen
+    }));
   }
 
   /**
-   * Calculate the total value of a given stat (e.g. attack, health). Additionally, 
+   * Calculate the total value of a given stat (e.g. attack, health). Additionally,
    * stores an array of the bonus stats that don't belong in any of the base state categories
    *
    * @param {string} stat Name of the stat to be calculated (e.g. Defense)
-   * @returns {(String[]|number)} Calculated value of the stat, or array of all selected 
+   * @returns {(String[]|number)} Calculated value of the stat, or array of all selected
    * bonus stats
    * @memberof SidePanel
    */
@@ -76,7 +91,10 @@ class SidePanel extends Component {
 
   render() {
     return (
-      <div id="side-panel">
+      <div
+        id="side-panel"
+        style={{ display: this.state.sidePanelOpen ? 'inline-block' : 'none' }}
+      >
         <h2>Summary</h2>
         <div id="side-panel-summary">
           <p>Points remaining: {this.props.calcPointsRemaining()}</p>

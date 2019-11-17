@@ -18,7 +18,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //TODO: url shortening using sqlite?
 //TODO: manually encode/shorten state containing repeat characters?
 //TODO: react router to store state/version as path instead of query?
-//TODO: find library for dock/sidepanel?
 //TODO: hide side panel on smaller screens. unmount tree component?
 
 /**
@@ -39,6 +38,7 @@ class App extends Component {
     // Context bindings
     this.encodeState = this.encodeState.bind(this);
     this.decodeState = this.decodeState.bind(this);
+    this.toggleSidePanel = this.toggleSidePanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
@@ -248,6 +248,15 @@ class App extends Component {
   }
 
   /**
+   * Toggle display of side panel. Uses a ref to the side panel
+   *
+   * @memberof App
+   */
+  toggleSidePanel() {
+    this.sidePanelRef.toggleSidePanel();
+  }
+
+  /**
    * Toggle display of node values. Uses a ref to the tree panel
    *
    * @memberof App
@@ -273,6 +282,7 @@ class App extends Component {
 
         <ErrorBoundary>
           <NavBar
+            toggleSidePanel={this.toggleSidePanel}
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}
             changeCommander={this.changeCommander}
@@ -284,6 +294,7 @@ class App extends Component {
         <div id="main-container">
           <ErrorBoundary>
             <SidePanel
+              ref={component => (this.sidePanelRef = component)}
               encodeState={this.encodeState}
               decodeState={this.decodeState}
               calcPointsSpent={this.calcPointsSpent}
