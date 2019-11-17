@@ -178,7 +178,9 @@ class TreePanel extends Component {
             {showTotals && (
               <span id="tree-red-total">{`${this.props.calcPointsSpent(
                 'red'
-              )} points`}</span>
+              )} point${
+                this.props.calcPointsSpent('red') !== 1 ? 's' : ''
+              }`}</span>
             )}
             {this.drawNodes(this.props.red, 'red')}
           </div>
@@ -188,7 +190,9 @@ class TreePanel extends Component {
           <div id="tree-yellow" className="tree-container">
             {showTotals && (
               <span id="tree-yellow-total">
-                {`${this.props.calcPointsSpent('yellow')} points`}
+                {`${this.props.calcPointsSpent('yellow')} point${
+                  this.props.calcPointsSpent('yellow') !== 1 ? 's' : ''
+                }`}
               </span>
             )}
             {this.drawNodes(this.props.yellow, 'yellow')}
@@ -199,7 +203,9 @@ class TreePanel extends Component {
           <div id="tree-blue" className="tree-container">
             {showTotals && (
               <span id="tree-blue-total">
-                {`${this.props.calcPointsSpent('blue')} points`}
+                {`${this.props.calcPointsSpent('blue')} point${
+                  this.props.calcPointsSpent('blue') !== 1 ? 's' : ''
+                }`}
               </span>
             )}
             {this.drawNodes(this.props.blue, 'blue')}
