@@ -17,6 +17,10 @@ body {
   align-items: center; /* vertical */
 }
 
+#instructions {
+  color: white;
+}
+
 .toast {
   position: absolute;
   top: 5px;

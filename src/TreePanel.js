@@ -169,6 +169,8 @@ class TreePanel extends Component {
         <PointLimitToast isOpen={this.state.pointLimitToastFlag} />
         <CopyToast isOpen={this.state.copyToastFlag} />
 
+        {!this.props.commander && <Instructions />}
+
         <ErrorBoundary>
           <div id="tree-red" className="tree-container">
             {this.state.showTotals && (
@@ -211,6 +213,20 @@ class TreePanel extends Component {
       </div>
     );
   }
+}
+
+function Instructions(props) {
+  return (
+    <div id="instructions">
+      <ol>
+        <li>Select commander in the top right</li>
+        <li>Left click to add talent points</li>
+        <li>Right click to remove talent points</li>
+        <li>Check your build stats on the left</li>
+        <li>Copy and share your build</li>
+      </ol>
+    </div>
+  );
 }
 
 export default TreePanel;
