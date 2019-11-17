@@ -39,6 +39,8 @@ class App extends Component {
     // Context bindings
     this.encodeState = this.encodeState.bind(this);
     this.decodeState = this.decodeState.bind(this);
+    this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
+    this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
     this.changeTalentValue = this.changeTalentValue.bind(this);
@@ -211,7 +213,7 @@ class App extends Component {
    * Calculate the total number of talent points spent. This is just a sum
    * of all the color/tree array values
    *
-   * @param {string} color Color of the tree to sum. Omitting this param sums 
+   * @param {string} color Color of the tree to sum. Omitting this param sums
    * across all trees
    * @returns {number} Total number of talent points spent
    * @memberof App
@@ -245,6 +247,25 @@ class App extends Component {
     return this.MAXPOINTS - this.calcPointsSpent();
   }
 
+  /**
+   * Toggle display of node values. Uses a ref to the tree panel
+   *
+   * @memberof App
+   */
+  toggleTotalDisplay() {
+    this.treePanelRef.toggleTotalDisplay();
+  }
+
+  /**
+   * Toggle display of total number of points spent in each tree. Uses a ref
+   * to the tree panel
+   *
+   * @memberof App
+   */
+  toggleValueDisplay() {
+    this.treePanelRef.toggleValueDisplay();
+  }
+
   render() {
     return (
       <div id="app">
@@ -252,6 +273,8 @@ class App extends Component {
 
         <ErrorBoundary>
           <NavBar
+            toggleTotalDisplay={this.toggleTotalDisplay}
+            toggleValueDisplay={this.toggleValueDisplay}
             changeCommander={this.changeCommander}
             resetTalents={this.resetTalents}
             commander={this.state.commander}
@@ -274,6 +297,7 @@ class App extends Component {
 
           <ErrorBoundary>
             <TreePanel
+              ref={component => (this.treePanelRef = component)}
               changeCommander={this.changeCommander}
               resetTalents={this.resetTalents}
               changeTalentValue={this.changeTalentValue}

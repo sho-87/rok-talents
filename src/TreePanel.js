@@ -24,13 +24,37 @@ class TreePanel extends Component {
     this.state = {
       pointLimitToastFlag: false,
       prereqToastFlag: false,
-      prereqMsg: ''
+      prereqMsg: '',
+      showTotals: true,
+      showValues: true
     };
 
     // Context bindings
     this.getTreeName = this.getTreeName.bind(this);
     this.showPrereqToast = this.showPrereqToast.bind(this);
     this.showPointLimitToast = this.showPointLimitToast.bind(this);
+  }
+
+  /**
+   * Toggle display of node values
+   *
+   * @memberof TreePanel
+   */
+  toggleTotalDisplay() {
+    this.setState(prevState => ({
+      showTotals: !prevState.showTotals
+    }));
+  }
+
+  /**
+   * Toggle display of total number of points spent in each tree
+   *
+   * @memberof TreePanel
+   */
+  toggleValueDisplay() {
+    this.setState(prevState => ({
+      showValues: !prevState.showValues
+    }));
   }
 
   /**
@@ -98,6 +122,7 @@ class TreePanel extends Component {
           calcPointsRemaining={this.props.calcPointsRemaining}
           showPrereqToast={this.showPrereqToast}
           showPointLimitToast={this.showPointLimitToast}
+          showValues={this.state.showValues}
           key={treeName + i}
           id={treeName + i}
           idx={i}
@@ -130,27 +155,33 @@ class TreePanel extends Component {
 
         <ErrorBoundary>
           <div id="tree-red" className="tree-container">
-            <span id="tree-red-total">{`${this.props.calcPointsSpent(
-              'red'
-            )} points`}</span>
+            {this.state.showTotals && (
+              <span id="tree-red-total">{`${this.props.calcPointsSpent(
+                'red'
+              )} points`}</span>
+            )}
             {this.drawNodes(this.props.red, 'red')}
           </div>
         </ErrorBoundary>
 
         <ErrorBoundary>
           <div id="tree-yellow" className="tree-container">
-            <span id="tree-yellow-total">
-              {`${this.props.calcPointsSpent('yellow')} points`}
-            </span>
+            {this.state.showTotals && (
+              <span id="tree-yellow-total">
+                {`${this.props.calcPointsSpent('yellow')} points`}
+              </span>
+            )}
             {this.drawNodes(this.props.yellow, 'yellow')}
           </div>
         </ErrorBoundary>
 
         <ErrorBoundary>
           <div id="tree-blue" className="tree-container">
-            <span id="tree-blue-total">
-              {`${this.props.calcPointsSpent('blue')} points`}
-            </span>
+            {this.state.showTotals && (
+              <span id="tree-blue-total">
+                {`${this.props.calcPointsSpent('blue')} points`}
+              </span>
+            )}
             {this.drawNodes(this.props.blue, 'blue')}
           </div>
         </ErrorBoundary>

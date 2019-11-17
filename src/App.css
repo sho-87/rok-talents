@@ -30,6 +30,14 @@ body {
   z-index: 10;
 }
 
+#nav-icon {
+  color: black;
+}
+
+#nav-icon:hover {
+  color: blue;
+}
+
 .navbar .btn {
   margin: 1px;
 }
@@ -39,12 +47,8 @@ body {
   filter: saturate(10%);
 }
 
-#nav-icon {
-  color: black;
-}
-
-#nav-icon:hover {
-  color: blue;
+#settings-group {
+  margin: 0px 10px 0px 10px;
 }
 
 /* Main panel container */

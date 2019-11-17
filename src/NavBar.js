@@ -9,7 +9,10 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Form,
+  FormGroup,
+  CustomInput
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -18,6 +21,7 @@ import {
   faCamera,
   faCopy,
   faTrashAlt,
+  faCog,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import html2canvas from 'html2canvas';
@@ -25,10 +29,9 @@ import { AboutModal, CopyToast } from './Modals.js';
 
 import Commanders from './data/Commanders.json';
 
-//TODO: add sidebar minimize button
+//TODO: add sidebar minimize button, or add option in settings
 //TODO: add undo/redo
 //TODO: move copy toast to tree panel using refs/temp component
-//TODO: add dropdown with options (hide lines, hide full/partial/all values etc)
 
 /**
  * Nav bar component containing main application buttons/controls
@@ -43,11 +46,13 @@ class NavBar extends Component {
       aboutModalFlag: false,
       copyToastFlag: false,
       navOpen: false,
+      settingsOpen: false,
       selectOpen: this.props.commander ? false : true
     };
 
     // Context bindings
     this.toggleNav = this.toggleNav.bind(this);
+    this.toggleSettings = this.toggleSettings.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.showAbout = this.showAbout.bind(this);
     this.takeScreenshot = this.takeScreenshot.bind(this);
@@ -73,6 +78,17 @@ class NavBar extends Component {
   toggleSelect() {
     this.setState(prevState => ({
       selectOpen: !prevState.selectOpen
+    }));
+  }
+
+  /**
+   * Toggle open state of the settings select dropdown
+   *
+   * @memberof NavBar
+   */
+  toggleSettings() {
+    this.setState(prevState => ({
+      settingsOpen: !prevState.settingsOpen
     }));
   }
 
@@ -223,6 +239,39 @@ class NavBar extends Component {
               >
                 ! Experimental !
               </UncontrolledTooltip>
+
+              <Dropdown
+                nav
+                inNavbar
+                id="select-settings"
+                isOpen={this.state.settingsOpen}
+                toggle={this.toggleSettings}
+              >
+                <DropdownToggle nav caret>
+                  <FontAwesomeIcon icon={faCog} /> Settings
+                </DropdownToggle>
+
+                <DropdownMenu right>
+                  <Form>
+                    <FormGroup id="settings-group">
+                      <CustomInput
+                        type="switch"
+                        id="settings-values"
+                        label="Show values"
+                        defaultChecked={true}
+                        onChange={e => this.props.toggleValueDisplay()}
+                      />
+                      <CustomInput
+                        type="switch"
+                        id="settings-totals"
+                        label="Show totals"
+                        defaultChecked={true}
+                        onChange={e => this.props.toggleTotalDisplay()}
+                      />
+                    </FormGroup>
+                  </Form>
+                </DropdownMenu>
+              </Dropdown>
 
               <Dropdown
                 nav

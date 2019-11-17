@@ -56,10 +56,10 @@ export class HexagonCommander extends Component {
  */
 export class Node extends Component {
   /**
-   * Determine styling of the node. CSS style depends on whether the node is 
+   * Determine styling of the node. CSS style depends on whether the node is
    * a large skill node or a small stat node
    *
-   * @returns {object} Object containing the CSS styles 
+   * @returns {object} Object containing the CSS styles
    * (e.g. positioning, background image) for the node
    * @memberof Node
    */
@@ -79,8 +79,8 @@ export class Node extends Component {
   //FIXME: this is so hacky...
 
   /**
-   * Set the CSS class of the node if it is a small node type. Applied 
-   * classes depend on both the node size, as well as whether 
+   * Set the CSS class of the node if it is a small node type. Applied
+   * classes depend on both the node size, as well as whether
    * the node is currently active/selected
    *
    * @returns {string} String representing the CSS classes of the node
@@ -97,7 +97,7 @@ export class Node extends Component {
   }
 
   /**
-   * Set tooltip for the node. Tooltip text is dynamic as it depends on the 
+   * Set tooltip for the node. Tooltip text is dynamic as it depends on the
    * current level of the node
    *
    * @returns {string} Updated tooltip text reflecting the level of the node
@@ -117,10 +117,10 @@ export class Node extends Component {
   }
 
   /**
-   * Increase the value of the clicked node. Controls whether the node can 
-   * be increased (e.g. max level reached, max talent points spent), as well 
+   * Increase the value of the clicked node. Controls whether the node can
+   * be increased (e.g. max level reached, max talent points spent), as well
    * as the display of associated toasts and missing prerequisite talents
-   * 
+   *
    * Additionally, `this.state` is updated to reflect current node value
    *
    * @memberof Node
@@ -163,8 +163,8 @@ export class Node extends Component {
   }
 
   /**
-   * Decrease value of the clicked node and update `this.state` to reflect 
-   * the new value. Checks whether the node can be decreased in the event of 
+   * Decrease value of the clicked node and update `this.state` to reflect
+   * the new value. Checks whether the node can be decreased in the event of
    * having dependent nodes. Context menu is disabled
    *
    * @param {MouseEvent} e Mouse context event
@@ -195,6 +195,8 @@ export class Node extends Component {
   }
 
   render() {
+    let showValues = this.props.showValues && this.props.value !== 0;
+
     return (
       <Fragment>
         <div
@@ -206,7 +208,7 @@ export class Node extends Component {
           onClick={() => this.talentIncrease()}
           onContextMenu={e => this.talentDecrease(e)}
         >
-          {this.props.value !== 0 && (
+          {showValues && (
             <div
               className={`node-value ${
                 this.props.type === 'node-small'

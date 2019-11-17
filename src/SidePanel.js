@@ -4,6 +4,9 @@ import { Collapse } from 'reactstrap';
 import Commanders from './data/Commanders.json';
 import Trees from './data/modules.js';
 
+ //FIXME: calc stats is super inefficient. each node is checked 
+ // multiple times for each stat
+
 /**
  * Side panel component displaying stats about the current talent build
  *
@@ -29,8 +32,6 @@ class SidePanel extends Component {
   toggleBonus() {
     this.setState({ bonusOpen: !this.state.bonusOpen });
   }
-
-  //FIXME: super inefficient. each node checked multiple times for each stat
 
   /**
    * Calculate the total value of a given stat (e.g. attack, health). Additionally, 
