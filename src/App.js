@@ -38,6 +38,7 @@ class App extends Component {
     // Context bindings
     this.encodeState = this.encodeState.bind(this);
     this.decodeState = this.decodeState.bind(this);
+    this.copyURL = this.copyURL.bind(this);
     this.toggleSidePanel = this.toggleSidePanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
@@ -139,6 +140,24 @@ class App extends Component {
         break;
     }
     window.history.pushState({ path: url.href }, '', url.href);
+  }
+
+  /**
+   * Copy the current application URL to clipboard
+   *
+   * @memberof App
+   */
+  copyURL() {
+    this.treePanelRef.showCopyToast();
+
+    const dummy = document.createElement('input');
+    const url = window.location.href;
+
+    document.body.appendChild(dummy);
+    dummy.value = url;
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
   }
 
   /**
@@ -282,6 +301,7 @@ class App extends Component {
 
         <ErrorBoundary>
           <NavBar
+            copyURL={this.copyURL}
             toggleSidePanel={this.toggleSidePanel}
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}

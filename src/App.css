@@ -18,8 +18,8 @@ body {
 }
 
 .toast {
-  position: fixed;
-  top: 60px;
+  position: absolute;
+  top: 5px;
   right: 5px;
   z-index: 2;
 }

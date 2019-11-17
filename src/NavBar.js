@@ -25,12 +25,11 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import html2canvas from 'html2canvas';
-import { AboutModal, CopyToast } from './Modals.js';
+import { AboutModal } from './Modals.js';
 
 import Commanders from './data/Commanders.json';
 
 //TODO: add undo/redo
-//TODO: move copy toast to tree panel using refs
 
 /**
  * Nav bar component containing main application buttons/controls
@@ -43,7 +42,6 @@ class NavBar extends Component {
     super(props);
     this.state = {
       aboutModalFlag: false,
-      copyToastFlag: false,
       navOpen: false,
       settingsOpen: false,
       selectOpen: this.props.commander ? false : true
@@ -55,7 +53,6 @@ class NavBar extends Component {
     this.toggleSelect = this.toggleSelect.bind(this);
     this.showAbout = this.showAbout.bind(this);
     this.takeScreenshot = this.takeScreenshot.bind(this);
-    this.copyURL = this.copyURL.bind(this);
   }
 
   /**
@@ -103,20 +100,6 @@ class NavBar extends Component {
   }
 
   /**
-   * Control visibility of a toast indicating that the talent build
-   * has been copied/saved. Toast is automatically hidden after a delay
-   *
-   * @memberof NavBar
-   */
-  showCopyToast() {
-    this.setState({ copyToastFlag: true }, () => {
-      window.setTimeout(() => {
-        this.setState({ copyToastFlag: false });
-      }, 2000);
-    });
-  }
-
-  /**
    * Create a png screenshot of the tree panel. Offer to download/save the
    * generated screenshot.
    *
@@ -132,24 +115,6 @@ class NavBar extends Component {
       link.click();
       document.body.removeChild(link);
     });
-  }
-
-  /**
-   * Copy the current application URL to clipboard
-   *
-   * @memberof NavBar
-   */
-  copyURL() {
-    this.showCopyToast();
-
-    const dummy = document.createElement('input');
-    const url = window.location.href;
-
-    document.body.appendChild(dummy);
-    dummy.value = url;
-    dummy.select();
-    document.execCommand('copy');
-    document.body.removeChild(dummy);
   }
 
   /**
@@ -180,8 +145,6 @@ class NavBar extends Component {
       <React.Fragment>
         {this.state.aboutModalFlag && <AboutModal showAbout={this.showAbout} />}
 
-        <CopyToast isOpen={this.state.copyToastFlag} />
-
         <Navbar color="light" light expand="md">
           <NavbarBrand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
             <FontAwesomeIcon icon={faHome} />
@@ -207,7 +170,7 @@ class NavBar extends Component {
                   type="button"
                   disabled={this.props.commander ? false : true}
                   className="btn btn-sm btn-success"
-                  onClick={this.copyURL}
+                  onClick={this.props.copyURL}
                 >
                   <FontAwesomeIcon icon={faCopy} /> Copy Talents
                 </button>
@@ -253,7 +216,7 @@ class NavBar extends Component {
                 <DropdownMenu right>
                   <Form>
                     <FormGroup id="settings-group">
-                    <CustomInput
+                      <CustomInput
                         type="switch"
                         id="settings-side-panel"
                         label="Show side panel"

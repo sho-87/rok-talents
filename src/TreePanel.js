@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HexagonCommander, Node } from './Shapes.js';
-import { PrereqToast, PointLimitToast } from './Modals.js';
+import { PrereqToast, PointLimitToast, CopyToast } from './Modals.js';
 import ErrorBoundary from './Error.js';
 
 import Trees from './data/modules.js';
@@ -22,6 +22,7 @@ class TreePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      copyToastFlag: false,
       pointLimitToastFlag: false,
       prereqToastFlag: false,
       prereqMsg: '',
@@ -103,6 +104,20 @@ class TreePanel extends Component {
   }
 
   /**
+   * Control visibility of a toast indicating that the talent build
+   * has been copied/saved. Toast is automatically hidden after a delay
+   *
+   * @memberof TreePanel
+   */
+  showCopyToast() {
+    this.setState({ copyToastFlag: true }, () => {
+      window.setTimeout(() => {
+        this.setState({ copyToastFlag: false });
+      }, 2000);
+    });
+  }
+
+  /**
    * Create an array of all talent nodes for the current commander
    *
    * @param {number[]} values Array containing the node values stored
@@ -152,6 +167,7 @@ class TreePanel extends Component {
           msg={this.state.prereqMsg}
         />
         <PointLimitToast isOpen={this.state.pointLimitToastFlag} />
+        <CopyToast isOpen={this.state.copyToastFlag} />
 
         <ErrorBoundary>
           <div id="tree-red" className="tree-container">
