@@ -27,6 +27,7 @@ import Commanders from './data/Commanders.json';
 
 //TODO: add sidebar minimize button
 //TODO: add undo/redo
+//TODO: move copy toast to tree panel using refs/temp component
 //TODO: add dropdown with options (hide lines, hide full/partial/all values etc)
 
 /**
