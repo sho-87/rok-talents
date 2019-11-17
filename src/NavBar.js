@@ -31,7 +31,6 @@ import Commanders from './data/Commanders.json';
 
 //TODO: add undo/redo
 //TODO: move copy toast to tree panel using refs
-//TODO: move about modal to main app component using refs
 
 /**
  * Nav bar component containing main application buttons/controls

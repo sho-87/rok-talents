@@ -77,7 +77,7 @@ export class AboutModal extends Component {
       <Modal
         isOpen={this.state.modal}
         toggle={this.toggle}
-        unmountOnClose={false}
+        unmountOnClose={true}
       >
         <ModalHeader toggle={this.toggle}>
           Rise of Kingdoms Talent Builder
