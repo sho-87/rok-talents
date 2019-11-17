@@ -31,6 +31,7 @@ export class InvalidBuildModal extends Component {
         isOpen={this.state.modal}
         toggle={this.toggle}
         unmountOnClose={true}
+        centered
       >
         <ModalHeader toggle={this.toggle}>Invalid Talent Build</ModalHeader>
         <ModalBody>
@@ -78,6 +79,7 @@ export class AboutModal extends Component {
         isOpen={this.state.modal}
         toggle={this.toggle}
         unmountOnClose={true}
+        centered
       >
         <ModalHeader toggle={this.toggle}>
           Rise of Kingdoms Talent Builder
