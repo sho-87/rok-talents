@@ -211,15 +211,26 @@ class App extends Component {
    * Calculate the total number of talent points spent. This is just a sum
    * of all the color/tree array values
    *
+   * @param {string} color Color of the tree to sum. Omitting this param sums 
+   * across all trees
    * @returns {number} Total number of talent points spent
    * @memberof App
    */
-  calcPointsSpent() {
-    const pointsSpent = [
-      ...this.state.red,
-      ...this.state.yellow,
-      ...this.state.blue
-    ].reduce((partial_sum, a) => partial_sum + a, 0);
+  calcPointsSpent(color = 'total') {
+    let pointsSpent = 'NA';
+
+    if (color === 'total') {
+      pointsSpent = [
+        ...this.state.red,
+        ...this.state.yellow,
+        ...this.state.blue
+      ].reduce((partial, a) => partial + a, 0);
+    } else {
+      pointsSpent = [...this.state[color]].reduce(
+        (partial, a) => partial + a,
+        0
+      );
+    }
 
     return pointsSpent;
   }
@@ -266,6 +277,7 @@ class App extends Component {
               changeCommander={this.changeCommander}
               resetTalents={this.resetTalents}
               changeTalentValue={this.changeTalentValue}
+              calcPointsSpent={this.calcPointsSpent}
               calcPointsRemaining={this.calcPointsRemaining}
               commander={this.state.commander}
               red={this.state.red}

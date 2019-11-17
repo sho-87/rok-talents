@@ -12,7 +12,7 @@ import Commanders from './data/Commanders.json';
 //FIXME: don't use unsupported props to style nodes. use small node images?
 
 /**
- * Component for the main tree panel. Controls the display of all nodes and 
+ * Component for the main tree panel. Controls the display of all nodes and
  * node selections
  *
  * @class TreePanel
@@ -34,7 +34,7 @@ class TreePanel extends Component {
   }
 
   /**
-   * Get the full name of a talent tree (e.g. Skill, Garrison). The name 
+   * Get the full name of a talent tree (e.g. Skill, Garrison). The name
    * depends on the tree color and the currently selected commander
    *
    * @param {string} color Color of the tree to retrieve the name for
@@ -49,7 +49,7 @@ class TreePanel extends Component {
   }
 
   /**
-   * Show a toast containing a list of missing prerequisite talents. Toast is 
+   * Show a toast containing a list of missing prerequisite talents. Toast is
    * hidden automatically after a delay.
    *
    * @param {Array} msg Array of `li` elements containing the names of
@@ -65,7 +65,7 @@ class TreePanel extends Component {
   }
 
   /**
-   * Show toast warning about reaching the maximum talent point limit. Toast 
+   * Show toast warning about reaching the maximum talent point limit. Toast
    * is hidden automatically after a delay.
    *
    * @memberof TreePanel
@@ -81,7 +81,7 @@ class TreePanel extends Component {
   /**
    * Create an array of all talent nodes for the current commander
    *
-   * @param {number[]} values Array containing the node values stored 
+   * @param {number[]} values Array containing the node values stored
    * in `this.state` for a given tree color
    * @param {string} color Color of the tree to generate nodes for
    * @returns {Array} Array of `Node`'s for a given tree
@@ -130,18 +130,27 @@ class TreePanel extends Component {
 
         <ErrorBoundary>
           <div id="tree-red" className="tree-container">
+            <span id="tree-red-total">{`${this.props.calcPointsSpent(
+              'red'
+            )} points`}</span>
             {this.drawNodes(this.props.red, 'red')}
           </div>
         </ErrorBoundary>
 
         <ErrorBoundary>
           <div id="tree-yellow" className="tree-container">
+            <span id="tree-yellow-total">
+              {`${this.props.calcPointsSpent('yellow')} points`}
+            </span>
             {this.drawNodes(this.props.yellow, 'yellow')}
           </div>
         </ErrorBoundary>
 
         <ErrorBoundary>
           <div id="tree-blue" className="tree-container">
+            <span id="tree-blue-total">
+              {`${this.props.calcPointsSpent('blue')} points`}
+            </span>
             {this.drawNodes(this.props.blue, 'blue')}
           </div>
         </ErrorBoundary>

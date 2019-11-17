@@ -117,21 +117,40 @@ body {
 }
 
 #tree-red {
-  top: 0;
+  top: 0%;
   left: 50%;
-  /* border: 0.5px solid red; */
+  border: 0.5px solid red;
+}
+
+#tree-red-total {
+  position: absolute;
+  top: 0%;
+  left: -4%;
+  color: red;
 }
 
 #tree-yellow {
   top: 50%;
-  left: 0;
-  /* border: 0.5px solid yellow; */
+  left: 0%;
+  border: 0.5px solid yellow;
+}
+
+#tree-yellow-total {
+  position: absolute;
+  bottom: 0%;
+  color: yellow;
 }
 
 #tree-blue {
   top: 50%;
   left: 50%;
-  /* border: 0.5px solid blue; */
+  border: 0.5px solid blue;
+}
+
+#tree-blue-total {
+  position: absolute;
+  bottom: 0%;
+  color: blue;
 }
 
 #tree-center {
