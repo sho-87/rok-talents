@@ -100,13 +100,13 @@ class NavBar extends Component {
   }
 
   /**
-   * Create a png screenshot of the tree panel. Offer to download/save the
+   * Create a png screenshot of the main container. Offer to download/save the
    * generated screenshot.
    *
    * @memberof NavBar
    */
   takeScreenshot() {
-    html2canvas(document.querySelector('#tree-panel')).then(canvas => {
+    html2canvas(document.querySelector('#main-container')).then(canvas => {
       const link = document.createElement('a');
       link.href = canvas.toDataURL();
       link.download = `${this.props.commander} talents.png`;
