@@ -30,6 +30,7 @@ import { AboutModal } from './Modals.js';
 import Commanders from './data/Commanders.json';
 
 //TODO: add undo/redo
+//TODO: disable copy/reset buttons if no talents selected
 
 /**
  * Nav bar component containing main application buttons/controls

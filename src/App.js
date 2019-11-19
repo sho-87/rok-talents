@@ -17,7 +17,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // or use multiple query params instead of full object to save chars?
 //TODO: url shortening using sqlite?
 //TODO: manually encode/shorten state containing repeat characters?
-//TODO: react router to store state/version as path instead of query?
+//TODO: shorten state keys, and use IDs instead of full commander names?
+//TODO: react router to store state/commander/version as path instead of query?
 //TODO: hide side panel on smaller screens. unmount tree component?
 
 /**
