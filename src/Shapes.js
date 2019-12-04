@@ -3,7 +3,6 @@ import { TalentTooltip } from './Modals.js';
 import Trees from './data/modules.js';
 
 //FIXME: tree labels in hexagon need to be tied to a div so theyre always centered
-//FIXME: fix location of node labels. tie to the node div
 
 /**
  * Component containing the central commander image and skill label hexagon
@@ -38,6 +37,7 @@ export class HexagonCommander extends Component {
             <img
               src={`images/commanders/${this.props.commander}.png`}
               alt={this.props.commander}
+              onClick={()=>{this.props.toggleSelect()}}
             ></img>
           </div>
         </div>
@@ -49,7 +49,7 @@ export class HexagonCommander extends Component {
 }
 
 //FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
-//FIXME: fix node value positioning
+//FIXME: fix location of node labels. tie to the node div
 
 /**
  * Component for the individual talent nodes

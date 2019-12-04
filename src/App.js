@@ -19,7 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //TODO: manually encode/shorten state containing repeat characters?
 //TODO: shorten state keys, and use IDs instead of full commander names?
 //TODO: react router to store state/commander/version as path instead of query?
-//TODO: hide side panel on smaller screens. unmount tree component?
+//TODO: hide side panel automatically on smaller screens
 
 /**
  * Main application component. Contains high level logic for managing application state
@@ -43,6 +43,7 @@ class App extends Component {
     this.toggleSidePanel = this.toggleSidePanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
+    this.toggleSelect = this.toggleSelect.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
     this.changeTalentValue = this.changeTalentValue.bind(this);
@@ -99,7 +100,6 @@ class App extends Component {
    * @memberof App
    */
   encodeState() {
-    // returns a string
     return window.btoa(JSON.stringify(this.state));
   }
 
@@ -112,7 +112,6 @@ class App extends Component {
    * @memberof App
    */
   decodeState(encoded, parse = true) {
-    // returns a string or an object (parsed)
     const decoded = window.atob(encoded);
     if (parse) {
       return JSON.parse(decoded);
@@ -295,6 +294,15 @@ class App extends Component {
     this.treePanelRef.toggleValueDisplay();
   }
 
+  /**
+   * Toggle commander select dropdown. Uses a ref to the navbar
+   *
+   * @memberof App
+   */
+  toggleSelect() {
+    this.navBarRef.toggleSelect();
+  }
+
   render() {
     return (
       <div id="app">
@@ -302,6 +310,7 @@ class App extends Component {
 
         <ErrorBoundary>
           <NavBar
+            ref={component => (this.navBarRef = component)}
             copyURL={this.copyURL}
             toggleSidePanel={this.toggleSidePanel}
             toggleTotalDisplay={this.toggleTotalDisplay}
@@ -330,6 +339,7 @@ class App extends Component {
           <ErrorBoundary>
             <TreePanel
               ref={component => (this.treePanelRef = component)}
+              toggleSelect={this.toggleSelect}
               changeCommander={this.changeCommander}
               resetTalents={this.resetTalents}
               changeTalentValue={this.changeTalentValue}

@@ -172,7 +172,7 @@ class TreePanel extends Component {
         <CopyToast isOpen={this.state.copyToastFlag} />
 
         {!this.props.commander && <Instructions />}
-        
+
         <div id="tree-square-container">
           <div id="tree-square-section">
             <div id="tree-square-content">
@@ -217,6 +217,7 @@ class TreePanel extends Component {
 
               <ErrorBoundary>
                 <HexagonCommander
+                  toggleSelect={this.props.toggleSelect}
                   commander={this.props.commander}
                   getTreeName={this.getTreeName}
                 />

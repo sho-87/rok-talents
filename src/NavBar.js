@@ -31,7 +31,7 @@ import Commanders from './data/Commanders.json';
 
 //TODO: add undo/redo
 //TODO: disable copy/reset buttons if no talents selected
-//TODO: remove button text? add tooltip instead?
+//TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
 
 /**

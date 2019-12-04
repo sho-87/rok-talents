@@ -4,8 +4,7 @@ import { Collapse } from 'reactstrap';
 import Commanders from './data/Commanders.json';
 import Trees from './data/modules.js';
 
-//FIXME: calc stats is super inefficient. each node is checked
-// multiple times for each stat
+//FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
 
 /**
  * Side panel component displaying stats about the current talent build
