@@ -1,3 +1,13 @@
+/* Global variables */
+:root {
+  --nav-bar-height: 50px;
+  --side-panel-width: 20%;
+  --hexagon-opacity: 1;
+  --red: rgba(190, 50, 25, 1);
+  --yellow: rgba(183, 156, 4, 1);
+  --blue: rgba(22, 159, 227, 1);
+}
+
 html,
 body {
   -webkit-touch-callout: none;
@@ -32,7 +42,7 @@ body {
 
 /* Nav bar */
 .navbar {
-  height: 50px;
+  height: var(--nav-bar-height);
   width: 100vw;
   z-index: 10;
 }
@@ -71,7 +81,7 @@ body {
 /* Side panel */
 #side-panel {
   height: 100%;
-  flex: 0 0 20%;
+  flex: 0 0 var(--side-panel-width);
   background-color: #838ca7;
   border: 0.5px solid black;
   overflow-y: auto;
@@ -122,8 +132,8 @@ body {
 #tree-square-container {
   height: 100%;
   width: 100%;
-  max-width: calc(100vh - 50px); /* height of nav bar */
-  max-height: calc(100vw - 20%); /* width of side bar */
+  max-width: calc(100vh - var(--nav-bar-height)); /* height of nav bar */
+  max-height: calc(100vw - var(--side-panel-width)); /* width of side bar */
   margin: 0 auto;
 }
 
@@ -151,38 +161,38 @@ body {
 #tree-red {
   top: 0%;
   left: 50%;
-  border: 0.5px solid red;
+  border: 0.5px solid var(--red);
 }
 
 #tree-red-total {
   position: absolute;
   top: 0%;
   left: -4%;
-  color: red;
+  color: var(--red);
 }
 
 #tree-yellow {
   top: 50%;
   left: 0%;
-  border: 0.5px solid yellow;
+  border: 0.5px solid var(--yellow);
 }
 
 #tree-yellow-total {
   position: absolute;
   bottom: 0%;
-  color: yellow;
+  color: var(--yellow);
 }
 
 #tree-blue {
   top: 50%;
   left: 50%;
-  border: 0.5px solid blue;
+  border: 0.5px solid var(--blue);
 }
 
 #tree-blue-total {
   position: absolute;
   bottom: 0%;
-  color: blue;
+  color: var(--blue);
 }
 
 #tree-center {
@@ -201,7 +211,7 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  opacity: 1;
+  opacity: var(--hexagon-opacity);
 }
 
 .hexagon-commander-wrapper img {
@@ -216,6 +226,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 50%;
+  opacity: var(--hexagon-opacity);
 }
 
 .hexagon-label {
@@ -244,8 +255,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: var(--hexagon-opacity);
   width: 26%; /* adjust to change overall hexagon size */
-  opacity: 1;
 }
 
 .hexagon-talent-red,
@@ -316,19 +327,19 @@ body {
 }
 
 .node-small-inactive {
-  background-color: rgb(177, 177, 177);
+  background-color: gray;
 }
 
 .node-small-red {
-  background-color: rgba(190, 50, 25, 1);
+  background-color: var(--red);
 }
 
 .node-small-yellow {
-  background-color: rgba(183, 156, 4, 1);
+  background-color: var(--yellow);
 }
 
 .node-small-blue {
-  background-color: rgba(22, 159, 227, 1);
+  background-color: var(--blue);
 }
 
 .node-small {
