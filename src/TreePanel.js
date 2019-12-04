@@ -8,7 +8,6 @@ import Commanders from './data/Commanders.json';
 
 //TODO: lazy load large data modules
 //TODO: use media queries to set element sizes instead of vw/vh/%
-//TODO: preserve aspect ratio of main container, or individual tree boxes
 //FIXME: screenshot does not support certain CSS props (e.g. blend mode, filter)
 //FIXME: don't use unsupported props to style nodes. use small node images?
 
@@ -173,52 +172,58 @@ class TreePanel extends Component {
         <CopyToast isOpen={this.state.copyToastFlag} />
 
         {!this.props.commander && <Instructions />}
+        
+        <div id="tree-square-container">
+          <div id="tree-square-section">
+            <div id="tree-square-content">
+              <ErrorBoundary>
+                <div id="tree-red" className="tree-container">
+                  {showTotals && (
+                    <span id="tree-red-total">{`${this.props.calcPointsSpent(
+                      'red'
+                    )} point${
+                      this.props.calcPointsSpent('red') !== 1 ? 's' : ''
+                    }`}</span>
+                  )}
+                  {this.drawNodes(this.props.red, 'red')}
+                </div>
+              </ErrorBoundary>
 
-        <ErrorBoundary>
-          <div id="tree-red" className="tree-container">
-            {showTotals && (
-              <span id="tree-red-total">{`${this.props.calcPointsSpent(
-                'red'
-              )} point${
-                this.props.calcPointsSpent('red') !== 1 ? 's' : ''
-              }`}</span>
-            )}
-            {this.drawNodes(this.props.red, 'red')}
+              <ErrorBoundary>
+                <div id="tree-yellow" className="tree-container">
+                  {showTotals && (
+                    <span id="tree-yellow-total">
+                      {`${this.props.calcPointsSpent('yellow')} point${
+                        this.props.calcPointsSpent('yellow') !== 1 ? 's' : ''
+                      }`}
+                    </span>
+                  )}
+                  {this.drawNodes(this.props.yellow, 'yellow')}
+                </div>
+              </ErrorBoundary>
+
+              <ErrorBoundary>
+                <div id="tree-blue" className="tree-container">
+                  {showTotals && (
+                    <span id="tree-blue-total">
+                      {`${this.props.calcPointsSpent('blue')} point${
+                        this.props.calcPointsSpent('blue') !== 1 ? 's' : ''
+                      }`}
+                    </span>
+                  )}
+                  {this.drawNodes(this.props.blue, 'blue')}
+                </div>
+              </ErrorBoundary>
+
+              <ErrorBoundary>
+                <HexagonCommander
+                  commander={this.props.commander}
+                  getTreeName={this.getTreeName}
+                />
+              </ErrorBoundary>
+            </div>
           </div>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <div id="tree-yellow" className="tree-container">
-            {showTotals && (
-              <span id="tree-yellow-total">
-                {`${this.props.calcPointsSpent('yellow')} point${
-                  this.props.calcPointsSpent('yellow') !== 1 ? 's' : ''
-                }`}
-              </span>
-            )}
-            {this.drawNodes(this.props.yellow, 'yellow')}
-          </div>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <div id="tree-blue" className="tree-container">
-            {showTotals && (
-              <span id="tree-blue-total">
-                {`${this.props.calcPointsSpent('blue')} point${
-                  this.props.calcPointsSpent('blue') !== 1 ? 's' : ''
-                }`}
-              </span>
-            )}
-            {this.drawNodes(this.props.blue, 'blue')}
-          </div>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <HexagonCommander
-            commander={this.props.commander}
-            getTreeName={this.getTreeName}
-          />
-        </ErrorBoundary>
+        </div>
       </div>
     );
   }

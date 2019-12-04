@@ -31,6 +31,8 @@ import Commanders from './data/Commanders.json';
 
 //TODO: add undo/redo
 //TODO: disable copy/reset buttons if no talents selected
+//TODO: remove button text? add tooltip instead?
+//TODO: disable nav bar collapse/expand?
 
 /**
  * Nav bar component containing main application buttons/controls
@@ -146,7 +148,7 @@ class NavBar extends Component {
       <React.Fragment>
         {this.state.aboutModalFlag && <AboutModal showAbout={this.showAbout} />}
 
-        <Navbar color="light" light expand="md">
+        <Navbar color="light" light expand="lg">
           <NavbarBrand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
             <FontAwesomeIcon icon={faHome} />
           </NavbarBrand>

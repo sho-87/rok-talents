@@ -2,6 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { TalentTooltip } from './Modals.js';
 import Trees from './data/modules.js';
 
+//FIXME: tree labels in hexagon need to be tied to a div so theyre always centered
+//FIXME: fix location of node labels. tie to the node div
+
 /**
  * Component containing the central commander image and skill label hexagon
  *
