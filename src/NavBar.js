@@ -14,7 +14,6 @@ import {
   FormGroup,
   CustomInput
 } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
   faInfoCircle,
@@ -24,6 +23,7 @@ import {
   faCog,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import html2canvas from 'html2canvas';
 import { AboutModal } from './Modals.js';
 
@@ -121,15 +121,17 @@ class NavBar extends Component {
   }
 
   /**
-   * Create a list of all available commanders
+   * Create a list of all available commanders (sorted)
    *
    * @returns {DropdownItem[]} Array of Dropdown items for all commanders
    * @memberof NavBar
    */
   createSelectItems() {
-    let items = [];
-    Object.keys(Commanders).forEach(c => {
-      items.push(
+    const commanderList = Object.keys(Commanders).sort();
+    let selectItems = [];
+
+    commanderList.forEach(c => {
+      selectItems.push(
         <DropdownItem
           key={c}
           onClick={() => {
@@ -140,7 +142,7 @@ class NavBar extends Component {
         </DropdownItem>
       );
     });
-    return items;
+    return selectItems;
   }
 
   render() {
