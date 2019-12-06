@@ -3,6 +3,7 @@
   --nav-bar-height: 50px;
   --side-panel-width: 20%;
   --hexagon-opacity: 1;
+  --tree-box-outline: none;
   --red: rgba(190, 50, 25, 1);
   --yellow: rgba(183, 156, 4, 1);
   --blue: rgba(22, 159, 227, 1);
@@ -123,10 +124,10 @@ body {
     rgb(8, 39, 57) 90%
   );
 
-  /* background-image: url('./template.jpg');
+  /* background-image: url('./template4.jpg');
   background-repeat: no-repeat;
-  background-size: 101%;
-  background-position: -1140% 12%; */
+  background-size: 70%;
+  background-position: 42.5% 20%; */
 }
 
 #tree-square-container {
@@ -161,7 +162,7 @@ body {
 #tree-red {
   top: 0%;
   left: 50%;
-  border: 0.5px solid var(--red);
+  border: 0.5px var(--tree-box-outline) var(--red);
 }
 
 #tree-red-total {
@@ -174,7 +175,7 @@ body {
 #tree-yellow {
   top: 50%;
   left: 0%;
-  border: 0.5px solid var(--yellow);
+  border: 0.5px var(--tree-box-outline) var(--yellow);
 }
 
 #tree-yellow-total {
@@ -186,7 +187,7 @@ body {
 #tree-blue {
   top: 50%;
   left: 50%;
-  border: 0.5px solid var(--blue);
+  border: 0.5px var(--tree-box-outline) var(--blue);
 }
 
 #tree-blue-total {
@@ -215,8 +216,8 @@ body {
 }
 
 .hexagon-commander-wrapper img {
-  width: 8%;
-  height: 8%;
+  width: 7%;
+  height: 7%;
   cursor: pointer;
   z-index: 1;
 }
@@ -232,7 +233,7 @@ body {
 
 .hexagon-label {
   position: absolute;
-  width: 15%;
+  width: 15.5%;
   font-size: 0.5vw;
   font-weight: 700;
   text-align: center;
@@ -352,8 +353,8 @@ body {
 }
 
 .node-large {
-  width: 8%;
-  height: 8%;
+  width: 7.6%;
+  height: 7.6%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -384,7 +385,7 @@ body {
 
 .node-value {
   display: absolute;
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: rgb(216, 216, 216);
 }
 

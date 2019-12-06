@@ -6,7 +6,7 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [],
     "dep": [4],
-    "pos": [8.3, 85.3],
+    "pos": [8.1, 77.6],
     "type": "node-small"
   },
   "2": {
@@ -16,7 +16,7 @@
     "text": "Increases the health of all units led by this commander by $%",
     "prereq": [3],
     "dep": [7],
-    "pos": [-6.2, 74.6],
+    "pos": [-5.5, 61.6],
     "type": "node-small"
   },
   "3": {
@@ -26,7 +26,7 @@
     "text": "While this commander is serving as garrison commander, increases damage dealt to attacking armies by $%",
     "prereq": [4],
     "dep": [2, 12],
-    "pos": [2.4, 73.7],
+    "pos": [2.6, 59.8],
     "type": "node-large",
     "image": "yellowTrap"
   },
@@ -37,7 +37,7 @@
     "text": "Increases the attack of all units led by this commander by $%",
     "prereq": [1],
     "dep": [3, 5, 8, 9],
-    "pos": [16.3, 76.7],
+    "pos": [15.6, 64.6],
     "type": "node-small"
   },
   "5": {
@@ -47,7 +47,7 @@
     "text": "When this commander is serving as garrison commander, damage taken by the garrison from the attacking army is reduced by $%",
     "prereq": [4],
     "dep": [6, 15],
-    "pos": [22.9, 80.8],
+    "pos": [21.6, 70.8],
     "type": "node-large",
     "image": "yellowArmor"
   },
@@ -58,7 +58,7 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [5],
     "dep": [10],
-    "pos": [31.1, 87.9],
+    "pos": [29.6, 81.5],
     "type": "node-small"
   },
   "7": {
@@ -68,7 +68,7 @@
     "text": "When this commander is serving as garrison commander, skill damage taken by the garrison is reduced by $%",
     "prereq": [2],
     "dep": [],
-    "pos": [-9.9, 65],
+    "pos": [-8.9, 47.0],
     "type": "node-large",
     "image": "yellowCrossShield"
   },
@@ -79,7 +79,7 @@
     "text": "Increases watchtower defense by $% when this commander is serving as garrison commander",
     "prereq": [4],
     "dep": [13],
-    "pos": [14, 66.5],
+    "pos": [13.4, 49.2],
     "type": "node-large",
     "image": "yellowTower"
   },
@@ -90,7 +90,7 @@
     "text": "Increases watchtower attack by $% when this commander is serving as garrison commander",
     "prereq": [4],
     "dep": [14],
-    "pos": [27, 71.1],
+    "pos": [25.7, 56.1],
     "type": "node-large",
     "image": "yellowArrows"
   },
@@ -101,7 +101,7 @@
     "text": "When this commander is serving as garrison commander, grants an additional $ rage every time the city is attacked",
     "prereq": [6],
     "dep": [],
-    "pos": [41.5, 83.3],
+    "pos": [39.2, 74.7],
     "type": "node-large",
     "image": "yellowSkullFire"
   },
@@ -112,7 +112,7 @@
     "text": "Increases the health of all units led by this commander by $%",
     "prereq": [12],
     "dep": [17],
-    "pos": [-7.4, 56.7],
+    "pos": [-6.5, 34.2],
     "type": "node-small"
   },
   "12": {
@@ -122,7 +122,7 @@
     "text": "Increases the attack of all units led by this commander by $%",
     "prereq": [3],
     "dep": [11],
-    "pos": [6.5, 57.4],
+    "pos": [6.4, 35.4],
     "type": "node-small"
   },
   "13": {
@@ -132,7 +132,7 @@
     "text": "Increases the attack of all units led by this commander by $%",
     "prereq": [8],
     "dep": [17, 18],
-    "pos": [23.7, 59.6],
+    "pos": [22.6, 38.6],
     "type": "node-small"
   },
   "14": {
@@ -142,7 +142,7 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [9],
     "dep": [18, 19],
-    "pos": [36.9, 64.4],
+    "pos": [34.9, 45.8],
     "type": "node-small"
   },
   "15": {
@@ -152,7 +152,7 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [5],
     "dep": [16],
-    "pos": [48.4, 72.3],
+    "pos": [45.5, 57.8],
     "type": "node-small"
   },
   "16": {
@@ -162,7 +162,7 @@
     "text": "Increases the health of all units led by this commander by $%",
     "prereq": [15],
     "dep": [19],
-    "pos": [56.3, 79.5],
+    "pos": [53, 68.8],
     "type": "node-small"
   },
   "17": {
@@ -172,7 +172,7 @@
     "text": "While this commander is serving as garrison commander, damage reduction effect is enhanced by $% if the garrison becomes surrounded",
     "prereq": [11, 13],
     "dep": [20],
-    "pos": [11.8, 49],
+    "pos": [11.3, 22.4],
     "type": "node-large",
     "image": "yellowScope"
   },
@@ -183,7 +183,7 @@
     "text": "Increases the march speed of all units led by this commander by $%",
     "prereq": [13, 14],
     "dep": [],
-    "pos": [35.3, 56.5],
+    "pos": [33.4, 34],
     "type": "node-small"
   },
   "19": {
@@ -193,7 +193,7 @@
     "text": "Increases garrison attack, defense, and health by $% when this commander is serving as garrison commander (no effect when garrisoning cities)",
     "prereq": [14, 16],
     "dep": [20],
-    "pos": [53.3, 63.4],
+    "pos": [50.2, 44.5],
     "type": "node-large",
     "image": "yellowHelmetFront2"
   },
@@ -204,7 +204,7 @@
     "text": "When this commander is serving as garrison commander, gives the garrison a 10% chance to receive a damage-absorbing shield (Damage Factor $) after being attacked",
     "prereq": [17, 19],
     "dep": [],
-    "pos": [40.1, 47.7],
+    "pos": [38.1, 20.5],
     "type": "node-large",
     "image": "yellowStaff"
   }

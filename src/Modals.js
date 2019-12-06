@@ -128,7 +128,7 @@ export class CopyToast extends Component {
 }
 
 /**
- * Toast showing warning message about missing talents that need to be 
+ * Toast showing warning message about missing talents that need to be
  * completed prior to the select talent.
  *
  * @class PrereqToast
@@ -178,34 +178,32 @@ export const TalentTooltip = props => {
   const toggle = () => setPopoverOpen(!popoverOpen);
 
   return (
-    <div>
-      <Popover
-        trigger="hover"
-        placement="right-start"
-        isOpen={popoverOpen}
-        target={props.target}
-        toggle={toggle}
-        hideArrow={false}
-        delay={{ show: 0, hide: 0 }}
-        fade={false}
-        offset={'0, 2'}
-      >
-        <PopoverHeader>
-          <span className="node-tooltip-title">{props.talentName}</span>
-          <span className="node-tooltip-title-value">
-            {props.value + '/' + props.max}
-          </span>
-          <div style={{ clear: 'both' }}></div>
-        </PopoverHeader>
-        <PopoverBody className="node-tooltip-body">
-          {props.text}
+    <Popover
+      trigger="hover"
+      placement="right-start"
+      isOpen={popoverOpen}
+      target={props.target}
+      toggle={toggle}
+      hideArrow={false}
+      delay={{ show: 0, hide: 0 }}
+      fade={false}
+      offset={'0, 2'}
+    >
+      <PopoverHeader>
+        <span className="node-tooltip-title">{props.talentName}</span>
+        <span className="node-tooltip-title-value">
+          {props.value + '/' + props.max}
+        </span>
+        <div style={{ clear: 'both' }}></div>
+      </PopoverHeader>
+      <PopoverBody className="node-tooltip-body">
+        {props.text}
 
-          {process.env.NODE_ENV === 'development' && (
-            <div className="node-tooltip-id">ID: {props.target}</div>
-          )}
-        </PopoverBody>
-      </Popover>
-    </div>
+        {process.env.NODE_ENV === 'development' && (
+          <div className="node-tooltip-id">ID: {props.target}</div>
+        )}
+      </PopoverBody>
+    </Popover>
   );
 };
 

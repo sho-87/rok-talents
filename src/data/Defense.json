@@ -6,7 +6,7 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [],
     "dep": [],
-    "pos": [9, 12.4],
+    "pos": [8.9, 18.5],
     "type": "node-small"
   }
 }

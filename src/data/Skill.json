@@ -6,7 +6,7 @@
     "text": "Increases the attack of all units led by this commander by $%",
     "prereq": [],
     "dep": [3],
-    "pos": [9, 12.4],
+    "pos": [8.9, 18.6],
     "type": "node-small"
   },
   "2": {
@@ -16,7 +16,7 @@
     "text": "Normal attacks grant an additional $ rage",
     "prereq": [3],
     "dep": [],
-    "pos": [-3.5, 20.3],
+    "pos": [-2.6, 30.7],
     "type": "node-large",
     "image": "blueSkullFire"
   },
@@ -27,7 +27,7 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [1],
     "dep": [2, 4],
-    "pos": [15.2, 18.5],
+    "pos": [14.6, 28.1],
     "type": "node-small"
   },
   "4": {
@@ -37,7 +37,7 @@
     "text": "Reduces skill damage taken by $%",
     "prereq": [3],
     "dep": [],
-    "pos": [26.7, 10.7],
+    "pos": [25.3, 16.1],
     "type": "node-large",
     "image": "blueCrossShield"
   }
