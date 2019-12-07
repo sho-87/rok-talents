@@ -25,7 +25,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import html2canvas from 'html2canvas';
-import { AboutModal } from './Modals.js';
+import { AboutModal } from './Modals';
 
 import Commanders from './data/Commanders.json';
 

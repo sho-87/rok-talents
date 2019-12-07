@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Collapse } from 'reactstrap';
 
+import Trees from './data/modules';
 import Commanders from './data/Commanders.json';
-import Trees from './data/modules.js';
 
 //FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
 

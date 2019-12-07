@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { HexagonCommander, Node } from './Shapes.js';
-import { PrereqToast, PointLimitToast, CopyToast } from './Modals.js';
-import ErrorBoundary from './Error.js';
+import Hexagon from './Shapes/Hexagon';
+import Node from './Shapes/Node';
+import { PrereqToast, PointLimitToast, CopyToast } from './Modals';
+import ErrorBoundary from './Error';
 
-import Trees from './data/modules.js';
+import Trees from './data/modules';
 import Commanders from './data/Commanders.json';
 
 //TODO: lazy load large data modules
@@ -216,7 +217,7 @@ class TreePanel extends Component {
               </ErrorBoundary>
 
               <ErrorBoundary>
-                <HexagonCommander
+                <Hexagon
                   toggleSelect={this.props.toggleSelect}
                   commander={this.props.commander}
                   getTreeName={this.getTreeName}
