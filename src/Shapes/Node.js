@@ -1,52 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { TalentTooltip } from './Modals.js';
-import Trees from './data/modules.js';
-
-//FIXME: tree labels in hexagon need to be tied to a div so theyre always centered
-
-/**
- * Component containing the central commander image and skill label hexagon
- *
- * @class HexagonCommander
- * @extends {Component}
- */
-export class HexagonCommander extends Component {
-  render() {
-    if (this.props.commander) {
-      return (
-        <div id="tree-center">
-          <div className="hexagon-talent-wrapper">
-            <div className="hexagon-talent-red"></div>
-            <div className="hexagon-talent-yellow"></div>
-            <div className="hexagon-talent-blue"></div>
-          </div>
-
-          <div className="hexagon-label-wrapper">
-            <div className="hexagon-label hexagon-label-red">
-              {this.props.getTreeName('red')}
-            </div>
-            <div className="hexagon-label hexagon-label-yellow">
-              {this.props.getTreeName('yellow')}
-            </div>
-            <div className="hexagon-label hexagon-label-blue">
-              {this.props.getTreeName('blue')}
-            </div>
-          </div>
-
-          <div className="hexagon-commander-wrapper">
-            <img
-              src={`images/commanders/${this.props.commander}.png`}
-              alt={this.props.commander}
-              onClick={()=>{this.props.toggleSelect()}}
-            ></img>
-          </div>
-        </div>
-      );
-    } else {
-      return false;
-    }
-  }
-}
+import { TalentTooltip } from '../Modals';
+import Trees from '../data/modules';
 
 //FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
 //FIXME: fix location of node labels. tie to the node div
@@ -57,7 +11,7 @@ export class HexagonCommander extends Component {
  * @class Node
  * @extends {Component}
  */
-export class Node extends Component {
+class Node extends Component {
   /**
    * Determine styling of the node. CSS style depends on whether the node is
    * a large skill node or a small stat node
@@ -237,4 +191,4 @@ export class Node extends Component {
   }
 }
 
-export default { HexagonCommander, Node };
+export default Node;

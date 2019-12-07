@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import NavBar from './NavBar.js';
-import SidePanel from './SidePanel.js';
-import TreePanel from './TreePanel.js';
-import { InvalidBuildModal } from './Modals.js';
-import ErrorBoundary from './Error.js';
+import NavBar from './NavBar';
+import SidePanel from './SidePanel';
+import TreePanel from './TreePanel';
+import { InvalidBuildModal } from './Modals';
+import ErrorBoundary from './Error';
 
-import Trees from './data/modules.js';
+import Trees from './data/modules';
 import Commanders from './data/Commanders.json';
 
 import './App.css';
