@@ -188,7 +188,6 @@ class TreePanel extends Component {
           showPointLimitToast={this.showPointLimitToast}
           showValues={this.state.showValues}
           key={treeName + i}
-          id={treeName + i}
           idx={i}
           treeName={treeName}
           talentName={curNode['name']}
