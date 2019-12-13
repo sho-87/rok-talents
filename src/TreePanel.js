@@ -59,32 +59,34 @@ class TreePanel extends Component {
   }
 
   drawLines() {
-    jsPlumb.deleteEveryEndpoint();
-    jsPlumb.setSuspendDrawing(true);
+    if (this.props.commander) {
+      jsPlumb.deleteEveryEndpoint();
+      jsPlumb.setSuspendDrawing(true);
 
-    ['red', 'yellow', 'blue'].forEach(color => {
-      const treeName = this.getTreeName(color);
+      ['red', 'yellow', 'blue'].forEach(color => {
+        const treeName = this.getTreeName(color);
 
-      Object.keys(Trees[treeName]).forEach(nodeID => {
-        var activateState =
-          this.props[color][nodeID - 1] === 0 ? '' : `-${color}`;
+        Object.keys(Trees[treeName]).forEach(nodeID => {
+          var activateState =
+            this.props[color][nodeID - 1] === 0 ? '' : `-${color}`;
 
-        Trees[treeName][nodeID].prereq.forEach(prereq => {
-          jsPlumb.connect({
-            source: document.getElementById(`${treeName}${nodeID}`),
-            target: document.getElementById(`${treeName}${prereq}`),
-            endpoint: ['Dot', { cssClass: 'line-endpoint', radius: 1 }],
-            connector: ['Straight', { cssClass: `line${activateState}` }],
-            anchors: [
-              ['Perimeter', { shape: 'Circle' }],
-              ['Perimeter', { shape: 'Circle' }]
-            ]
+          Trees[treeName][nodeID].prereq.forEach(prereq => {
+            jsPlumb.connect({
+              source: document.getElementById(`${treeName}${nodeID}`),
+              target: document.getElementById(`${treeName}${prereq}`),
+              endpoint: ['Dot', { cssClass: 'line-endpoint', radius: 1 }],
+              connector: ['Straight', { cssClass: `line${activateState}` }],
+              anchors: [
+                ['Perimeter', { shape: 'Circle' }],
+                ['Perimeter', { shape: 'Circle' }]
+              ]
+            });
           });
         });
       });
-    });
-
-    jsPlumb.setSuspendDrawing(false, true);
+      
+      jsPlumb.setSuspendDrawing(false, true);
+    }
   }
 
   /**
