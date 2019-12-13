@@ -94,7 +94,7 @@ class SidePanel extends Component {
         id="side-panel"
         style={{ display: this.state.sidePanelOpen ? 'inline-block' : 'none' }}
       >
-        <h2>Summary</h2>
+        <h2>{this.props.commander ? this.props.commander : 'Summary'}</h2>
         <div id="side-panel-summary">
           <p>Points remaining: {this.props.calcPointsRemaining()}</p>
           <p>Points spent: {this.props.calcPointsSpent()}</p>
