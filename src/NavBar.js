@@ -116,7 +116,7 @@ class NavBar extends Component {
           }}
         >
           <img
-            class="select-commander-icon"
+            className="select-commander-icon"
             src={`images/commanders/${c}.png`}
           ></img>
           {c}
