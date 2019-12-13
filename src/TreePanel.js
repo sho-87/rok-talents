@@ -42,7 +42,7 @@ class TreePanel extends Component {
   componentDidMount() {
     window.addEventListener('resize', this.repaint);
 
-    var this_ = this;
+    const this_ = this;
 
     jsPlumb.ready(function() {
       jsPlumb.setContainer(document.getElementById('tree-square-content'));
@@ -66,12 +66,15 @@ class TreePanel extends Component {
       const treeName = this.getTreeName(color);
 
       Object.keys(Trees[treeName]).forEach(nodeID => {
-        Trees[treeName][nodeID].dep.forEach(dep => {
+        var activateState =
+          this.props[color][nodeID - 1] === 0 ? '' : `-${color}`;
+
+        Trees[treeName][nodeID].prereq.forEach(prereq => {
           jsPlumb.connect({
             source: document.getElementById(`${treeName}${nodeID}`),
-            target: document.getElementById(`${treeName}${dep}`),
+            target: document.getElementById(`${treeName}${prereq}`),
             endpoint: ['Dot', { cssClass: 'line-endpoint', radius: 1 }],
-            connector: ['Straight', { cssClass: 'line' }],
+            connector: ['Straight', { cssClass: `line${activateState}` }],
             anchors: [
               ['Perimeter', { shape: 'Circle' }],
               ['Perimeter', { shape: 'Circle' }]

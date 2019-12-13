@@ -205,9 +205,10 @@ class App extends Component {
    * @memberof App
    */
   resetTalents() {
-    this.setState(this.createZeroTalents(this.state.commander), () =>
-      this.updateURL('update')
-    );
+    this.setState(this.createZeroTalents(this.state.commander), () => {
+      this.updateURL('update');
+      this.treePanelRef.drawLines();
+    });
   }
 
   /**

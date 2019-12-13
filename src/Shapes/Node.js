@@ -114,7 +114,7 @@ class Node extends Component {
           );
           jsPlumb
             .select({
-              target: document.getElementById(
+              source: document.getElementById(
                 `${this.props.treeName + this.props.idx}`
               )
             })
@@ -161,7 +161,7 @@ class Node extends Component {
       if (this.props.value === 1) {
         jsPlumb
           .select({
-            target: document.getElementById(
+            source: document.getElementById(
               `${this.props.treeName + this.props.idx}`
             )
           })
