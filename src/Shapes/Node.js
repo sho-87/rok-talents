@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from '../Modals';
+
 import Trees from '../data/modules';
 
 //FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
@@ -110,6 +112,9 @@ class Node extends Component {
             this.props.idx,
             'increase'
           );
+          jsPlumb
+            .select({ target: document.getElementById(`${this.props.id}`) })
+            .addClass(`line-${this.props.color}`);
         }
       } else {
         this.props.showPrereqToast(missingPrereqs);
@@ -148,6 +153,12 @@ class Node extends Component {
         this.props.idx,
         'decrease'
       );
+
+      if (this.props.value === 1) {
+        jsPlumb
+          .select({ target: document.getElementById(`${this.props.id}`) })
+          .removeClass(`line-${this.props.color}`);
+      }
     }
   }
 

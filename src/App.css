@@ -396,3 +396,26 @@ body {
 .node-value-large {
   transform: translateY(4vh);
 }
+
+.line path {
+  stroke: gray;
+  stroke-width: 1;
+  z-index: 0;
+}
+
+.line-red path {
+  stroke: var(--red);
+}
+
+.line-yellow path {
+  stroke: var(--yellow);
+}
+
+.line-blue path {
+  stroke: var(--blue);
+}
+
+.lineEndpoint {
+  visibility: hidden;
+  z-index: -1;
+}

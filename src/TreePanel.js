@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { jsPlumb } from 'jsplumb';
 import Hexagon from './Shapes/Hexagon';
 import Node from './Shapes/Node';
 import { PrereqToast, PointLimitToast, CopyToast } from './Modals';
@@ -35,6 +36,51 @@ class TreePanel extends Component {
     this.getTreeName = this.getTreeName.bind(this);
     this.showPrereqToast = this.showPrereqToast.bind(this);
     this.showPointLimitToast = this.showPointLimitToast.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.repaint);
+
+    var this_ = this;
+
+    jsPlumb.ready(function() {
+      jsPlumb.setContainer(document.getElementById('tree-square-content'));
+      this_.drawLines();
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.repaint);
+  }
+
+  repaint() {
+    jsPlumb.repaintEverything();
+  }
+
+  drawLines() {
+    jsPlumb.deleteEveryEndpoint();
+    jsPlumb.setSuspendDrawing(true);
+
+    ['red', 'yellow', 'blue'].forEach(color => {
+      const treeName = this.getTreeName(color);
+
+      Object.keys(Trees[treeName]).forEach(nodeID => {
+        Trees[treeName][nodeID].dep.forEach(dep => {
+          jsPlumb.connect({
+            source: document.getElementById(`${treeName}${nodeID}`),
+            target: document.getElementById(`${treeName}${dep}`),
+            endpoint: ['Dot', { cssClass: 'lineEndpoint', radius: 0 }],
+            connector: ['Straight', { cssClass: 'line' }],
+            anchors: [
+              ['Perimeter', { shape: 'Circle' }],
+              ['Perimeter', { shape: 'Circle' }]
+            ]
+          });
+        });
+      });
+    });
+
+    jsPlumb.setSuspendDrawing(false, true);
   }
 
   /**
