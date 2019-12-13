@@ -115,6 +115,10 @@ class NavBar extends Component {
             this.props.changeCommander(c);
           }}
         >
+          <img
+            class="select-commander-icon"
+            src={`images/commanders/${c}.png`}
+          ></img>
           {c}
         </DropdownItem>
       );
