@@ -27,7 +27,6 @@ import { AboutModal } from './Modals';
 import Commanders from './data/Commanders.json';
 
 //TODO: add undo/redo
-//TODO: disable copy/reset buttons if no talents selected
 //TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
 
@@ -151,7 +150,11 @@ class NavBar extends Component {
                 <button
                   id="button-copy"
                   type="button"
-                  disabled={this.props.commander ? false : true}
+                  disabled={
+                    this.props.commander | this.props.calcPointsSpent()
+                      ? false
+                      : true
+                  }
                   className="btn btn-sm btn-success"
                   onClick={this.props.copyURL}
                 >
@@ -161,7 +164,11 @@ class NavBar extends Component {
                   id="button-reset"
                   type="button"
                   className="btn btn-sm btn-danger"
-                  disabled={this.props.commander ? false : true}
+                  disabled={
+                    this.props.commander | this.props.calcPointsSpent()
+                      ? false
+                      : true
+                  }
                   onClick={this.props.resetTalents}
                 >
                   <FontAwesomeIcon icon={faTrashAlt} /> Reset Talents

@@ -318,6 +318,7 @@ class App extends Component {
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}
             changeCommander={this.changeCommander}
+            calcPointsSpent={this.calcPointsSpent}
             resetTalents={this.resetTalents}
             commander={this.state.commander}
           />
