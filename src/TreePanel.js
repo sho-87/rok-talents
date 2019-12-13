@@ -8,7 +8,6 @@ import ErrorBoundary from './Error';
 import Trees from './data/modules';
 import Commanders from './data/Commanders.json';
 
-//TODO: lazy load large data modules
 //TODO: use media queries to set element sizes instead of vw/vh/%
 //FIXME: speed up repaint on resize
 

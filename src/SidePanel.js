@@ -4,6 +4,7 @@ import { Collapse } from 'reactstrap';
 import Trees from './data/modules';
 import Commanders from './data/Commanders.json';
 
+//TODO: add tree view for additional info
 //FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
 
 /**

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
+import { Spinner } from 'reactstrap';
 import NavBar from './NavBar';
 import SidePanel from './SidePanel';
-import TreePanel from './TreePanel';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
 
@@ -10,6 +10,8 @@ import Commanders from './data/Commanders.json';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version to state and data files
 //TODO: add app version?
@@ -325,35 +327,43 @@ class App extends Component {
         </ErrorBoundary>
 
         <div id="main-container">
-          <ErrorBoundary>
-            <SidePanel
-              ref={component => (this.sidePanelRef = component)}
-              encodeState={this.encodeState}
-              decodeState={this.decodeState}
-              calcPointsSpent={this.calcPointsSpent}
-              calcPointsRemaining={this.calcPointsRemaining}
-              commander={this.state.commander}
-              red={this.state.red}
-              yellow={this.state.yellow}
-              blue={this.state.blue}
-            />
-          </ErrorBoundary>
+          <Suspense
+            fallback={
+              <div>
+                <Spinner size="lg" color="primary" /> Loading...
+              </div>
+            }
+          >
+            <ErrorBoundary>
+              <SidePanel
+                ref={component => (this.sidePanelRef = component)}
+                encodeState={this.encodeState}
+                decodeState={this.decodeState}
+                calcPointsSpent={this.calcPointsSpent}
+                calcPointsRemaining={this.calcPointsRemaining}
+                commander={this.state.commander}
+                red={this.state.red}
+                yellow={this.state.yellow}
+                blue={this.state.blue}
+              />
+            </ErrorBoundary>
 
-          <ErrorBoundary>
-            <TreePanel
-              ref={component => (this.treePanelRef = component)}
-              toggleSelect={this.toggleSelect}
-              changeCommander={this.changeCommander}
-              resetTalents={this.resetTalents}
-              changeTalentValue={this.changeTalentValue}
-              calcPointsSpent={this.calcPointsSpent}
-              calcPointsRemaining={this.calcPointsRemaining}
-              commander={this.state.commander}
-              red={this.state.red}
-              yellow={this.state.yellow}
-              blue={this.state.blue}
-            />
-          </ErrorBoundary>
+            <ErrorBoundary>
+              <TreePanel
+                ref={component => (this.treePanelRef = component)}
+                toggleSelect={this.toggleSelect}
+                changeCommander={this.changeCommander}
+                resetTalents={this.resetTalents}
+                changeTalentValue={this.changeTalentValue}
+                calcPointsSpent={this.calcPointsSpent}
+                calcPointsRemaining={this.calcPointsRemaining}
+                commander={this.state.commander}
+                red={this.state.red}
+                yellow={this.state.yellow}
+                blue={this.state.blue}
+              />
+            </ErrorBoundary>
+          </Suspense>
         </div>
       </div>
     );

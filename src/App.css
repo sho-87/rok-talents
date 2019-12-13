@@ -77,6 +77,8 @@ body {
   display: flex;
   flex: 1;
   flex-flow: row nowrap;
+  justify-content: center; /* horizontal */
+  align-items: center; /* vertical */
 }
 
 /* Side panel */
