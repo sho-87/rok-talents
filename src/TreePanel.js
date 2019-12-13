@@ -12,6 +12,7 @@ import Commanders from './data/Commanders.json';
 //TODO: use media queries to set element sizes instead of vw/vh/%
 //FIXME: screenshot does not support certain CSS props (e.g. blend mode, filter)
 //FIXME: don't use unsupported props to style nodes. use small node images?
+//FIXME: speed up repaint on resize
 
 /**
  * Component for the main tree panel. Controls the display of all nodes and
@@ -69,7 +70,7 @@ class TreePanel extends Component {
           jsPlumb.connect({
             source: document.getElementById(`${treeName}${nodeID}`),
             target: document.getElementById(`${treeName}${dep}`),
-            endpoint: ['Dot', { cssClass: 'lineEndpoint', radius: 0 }],
+            endpoint: ['Dot', { cssClass: 'line-endpoint', radius: 1 }],
             connector: ['Straight', { cssClass: 'line' }],
             anchors: [
               ['Perimeter', { shape: 'Circle' }],

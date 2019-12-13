@@ -405,17 +405,20 @@ body {
 
 .line-red path {
   stroke: var(--red);
+  stroke-width: 2;
 }
 
 .line-yellow path {
   stroke: var(--yellow);
+  stroke-width: 2;
 }
 
 .line-blue path {
   stroke: var(--blue);
+  stroke-width: 2;
 }
 
-.lineEndpoint {
+.line-endpoint {
   visibility: hidden;
   z-index: -1;
 }
