@@ -179,6 +179,7 @@ class TreePanel extends Component {
     const treeName = this.getTreeName(color);
 
     for (let i = 1; i < values.length + 1; i++) {
+      var curNode = Trees[treeName][i];
       nodes.push(
         <Node
           changeTalentValue={this.props.changeTalentValue}
@@ -190,15 +191,15 @@ class TreePanel extends Component {
           id={treeName + i}
           idx={i}
           treeName={treeName}
-          talentName={Trees[treeName][i]['name']}
-          image={Trees[treeName][i]['image']}
-          tooltip={Trees[treeName][i]['text']}
-          type={Trees[treeName][i]['type']}
+          talentName={curNode['name']}
+          image={curNode['image']}
+          tooltip={curNode['text']}
+          type={curNode['type']}
           value={values[i - 1]}
-          max={Trees[treeName][i]['values'].length}
+          max={curNode['values'].length}
           fullTree={this.props[color]}
-          top={Trees[treeName][i]['pos'][0] + '%'}
-          left={Trees[treeName][i]['pos'][1] + '%'}
+          top={curNode['pos'][0] + '%'}
+          left={curNode['pos'][1] + '%'}
           color={color}
         />
       );
