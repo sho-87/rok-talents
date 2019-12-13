@@ -5,7 +5,6 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  UncontrolledTooltip,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
@@ -17,14 +16,12 @@ import {
 import {
   faHome,
   faInfoCircle,
-  faCamera,
   faCopy,
   faTrashAlt,
   faCog,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import html2canvas from 'html2canvas';
 import { AboutModal } from './Modals';
 
 import Commanders from './data/Commanders.json';
@@ -55,7 +52,6 @@ class NavBar extends Component {
     this.toggleSettings = this.toggleSettings.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.showAbout = this.showAbout.bind(this);
-    this.takeScreenshot = this.takeScreenshot.bind(this);
   }
 
   /**
@@ -99,24 +95,6 @@ class NavBar extends Component {
   showAbout(state) {
     this.setState({
       aboutModalFlag: state
-    });
-  }
-
-  /**
-   * Create a png screenshot of the main container. Offer to download/save the
-   * generated screenshot.
-   *
-   * @memberof NavBar
-   */
-  takeScreenshot() {
-    html2canvas(document.querySelector('#main-container')).then(canvas => {
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL();
-      link.download = `${this.props.commander} talents.png`;
-
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
     });
   }
 
@@ -188,24 +166,7 @@ class NavBar extends Component {
                 >
                   <FontAwesomeIcon icon={faTrashAlt} /> Reset Talents
                 </button>
-                <button
-                  id="button-screenshot"
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  disabled={this.props.commander ? false : true}
-                  onClick={this.takeScreenshot}
-                >
-                  <FontAwesomeIcon icon={faCamera} /> Screenshot
-                </button>
               </form>
-
-              <UncontrolledTooltip
-                placement="bottom"
-                target="button-screenshot"
-                fade={false}
-              >
-                ! Experimental !
-              </UncontrolledTooltip>
 
               <Dropdown
                 nav

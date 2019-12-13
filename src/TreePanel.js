@@ -10,8 +10,6 @@ import Commanders from './data/Commanders.json';
 
 //TODO: lazy load large data modules
 //TODO: use media queries to set element sizes instead of vw/vh/%
-//FIXME: screenshot does not support certain CSS props (e.g. blend mode, filter)
-//FIXME: don't use unsupported props to style nodes. use small node images?
 //FIXME: speed up repaint on resize
 
 /**
