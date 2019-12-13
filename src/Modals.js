@@ -3,6 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 
+import { title, author, version } from '../package.json';
+
 /**
  * Modal displaying warning about an invalid build retrived from URL
  *
@@ -81,20 +83,27 @@ export class AboutModal extends Component {
         unmountOnClose={true}
         centered
       >
-        <ModalHeader toggle={this.toggle}>
-          Rise of Kingdoms Talent Builder
-        </ModalHeader>
+        <ModalHeader toggle={this.toggle}>{title}</ModalHeader>
         <ModalBody>
-          <p>About text</p>
-          <p>
+          <div>
+            <span className="about-label">Application version:</span> {version}
+          </div>
+          <div>
+            <span className="about-label">Author:</span>{' '}
             <a
-              href="https://www.google.com"
+              href={`mailto: ${author.email}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Link
+              {author.name}
             </a>
-          </p>
+          </div>
+          <div>
+            <span className="about-label">Website:</span>{' '}
+            <a href={author.url} target="_blank" rel="noopener noreferrer">
+              {author.url}
+            </a>
+          </div>
         </ModalBody>
         <ModalFooter>
           <Button color="success" onClick={this.toggle}>

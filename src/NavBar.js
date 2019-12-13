@@ -24,6 +24,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AboutModal } from './Modals';
 
+import { title } from '../package.json';
 import Commanders from './data/Commanders.json';
 
 //TODO: add undo/redo
@@ -145,7 +146,7 @@ class NavBar extends Component {
             <FontAwesomeIcon icon={faInfoCircle} />
           </NavbarBrand>
 
-          <NavbarBrand>Rise of Kingdoms Talent Builder</NavbarBrand>
+          <NavbarBrand>{title}</NavbarBrand>
 
           <NavbarToggler onClick={this.toggleNav} />
 

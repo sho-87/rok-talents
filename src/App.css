@@ -41,6 +41,11 @@ body {
   z-index: 2;
 }
 
+/* About modal */
+.about-label {
+  font-weight: bold;
+}
+
 /* Nav bar */
 .navbar {
   height: var(--nav-bar-height);

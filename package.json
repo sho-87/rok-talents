@@ -1,8 +1,26 @@
 {
   "name": "rok-talent-builder",
-  "version": "0.1.0",
+  "title": "Rise of Kingdoms Talent Builder",
+  "version": "1.0.0",
+  "description": "Rise of Kingdoms talent builder",
+  "keywords": [
+    "games",
+    "rise of kingdoms"
+  ],
   "homepage": ".",
   "private": true,
+  "author": {
+    "name": "Simon Ho",
+    "email": "simonho213@gmail.com",
+    "url": "http://www.simonho.ca"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sho-87/rok-talent-builder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sho-87/rok-talent-builder/issues"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
