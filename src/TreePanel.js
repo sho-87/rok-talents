@@ -39,6 +39,11 @@ class TreePanel extends Component {
     this.showPointLimitToast = this.showPointLimitToast.bind(this);
   }
 
+  /**
+   * Add resize listener and setup jsplumb container with initial lines
+   *
+   * @memberof TreePanel
+   */
   componentDidMount() {
     window.addEventListener('resize', this.repaint);
 
@@ -50,14 +55,29 @@ class TreePanel extends Component {
     });
   }
 
+  /**
+   * Remove resize listener on unmount
+   *
+   * @memberof TreePanel
+   */
   componentWillUnmount() {
     window.removeEventListener('resize', this.repaint);
   }
 
+  /**
+   * Call for repainting jsplumb lines on window resize
+   *
+   * @memberof TreePanel
+   */
   repaint() {
     jsPlumb.repaintEverything();
   }
 
+  /**
+   * Draw lines between nodes
+   *
+   * @memberof TreePanel
+   */
   drawLines() {
     if (this.props.commander) {
       jsPlumb.deleteEveryEndpoint();
