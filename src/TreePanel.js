@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { jsPlumb } from 'jsplumb';
 import Hexagon from './Shapes/Hexagon';
 import Node from './Shapes/Node';
 import { PrereqToast, PointLimitToast, CopyToast } from './Modals';
@@ -11,6 +12,7 @@ import Commanders from './data/Commanders.json';
 //TODO: use media queries to set element sizes instead of vw/vh/%
 //FIXME: screenshot does not support certain CSS props (e.g. blend mode, filter)
 //FIXME: don't use unsupported props to style nodes. use small node images?
+//FIXME: speed up repaint on resize
 
 /**
  * Component for the main tree panel. Controls the display of all nodes and
@@ -35,6 +37,76 @@ class TreePanel extends Component {
     this.getTreeName = this.getTreeName.bind(this);
     this.showPrereqToast = this.showPrereqToast.bind(this);
     this.showPointLimitToast = this.showPointLimitToast.bind(this);
+  }
+
+  /**
+   * Add resize listener and setup jsplumb container with initial lines
+   *
+   * @memberof TreePanel
+   */
+  componentDidMount() {
+    window.addEventListener('resize', this.repaint);
+
+    const this_ = this;
+
+    jsPlumb.ready(function() {
+      jsPlumb.setContainer(document.getElementById('tree-square-content'));
+      this_.drawLines();
+    });
+  }
+
+  /**
+   * Remove resize listener on unmount
+   *
+   * @memberof TreePanel
+   */
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.repaint);
+  }
+
+  /**
+   * Call for repainting jsplumb lines on window resize
+   *
+   * @memberof TreePanel
+   */
+  repaint() {
+    jsPlumb.repaintEverything();
+  }
+
+  /**
+   * Draw lines between nodes
+   *
+   * @memberof TreePanel
+   */
+  drawLines() {
+    if (this.props.commander) {
+      jsPlumb.deleteEveryEndpoint();
+      jsPlumb.setSuspendDrawing(true);
+
+      ['red', 'yellow', 'blue'].forEach(color => {
+        const treeName = this.getTreeName(color);
+
+        Object.keys(Trees[treeName]).forEach(nodeID => {
+          var activateState =
+            this.props[color][nodeID - 1] === 0 ? '' : `line-${color}`;
+
+          Trees[treeName][nodeID].prereq.forEach(prereq => {
+            jsPlumb.connect({
+              source: document.getElementById(`${treeName}${nodeID}`),
+              target: document.getElementById(`${treeName}${prereq}`),
+              endpoint: ['Dot', { cssClass: 'line-endpoint', radius: 1 }],
+              connector: ['Straight', { cssClass: `line ${activateState}` }],
+              anchors: [
+                ['Perimeter', { shape: 'Circle' }],
+                ['Perimeter', { shape: 'Circle' }]
+              ]
+            });
+          });
+        });
+      });
+
+      jsPlumb.setSuspendDrawing(false, true);
+    }
   }
 
   /**
@@ -132,6 +204,7 @@ class TreePanel extends Component {
     const treeName = this.getTreeName(color);
 
     for (let i = 1; i < values.length + 1; i++) {
+      var curNode = Trees[treeName][i];
       nodes.push(
         <Node
           changeTalentValue={this.props.changeTalentValue}
@@ -140,18 +213,17 @@ class TreePanel extends Component {
           showPointLimitToast={this.showPointLimitToast}
           showValues={this.state.showValues}
           key={treeName + i}
-          id={treeName + i}
           idx={i}
           treeName={treeName}
-          talentName={Trees[treeName][i]['name']}
-          image={Trees[treeName][i]['image']}
-          tooltip={Trees[treeName][i]['text']}
-          type={Trees[treeName][i]['type']}
+          talentName={curNode['name']}
+          image={curNode['image']}
+          tooltip={curNode['text']}
+          type={curNode['type']}
           value={values[i - 1]}
-          max={Trees[treeName][i]['values'].length}
+          max={curNode['values'].length}
           fullTree={this.props[color]}
-          top={Trees[treeName][i]['pos'][0] + '%'}
-          left={Trees[treeName][i]['pos'][1] + '%'}
+          top={curNode['pos'][0] + '%'}
+          left={curNode['pos'][1] + '%'}
           color={color}
         />
       );

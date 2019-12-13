@@ -169,9 +169,10 @@ class App extends Component {
    */
   changeCommander(commander) {
     const zeroTalents = this.createZeroTalents(commander);
-    this.setState({ commander: commander, ...zeroTalents }, () =>
-      this.updateURL('update')
-    );
+    this.setState({ commander: commander, ...zeroTalents }, () => {
+      this.updateURL('update');
+      this.treePanelRef.drawLines();
+    });
   }
 
   /**
@@ -204,9 +205,10 @@ class App extends Component {
    * @memberof App
    */
   resetTalents() {
-    this.setState(this.createZeroTalents(this.state.commander), () =>
-      this.updateURL('update')
-    );
+    this.setState(this.createZeroTalents(this.state.commander), () => {
+      this.updateURL('update');
+      this.treePanelRef.drawLines();
+    });
   }
 
   /**

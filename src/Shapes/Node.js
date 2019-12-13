@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from '../Modals';
+
 import Trees from '../data/modules';
 
 //FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
@@ -110,6 +112,13 @@ class Node extends Component {
             this.props.idx,
             'increase'
           );
+          jsPlumb
+            .select({
+              source: document.getElementById(
+                `${this.props.treeName + this.props.idx}`
+              )
+            })
+            .addClass(`line-${this.props.color}`);
         }
       } else {
         this.props.showPrereqToast(missingPrereqs);
@@ -148,6 +157,16 @@ class Node extends Component {
         this.props.idx,
         'decrease'
       );
+
+      if (this.props.value === 1) {
+        jsPlumb
+          .select({
+            source: document.getElementById(
+              `${this.props.treeName + this.props.idx}`
+            )
+          })
+          .removeClass(`line-${this.props.color}`);
+      }
     }
   }
 
@@ -157,7 +176,7 @@ class Node extends Component {
     return (
       <Fragment>
         <div
-          id={this.props.id}
+          id={this.props.treeName + this.props.idx}
           className={`node ${this.props.type} ${
             this.props.value === 0 ? 'node-inactive' : ''
           } ${this.getSmallColor()}`}
@@ -180,7 +199,7 @@ class Node extends Component {
 
         <TalentTooltip
           idx={this.props.idx}
-          target={this.props.id}
+          target={this.props.treeName + this.props.idx}
           talentName={this.props.talentName}
           value={this.props.value}
           max={this.props.max}
