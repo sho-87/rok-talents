@@ -68,14 +68,14 @@ class TreePanel extends Component {
 
         Object.keys(Trees[treeName]).forEach(nodeID => {
           var activateState =
-            this.props[color][nodeID - 1] === 0 ? '' : `-${color}`;
+            this.props[color][nodeID - 1] === 0 ? '' : `line-${color}`;
 
           Trees[treeName][nodeID].prereq.forEach(prereq => {
             jsPlumb.connect({
               source: document.getElementById(`${treeName}${nodeID}`),
               target: document.getElementById(`${treeName}${prereq}`),
               endpoint: ['Dot', { cssClass: 'line-endpoint', radius: 1 }],
-              connector: ['Straight', { cssClass: `line${activateState}` }],
+              connector: ['Straight', { cssClass: `line ${activateState}` }],
               anchors: [
                 ['Perimeter', { shape: 'Circle' }],
                 ['Perimeter', { shape: 'Circle' }]
@@ -84,7 +84,7 @@ class TreePanel extends Component {
           });
         });
       });
-      
+
       jsPlumb.setSuspendDrawing(false, true);
     }
   }
