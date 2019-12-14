@@ -181,8 +181,19 @@ body {
 #tree-red-total {
   position: absolute;
   top: 0%;
-  left: -4%;
+  left: 0%;
+  transform: translateX(-50%);
   color: var(--red);
+}
+
+#tree-red-mouse {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  color: var(--red);
+  padding: 2px;
+  background-color: white;
+  border: 0.5px solid black;
 }
 
 #tree-yellow {
@@ -194,7 +205,18 @@ body {
 #tree-yellow-total {
   position: absolute;
   bottom: 0%;
+  transform: translateX(-50%);
   color: var(--yellow);
+}
+
+#tree-yellow-mouse {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  color: var(--yellow);
+  padding: 2px;
+  background-color: white;
+  border: 0.5px solid black;
 }
 
 #tree-blue {
@@ -206,7 +228,18 @@ body {
 #tree-blue-total {
   position: absolute;
   bottom: 0%;
+  transform: translateX(-50%);
   color: var(--blue);
+}
+
+#tree-blue-mouse {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  color: var(--blue);
+  padding: 2px;
+  background-color: white;
+  border: 0.5px solid black;
 }
 
 #tree-center {

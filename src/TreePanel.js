@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { jsPlumb } from 'jsplumb';
-import Hexagon from './Shapes/Hexagon';
-import Node from './Shapes/Node';
+import Hexagon from './shapes/Hexagon';
+import Node from './shapes/Node';
 import { PrereqToast, PointLimitToast, CopyToast } from './Modals';
 import ErrorBoundary from './Error';
 
@@ -33,15 +33,20 @@ class TreePanel extends Component {
     this.getTreeName = this.getTreeName.bind(this);
     this.showPrereqToast = this.showPrereqToast.bind(this);
     this.showPointLimitToast = this.showPointLimitToast.bind(this);
+    this.setMousePosition = this.setMousePosition.bind(this);
   }
 
   /**
-   * Add resize listener and setup jsplumb container with initial lines
+   * Add event listeners and setup jsplumb container with initial lines
    *
    * @memberof TreePanel
    */
   componentDidMount() {
     window.addEventListener('resize', this.repaint);
+
+    if (process.env.NODE_ENV === 'development') {
+      window.addEventListener('mousemove', this.setMousePosition);
+    }
 
     const this_ = this;
 
@@ -52,12 +57,66 @@ class TreePanel extends Component {
   }
 
   /**
-   * Remove resize listener on unmount
+   * Remove event listeners on unmount
    *
    * @memberof TreePanel
    */
   componentWillUnmount() {
     window.removeEventListener('resize', this.repaint);
+
+    if (process.env.NODE_ENV === 'development') {
+      window.removeEventListener('mousemove', this.setMousePosition);
+    }
+  }
+
+  /**
+   * Store mouse position relative to each tree container
+   *
+   * @param {MouseEvent} e Mouse move event
+   * @memberof TreePanel
+   */
+  setMousePosition(e) {
+    const redContainer = document
+      .getElementById('tree-red')
+      .getBoundingClientRect();
+
+    const yellowContainer = document
+      .getElementById('tree-yellow')
+      .getBoundingClientRect();
+
+    const blueContainer = document
+      .getElementById('tree-blue')
+      .getBoundingClientRect();
+
+    setTimeout(
+      this.setState({
+        redX:
+          ((e.clientX - redContainer.left + window.scrollX) /
+            redContainer.width) *
+          100,
+        redY:
+          ((e.clientY - redContainer.top + window.scrollY) /
+            redContainer.height) *
+          100,
+        yellowX:
+          ((e.clientX - yellowContainer.left + window.scrollX) /
+            yellowContainer.width) *
+          100,
+        yellowY:
+          ((e.clientY - yellowContainer.top + window.scrollY) /
+            yellowContainer.height) *
+          100,
+        blueX:
+          ((e.clientX - blueContainer.left + window.scrollX) /
+            blueContainer.width) *
+          100,
+        blueY:
+          ((e.clientY - blueContainer.top + window.scrollY) /
+            blueContainer.height) *
+          100
+      }),
+      5000
+    );
   }
 
   /**
@@ -255,6 +314,13 @@ class TreePanel extends Component {
                     }`}</span>
                   )}
                   {this.drawNodes(this.props.red, 'red')}
+
+                  {process.env.NODE_ENV === 'development' && (
+                    <div id="tree-red-mouse">
+                      X: {parseFloat(this.state.redX).toFixed(2)} Y:{' '}
+                      {parseFloat(this.state.redY).toFixed(2)}
+                    </div>
+                  )}
                 </div>
               </ErrorBoundary>
 
@@ -268,6 +334,13 @@ class TreePanel extends Component {
                     </span>
                   )}
                   {this.drawNodes(this.props.yellow, 'yellow')}
+
+                  {process.env.NODE_ENV === 'development' && (
+                    <div id="tree-yellow-mouse">
+                      X: {parseFloat(this.state.yellowX).toFixed(2)} Y:{' '}
+                      {parseFloat(this.state.yellowY).toFixed(2)}
+                    </div>
+                  )}
                 </div>
               </ErrorBoundary>
 
@@ -281,6 +354,13 @@ class TreePanel extends Component {
                     </span>
                   )}
                   {this.drawNodes(this.props.blue, 'blue')}
+
+                  {process.env.NODE_ENV === 'development' && (
+                    <div id="tree-blue-mouse">
+                      X: {parseFloat(this.state.blueX).toFixed(2)} Y:{' '}
+                      {parseFloat(this.state.blueY).toFixed(2)}
+                    </div>
+                  )}
                 </div>
               </ErrorBoundary>
 
