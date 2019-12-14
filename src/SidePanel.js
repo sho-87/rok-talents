@@ -93,7 +93,9 @@ class SidePanel extends Component {
     return (
       <div
         id="side-panel"
-        style={{ display: this.state.sidePanelOpen ? 'inline-block' : 'none' }}
+        className={
+          this.state.sidePanelOpen ? 'side-panel-open' : 'side-panel-closed'
+        }
       >
         <h2>{this.props.commander ? this.props.commander : 'Summary'}</h2>
         <div id="side-panel-summary">
@@ -110,7 +112,10 @@ class SidePanel extends Component {
           <p>Rage Generation: {this.calcStats('Rage Generation')}</p>
           <p>Skill Damage: {this.calcStats('Skill Damage')}%</p>
           <p>Active Skill Damage: {this.calcStats('Active Skill Damage')}%</p>
-          <p>Additional Skill Damage: {this.calcStats('Additional Skill Damage')}%</p>
+          <p>
+            Additional Skill Damage: {this.calcStats('Additional Skill Damage')}
+            %
+          </p>
         </div>
 
         <h3 onClick={this.toggleBonus}>

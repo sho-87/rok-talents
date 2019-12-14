@@ -101,12 +101,22 @@ body {
 /* Side panel */
 #side-panel {
   height: 100%;
-  flex: 0 0 var(--side-panel-width);
   background-color: #838ca7;
   border: 0.5px solid black;
+  transition: flex 100ms linear;
+}
+
+.side-panel-open {
+  flex: 0 0 var(--side-panel-width);
   overflow-y: auto;
   overflow-wrap: break-word;
   padding: 10px;
+}
+
+.side-panel-closed {
+  flex: 0 0 0%;
+  overflow: hidden;
+  padding: 0;
 }
 
 #side-panel-summary p {
@@ -133,6 +143,7 @@ body {
 #tree-panel {
   position: relative;
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
   height: 100%;
