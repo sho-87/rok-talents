@@ -67,9 +67,9 @@ class Node extends Component {
     let talentValues = Trees[this.props.treeName][this.props.idx]['values'];
 
     if (this.props.value === this.props.max) {
-      tooltip = tooltip.replace('$', talentValues[this.props.max - 1]);
+      tooltip = tooltip.replace(/\$/g, talentValues[this.props.max - 1]);
     } else {
-      tooltip = tooltip.replace('$', talentValues[this.props.value]);
+      tooltip = tooltip.replace(/\$/g, talentValues[this.props.value]);
     }
 
     return tooltip;

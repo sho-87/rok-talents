@@ -74,7 +74,7 @@ class SidePanel extends Component {
               statValue += talentInfo.values[value - 1];
             } else if ((stat === 'Bonus') & (talentStat === '')) {
               let text = talentInfo.text;
-              text = text.replace('$', talentInfo.values[value - 1]);
+              text = text.replace(/\$/g, talentInfo.values[value - 1]);
               bonuses.push(<p key={color + idx}>{text}</p>);
             }
           }
