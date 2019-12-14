@@ -30,7 +30,6 @@ import Commanders from './data/Commanders.json';
 //TODO: add undo/redo
 //TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
-//TODO: group commander dropdown by legendary and epic
 
 /**
  * Nav bar component containing main application buttons/controls
@@ -107,10 +106,11 @@ class NavBar extends Component {
    */
   createSelectItems() {
     const commanderList = Object.keys(Commanders).sort();
-    let selectItems = [];
+    let legendaryCommanders = [];
+    let epicCommanders = [];
 
     commanderList.forEach(c => {
-      selectItems.push(
+      let selectItem = (
         <DropdownItem
           key={c}
           onClick={() => {
@@ -125,8 +125,24 @@ class NavBar extends Component {
           {c}
         </DropdownItem>
       );
+
+      if (Commanders[c].tier === 'Legendary') {
+        legendaryCommanders.push(selectItem);
+      } else if (Commanders[c].tier === 'Epic') {
+        epicCommanders.push(selectItem);
+      }
     });
-    return selectItems;
+    return [
+      <DropdownItem header key="header-legendary">
+        Legendary
+      </DropdownItem>,
+      ...legendaryCommanders,
+      <DropdownItem divider key="div1" />,
+      <DropdownItem header key="header-epic">
+        Epic
+      </DropdownItem>,
+      ...epicCommanders
+    ];
   }
 
   render() {
@@ -225,7 +241,6 @@ class NavBar extends Component {
               <Dropdown
                 nav
                 inNavbar
-                id="select-commander"
                 isOpen={this.state.selectOpen}
                 toggle={this.toggleSelect}
               >
@@ -234,7 +249,9 @@ class NavBar extends Component {
                   {this.props.commander ? this.props.commander : 'Commander'}
                 </DropdownToggle>
 
-                <DropdownMenu right>{this.createSelectItems()}</DropdownMenu>
+                <DropdownMenu id="select-commander-menu" right>
+                  {this.createSelectItems()}
+                </DropdownMenu>
               </Dropdown>
             </Nav>
           </Collapse>

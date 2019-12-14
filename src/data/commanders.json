@@ -1,5 +1,20 @@
 {
-  "Richard I": { "red": "Infantry", "blue": "Defense", "yellow": "Garrison" },
-  "Yi Seong-Gye": { "red": "Archer", "blue": "Skill", "yellow": "Garrison" },
-  "Sun Tzu": { "red": "Infantry", "blue": "Skill", "yellow": "Garrison" }
+  "Richard I": {
+    "tier": "Legendary",
+    "red": "Infantry",
+    "blue": "Defense",
+    "yellow": "Garrison"
+  },
+  "Yi Seong-Gye": {
+    "tier": "Legendary",
+    "red": "Archer",
+    "blue": "Skill",
+    "yellow": "Garrison"
+  },
+  "Sun Tzu": {
+    "tier": "Epic",
+    "red": "Infantry",
+    "blue": "Skill",
+    "yellow": "Garrison"
+  }
 }

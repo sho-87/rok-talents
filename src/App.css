@@ -2,8 +2,7 @@
 :root {
   --nav-bar-height: 50px;
   --side-panel-width: 20%;
-  --hexagon-opacity: 1
-  ;
+  --hexagon-opacity: 1;
   --tree-box-outline: none;
   --red: rgba(190, 50, 25, 1);
   --yellow: rgba(183, 156, 4, 1);
@@ -74,6 +73,11 @@ body {
 #settings-group {
   width: 160px;
   margin: 0px 10px 0px 10px;
+}
+
+#select-commander-menu {
+  max-height: 80vh;
+  overflow: auto;
 }
 
 .select-commander-icon {

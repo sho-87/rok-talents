@@ -14,12 +14,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version to state and data files
+//TODO: add warning if loaded build is using old data version
 //TODO: change encoding method? base64, URI, lz-string, url safe, or use multiple query params instead of full object to save chars?
 //TODO: url shortening using sqlite?
 //TODO: manually encode/shorten state containing repeat characters?
 //TODO: shorten state keys, and use IDs instead of full commander names?
 //TODO: react router to store state/commander/version as path instead of query?
 //TODO: hide side panel automatically on smaller screens
+//TODO: add keyboard shortcuts
+//FIXME: webpack hot module replacement (HMR) waiting for update
 
 /**
  * Main application component. Contains high level logic for managing application state
