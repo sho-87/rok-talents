@@ -1,4 +1,5 @@
 {
   "Richard I": { "red": "Infantry", "blue": "Defense", "yellow": "Garrison" },
-  "Yi Seong-Gye": { "red": "Archer", "blue": "Skill", "yellow": "Garrison" }
+  "Yi Seong-Gye": { "red": "Archer", "blue": "Skill", "yellow": "Garrison" },
+  "Sun Tzu": { "red": "Infantry", "blue": "Skill", "yellow": "Garrison" }
 }

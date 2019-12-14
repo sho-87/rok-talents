@@ -2,7 +2,8 @@
 :root {
   --nav-bar-height: 50px;
   --side-panel-width: 20%;
-  --hexagon-opacity: 1;
+  --hexagon-opacity: 1
+  ;
   --tree-box-outline: none;
   --red: rgba(190, 50, 25, 1);
   --yellow: rgba(183, 156, 4, 1);
@@ -77,8 +78,9 @@ body {
 
 .select-commander-icon {
   margin-right: 5px;
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 29px;
+  transform: translateY(-5%);
 }
 
 /* Main panel container */
@@ -262,8 +264,9 @@ body {
 }
 
 .hexagon-commander-wrapper img {
-  width: 7%;
-  height: 7%;
+  width: 6.4%;
+  height: 8%;
+  transform: translateY(-5%);
   cursor: pointer;
   z-index: 1;
 }

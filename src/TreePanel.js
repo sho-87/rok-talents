@@ -8,6 +8,7 @@ import ErrorBoundary from './Error';
 import Trees from './data/modules';
 import Commanders from './data/Commanders.json';
 
+//TODO: use a component for each individual jsplumb connection/line
 //FIXME: speed up repaint on resize
 
 /**

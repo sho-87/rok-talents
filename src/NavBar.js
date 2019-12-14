@@ -30,6 +30,7 @@ import Commanders from './data/Commanders.json';
 //TODO: add undo/redo
 //TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
+//TODO: group commander dropdown by legendary and epic
 
 /**
  * Nav bar component containing main application buttons/controls
