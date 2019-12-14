@@ -12,7 +12,7 @@
   "2": {
     "name": "Burning Blood",
     "values": [3, 6, 9],
-    "stats": "",
+    "stats": "Rage Generation",
     "text": "Normal attacks grant an additional $ rage",
     "prereq": [3],
     "dep": [],
@@ -37,8 +37,165 @@
     "text": "Reduces skill damage taken by $%",
     "prereq": [3],
     "dep": [],
-    "pos": [25.3, 16.1],
+    "pos": [25.4, 16.3],
     "type": "node-large",
     "image": "blueCrossShield"
+  },
+  "5": {
+    "name": "Latent Power",
+    "values": [2, 4, 6],
+    "stats": "Additional Skill Damage",
+    "text": "Enhances additional skill damage by $%",
+    "prereq": [6],
+    "dep": [],
+    "pos": [-14.3, 45.4],
+    "type": "node-large",
+    "image": "blueHeart"
+  },
+  "6": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by $%",
+    "prereq": [2],
+    "dep": [5],
+    "pos": [0.3, 47.8],
+    "type": "node-small"
+  },
+  "7": {
+    "name": "All For One",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "After the primary commander uses a skill, active skill damage of the secondary commander is increased by $%",
+    "prereq": [3],
+    "dep": [11],
+    "pos": [12, 43.6],
+    "type": "node-large",
+    "image": "blueScroll"
+  },
+  "8": {
+    "name": "Tactical Mastery",
+    "values": [1, 2, 3],
+    "stats": "Active Skill Damage",
+    "text": "Increases active skill damage by $%",
+    "prereq": [3],
+    "dep": [13],
+    "pos": [30.5, 32.5],
+    "type": "node-large",
+    "image": "blueSharp"
+  },
+  "9": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by $%",
+    "prereq": [4],
+    "dep": [16],
+    "pos": [40.8, 23.9],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "Naked Rage",
+    "values": [2, 4, 6],
+    "stats": "Skill Damage",
+    "text": "Increases skill damage dealt by $%, but also increases skill damage taken by $%",
+    "prereq": [9],
+    "dep": [0],
+    "pos": [44.2, 10.5],
+    "type": "node-large",
+    "image": "blueBoneHand"
+  },
+  "11": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by $%",
+    "prereq": [7],
+    "dep": [12, 14],
+    "pos": [14, 60.8],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by $%",
+    "prereq": [11, 13],
+    "dep": [15],
+    "pos": [29.3, 53],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by $%",
+    "prereq": [8],
+    "dep": [12, 16],
+    "pos": [45.3, 40.2],
+    "type": "node-small"
+  },
+  "14": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by $%",
+    "prereq": [6, 11],
+    "dep": [17],
+    "pos": [14.6, 73.7],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by $%",
+    "prereq": [12],
+    "dep": [18],
+    "pos": [36.1, 64.2],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by $%",
+    "prereq": [9, 13],
+    "dep": [19],
+    "pos": [55, 49.4],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "Rejuvenate",
+    "values": [20, 40, 60],
+    "stats": "Rage Generation",
+    "text": "Instantly restores $ rage whenever a skill is used",
+    "prereq": [14],
+    "dep": [18],
+    "pos": [7.4, 86.2],
+    "type": "node-large",
+    "image": "blueHand"
+  },
+  "18": {
+    "name": "Feral Nature",
+    "values": [20, 40, 60, 80, 100],
+    "stats": "Rage Generation",
+    "text": "Normal attacks have a 10% chance to grant an additional $ rage",
+    "prereq": [15, 17, 19],
+    "dep": [],
+    "pos": [41.2, 75],
+    "type": "node-large",
+    "image": "blueMonster"
+  },
+  "19": {
+    "name": "Clarity",
+    "values": [2, 4, 6],
+    "stats": "Skill Damage",
+    "text": "After using an active skill, increases skill damage by $% for the next 6 seconds",
+    "prereq": [16],
+    "dep": [18],
+    "pos": [68.5, 52],
+    "type": "node-large",
+    "image": "blueMind"
   }
 }
