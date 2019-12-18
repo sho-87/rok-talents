@@ -1,20 +1,26 @@
 {
+  "Aethelflaed": {
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Peacekeeping",
+    "blue": "Support"
+  },
   "Richard I": {
     "tier": "Legendary",
     "red": "Infantry",
-    "blue": "Defense",
-    "yellow": "Garrison"
+    "yellow": "Garrison",
+    "blue": "Defense"
   },
   "Yi Seong-Gye": {
     "tier": "Legendary",
     "red": "Archer",
-    "blue": "Skill",
-    "yellow": "Garrison"
+    "yellow": "Garrison",
+    "blue": "Skill"
   },
   "Sun Tzu": {
     "tier": "Epic",
     "red": "Infantry",
-    "blue": "Skill",
-    "yellow": "Garrison"
+    "yellow": "Garrison",
+    "blue": "Skill"
   }
 }
