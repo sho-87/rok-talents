@@ -12,7 +12,7 @@
   "2": {
     "name": "Burning Blood",
     "values": [3, 6, 9],
-    "stats": "Rage Generation",
+    "stats": "",
     "text": "Normal attacks grant an additional $ rage",
     "prereq": [3],
     "dep": [],
@@ -44,7 +44,7 @@
   "5": {
     "name": "Latent Power",
     "values": [2, 4, 6],
-    "stats": "Additional Skill Damage",
+    "stats": "",
     "text": "Enhances additional skill damage by $%",
     "prereq": [6],
     "dep": [],
@@ -76,7 +76,7 @@
   "8": {
     "name": "Tactical Mastery",
     "values": [1, 2, 3],
-    "stats": "Active Skill Damage",
+    "stats": "",
     "text": "Increases active skill damage by $%",
     "prereq": [3],
     "dep": [13],
@@ -97,7 +97,7 @@
   "10": {
     "name": "Naked Rage",
     "values": [2, 4, 6],
-    "stats": "Skill Damage",
+    "stats": "",
     "text": "Increases skill damage dealt by $%, but also increases skill damage taken by $%",
     "prereq": [9],
     "dep": [0],
@@ -168,7 +168,7 @@
   "17": {
     "name": "Rejuvenate",
     "values": [20, 40, 60],
-    "stats": "Rage Generation",
+    "stats": "",
     "text": "Instantly restores $ rage whenever a skill is used",
     "prereq": [14],
     "dep": [18],
@@ -179,7 +179,7 @@
   "18": {
     "name": "Feral Nature",
     "values": [20, 40, 60, 80, 100],
-    "stats": "Rage Generation",
+    "stats": "",
     "text": "Normal attacks have a 10% chance to grant an additional $ rage",
     "prereq": [15, 17, 19],
     "dep": [],
@@ -190,7 +190,7 @@
   "19": {
     "name": "Clarity",
     "values": [2, 4, 6],
-    "stats": "Skill Damage",
+    "stats": "",
     "text": "After using an active skill, increases skill damage by $% for the next 6 seconds",
     "prereq": [16],
     "dep": [18],

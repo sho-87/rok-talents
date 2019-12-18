@@ -109,13 +109,6 @@ class SidePanel extends Component {
           <p>Defense: {this.calcStats('Defense')}%</p>
           <p>Health: {this.calcStats('Health')}%</p>
           <p>March Speed: {this.calcStats('March Speed')}%</p>
-          <p>Rage Generation: {this.calcStats('Rage Generation')}</p>
-          <p>Skill Damage: {this.calcStats('Skill Damage')}%</p>
-          <p>Active Skill Damage: {this.calcStats('Active Skill Damage')}%</p>
-          <p>
-            Additional Skill Damage: {this.calcStats('Additional Skill Damage')}
-            %
-          </p>
         </div>
 
         <h3 onClick={this.toggleBonus}>
