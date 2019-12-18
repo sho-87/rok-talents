@@ -6,7 +6,7 @@
     "text": "Increases the defense of infantry units by $%",
     "prereq": [],
     "dep": [],
-    "pos": [-2.6, 75],
+    "pos": [-2.5, 75],
     "type": "node-small"
   },
   "2": {
@@ -16,7 +16,7 @@
     "text": "When the army led by this commander has been reduced to 50% strength, increases defense of all troops by $%",
     "prereq": [3],
     "dep": [7],
-    "pos": [-38, 60],
+    "pos": [-37.7, 58.6],
     "type": "node-large",
     "image": "redWolf"
   },
@@ -27,7 +27,7 @@
     "text": "Increases the defense of infantry units by $%",
     "prereq": [1],
     "dep": [2, 9],
-    "pos": [-14, 65],
+    "pos": [-14.7, 65],
     "type": "node-small"
   },
   "4": {
@@ -37,7 +37,7 @@
     "text": "Increases the attack of infantry units by $%",
     "prereq": [1],
     "dep": [5, 10],
-    "pos": [9, 65],
+    "pos": [9.3, 64.8],
     "type": "node-small"
   },
   "5": {
@@ -47,8 +47,165 @@
     "text": "Infantry units led by this commander deal an additional $% damage to cavalry units",
     "prereq": [4],
     "dep": [12],
-    "pos": [30, 58],
+    "pos": [29.4, 58.8],
     "type": "node-large",
     "image": "redSpear"
+  },
+  "6": {
+    "name": "Health (Infantry)",
+    "values": [1, 2],
+    "stats": "Health",
+    "text": "Increases health of infantry units by $%",
+    "prereq": [2],
+    "dep": [10, 11],
+    "pos": [-47, 50.2],
+    "type": "node-small"
+  },
+  "7": {
+    "name": "Double-Headed Axe",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "Increases normal attack damage by $%",
+    "prereq": [3],
+    "dep": [11],
+    "pos": [-16.6, 47.4],
+    "type": "node-large",
+    "image": "redAxe"
+  },
+  "8": {
+    "name": "Undying Fury",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Normal attacks grant an additional $ rage",
+    "prereq": [4],
+    "dep": [12],
+    "pos": [7.5, 47.4],
+    "type": "node-large",
+    "image": "redSkullFire"
+  },
+  "9": {
+    "name": "March Speed (Infantry)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases march speed of infantry units by $%",
+    "prereq": [5],
+    "dep": [12, 13],
+    "pos": [41, 49.2],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "Strong of Body",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "Increases health of infantry units by $%",
+    "prereq": [6],
+    "dep": [],
+    "pos": [-58.9, 38],
+    "type": "node-large",
+    "image": "redStrong"
+  },
+  "11": {
+    "name": "Defense (Infantry)",
+    "values": [1, 2],
+    "stats": "Defense",
+    "text": "Increases defense of infantry units by $%",
+    "prereq": [6, 7],
+    "dep": [15],
+    "pos": [-29.7, 39.3],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "March Speed (Infantry)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases march speed of infantry units by $%",
+    "prereq": [8, 9],
+    "dep": [17, 18],
+    "pos": [23, 39.3],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Fleet Of Foot",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "Increases march speed of infantry units by $%",
+    "prereq": [9],
+    "dep": [],
+    "pos": [50.6, 38],
+    "type": "node-large",
+    "image": "redBoots"
+  },
+  "14": {
+    "name": "Defense (Infantry)",
+    "values": [1],
+    "stats": "Defense",
+    "text": "Increases defense of infantry units by $%",
+    "prereq": [11],
+    "dep": [],
+    "pos": [-49.8, 19.6],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Health (Infantry)",
+    "values": [1, 2],
+    "stats": "Health",
+    "text": "Increases health of infantry units by $%",
+    "prereq": [11],
+    "dep": [19],
+    "pos": [-29.6, 24.5],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "Elite Soldiers",
+    "values": [0.5, 1, 1.5, 2, 2.5],
+    "stats": "",
+    "text": "When the army led by this commander contains only infantry units, attack, defense, and health are increased by $%",
+    "prereq": [19, 20],
+    "dep": [],
+    "pos": [-4.2, 20.4],
+    "type": "node-large",
+    "image": "redEagleFlat"
+  },
+  "17": {
+    "name": "Attack (Infantry)",
+    "values": [1, 2],
+    "stats": "Attack",
+    "text": "Increases attack of infantry units by $%",
+    "prereq": [12],
+    "dep": [20],
+    "pos": [23.2, 24.5],
+    "type": "node-small"
+  },
+  "18": {
+    "name": "Health (Infantry)",
+    "values": [1],
+    "stats": "Health",
+    "text": "Increases health of infantry units by $%",
+    "prereq": [12],
+    "dep": [],
+    "pos": [44.2, 19.5],
+    "type": "node-small"
+  },
+  "19": {
+    "name": "Hold The Line",
+    "values": [5, 10, 15, 20],
+    "stats": "",
+    "text": "When the army led by this commander contains only infantry units, gives troops a 10% chance to reduce damage taken by $% for the next 2 seconds after being attacked",
+    "prereq": [15],
+    "dep": [16],
+    "pos": [-31.4, 8.3],
+    "type": "node-large",
+    "image": "redArmor"
+  },
+  "20": {
+    "name": "Snare of Thorns",
+    "values": [5, 10, 15, 20],
+    "stats": "",
+    "text": "Gives normal attacks a 10% chance to reduce target march speed by $% for the next 2 seconds",
+    "prereq": [17],
+    "dep": [16],
+    "pos": [21.4, 8.2],
+    "type": "node-large",
+    "image": "redThorns"
   }
 }
