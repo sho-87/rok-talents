@@ -124,9 +124,14 @@ class SidePanel extends Component {
         {process.env.NODE_ENV === 'development' && (
           <Fragment>
             <h2>Debug</h2>
-            <p>Base64: {this.props.encodeState()}</p>
             <p>
-              Decoded: {this.props.decodeState(this.props.encodeState(), false)}
+              Encoded ({this.props.encodeState().length}):{' '}
+              {this.props.encodeState()}
+            </p>
+            <p>
+              Decoded (
+              {this.props.decodeState(this.props.encodeState(), false).length}):{' '}
+              {this.props.decodeState(this.props.encodeState(), false)}
             </p>
           </Fragment>
         )}
