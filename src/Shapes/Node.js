@@ -25,8 +25,8 @@ class Node extends Component {
   getStyle() {
     let style = {};
 
-    style.top = this.props.top;
-    style.left = this.props.left;
+    style.top = this.props.y;
+    style.left = this.props.x;
 
     if (this.props.type === 'node-large') {
       style.backgroundImage = `url(images/talents/${this.props.image}.png)`;

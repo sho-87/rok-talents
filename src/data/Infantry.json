@@ -6,7 +6,7 @@
     "text": "Increases the defense of infantry units by $%",
     "prereq": [],
     "dep": [],
-    "pos": [75, -2.6],
+    "pos": [-2.6, 75],
     "type": "node-small"
   },
   "2": {
@@ -16,7 +16,7 @@
     "text": "When the army led by this commander has been reduced to 50% strength, increases defense of all troops by $%",
     "prereq": [3],
     "dep": [7],
-    "pos": [60, -38],
+    "pos": [-38, 60],
     "type": "node-large",
     "image": "redWolf"
   },
@@ -27,7 +27,7 @@
     "text": "Increases the defense of infantry units by $%",
     "prereq": [1],
     "dep": [2, 9],
-    "pos": [65, -14],
+    "pos": [-14, 65],
     "type": "node-small"
   },
   "4": {
@@ -37,7 +37,7 @@
     "text": "Increases the attack of infantry units by $%",
     "prereq": [1],
     "dep": [5, 10],
-    "pos": [65, 9],
+    "pos": [9, 65],
     "type": "node-small"
   },
   "5": {
@@ -47,7 +47,7 @@
     "text": "Infantry units led by this commander deal an additional $% damage to cavalry units",
     "prereq": [4],
     "dep": [12],
-    "pos": [58, 30],
+    "pos": [30, 58],
     "type": "node-large",
     "image": "redSpear"
   }

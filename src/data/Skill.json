@@ -6,7 +6,7 @@
     "text": "Increases the attack of all units led by this commander by $%",
     "prereq": [],
     "dep": [3],
-    "pos": [8.9, 18.6],
+    "pos": [18.6, 8.9],
     "type": "node-small"
   },
   "2": {
@@ -16,7 +16,7 @@
     "text": "Normal attacks grant an additional $ rage",
     "prereq": [3],
     "dep": [],
-    "pos": [-2.6, 30.7],
+    "pos": [30.7, -2.6],
     "type": "node-large",
     "image": "blueSkullFire"
   },
@@ -27,7 +27,7 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [1],
     "dep": [2, 4],
-    "pos": [14.6, 28.1],
+    "pos": [28.1, 14.6],
     "type": "node-small"
   },
   "4": {
@@ -37,7 +37,7 @@
     "text": "Reduces skill damage taken by $%",
     "prereq": [3],
     "dep": [],
-    "pos": [25.4, 16.3],
+    "pos": [16.3, 25.4],
     "type": "node-large",
     "image": "blueCrossShield"
   },
@@ -48,7 +48,7 @@
     "text": "Enhances additional skill damage by $%",
     "prereq": [6],
     "dep": [],
-    "pos": [-14.3, 45.4],
+    "pos": [45.4, -14.3],
     "type": "node-large",
     "image": "blueHeart"
   },
@@ -59,7 +59,7 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [2],
     "dep": [5],
-    "pos": [0.3, 47.8],
+    "pos": [47.8, 0.3],
     "type": "node-small"
   },
   "7": {
@@ -69,7 +69,7 @@
     "text": "After the primary commander uses a skill, active skill damage of the secondary commander is increased by $%",
     "prereq": [3],
     "dep": [11],
-    "pos": [12, 43.6],
+    "pos": [43.6, 12],
     "type": "node-large",
     "image": "blueScroll"
   },
@@ -80,7 +80,7 @@
     "text": "Increases active skill damage by $%",
     "prereq": [3],
     "dep": [13],
-    "pos": [30.5, 32.5],
+    "pos": [32.5, 30.5],
     "type": "node-large",
     "image": "blueSharp"
   },
@@ -91,7 +91,7 @@
     "text": "Increases the attack of all units led by this commander by $%",
     "prereq": [4],
     "dep": [16],
-    "pos": [40.8, 23.9],
+    "pos": [23.9, 40.8],
     "type": "node-small"
   },
   "10": {
@@ -101,7 +101,7 @@
     "text": "Increases skill damage dealt by $%, but also increases skill damage taken by $%",
     "prereq": [9],
     "dep": [0],
-    "pos": [44.2, 10.5],
+    "pos": [10.5, 44.2],
     "type": "node-large",
     "image": "blueBoneHand"
   },
@@ -112,7 +112,7 @@
     "text": "Increases the health of all units led by this commander by $%",
     "prereq": [7],
     "dep": [12, 14],
-    "pos": [14, 60.8],
+    "pos": [60.8, 14],
     "type": "node-small"
   },
   "12": {
@@ -122,7 +122,7 @@
     "text": "Increases the defense of all units led by this commander by $%",
     "prereq": [11, 13],
     "dep": [15],
-    "pos": [29.3, 53],
+    "pos": [53, 29.3],
     "type": "node-small"
   },
   "13": {
@@ -132,7 +132,7 @@
     "text": "Increases the health of all units led by this commander by $%",
     "prereq": [8],
     "dep": [12, 16],
-    "pos": [45.3, 40.2],
+    "pos": [40.2, 45.3],
     "type": "node-small"
   },
   "14": {
@@ -142,7 +142,7 @@
     "text": "Increases the health of all units led by this commander by $%",
     "prereq": [6, 11],
     "dep": [17],
-    "pos": [14.6, 73.7],
+    "pos": [73.7, 14.6],
     "type": "node-small"
   },
   "15": {
@@ -152,7 +152,7 @@
     "text": "Increases the attack of all units led by this commander by $%",
     "prereq": [12],
     "dep": [18],
-    "pos": [36.1, 64.2],
+    "pos": [64.2, 36.1],
     "type": "node-small"
   },
   "16": {
@@ -162,7 +162,7 @@
     "text": "Increases the march speed of all units led by this commander by $%",
     "prereq": [9, 13],
     "dep": [19],
-    "pos": [55, 49.4],
+    "pos": [49.4, 55],
     "type": "node-small"
   },
   "17": {
@@ -172,7 +172,7 @@
     "text": "Instantly restores $ rage whenever a skill is used",
     "prereq": [14],
     "dep": [18],
-    "pos": [7.4, 86.2],
+    "pos": [86.2, 7.4],
     "type": "node-large",
     "image": "blueHand"
   },
@@ -183,7 +183,7 @@
     "text": "Normal attacks have a 10% chance to grant an additional $ rage",
     "prereq": [15, 17, 19],
     "dep": [],
-    "pos": [41.2, 75],
+    "pos": [75, 41.2],
     "type": "node-large",
     "image": "blueMonster"
   },
@@ -194,7 +194,7 @@
     "text": "After using an active skill, increases skill damage by $% for the next 6 seconds",
     "prereq": [16],
     "dep": [18],
-    "pos": [68.5, 52],
+    "pos": [52, 68.5],
     "type": "node-large",
     "image": "blueMind"
   }

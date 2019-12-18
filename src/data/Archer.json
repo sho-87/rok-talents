@@ -1,12 +1,12 @@
 {
   "1": {
-    "name": "Attack (All Troops)",
+    "name": "Attack (Archers)",
     "values": [1],
     "stats": "Attack",
-    "text": "Increases the attack of all units led by this commander by $%",
+    "text": "Increases attack of archer units by $%",
     "prereq": [],
     "dep": [],
-    "pos": [75.7, -1.7],
+    "pos": [-1.7, 75.7],
     "type": "node-small"
   }
 }

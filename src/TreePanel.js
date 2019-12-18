@@ -278,8 +278,8 @@ class TreePanel extends Component {
           value={values[i - 1]}
           max={curNode['values'].length}
           fullTree={this.props[color]}
-          top={curNode['pos'][0] + '%'}
-          left={curNode['pos'][1] + '%'}
+          x={curNode['pos'][0] + '%'}
+          y={curNode['pos'][1] + '%'}
           color={color}
         />
       );
