@@ -27,7 +27,7 @@
     "text": "Enhances healing effects received by troops by $%",
     "prereq": [5],
     "dep": [9],
-    "pos": [18.7, 68.6],
+    "pos": [19.1, 68.6],
     "type": "node-large",
     "image": "redLeaf"
   },
@@ -142,7 +142,7 @@
     "text": "Increases the attack of all units led by this commander by $%",
     "prereq": [6, 11],
     "dep": [16],
-    "pos": [-23.1, 27.8],
+    "pos": [-23.9, 27.8],
     "type": "node-small"
   },
   "15": {
@@ -152,7 +152,7 @@
     "text": "Increases the march speed of all units led by this commander by $%",
     "prereq": [9, 12],
     "dep": [17],
-    "pos": [20.5, 27.8],
+    "pos": [21, 27.8],
     "type": "node-small"
   },
   "16": {
@@ -162,7 +162,7 @@
     "text": "When the army led by this commander has been reduced to 50% strength, increases attack by $%",
     "prereq": [14],
     "dep": [18],
-    "pos": [-24.7, 15.8],
+    "pos": [-25.6, 15.8],
     "type": "node-large",
     "image": "redSpiral"
   },
