@@ -1,12 +1,54 @@
 {
   "1": {
-    "name": "Defense (All Troops)",
+    "name": "Defense (Infantry)",
     "values": [1],
     "stats": "Defense",
-    "text": "Increases the defense of all units led by this commander by $%",
+    "text": "Increases the defense of infantry units by $%",
     "prereq": [],
     "dep": [],
     "pos": [75, -2.6],
     "type": "node-small"
+  },
+  "2": {
+    "name": "Call of the Pack",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "When the army led by this commander has been reduced to 50% strength, increases defense of all troops by $%",
+    "prereq": [3],
+    "dep": [7],
+    "pos": [60, -38],
+    "type": "node-large",
+    "image": "redWolf"
+  },
+  "3": {
+    "name": "Defense (Infantry)",
+    "values": [1, 2],
+    "stats": "Defense",
+    "text": "Increases the defense of infantry units by $%",
+    "prereq": [1],
+    "dep": [2, 9],
+    "pos": [65, -14],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Attack (Infantry)",
+    "values": [1, 2],
+    "stats": "Attack",
+    "text": "Increases the attack of infantry units by $%",
+    "prereq": [1],
+    "dep": [5, 10],
+    "pos": [65, 9],
+    "type": "node-small"
+  },
+  "5": {
+    "name": "Iron Spear",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Infantry units led by this commander deal an additional $% damage to cavalry units",
+    "prereq": [4],
+    "dep": [12],
+    "pos": [58, 30],
+    "type": "node-large",
+    "image": "redSpear"
   }
 }
