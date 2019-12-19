@@ -103,7 +103,6 @@ body {
   height: 100%;
   background-color: #838ca7;
   border: 0.5px solid black;
-  transition: flex 100ms linear;
 }
 
 .side-panel-open {
@@ -114,9 +113,7 @@ body {
 }
 
 .side-panel-closed {
-  flex: 0 0 0%;
-  overflow: hidden;
-  padding: 0;
+  display: none;
 }
 
 #side-panel-summary p {
@@ -154,7 +151,7 @@ body {
     rgb(8, 39, 57) 90%
   );
 
-  /* background-image: url('./template3.jpg');
+  /* background-image: url('./template5.jpg');
   background-repeat: no-repeat;
   background-size: 70%;
   background-position: 42.5% 20%; */
