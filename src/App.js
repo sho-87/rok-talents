@@ -21,7 +21,6 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 //TODO: shorten state keys, and use IDs instead of full commander names?
 //TODO: react router to store state/commander/version as path instead of query?
 //TODO: hide side panel automatically on smaller screens
-//TODO: add keyboard shortcuts
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
 /**
