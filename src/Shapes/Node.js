@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from '../Modals';
 
-import Trees from '../data/modules';
+import Trees from '../data/AllTrees';
 
 //FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
 //FIXME: fix location of node labels. tie to the node div

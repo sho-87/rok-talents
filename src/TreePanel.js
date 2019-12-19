@@ -5,7 +5,7 @@ import Node from './shapes/Node';
 import { PrereqToast, PointLimitToast, CopyToast } from './Modals';
 import ErrorBoundary from './Error';
 
-import Trees from './data/modules';
+import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 
 //TODO: use a component for each individual jsplumb connection/line

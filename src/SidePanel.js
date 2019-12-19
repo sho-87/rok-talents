@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Collapse } from 'reactstrap';
 
-import Trees from './data/modules';
+import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 
 //TODO: add tree view for additional info

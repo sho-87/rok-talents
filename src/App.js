@@ -5,7 +5,7 @@ import SidePanel from './SidePanel';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
 
-import Trees from './data/modules';
+import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 
 import './App.css';
