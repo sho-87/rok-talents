@@ -5,7 +5,6 @@ import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 
 //TODO: add tree view for additional info
-//FIXME: sie panel text causes tree panel to overflow as scroll doesnt appear early enough
 //FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
 
 /**
