@@ -15,11 +15,8 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version to state and data files
 //TODO: add warning if loaded build is using old data version
-//TODO: change encoding method? base64, URI, lz-string, url safe, or use multiple query params instead of full object to save chars?
-//TODO: url shortening using sqlite?
 //TODO: manually encode/shorten state containing repeat characters?
-//TODO: shorten state keys, and use IDs instead of full commander names?
-//TODO: react router to store state/commander/version as path instead of query?
+//TODO: check for invalid build / talent values within range
 //TODO: hide side panel automatically on smaller screens
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
@@ -54,15 +51,57 @@ class App extends Component {
 
     // Set initial state from query string
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('build')) {
-      const build = urlParams.get('build');
-      try {
-        this.state = this.decodeState(build);
-      } catch (err) {
-        // Invalid build
-        this.invalidModalFlag = true;
+    if (urlParams.has('c')) {
+      this.state = {
+        commander: urlParams.get('c'),
+        ...this.createZeroTalents(urlParams.get('c'))
+      };
+      var talents;
+
+      if (urlParams.has('r')) {
+        talents = urlParams
+          .get('r')
+          .split('')
+          .map(Number);
+
+        if (talents.length === this.state.red.length) {
+          this.state.red = talents;
+        } else {
+          this.invalidModalFlag = true;
+        }
+      }
+
+      if (urlParams.has('y')) {
+        talents = urlParams
+          .get('y')
+          .split('')
+          .map(Number);
+
+        if (talents.length === this.state.yellow.length) {
+          this.state.yellow = talents;
+        } else {
+          this.invalidModalFlag = true;
+        }
+      }
+
+      if (urlParams.has('b')) {
+        talents = urlParams
+          .get('b')
+          .split('')
+          .map(Number);
+
+        if (talents.length === this.state.blue.length) {
+          this.state.blue = talents;
+        } else {
+          this.invalidModalFlag = true;
+        }
+      }
+
+      if (this.invalidModalFlag) {
         this.state = this.getEmptyState();
         this.updateURL('clear');
+      } else {
+        this.updateURL('update');
       }
     } else {
       this.state = this.getEmptyState();
@@ -133,10 +172,16 @@ class App extends Component {
     const url = new URL(window.location.href);
     switch (method) {
       case 'update':
-        url.searchParams.set('build', this.encodeState());
+        url.searchParams.set('c', this.state.commander);
+        url.searchParams.set('r', this.state.red.join(''));
+        url.searchParams.set('y', this.state.yellow.join(''));
+        url.searchParams.set('b', this.state.blue.join(''));
         break;
       case 'clear':
-        url.searchParams.delete('build');
+        url.searchParams.delete('c');
+        url.searchParams.delete('r');
+        url.searchParams.delete('y');
+        url.searchParams.delete('b');
         break;
       default:
         break;
