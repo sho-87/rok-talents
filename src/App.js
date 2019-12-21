@@ -15,7 +15,10 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version to state and data files
 //TODO: add warning if loaded build is using old data version
+//TODO: further shorten url - lzstring? base64? URI?
+//TODO: use semicolons to shorten query component?
 //TODO: manually encode/shorten state containing repeat characters?
+//TODO: use commander ID instead of fullname in URL?
 //TODO: check for invalid build / talent values within range
 //TODO: hide side panel automatically on smaller screens
 //FIXME: webpack hot module replacement (HMR) waiting for update

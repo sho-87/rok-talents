@@ -98,6 +98,9 @@ class SidePanel extends Component {
         }
       >
         <h2>{this.props.commander ? this.props.commander : 'Summary'}</h2>
+        <h3>
+          {this.props.commander ? Commanders[this.props.commander].title : ''}
+        </h3>
         <div id="side-panel-summary">
           <p>Points remaining: {this.props.calcPointsRemaining()}</p>
           <p>Points spent: {this.props.calcPointsSpent()}</p>
@@ -112,7 +115,7 @@ class SidePanel extends Component {
         </div>
 
         <h3 onClick={this.toggleBonus}>
-          Additional Info{' '}
+          Additional Talents{' '}
           <span className="side-panel-expand">
             {this.state.bonusOpen ? '(collapse)' : '(expand)'}
           </span>

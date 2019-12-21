@@ -1,23 +1,27 @@
 {
   "Aethelflaed": {
+    "title": "Lady of the Mercians",
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Garrison",
     "blue": "Support"
   },
   "Richard I": {
+    "title": "The Lion Heart",
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Defense"
   },
   "Yi Seong-Gye": {
+    "title": "Bow of Revolution",
     "tier": "Legendary",
     "red": "Archer",
     "yellow": "Garrison",
     "blue": "Skill"
   },
   "Sun Tzu": {
+    "title": "Tactical Genius",
     "tier": "Epic",
     "red": "Infantry",
     "yellow": "Garrison",
