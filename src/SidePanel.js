@@ -130,6 +130,9 @@ class SidePanel extends Component {
           <Fragment>
             <h2>Debug</h2>
             <p>
+              URL length: {window.location.search.length}
+            </p>
+            <p>
               Encoded ({this.props.encodeState().length}):{' '}
               {this.props.encodeState()}
             </p>
