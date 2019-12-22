@@ -5,6 +5,8 @@ import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 
 //TODO: add tree view for additional info
+//TODO: make side panel draggable and resizable?
+//TODO: hide side panel automatically on smaller screens
 //FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
 
 /**

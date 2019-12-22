@@ -19,7 +19,7 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 //TODO: use semicolons to shorten query component?
 //TODO: manually encode/shorten state containing repeat characters?
 //TODO: check for invalid build / talent values within range
-//TODO: hide side panel automatically on smaller screens
+//TODO: optimize/short circuit all forEach loops using for...of and break
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
 /**
@@ -362,8 +362,9 @@ class App extends Component {
         <div id="main-container">
           <Suspense
             fallback={
-              <div>
-                <Spinner size="lg" color="primary" /> Loading...
+              <div id="spinner">
+                <Spinner size="lg" color="primary" />
+                <br />Loading...
               </div>
             }
           >
