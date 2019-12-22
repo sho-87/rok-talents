@@ -8,6 +8,7 @@ import Commanders from './data/Commanders.json';
 //TODO: make side panel draggable and resizable?
 //TODO: hide side panel automatically on smaller screens
 //FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
+//FIXME: URL length doesnt update on first commander change
 
 /**
  * Side panel component displaying stats about the current talent build

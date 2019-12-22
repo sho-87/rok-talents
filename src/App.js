@@ -16,7 +16,6 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 //TODO: add tree/game/data version to state and data files
 //TODO: add warning if loaded build is using old data version
 //TODO: further shorten url - lzstring? base64? URI?
-//TODO: use semicolons to shorten query component?
 //TODO: manually encode/shorten state containing repeat characters?
 //TODO: check for invalid build / talent values within range
 //TODO: optimize/short circuit all forEach loops using for...of and break
@@ -52,10 +51,13 @@ class App extends Component {
     this.calcPointsRemaining = this.calcPointsRemaining.bind(this);
 
     // Set initial state from query string
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('c')) {
+    const urlParams = window.location.search.slice(1).split(';');
+
+    if (urlParams.length === 5) {
+      const [version, comID, red, yellow, blue] = urlParams;
+
       const commanderName = Object.keys(Commanders).find(
-        key => Commanders[key]['id'] === urlParams.get('c')
+        key => Commanders[key]['id'] === comID
       );
 
       this.state = {
@@ -64,24 +66,19 @@ class App extends Component {
       };
 
       const colorPairs = [
-        ['r', 'red'],
-        ['y', 'yellow'],
-        ['b', 'blue']
+        [red, 'red'],
+        [yellow, 'yellow'],
+        [blue, 'blue']
       ];
 
       for (let color of colorPairs) {
-        if (urlParams.has(color[0])) {
-          let talents = urlParams
-            .get(color[0])
-            .split('')
-            .map(Number);
+        let talents = color[0].split('').map(Number);
 
-          if (talents.length === this.state[color[1]].length) {
-            this.state[color[1]] = talents;
-          } else {
-            this.invalidModalFlag = true;
-            break;
-          }
+        if (talents.length === this.state[color[1]].length) {
+          this.state[color[1]] = talents;
+        } else {
+          this.invalidModalFlag = true;
+          break;
         }
       }
 
@@ -153,28 +150,32 @@ class App extends Component {
    * Update the current URL
    *
    * @param {string} method {update | clear} Should the new URL be updated
-   * with the new encoded state or cleared (new app state)?
+   * with the new state or cleared (new app state)?
    * @memberof App
    */
   updateURL(method) {
-    const url = new URL(window.location.href);
+    let queryString;
+
     switch (method) {
       case 'update':
-        url.searchParams.set('c', Commanders[this.state.commander].id);
-        url.searchParams.set('r', this.state.red.join(''));
-        url.searchParams.set('y', this.state.yellow.join(''));
-        url.searchParams.set('b', this.state.blue.join(''));
+        queryString =
+          '?' +
+          [
+            1, //placeholder
+            Commanders[this.state.commander].id,
+            this.state.red.join(''),
+            this.state.yellow.join(''),
+            this.state.blue.join('')
+          ].join(';');
+
         break;
       case 'clear':
-        url.searchParams.delete('c');
-        url.searchParams.delete('r');
-        url.searchParams.delete('y');
-        url.searchParams.delete('b');
+        queryString = '/';
         break;
       default:
         break;
     }
-    window.history.pushState({ path: url.href }, '', url.href);
+    window.history.replaceState('', '', queryString);
   }
 
   /**
@@ -364,7 +365,8 @@ class App extends Component {
             fallback={
               <div id="spinner">
                 <Spinner size="lg" color="primary" />
-                <br />Loading...
+                <br />
+                Loading...
               </div>
             }
           >
