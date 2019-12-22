@@ -17,7 +17,7 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 //TODO: add warning if loaded build is using old data version
 //TODO: further shorten url - lzstring? base64? URI?
 //TODO: manually encode/shorten state containing repeat characters?
-//TODO: check for invalid build / talent values within range
+//TODO: tree based encoding/compression?
 //TODO: optimize/short circuit all forEach loops using for...of and break
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
@@ -73,13 +73,25 @@ class App extends Component {
 
       for (let color of colorPairs) {
         let talents = color[0].split('').map(Number);
+        const maxArray = this.getMaxValues(this.state.commander, color[1]);
 
-        if (talents.length === this.state[color[1]].length) {
+        // Check querystring array is correct length and values are not too large
+        if (
+          (talents.length === this.state[color[1]].length) &
+          talents.every(function(el, idx) {
+            return el <= maxArray[idx];
+          })
+        ) {
           this.state[color[1]] = talents;
         } else {
           this.invalidModalFlag = true;
           break;
         }
+      }
+
+      // Check that the talent build has not overspent points
+      if (this.calcPointsRemaining() < 0) {
+        this.invalidModalFlag = true;
       }
 
       if (this.invalidModalFlag) {
@@ -264,6 +276,24 @@ class App extends Component {
       newArr[idx - 1] -= 1;
     }
     this.setState({ [color]: newArr }, () => this.updateURL('update'));
+  }
+
+  /**
+   * Get the maximum number of available points for each talent
+   *
+   * @param {string} commander Name of the commander
+   * @param {string} color Color of the tree to get max values for
+   * @returns {Number[]} Array of maximum available points for each talent in the tree
+   * @memberof App
+   */
+  getMaxValues(commander, color) {
+    let maxArray = [];
+
+    Object.keys(Trees[Commanders[commander][color]]).forEach(key => {
+      maxArray.push(Trees[Commanders[commander][color]][key]['values'].length);
+    });
+
+    return maxArray;
   }
 
   /**
