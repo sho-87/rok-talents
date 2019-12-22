@@ -117,7 +117,7 @@ class SidePanel extends Component {
         </div>
 
         <h3 onClick={this.toggleBonus}>
-          Additional Talents{' '}
+          Main Talents{' '}
           <span className="side-panel-expand">
             {this.state.bonusOpen ? '(collapse)' : '(expand)'}
           </span>
