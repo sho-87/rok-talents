@@ -18,7 +18,7 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 //TODO: further shorten url - lzstring? base64? URI?
 //TODO: use semicolons to shorten query component?
 //TODO: manually encode/shorten state containing repeat characters?
-//TODO: check for invalid build / talent values within range / encapsulate
+//TODO: check for invalid build / talent values within range
 //TODO: hide side panel automatically on smaller screens
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
@@ -63,44 +63,25 @@ class App extends Component {
         ...this.createZeroTalents(commanderName)
       };
 
-      let talents;
+      const colorPairs = [
+        ['r', 'red'],
+        ['y', 'yellow'],
+        ['b', 'blue']
+      ];
 
-      if (urlParams.has('r')) {
-        talents = urlParams
-          .get('r')
-          .split('')
-          .map(Number);
+      for (let color of colorPairs) {
+        if (urlParams.has(color[0])) {
+          let talents = urlParams
+            .get(color[0])
+            .split('')
+            .map(Number);
 
-        if (talents.length === this.state.red.length) {
-          this.state.red = talents;
-        } else {
-          this.invalidModalFlag = true;
-        }
-      }
-
-      if (urlParams.has('y')) {
-        talents = urlParams
-          .get('y')
-          .split('')
-          .map(Number);
-
-        if (talents.length === this.state.yellow.length) {
-          this.state.yellow = talents;
-        } else {
-          this.invalidModalFlag = true;
-        }
-      }
-
-      if (urlParams.has('b')) {
-        talents = urlParams
-          .get('b')
-          .split('')
-          .map(Number);
-
-        if (talents.length === this.state.blue.length) {
-          this.state.blue = talents;
-        } else {
-          this.invalidModalFlag = true;
+          if (talents.length === this.state[color[1]].length) {
+            this.state[color[1]] = talents;
+          } else {
+            this.invalidModalFlag = true;
+            break;
+          }
         }
       }
 
