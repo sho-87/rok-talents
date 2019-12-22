@@ -18,8 +18,7 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 //TODO: further shorten url - lzstring? base64? URI?
 //TODO: use semicolons to shorten query component?
 //TODO: manually encode/shorten state containing repeat characters?
-//TODO: use commander ID instead of fullname in URL?
-//TODO: check for invalid build / talent values within range
+//TODO: check for invalid build / talent values within range / encapsulate
 //TODO: hide side panel automatically on smaller screens
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
@@ -55,11 +54,16 @@ class App extends Component {
     // Set initial state from query string
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('c')) {
+      const commanderName = Object.keys(Commanders).find(
+        key => Commanders[key]['id'] === urlParams.get('c')
+      );
+
       this.state = {
-        commander: urlParams.get('c'),
-        ...this.createZeroTalents(urlParams.get('c'))
+        commander: commanderName,
+        ...this.createZeroTalents(commanderName)
       };
-      var talents;
+
+      let talents;
 
       if (urlParams.has('r')) {
         talents = urlParams
@@ -175,7 +179,7 @@ class App extends Component {
     const url = new URL(window.location.href);
     switch (method) {
       case 'update':
-        url.searchParams.set('c', this.state.commander);
+        url.searchParams.set('c', Commanders[this.state.commander].id);
         url.searchParams.set('r', this.state.red.join(''));
         url.searchParams.set('y', this.state.yellow.join(''));
         url.searchParams.set('b', this.state.blue.join(''));
