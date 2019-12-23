@@ -144,12 +144,13 @@ class Node extends Component {
 
     let depsOK = true;
 
-    deps.forEach(idx => {
+    for (let idx of deps) {
       const depValue = this.props.fullTree[idx - 1];
       if (depValue > 0) {
         depsOK = false;
+        break;
       }
-    });
+    }
 
     if (depsOK & (this.props.value > 0)) {
       this.props.changeTalentValue(
