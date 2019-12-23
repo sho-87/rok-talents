@@ -10,6 +10,7 @@ import Commanders from './data/Commanders.json';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
 //TODO: make treepanel zoomable?
+//TODO: add parallax background?
 //TODO: use a component for each individual jsplumb connection/line
 //FIXME: speed up repaint on resize
 //FIXME: tooltips stay too long on slow devices

@@ -8,7 +8,6 @@ import Commanders from './data/Commanders.json';
 //TODO: make side panel draggable and resizable?
 //TODO: hide side panel automatically on smaller screens
 //FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
-//FIXME: URL length doesnt update on first commander change
 
 /**
  * Side panel component displaying stats about the current talent build
@@ -130,18 +129,7 @@ class SidePanel extends Component {
         {process.env.NODE_ENV === 'development' && (
           <Fragment>
             <h2>Debug</h2>
-            <p>
-              URL length: {window.location.search.length}
-            </p>
-            <p>
-              Encoded ({this.props.encodeState().length}):{' '}
-              {this.props.encodeState()}
-            </p>
-            <p>
-              Decoded (
-              {this.props.decodeState(this.props.encodeState(), false).length}):{' '}
-              {this.props.decodeState(this.props.encodeState(), false)}
-            </p>
+            <p>URL length: {window.location.search.length}</p>
           </Fragment>
         )}
       </div>

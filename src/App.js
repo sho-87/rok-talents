@@ -37,8 +37,8 @@ class App extends Component {
     this.invalidModalFlag = false;
 
     // Context bindings
-    this.encodeState = this.encodeState.bind(this);
-    this.decodeState = this.decodeState.bind(this);
+    this.encode = this.encode.bind(this);
+    this.decode = this.decode.bind(this);
     this.copyURL = this.copyURL.bind(this);
     this.toggleSidePanel = this.toggleSidePanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
@@ -72,7 +72,10 @@ class App extends Component {
       ];
 
       for (let color of colorPairs) {
-        let talents = color[0].split('').map(Number);
+        // Decode and split talent string into array
+        let talents = this.decode(color[0])
+          .split('')
+          .map(Number);
         const maxArray = this.getMaxValues(this.state.commander, color[1]);
 
         // Check querystring array is correct length and values are not too large
@@ -132,30 +135,27 @@ class App extends Component {
   }
 
   /**
-   * Encode the app `this.state` object
+   * Encode/compress the passed text
    *
-   * @returns {string} Encoded version of the current application state
+   * @param {string} text Text to be encoded/compressed
+   * @returns {string} Encoded/compressed version of the text
    * @memberof App
    */
-  encodeState() {
-    return window.btoa(JSON.stringify(this.state));
+  encode(text) {
+    //return window.btoa(JSON.stringify(this.state));
+    return text;
   }
 
   /**
-   * Decode an encoded application state string
+   * Decode encoded text
    *
-   * @param {string} encoded Encoded form of the application state (`this.state`)
-   * @param {boolean} [parse=true] Should the decoded string be parsed as an object?
-   * @returns {(object|string)} Decode state as a string, or parsed as an object
+   * @param {string} encoded Encoded form of the text
+   * @returns {string} Decoded string
    * @memberof App
    */
-  decodeState(encoded, parse = true) {
-    const decoded = window.atob(encoded);
-    if (parse) {
-      return JSON.parse(decoded);
-    } else {
-      return decoded;
-    }
+  decode(encoded) {
+    // return window.atob(encoded);
+    return encoded;
   }
 
   /**
@@ -175,9 +175,9 @@ class App extends Component {
           [
             1, //placeholder
             Commanders[this.state.commander].id,
-            this.state.red.join(''),
-            this.state.yellow.join(''),
-            this.state.blue.join('')
+            this.encode(this.state.red.join('')),
+            this.encode(this.state.yellow.join('')),
+            this.encode(this.state.blue.join(''))
           ].join(';');
 
         break;
@@ -403,8 +403,6 @@ class App extends Component {
             <ErrorBoundary>
               <SidePanel
                 ref={component => (this.sidePanelRef = component)}
-                encodeState={this.encodeState}
-                decodeState={this.decodeState}
                 calcPointsSpent={this.calcPointsSpent}
                 calcPointsRemaining={this.calcPointsRemaining}
                 commander={this.state.commander}
