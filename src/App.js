@@ -17,7 +17,7 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 //TODO: add warning if loaded build is using old data version
 //TODO: further shorten url - lzstring? base64? URI?
 //TODO: manually encode/shorten state containing repeat characters?
-//TODO: tree based data structure?
+//TODO: use map to replace multiple digit pairs with letters?
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
 /**
