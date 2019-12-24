@@ -4,7 +4,6 @@ import { Collapse } from 'reactstrap';
 import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 
-//TODO: add tree view for additional info
 //TODO: make side panel draggable and resizable?
 //TODO: hide side panel automatically on smaller screens
 //FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
@@ -20,11 +19,11 @@ class SidePanel extends Component {
     super(props);
     this.state = {
       sidePanelOpen: true,
-      bonusOpen: true
+      mainOpen: false
     };
 
     // Context bindings
-    this.toggleBonus = this.toggleBonus.bind(this);
+    this.toggleMain = this.toggleMain.bind(this);
     this.toggleSidePanel = this.toggleSidePanel.bind(this);
   }
 
@@ -40,13 +39,13 @@ class SidePanel extends Component {
   }
 
   /**
-   * Toggles visibility of the bonus/additional info section
+   * Toggles visibility of the main talents section
    *
    * @memberof SidePanel
    */
-  toggleBonus() {
+  toggleMain() {
     this.setState(prevState => ({
-      bonusOpen: !prevState.bonusOpen
+      mainOpen: !prevState.mainOpen
     }));
   }
 
@@ -62,7 +61,7 @@ class SidePanel extends Component {
   calcStats(stat) {
     const commander = this.props.commander;
     let statValue = 0;
-    let bonuses = [];
+    let main = [];
 
     ['red', 'yellow', 'blue'].forEach(color => {
       const nodes = this.props[color];
@@ -74,18 +73,37 @@ class SidePanel extends Component {
           if (value > 0) {
             if (talentStat === stat) {
               statValue += talentInfo.values[value - 1];
-            } else if ((stat === 'Bonus') & (talentStat === '')) {
+            } else if ((stat === 'Main') & (talentStat === '')) {
               let text = talentInfo.text;
               text = text.replace(/\$/g, talentInfo.values[value - 1]);
-              bonuses.push(<p key={color + idx}>{text}</p>);
+              main.push(
+                <div
+                  key={talentInfo.name}
+                  className={`side-panel-main`}
+                  onClick={this.toggleMain}
+                >
+                  <div className="side-panel-main-title">
+                    <span
+                      className={`side-panel-main-bullet side-panel-main-${color}`}
+                    ></span>
+                    {`${talentInfo.name} (${value}/${talentInfo.values.length})`}
+                  </div>
+                  <Collapse
+                    className="side-panel-main-text"
+                    isOpen={this.state.mainOpen}
+                  >
+                    {text}
+                  </Collapse>
+                </div>
+              );
             }
           }
         });
       }
     });
 
-    if (stat === 'Bonus') {
-      return bonuses;
+    if (stat === 'Main') {
+      return main;
     } else {
       return statValue;
     }
@@ -116,15 +134,13 @@ class SidePanel extends Component {
           <p>March Speed: {this.calcStats('March Speed')}%</p>
         </div>
 
-        <h3 onClick={this.toggleBonus}>
+        <h3 onClick={this.toggleMain}>
           Main Talents{' '}
           <span className="side-panel-expand">
-            {this.state.bonusOpen ? '(collapse)' : '(expand)'}
+            {this.state.mainOpen ? '(collapse)' : '(expand)'}
           </span>
         </h3>
-        <Collapse isOpen={this.state.bonusOpen}>
-          <div id="side-panel-bonus">{this.calcStats('Bonus')}</div>
-        </Collapse>
+        <div>{this.calcStats('Main')}</div>
 
         {process.env.NODE_ENV === 'development' && (
           <Fragment>

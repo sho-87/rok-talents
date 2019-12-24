@@ -136,16 +136,46 @@ body {
   margin-bottom: 0px;
 }
 
-#side-panel-bonus p {
-  font-size: 0.8em;
-}
-
 .side-panel-expand {
   font-size: 0.4em;
 }
 
 .side-panel-expand:hover {
   color: blue;
+}
+
+.side-panel-main {
+  margin-bottom: 5px;
+}
+
+.side-panel-main-title {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.side-panel-main-text {
+  font-size: 0.8em;
+  padding-left: 5px;
+}
+
+.side-panel-main-bullet {
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.side-panel-main-red {
+  background: var(--red);
+}
+
+.side-panel-main-yellow {
+  background: var(--yellow);
+}
+
+.side-panel-main-blue {
+  background: var(--blue);
 }
 
 /* Talent tree */
