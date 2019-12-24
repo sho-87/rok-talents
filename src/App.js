@@ -2,12 +2,12 @@ import React, { Component, Suspense } from 'react';
 import { Spinner } from 'reactstrap';
 import NavBar from './NavBar';
 import SidePanel from './SidePanel';
-import { getValueMap } from './utils';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
 
 import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
+import { maxPoints, valuesToLetters, lettersToValues } from './values';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,8 +29,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    /** Maximum number of talent points available in the game */
-    this.MAXPOINTS = 74;
     /** Flag controlling the visibility of the "Invalid build" modal */
     this.invalidModalFlag = false;
 
@@ -140,7 +138,7 @@ class App extends Component {
    * @memberof App
    */
   encode(text) {
-    const map = getValueMap();
+    const map = valuesToLetters;
     let values;
     let suffix = '';
 
@@ -171,7 +169,7 @@ class App extends Component {
    * @memberof App
    */
   decode(encoded) {
-    const map = getValueMap(true);
+    const map = lettersToValues;
     let decoded = '';
 
     for (let i = 0; i < encoded.length; i++) {
@@ -358,7 +356,7 @@ class App extends Component {
    * @memberof App
    */
   calcPointsRemaining() {
-    return this.MAXPOINTS - this.calcPointsSpent();
+    return maxPoints - this.calcPointsSpent();
   }
 
   /**
