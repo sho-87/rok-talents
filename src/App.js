@@ -16,7 +16,8 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version to state and data files
 //TODO: add warning if loaded build is using old data version
-//TODO: further shorten url - lzstring? base64? URI?
+//TODO: further shorten url - lzstring? base64?
+//FIXME: only updateurl/encode if that particular tree has changed
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
 /**
@@ -138,26 +139,13 @@ class App extends Component {
    * @memberof App
    */
   encode(text) {
-    const map = valuesToLetters;
-    let values;
-    let suffix = '';
+    const encoded = text
+      .match(/(..?)/g)
+      .map(v => {
+        return valuesToLetters.hasOwnProperty(v) ? valuesToLetters[v] : v;
+      })
+      .join('');
 
-    if (text.length % 2 !== 0) {
-      suffix = text.charAt(text.length - 1);
-      values = text.slice(0, -1);
-    } else {
-      values = text;
-    }
-
-    let encoded = '';
-    for (let i = 0; i <= text.length - 2; i += 2) {
-      if (map[values[i] + values[i + 1]]) {
-        encoded += map[values[i] + values[i + 1]];
-      } else {
-        encoded += values[i] + values[i + 1];
-      }
-    }
-    encoded += suffix;
     return encoded;
   }
 
