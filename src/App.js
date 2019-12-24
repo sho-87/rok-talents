@@ -169,16 +169,12 @@ class App extends Component {
    * @memberof App
    */
   decode(encoded) {
-    const map = lettersToValues;
-    let decoded = '';
-
-    for (let i = 0; i < encoded.length; i++) {
-      if (encoded[i].toLowerCase() !== encoded[i].toUpperCase()) {
-        decoded += map[encoded[i]];
-      } else {
-        decoded += encoded[i];
-      }
-    }
+    const decoded = encoded
+      .split('')
+      .map(k => {
+        return lettersToValues.hasOwnProperty(k) ? lettersToValues[k] : k;
+      })
+      .join('');
 
     return decoded;
   }
