@@ -38,6 +38,14 @@ body {
   color: white;
 }
 
+#version-warning {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 5px;
+  color: orange;
+}
+
 .toast {
   position: absolute;
   top: 5px;
@@ -207,7 +215,7 @@ body {
 #tree-red-mouse {
   position: absolute;
   top: 0%;
-  right: 0%;
+  left: -100%;
   color: var(--red);
   padding: 2px;
   background-color: white;

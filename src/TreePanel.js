@@ -7,6 +7,7 @@ import ErrorBoundary from './Error';
 
 import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
+import { dataVersion } from '../package.json';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
 //TODO: make treepanel zoomable?
@@ -306,6 +307,12 @@ class TreePanel extends Component {
 
         {!this.props.commander && <Instructions />}
 
+        {this.props.dataVersion < dataVersion && (
+          <div id="version-warning">
+            (warning: this build uses an old version of the game data)
+          </div>
+        )}
+        
         <div id="tree-square-container">
           <div id="tree-square-section">
             <div id="tree-square-content">

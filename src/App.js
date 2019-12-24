@@ -8,14 +8,14 @@ import ErrorBoundary from './Error';
 import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 import { maxPoints, valuesToLetters, lettersToValues } from './values';
+import { dataVersion } from '../package.json';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TreePanel = React.lazy(() => import('./TreePanel'));
 
-//TODO: add tree/game/data version to state and data files
-//TODO: add warning if loaded build is using old data version
+//TODO: add tree/game/data version data files
 //FIXME: only updateurl/encode if that particular tree has changed
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
@@ -50,13 +50,14 @@ class App extends Component {
     const urlParams = window.location.search.slice(1).split(';');
 
     if (urlParams.length === 5) {
-      const [version, comID, red, yellow, blue] = urlParams;
+      const [dataVersion, comID, red, yellow, blue] = urlParams;
 
       const commanderName = Object.keys(Commanders).find(
         key => Commanders[key]['id'] === comID
       );
 
       this.state = {
+        dataVersion: dataVersion,
         commander: commanderName,
         ...this.createZeroTalents(commanderName)
       };
@@ -112,6 +113,7 @@ class App extends Component {
    */
   getEmptyState() {
     return {
+      dataVersion: dataVersion,
       commander: '',
       red: [],
       yellow: [],
@@ -181,7 +183,7 @@ class App extends Component {
         queryString =
           '?' +
           [
-            1, //placeholder
+            this.state.dataVersion,
             Commanders[this.state.commander].id,
             this.encode(this.state.red.join('')),
             this.encode(this.state.yellow.join('')),
@@ -225,10 +227,13 @@ class App extends Component {
    */
   changeCommander(commander) {
     const zeroTalents = this.createZeroTalents(commander);
-    this.setState({ commander: commander, ...zeroTalents }, () => {
-      this.updateURL('update');
-      this.treePanelRef.drawLines();
-    });
+    this.setState(
+      { dataVersion: dataVersion, commander: commander, ...zeroTalents },
+      () => {
+        this.updateURL('update');
+        this.treePanelRef.drawLines();
+      }
+    );
   }
 
   /**
@@ -255,16 +260,12 @@ class App extends Component {
   }
 
   /**
-   * Set all tree node values to `0` for the currently selected commander. Followed
-   * by `this.updateURL()`
+   * Set all tree node values to `0` for the currently selected commander
    *
    * @memberof App
    */
   resetTalents() {
-    this.setState(this.createZeroTalents(this.state.commander), () => {
-      this.updateURL('update');
-      this.treePanelRef.drawLines();
-    });
+    this.changeCommander(this.state.commander);
   }
 
   /**
@@ -429,6 +430,7 @@ class App extends Component {
                 changeTalentValue={this.changeTalentValue}
                 calcPointsSpent={this.calcPointsSpent}
                 calcPointsRemaining={this.calcPointsRemaining}
+                dataVersion={this.state.dataVersion}
                 commander={this.state.commander}
                 red={this.state.red}
                 yellow={this.state.yellow}
