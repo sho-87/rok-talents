@@ -16,7 +16,6 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version to state and data files
 //TODO: add warning if loaded build is using old data version
-//TODO: further shorten url - lzstring? base64?
 //FIXME: only updateurl/encode if that particular tree has changed
 //FIXME: webpack hot module replacement (HMR) waiting for update
 

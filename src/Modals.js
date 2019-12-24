@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 
-import { title, author, version } from '../package.json';
+import { title, author, version, dataVersion } from '../package.json';
 
 /**
  * Modal displaying warning about an invalid build retrived from URL
@@ -87,6 +87,10 @@ export class AboutModal extends Component {
         <ModalBody>
           <div>
             <span className="about-label">Application version:</span> {version}
+          </div>
+          <div>
+            <span className="about-label">Game data version:</span>{' '}
+            {dataVersion}
           </div>
           <div>
             <span className="about-label">Author:</span>{' '}
