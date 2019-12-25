@@ -33,8 +33,6 @@ class App extends Component {
     this.invalidModalFlag = false;
 
     // Context bindings
-    this.encode = this.encode.bind(this);
-    this.decode = this.decode.bind(this);
     this.copyURL = this.copyURL.bind(this);
     this.toggleSidePanel = this.toggleSidePanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
