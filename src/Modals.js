@@ -119,7 +119,7 @@ export class AboutModal extends Component {
   }
 }
 
-//TODO: combine the toasts modal
+//TODO: combine the toasts modal. HOC?
 
 /**
  * Toast showing message upon successful copy of the talent build URL

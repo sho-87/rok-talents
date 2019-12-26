@@ -250,6 +250,16 @@ class TreePanel extends Component {
 
   render() {
     let showTotals = this.state.showTotals && this.props.commander;
+    const sharedTreeProps = {
+      changeTalentValue: this.props.changeTalentValue,
+      calcPointsSpent: this.props.calcPointsSpent,
+      calcPointsRemaining: this.props.calcPointsRemaining,
+      showPrereqToast: this.showPrereqToast,
+      showPointLimitToast: this.showPointLimitToast,
+      showTotals: showTotals,
+      showValues: this.state.showValues,
+      commander: this.props.commander
+    };
 
     return (
       <div id="tree-panel">
@@ -272,14 +282,7 @@ class TreePanel extends Component {
           <div id="tree-square-section">
             <div id="tree-square-content">
               <Tree
-                changeTalentValue={this.props.changeTalentValue}
-                calcPointsSpent={this.props.calcPointsSpent}
-                calcPointsRemaining={this.props.calcPointsRemaining}
-                showPrereqToast={this.showPrereqToast}
-                showPointLimitToast={this.showPointLimitToast}
-                showTotals={showTotals}
-                showValues={this.state.showValues}
-                commander={this.props.commander}
+                {...sharedTreeProps}
                 color={'red'}
                 treeName={this.getTreeName('red')}
                 data={this.props.red}
@@ -287,14 +290,7 @@ class TreePanel extends Component {
                 mouseY={this.state.redY}
               />
               <Tree
-                changeTalentValue={this.props.changeTalentValue}
-                calcPointsSpent={this.props.calcPointsSpent}
-                calcPointsRemaining={this.props.calcPointsRemaining}
-                showPrereqToast={this.showPrereqToast}
-                showPointLimitToast={this.showPointLimitToast}
-                showTotals={showTotals}
-                showValues={this.state.showValues}
-                commander={this.props.commander}
+                {...sharedTreeProps}
                 color={'yellow'}
                 treeName={this.getTreeName('yellow')}
                 data={this.props.yellow}
@@ -302,14 +298,7 @@ class TreePanel extends Component {
                 mouseY={this.state.yellowY}
               />
               <Tree
-                changeTalentValue={this.props.changeTalentValue}
-                calcPointsSpent={this.props.calcPointsSpent}
-                calcPointsRemaining={this.props.calcPointsRemaining}
-                showPrereqToast={this.showPrereqToast}
-                showPointLimitToast={this.showPointLimitToast}
-                showTotals={showTotals}
-                showValues={this.state.showValues}
-                commander={this.props.commander}
+                {...sharedTreeProps}
                 color={'blue'}
                 treeName={this.getTreeName('blue')}
                 data={this.props.blue}
