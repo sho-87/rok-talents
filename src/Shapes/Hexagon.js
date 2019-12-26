@@ -19,6 +19,15 @@ class Hexagon extends Component {
             <div className="hexagon-talent-blue"></div>
           </div>
 
+          <img
+            id="hexagon-commander-image"
+            src={`images/commanders/${this.props.commander}.png`}
+            alt={this.props.commander}
+            onClick={() => {
+              this.props.toggleSelect();
+            }}
+          ></img>
+
           <div className="hexagon-label-wrapper">
             <div className="hexagon-label hexagon-label-red">
               {this.props.getTreeName('red')}
@@ -29,16 +38,6 @@ class Hexagon extends Component {
             <div className="hexagon-label hexagon-label-blue">
               {this.props.getTreeName('blue')}
             </div>
-          </div>
-
-          <div className="hexagon-commander-wrapper">
-            <img
-              src={`images/commanders/${this.props.commander}.png`}
-              alt={this.props.commander}
-              onClick={() => {
-                this.props.toggleSelect();
-              }}
-            ></img>
           </div>
         </div>
       );

@@ -307,17 +307,12 @@ body {
   align-items: center;
 }
 
-.hexagon-commander-wrapper {
+#hexagon-commander-image {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
   opacity: var(--hexagon-opacity);
-}
-
-.hexagon-commander-wrapper img {
   width: 6.4%;
   height: 8%;
   transform: translateY(-5%);
