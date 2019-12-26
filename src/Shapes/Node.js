@@ -2,8 +2,10 @@ import React, { Component, Fragment } from 'react';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from '../Modals';
 
-import Trees from '../data/AllTrees';
+import TreeData from '../data/AllTrees';
 
+//TODO: add easier node change for phone users, show temporary +/- buttons on node click?
+//FIXME: tooltips stay too long on slow devices
 //FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
 //FIXME: fix location of node labels. tie to the node div
 
@@ -64,7 +66,7 @@ class Node extends Component {
    */
   setTooltip() {
     let tooltip = this.props.tooltip;
-    let talentValues = Trees[this.props.treeName][this.props.idx]['values'];
+    let talentValues = TreeData[this.props.treeName][this.props.idx]['values'];
 
     if (this.props.value === this.props.max) {
       tooltip = tooltip.replace(/\$/g, talentValues[this.props.max - 1]);
@@ -87,19 +89,19 @@ class Node extends Component {
   talentIncrease() {
     if (this.props.calcPointsRemaining() > 0) {
       // Check prerequisites
-      const prereqs = Trees[this.props.treeName][this.props.idx].prereq;
+      const prereqs = TreeData[this.props.treeName][this.props.idx].prereq;
 
       let prereqsOK = true;
       let missingPrereqs = [];
 
       prereqs.forEach(idx => {
         const prereqValue = this.props.fullTree[idx - 1];
-        const prereqMax = Trees[this.props.treeName][idx].values.length;
+        const prereqMax = TreeData[this.props.treeName][idx].values.length;
         if (prereqValue !== prereqMax) {
           prereqsOK = false;
           missingPrereqs.push(
             <li key={idx}>
-              <strong>{Trees[this.props.treeName][idx].name}</strong>
+              <strong>{TreeData[this.props.treeName][idx].name}</strong>
             </li>
           );
         }
@@ -140,7 +142,7 @@ class Node extends Component {
     e.preventDefault();
 
     // Check dependent nodes
-    const deps = Trees[this.props.treeName][this.props.idx].dep;
+    const deps = TreeData[this.props.treeName][this.props.idx].dep;
 
     let depsOK = true;
 

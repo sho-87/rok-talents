@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Collapse } from 'reactstrap';
 
-import Trees from './data/AllTrees';
+import TreeData from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 
 //TODO: make side panel draggable and resizable?
@@ -68,7 +68,7 @@ class SidePanel extends Component {
 
       if (nodes.some(values => values !== 0)) {
         nodes.forEach((value, idx) => {
-          const talentInfo = Trees[Commanders[commander][color]][idx + 1];
+          const talentInfo = TreeData[Commanders[commander][color]][idx + 1];
           const talentStat = talentInfo.stats;
           if (value > 0) {
             if (talentStat === stat) {

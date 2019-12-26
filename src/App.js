@@ -5,7 +5,7 @@ import SidePanel from './SidePanel';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
 
-import Trees from './data/AllTrees';
+import TreeData from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 import { maxPoints, valuesToLetters, lettersToValues } from './values';
 import { dataVersion } from '../package.json';
@@ -243,10 +243,10 @@ class App extends Component {
    * @memberof App
    */
   createZeroTalents(commander) {
-    const numRed = Object.keys(Trees[Commanders[commander]['red']]).length;
-    const numYellow = Object.keys(Trees[Commanders[commander]['yellow']])
+    const numRed = Object.keys(TreeData[Commanders[commander]['red']]).length;
+    const numYellow = Object.keys(TreeData[Commanders[commander]['yellow']])
       .length;
-    const numBlue = Object.keys(Trees[Commanders[commander]['blue']]).length;
+    const numBlue = Object.keys(TreeData[Commanders[commander]['blue']]).length;
 
     const zeroTalents = {
       red: Array(numRed).fill(0),
@@ -296,8 +296,10 @@ class App extends Component {
   getMaxValues(commander, color) {
     let maxArray = [];
 
-    Object.keys(Trees[Commanders[commander][color]]).forEach(key => {
-      maxArray.push(Trees[Commanders[commander][color]][key]['values'].length);
+    Object.keys(TreeData[Commanders[commander][color]]).forEach(key => {
+      maxArray.push(
+        TreeData[Commanders[commander][color]][key]['values'].length
+      );
     });
 
     return maxArray;

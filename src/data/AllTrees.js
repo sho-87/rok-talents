@@ -8,7 +8,7 @@ import Leadership from './Leadership.json';
 import Skill from './Skill.json';
 import Support from './Support.json';
 
-const Trees = {
+const TreeData = {
   Archer: Archer,
   Defense: Defense,
   Garrison: Garrison,
@@ -18,4 +18,4 @@ const Trees = {
   Support: Support
 };
 
-export default Trees;
+export default TreeData;

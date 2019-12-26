@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import { jsPlumb } from 'jsplumb';
-import Hexagon from './shapes/Hexagon';
-import Node from './shapes/Node';
 import { PrereqToast, PointLimitToast, CopyToast } from './Modals';
-import ErrorBoundary from './Error';
+import Tree from './Tree';
+import Hexagon from './shapes/Hexagon';
 
-import Trees from './data/AllTrees';
 import Commanders from './data/Commanders.json';
+import TreeData from './data/AllTrees';
 import { dataVersion } from '../package.json';
 
-//TODO: add easier node change for phone users, show temporary +/- buttons on node click?
 //TODO: make treepanel zoomable?
 //TODO: add parallax background?
 //TODO: use a component for each individual jsplumb connection/line
 //FIXME: speed up repaint on resize
-//FIXME: tooltips stay too long on slow devices
 
 /**
  * Component for the main tree panel. Controls the display of all nodes and
@@ -147,11 +144,11 @@ class TreePanel extends Component {
       ['red', 'yellow', 'blue'].forEach(color => {
         const treeName = this.getTreeName(color);
 
-        Object.keys(Trees[treeName]).forEach(nodeID => {
+        Object.keys(TreeData[treeName]).forEach(nodeID => {
           var activateState =
             this.props[color][nodeID - 1] === 0 ? '' : `line-${color}`;
 
-          Trees[treeName][nodeID].prereq.forEach(prereq => {
+          TreeData[treeName][nodeID].prereq.forEach(prereq => {
             jsPlumb.connect({
               source: document.getElementById(`${treeName}${nodeID}`),
               target: document.getElementById(`${treeName}${prereq}`),
@@ -167,6 +164,21 @@ class TreePanel extends Component {
       });
 
       jsPlumb.setSuspendDrawing(false, true);
+    }
+  }
+
+  /**
+   * Get the full name of a talent tree (e.g. Skill, Garrison). The name
+   * depends on the tree color and the currently selected commander
+   *
+   * @param {string} color Color of the tree to retrieve the name for
+   * @returns
+   * @memberof TreePanel
+   */
+  getTreeName(color) {
+    const commander = Commanders[this.props.commander];
+    if (commander) {
+      return commander[color];
     }
   }
 
@@ -190,21 +202,6 @@ class TreePanel extends Component {
     this.setState(prevState => ({
       showValues: !prevState.showValues
     }));
-  }
-
-  /**
-   * Get the full name of a talent tree (e.g. Skill, Garrison). The name
-   * depends on the tree color and the currently selected commander
-   *
-   * @param {string} color Color of the tree to retrieve the name for
-   * @returns
-   * @memberof TreePanel
-   */
-  getTreeName(color) {
-    const commander = Commanders[this.props.commander];
-    if (commander) {
-      return commander[color];
-    }
   }
 
   /**
@@ -251,48 +248,6 @@ class TreePanel extends Component {
     });
   }
 
-  /**
-   * Create an array of all talent nodes for the current commander
-   *
-   * @param {number[]} values Array containing the node values stored
-   * in `this.state` for a given tree color
-   * @param {string} color Color of the tree to generate nodes for
-   * @returns {Array} Array of `Node`'s for a given tree
-   * @memberof TreePanel
-   */
-  drawNodes(values, color) {
-    let nodes = [];
-    const treeName = this.getTreeName(color);
-
-    for (let i = 1; i < values.length + 1; i++) {
-      var curNode = Trees[treeName][i];
-      nodes.push(
-        <Node
-          changeTalentValue={this.props.changeTalentValue}
-          calcPointsRemaining={this.props.calcPointsRemaining}
-          showPrereqToast={this.showPrereqToast}
-          showPointLimitToast={this.showPointLimitToast}
-          showValues={this.state.showValues}
-          key={treeName + i}
-          idx={i}
-          treeName={treeName}
-          talentName={curNode['name']}
-          image={curNode['image']}
-          tooltip={curNode['text']}
-          type={curNode['type']}
-          value={values[i - 1]}
-          max={curNode['values'].length}
-          fullTree={this.props[color]}
-          x={curNode['pos'][0] + '%'}
-          y={curNode['pos'][1] + '%'}
-          color={color}
-        />
-      );
-    }
-
-    return nodes;
-  }
-
   render() {
     let showTotals = this.state.showTotals && this.props.commander;
 
@@ -312,77 +267,60 @@ class TreePanel extends Component {
             (warning: this build uses an old version of the game data)
           </div>
         )}
-        
+
         <div id="tree-square-container">
           <div id="tree-square-section">
             <div id="tree-square-content">
-              <ErrorBoundary>
-                <div id="tree-red" className="tree-container">
-                  {showTotals && (
-                    <span id="tree-red-total">{`${this.props.calcPointsSpent(
-                      'red'
-                    )} point${
-                      this.props.calcPointsSpent('red') !== 1 ? 's' : ''
-                    }`}</span>
-                  )}
-                  {this.drawNodes(this.props.red, 'red')}
-
-                  {process.env.NODE_ENV === 'development' && (
-                    <div id="tree-red-mouse">
-                      X: {parseFloat(this.state.redX).toFixed(2)} Y:{' '}
-                      {parseFloat(this.state.redY).toFixed(2)}
-                    </div>
-                  )}
-                </div>
-              </ErrorBoundary>
-
-              <ErrorBoundary>
-                <div id="tree-yellow" className="tree-container">
-                  {showTotals && (
-                    <span id="tree-yellow-total">
-                      {`${this.props.calcPointsSpent('yellow')} point${
-                        this.props.calcPointsSpent('yellow') !== 1 ? 's' : ''
-                      }`}
-                    </span>
-                  )}
-                  {this.drawNodes(this.props.yellow, 'yellow')}
-
-                  {process.env.NODE_ENV === 'development' && (
-                    <div id="tree-yellow-mouse">
-                      X: {parseFloat(this.state.yellowX).toFixed(2)} Y:{' '}
-                      {parseFloat(this.state.yellowY).toFixed(2)}
-                    </div>
-                  )}
-                </div>
-              </ErrorBoundary>
-
-              <ErrorBoundary>
-                <div id="tree-blue" className="tree-container">
-                  {showTotals && (
-                    <span id="tree-blue-total">
-                      {`${this.props.calcPointsSpent('blue')} point${
-                        this.props.calcPointsSpent('blue') !== 1 ? 's' : ''
-                      }`}
-                    </span>
-                  )}
-                  {this.drawNodes(this.props.blue, 'blue')}
-
-                  {process.env.NODE_ENV === 'development' && (
-                    <div id="tree-blue-mouse">
-                      X: {parseFloat(this.state.blueX).toFixed(2)} Y:{' '}
-                      {parseFloat(this.state.blueY).toFixed(2)}
-                    </div>
-                  )}
-                </div>
-              </ErrorBoundary>
-
-              <ErrorBoundary>
-                <Hexagon
-                  toggleSelect={this.props.toggleSelect}
-                  commander={this.props.commander}
-                  getTreeName={this.getTreeName}
-                />
-              </ErrorBoundary>
+              <Tree
+                changeTalentValue={this.props.changeTalentValue}
+                calcPointsSpent={this.props.calcPointsSpent}
+                calcPointsRemaining={this.props.calcPointsRemaining}
+                showPrereqToast={this.showPrereqToast}
+                showPointLimitToast={this.showPointLimitToast}
+                showTotals={showTotals}
+                showValues={this.state.showValues}
+                commander={this.props.commander}
+                color={'red'}
+                treeName={this.getTreeName('red')}
+                data={this.props.red}
+                mouseX={this.state.redX}
+                mouseY={this.state.redY}
+              />
+              <Tree
+                changeTalentValue={this.props.changeTalentValue}
+                calcPointsSpent={this.props.calcPointsSpent}
+                calcPointsRemaining={this.props.calcPointsRemaining}
+                showPrereqToast={this.showPrereqToast}
+                showPointLimitToast={this.showPointLimitToast}
+                showTotals={showTotals}
+                showValues={this.state.showValues}
+                commander={this.props.commander}
+                color={'yellow'}
+                treeName={this.getTreeName('yellow')}
+                data={this.props.yellow}
+                mouseX={this.state.yellowX}
+                mouseY={this.state.yellowY}
+              />
+              <Tree
+                changeTalentValue={this.props.changeTalentValue}
+                calcPointsSpent={this.props.calcPointsSpent}
+                calcPointsRemaining={this.props.calcPointsRemaining}
+                showPrereqToast={this.showPrereqToast}
+                showPointLimitToast={this.showPointLimitToast}
+                showTotals={showTotals}
+                showValues={this.state.showValues}
+                commander={this.props.commander}
+                color={'blue'}
+                treeName={this.getTreeName('blue')}
+                data={this.props.blue}
+                mouseX={this.state.blueX}
+                mouseY={this.state.blueY}
+              />
+              <Hexagon
+                toggleSelect={this.props.toggleSelect}
+                commander={this.props.commander}
+                getTreeName={this.getTreeName}
+              />
             </div>
           </div>
         </div>
