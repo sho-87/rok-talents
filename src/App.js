@@ -16,6 +16,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version data files
+//TODO: add types
+//TODO: add tests
 //FIXME: only updateurl/encode if that particular tree has changed
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
