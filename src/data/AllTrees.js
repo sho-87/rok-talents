@@ -5,6 +5,7 @@ import Defense from './Defense.json';
 import Garrison from './Garrison.json';
 import Infantry from './Infantry.json';
 import Leadership from './Leadership.json';
+import Peacekeeping from './Peacekeeping.json';
 import Skill from './Skill.json';
 import Support from './Support.json';
 
@@ -14,6 +15,7 @@ const TreeData = {
   Garrison: Garrison,
   Infantry: Infantry,
   Leadership: Leadership,
+  Peacekeeping: Peacekeeping,
   Skill: Skill,
   Support: Support
 };
