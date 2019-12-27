@@ -26,12 +26,12 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.4.1",
     "jsplumb": "2.12.8",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "^3.3.0",
-    "reactstrap": "^8.0.1"
+    "reactstrap": "^8.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
