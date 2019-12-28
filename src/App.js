@@ -10,7 +10,7 @@ import Commanders from './data/Commanders.json';
 import { maxPoints, valuesToLetters, lettersToValues } from './values';
 import { dataVersion } from '../package.json';
 
-import './App.css';
+import './styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TreePanel = React.lazy(() => import('./TreePanel'));
