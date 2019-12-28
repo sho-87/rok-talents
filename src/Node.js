@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { jsPlumb } from 'jsplumb';
-import { TalentTooltip } from '../Modals';
+import { TalentTooltip } from './Modals';
 
-import TreeData from '../data/AllTrees';
+import TreeData from './data/AllTrees';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
 //FIXME: tooltips stay too long on slow devices

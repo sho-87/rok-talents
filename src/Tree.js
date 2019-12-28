@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Node from './shapes/Node';
+import Node from './Node';
 import ErrorBoundary from './Error';
 
 import TreeData from './data/AllTrees';

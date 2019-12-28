@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { jsPlumb } from 'jsplumb';
 import { PrereqToast, PointLimitToast, CopyToast } from './Modals';
 import Tree from './Tree';
-import Hexagon from './shapes/Hexagon';
+import Hexagon from './Hexagon';
 
 import Commanders from './data/Commanders.json';
 import TreeData from './data/AllTrees';
