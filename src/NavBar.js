@@ -113,6 +113,7 @@ class NavBar extends Component {
     commanderList.forEach(c => {
       let selectItem = (
         <DropdownItem
+          data-testid="menu-item"
           key={c}
           onClick={() => {
             this.props.changeCommander(c);
@@ -173,6 +174,7 @@ class NavBar extends Component {
               <form className="form-inline">
                 <button
                   id="button-copy"
+                  data-testid="button-copy"
                   type="button"
                   disabled={
                     this.props.commander | this.props.calcPointsSpent()
@@ -186,6 +188,7 @@ class NavBar extends Component {
                 </button>
                 <button
                   id="button-reset"
+                  data-testid="button-reset"
                   type="button"
                   className="btn btn-sm btn-danger"
                   disabled={
@@ -245,7 +248,7 @@ class NavBar extends Component {
                 isOpen={this.state.selectOpen}
                 toggle={this.toggleSelect}
               >
-                <DropdownToggle nav caret>
+                <DropdownToggle data-testid="select-commander" nav caret>
                   <FontAwesomeIcon icon={faUser} />{' '}
                   {this.props.commander ? this.props.commander : 'Commander'}
                 </DropdownToggle>

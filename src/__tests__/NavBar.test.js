@@ -1,10 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { render, cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import NavBar from '../NavBar';
 
+let props;
+beforeEach(() => {
+  props = { calcPointsSpent: jest.fn() };
+});
+
+afterEach(cleanup);
+
 it('renders without crashing', () => {
-  let props = { calcPointsSpent: jest.fn() };
   const div = document.createElement('div');
   ReactDOM.render(<NavBar {...props} />, div);
   ReactDOM.unmountComponentAtNode(div);
+});
+
+it('displays commander name', () => {
+  const { getByTestId } = render(<NavBar {...props} commander="Richard I" />);
+  expect(getByTestId('select-commander')).toHaveTextContent('Richard I');
+});
+
+it('displays "Commander" if no commander selected"', () => {
+  const { getByTestId } = render(<NavBar {...props} commander="" />);
+  expect(getByTestId('select-commander')).toHaveTextContent('Commander');
+});
+
+it('disables buttons if no commander selected', () => {
+  const calcPointsSpent = jest.fn();
+  calcPointsSpent.mockReturnValue(0);
+
+  const { getByTestId } = render(
+    <NavBar calcPointsSpent={calcPointsSpent} commander="" />
+  );
+  expect(getByTestId('button-copy')).toBeDisabled();
+  expect(getByTestId('button-reset')).toBeDisabled();
+});
+
+it('disables buttons if no points spent', () => {
+  const calcPointsSpent = jest.fn();
+  calcPointsSpent.mockReturnValue(0);
+
+  const { getByTestId } = render(
+    <NavBar calcPointsSpent={calcPointsSpent} commander="Richard I" />
+  );
+  expect(getByTestId('button-copy')).toBeDisabled();
+  expect(getByTestId('button-reset')).toBeDisabled();
+});
+
+it('enables buttons if points have been spent', () => {
+  const calcPointsSpent = jest.fn();
+  calcPointsSpent.mockReturnValue(1);
+
+  const { getByTestId } = render(
+    <NavBar calcPointsSpent={calcPointsSpent} commander="Richard I" />
+  );
+  expect(getByTestId('button-copy')).toBeEnabled();
+  expect(getByTestId('button-reset')).toBeEnabled();
 });
