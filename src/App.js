@@ -16,6 +16,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version data files
+//TODO: add url as prop to app component
+//TODO: add error message to invalid build modal
 //FIXME: only updateurl/encode if that particular tree has changed
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
@@ -48,48 +50,65 @@ class App extends Component {
     const urlParams = window.location.search.slice(1).split(';');
 
     if (urlParams.length === 5) {
-      const [dataVersion, comID, red, yellow, blue] = urlParams;
+      const [urlDataVersion, comID, red, yellow, blue] = urlParams;
 
       const commanderName = Object.keys(Commanders).find(
         key => Commanders[key]['id'] === comID
       );
 
-      this.state = {
-        dataVersion: dataVersion,
-        commander: commanderName,
-        ...this.createZeroTalents(commanderName)
-      };
-
-      const colorPairs = [
-        [red, 'red'],
-        [yellow, 'yellow'],
-        [blue, 'blue']
-      ];
-
-      for (let color of colorPairs) {
-        // Decode and split talent string into array
-        let talents = this.decode(color[0])
-          .split('')
-          .map(Number);
-        const maxArray = this.getMaxValues(this.state.commander, color[1]);
-
-        // Check querystring array is correct length and values are not too large
-        if (
-          (talents.length === this.state[color[1]].length) &
-          talents.every(function(el, idx) {
-            return el <= maxArray[idx];
-          })
-        ) {
-          this.state[color[1]] = talents;
-        } else {
-          this.invalidModalFlag = true;
-          break;
-        }
-      }
-
-      // Check that the talent build has not overspent points
-      if (this.calcPointsRemaining() < 0) {
+      // Check for invalid build
+      if (urlDataVersion > dataVersion) {
         this.invalidModalFlag = true;
+        console.error('Invalid data version');
+      } else if (!commanderName) {
+        this.invalidModalFlag = true;
+        console.error('Invalid commander ID');
+      } else {
+        this.state = {
+          dataVersion: urlDataVersion,
+          commander: commanderName,
+          ...this.createZeroTalents(commanderName)
+        };
+
+        const colorPairs = [
+          [red, 'red'],
+          [yellow, 'yellow'],
+          [blue, 'blue']
+        ];
+
+        for (let color of colorPairs) {
+          // Decode and split talent string into array
+          let talents = this.decode(color[0])
+            .split('')
+            .map(Number);
+          const maxArray = this.getMaxValues(this.state.commander, color[1]);
+
+          if (talents.length !== this.state[color[1]].length) {
+            // Check talent array is correct length
+            this.invalidModalFlag = true;
+            console.error(`Incorrect number of talents: ${color[1]} tree`);
+            break;
+          } else if (
+            // Check spent values are not too large
+            talents.some(function(el, idx) {
+              return el > maxArray[idx];
+            })
+          ) {
+            this.invalidModalFlag = true;
+            console.error(
+              `Too many points assigned in skill: ${color[1]} tree`
+            );
+            break;
+          } else {
+            this.state[color[1]] = talents;
+          }
+        }
+
+        // Check that the talent build has not overspent points
+        if (this.calcPointsRemaining() < 0) {
+          this.invalidModalFlag = true;
+          console.error('Overspent talent points');
+        }
       }
 
       if (this.invalidModalFlag) {
