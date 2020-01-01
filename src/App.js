@@ -16,7 +16,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version data files
-//TODO: add url as prop to app component
 //TODO: add invalid build for too many/few url parameters
 //FIXME: only updateurl/encode if that particular tree has changed
 //FIXME: webpack hot module replacement (HMR) waiting for update
@@ -48,7 +47,7 @@ class App extends Component {
     this.calcPointsRemaining = this.calcPointsRemaining.bind(this);
 
     // Set initial state from query string
-    const urlParams = window.location.search.slice(1).split(';');
+    const urlParams = this.props.url.slice(1).split(';');
 
     if (urlParams.length === 5) {
       const [urlDataVersion, comID, red, yellow, blue] = urlParams;
