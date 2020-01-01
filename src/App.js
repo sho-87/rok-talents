@@ -17,7 +17,7 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 
 //TODO: add tree/game/data version data files
 //TODO: add url as prop to app component
-//TODO: add error message to invalid build modal
+//TODO: add invalid build for too many/few url parameters
 //FIXME: only updateurl/encode if that particular tree has changed
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
@@ -33,6 +33,7 @@ class App extends Component {
 
     /** Flag controlling the visibility of the "Invalid build" modal */
     this.invalidModalFlag = false;
+    this.invalidBuildMessage = '';
 
     // Context bindings
     this.copyURL = this.copyURL.bind(this);
@@ -58,11 +59,11 @@ class App extends Component {
 
       // Check for invalid build
       if (urlDataVersion > dataVersion) {
+        this.invalidBuildMessage = 'Incorrect game data version';
         this.invalidModalFlag = true;
-        console.error('Invalid data version');
       } else if (!commanderName) {
+        this.invalidBuildMessage = 'Unknown commander ID';
         this.invalidModalFlag = true;
-        console.error('Invalid commander ID');
       } else {
         this.state = {
           dataVersion: urlDataVersion,
@@ -85,8 +86,8 @@ class App extends Component {
 
           if (talents.length !== this.state[color[1]].length) {
             // Check talent array is correct length
+            this.invalidBuildMessage = `Incorrect number of talents (${color[1]} tree)`;
             this.invalidModalFlag = true;
-            console.error(`Incorrect number of talents: ${color[1]} tree`);
             break;
           } else if (
             // Check spent values are not too large
@@ -94,10 +95,8 @@ class App extends Component {
               return el > maxArray[idx];
             })
           ) {
+            this.invalidBuildMessage = `Too many points assigned in talent (${color[1]} tree)`;
             this.invalidModalFlag = true;
-            console.error(
-              `Too many points assigned in skill: ${color[1]} tree`
-            );
             break;
           } else {
             this.state[color[1]] = talents;
@@ -106,8 +105,8 @@ class App extends Component {
 
         // Check that the talent build has not overspent points
         if (this.calcPointsRemaining() < 0) {
+          this.invalidBuildMessage = `Number of spent talent points exceeds maximum`;
           this.invalidModalFlag = true;
-          console.error('Overspent talent points');
         }
       }
 
@@ -119,6 +118,7 @@ class App extends Component {
       }
     } else {
       this.state = this.getEmptyState();
+      this.updateURL('clear');
     }
   }
 
@@ -402,7 +402,9 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        {this.invalidModalFlag && <InvalidBuildModal />}
+        {this.invalidModalFlag && (
+          <InvalidBuildModal message={this.invalidBuildMessage} />
+        )}
 
         <ErrorBoundary>
           <NavBar

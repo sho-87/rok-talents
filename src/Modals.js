@@ -37,8 +37,13 @@ export class InvalidBuildModal extends Component {
       >
         <ModalHeader toggle={this.toggle}>Invalid Talent Build</ModalHeader>
         <ModalBody>
-          The talent build you're trying to view is invalid. Please make sure
-          you've copied and pasted the correct link.
+          <p>
+            The talent build you're trying to view is invalid. Please make sure
+            you've copied and pasted the correct link.
+          </p>
+          <p>
+            <b>Reason:</b> {this.props.message}
+          </p>
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={this.toggle}>
