@@ -15,54 +15,76 @@ describe('App component', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('displays invalid modal when incorrect data version', () => {
-    const url = `?${dataVersion + 1};1;irnsscpkv;faaaaaaaaa;issralahnq`;
-    const { getByTestId } = render(<App url={url} />);
+  describe('URL', () => {
+    it('causes invalid modal when incorrect data version', () => {
+      const url = `?${dataVersion + 1};1;irnsscpkv;faaaaaaaaa;issralahnq`;
+      const { getByTestId } = render(<App url={url} />);
 
-    expect(document.body).toHaveClass('modal-open');
-    expect(getByTestId('invalid-modal-body')).toHaveTextContent(
-      'Incorrect game data version'
-    );
-  });
+      expect(document.body).toHaveClass('modal-open');
+      expect(getByTestId('invalid-modal-body')).toHaveTextContent(
+        'Incorrect game data version'
+      );
+    });
 
-  it('displays invalid modal when commander ID is unknown', () => {
-    const url = `?1;${Object.keys(Commanders).length +
-      1};irnsscpkv;faaaaaaaaa;issralahnq`;
-    const { getByTestId } = render(<App url={url} />);
+    it('causes invalid modal when commander ID is unknown', () => {
+      const url = `?1;${Object.keys(Commanders).length +
+        1};irnsscpkv;faaaaaaaaa;issralahnq`;
+      const { getByTestId } = render(<App url={url} />);
 
-    expect(document.body).toHaveClass('modal-open');
-    expect(getByTestId('invalid-modal-body')).toHaveTextContent(
-      'Unknown commander ID'
-    );
-  });
+      expect(document.body).toHaveClass('modal-open');
+      expect(getByTestId('invalid-modal-body')).toHaveTextContent(
+        'Unknown commander ID'
+      );
+    });
 
-  it('displays invalid modal when the talent array is the wrong length', () => {
-    const url = `?1;1;irnsscpkv;faaaaaaaaa;issralahn`;
-    const { getByTestId } = render(<App url={url} />);
+    it('causes invalid modal when the talent array is the wrong length', () => {
+      const url = `?1;1;irnsscpkv;faaaaaaaaa;issralahn`;
+      const { getByTestId } = render(<App url={url} />);
 
-    expect(document.body).toHaveClass('modal-open');
-    expect(getByTestId('invalid-modal-body')).toHaveTextContent(
-      'Incorrect number of talents'
-    );
-  });
+      expect(document.body).toHaveClass('modal-open');
+      expect(getByTestId('invalid-modal-body')).toHaveTextContent(
+        'Incorrect number of talents'
+      );
+    });
 
-  it('displays invalid modal when too many points assigned to a talent', () => {
-    const url = `?1;1;irnsscpkv;kaaaaaaaaa;issralahnq`;
-    const { getByTestId } = render(<App url={url} />);
+    it('causes invalid modal when too many points assigned to a talent', () => {
+      const url = `?1;1;irnsscpkv;kaaaaaaaaa;issralahnq`;
+      const { getByTestId } = render(<App url={url} />);
 
-    expect(document.body).toHaveClass('modal-open');
-    expect(getByTestId('invalid-modal-body')).toHaveTextContent(
-      'Too many points assigned in talent'
-    );
-  });
+      expect(document.body).toHaveClass('modal-open');
+      expect(getByTestId('invalid-modal-body')).toHaveTextContent(
+        'Too many points assigned in talent'
+      );
+    });
 
-  it('displays invalid modal when too many points spent', () => {
-    const url = `?1;1;irnsscpkv;faaaaaaaab;issralahnq`;
-    const { getByTestId } = render(<App url={url} />);
+    it('causes invalid modal when too many points spent', () => {
+      const url = `?1;1;irnsscpkv;faaaaaaaab;issralahnq`;
+      const { getByTestId } = render(<App url={url} />);
 
-    expect(document.body).toHaveClass('modal-open');
-    expect(getByTestId('invalid-modal-body')).toHaveTextContent(
-      'Number of spent talent points exceeds maximum'
-    );
+      expect(document.body).toHaveClass('modal-open');
+      expect(getByTestId('invalid-modal-body')).toHaveTextContent(
+        'Number of spent talent points exceeds maximum'
+      );
+    });
+
+    it('causes invalid modal when too many URL params', () => {
+      const url = `?1;1;irnsscpkv;faaaaaaaab;issralahnq;123`;
+      const { getByTestId } = render(<App url={url} />);
+
+      expect(document.body).toHaveClass('modal-open');
+      expect(getByTestId('invalid-modal-body')).toHaveTextContent(
+        'Incorrect number of build parameters '
+      );
+    });
+
+    it('causes invalid modal when too few URL params', () => {
+      const url = `?1;1;irnsscpkv;faaaaaaaab`;
+      const { getByTestId } = render(<App url={url} />);
+
+      expect(document.body).toHaveClass('modal-open');
+      expect(getByTestId('invalid-modal-body')).toHaveTextContent(
+        'Incorrect number of build parameters '
+      );
+    });
   });
 });
