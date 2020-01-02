@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import NavBar from '../NavBar';
 
@@ -17,7 +17,7 @@ describe('Nav bar component', () => {
     ReactDOM.render(<NavBar {...props} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-
+  
   describe('Commander select', () => {
     it('displays commander name', () => {
       const { getByTestId } = render(

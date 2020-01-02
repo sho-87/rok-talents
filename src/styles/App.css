@@ -61,6 +61,19 @@ body {
   font-weight: bold;
 }
 
+/* Share modal */
+.share-modal-label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+#share-modal-social {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center; /* horizontal */
+  align-items: center; /* vertical */
+}
+
 /* Nav bar */
 .navbar {
   height: var(--nav-bar-height);

@@ -9,6 +9,18 @@ import {
   faCopy
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  TwitterShareButton,
+  WhatsappShareButton,
+  RedditShareButton,
+  PocketShareButton,
+  EmailShareButton,
+  TwitterIcon,
+  WhatsappIcon,
+  RedditIcon,
+  PocketIcon,
+  EmailIcon
+} from 'react-share';
 
 import { title, author, version, dataVersion } from '../package.json';
 
@@ -174,13 +186,16 @@ export class ShareModal extends Component {
         isOpen={this.state.modal}
         toggle={this.toggle}
         unmountOnClose={true}
+        size="md"
         centered
       >
         <ModalHeader toggle={this.toggle}>
           <FontAwesomeIcon icon={faShareAlt} /> Share Talent Build
         </ModalHeader>
         <ModalBody>
-          Talent build link:
+          <div className="share-modal-label">
+            Copy talent build link to your clipboard:
+          </div>
           <div className="input-group">
             <input
               id="url"
@@ -198,6 +213,25 @@ export class ShareModal extends Component {
                 <FontAwesomeIcon icon={faCopy} />
               </button>
             </span>
+          </div>
+          <hr />
+          <div className="share-modal-label">Share to social media:</div>
+          <div id="share-modal-social">
+            <EmailShareButton url={window.location.href}>
+              <EmailIcon size={32} round />
+            </EmailShareButton>
+            <RedditShareButton url={window.location.href}>
+              <RedditIcon size={32} round />
+            </RedditShareButton>
+            <TwitterShareButton url={window.location.href}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <WhatsappShareButton url={window.location.href}>
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+            <PocketShareButton url={window.location.href}>
+              <PocketIcon size={32} round />
+            </PocketShareButton>
           </div>
         </ModalBody>
         <ModalFooter>
