@@ -24,17 +24,24 @@ describe('App component', () => {
     });
 
     it('renders build example 1 correctly', () => {
-      const url = `?1;1;irnsscpkv;faaaaaaaaa;issralahnq`;
+      const url = `?${dataVersion};1;irnsscpkv;faaaaaaaaa;issralahnq`;
       const { asFragment } = render(<App url={url} />);
 
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('renders build example 2 correctly', () => {
-      const url = `?1;4;imrskma25kz;aaaaaaaaaa;isbsfkmcp3`;
+      const url = `?${dataVersion};4;imrskma25kz;aaaaaaaaaa;isbsfkmcp3`;
       const { asFragment } = render(<App url={url} />);
 
       expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('causes warning when build uses old data version', () => {
+      const url = `?${dataVersion - 1};1;irnsscpkv;faaaaaaaaa;issralahnq`;
+      const { getByTestId } = render(<App url={url} />);
+
+      expect(getByTestId('version-warning')).toBeInTheDocument();
     });
 
     it('causes invalid modal when incorrect data version', () => {
