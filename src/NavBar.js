@@ -261,8 +261,16 @@ class NavBar extends Component {
                 toggle={this.toggleSelect}
               >
                 <DropdownToggle data-testid="select-commander" nav caret>
-                  <FontAwesomeIcon icon={faUser} />{' '}
-                  {this.props.commander ? this.props.commander : 'Commander'}
+                  {this.props.commander ? (
+                    <img
+                      className="select-commander-icon"
+                      alt={this.props.commander}
+                      src={`images/commanders/${this.props.commander}.png`}
+                    ></img>
+                  ) : (
+                    <FontAwesomeIcon icon={faUser} />
+                  )}
+                  {this.props.commander ? this.props.commander : ' Commander'}
                 </DropdownToggle>
 
                 <DropdownMenu id="select-commander-menu" right>
