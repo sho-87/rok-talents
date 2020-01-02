@@ -18,7 +18,6 @@ class TreePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      copyToastFlag: false,
       pointLimitToastFlag: false,
       prereqToastFlag: false,
       prereqMsg: '',
@@ -228,20 +227,6 @@ class TreePanel extends Component {
     });
   }
 
-  /**
-   * Control visibility of a toast indicating that the talent build
-   * has been copied/saved. Toast is automatically hidden after a delay
-   *
-   * @memberof TreePanel
-   */
-  showCopyToast() {
-    this.setState({ copyToastFlag: true }, () => {
-      window.setTimeout(() => {
-        this.setState({ copyToastFlag: false });
-      }, 2000);
-    });
-  }
-
   render() {
     let showTotals = this.state.showTotals && this.props.commander;
     const sharedTreeProps = {
@@ -267,12 +252,6 @@ class TreePanel extends Component {
           icon="danger"
           header="Talent Limit"
           body="You have spent the maximum number of talent points"
-        />
-        <ToastMessage
-          isOpen={this.state.copyToastFlag}
-          icon="success"
-          header="Talent Build Copied"
-          body="The link to this talent build has been copied to your clipboard"
         />
 
         {!this.props.commander && <Instructions />}
@@ -331,7 +310,7 @@ function Instructions(props) {
         <li>Left click to add talent points</li>
         <li>Right click to remove talent points</li>
         <li>Check your build stats on the left</li>
-        <li>Copy and share your build</li>
+        <li>Share your build</li>
       </ol>
     </div>
   );

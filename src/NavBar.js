@@ -16,18 +16,17 @@ import {
 import {
   faHome,
   faInfoCircle,
-  faCopy,
   faTrashAlt,
+  faShareAlt,
   faCog,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { AboutModal } from './Modals';
+import { AboutModal, ShareModal } from './Modals';
 
 import { title } from '../package.json';
 import Commanders from './data/Commanders.json';
 
-//TODO: replace copy with a share modal containing multiple options
 //TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
 /**
@@ -41,6 +40,7 @@ class NavBar extends Component {
     super(props);
     this.state = {
       aboutModalFlag: false,
+      shareModalFlag: false,
       navOpen: false,
       settingsOpen: false,
       selectOpen: this.props.commander ? false : true
@@ -51,6 +51,7 @@ class NavBar extends Component {
     this.toggleSettings = this.toggleSettings.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.showAbout = this.showAbout.bind(this);
+    this.showShare = this.showShare.bind(this);
   }
 
   /**
@@ -94,6 +95,17 @@ class NavBar extends Component {
   showAbout(state) {
     this.setState({
       aboutModalFlag: state
+    });
+  }
+
+  /**
+   * Control visibility of the "Share" modal
+   *
+   * @memberof NavBar
+   */
+  showShare(state) {
+    this.setState({
+      shareModalFlag: state
     });
   }
 
@@ -149,6 +161,7 @@ class NavBar extends Component {
     return (
       <React.Fragment>
         {this.state.aboutModalFlag && <AboutModal showAbout={this.showAbout} />}
+        {this.state.shareModalFlag && <ShareModal showShare={this.showShare} />}
 
         <Navbar color="light" light expand="lg">
           <NavbarBrand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
@@ -171,20 +184,6 @@ class NavBar extends Component {
             <Nav className="ml-auto" navbar>
               <form className="form-inline">
                 <button
-                  id="button-copy"
-                  data-testid="button-copy"
-                  type="button"
-                  disabled={
-                    this.props.commander | this.props.calcPointsSpent()
-                      ? false
-                      : true
-                  }
-                  className="btn btn-sm btn-success"
-                  onClick={this.props.copyURL}
-                >
-                  <FontAwesomeIcon icon={faCopy} /> Copy Talents
-                </button>
-                <button
                   id="button-reset"
                   data-testid="button-reset"
                   type="button"
@@ -196,7 +195,22 @@ class NavBar extends Component {
                   }
                   onClick={this.props.resetTalents}
                 >
-                  <FontAwesomeIcon icon={faTrashAlt} /> Reset Talents
+                  <FontAwesomeIcon icon={faTrashAlt} /> Reset
+                </button>
+
+                <button
+                  id="button-share"
+                  data-testid="button-share"
+                  type="button"
+                  disabled={
+                    this.props.commander | this.props.calcPointsSpent()
+                      ? false
+                      : true
+                  }
+                  className="btn btn-sm btn-primary"
+                  onClick={() => this.showShare(true)}
+                >
+                  <FontAwesomeIcon icon={faShareAlt} /> Share
                 </button>
               </form>
 

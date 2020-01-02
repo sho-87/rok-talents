@@ -40,8 +40,8 @@ describe('Nav bar component', () => {
       const { getByTestId } = render(
         <NavBar calcPointsSpent={calcPointsSpent} commander="" />
       );
-      expect(getByTestId('button-copy')).toBeDisabled();
       expect(getByTestId('button-reset')).toBeDisabled();
+      expect(getByTestId('button-share')).toBeDisabled();
     });
 
     it('disabled if no points spent', () => {
@@ -51,8 +51,8 @@ describe('Nav bar component', () => {
       const { getByTestId } = render(
         <NavBar calcPointsSpent={calcPointsSpent} commander="Richard I" />
       );
-      expect(getByTestId('button-copy')).toBeDisabled();
       expect(getByTestId('button-reset')).toBeDisabled();
+      expect(getByTestId('button-share')).toBeDisabled();
     });
 
     it('enabled if points have been spent', () => {
@@ -62,8 +62,8 @@ describe('Nav bar component', () => {
       const { getByTestId } = render(
         <NavBar calcPointsSpent={calcPointsSpent} commander="Richard I" />
       );
-      expect(getByTestId('button-copy')).toBeEnabled();
       expect(getByTestId('button-reset')).toBeEnabled();
+      expect(getByTestId('button-share')).toBeEnabled();
     });
   });
 });

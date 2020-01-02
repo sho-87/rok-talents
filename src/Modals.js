@@ -2,6 +2,13 @@ import React, { Component, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import {
+  faExclamationTriangle,
+  faInfoCircle,
+  faShareAlt,
+  faCopy
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { title, author, version, dataVersion } from '../package.json';
 
@@ -35,7 +42,9 @@ export class InvalidBuildModal extends Component {
         unmountOnClose={true}
         centered
       >
-        <ModalHeader toggle={this.toggle}>Invalid Talent Build</ModalHeader>
+        <ModalHeader toggle={this.toggle}>
+          <FontAwesomeIcon icon={faExclamationTriangle} /> Invalid Talent Build
+        </ModalHeader>
         <ModalBody>
           <p>
             The talent build you're trying to view is invalid. Please make sure
@@ -88,7 +97,9 @@ export class AboutModal extends Component {
         unmountOnClose={true}
         centered
       >
-        <ModalHeader toggle={this.toggle}>{title}</ModalHeader>
+        <ModalHeader toggle={this.toggle}>
+          <FontAwesomeIcon icon={faInfoCircle} /> {title}
+        </ModalHeader>
         <ModalBody>
           <div>
             <span className="about-label">Application version:</span> {version}
@@ -116,6 +127,81 @@ export class AboutModal extends Component {
         </ModalBody>
         <ModalFooter>
           <Button color="success" onClick={this.toggle}>
+            Close
+          </Button>
+        </ModalFooter>
+      </Modal>
+    );
+  }
+}
+
+/**
+ * Modal displaying sharing options for talent build
+ *
+ * @class ShareModal
+ * @extends {Component}
+ */
+export class ShareModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: true
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState(
+      prevState => ({
+        modal: !prevState.modal
+      }),
+      this.props.showShare(false)
+    );
+  }
+
+  copyURL() {
+    const input = document.getElementById('url');
+    input.focus();
+    input.select();
+    document.execCommand('copy');
+    document.getElementById('copyButton').innerHTML = '\u2713';
+  }
+
+  render() {
+    return (
+      <Modal
+        isOpen={this.state.modal}
+        toggle={this.toggle}
+        unmountOnClose={true}
+        centered
+      >
+        <ModalHeader toggle={this.toggle}>
+          <FontAwesomeIcon icon={faShareAlt} /> Share Talent Build
+        </ModalHeader>
+        <ModalBody>
+          Talent build link:
+          <div className="input-group">
+            <input
+              id="url"
+              type="text"
+              className="form-control"
+              defaultValue={window.location.href}
+            ></input>
+            <span className="input-group-btn">
+              <button
+                id="copyButton"
+                className="btn btn-success"
+                type="button"
+                onClick={this.copyURL}
+              >
+                <FontAwesomeIcon icon={faCopy} />
+              </button>
+            </span>
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={this.toggle}>
             Close
           </Button>
         </ModalFooter>
@@ -206,6 +292,7 @@ export const TalentTooltip = props => {
 export default {
   InvalidBuildModal,
   AboutModal,
+  ShareModal,
   ToastMessage,
   PrereqToast,
   TalentTooltip

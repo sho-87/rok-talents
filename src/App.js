@@ -31,7 +31,6 @@ class App extends Component {
     this.invalidBuildMessage = '';
 
     // Context bindings
-    this.copyURL = this.copyURL.bind(this);
     this.toggleSidePanel = this.toggleSidePanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
@@ -226,24 +225,6 @@ class App extends Component {
   }
 
   /**
-   * Copy the current application URL to clipboard
-   *
-   * @memberof App
-   */
-  copyURL() {
-    this.treePanelRef.showCopyToast();
-
-    const dummy = document.createElement('input');
-    const url = window.location.href;
-
-    document.body.appendChild(dummy);
-    dummy.value = url;
-    dummy.select();
-    document.execCommand('copy');
-    document.body.removeChild(dummy);
-  }
-
-  /**
    * Set blank state object for the newly selected commander,
    * followed by `this.updateURL()`
    *
@@ -421,7 +402,6 @@ class App extends Component {
         <ErrorBoundary>
           <NavBar
             ref={component => (this.navBarRef = component)}
-            copyURL={this.copyURL}
             toggleSidePanel={this.toggleSidePanel}
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}
