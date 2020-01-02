@@ -27,6 +27,7 @@ import { AboutModal } from './Modals';
 import { title } from '../package.json';
 import Commanders from './data/Commanders.json';
 
+//TODO: replace copy with a share modal containing multiple options
 //TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
 /**

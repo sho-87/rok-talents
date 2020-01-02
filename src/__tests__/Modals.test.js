@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import {
   InvalidBuildModal,
   AboutModal,
-  CopyToast,
+  ToastMessage,
   PrereqToast,
-  PointLimitToast,
   TalentTooltip
 } from '../Modals';
 
@@ -24,19 +23,13 @@ describe('Modal', () => {
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<CopyToast />, div);
+    ReactDOM.render(<ToastMessage />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<PrereqToast />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<PointLimitToast />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 

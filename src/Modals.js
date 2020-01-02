@@ -124,22 +124,18 @@ export class AboutModal extends Component {
   }
 }
 
-//TODO: combine the toasts modal. HOC?
-
 /**
- * Toast showing message upon successful copy of the talent build URL
+ * Generic toast component
  *
- * @class CopyToast
+ * @class ToastMessage
  * @extends {Component}
  */
-export class CopyToast extends Component {
+export class ToastMessage extends Component {
   render() {
     return (
       <Toast isOpen={this.props.isOpen}>
-        <ToastHeader icon="success">Talent Build Copied</ToastHeader>
-        <ToastBody>
-          The link to this talent build has been copied to your clipboard
-        </ToastBody>
+        <ToastHeader icon={this.props.icon}>{this.props.header}</ToastHeader>
+        <ToastBody>{this.props.body}</ToastBody>
       </Toast>
     );
   }
@@ -160,25 +156,6 @@ export class PrereqToast extends Component {
         <ToastBody>
           Please upgrade the following to the maximum skill level first:
           {this.props.msg}
-        </ToastBody>
-      </Toast>
-    );
-  }
-}
-
-/**
- * Toast warning message when the maximum number of talents points have been spent
- *
- * @class PointLimitToast
- * @extends {Component}
- */
-export class PointLimitToast extends Component {
-  render() {
-    return (
-      <Toast isOpen={this.props.isOpen}>
-        <ToastHeader icon="danger">Talent Limit</ToastHeader>
-        <ToastBody>
-          You have spent the maximum number of talent points
         </ToastBody>
       </Toast>
     );
@@ -229,8 +206,7 @@ export const TalentTooltip = props => {
 export default {
   InvalidBuildModal,
   AboutModal,
-  CopyToast,
+  ToastMessage,
   PrereqToast,
-  PointLimitToast,
   TalentTooltip
 };

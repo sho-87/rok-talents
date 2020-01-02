@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { jsPlumb } from 'jsplumb';
-import { PrereqToast, PointLimitToast, CopyToast } from './Modals';
+import { PrereqToast, ToastMessage } from './Modals';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
 
@@ -262,8 +262,18 @@ class TreePanel extends Component {
           isOpen={this.state.prereqToastFlag}
           msg={this.state.prereqMsg}
         />
-        <PointLimitToast isOpen={this.state.pointLimitToastFlag} />
-        <CopyToast isOpen={this.state.copyToastFlag} />
+        <ToastMessage
+          isOpen={this.state.pointLimitToastFlag}
+          icon="danger"
+          header="Talent Limit"
+          body="You have spent the maximum number of talent points"
+        />
+        <ToastMessage
+          isOpen={this.state.copyToastFlag}
+          icon="success"
+          header="Talent Build Copied"
+          body="The link to this talent build has been copied to your clipboard"
+        />
 
         {!this.props.commander && <Instructions />}
 
