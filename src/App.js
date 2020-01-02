@@ -5,7 +5,7 @@ import SidePanel from './SidePanel';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
 
-import TreeData from './data/AllTrees';
+import loadTreeData from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 import { maxPoints, valuesToLetters, lettersToValues } from './values';
 import { dataVersion } from '../package.json';
@@ -14,8 +14,8 @@ import './styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TreePanel = React.lazy(() => import('./TreePanel'));
+let treeData;
 
-//TODO: add tree/game/data version data files
 //FIXME: only updateurl/encode if that particular tree has changed
 //FIXME: webpack hot module replacement (HMR) waiting for update
 
@@ -52,7 +52,9 @@ class App extends Component {
         this.updateURL('clear');
         break;
       case 5: // complete url
-        const [urlDataVersion, comID, red, yellow, blue] = urlParams;
+        let [urlDataVersion, comID, red, yellow, blue] = urlParams;
+        urlDataVersion = parseInt(urlDataVersion);
+
         const commanderName = Object.keys(Commanders).find(
           key => Commanders[key]['id'] === comID
         );
@@ -65,6 +67,7 @@ class App extends Component {
           this.invalidBuildMessage = 'Unknown commander ID';
           this.invalidModalFlag = true;
         } else {
+          treeData = loadTreeData(urlDataVersion);
           this.state = {
             dataVersion: urlDataVersion,
             commander: commanderName,
@@ -118,7 +121,7 @@ class App extends Component {
         }
         break;
       default:
-        // incorrect number of url params
+        // Incorrect number of url params
         this.invalidBuildMessage = `Incorrect number of build parameters (length: ${urlParams.length}, expected: 5)`;
         this.invalidModalFlag = true;
         this.state = this.getEmptyState();
@@ -133,6 +136,8 @@ class App extends Component {
    * @memberof App
    */
   getEmptyState() {
+    treeData = loadTreeData(dataVersion);
+
     return {
       dataVersion: dataVersion,
       commander: '',
@@ -247,6 +252,10 @@ class App extends Component {
    * @memberof App
    */
   changeCommander(commander) {
+    if (this.state.dataVersion !== dataVersion) {
+      treeData = loadTreeData(dataVersion);
+    }
+
     const zeroTalents = this.createZeroTalents(commander);
     this.setState(
       { dataVersion: dataVersion, commander: commander, ...zeroTalents },
@@ -266,10 +275,10 @@ class App extends Component {
    * @memberof App
    */
   createZeroTalents(commander) {
-    const numRed = Object.keys(TreeData[Commanders[commander]['red']]).length;
-    const numYellow = Object.keys(TreeData[Commanders[commander]['yellow']])
+    const numRed = Object.keys(treeData[Commanders[commander]['red']]).length;
+    const numYellow = Object.keys(treeData[Commanders[commander]['yellow']])
       .length;
-    const numBlue = Object.keys(TreeData[Commanders[commander]['blue']]).length;
+    const numBlue = Object.keys(treeData[Commanders[commander]['blue']]).length;
 
     const zeroTalents = {
       red: Array(numRed).fill(0),
@@ -319,9 +328,9 @@ class App extends Component {
   getMaxValues(commander, color) {
     let maxArray = [];
 
-    Object.keys(TreeData[Commanders[commander][color]]).forEach(key => {
+    Object.keys(treeData[Commanders[commander][color]]).forEach(key => {
       maxArray.push(
-        TreeData[Commanders[commander][color]][key]['values'].length
+        treeData[Commanders[commander][color]][key]['values'].length
       );
     });
 
@@ -439,6 +448,7 @@ class App extends Component {
                 ref={component => (this.sidePanelRef = component)}
                 calcPointsSpent={this.calcPointsSpent}
                 calcPointsRemaining={this.calcPointsRemaining}
+                treeData={treeData}
                 commander={this.state.commander}
                 red={this.state.red}
                 yellow={this.state.yellow}
@@ -455,6 +465,7 @@ class App extends Component {
                 changeTalentValue={this.changeTalentValue}
                 calcPointsSpent={this.calcPointsSpent}
                 calcPointsRemaining={this.calcPointsRemaining}
+                treeData={treeData}
                 dataVersion={this.state.dataVersion}
                 commander={this.state.commander}
                 red={this.state.red}

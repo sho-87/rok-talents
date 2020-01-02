@@ -38,10 +38,12 @@ describe('App component', () => {
     });
 
     it('causes warning when build uses old data version', () => {
-      const url = `?${dataVersion - 1};1;irnsscpkv;faaaaaaaaa;issralahnq`;
-      const { getByTestId } = render(<App url={url} />);
+      if (dataVersion - 1 !== 0) {
+        const url = `?${dataVersion - 1};1;irnsscpkv;faaaaaaaaa;issralahnq`;
+        const { getByTestId } = render(<App url={url} />);
 
-      expect(getByTestId('version-warning')).toBeInTheDocument();
+        expect(getByTestId('version-warning')).toBeInTheDocument();
+      }
     });
 
     it('causes invalid modal when incorrect data version', () => {

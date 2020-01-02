@@ -1,23 +1,21 @@
 // Utility to map data files to object
+function loadTreeData(version) {
+  const treeData = {
+    Archer: require(`./v${version}/Archer.json`),
+    Defense: require(`./v${version}/Defense.json`),
+    Garrison: require(`./v${version}/Garrison.json`),
+    Infantry: require(`./v${version}/Infantry.json`),
+    Leadership: require(`./v${version}/Leadership.json`),
+    Peacekeeping: require(`./v${version}/Peacekeeping.json`),
+    Skill: require(`./v${version}/Skill.json`),
+    Support: require(`./v${version}/Support.json`)
+  };
 
-import Archer from './Archer.json';
-import Defense from './Defense.json';
-import Garrison from './Garrison.json';
-import Infantry from './Infantry.json';
-import Leadership from './Leadership.json';
-import Peacekeeping from './Peacekeeping.json';
-import Skill from './Skill.json';
-import Support from './Support.json';
+  if (process.env.NODE_ENV === 'development') {
+    console.info(`Info: Loading game data version ${version}`);
+  }
 
-const TreeData = {
-  Archer: Archer,
-  Defense: Defense,
-  Garrison: Garrison,
-  Infantry: Infantry,
-  Leadership: Leadership,
-  Peacekeeping: Peacekeeping,
-  Skill: Skill,
-  Support: Support
-};
+  return treeData;
+}
 
-export default TreeData;
+export default loadTreeData;

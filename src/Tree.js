@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Node from './Node';
 import ErrorBoundary from './Error';
 
-import TreeData from './data/AllTrees';
-
 /**
  * Component for the individual talent trees
  *
@@ -25,7 +23,7 @@ class Tree extends Component {
     const treeName = this.props.treeName;
 
     for (let i = 1; i < this.props.data.length + 1; i++) {
-      var curNode = TreeData[treeName][i];
+      var curNode = this.props.treeData[treeName][i];
       nodes.push(
         <Node
           changeTalentValue={this.props.changeTalentValue}
@@ -33,6 +31,7 @@ class Tree extends Component {
           showPrereqToast={this.props.showPrereqToast}
           showPointLimitToast={this.props.showPointLimitToast}
           showValues={this.props.showValues}
+          treeData={this.props.treeData}
           key={treeName + i}
           idx={i}
           treeName={treeName}

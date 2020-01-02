@@ -5,7 +5,6 @@ import Tree from './Tree';
 import Hexagon from './Hexagon';
 
 import Commanders from './data/Commanders.json';
-import TreeData from './data/AllTrees';
 import { dataVersion } from '../package.json';
 
 //TODO: make treepanel zoomable?
@@ -144,11 +143,11 @@ class TreePanel extends Component {
       ['red', 'yellow', 'blue'].forEach(color => {
         const treeName = this.getTreeName(color);
 
-        Object.keys(TreeData[treeName]).forEach(nodeID => {
+        Object.keys(this.props.treeData[treeName]).forEach(nodeID => {
           var activateState =
             this.props[color][nodeID - 1] === 0 ? '' : `line-${color}`;
 
-          TreeData[treeName][nodeID].prereq.forEach(prereq => {
+          this.props.treeData[treeName][nodeID].prereq.forEach(prereq => {
             jsPlumb.connect({
               source: document.getElementById(`${treeName}${nodeID}`),
               target: document.getElementById(`${treeName}${prereq}`),
@@ -258,6 +257,7 @@ class TreePanel extends Component {
       showPointLimitToast: this.showPointLimitToast,
       showTotals: showTotals,
       showValues: this.state.showValues,
+      treeData: this.props.treeData,
       commander: this.props.commander
     };
 
@@ -274,7 +274,7 @@ class TreePanel extends Component {
 
         {this.props.dataVersion < dataVersion && (
           <div data-testid="version-warning" id="version-warning">
-            (warning: this build uses an old version of the game data)
+            (warning: this build uses an old <br /> version of the game data)
           </div>
         )}
 
