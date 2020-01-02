@@ -203,6 +203,7 @@ class Node extends Component {
         <TalentTooltip
           idx={this.props.idx}
           target={this.props.treeName + this.props.idx}
+          container={`tree-${this.props.color}`}
           talentName={this.props.talentName}
           value={this.props.value}
           max={this.props.max}
