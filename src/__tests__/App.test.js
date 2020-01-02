@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import App from '../App';
 import Commanders from '../data/Commanders.json';
@@ -13,6 +13,18 @@ describe('App component', () => {
     const div = document.createElement('div');
     ReactDOM.render(<App url="/" />, div);
     ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('removes version warning when resetting talents', () => {
+    if (dataVersion > 1) {
+      const url = `?1;1;irnsscpkv;faaaaaaaaa;issralahnq`;
+      const { getByTestId } = render(<App url={url} />);
+      const warning = getByTestId('version-warning');
+
+      expect(warning).toBeInTheDocument();
+      fireEvent.click(getByTestId('button-reset'));
+      expect(warning).not.toBeInTheDocument();
+    }
   });
 
   describe('URL', () => {
@@ -38,7 +50,7 @@ describe('App component', () => {
     });
 
     it('causes warning when build uses old data version', () => {
-      if (dataVersion - 1 !== 0) {
+      if (dataVersion > 1) {
         const url = `?${dataVersion - 1};1;irnsscpkv;faaaaaaaaa;issralahnq`;
         const { getByTestId } = render(<App url={url} />);
 
