@@ -27,11 +27,8 @@ import { AboutModal } from './Modals';
 import { title } from '../package.json';
 import Commanders from './data/Commanders.json';
 
-//TODO: add undo/redo
 //TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
-//TODO: add dark mode toggle (e.g. https://create-react-app.dev/docs/adding-typescript/)
-
 /**
  * Nav bar component containing main application buttons/controls
  *

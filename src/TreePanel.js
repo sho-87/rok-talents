@@ -7,11 +7,6 @@ import Hexagon from './Hexagon';
 import Commanders from './data/Commanders.json';
 import { dataVersion } from '../package.json';
 
-//TODO: make treepanel zoomable?
-//TODO: add parallax background?
-//TODO: use a component for each individual jsplumb connection/line
-//FIXME: speed up repaint on resize
-
 /**
  * Component for the main tree panel. Controls the display of all nodes and
  * node selections

@@ -17,7 +17,6 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
 //FIXME: only updateurl/encode if that particular tree has changed
-//FIXME: webpack hot module replacement (HMR) waiting for update
 
 /**
  * Main application component. Contains high level logic for managing application state
