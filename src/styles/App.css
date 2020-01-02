@@ -7,6 +7,7 @@
   --red: rgba(190, 50, 25, 1);
   --yellow: rgba(183, 156, 4, 1);
   --blue: rgba(22, 159, 227, 1);
+  --inactive-opacity: 0.2;
 }
 
 html,
@@ -419,7 +420,7 @@ body {
 .node-inactive {
   -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
-  opacity: 0.3;
+  opacity: var(--inactive-opacity);
 }
 
 .node-inactive:hover {
@@ -496,22 +497,26 @@ body {
 }
 
 .line path {
+  opacity: var(--inactive-opacity);
   stroke: gray;
   stroke-width: 1;
   z-index: 0;
 }
 
 .line-red path {
+  opacity: 1;
   stroke: var(--red);
   stroke-width: 2;
 }
 
 .line-yellow path {
+  opacity: 1;
   stroke: var(--yellow);
   stroke-width: 2;
 }
 
 .line-blue path {
+  opacity: 1;
   stroke: var(--blue);
   stroke-width: 2;
 }
