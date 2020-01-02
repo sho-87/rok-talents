@@ -8,6 +8,7 @@
   --yellow: rgba(183, 156, 4, 1);
   --blue: rgba(22, 159, 227, 1);
   --inactive-opacity: 0.2;
+  --line-width-active: 1;
 }
 
 html,
@@ -506,19 +507,19 @@ body {
 .line-red path {
   opacity: 1;
   stroke: var(--red);
-  stroke-width: 2;
+  stroke-width: var(--line-width-active);
 }
 
 .line-yellow path {
   opacity: 1;
   stroke: var(--yellow);
-  stroke-width: 2;
+  stroke-width: var(--line-width-active);
 }
 
 .line-blue path {
   opacity: 1;
   stroke: var(--blue);
-  stroke-width: 2;
+  stroke-width: var(--line-width-active);
 }
 
 .line-endpoint {
