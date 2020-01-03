@@ -6,6 +6,7 @@ import {
   faExclamationTriangle,
   faInfoCircle,
   faShareAlt,
+  faLink,
   faCopy
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -196,14 +197,20 @@ export class ShareModal extends Component {
           <div className="share-modal-label">
             Copy talent build link to your clipboard:
           </div>
-          <div className="input-group">
+
+          <div className="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <FontAwesomeIcon icon={faLink} />
+              </span>
+            </div>
             <input
               id="url"
               type="text"
               className="form-control"
               defaultValue={window.location.href}
             ></input>
-            <span className="input-group-btn">
+            <div class="input-group-append">
               <button
                 id="copyButton"
                 className="btn btn-success"
@@ -212,10 +219,13 @@ export class ShareModal extends Component {
               >
                 <FontAwesomeIcon icon={faCopy} />
               </button>
-            </span>
+            </div>
           </div>
+
           <hr />
+
           <div className="share-modal-label">Share to social media:</div>
+
           <div id="share-modal-social">
             <EmailShareButton url={window.location.href}>
               <EmailIcon size={32} round />
