@@ -6,6 +6,7 @@ import { replaceTalentText, getMaxTalentCount } from './utils';
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
 //FIXME: tooltips stay too long on slow devices
 //FIXME: fix location of node labels. tie to the node div
+//FIXME: use shouldComponentUpdate
 
 /**
  * Component for the individual talent nodes
@@ -15,7 +16,10 @@ import { replaceTalentText, getMaxTalentCount } from './utils';
  */
 class Node extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.value !== nextProps.value) {
+    if (
+      this.props.value !== nextProps.value ||
+      this.props.showValues !== nextProps.showValues
+    ) {
       return true;
     } else {
       return false;
