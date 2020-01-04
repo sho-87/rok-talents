@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 //FIXME: tree labels in hexagon need to be tied to a div so theyre always centered
-//FIXME: use shouldComponentUpdate
 
 /**
  * Component containing the central commander image and skill label hexagon
@@ -10,6 +9,14 @@ import React, { Component } from 'react';
  * @extends {Component}
  */
 class Hexagon extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.commander !== nextProps.commander) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
     if (this.props.commander) {
       return (
