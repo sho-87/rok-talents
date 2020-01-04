@@ -18,6 +18,7 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
 //FIXME: only updateurl/encode if that particular tree has changed
+//FIXME: use shouldComponentUpdate
 
 /**
  * Main application component. Contains high level logic for managing application state

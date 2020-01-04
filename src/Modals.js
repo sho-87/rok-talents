@@ -292,6 +292,7 @@ export class PrereqToast extends Component {
   }
 }
 
+//FIXME: change to class and use shouldComponentUpdate
 /**
  * Tooltip containing information about each talent node. Displayed when 
  user hovers over a talent

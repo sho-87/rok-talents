@@ -7,6 +7,8 @@ import Hexagon from './Hexagon';
 import Commanders from './data/Commanders.json';
 import { dataVersion } from '../package.json';
 
+//FIXME: use shouldComponentUpdate
+
 /**
  * Component for the main tree panel. Controls the display of all nodes and
  * node selections

@@ -3,6 +3,8 @@ import Node from './Node';
 import ErrorBoundary from './Error';
 import { getMaxTalentCount } from './utils';
 
+//FIXME: use shouldComponentUpdate
+
 /**
  * Component for the individual talent trees
  *

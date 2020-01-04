@@ -5,7 +5,6 @@ import { replaceTalentText, getMaxTalentCount } from './utils';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
 //FIXME: tooltips stay too long on slow devices
-//FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
 //FIXME: fix location of node labels. tie to the node div
 
 /**
@@ -15,6 +14,14 @@ import { replaceTalentText, getMaxTalentCount } from './utils';
  * @extends {Component}
  */
 class Node extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.value !== nextProps.value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   /**
    * Determine styling of the node. CSS style depends on whether the node is
    * a large skill node or a small stat node

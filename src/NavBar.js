@@ -29,6 +29,8 @@ import Commanders from './data/Commanders.json';
 
 //TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
+//FIXME: use shouldComponentUpdate
+
 /**
  * Nav bar component containing main application buttons/controls
  *
