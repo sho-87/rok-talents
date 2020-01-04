@@ -69,7 +69,7 @@
     "text": "Reduces all damage taken by $%",
     "prereq": [3],
     "dep": [10, 11],
-    "pos": [21, 37.8],
+    "pos": [20.3, 37.8],
     "type": "node-large",
     "image": "blueGloves"
   },
@@ -184,7 +184,7 @@
     "text": "Normal troop attacks have a 10% chance to cause this commander's troops to go on a rampage (increases damage by $% for the next 3 seconds, but skills cannot be used for the duration of the effect)",
     "prereq": [16, 17],
     "dep": [],
-    "pos": [79, 42.8],
+    "pos": [79.4, 42.7],
     "type": "node-large",
     "image": "blueSkull"
   }
