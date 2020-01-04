@@ -1,6 +1,7 @@
 // Utility to map data files to object
 function loadTreeData(version) {
   const treeData = {
+    Attack: require(`./v${version}/Attack.json`),
     Archer: require(`./v${version}/Archer.json`),
     Defense: require(`./v${version}/Defense.json`),
     Garrison: require(`./v${version}/Garrison.json`),
@@ -8,7 +9,8 @@ function loadTreeData(version) {
     Leadership: require(`./v${version}/Leadership.json`),
     Peacekeeping: require(`./v${version}/Peacekeeping.json`),
     Skill: require(`./v${version}/Skill.json`),
-    Support: require(`./v${version}/Support.json`)
+    Support: require(`./v${version}/Support.json`),
+    Versatility: require(`./v${version}/Versatility.json`)
   };
 
   if (process.env.NODE_ENV === 'development') {

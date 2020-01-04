@@ -30,5 +30,13 @@
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Skill"
+  },
+  "Alexander the Great": {
+    "id": "5",
+    "title": "World Conqueror",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Versatility",
+    "blue": "Attack"
   }
 }
