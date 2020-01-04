@@ -17,13 +17,23 @@ describe('Nav bar component', () => {
     ReactDOM.render(<NavBar {...props} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-  
+
   describe('Commander select', () => {
     it('displays commander name', () => {
       const { getByTestId } = render(
         <NavBar {...props} commander="Richard I" />
       );
       expect(getByTestId('select-commander')).toHaveTextContent('Richard I');
+    });
+
+    it('displays commander short name instead of full name', () => {
+      const { getByTestId } = render(
+        <NavBar {...props} commander="Alexander the Great" />
+      );
+      expect(getByTestId('select-commander')).not.toHaveTextContent(
+        'Alexander the Great'
+      );
+      expect(getByTestId('select-commander')).toHaveTextContent('Alexander');
     });
 
     it('displays "Commander" if no commander selected', () => {
