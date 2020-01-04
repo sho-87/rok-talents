@@ -318,6 +318,20 @@ exports[`App component URL renders build example 1 correctly 1`] = `
                 type="button"
               >
                 <img
+                  alt="Eulji Mundeok"
+                  class="select-commander-icon"
+                  src="images/commanders/Eulji Mundeok.png"
+                />
+                Eulji Mundeok
+              </button>
+              <button
+                class="dropdown-item"
+                data-testid="menu-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <img
                   alt="Sun Tzu"
                   class="select-commander-icon"
                   src="images/commanders/Sun Tzu.png"
@@ -5352,6 +5366,20 @@ exports[`App component URL renders build example 2 correctly 1`] = `
               >
                 Epic
               </h6>
+              <button
+                class="dropdown-item"
+                data-testid="menu-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <img
+                  alt="Eulji Mundeok"
+                  class="select-commander-icon"
+                  src="images/commanders/Eulji Mundeok.png"
+                />
+                Eulji Mundeok
+              </button>
               <button
                 class="dropdown-item"
                 data-testid="menu-item"
@@ -10627,6 +10655,20 @@ exports[`App component URL renders empty build correctly 1`] = `
               >
                 Epic
               </h6>
+              <button
+                class="dropdown-item"
+                data-testid="menu-item"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                <img
+                  alt="Eulji Mundeok"
+                  class="select-commander-icon"
+                  src="images/commanders/Eulji Mundeok.png"
+                />
+                Eulji Mundeok
+              </button>
               <button
                 class="dropdown-item"
                 data-testid="menu-item"

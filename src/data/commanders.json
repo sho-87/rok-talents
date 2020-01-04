@@ -38,5 +38,13 @@
     "red": "Infantry",
     "yellow": "Versatility",
     "blue": "Attack"
+  },
+  "Eulji Mundeok": {
+    "id": "6",
+    "title": "Elegant Demeanor",
+    "tier": "Epic",
+    "red": "Infantry",
+    "yellow": "Garrison",
+    "blue": "Attack"
   }
 }
