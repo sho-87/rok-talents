@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Modals';
-import { isMultidimensional, getMaxTalentCount } from './utils';
+import { replaceTalentText, getMaxTalentCount } from './utils';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
 //FIXME: tooltips stay too long on slow devices
@@ -63,29 +63,23 @@ class Node extends Component {
    * @memberof Node
    */
   setTooltip() {
-    let tooltip = this.props.tooltip;
+    let tooltip;
     let talentValues = this.props.treeData[this.props.treeName][this.props.idx][
       'values'
     ];
 
     if (this.props.value === this.props.max) {
-      if (isMultidimensional(talentValues)) {
-        for (let i = 0; i < talentValues.length; i++) {
-          let re = new RegExp(`\\$\\{${i + 1}\\}`, 'g');
-          tooltip = tooltip.replace(re, talentValues[i][this.props.max - 1]);
-        }
-      } else {
-        tooltip = tooltip.replace(/\$\{1\}/g, talentValues[this.props.max - 1]);
-      }
+      tooltip = replaceTalentText(
+        this.props.tooltip,
+        talentValues,
+        this.props.max - 1
+      );
     } else {
-      if (isMultidimensional(talentValues)) {
-        for (let i = 0; i < talentValues.length; i++) {
-          let re = new RegExp(`\\$\\{${i + 1}\\}`, 'g');
-          tooltip = tooltip.replace(re, talentValues[i][this.props.value]);
-        }
-      } else {
-        tooltip = tooltip.replace(/\$\{1\}/g, talentValues[this.props.value]);
-      }
+      tooltip = replaceTalentText(
+        this.props.tooltip,
+        talentValues,
+        this.props.value
+      );
     }
 
     return tooltip;

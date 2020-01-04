@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Collapse } from 'reactstrap';
-import { isMultidimensional, getMaxTalentCount } from './utils';
+import { getMaxTalentCount, replaceTalentText } from './utils';
 
 import Commanders from './data/Commanders.json';
 
@@ -77,17 +77,6 @@ class SidePanel extends Component {
               //FIXME: minor talent nodes might be multidimensional...
               statValue += talentInfo.values[value - 1];
             } else if (stat === 'Main' && talentStat === '') {
-              let text = talentInfo.text;
-
-              if (isMultidimensional(talentInfo.values)) {
-                for (let i = 0; i < talentInfo.values.length; i++) {
-                  let re = new RegExp(`\\$\\{${i + 1}\\}`, 'g');
-                  text = text.replace(re, talentInfo.values[i][value - 1]);
-                }
-              } else {
-                text = text.replace(/\$\{1\}/g, talentInfo.values[value - 1]);
-              }
-
               main.push(
                 <div
                   key={talentInfo.name}
@@ -106,7 +95,11 @@ class SidePanel extends Component {
                     className="side-panel-main-text"
                     isOpen={this.state.mainOpen}
                   >
-                    {text}
+                    {replaceTalentText(
+                      talentInfo.text,
+                      talentInfo.values,
+                      value - 1
+                    )}
                   </Collapse>
                 </div>
               );

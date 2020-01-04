@@ -5,10 +5,10 @@ import SidePanel from './SidePanel';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
 
+import { sumArray, getMaxTalentCount, encode, decode } from './utils';
 import loadTreeData from './data/AllTrees';
 import Commanders from './data/Commanders.json';
-import { getMaxTalentCount } from './utils';
-import { maxPoints, valuesToLetters, lettersToValues } from './values';
+import { maxPoints } from './values';
 import { dataVersion } from '../package.json';
 
 import './styles/App.css';
@@ -17,7 +17,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
-//TODO: move utility functions
 //FIXME: only updateurl/encode if that particular tree has changed
 
 /**
@@ -82,7 +81,7 @@ class App extends Component {
 
           for (let color of colorPairs) {
             // Decode and split talent string into array
-            let talents = this.decode(color[0])
+            let talents = decode(color[0])
               .split('')
               .map(Number);
             const maxArray = this.createMaxValueArray(
@@ -162,42 +161,6 @@ class App extends Component {
   }
 
   /**
-   * Encode/compress the passed text
-   *
-   * @param {string} text Text to be encoded/compressed
-   * @returns {string} Encoded/compressed version of the text
-   * @memberof App
-   */
-  encode(text) {
-    const encoded = text
-      .match(/(..?)/g)
-      .map(v => {
-        return valuesToLetters.hasOwnProperty(v) ? valuesToLetters[v] : v;
-      })
-      .join('');
-
-    return encoded;
-  }
-
-  /**
-   * Decode encoded text
-   *
-   * @param {string} encoded Encoded form of the text
-   * @returns {string} Decoded string
-   * @memberof App
-   */
-  decode(encoded) {
-    const decoded = encoded
-      .split('')
-      .map(k => {
-        return lettersToValues.hasOwnProperty(k) ? lettersToValues[k] : k;
-      })
-      .join('');
-
-    return decoded;
-  }
-
-  /**
    * Update the current URL
    *
    * @param {string} method {update | clear} Should the new URL be updated
@@ -214,9 +177,9 @@ class App extends Component {
           [
             this.state.dataVersion,
             Commanders[this.state.commander].id,
-            this.encode(this.state.red.join('')),
-            this.encode(this.state.yellow.join('')),
-            this.encode(this.state.blue.join(''))
+            encode(this.state.red.join('')),
+            encode(this.state.yellow.join('')),
+            encode(this.state.blue.join(''))
           ].join(';');
 
         break;
@@ -332,22 +295,15 @@ class App extends Component {
    * @memberof App
    */
   calcPointsSpent(color = 'total') {
-    let pointsSpent = 'NA';
+    let points;
 
     if (color === 'total') {
-      pointsSpent = [
-        ...this.state.red,
-        ...this.state.yellow,
-        ...this.state.blue
-      ].reduce((partial, a) => partial + a, 0);
+      points = [...this.state.red, ...this.state.yellow, ...this.state.blue];
     } else {
-      pointsSpent = [...this.state[color]].reduce(
-        (partial, a) => partial + a,
-        0
-      );
+      points = [...this.state[color]];
     }
 
-    return pointsSpent;
+    return sumArray(points);
   }
 
   /**
