@@ -134,7 +134,7 @@ class NavBar extends Component {
             alt={c}
             src={`images/commanders/${c}.png`}
           ></img>
-          {c}
+          {Commanders[c]['shortName'] ? Commanders[c]['shortName'] : c}
         </DropdownItem>
       );
 
@@ -270,7 +270,11 @@ class NavBar extends Component {
                   ) : (
                     <FontAwesomeIcon icon={faUser} />
                   )}
-                  {this.props.commander ? this.props.commander : ' Commander'}
+                  {this.props.commander
+                    ? Commanders[this.props.commander]['shortName']
+                      ? Commanders[this.props.commander]['shortName']
+                      : this.props.commander
+                    : ' Commander'}
                 </DropdownToggle>
 
                 <DropdownMenu id="select-commander-menu" right>

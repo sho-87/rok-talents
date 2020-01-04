@@ -33,6 +33,7 @@
   },
   "Alexander the Great": {
     "id": "5",
+    "shortName": "Alexander",
     "title": "World Conqueror",
     "tier": "Legendary",
     "red": "Infantry",

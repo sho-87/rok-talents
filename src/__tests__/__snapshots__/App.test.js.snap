@@ -270,7 +270,7 @@ exports[`App component URL renders build example 1 correctly 1`] = `
                   class="select-commander-icon"
                   src="images/commanders/Alexander the Great.png"
                 />
-                Alexander the Great
+                Alexander
               </button>
               <button
                 class="dropdown-item"
@@ -5326,7 +5326,7 @@ exports[`App component URL renders build example 2 correctly 1`] = `
                   class="select-commander-icon"
                   src="images/commanders/Alexander the Great.png"
                 />
-                Alexander the Great
+                Alexander
               </button>
               <button
                 class="dropdown-item"
@@ -10615,7 +10615,7 @@ exports[`App component URL renders empty build correctly 1`] = `
                   class="select-commander-icon"
                   src="images/commanders/Alexander the Great.png"
                 />
-                Alexander the Great
+                Alexander
               </button>
               <button
                 class="dropdown-item"
