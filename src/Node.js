@@ -3,6 +3,7 @@ import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Modals';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
+//FIXME: handle multi value talents (e.g. martial mastery, fight to the death)
 //FIXME: tooltips stay too long on slow devices
 //FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
 //FIXME: fix location of node labels. tie to the node div
