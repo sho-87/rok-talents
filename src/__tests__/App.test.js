@@ -27,6 +27,37 @@ describe('App component', () => {
     }
   });
 
+  it('shows main talents in the side panel', () => {
+    const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;iaaaaaaaa`;
+    const { getByTestId } = render(<App url={url} />);
+    expect(getByTestId('side-panel-main-talents')).not.toHaveTextContent(
+      'Lord of War'
+    );
+    fireEvent.click(getByTestId('Attack4'));
+    expect(getByTestId('side-panel-main-talents')).toHaveTextContent(
+      'Lord of War'
+    );
+  });
+
+  it('shows correct number of maximum multidimensional talent levels in side panel', () => {
+    const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;idabacaaa`;
+    const { getByTestId } = render(<App url={url} />);
+    expect(getByTestId('side-panel-main-talents')).toHaveTextContent(
+      'Fight To The Death (2/3)'
+    );
+    expect(getByTestId('side-panel-main-talents')).not.toHaveTextContent(
+      'Fight To The Death (2/2)'
+    );
+  });
+
+  it('shows correct stat value of multidimensional talents in side panel', () => {
+    const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;idabacaaa`;
+    const { getByTestId } = render(<App url={url} />);
+    expect(getByTestId('side-panel-main-talents')).toHaveTextContent(
+      'Increases all damage dealt by 4%, but also increases all damage taken by 2%'
+    );
+  });
+
   describe('URL', () => {
     it('renders empty build correctly', () => {
       const url = `/`;

@@ -199,8 +199,8 @@ export class ShareModal extends Component {
           </div>
 
           <div className="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
+            <div className="input-group-prepend">
+              <span className="input-group-text">
                 <FontAwesomeIcon icon={faLink} />
               </span>
             </div>
@@ -210,7 +210,7 @@ export class ShareModal extends Component {
               className="form-control"
               defaultValue={window.location.href}
             ></input>
-            <div class="input-group-append">
+            <div className="input-group-append">
               <button
                 id="copyButton"
                 className="btn btn-success"
@@ -323,8 +323,12 @@ export const TalentTooltip = props => {
         <div style={{ clear: 'both' }}></div>
       </PopoverHeader>
       <PopoverBody className="node-tooltip-body">
+        {props.value !== props.max && (
+          <div>
+            <b>Next point:</b>
+          </div>
+        )}
         {props.text}
-
         {process.env.NODE_ENV === 'development' && (
           <div className="node-tooltip-id">ID: {props.target}</div>
         )}

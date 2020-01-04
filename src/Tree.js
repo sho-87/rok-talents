@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Node from './Node';
 import ErrorBoundary from './Error';
+import { getMaxTalentCount } from './utils';
 
 /**
  * Component for the individual talent trees
@@ -24,6 +25,7 @@ class Tree extends Component {
 
     for (let i = 1; i < this.props.data.length + 1; i++) {
       var curNode = this.props.treeData[treeName][i];
+
       nodes.push(
         <Node
           changeTalentValue={this.props.changeTalentValue}
@@ -40,7 +42,7 @@ class Tree extends Component {
           tooltip={curNode['text']}
           type={curNode['type']}
           value={this.props.data[i - 1]}
-          max={curNode['values'].length}
+          max={getMaxTalentCount(curNode['values'])}
           fullTree={this.props.data}
           x={curNode['pos'][0] + '%'}
           y={curNode['pos'][1] + '%'}

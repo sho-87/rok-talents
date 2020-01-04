@@ -3,7 +3,7 @@
     "name": "Attack (Archers)",
     "values": [1],
     "stats": "Attack",
-    "text": "Increases attack of archer units by $%",
+    "text": "Increases attack of archer units by ${1}%",
     "prereq": [],
     "dep": [],
     "pos": [-1.7, 75.7],

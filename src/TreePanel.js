@@ -228,14 +228,13 @@ class TreePanel extends Component {
   }
 
   render() {
-    let showTotals = this.state.showTotals && this.props.commander;
     const sharedTreeProps = {
       changeTalentValue: this.props.changeTalentValue,
       calcPointsSpent: this.props.calcPointsSpent,
       calcPointsRemaining: this.props.calcPointsRemaining,
       showPrereqToast: this.showPrereqToast,
       showPointLimitToast: this.showPointLimitToast,
-      showTotals: showTotals,
+      showTotals: this.state.showTotals && this.props.commander,
       showValues: this.state.showValues,
       treeData: this.props.treeData,
       commander: this.props.commander
@@ -254,13 +253,13 @@ class TreePanel extends Component {
           body="You have spent the maximum number of talent points"
         />
 
-        {!this.props.commander && <Instructions />}
-
         {this.props.dataVersion < dataVersion && (
           <div data-testid="version-warning" id="version-warning">
             (warning: this build uses an old <br /> version of the game data)
           </div>
         )}
+
+        {!this.props.commander && <Instructions />}
 
         <div id="tree-square-container">
           <div id="tree-square-section">

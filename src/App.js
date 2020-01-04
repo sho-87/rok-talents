@@ -7,6 +7,7 @@ import ErrorBoundary from './Error';
 
 import loadTreeData from './data/AllTrees';
 import Commanders from './data/Commanders.json';
+import { getMaxTalentCount } from './utils';
 import { maxPoints, valuesToLetters, lettersToValues } from './values';
 import { dataVersion } from '../package.json';
 
@@ -16,6 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
+//TODO: move utility functions
 //FIXME: only updateurl/encode if that particular tree has changed
 
 /**
@@ -83,7 +85,10 @@ class App extends Component {
             let talents = this.decode(color[0])
               .split('')
               .map(Number);
-            const maxArray = this.getMaxValues(this.state.commander, color[1]);
+            const maxArray = this.createMaxValueArray(
+              this.state.commander,
+              color[1]
+            );
 
             if (talents.length !== this.state[color[1]].length) {
               // Check talent array is correct length
@@ -305,12 +310,12 @@ class App extends Component {
    * @returns {Number[]} Array of maximum available points for each talent in the tree
    * @memberof App
    */
-  getMaxValues(commander, color) {
+  createMaxValueArray(commander, color) {
     let maxArray = [];
 
-    Object.keys(treeData[Commanders[commander][color]]).forEach(key => {
+    Object.keys(treeData[Commanders[commander][color]]).forEach(id => {
       maxArray.push(
-        treeData[Commanders[commander][color]][key]['values'].length
+        getMaxTalentCount(treeData[Commanders[commander][color]][id]['values'])
       );
     });
 

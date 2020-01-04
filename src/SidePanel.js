@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Collapse } from 'reactstrap';
+import { isMultidimensional, getMaxTalentCount } from './utils';
 
 import Commanders from './data/Commanders.json';
 
@@ -73,10 +74,20 @@ class SidePanel extends Component {
           const talentStat = talentInfo.stats;
           if (value > 0) {
             if (talentStat === stat) {
+              //FIXME: minor talent nodes might be multidimensional...
               statValue += talentInfo.values[value - 1];
-            } else if ((stat === 'Main') & (talentStat === '')) {
+            } else if (stat === 'Main' && talentStat === '') {
               let text = talentInfo.text;
-              text = text.replace(/\$/g, talentInfo.values[value - 1]);
+
+              if (isMultidimensional(talentInfo.values)) {
+                for (let i = 0; i < talentInfo.values.length; i++) {
+                  let re = new RegExp(`\\$\\{${i + 1}\\}`, 'g');
+                  text = text.replace(re, talentInfo.values[i][value - 1]);
+                }
+              } else {
+                text = text.replace(/\$\{1\}/g, talentInfo.values[value - 1]);
+              }
+
               main.push(
                 <div
                   key={talentInfo.name}
@@ -87,7 +98,9 @@ class SidePanel extends Component {
                     <span
                       className={`side-panel-main-bullet side-panel-main-${color}`}
                     ></span>
-                    {`${talentInfo.name} (${value}/${talentInfo.values.length})`}
+                    {`${talentInfo.name} (${value}/${getMaxTalentCount(
+                      talentInfo.values
+                    )})`}
                   </div>
                   <Collapse
                     className="side-panel-main-text"
@@ -141,7 +154,9 @@ class SidePanel extends Component {
             {this.state.mainOpen ? '(collapse)' : '(expand)'}
           </span>
         </h3>
-        <div>{this.calcStats('Main')}</div>
+        <div data-testid="side-panel-main-talents">
+          {this.calcStats('Main')}
+        </div>
 
         {process.env.NODE_ENV === 'development' && (
           <Fragment>

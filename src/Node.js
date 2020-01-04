@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Modals';
+import { isMultidimensional, getMaxTalentCount } from './utils';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
-//FIXME: handle multi value talents (e.g. martial mastery, fight to the death)
 //FIXME: tooltips stay too long on slow devices
 //FIXME: nodes/tooltips update all the time. use shouldcomponentupdate?
 //FIXME: fix location of node labels. tie to the node div
@@ -37,7 +37,6 @@ class Node extends Component {
   }
 
   //FIXME: this is so hacky...
-
   /**
    * Set the CSS class of the node if it is a small node type. Applied
    * classes depend on both the node size, as well as whether
@@ -70,9 +69,23 @@ class Node extends Component {
     ];
 
     if (this.props.value === this.props.max) {
-      tooltip = tooltip.replace(/\$/g, talentValues[this.props.max - 1]);
+      if (isMultidimensional(talentValues)) {
+        for (let i = 0; i < talentValues.length; i++) {
+          let re = new RegExp(`\\$\\{${i + 1}\\}`, 'g');
+          tooltip = tooltip.replace(re, talentValues[i][this.props.max - 1]);
+        }
+      } else {
+        tooltip = tooltip.replace(/\$\{1\}/g, talentValues[this.props.max - 1]);
+      }
     } else {
-      tooltip = tooltip.replace(/\$/g, talentValues[this.props.value]);
+      if (isMultidimensional(talentValues)) {
+        for (let i = 0; i < talentValues.length; i++) {
+          let re = new RegExp(`\\$\\{${i + 1}\\}`, 'g');
+          tooltip = tooltip.replace(re, talentValues[i][this.props.value]);
+        }
+      } else {
+        tooltip = tooltip.replace(/\$\{1\}/g, talentValues[this.props.value]);
+      }
     }
 
     return tooltip;
@@ -98,8 +111,9 @@ class Node extends Component {
 
       prereqs.forEach(idx => {
         const prereqValue = this.props.fullTree[idx - 1];
-        const prereqMax = this.props.treeData[this.props.treeName][idx].values
-          .length;
+        const prereqMax = getMaxTalentCount(
+          this.props.treeData[this.props.treeName][idx].values
+        );
         if (prereqValue !== prereqMax) {
           prereqsOK = false;
           missingPrereqs.push(
@@ -184,6 +198,7 @@ class Node extends Component {
     return (
       <Fragment>
         <div
+          data-testid={this.props.treeName + this.props.idx}
           id={this.props.treeName + this.props.idx}
           className={`node ${this.props.type} ${
             this.props.value === 0 ? 'node-inactive' : ''
