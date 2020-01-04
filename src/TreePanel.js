@@ -24,7 +24,8 @@ class TreePanel extends Component {
       prereqToastFlag: false,
       prereqMsg: '',
       showTotals: true,
-      showValues: true
+      showValues: true,
+      showMouse: false
     };
 
     // Context bindings
@@ -42,10 +43,6 @@ class TreePanel extends Component {
   componentDidMount() {
     window.addEventListener('resize', this.repaint);
 
-    if (process.env.NODE_ENV === 'development') {
-      window.addEventListener('mousemove', this.setMousePosition);
-    }
-
     const this_ = this;
 
     jsPlumb.ready(function() {
@@ -61,60 +58,6 @@ class TreePanel extends Component {
    */
   componentWillUnmount() {
     window.removeEventListener('resize', this.repaint);
-
-    if (process.env.NODE_ENV === 'development') {
-      window.removeEventListener('mousemove', this.setMousePosition);
-    }
-  }
-
-  /**
-   * Store mouse position relative to each tree container
-   *
-   * @param {MouseEvent} e Mouse move event
-   * @memberof TreePanel
-   */
-  setMousePosition(e) {
-    const redContainer = document
-      .getElementById('tree-red')
-      .getBoundingClientRect();
-
-    const yellowContainer = document
-      .getElementById('tree-yellow')
-      .getBoundingClientRect();
-
-    const blueContainer = document
-      .getElementById('tree-blue')
-      .getBoundingClientRect();
-
-    setTimeout(
-      this.setState({
-        redX:
-          ((e.clientX - redContainer.left + window.scrollX) /
-            redContainer.width) *
-          100,
-        redY:
-          ((e.clientY - redContainer.top + window.scrollY) /
-            redContainer.height) *
-          100,
-        yellowX:
-          ((e.clientX - yellowContainer.left + window.scrollX) /
-            yellowContainer.width) *
-          100,
-        yellowY:
-          ((e.clientY - yellowContainer.top + window.scrollY) /
-            yellowContainer.height) *
-          100,
-        blueX:
-          ((e.clientX - blueContainer.left + window.scrollX) /
-            blueContainer.width) *
-          100,
-        blueY:
-          ((e.clientY - blueContainer.top + window.scrollY) /
-            blueContainer.height) *
-          100
-      }),
-      5000
-    );
   }
 
   /**
@@ -178,6 +121,76 @@ class TreePanel extends Component {
   }
 
   /**
+   * Toggle event listeners for setting mouse position and display XY
+   *
+   * @memberof TreePanel
+   */
+  toggleMousePosition() {
+    this.setState(
+      prevState => ({
+        showMouse: !prevState.showMouse
+      }),
+      () => {
+        if (this.state.showMouse) {
+          window.addEventListener('mousemove', this.setMousePosition);
+        } else {
+          window.removeEventListener('mousemove', this.setMousePosition);
+        }
+      }
+    );
+  }
+
+  /**
+   * Store mouse position relative to each tree container
+   *
+   * @param {MouseEvent} e Mouse move event
+   * @memberof TreePanel
+   */
+  setMousePosition(e) {
+    const redContainer = document
+      .getElementById('tree-red')
+      .getBoundingClientRect();
+
+    const yellowContainer = document
+      .getElementById('tree-yellow')
+      .getBoundingClientRect();
+
+    const blueContainer = document
+      .getElementById('tree-blue')
+      .getBoundingClientRect();
+
+    setTimeout(
+      this.setState({
+        redX:
+          ((e.clientX - redContainer.left + window.scrollX) /
+            redContainer.width) *
+          100,
+        redY:
+          ((e.clientY - redContainer.top + window.scrollY) /
+            redContainer.height) *
+          100,
+        yellowX:
+          ((e.clientX - yellowContainer.left + window.scrollX) /
+            yellowContainer.width) *
+          100,
+        yellowY:
+          ((e.clientY - yellowContainer.top + window.scrollY) /
+            yellowContainer.height) *
+          100,
+        blueX:
+          ((e.clientX - blueContainer.left + window.scrollX) /
+            blueContainer.width) *
+          100,
+        blueY:
+          ((e.clientY - blueContainer.top + window.scrollY) /
+            blueContainer.height) *
+          100
+      }),
+      2000
+    );
+  }
+
+  /**
    * Toggle display of node values
    *
    * @memberof TreePanel
@@ -238,6 +251,7 @@ class TreePanel extends Component {
       showPointLimitToast: this.showPointLimitToast,
       showTotals: this.state.showTotals && this.props.commander,
       showValues: this.state.showValues,
+      showMouse: this.state.showMouse,
       treeData: this.props.treeData,
       commander: this.props.commander
     };

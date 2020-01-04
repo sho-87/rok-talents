@@ -251,6 +251,20 @@ class NavBar extends Component {
                         defaultChecked={true}
                         onChange={e => this.props.toggleTotalDisplay()}
                       />
+
+                      {process.env.NODE_ENV === 'development' && (
+                        <React.Fragment>
+                          <DropdownItem divider />
+                          <DropdownItem header>Dev Mode</DropdownItem>
+                          <CustomInput
+                            type="switch"
+                            id="settings-mouse"
+                            label="Show mouse XY"
+                            defaultChecked={false}
+                            onChange={e => this.props.toggleMousePosition()}
+                          />
+                        </React.Fragment>
+                      )}
                     </FormGroup>
                   </Form>
                 </DropdownMenu>

@@ -36,6 +36,7 @@ class App extends Component {
     this.toggleSidePanel = this.toggleSidePanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
+    this.toggleMousePosition = this.toggleMousePosition.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
@@ -345,6 +346,15 @@ class App extends Component {
     this.treePanelRef.toggleValueDisplay();
   }
 
+    /**
+   * Toggle mouse position display. Uses a ref to the tree panel
+   *
+   * @memberof App
+   */
+  toggleMousePosition() {
+    this.treePanelRef.toggleMousePosition();
+  }
+
   /**
    * Toggle commander select dropdown. Uses a ref to the navbar
    *
@@ -367,6 +377,7 @@ class App extends Component {
             toggleSidePanel={this.toggleSidePanel}
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}
+            toggleMousePosition={this.toggleMousePosition}
             changeCommander={this.changeCommander}
             calcPointsSpent={this.calcPointsSpent}
             resetTalents={this.resetTalents}
