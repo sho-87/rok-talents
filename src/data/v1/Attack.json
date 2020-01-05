@@ -163,7 +163,7 @@
   },
   "16": {
     "name": "Effortless",
-    "values": [0.5, 1, 1.5],
+    "values": [0.5, 1, 2.5],
     "stats": "",
     "text": "During battles, increases all damage dealt by ${1}% every 10 seconds (up to a maximum of 10%)",
     "prereq": [13],
