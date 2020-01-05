@@ -8,7 +8,6 @@
     "games",
     "rise of kingdoms"
   ],
-  "homepage": ".",
   "private": true,
   "author": {
     "name": "Simon Ho",
