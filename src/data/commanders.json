@@ -55,5 +55,22 @@
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Defense"
+  },
+  "Edward of Woodstock": {
+    "id": "8",
+    "shortName": "Edward",
+    "title": "The Black Prince",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Versatility",
+    "blue": "Skill"
+  },
+  "El Cid": {
+    "id": "9",
+    "title": "Holy Overlord",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Versatility",
+    "blue": "Skill"
   }
 }
