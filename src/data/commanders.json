@@ -47,5 +47,13 @@
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Attack"
+  },
+  "Charles Martel": {
+    "id": "7",
+    "title": "The Immortal Hammer",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Garrison",
+    "blue": "Defense"
   }
 }
