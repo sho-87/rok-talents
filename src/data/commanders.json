@@ -72,5 +72,13 @@
     "red": "Archer",
     "yellow": "Versatility",
     "blue": "Skill"
+  },
+  "Constantine": {
+    "id": "10",
+    "title": "Peerless Lord",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Garrison",
+    "blue": "Support"
   }
 }
