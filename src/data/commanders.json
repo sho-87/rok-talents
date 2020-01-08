@@ -105,5 +105,13 @@
     "red": "Leadership",
     "yellow": "Garrison",
     "blue": "Support"
+  },
+  "Leonidas I": {
+    "id": "14",
+    "title": "Indomitable Powerhouse",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Versatility",
+    "blue": "Defense"
   }
 }
