@@ -32,7 +32,7 @@ export function getMaxTalentCount(talentValues) {
   if (!isMultidimensional(talentValues)) {
     max = talentValues.length;
   } else {
-    //FIXME: this can break if nested arrays are different lengths (but shouldn't ever be the case...)
+    // All multidimensional arrays should be same length (checked by unit test)
     max = talentValues[0].length;
   }
   return max;
