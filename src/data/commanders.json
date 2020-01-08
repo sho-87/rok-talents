@@ -97,5 +97,13 @@
     "red": "Archer",
     "yellow": "Garrison",
     "blue": "Skill"
+  },
+  "Wu Zetian": {
+    "id": "13",
+    "title": "The Eternal Female Emperor",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Garrison",
+    "blue": "Support"
   }
 }
