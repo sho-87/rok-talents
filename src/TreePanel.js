@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { jsPlumb } from 'jsplumb';
+import panzoom from 'panzoom';
 import { PrereqToast, ToastMessage } from './Modals';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
@@ -48,6 +49,12 @@ class TreePanel extends Component {
     jsPlumb.ready(function() {
       jsPlumb.setContainer(document.getElementById('tree-square-content'));
       this_.drawLines();
+    });
+
+    var panzoomContainer = document.getElementById('tree-square-container');
+    panzoom(panzoomContainer, {
+      zoomDoubleClickSpeed: 1,
+      bounds: true
     });
   }
 

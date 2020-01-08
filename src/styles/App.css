@@ -131,6 +131,7 @@ body {
   height: 100%;
   background-color: #838ca7;
   border: 0.5px solid black;
+  z-index: 10;
 }
 
 .side-panel-open {
@@ -203,6 +204,7 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
+  overflow: hidden;
   background-image: radial-gradient(
     circle,
     rgb(10, 72, 97) 30%,
