@@ -89,5 +89,13 @@
     "red": "Archer",
     "yellow": "Garrison",
     "blue": "Skill"
+  },
+  "Hermann": {
+    "id": "12",
+    "title": "Teutoburg's Liberator",
+    "tier": "Epic",
+    "red": "Archer",
+    "yellow": "Garrison",
+    "blue": "Skill"
   }
 }
