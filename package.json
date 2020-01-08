@@ -27,6 +27,7 @@
     "@fortawesome/react-fontawesome": "^0.1.7",
     "bootstrap": "^4.4.1",
     "jsplumb": "2.12.8",
+    "panzoom": "^8.7.5",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "^3.3.0",
