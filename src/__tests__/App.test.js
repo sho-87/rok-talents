@@ -59,27 +59,6 @@ describe('App component', () => {
   });
 
   describe('URL', () => {
-    it('renders empty build correctly', () => {
-      const url = `/`;
-      const { asFragment } = render(<App url={url} />);
-
-      expect(asFragment()).toMatchSnapshot();
-    });
-
-    it('renders build example 1 correctly', () => {
-      const url = `?${dataVersion};1;irnsscpkv;faaaaaaaaa;issralahnq`;
-      const { asFragment } = render(<App url={url} />);
-
-      expect(asFragment()).toMatchSnapshot();
-    });
-
-    it('renders build example 2 correctly', () => {
-      const url = `?${dataVersion};4;imrskma25kz;aaaaaaaaaa;isbsfkmcp3`;
-      const { asFragment } = render(<App url={url} />);
-
-      expect(asFragment()).toMatchSnapshot();
-    });
-
     it('causes warning when build uses old data version', () => {
       if (dataVersion > 1) {
         const url = `?${dataVersion - 1};1;irnsscpkv;faaaaaaaaa;issralahnq`;
