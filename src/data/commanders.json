@@ -80,5 +80,14 @@
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Support"
+  },
+  "Kusunoki Masashige": {
+    "id": "11",
+    "shortName": "Kusunoki",
+    "title": "Bushido Spirit",
+    "tier": "Epic",
+    "red": "Archer",
+    "yellow": "Garrison",
+    "blue": "Skill"
   }
 }
