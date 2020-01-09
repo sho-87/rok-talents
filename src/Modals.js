@@ -284,7 +284,7 @@ export class PrereqToast extends Component {
       <Toast isOpen={this.props.isOpen}>
         <ToastHeader icon="warning">Incomplete Talents</ToastHeader>
         <ToastBody>
-          Please upgrade the following to the maximum skill level first:
+          Upgrade talents to the maximum level first:
           {this.props.msg}
         </ToastBody>
       </Toast>
