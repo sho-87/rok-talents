@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { jsPlumb } from 'jsplumb';
+import panzoom from 'panzoom';
 import { PrereqToast, ToastMessage } from './Modals';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
@@ -27,6 +28,7 @@ class TreePanel extends Component {
       showValues: true,
       showMouse: false
     };
+    this.panZoomInstance = null;
 
     // Context bindings
     this.getTreeName = this.getTreeName.bind(this);
@@ -49,6 +51,17 @@ class TreePanel extends Component {
       jsPlumb.setContainer(document.getElementById('tree-square-content'));
       this_.drawLines();
     });
+
+    let panZoomContainer = document.querySelector('#tree-square-container');
+    this.panZoomInstance = panzoom(panZoomContainer, {
+      minZoom: 1,
+      maxZoom: 3,
+      zoomDoubleClickSpeed: 1,
+      bounds: true,
+      onTouch: function(e) {
+        return false; // tells the library to not preventDefault on touch
+      }
+    });
   }
 
   /**
@@ -58,6 +71,17 @@ class TreePanel extends Component {
    */
   componentWillUnmount() {
     window.removeEventListener('resize', this.repaint);
+  }
+
+  /**
+   * Reset the pan/zoom state of the entire tree panel. Called on commander changes
+   * and talent resets
+   *
+   * @memberof TreePanel
+   */
+  resetPanZoom() {
+    this.panZoomInstance.moveTo(0, 0);
+    this.panZoomInstance.zoomAbs(0, 0, 1);
   }
 
   /**

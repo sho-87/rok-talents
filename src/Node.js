@@ -4,8 +4,7 @@ import { TalentTooltip } from './Modals';
 import { replaceTalentText, getMaxTalentCount } from './utils';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
-//FIXME: tooltips stay too long on slow devices
-//FIXME: fix location of node labels. tie to the node div
+//FIXME: fix location of node labels. dont contain in node div
 //FIXME: use shouldComponentUpdate
 
 /**
@@ -228,7 +227,6 @@ class Node extends Component {
         <TalentTooltip
           idx={this.props.idx}
           target={this.props.treeName + this.props.idx}
-          container={`tree-${this.props.color}`}
           talentName={this.props.talentName}
           value={this.props.value}
           max={this.props.max}

@@ -305,7 +305,6 @@ export const TalentTooltip = props => {
 
   return (
     <Popover
-      container={props.container}
       trigger="hover"
       placement="right-start"
       isOpen={popoverOpen}
