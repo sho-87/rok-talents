@@ -292,50 +292,72 @@ export class PrereqToast extends Component {
   }
 }
 
-//FIXME: change to class and use shouldComponentUpdate
 /**
  * Tooltip containing information about each talent node. Displayed when 
  user hovers over a talent
  *
  */
-export const TalentTooltip = props => {
-  const [popoverOpen, setPopoverOpen] = useState(false);
+export class TalentTooltip extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { popoverOpen: false };
 
-  const toggle = () => setPopoverOpen(!popoverOpen);
+    // Context bindings
+    this.togglePopover = this.togglePopover.bind(this);
+  }
 
-  return (
-    <Popover
-      trigger="hover"
-      placement="right-start"
-      isOpen={popoverOpen}
-      target={props.target}
-      toggle={toggle}
-      hideArrow={false}
-      delay={{ show: 0, hide: 0 }}
-      fade={false}
-      offset={'0, 2'}
-    >
-      <PopoverHeader>
-        <span className="node-tooltip-title">{props.talentName}</span>
-        <span className="node-tooltip-title-value">
-          {props.value + '/' + props.max}
-        </span>
-        <div style={{ clear: 'both' }}></div>
-      </PopoverHeader>
-      <PopoverBody className="node-tooltip-body">
-        {props.value !== props.max && (
-          <div>
-            <b>Next point:</b>
-          </div>
-        )}
-        {props.text}
-        {process.env.NODE_ENV === 'development' && (
-          <div className="node-tooltip-id">ID: {props.target}</div>
-        )}
-      </PopoverBody>
-    </Popover>
-  );
-};
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      this.state.popoverOpen !== nextState.popoverOpen ||
+      this.props.value !== nextProps.value
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  togglePopover() {
+    this.setState(prevState => ({
+      popoverOpen: !prevState.popoverOpen
+    }));
+  }
+
+  render() {
+    return (
+      <Popover
+        trigger="hover"
+        placement="right-start"
+        isOpen={this.state.popoverOpen}
+        target={this.props.target}
+        toggle={this.togglePopover}
+        hideArrow={false}
+        delay={{ show: 0, hide: 0 }}
+        fade={false}
+        offset={'0, 2'}
+      >
+        <PopoverHeader>
+          <span className="node-tooltip-title">{this.props.talentName}</span>
+          <span className="node-tooltip-title-value">
+            {this.props.value + '/' + this.props.max}
+          </span>
+          <div style={{ clear: 'both' }}></div>
+        </PopoverHeader>
+        <PopoverBody className="node-tooltip-body">
+          {this.props.value !== this.props.max && (
+            <div>
+              <b>Next point:</b>
+            </div>
+          )}
+          {this.props.text}
+          {process.env.NODE_ENV === 'development' && (
+            <div className="node-tooltip-id">ID: {this.props.target}</div>
+          )}
+        </PopoverBody>
+      </Popover>
+    );
+  }
+}
 
 export default {
   InvalidBuildModal,

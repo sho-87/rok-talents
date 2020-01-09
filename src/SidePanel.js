@@ -75,7 +75,6 @@ class SidePanel extends Component {
           const talentStat = talentInfo.stats;
           if (value > 0) {
             if (talentStat === stat) {
-              //FIXME: minor talent nodes might be multidimensional...
               statValue += talentInfo.values[value - 1];
             } else if (stat === 'Main' && talentStat === '') {
               main.push(
