@@ -78,7 +78,7 @@ body {
 .navbar {
   height: var(--nav-bar-height);
   width: 100vw;
-  z-index: 10;
+  z-index: 20;
 }
 
 #nav-icon {

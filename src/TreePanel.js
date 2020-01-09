@@ -51,10 +51,13 @@ class TreePanel extends Component {
       this_.drawLines();
     });
 
-    var panzoomContainer = document.getElementById('tree-square-container');
+    let panzoomContainer = document.querySelector('#tree-square-container');
     panzoom(panzoomContainer, {
       zoomDoubleClickSpeed: 1,
-      bounds: true
+      bounds: true,
+      onTouch: function(e) {
+        return false; // tells the library to not preventDefault on touch
+      }
     });
   }
 
