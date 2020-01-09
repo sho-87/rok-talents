@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-//FIXME: tree labels in hexagon need to be tied to a div so theyre always centered
+//FIXME: tree labels in hexagon need to be tied to a div so theyre always centered. use image for hex?
 
 /**
  * Component containing the central commander image and skill label hexagon

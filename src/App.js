@@ -215,6 +215,8 @@ class App extends Component {
         this.treePanelRef.drawLines();
       }
     );
+
+    this.treePanelRef.resetPanZoom();
   }
 
   /**
@@ -347,7 +349,7 @@ class App extends Component {
     this.treePanelRef.toggleValueDisplay();
   }
 
-    /**
+  /**
    * Toggle mouse position display. Uses a ref to the tree panel
    *
    * @memberof App

@@ -4,8 +4,7 @@ import { TalentTooltip } from './Modals';
 import { replaceTalentText, getMaxTalentCount } from './utils';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
-//FIXME: tooltips stay too long on slow devices
-//FIXME: fix location of node labels. tie to the node div
+//FIXME: fix location of node labels. dont contain in node div
 //FIXME: use shouldComponentUpdate
 
 /**

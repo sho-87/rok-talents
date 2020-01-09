@@ -28,6 +28,7 @@ class TreePanel extends Component {
       showValues: true,
       showMouse: false
     };
+    this.panZoomInstance = null;
 
     // Context bindings
     this.getTreeName = this.getTreeName.bind(this);
@@ -51,8 +52,10 @@ class TreePanel extends Component {
       this_.drawLines();
     });
 
-    let panzoomContainer = document.querySelector('#tree-square-container');
-    panzoom(panzoomContainer, {
+    let panZoomContainer = document.querySelector('#tree-square-container');
+    this.panZoomInstance = panzoom(panZoomContainer, {
+      minZoom: 1,
+      maxZoom: 3,
       zoomDoubleClickSpeed: 1,
       bounds: true,
       onTouch: function(e) {
@@ -68,6 +71,17 @@ class TreePanel extends Component {
    */
   componentWillUnmount() {
     window.removeEventListener('resize', this.repaint);
+  }
+
+  /**
+   * Reset the pan/zoom state of the entire tree panel. Called on commander changes
+   * and talent resets
+   *
+   * @memberof TreePanel
+   */
+  resetPanZoom() {
+    this.panZoomInstance.moveTo(0, 0);
+    this.panZoomInstance.zoomAbs(0, 0, 1);
   }
 
   /**
