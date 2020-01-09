@@ -5,7 +5,6 @@ import { replaceTalentText, getMaxTalentCount } from './utils';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
 //FIXME: fix location of node labels. dont contain in node div
-//FIXME: use shouldComponentUpdate
 
 /**
  * Component for the individual talent nodes
