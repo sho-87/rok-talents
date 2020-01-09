@@ -21,6 +21,10 @@ body {
   user-select: none;
 }
 
+div {
+  outline-style: none;
+}
+
 #app {
   height: 100vh;
   width: 100vw;
