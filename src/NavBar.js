@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import NavBarSettings from './NavBarSettings';
+import { AboutModal, ShareModal } from './Modals';
 import {
   Collapse,
   Navbar,
@@ -22,7 +24,6 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { AboutModal, ShareModal } from './Modals';
 
 import { title } from '../package.json';
 import Commanders from './data/Commanders.json';
@@ -50,7 +51,6 @@ class NavBar extends Component {
 
     // Context bindings
     this.toggleNav = this.toggleNav.bind(this);
-    this.toggleSettings = this.toggleSettings.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.showAbout = this.showAbout.bind(this);
     this.showShare = this.showShare.bind(this);
@@ -75,17 +75,6 @@ class NavBar extends Component {
   toggleSelect() {
     this.setState(prevState => ({
       selectOpen: !prevState.selectOpen
-    }));
-  }
-
-  /**
-   * Toggle open state of the settings select dropdown
-   *
-   * @memberof NavBar
-   */
-  toggleSettings() {
-    this.setState(prevState => ({
-      settingsOpen: !prevState.settingsOpen
     }));
   }
 
@@ -216,59 +205,12 @@ class NavBar extends Component {
                 </button>
               </form>
 
-              <Dropdown
-                nav
-                inNavbar
-                id="select-settings"
-                isOpen={this.state.settingsOpen}
-                toggle={this.toggleSettings}
-              >
-                <DropdownToggle nav caret>
-                  <FontAwesomeIcon icon={faCog} /> Settings
-                </DropdownToggle>
-
-                <DropdownMenu right>
-                  <Form>
-                    <FormGroup id="settings-group">
-                      <CustomInput
-                        type="switch"
-                        id="settings-side-panel"
-                        label="Show side panel"
-                        defaultChecked={true}
-                        onChange={e => this.props.toggleSidePanel()}
-                      />
-                      <CustomInput
-                        type="switch"
-                        id="settings-values"
-                        label="Show values"
-                        defaultChecked={true}
-                        onChange={e => this.props.toggleValueDisplay()}
-                      />
-                      <CustomInput
-                        type="switch"
-                        id="settings-totals"
-                        label="Show totals"
-                        defaultChecked={true}
-                        onChange={e => this.props.toggleTotalDisplay()}
-                      />
-
-                      {process.env.NODE_ENV === 'development' && (
-                        <React.Fragment>
-                          <DropdownItem divider />
-                          <DropdownItem header>Dev Mode</DropdownItem>
-                          <CustomInput
-                            type="switch"
-                            id="settings-mouse"
-                            label="Show mouse XY"
-                            defaultChecked={false}
-                            onChange={e => this.props.toggleMousePosition()}
-                          />
-                        </React.Fragment>
-                      )}
-                    </FormGroup>
-                  </Form>
-                </DropdownMenu>
-              </Dropdown>
+              <NavBarSettings
+                toggleSidePanel={this.props.toggleSidePanel}
+                toggleTotalDisplay={this.props.toggleTotalDisplay}
+                toggleValueDisplay={this.props.toggleValueDisplay}
+                toggleMousePosition={this.props.toggleMousePosition}
+              />
 
               <Dropdown
                 nav
