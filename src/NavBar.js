@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
 import NavBarSettings from './NavBarSettings';
+import NavBarCommander from './NavBarCommander';
 import { AboutModal, ShareModal } from './Modals';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
 import {
   faHome,
   faInfoCircle,
   faTrashAlt,
-  faShareAlt,
-  faUser
+  faShareAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { title } from '../package.json';
-import Commanders from './data/Commanders.json';
 
 //TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
@@ -41,7 +30,6 @@ class NavBar extends Component {
       aboutModalFlag: false,
       shareModalFlag: false,
       navOpen: false,
-      settingsOpen: false,
       selectOpen: this.props.commander ? false : true
     };
 
@@ -94,54 +82,6 @@ class NavBar extends Component {
     this.setState({
       shareModalFlag: state
     });
-  }
-
-  /**
-   * Create a list of all available commanders (sorted)
-   *
-   * @returns {DropdownItem[]} Array of Dropdown items for all commanders
-   * @memberof NavBar
-   */
-  createSelectItems() {
-    const commanderList = Object.keys(Commanders).sort();
-    let legendaryCommanders = [];
-    let epicCommanders = [];
-
-    commanderList.forEach(c => {
-      let selectItem = (
-        <DropdownItem
-          data-testid="menu-item"
-          key={c}
-          onClick={() => {
-            this.props.changeCommander(c);
-          }}
-        >
-          <img
-            className="select-commander-icon"
-            alt={c}
-            src={`images/commanders/${c}.png`}
-          ></img>
-          {Commanders[c]['shortName'] ? Commanders[c]['shortName'] : c}
-        </DropdownItem>
-      );
-
-      if (Commanders[c].tier === 'Legendary') {
-        legendaryCommanders.push(selectItem);
-      } else if (Commanders[c].tier === 'Epic') {
-        epicCommanders.push(selectItem);
-      }
-    });
-    return [
-      <DropdownItem header key="header-legendary">
-        Legendary
-      </DropdownItem>,
-      ...legendaryCommanders,
-      <DropdownItem divider key="div1" />,
-      <DropdownItem header key="header-epic">
-        Epic
-      </DropdownItem>,
-      ...epicCommanders
-    ];
   }
 
   render() {
@@ -208,33 +148,12 @@ class NavBar extends Component {
                 toggleMousePosition={this.props.toggleMousePosition}
               />
 
-              <Dropdown
-                nav
-                inNavbar
-                isOpen={this.state.selectOpen}
-                toggle={this.toggleSelect}
-              >
-                <DropdownToggle data-testid="select-commander" nav caret>
-                  {this.props.commander ? (
-                    <img
-                      className="select-commander-icon"
-                      alt={this.props.commander}
-                      src={`images/commanders/${this.props.commander}.png`}
-                    ></img>
-                  ) : (
-                    <FontAwesomeIcon icon={faUser} />
-                  )}
-                  {this.props.commander
-                    ? Commanders[this.props.commander]['shortName']
-                      ? Commanders[this.props.commander]['shortName']
-                      : this.props.commander
-                    : ' Commander'}
-                </DropdownToggle>
-
-                <DropdownMenu id="select-commander-menu" right>
-                  {this.createSelectItems()}
-                </DropdownMenu>
-              </Dropdown>
+              <NavBarCommander
+                toggleSelect={this.toggleSelect}
+                changeCommander={this.props.changeCommander}
+                commander={this.props.commander}
+                selectOpen={this.state.selectOpen}
+              />
             </Nav>
           </Collapse>
         </Navbar>

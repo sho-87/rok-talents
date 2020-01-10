@@ -12,7 +12,6 @@ test('all multidimensional talent values are same length', () => {
         const length = treeData[tree][talent]['values'][0].length;
         if (
           treeData[tree][talent]['values'].some(values => {
-            console.log(values.length);
             return values.length !== length;
           })
         ) {
