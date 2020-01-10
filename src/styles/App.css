@@ -76,6 +76,7 @@ div {
   flex-flow: row nowrap;
   justify-content: center; /* horizontal */
   align-items: center; /* vertical */
+  cursor: pointer;
 }
 
 /* Nav bar */

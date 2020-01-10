@@ -6,11 +6,31 @@ import NavBarCommander from '../NavBarCommander';
 
 afterEach(cleanup);
 
-describe('Nav bar commander component', () => {
+describe('Nav bar commander select component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<NavBarCommander />, div);
     ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('displays commander name', () => {
+    const { getByTestId } = render(<NavBarCommander commander="Richard I" />);
+    expect(getByTestId('select-commander')).toHaveTextContent('Richard I');
+  });
+
+  it('displays commander short name instead of full name', () => {
+    const { getByTestId } = render(
+      <NavBarCommander commander="Alexander the Great" />
+    );
+    expect(getByTestId('select-commander')).not.toHaveTextContent(
+      'Alexander the Great'
+    );
+    expect(getByTestId('select-commander')).toHaveTextContent('Alexander');
+  });
+
+  it('displays "Commander" if no commander selected', () => {
+    const { getByTestId } = render(<NavBarCommander commander="" />);
+    expect(getByTestId('select-commander')).toHaveTextContent('Commander');
   });
 
   it('shows the correct commander image', () => {

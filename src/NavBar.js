@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
+import NavBarButtons from './NavBarButtons';
 import NavBarSettings from './NavBarSettings';
 import NavBarCommander from './NavBarCommander';
 import { AboutModal, ShareModal } from './Modals';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
-import {
-  faHome,
-  faInfoCircle,
-  faTrashAlt,
-  faShareAlt
-} from '@fortawesome/free-solid-svg-icons';
+import { faHome, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { title } from '../package.json';
 
-//TODO: remove button text? add tooltips instead? or use mediaquery?
 //TODO: disable nav bar collapse/expand?
-//FIXME: use shouldComponentUpdate
 
 /**
  * Nav bar component containing main application buttons/controls
@@ -109,37 +103,12 @@ class NavBar extends Component {
 
           <Collapse isOpen={this.state.navOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <form className="form-inline">
-                <button
-                  id="button-reset"
-                  data-testid="button-reset"
-                  type="button"
-                  className="btn btn-sm btn-danger"
-                  disabled={
-                    this.props.commander | this.props.calcPointsSpent()
-                      ? false
-                      : true
-                  }
-                  onClick={this.props.resetTalents}
-                >
-                  <FontAwesomeIcon icon={faTrashAlt} /> Reset
-                </button>
-
-                <button
-                  id="button-share"
-                  data-testid="button-share"
-                  type="button"
-                  disabled={
-                    this.props.commander | this.props.calcPointsSpent()
-                      ? false
-                      : true
-                  }
-                  className="btn btn-sm btn-primary"
-                  onClick={() => this.showShare(true)}
-                >
-                  <FontAwesomeIcon icon={faShareAlt} /> Share
-                </button>
-              </form>
+              <NavBarButtons
+                calcPointsSpent={this.props.calcPointsSpent}
+                resetTalents={this.props.resetTalents}
+                showShare={this.showShare}
+                commander={this.props.commander}
+              />
 
               <NavBarSettings
                 toggleSidePanel={this.props.toggleSidePanel}
