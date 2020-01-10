@@ -21,11 +21,11 @@ class Hexagon extends Component {
     if (this.props.commander) {
       return (
         <div id="tree-center">
-          <div className="hexagon-talent-wrapper">
-            <div className="hexagon-talent-red"></div>
-            <div className="hexagon-talent-yellow"></div>
-            <div className="hexagon-talent-blue"></div>
-          </div>
+          <img
+            id="hexagon-talent"
+            src={`images/ui/hexagon.png`}
+            alt={"Commander Hexagon"}
+          ></img>
 
           <img
             id="hexagon-commander-image"

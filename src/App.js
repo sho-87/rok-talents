@@ -18,7 +18,6 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
 //FIXME: only updateurl/encode if that particular tree has changed
-//FIXME: use shouldComponentUpdate
 //TODO: dynamically calculate data version
 
 /**

@@ -54,7 +54,7 @@ class TreePanel extends Component {
 
     let panZoomContainer = document.querySelector('#tree-square-container');
     this.panZoomInstance = panzoom(panZoomContainer, {
-      minZoom: 1,
+      minZoom: 0.9,
       maxZoom: 3,
       zoomDoubleClickSpeed: 1,
       bounds: true,

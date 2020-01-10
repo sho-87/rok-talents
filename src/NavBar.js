@@ -10,17 +10,13 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  Form,
-  FormGroup,
-  CustomInput
+  DropdownItem
 } from 'reactstrap';
 import {
   faHome,
   faInfoCircle,
   faTrashAlt,
   faShareAlt,
-  faCog,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
