@@ -24,10 +24,11 @@ class Hexagon extends Component {
           <img
             id="hexagon-talent"
             src={`images/ui/hexagon.png`}
-            alt={"Commander Hexagon"}
+            alt={'Commander Hexagon'}
           ></img>
 
           <img
+            data-testid="hexagon-commander-icon"
             id="hexagon-commander-image"
             src={`images/commanders/${this.props.commander}.png`}
             alt={this.props.commander}
