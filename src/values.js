@@ -31,7 +31,7 @@ export const valuesToLetters = {
   '44': 'z'
 };
 
-/** Mapping letters to value pairs for decoding*/
+/** Mapping letters to value pairs for decoding */
 export const lettersToValues = {
   a: '00',
   b: '01',
