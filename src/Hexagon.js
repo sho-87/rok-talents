@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-//FIXME: tree labels in hexagon need to be tied to a div so theyre always centered. use image for hex?
-
 /**
  * Component containing the central commander image and skill label hexagon
  *
@@ -21,15 +19,13 @@ class Hexagon extends Component {
     if (this.props.commander) {
       return (
         <div id="tree-center">
-          <img
-            id="hexagon-talent"
-            src={`images/ui/hexagon.png`}
-            alt={'Commander Hexagon'}
-          ></img>
+          <div id="hexagon-bg">
+            <img src={`images/ui/hexagon.png`} alt={'Commander Hexagon'}></img>
+          </div>
 
           <img
-            data-testid="hexagon-commander-icon"
-            id="hexagon-commander-image"
+            data-testid="hexagon-commander"
+            id="hexagon-commander"
             src={`images/commanders/${this.props.commander}.png`}
             alt={this.props.commander}
             onClick={() => {
@@ -37,7 +33,7 @@ class Hexagon extends Component {
             }}
           ></img>
 
-          <div className="hexagon-label-wrapper">
+          <div id="hexagon-label-container">
             <div className="hexagon-label hexagon-label-red">
               {this.props.getTreeName('red')}
             </div>

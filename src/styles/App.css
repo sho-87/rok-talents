@@ -243,6 +243,74 @@ div {
   right: 0;
 }
 
+#tree-center {
+  position: absolute;
+  height: 17%;
+  width: 17%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: var(--hexagon-opacity);
+}
+
+#hexagon-bg img {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#hexagon-commander {
+  position: absolute;
+  height: 44%;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -53%);
+  cursor: pointer;
+}
+
+#hexagon-label-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hexagon-label {
+  position: absolute;
+  font-size: 0.5vw;
+  font-weight: 700;
+  mix-blend-mode: multiply;
+  text-align: center;
+}
+
+.hexagon-label-red {
+  width: 70%;
+  top: 16%;
+}
+
+.hexagon-label-yellow {
+  width: 40%;
+  bottom: 21%;
+  transform: translateX(-58%);
+}
+
+.hexagon-label-blue {
+  width: 40%;
+  bottom: 21%;
+  transform: translateX(58%);
+}
+
 .tree-container {
   position: absolute;
   height: 50%;
@@ -319,73 +387,6 @@ div {
   padding: 2px;
   background-color: white;
   border: 0.5px solid black;
-}
-
-#tree-center {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#hexagon-commander-image {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: var(--hexagon-opacity);
-  width: 6.4%;
-  height: 8%;
-  transform: translateY(-5%);
-  cursor: pointer;
-  z-index: 1;
-}
-
-.hexagon-label-wrapper {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  opacity: var(--hexagon-opacity);
-}
-
-.hexagon-label {
-  position: absolute;
-  width: 15.5%;
-  font-size: 0.5vw;
-  font-weight: 700;
-  text-align: center;
-  mix-blend-mode: multiply;
-}
-
-.hexagon-label-red {
-  transform: translateY(-350%);
-}
-
-.hexagon-label-yellow {
-  transform: translateX(-50%) translateY(250%);
-}
-
-.hexagon-label-blue {
-  transform: translateX(50%) translateY(250%);
-}
-
-#hexagon-talent {
-  width: 16%;
-  height: auto;
-  transform: translateY(-2%);
-  opacity: var(--hexagon-opacity);
-  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .node {

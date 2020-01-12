@@ -22,7 +22,7 @@ describe('Hexagon component', () => {
     const { getByTestId } = render(
       <Hexagon commander="Richard I" {...props} />
     );
-    expect(getByTestId('hexagon-commander-icon')).toHaveAttribute(
+    expect(getByTestId('hexagon-commander')).toHaveAttribute(
       'src',
       'images/commanders/Richard I.png'
     );
