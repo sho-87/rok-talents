@@ -288,25 +288,25 @@ div {
 
 .hexagon-label {
   position: absolute;
-  font-size: 0.5vw;
+  font-size: 0.4vw;
   font-weight: 700;
   mix-blend-mode: multiply;
   text-align: center;
 }
 
 .hexagon-label-red {
-  width: 70%;
-  top: 16%;
+  width: 55%;
+  top: 14%;
 }
 
 .hexagon-label-yellow {
-  width: 40%;
+  width: 39%;
   bottom: 21%;
   transform: translateX(-58%);
 }
 
 .hexagon-label-blue {
-  width: 40%;
+  width: 39%;
   bottom: 21%;
   transform: translateX(58%);
 }
