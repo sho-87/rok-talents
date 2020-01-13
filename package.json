@@ -25,6 +25,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
+    "@kennethormandy/react-fittext": "^0.6.0",
     "bootstrap": "^4.4.1",
     "jsplumb": "2.12.8",
     "panzoom": "^8.7.5",
