@@ -4,6 +4,7 @@ import { TalentTooltip } from './Modals';
 import { replaceTalentText, getMaxTalentCount } from './utils';
 
 //TODO: add easier node change for phone users, show temporary +/- buttons on node click?
+//TODO: use images for small nodes to avoid cross browser css issues?
 //FIXME: fix location of node labels. dont contain in node div
 
 /**
