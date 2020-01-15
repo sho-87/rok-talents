@@ -12,7 +12,6 @@ import { maxPoints } from './values';
 import { dataVersion } from '../package.json';
 
 import './styles/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
