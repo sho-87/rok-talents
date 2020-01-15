@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Form,
-  FormGroup,
-  CustomInput
-} from 'reactstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Form from 'react-bootstrap/Form';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -50,28 +43,28 @@ class NavBarSettings extends Component {
         isOpen={this.state.settingsOpen}
         toggle={this.toggleSettings}
       >
-        <DropdownToggle nav caret>
+        <Dropdown.Toggle nav caret>
           <FontAwesomeIcon icon={faCog} /> Settings
-        </DropdownToggle>
+        </Dropdown.Toggle>
 
-        <DropdownMenu right>
+        <Dropdown.Menu right>
           <Form>
-            <FormGroup id="settings-group">
-              <CustomInput
+            <Form.Group id="settings-group">
+              <Form.Check
                 type="switch"
                 id="settings-side-panel"
                 label="Show side panel"
                 defaultChecked={true}
                 onChange={e => this.props.toggleSidePanel()}
               />
-              <CustomInput
+              <Form.Check
                 type="switch"
                 id="settings-values"
                 label="Show values"
                 defaultChecked={true}
                 onChange={e => this.props.toggleValueDisplay()}
               />
-              <CustomInput
+              <Form.Check
                 type="switch"
                 id="settings-totals"
                 label="Show totals"
@@ -81,9 +74,9 @@ class NavBarSettings extends Component {
 
               {process.env.NODE_ENV === 'development' && (
                 <React.Fragment>
-                  <DropdownItem divider />
-                  <DropdownItem header>Dev Mode</DropdownItem>
-                  <CustomInput
+                  <Dropdown.Item divider />
+                  <Dropdown.Item header>Dev Mode</Dropdown.Item>
+                  <Form.Check
                     type="switch"
                     id="settings-mouse"
                     label="Show mouse XY"
@@ -92,9 +85,9 @@ class NavBarSettings extends Component {
                   />
                 </React.Fragment>
               )}
-            </FormGroup>
+            </Form.Group>
           </Form>
-        </DropdownMenu>
+        </Dropdown.Menu>
       </Dropdown>
     );
   }

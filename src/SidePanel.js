@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Collapse } from 'reactstrap';
+import Collapse from 'react-bootstrap/Collapse'
 import { getMaxTalentCount, replaceTalentText } from './utils';
 
 import Commanders from './data/Commanders.json';

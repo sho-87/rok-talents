@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import NavBarButtons from './NavBarButtons';
 import NavBarSettings from './NavBarSettings';
 import NavBarCommander from './NavBarCommander';
 import { AboutModal, ShareModal } from './Modals';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
 import { faHome, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -85,23 +86,23 @@ class NavBar extends Component {
         {this.state.shareModalFlag && <ShareModal showShare={this.showShare} />}
 
         <Navbar color="light" light expand="lg">
-          <NavbarBrand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
+          <Navbar.Brand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
             <FontAwesomeIcon icon={faHome} />
-          </NavbarBrand>
+          </Navbar.Brand>
 
-          <NavbarBrand
+          <Navbar.Brand
             id="nav-icon"
             style={{ cursor: 'pointer' }}
             onClick={() => this.showAbout(true)}
           >
             <FontAwesomeIcon icon={faInfoCircle} />
-          </NavbarBrand>
+          </Navbar.Brand>
 
-          <NavbarBrand>{title}</NavbarBrand>
+          <Navbar.Brand>{title}</Navbar.Brand>
 
-          <NavbarToggler onClick={this.toggleNav} />
+          <Navbar.Toggle onClick={this.toggleNav} />
 
-          <Collapse isOpen={this.state.navOpen} navbar>
+          <Navbar.Collapse isOpen={this.state.navOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavBarButtons
                 calcPointsSpent={this.props.calcPointsSpent}
@@ -124,7 +125,7 @@ class NavBar extends Component {
                 selectOpen={this.state.selectOpen}
               />
             </Nav>
-          </Collapse>
+          </Navbar.Collapse>
         </Navbar>
       </React.Fragment>
     );

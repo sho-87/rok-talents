@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -22,7 +17,7 @@ class NavBarCommander extends Component {
   /**
    * Create a list of all available commanders (sorted)
    *
-   * @returns {DropdownItem[]} Array of Dropdown items for all commanders
+   * @returns {Dropdown.Item[]} Array of Dropdown items for all commanders
    * @memberof NavBarCommander
    */
   createSelectItems() {
@@ -32,7 +27,7 @@ class NavBarCommander extends Component {
 
     commanderList.forEach(c => {
       let selectItem = (
-        <DropdownItem
+        <Dropdown.Item
           data-testid="menu-item"
           key={c}
           onClick={() => {
@@ -45,7 +40,7 @@ class NavBarCommander extends Component {
             src={`images/commanders/${c}.png`}
           ></img>
           {Commanders[c]['shortName'] ? Commanders[c]['shortName'] : c}
-        </DropdownItem>
+        </Dropdown.Item>
       );
 
       if (Commanders[c].tier === 'Legendary') {
@@ -55,14 +50,14 @@ class NavBarCommander extends Component {
       }
     });
     return [
-      <DropdownItem header key="header-legendary">
+      <Dropdown.Item header key="header-legendary">
         Legendary
-      </DropdownItem>,
+      </Dropdown.Item>,
       ...legendaryCommanders,
-      <DropdownItem divider key="div1" />,
-      <DropdownItem header key="header-epic">
+      <Dropdown.Item divider key="div1" />,
+      <Dropdown.Item header key="header-epic">
         Epic
-      </DropdownItem>,
+      </Dropdown.Item>,
       ...epicCommanders
     ];
   }
@@ -75,7 +70,7 @@ class NavBarCommander extends Component {
         isOpen={this.props.selectOpen}
         toggle={this.props.toggleSelect}
       >
-        <DropdownToggle data-testid="select-commander" nav caret>
+        <Dropdown.Toggle data-testid="select-commander" nav caret>
           {this.props.commander ? (
             <img
               data-testid="select-commander-icon"
@@ -91,11 +86,11 @@ class NavBarCommander extends Component {
               ? Commanders[this.props.commander]['shortName']
               : this.props.commander
             : ' Commander'}
-        </DropdownToggle>
+        </Dropdown.Toggle>
 
-        <DropdownMenu id="select-commander-menu" right>
+        <Dropdown.Menu id="select-commander-menu" right>
           {this.createSelectItems()}
-        </DropdownMenu>
+        </Dropdown.Menu>
       </Dropdown>
     );
   }

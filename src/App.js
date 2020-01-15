@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Spinner } from 'reactstrap';
+import Spinner from 'react-bootstrap/Spinner';
 import NavBar from './NavBar';
 import SidePanel from './SidePanel';
 import { InvalidBuildModal } from './Modals';
@@ -389,9 +389,9 @@ class App extends Component {
           <Suspense
             fallback={
               <div id="spinner">
-                <Spinner size="lg" color="primary" />
+                <Spinner size="lg" animation="border" variant="status" />
                 <br />
-                Loading...
+                <span className="sr-only">Loading...</span>
               </div>
             }
           >

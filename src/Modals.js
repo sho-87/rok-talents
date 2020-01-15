@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Toast, ToastBody, ToastHeader } from 'reactstrap';
-import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Toast from 'react-bootstrap/Toast';
+import Popover from 'react-bootstrap/Popover';
 import {
   faExclamationTriangle,
   faInfoCircle,
@@ -55,10 +56,10 @@ export class InvalidBuildModal extends Component {
         unmountOnClose={true}
         centered
       >
-        <ModalHeader toggle={this.toggle}>
+        <Modal.Header toggle={this.toggle}>
           <FontAwesomeIcon icon={faExclamationTriangle} /> Invalid Talent Build
-        </ModalHeader>
-        <ModalBody>
+        </Modal.Header>
+        <Modal.Body>
           <p>
             The talent build you're trying to view is invalid. Please make sure
             you've copied and pasted the correct link.
@@ -66,12 +67,12 @@ export class InvalidBuildModal extends Component {
           <p data-testid="invalid-modal-body">
             <b>Reason:</b> {this.props.message}
           </p>
-        </ModalBody>
-        <ModalFooter>
+        </Modal.Body>
+        <Modal.Footer>
           <Button color="primary" onClick={this.toggle}>
             Close
           </Button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
     );
   }
@@ -110,10 +111,10 @@ export class AboutModal extends Component {
         unmountOnClose={true}
         centered
       >
-        <ModalHeader toggle={this.toggle}>
+        <Modal.Header toggle={this.toggle}>
           <FontAwesomeIcon icon={faInfoCircle} /> {title}
-        </ModalHeader>
-        <ModalBody>
+        </Modal.Header>
+        <Modal.Body>
           <div>
             <span className="about-label">Application version:</span> {version}
           </div>
@@ -137,12 +138,12 @@ export class AboutModal extends Component {
               {author.url}
             </a>
           </div>
-        </ModalBody>
-        <ModalFooter>
+        </Modal.Body>
+        <Modal.Footer>
           <Button color="success" onClick={this.toggle}>
             Close
           </Button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
     );
   }
@@ -190,10 +191,10 @@ export class ShareModal extends Component {
         size="md"
         centered
       >
-        <ModalHeader toggle={this.toggle}>
+        <Modal.Header toggle={this.toggle}>
           <FontAwesomeIcon icon={faShareAlt} /> Share Talent Build
-        </ModalHeader>
-        <ModalBody>
+        </Modal.Header>
+        <Modal.Body>
           <div className="share-modal-label">
             Copy talent build link to your clipboard:
           </div>
@@ -243,12 +244,12 @@ export class ShareModal extends Component {
               <PocketIcon size={32} round />
             </PocketShareButton>
           </div>
-        </ModalBody>
-        <ModalFooter>
+        </Modal.Body>
+        <Modal.Footer>
           <Button color="primary" onClick={this.toggle}>
             Close
           </Button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
     );
   }
@@ -264,8 +265,8 @@ export class ToastMessage extends Component {
   render() {
     return (
       <Toast isOpen={this.props.isOpen}>
-        <ToastHeader icon={this.props.icon}>{this.props.header}</ToastHeader>
-        <ToastBody>{this.props.body}</ToastBody>
+        <Toast.Header icon={this.props.icon}>{this.props.header}</Toast.Header>
+        <Toast.Body>{this.props.body}</Toast.Body>
       </Toast>
     );
   }
@@ -282,11 +283,11 @@ export class PrereqToast extends Component {
   render() {
     return (
       <Toast isOpen={this.props.isOpen}>
-        <ToastHeader icon="warning">Incomplete Talents</ToastHeader>
-        <ToastBody>
+        <Toast.Header icon="warning">Incomplete Talents</Toast.Header>
+        <Toast.Body>
           Upgrade talents to the maximum level first:
           {this.props.msg}
-        </ToastBody>
+        </Toast.Body>
       </Toast>
     );
   }
@@ -326,8 +327,6 @@ export class TalentTooltip extends Component {
   render() {
     return (
       <Popover
-        trigger="hover"
-        placement="right-start"
         isOpen={this.state.popoverOpen}
         target={this.props.target}
         toggle={this.togglePopover}
@@ -336,14 +335,14 @@ export class TalentTooltip extends Component {
         fade={false}
         offset={'0, 2'}
       >
-        <PopoverHeader>
+        <Popover.Title>
           <span className="node-tooltip-title">{this.props.talentName}</span>
           <span className="node-tooltip-title-value">
             {this.props.value + '/' + this.props.max}
           </span>
           <div style={{ clear: 'both' }}></div>
-        </PopoverHeader>
-        <PopoverBody className="node-tooltip-body">
+        </Popover.Title>
+        <Popover.Content className="node-tooltip-body">
           {this.props.value !== this.props.max && (
             <div>
               <b>Next point:</b>
@@ -353,7 +352,7 @@ export class TalentTooltip extends Component {
           {process.env.NODE_ENV === 'development' && (
             <div className="node-tooltip-id">ID: {this.props.target}</div>
           )}
-        </PopoverBody>
+        </Popover.Content>
       </Popover>
     );
   }

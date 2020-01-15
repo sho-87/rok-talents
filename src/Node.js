@@ -1,4 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import Overlay from 'react-bootstrap/Overlay';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Modals';
 import { replaceTalentText, getMaxTalentCount } from './utils';
@@ -200,7 +202,22 @@ class Node extends Component {
     let showValues = this.props.showValues && this.props.value !== 0;
 
     return (
-      <Fragment>
+      <OverlayTrigger
+        trigger="click"
+        placement="right-start"
+        rootClose={true}
+        rootCloseEvent="mousedown"
+        overlay={
+          <TalentTooltip
+            idx={this.props.idx}
+            target={this.props.treeName + this.props.idx}
+            talentName={this.props.talentName}
+            value={this.props.value}
+            max={this.props.max}
+            text={this.setTooltip()}
+          />
+        }
+      >
         <div
           data-testid={this.props.treeName + this.props.idx}
           id={this.props.treeName + this.props.idx}
@@ -223,16 +240,7 @@ class Node extends Component {
             </div>
           )}
         </div>
-
-        <TalentTooltip
-          idx={this.props.idx}
-          target={this.props.treeName + this.props.idx}
-          talentName={this.props.talentName}
-          value={this.props.value}
-          max={this.props.max}
-          text={this.setTooltip()}
-        />
-      </Fragment>
+      </OverlayTrigger>
     );
   }
 }
