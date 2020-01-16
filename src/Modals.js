@@ -244,10 +244,28 @@ export class ShareModal extends Component {
  * @extends {Component}
  */
 export class ToastMessage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { open: false };
+
+    // Context bindings
+    this.hide = this.hide.bind(this);
+  }
+
+  show() {
+    this.setState({ open: true });
+  }
+
+  hide() {
+    this.setState({ open: false });
+  }
+
   render() {
     return (
-      <Toast show={this.props.show}>
-        <Toast.Header icon={this.props.icon}>{this.props.header}</Toast.Header>
+      <Toast autohide delay={2000} show={this.state.open} onClose={this.hide}>
+        <Toast.Header>
+          <strong className="mr-auto">{this.props.header}</strong>
+        </Toast.Header>
         <Toast.Body>{this.props.body}</Toast.Body>
       </Toast>
     );
@@ -262,10 +280,28 @@ export class ToastMessage extends Component {
  * @extends {Component}
  */
 export class PrereqToast extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { open: false };
+
+    // Context bindings
+    this.hide = this.hide.bind(this);
+  }
+
+  show() {
+    this.setState({ open: true });
+  }
+
+  hide() {
+    this.setState({ open: false });
+  }
+
   render() {
     return (
-      <Toast show={this.props.show}>
-        <Toast.Header icon="warning">Incomplete Talents</Toast.Header>
+      <Toast autohide delay={2000} show={this.state.open} onClose={this.hide}>
+        <Toast.Header>
+          <strong className="mr-auto">Incomplete Talents</strong>
+        </Toast.Header>
         <Toast.Body>
           Upgrade talents to the maximum level first:
           {this.props.msg}
