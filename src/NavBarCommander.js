@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Commanders from './data/Commanders.json';
 
-//FIXME: use shouldComponentUpdate
-
 /**
  * Nav bar component containing commander drop down
  *

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { faTrashAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-//FIXME: use shouldComponentUpdate
-
 /**
  * Nav bar component containing main buttons
  *

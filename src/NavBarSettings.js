@@ -6,8 +6,6 @@ import Form from 'react-bootstrap/Form';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-//FIXME: use shouldComponentUpdate
-
 /**
  * Nav bar component containing drop down menu item for settings
  *
