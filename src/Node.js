@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Overlay from 'react-bootstrap/Overlay';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Modals';

@@ -264,7 +264,7 @@ export class ShareModal extends Component {
 export class ToastMessage extends Component {
   render() {
     return (
-      <Toast isOpen={this.props.isOpen}>
+      <Toast show={this.props.show}>
         <Toast.Header icon={this.props.icon}>{this.props.header}</Toast.Header>
         <Toast.Body>{this.props.body}</Toast.Body>
       </Toast>
@@ -282,7 +282,7 @@ export class ToastMessage extends Component {
 export class PrereqToast extends Component {
   render() {
     return (
-      <Toast isOpen={this.props.isOpen}>
+      <Toast show={this.props.show}>
         <Toast.Header icon="warning">Incomplete Talents</Toast.Header>
         <Toast.Body>
           Upgrade talents to the maximum level first:
@@ -326,15 +326,7 @@ export class TalentTooltip extends Component {
 
   render() {
     return (
-      <Popover
-        isOpen={this.state.popoverOpen}
-        target={this.props.target}
-        toggle={this.togglePopover}
-        hideArrow={false}
-        delay={{ show: 0, hide: 0 }}
-        fade={false}
-        offset={'0, 2'}
-      >
+      <Popover>
         <Popover.Title>
           <span className="node-tooltip-title">{this.props.talentName}</span>
           <span className="node-tooltip-title-value">

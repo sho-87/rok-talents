@@ -283,11 +283,11 @@ class TreePanel extends Component {
     return (
       <div id="tree-panel">
         <PrereqToast
-          isOpen={this.state.prereqToastFlag}
+          show={this.state.prereqToastFlag}
           msg={this.state.prereqMsg}
         />
         <ToastMessage
-          isOpen={this.state.pointLimitToastFlag}
+          show={this.state.pointLimitToastFlag}
           icon="danger"
           header="Talent Limit"
           body="You have spent the maximum number of talent points"

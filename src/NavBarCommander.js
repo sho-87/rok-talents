@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import NavItem from 'react-bootstrap/NavItem';
+import NavLink from 'react-bootstrap/NavLink';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -14,6 +16,27 @@ import Commanders from './data/Commanders.json';
  * @extends {Component}
  */
 class NavBarCommander extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: this.props.commander ? false : true
+    };
+
+    // Context bindings
+    this.toggleSelect = this.toggleSelect.bind(this);
+  }
+
+  /**
+   * Toggle open state of the commander select dropdown
+   *
+   * @memberof NavBarCommander
+   */
+  toggleSelect() {
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }));
+  }
+
   /**
    * Create a list of all available commanders (sorted)
    *
@@ -50,14 +73,10 @@ class NavBarCommander extends Component {
       }
     });
     return [
-      <Dropdown.Item header key="header-legendary">
-        Legendary
-      </Dropdown.Item>,
+      <Dropdown.Header key="header-legendary">Legendary</Dropdown.Header>,
       ...legendaryCommanders,
-      <Dropdown.Item divider key="div1" />,
-      <Dropdown.Item header key="header-epic">
-        Epic
-      </Dropdown.Item>,
+      <Dropdown.Divider key="div1" />,
+      <Dropdown.Header key="header-epic">Epic</Dropdown.Header>,
       ...epicCommanders
     ];
   }
@@ -65,12 +84,12 @@ class NavBarCommander extends Component {
   render() {
     return (
       <Dropdown
-        nav
-        inNavbar
-        isOpen={this.props.selectOpen}
-        toggle={this.props.toggleSelect}
+        alignRight
+        as={NavItem}
+        show={this.state.isOpen}
+        onToggle={this.toggleSelect}
       >
-        <Dropdown.Toggle data-testid="select-commander" nav caret>
+        <Dropdown.Toggle as={NavLink} data-testid="select-commander">
           {this.props.commander ? (
             <img
               data-testid="select-commander-icon"
@@ -88,7 +107,7 @@ class NavBarCommander extends Component {
             : ' Commander'}
         </Dropdown.Toggle>
 
-        <Dropdown.Menu id="select-commander-menu" right>
+        <Dropdown.Menu id="select-commander-menu">
           {this.createSelectItems()}
         </Dropdown.Menu>
       </Dropdown>

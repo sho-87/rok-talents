@@ -24,8 +24,7 @@ class NavBar extends Component {
     this.state = {
       aboutModalFlag: false,
       shareModalFlag: false,
-      navOpen: false,
-      selectOpen: this.props.commander ? false : true
+      navOpen: false
     };
 
     // Context bindings
@@ -52,9 +51,7 @@ class NavBar extends Component {
    * @memberof NavBar
    */
   toggleSelect() {
-    this.setState(prevState => ({
-      selectOpen: !prevState.selectOpen
-    }));
+    this.navBarCommanderRef.toggleSelect();
   }
 
   /**
@@ -85,7 +82,7 @@ class NavBar extends Component {
         {this.state.aboutModalFlag && <AboutModal showAbout={this.showAbout} />}
         {this.state.shareModalFlag && <ShareModal showShare={this.showShare} />}
 
-        <Navbar color="light" light expand="lg">
+        <Navbar bg="light" variant="light" expand="lg">
           <Navbar.Brand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
             <FontAwesomeIcon icon={faHome} />
           </Navbar.Brand>
@@ -102,8 +99,8 @@ class NavBar extends Component {
 
           <Navbar.Toggle onClick={this.toggleNav} />
 
-          <Navbar.Collapse isOpen={this.state.navOpen} navbar>
-            <Nav className="ml-auto" navbar>
+          <Navbar.Collapse>
+            <Nav className="ml-auto">
               <NavBarButtons
                 calcPointsSpent={this.props.calcPointsSpent}
                 resetTalents={this.props.resetTalents}
@@ -119,10 +116,9 @@ class NavBar extends Component {
               />
 
               <NavBarCommander
-                toggleSelect={this.toggleSelect}
+                ref={component => (this.navBarCommanderRef = component)}
                 changeCommander={this.props.changeCommander}
                 commander={this.props.commander}
-                selectOpen={this.state.selectOpen}
               />
             </Nav>
           </Navbar.Collapse>
