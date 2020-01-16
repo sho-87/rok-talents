@@ -5,7 +5,6 @@ import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Modals';
 import { replaceTalentText, getMaxTalentCount } from './utils';
 
-//TODO: use images for small nodes to avoid cross browser css issues?
 //FIXME: fix location of node labels. dont contain in node div
 
 /**
@@ -35,7 +34,7 @@ class Node extends Component {
   }
 
   /**
-   * Determine styling of the node. CSS style depends on whether the node is
+   * Determine styling of the node. Image depends on whether the node is
    * a large skill node or a small stat node
    *
    * @returns {object} Object containing the CSS styles
@@ -50,28 +49,11 @@ class Node extends Component {
 
     if (this.props.type === 'node-large') {
       style.backgroundImage = `url(images/talents/${this.props.image}.png)`;
+    } else {
+      style.backgroundImage = `url(images/talents/${this.props.color}GenericSmall.png)`;
     }
 
     return style;
-  }
-
-  //FIXME: this is so hacky...
-  /**
-   * Set the CSS class of the node if it is a small node type. Applied
-   * classes depend on both the node size, as well as whether
-   * the node is currently active/selected
-   *
-   * @returns {string} String representing the CSS classes of the node
-   * @memberof Node
-   */
-  getSmallColor() {
-    if ((this.props.type === 'node-small') & (this.props.value === 0)) {
-      return 'node-small-inactive';
-    } else if ((this.props.type === 'node-small') & (this.props.value > 0)) {
-      return `node-small-${this.props.color}`;
-    } else {
-      return '';
-    }
   }
 
   /**
@@ -258,7 +240,7 @@ class Node extends Component {
             id={this.props.treeName + this.props.idx}
             className={`node ${this.props.type} ${
               this.props.value === 0 ? 'node-inactive' : ''
-            } ${this.getSmallColor()}`}
+            }`}
             style={this.getStyle()}
           >
             {showValues && (

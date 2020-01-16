@@ -419,9 +419,23 @@ div {
 .node {
   position: absolute;
   text-align: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
   -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
-  z-index: 1;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.node-small {
+  width: 4%;
+  height: 4%;
+}
+
+.node-large {
+  width: 7.6%;
+  height: 7.6%;
 }
 
 .node-inactive {
@@ -434,37 +448,18 @@ div {
   opacity: 1;
 }
 
-.node-small-inactive {
-  background-color: gray;
+.node-value {
+  display: absolute;
+  font-size: 0.7em;
+  color: rgb(216, 216, 216);
 }
 
-.node-small-red {
-  background-color: var(--red);
+.node-value-small {
+  transform: translateY(1.6vh);
 }
 
-.node-small-yellow {
-  background-color: var(--yellow);
-}
-
-.node-small-blue {
-  background-color: var(--blue);
-}
-
-.node-small {
-  width: 4%;
-  height: 4%;
-  border-radius: 50%;
-  border: 1px solid black;
-  cursor: pointer;
-}
-
-.node-large {
-  width: 7.6%;
-  height: 7.6%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  cursor: pointer;
+.node-value-large {
+  transform: translateY(4vh);
 }
 
 .node-tooltip-title {
@@ -513,20 +508,6 @@ div {
   left: 0;
   transform: translate(0%, -50%);
   color: green;
-}
-
-.node-value {
-  display: absolute;
-  font-size: 0.7em;
-  color: rgb(216, 216, 216);
-}
-
-.node-value-small {
-  transform: translateY(1.6vh);
-}
-
-.node-value-large {
-  transform: translateY(4vh);
 }
 
 .line path {
