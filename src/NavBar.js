@@ -10,8 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { title } from '../package.json';
 
-//TODO: disable nav bar collapse/expand?
-
 /**
  * Nav bar component containing main application buttons/controls
  *
@@ -75,7 +73,7 @@ class NavBar extends Component {
         <AboutModal ref={component => (this.aboutModalRef = component)} />
         <ShareModal ref={component => (this.shareModalRef = component)} />
 
-        <Navbar bg="light" variant="light" expand="lg">
+        <Navbar bg="light" variant="light">
           <Navbar.Brand href="/">{title}</Navbar.Brand>
           <Navbar.Brand
             id="nav-icon"
@@ -86,32 +84,28 @@ class NavBar extends Component {
             <FontAwesomeIcon icon={faInfoCircle} />
           </Navbar.Brand>
 
-          <Navbar.Toggle onClick={this.toggleNav} />
+          <Nav className="ml-auto">
+            <NavBarButtons
+              calcPointsSpent={this.props.calcPointsSpent}
+              resetTalents={this.props.resetTalents}
+              showShare={this.showShare}
+              commander={this.props.commander}
+            />
 
-          <Navbar.Collapse>
-            <Nav className="ml-auto">
-              <NavBarButtons
-                calcPointsSpent={this.props.calcPointsSpent}
-                resetTalents={this.props.resetTalents}
-                showShare={this.showShare}
-                commander={this.props.commander}
-              />
+            <NavBarSettings
+              toggleSidePanel={this.props.toggleSidePanel}
+              toggleTotalDisplay={this.props.toggleTotalDisplay}
+              toggleValueDisplay={this.props.toggleValueDisplay}
+              toggleMousePosition={this.props.toggleMousePosition}
+              isMobile={this.props.isMobile}
+            />
 
-              <NavBarSettings
-                toggleSidePanel={this.props.toggleSidePanel}
-                toggleTotalDisplay={this.props.toggleTotalDisplay}
-                toggleValueDisplay={this.props.toggleValueDisplay}
-                toggleMousePosition={this.props.toggleMousePosition}
-                isMobile={this.props.isMobile}
-              />
-
-              <NavBarCommander
-                ref={component => (this.navBarCommanderRef = component)}
-                changeCommander={this.props.changeCommander}
-                commander={this.props.commander}
-              />
-            </Nav>
-          </Navbar.Collapse>
+            <NavBarCommander
+              ref={component => (this.navBarCommanderRef = component)}
+              changeCommander={this.props.changeCommander}
+              commander={this.props.commander}
+            />
+          </Nav>
         </Navbar>
       </React.Fragment>
     );
