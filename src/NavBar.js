@@ -106,6 +106,7 @@ class NavBar extends Component {
                 toggleTotalDisplay={this.props.toggleTotalDisplay}
                 toggleValueDisplay={this.props.toggleValueDisplay}
                 toggleMousePosition={this.props.toggleMousePosition}
+                isMobile={this.props.isMobile}
               />
 
               <NavBarCommander

@@ -1,4 +1,5 @@
 import React, { Component, Suspense } from 'react';
+import { isMobile } from 'react-device-detect';
 import Spinner from 'react-bootstrap/Spinner';
 import NavBar from './NavBar';
 import SidePanel from './SidePanel';
@@ -382,6 +383,7 @@ class App extends Component {
             calcPointsSpent={this.calcPointsSpent}
             resetTalents={this.resetTalents}
             commander={this.state.commander}
+            isMobile={isMobile}
           />
         </ErrorBoundary>
 
@@ -405,6 +407,7 @@ class App extends Component {
                 red={this.state.red}
                 yellow={this.state.yellow}
                 blue={this.state.blue}
+                isMobile={isMobile}
               />
             </ErrorBoundary>
 
@@ -423,6 +426,7 @@ class App extends Component {
                 red={this.state.red}
                 yellow={this.state.yellow}
                 blue={this.state.blue}
+                isMobile={isMobile}
               />
             </ErrorBoundary>
           </Suspense>

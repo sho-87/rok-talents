@@ -29,21 +29,21 @@ class NavBarSettings extends Component {
                 type="switch"
                 id="settings-side-panel"
                 label="Show side panel"
-                defaultChecked={true}
+                defaultChecked={this.props.isMobile ? false : true}
                 onChange={e => this.props.toggleSidePanel()}
               />
               <Form.Check
                 type="switch"
                 id="settings-values"
                 label="Show values"
-                defaultChecked={true}
+                defaultChecked={this.props.isMobile ? false : true}
                 onChange={e => this.props.toggleValueDisplay()}
               />
               <Form.Check
                 type="switch"
                 id="settings-totals"
                 label="Show totals"
-                defaultChecked={true}
+                defaultChecked={this.props.isMobile ? false : true}
                 onChange={e => this.props.toggleTotalDisplay()}
               />
 

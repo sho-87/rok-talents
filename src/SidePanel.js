@@ -8,7 +8,6 @@ import { getMaxTalentCount, replaceTalentText, getTreeName } from './utils';
 import Commanders from './data/Commanders.json';
 
 //TODO: make side panel draggable and resizable?
-//TODO: hide side panel automatically on smaller screens
 //FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
 //FIXME: use shouldComponentUpdate
 
@@ -22,8 +21,8 @@ class SidePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidePanelOpen: true,
-      mainOpen: false
+      showSidePanel: this.props.isMobile ? false : true,
+      expandMainTalents: false
     };
 
     // Context bindings
@@ -38,7 +37,7 @@ class SidePanel extends Component {
    */
   toggleSidePanel() {
     this.setState(prevState => ({
-      sidePanelOpen: !prevState.sidePanelOpen
+      showSidePanel: !prevState.showSidePanel
     }));
   }
 
@@ -49,7 +48,7 @@ class SidePanel extends Component {
    */
   toggleMain() {
     this.setState(prevState => ({
-      mainOpen: !prevState.mainOpen
+      expandMainTalents: !prevState.expandMainTalents
     }));
   }
 
@@ -94,7 +93,7 @@ class SidePanel extends Component {
                       talentInfo.values
                     )})`}
                   </div>
-                  <Collapse in={this.state.mainOpen}>
+                  <Collapse in={this.state.expandMainTalents}>
                     <div className="side-panel-main-text">
                       {replaceTalentText(
                         talentInfo.text,
@@ -123,7 +122,7 @@ class SidePanel extends Component {
       <div
         id="side-panel"
         className={
-          this.state.sidePanelOpen ? 'side-panel-open' : 'side-panel-closed'
+          this.state.showSidePanel ? 'side-panel-open' : 'side-panel-closed'
         }
       >
         <h2>{this.props.commander ? this.props.commander : 'Summary'}</h2>
@@ -164,7 +163,7 @@ class SidePanel extends Component {
         <h3 onClick={this.toggleMain}>
           Main Talents{' '}
           <span className="side-panel-expand">
-            {this.state.mainOpen ? '(collapse)' : '(expand)'}
+            {this.state.expandMainTalents ? '(collapse)' : '(expand)'}
           </span>
         </h3>
         <div data-testid="side-panel-main-talents">

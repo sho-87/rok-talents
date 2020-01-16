@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { isMobile } from 'react-device-detect';
 import { jsPlumb } from 'jsplumb';
 import panzoom from 'panzoom';
 import Tree from './Tree';
@@ -23,8 +22,8 @@ class TreePanel extends Component {
     super(props);
     this.state = {
       prereqMsg: '',
-      showTotals: true,
-      showValues: true,
+      showTotals: this.props.isMobile ? false : true,
+      showValues: this.props.isMobile ? false : true,
       showMouse: false
     };
     this.panZoomInstance = null;
@@ -319,13 +318,13 @@ function Instructions(props) {
     <div id="instructions">
       <ol>
         <li>Select commander in the top right</li>
-        {!isMobile && (
+        {!this.props.isMobile && (
           <div>
             <li>Left click to add talent points</li>
             <li>Right click to remove talent points</li>
           </div>
         )}
-        {isMobile && (
+        {this.props.isMobile && (
           <div>
             <li>Add/remove points in the tooltip</li>
           </div>
