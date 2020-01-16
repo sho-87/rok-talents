@@ -317,36 +317,36 @@ export class PrereqToast extends Component {
  *
  */
 export class TalentTooltip extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { popoverOpen: false };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { popoverOpen: false };
 
-    // Context bindings
-    this.togglePopover = this.togglePopover.bind(this);
-  }
+  //   // Context bindings
+  //   this.togglePopover = this.togglePopover.bind(this);
+  // }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (
-      this.state.popoverOpen !== nextState.popoverOpen ||
-      this.props.value !== nextProps.value
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (
+  //     this.state.popoverOpen !== nextState.popoverOpen ||
+  //     this.props.value !== nextProps.value
+  //   ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
-  togglePopover() {
-    this.setState(prevState => ({
-      popoverOpen: !prevState.popoverOpen
-    }));
-  }
+  // togglePopover() {
+  //   this.setState(prevState => ({
+  //     popoverOpen: !prevState.popoverOpen
+  //   }));
+  // }
 
   render() {
     return (
-      <Popover>
+      <Popover {...this.props}>
         <Popover.Title>
-          <span className="node-tooltip-title">{this.props.talentName}</span>
+          <span className="node-tooltip-title">{this.props.talentname}</span>
           <span className="node-tooltip-title-value">
             {this.props.value + '/' + this.props.max}
           </span>
@@ -360,7 +360,7 @@ export class TalentTooltip extends Component {
           )}
           {this.props.text}
           {process.env.NODE_ENV === 'development' && (
-            <div className="node-tooltip-id">ID: {this.props.target}</div>
+            <div className="node-tooltip-id">ID: {this.props.talentid}</div>
           )}
         </Popover.Content>
       </Popover>

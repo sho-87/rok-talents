@@ -444,6 +444,7 @@ div {
 .node-tooltip-title {
   float: left;
   font-size: 0.9em;
+  font-weight: bold;
 }
 
 .node-tooltip-title-value {

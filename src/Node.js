@@ -201,45 +201,49 @@ class Node extends Component {
     let showValues = this.props.showValues && this.props.value !== 0;
 
     return (
-      <OverlayTrigger
-        trigger="click"
-        placement="right-start"
-        rootClose={true}
-        rootCloseEvent="mousedown"
-        overlay={
-          <TalentTooltip
-            idx={this.props.idx}
-            target={this.props.treeName + this.props.idx}
-            talentName={this.props.talentName}
-            value={this.props.value}
-            max={this.props.max}
-            text={this.setTooltip()}
-          />
-        }
-      >
-        <div
-          data-testid={this.props.treeName + this.props.idx}
-          id={this.props.treeName + this.props.idx}
-          className={`node ${this.props.type} ${
-            this.props.value === 0 ? 'node-inactive' : ''
-          } ${this.getSmallColor()}`}
-          style={this.getStyle()}
-          onClick={() => this.talentIncrease()}
-          onContextMenu={e => this.talentDecrease(e)}
+      <React.Fragment>
+        <OverlayTrigger
+          trigger="hover"
+          placement="right"
+          rootClose={true}
+          rootCloseEvent="mousedown"
+          flip={true}
+          delay={{ show: 0, hide: 0 }}
+          overlay={
+            <TalentTooltip
+              idx={this.props.idx}
+              talentid={this.props.treeName + this.props.idx}
+              talentname={this.props.talentName}
+              value={this.props.value}
+              max={this.props.max}
+              text={this.setTooltip()}
+            />
+          }
         >
-          {showValues && (
-            <div
-              className={`node-value ${
-                this.props.type === 'node-small'
-                  ? 'node-value-small'
-                  : 'node-value-large'
-              }`}
-            >
-              {this.props.value + '/' + this.props.max}
-            </div>
-          )}
-        </div>
-      </OverlayTrigger>
+          <div
+            data-testid={this.props.treeName + this.props.idx}
+            id={this.props.treeName + this.props.idx}
+            className={`node ${this.props.type} ${
+              this.props.value === 0 ? 'node-inactive' : ''
+            } ${this.getSmallColor()}`}
+            style={this.getStyle()}
+            onClick={() => this.talentIncrease()}
+            onContextMenu={e => this.talentDecrease(e)}
+          >
+            {showValues && (
+              <div
+                className={`node-value ${
+                  this.props.type === 'node-small'
+                    ? 'node-value-small'
+                    : 'node-value-large'
+                }`}
+              >
+                {this.props.value + '/' + this.props.max}
+              </div>
+            )}
+          </div>
+        </OverlayTrigger>
+      </React.Fragment>
     );
   }
 }
