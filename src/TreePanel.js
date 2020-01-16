@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { isMobile } from 'react-device-detect';
 import { jsPlumb } from 'jsplumb';
 import panzoom from 'panzoom';
-import { PrereqToast, ToastMessage } from './Modals';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
+import { PrereqToast, ToastMessage } from './Modals';
 import { getTreeName } from './utils';
 
 import { dataVersion } from '../package.json';
@@ -318,8 +319,17 @@ function Instructions(props) {
     <div id="instructions">
       <ol>
         <li>Select commander in the top right</li>
-        <li>Left click to add talent points</li>
-        <li>Right click to remove talent points</li>
+        {!isMobile && (
+          <div>
+            <li>Left click to add talent points</li>
+            <li>Right click to remove talent points</li>
+          </div>
+        )}
+        {isMobile && (
+          <div>
+            <li>Add/remove points in the tooltip</li>
+          </div>
+        )}
         <li>Check your build stats on the left</li>
         <li>Share your build</li>
       </ol>
