@@ -50,13 +50,8 @@ export class InvalidBuildModal extends Component {
 
   render() {
     return (
-      <Modal
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        unmountOnClose={true}
-        centered
-      >
-        <Modal.Header toggle={this.toggle}>
+      <Modal centered show={this.state.modal} onHide={this.toggle}>
+        <Modal.Header closeButton>
           <FontAwesomeIcon icon={faExclamationTriangle} /> Invalid Talent Build
         </Modal.Header>
         <Modal.Body>
