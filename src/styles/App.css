@@ -11,6 +11,18 @@
   --line-width-active: 1;
 }
 
+.bg-red{
+  background-color: var(--red);
+}
+
+.bg-yellow{
+  background-color: var(--yellow);
+}
+
+.bg-blue{
+  background-color: var(--blue);
+}
+
 html,
 body {
   -webkit-touch-callout: none;
@@ -148,6 +160,20 @@ div {
 
 .side-panel-closed {
   display: none;
+}
+
+#side-panel-tree-icon-container {
+  margin-bottom: 10px;
+}
+
+.side-panel-tree-icon {
+  border: 1px solid black;
+  border-radius: 10%;
+  margin: 0 3px 0 3px;
+  text-align: center;
+  font-size: 0.8em;
+  color: white;
+  text-shadow: 0px 0px 4px black;
 }
 
 #side-panel-summary p {

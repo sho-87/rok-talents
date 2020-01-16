@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Collapse from 'react-bootstrap/Collapse';
-import { getMaxTalentCount, replaceTalentText } from './utils';
+import { getMaxTalentCount, replaceTalentText, getTreeName } from './utils';
 
 import Commanders from './data/Commanders.json';
 
@@ -127,6 +130,20 @@ class SidePanel extends Component {
         <h3>
           {this.props.commander ? Commanders[this.props.commander].title : ''}
         </h3>
+        <Container id="side-panel-tree-icon-container">
+          <Row>
+            <Col className="side-panel-tree-icon bg-red">
+              {getTreeName('red', this.props.commander)}
+            </Col>
+            <Col className="side-panel-tree-icon bg-yellow">
+              {getTreeName('yellow', this.props.commander)}
+            </Col>
+            <Col className="side-panel-tree-icon bg-blue">
+              {getTreeName('blue', this.props.commander)}
+            </Col>
+          </Row>
+        </Container>
+
         <div id="side-panel-summary">
           <p>Points remaining: {this.props.calcPointsRemaining()}</p>
           <p>Points spent: {this.props.calcPointsSpent()}</p>
