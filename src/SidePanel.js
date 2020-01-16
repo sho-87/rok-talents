@@ -8,6 +8,7 @@ import { getMaxTalentCount, replaceTalentText, getTreeName } from './utils';
 import Commanders from './data/Commanders.json';
 
 //TODO: make side panel draggable and resizable?
+//TODO: split side panel into different "modules"?
 //FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
 //FIXME: use shouldComponentUpdate
 

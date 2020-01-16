@@ -8,6 +8,7 @@ import { getTreeName } from './utils';
 
 import { dataVersion } from '../package.json';
 
+//FIXME: remove panzoom bounds so scrolling works better on small mobile devices?
 //FIXME: use shouldComponentUpdate
 
 /**

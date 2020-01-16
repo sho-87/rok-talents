@@ -329,6 +329,8 @@ export class PrereqToast extends Component {
   }
 }
 
+//FIXME: fix popover size on small screens
+
 /**
  * Tooltip containing information about each talent node. Displayed when 
  user hovers over a talent
