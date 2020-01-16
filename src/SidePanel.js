@@ -130,19 +130,23 @@ class SidePanel extends Component {
         <h3>
           {this.props.commander ? Commanders[this.props.commander].title : ''}
         </h3>
-        <Container id="side-panel-tree-icon-container">
-          <Row>
-            <Col className="side-panel-tree-icon bg-red">
-              {getTreeName('red', this.props.commander)}
-            </Col>
-            <Col className="side-panel-tree-icon bg-yellow">
-              {getTreeName('yellow', this.props.commander)}
-            </Col>
-            <Col className="side-panel-tree-icon bg-blue">
-              {getTreeName('blue', this.props.commander)}
-            </Col>
-          </Row>
-        </Container>
+        {this.props.commander ? (
+          <Container id="side-panel-tree-icon-container">
+            <Row>
+              <Col className="side-panel-tree-icon bg-red">
+                {getTreeName('red', this.props.commander)}
+              </Col>
+              <Col className="side-panel-tree-icon bg-yellow">
+                {getTreeName('yellow', this.props.commander)}
+              </Col>
+              <Col className="side-panel-tree-icon bg-blue">
+                {getTreeName('blue', this.props.commander)}
+              </Col>
+            </Row>
+          </Container>
+        ) : (
+          ''
+        )}
 
         <div id="side-panel-summary">
           <p>Points remaining: {this.props.calcPointsRemaining()}</p>
