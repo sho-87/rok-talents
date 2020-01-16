@@ -5,7 +5,7 @@ import NavBarButtons from './NavBarButtons';
 import NavBarSettings from './NavBarSettings';
 import NavBarCommander from './NavBarCommander';
 import { AboutModal, ShareModal } from './Modals';
-import { faHome, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { title } from '../package.json';
@@ -76,10 +76,7 @@ class NavBar extends Component {
         <ShareModal ref={component => (this.shareModalRef = component)} />
 
         <Navbar bg="light" variant="light" expand="lg">
-          <Navbar.Brand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
-            <FontAwesomeIcon icon={faHome} />
-          </Navbar.Brand>
-
+          <Navbar.Brand href="/">{title}</Navbar.Brand>
           <Navbar.Brand
             id="nav-icon"
             style={{ cursor: 'pointer' }}
@@ -87,8 +84,6 @@ class NavBar extends Component {
           >
             <FontAwesomeIcon icon={faInfoCircle} />
           </Navbar.Brand>
-
-          <Navbar.Brand>{title}</Navbar.Brand>
 
           <Navbar.Toggle onClick={this.toggleNav} />
 
