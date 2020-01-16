@@ -22,15 +22,12 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      aboutModalFlag: false,
-      shareModalFlag: false,
       navOpen: false
     };
 
     // Context bindings
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
-    this.showAbout = this.showAbout.bind(this);
     this.showShare = this.showShare.bind(this);
   }
 
@@ -59,10 +56,8 @@ class NavBar extends Component {
    *
    * @memberof NavBar
    */
-  showAbout(state) {
-    this.setState({
-      aboutModalFlag: state
-    });
+  showAbout() {
+    this.aboutModalRef.toggle();
   }
 
   /**
@@ -70,17 +65,15 @@ class NavBar extends Component {
    *
    * @memberof NavBar
    */
-  showShare(state) {
-    this.setState({
-      shareModalFlag: state
-    });
+  showShare() {
+    this.shareModalRef.toggle();
   }
 
   render() {
     return (
       <React.Fragment>
-        {this.state.aboutModalFlag && <AboutModal showAbout={this.showAbout} />}
-        {this.state.shareModalFlag && <ShareModal showShare={this.showShare} />}
+        <AboutModal ref={component => (this.aboutModalRef = component)} />
+        <ShareModal ref={component => (this.shareModalRef = component)} />
 
         <Navbar bg="light" variant="light" expand="lg">
           <Navbar.Brand id="nav-icon" style={{ cursor: 'pointer' }} href="/">

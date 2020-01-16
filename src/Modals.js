@@ -88,32 +88,25 @@ export class AboutModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: true
+      modal: false
     };
 
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
-    this.setState(
-      prevState => ({
-        modal: !prevState.modal
-      }),
-      this.props.showAbout(false)
-    );
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   render() {
     return (
-      <Modal
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        unmountOnClose={true}
-        centered
-      >
-        <Modal.Header toggle={this.toggle}>
+      <Modal centered show={this.state.modal} onHide={this.toggle}>
+        <Modal.Header closeButton>
           <FontAwesomeIcon icon={faInfoCircle} /> {title}
         </Modal.Header>
+
         <Modal.Body>
           <div>
             <span className="about-label">Application version:</span> {version}
@@ -139,6 +132,7 @@ export class AboutModal extends Component {
             </a>
           </div>
         </Modal.Body>
+
         <Modal.Footer>
           <Button color="success" onClick={this.toggle}>
             Close
@@ -159,19 +153,16 @@ export class ShareModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: true
+      modal: false
     };
 
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
-    this.setState(
-      prevState => ({
-        modal: !prevState.modal
-      }),
-      this.props.showShare(false)
-    );
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   copyURL() {
@@ -184,16 +175,11 @@ export class ShareModal extends Component {
 
   render() {
     return (
-      <Modal
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        unmountOnClose={true}
-        size="md"
-        centered
-      >
-        <Modal.Header toggle={this.toggle}>
+      <Modal centered show={this.state.modal} onHide={this.toggle}>
+        <Modal.Header closeButton>
           <FontAwesomeIcon icon={faShareAlt} /> Share Talent Build
         </Modal.Header>
+
         <Modal.Body>
           <div className="share-modal-label">
             Copy talent build link to your clipboard:
@@ -245,6 +231,7 @@ export class ShareModal extends Component {
             </PocketShareButton>
           </div>
         </Modal.Body>
+
         <Modal.Footer>
           <Button color="primary" onClick={this.toggle}>
             Close

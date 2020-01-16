@@ -35,7 +35,7 @@ class NavBarButtons extends Component {
             this.props.commander | this.props.calcPointsSpent() ? false : true
           }
           className="btn btn-sm btn-primary"
-          onClick={() => this.props.showShare(true)}
+          onClick={() => this.props.showShare()}
         >
           <FontAwesomeIcon icon={faShareAlt} /> Share
         </button>
