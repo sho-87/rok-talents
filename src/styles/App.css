@@ -168,8 +168,7 @@ div {
 
 .side-panel-tree-icon {
   border: 1px solid black;
-  border-radius: 10%;
-  margin: 0 3px 0 3px;
+  margin: 0 3px 5px 3px;
   text-align: center;
   font-size: 0.8em;
   color: white;
