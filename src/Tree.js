@@ -58,14 +58,6 @@ class Tree extends Component {
     return (
       <ErrorBoundary>
         <div id={`tree-${this.props.color}`} className="tree-container">
-          {this.props.showTotals && (
-            <span
-              id={`tree-${this.props.color}-total`}
-            >{`${this.props.calcPointsSpent(this.props.color)} point${
-              this.props.calcPointsSpent(this.props.color) !== 1 ? 's' : ''
-            }`}</span>
-          )}
-
           {this.drawNodes()}
 
           {this.props.showMouse && (

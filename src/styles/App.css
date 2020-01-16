@@ -329,7 +329,7 @@ div {
 
 .hexagon-label-red {
   width: 40%;
-  top: 16%;
+  bottom: 75%;
 }
 
 .hexagon-label-yellow {
@@ -352,18 +352,14 @@ div {
   padding: 0px;
 }
 
+.tree-total {
+  font-weight: 400;
+}
+
 #tree-red {
   top: 0%;
   left: 50%;
   border: 0.5px var(--tree-box-outline) var(--red);
-}
-
-#tree-red-total {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  transform: translateX(-50%);
-  color: var(--red);
 }
 
 #tree-red-mouse {
@@ -382,13 +378,6 @@ div {
   border: 0.5px var(--tree-box-outline) var(--yellow);
 }
 
-#tree-yellow-total {
-  position: absolute;
-  bottom: 0%;
-  transform: translateX(-50%);
-  color: var(--yellow);
-}
-
 #tree-yellow-mouse {
   position: absolute;
   bottom: 0%;
@@ -403,13 +392,6 @@ div {
   top: 50%;
   left: 50%;
   border: 0.5px var(--tree-box-outline) var(--blue);
-}
-
-#tree-blue-total {
-  position: absolute;
-  bottom: 0%;
-  transform: translateX(-50%);
-  color: var(--blue);
 }
 
 #tree-blue-mouse {

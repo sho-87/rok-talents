@@ -243,11 +243,9 @@ class TreePanel extends Component {
   render() {
     const sharedTreeProps = {
       changeTalentValue: this.props.changeTalentValue,
-      calcPointsSpent: this.props.calcPointsSpent,
       calcPointsRemaining: this.props.calcPointsRemaining,
       showPrereqToast: this.showPrereqToast,
       showPointLimitToast: this.showPointLimitToast,
-      showTotals: this.state.showTotals && this.props.commander,
       showValues: this.state.showValues,
       showMouse: this.state.showMouse,
       treeData: this.props.treeData,
@@ -305,6 +303,8 @@ class TreePanel extends Component {
               />
               <Hexagon
                 toggleSelect={this.props.toggleSelect}
+                calcPointsSpent={this.props.calcPointsSpent}
+                showTotals={this.state.showTotals && this.props.commander}
                 commander={this.props.commander}
               />
             </div>

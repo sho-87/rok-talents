@@ -9,14 +9,6 @@ import { getTreeName } from './utils';
  * @extends {Component}
  */
 class Hexagon extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.commander !== nextProps.commander) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   render() {
     if (this.props.commander) {
       return (
@@ -38,16 +30,33 @@ class Hexagon extends Component {
           <div id="hexagon-label-container">
             <div className="hexagon-label hexagon-label-red">
               <FitText compressor={0.7}>
+                {this.props.showTotals && (
+                  <div className="tree-total">{`(${this.props.calcPointsSpent(
+                    'red'
+                  )})`}</div>
+                )}
                 {getTreeName('red', this.props.commander)}
               </FitText>
             </div>
+
             <div className="hexagon-label hexagon-label-yellow">
               <FitText compressor={0.7}>
+                {this.props.showTotals && (
+                  <div className="tree-total">{`(${this.props.calcPointsSpent(
+                    'yellow'
+                  )})`}</div>
+                )}
                 {getTreeName('yellow', this.props.commander)}
               </FitText>
             </div>
+
             <div className="hexagon-label hexagon-label-blue">
               <FitText compressor={0.7}>
+                {this.props.showTotals && (
+                  <div className="tree-total">{`(${this.props.calcPointsSpent(
+                    'blue'
+                  )})`}</div>
+                )}
                 {getTreeName('blue', this.props.commander)}
               </FitText>
             </div>
