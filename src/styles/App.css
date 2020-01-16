@@ -72,12 +72,15 @@ div {
   z-index: 2;
 }
 
-/* About modal */
+/* Modals */
+.modal-icon {
+  margin-right: 5px;
+}
+
 .about-label {
   font-weight: bold;
 }
 
-/* Share modal */
 .share-modal-label {
   font-weight: 500;
   margin-bottom: 5px;

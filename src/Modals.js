@@ -58,7 +58,13 @@ export class InvalidBuildModal extends Component {
     return (
       <Modal centered show={this.state.modal} onHide={this.toggle}>
         <Modal.Header closeButton>
-          <FontAwesomeIcon icon={faExclamationTriangle} /> Invalid Talent Build
+          <span>
+            <FontAwesomeIcon
+              icon={faExclamationTriangle}
+              className="modal-icon"
+            />
+          </span>
+          Invalid Talent Build
         </Modal.Header>
         <Modal.Body>
           <p>
@@ -105,7 +111,10 @@ export class AboutModal extends Component {
     return (
       <Modal centered show={this.state.modal} onHide={this.toggle}>
         <Modal.Header closeButton>
-          <FontAwesomeIcon icon={faInfoCircle} /> {title}
+          <span>
+            <FontAwesomeIcon icon={faInfoCircle} className="modal-icon" />
+          </span>
+          {title}
         </Modal.Header>
 
         <Modal.Body>
@@ -178,7 +187,10 @@ export class ShareModal extends Component {
     return (
       <Modal centered show={this.state.modal} onHide={this.toggle}>
         <Modal.Header closeButton>
-          <FontAwesomeIcon icon={faShareAlt} /> Share Talent Build
+          <span>
+            <FontAwesomeIcon icon={faShareAlt} className="modal-icon" />
+          </span>
+          Share Talent Build
         </Modal.Header>
 
         <Modal.Body>
