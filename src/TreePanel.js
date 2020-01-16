@@ -272,7 +272,9 @@ class TreePanel extends Component {
           </div>
         )}
 
-        {!this.props.commander && <Instructions />}
+        {!this.props.commander && (
+          <Instructions isMobile={this.props.isMobile} />
+        )}
 
         <div id="tree-square-container">
           <div id="tree-square-section">
@@ -318,13 +320,13 @@ function Instructions(props) {
     <div id="instructions">
       <ol>
         <li>Select commander in the top right</li>
-        {!this.props.isMobile && (
+        {!props.isMobile && (
           <div>
             <li>Left click to add talent points</li>
             <li>Right click to remove talent points</li>
           </div>
         )}
-        {this.props.isMobile && (
+        {props.isMobile && (
           <div>
             <li>Add/remove points in the tooltip</li>
           </div>
