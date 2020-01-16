@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Collapse } from 'reactstrap';
+import Collapse from 'react-bootstrap/Collapse';
 import { getMaxTalentCount, replaceTalentText } from './utils';
 
 import Commanders from './data/Commanders.json';
@@ -91,15 +91,14 @@ class SidePanel extends Component {
                       talentInfo.values
                     )})`}
                   </div>
-                  <Collapse
-                    className="side-panel-main-text"
-                    isOpen={this.state.mainOpen}
-                  >
-                    {replaceTalentText(
-                      talentInfo.text,
-                      talentInfo.values,
-                      value - 1
-                    )}
+                  <Collapse in={this.state.mainOpen}>
+                    <div className="side-panel-main-text">
+                      {replaceTalentText(
+                        talentInfo.text,
+                        talentInfo.values,
+                        value - 1
+                      )}
+                    </div>
                   </Collapse>
                 </div>
               );

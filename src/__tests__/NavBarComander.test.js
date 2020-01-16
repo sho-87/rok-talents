@@ -4,6 +4,17 @@ import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import NavBarCommander from '../NavBarCommander';
 
+beforeEach(() => {
+  global.document.createRange = () => ({
+    setStart: () => {},
+    setEnd: () => {},
+    commonAncestorContainer: {
+      nodeName: 'BODY',
+      ownerDocument: document
+    }
+  });
+});
+
 afterEach(cleanup);
 
 describe('Nav bar commander select component', () => {

@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Spinner } from 'reactstrap';
+import Spinner from 'react-bootstrap/Spinner';
 import NavBar from './NavBar';
 import SidePanel from './SidePanel';
 import { InvalidBuildModal } from './Modals';
@@ -12,7 +12,6 @@ import { maxPoints } from './values';
 import { dataVersion } from '../package.json';
 
 import './styles/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
@@ -390,9 +389,9 @@ class App extends Component {
           <Suspense
             fallback={
               <div id="spinner">
-                <Spinner size="lg" color="primary" />
+                <Spinner size="lg" animation="border" variant="status" />
                 <br />
-                Loading...
+                <span className="sr-only">Loading...</span>
               </div>
             }
           >

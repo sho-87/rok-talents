@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Toast, ToastBody, ToastHeader } from 'reactstrap';
-import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Toast from 'react-bootstrap/Toast';
+import Popover from 'react-bootstrap/Popover';
 import {
   faExclamationTriangle,
   faInfoCircle,
@@ -49,16 +50,11 @@ export class InvalidBuildModal extends Component {
 
   render() {
     return (
-      <Modal
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        unmountOnClose={true}
-        centered
-      >
-        <ModalHeader toggle={this.toggle}>
+      <Modal centered show={this.state.modal} onHide={this.toggle}>
+        <Modal.Header closeButton>
           <FontAwesomeIcon icon={faExclamationTriangle} /> Invalid Talent Build
-        </ModalHeader>
-        <ModalBody>
+        </Modal.Header>
+        <Modal.Body>
           <p>
             The talent build you're trying to view is invalid. Please make sure
             you've copied and pasted the correct link.
@@ -66,12 +62,12 @@ export class InvalidBuildModal extends Component {
           <p data-testid="invalid-modal-body">
             <b>Reason:</b> {this.props.message}
           </p>
-        </ModalBody>
-        <ModalFooter>
+        </Modal.Body>
+        <Modal.Footer>
           <Button color="primary" onClick={this.toggle}>
             Close
           </Button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
     );
   }
@@ -87,33 +83,26 @@ export class AboutModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: true
+      modal: false
     };
 
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
-    this.setState(
-      prevState => ({
-        modal: !prevState.modal
-      }),
-      this.props.showAbout(false)
-    );
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   render() {
     return (
-      <Modal
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        unmountOnClose={true}
-        centered
-      >
-        <ModalHeader toggle={this.toggle}>
+      <Modal centered show={this.state.modal} onHide={this.toggle}>
+        <Modal.Header closeButton>
           <FontAwesomeIcon icon={faInfoCircle} /> {title}
-        </ModalHeader>
-        <ModalBody>
+        </Modal.Header>
+
+        <Modal.Body>
           <div>
             <span className="about-label">Application version:</span> {version}
           </div>
@@ -137,12 +126,13 @@ export class AboutModal extends Component {
               {author.url}
             </a>
           </div>
-        </ModalBody>
-        <ModalFooter>
+        </Modal.Body>
+
+        <Modal.Footer>
           <Button color="success" onClick={this.toggle}>
             Close
           </Button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
     );
   }
@@ -158,19 +148,16 @@ export class ShareModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: true
+      modal: false
     };
 
     this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
-    this.setState(
-      prevState => ({
-        modal: !prevState.modal
-      }),
-      this.props.showShare(false)
-    );
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   copyURL() {
@@ -183,17 +170,12 @@ export class ShareModal extends Component {
 
   render() {
     return (
-      <Modal
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        unmountOnClose={true}
-        size="md"
-        centered
-      >
-        <ModalHeader toggle={this.toggle}>
+      <Modal centered show={this.state.modal} onHide={this.toggle}>
+        <Modal.Header closeButton>
           <FontAwesomeIcon icon={faShareAlt} /> Share Talent Build
-        </ModalHeader>
-        <ModalBody>
+        </Modal.Header>
+
+        <Modal.Body>
           <div className="share-modal-label">
             Copy talent build link to your clipboard:
           </div>
@@ -243,12 +225,13 @@ export class ShareModal extends Component {
               <PocketIcon size={32} round />
             </PocketShareButton>
           </div>
-        </ModalBody>
-        <ModalFooter>
+        </Modal.Body>
+
+        <Modal.Footer>
           <Button color="primary" onClick={this.toggle}>
             Close
           </Button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
     );
   }
@@ -261,11 +244,29 @@ export class ShareModal extends Component {
  * @extends {Component}
  */
 export class ToastMessage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { open: false };
+
+    // Context bindings
+    this.hide = this.hide.bind(this);
+  }
+
+  show() {
+    this.setState({ open: true });
+  }
+
+  hide() {
+    this.setState({ open: false });
+  }
+
   render() {
     return (
-      <Toast isOpen={this.props.isOpen}>
-        <ToastHeader icon={this.props.icon}>{this.props.header}</ToastHeader>
-        <ToastBody>{this.props.body}</ToastBody>
+      <Toast autohide delay={2000} show={this.state.open} onClose={this.hide}>
+        <Toast.Header>
+          <strong className="mr-auto">{this.props.header}</strong>
+        </Toast.Header>
+        <Toast.Body>{this.props.body}</Toast.Body>
       </Toast>
     );
   }
@@ -279,14 +280,32 @@ export class ToastMessage extends Component {
  * @extends {Component}
  */
 export class PrereqToast extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { open: false };
+
+    // Context bindings
+    this.hide = this.hide.bind(this);
+  }
+
+  show() {
+    this.setState({ open: true });
+  }
+
+  hide() {
+    this.setState({ open: false });
+  }
+
   render() {
     return (
-      <Toast isOpen={this.props.isOpen}>
-        <ToastHeader icon="warning">Incomplete Talents</ToastHeader>
-        <ToastBody>
+      <Toast autohide delay={2000} show={this.state.open} onClose={this.hide}>
+        <Toast.Header>
+          <strong className="mr-auto">Incomplete Talents</strong>
+        </Toast.Header>
+        <Toast.Body>
           Upgrade talents to the maximum level first:
           {this.props.msg}
-        </ToastBody>
+        </Toast.Body>
       </Toast>
     );
   }
@@ -298,52 +317,42 @@ export class PrereqToast extends Component {
  *
  */
 export class TalentTooltip extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { popoverOpen: false };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { popoverOpen: false };
 
-    // Context bindings
-    this.togglePopover = this.togglePopover.bind(this);
-  }
+  //   // Context bindings
+  //   this.togglePopover = this.togglePopover.bind(this);
+  // }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (
-      this.state.popoverOpen !== nextState.popoverOpen ||
-      this.props.value !== nextProps.value
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (
+  //     this.state.popoverOpen !== nextState.popoverOpen ||
+  //     this.props.value !== nextProps.value
+  //   ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
-  togglePopover() {
-    this.setState(prevState => ({
-      popoverOpen: !prevState.popoverOpen
-    }));
-  }
+  // togglePopover() {
+  //   this.setState(prevState => ({
+  //     popoverOpen: !prevState.popoverOpen
+  //   }));
+  // }
 
   render() {
     return (
-      <Popover
-        trigger="hover"
-        placement="right-start"
-        isOpen={this.state.popoverOpen}
-        target={this.props.target}
-        toggle={this.togglePopover}
-        hideArrow={false}
-        delay={{ show: 0, hide: 0 }}
-        fade={false}
-        offset={'0, 2'}
-      >
-        <PopoverHeader>
-          <span className="node-tooltip-title">{this.props.talentName}</span>
+      <Popover {...this.props}>
+        <Popover.Title>
+          <span className="node-tooltip-title">{this.props.talentname}</span>
           <span className="node-tooltip-title-value">
             {this.props.value + '/' + this.props.max}
           </span>
           <div style={{ clear: 'both' }}></div>
-        </PopoverHeader>
-        <PopoverBody className="node-tooltip-body">
+        </Popover.Title>
+        <Popover.Content className="node-tooltip-body">
           {this.props.value !== this.props.max && (
             <div>
               <b>Next point:</b>
@@ -351,9 +360,9 @@ export class TalentTooltip extends Component {
           )}
           {this.props.text}
           {process.env.NODE_ENV === 'development' && (
-            <div className="node-tooltip-id">ID: {this.props.target}</div>
+            <div className="node-tooltip-id">ID: {this.props.talentid}</div>
           )}
-        </PopoverBody>
+        </Popover.Content>
       </Popover>
     );
   }

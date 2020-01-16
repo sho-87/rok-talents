@@ -21,8 +21,6 @@ class TreePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pointLimitToastFlag: false,
-      prereqToastFlag: false,
       prereqMsg: '',
       showTotals: true,
       showValues: true,
@@ -240,15 +238,11 @@ class TreePanel extends Component {
    * Show a toast containing a list of missing prerequisite talents. Toast is
    * hidden automatically after a delay.
    *
-   * @param {Array} msg Array of `li` elements containing the names of
-   *  the missing talents
    * @memberof TreePanel
    */
   showPrereqToast(msg) {
-    this.setState({ prereqToastFlag: true, prereqMsg: msg }, () => {
-      window.setTimeout(() => {
-        this.setState({ prereqToastFlag: false, prereqMsg: '' });
-      }, 5000);
+    this.setState({ prereqMsg: msg }, () => {
+      this.prereqToastRef.show();
     });
   }
 
@@ -259,11 +253,7 @@ class TreePanel extends Component {
    * @memberof TreePanel
    */
   showPointLimitToast() {
-    this.setState({ pointLimitToastFlag: true }, () => {
-      window.setTimeout(() => {
-        this.setState({ pointLimitToastFlag: false });
-      }, 2000);
-    });
+    this.pointLimitToastRef.show();
   }
 
   render() {
@@ -283,12 +273,11 @@ class TreePanel extends Component {
     return (
       <div id="tree-panel">
         <PrereqToast
-          isOpen={this.state.prereqToastFlag}
+          ref={component => (this.prereqToastRef = component)}
           msg={this.state.prereqMsg}
         />
         <ToastMessage
-          isOpen={this.state.pointLimitToastFlag}
-          icon="danger"
+          ref={component => (this.pointLimitToastRef = component)}
           header="Talent Limit"
           body="You have spent the maximum number of talent points"
         />

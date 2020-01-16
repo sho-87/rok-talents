@@ -291,8 +291,8 @@ div {
   font-weight: 700;
   mix-blend-mode: multiply;
   text-align: center;
-  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.6));
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.6));
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
 }
 
 .hexagon-label-red {
@@ -444,6 +444,7 @@ div {
 .node-tooltip-title {
   float: left;
   font-size: 0.9em;
+  font-weight: bold;
 }
 
 .node-tooltip-title-value {

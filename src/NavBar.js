@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import NavBarButtons from './NavBarButtons';
 import NavBarSettings from './NavBarSettings';
 import NavBarCommander from './NavBarCommander';
 import { AboutModal, ShareModal } from './Modals';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
 import { faHome, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -21,16 +22,12 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      aboutModalFlag: false,
-      shareModalFlag: false,
-      navOpen: false,
-      selectOpen: this.props.commander ? false : true
+      navOpen: false
     };
 
     // Context bindings
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
-    this.showAbout = this.showAbout.bind(this);
     this.showShare = this.showShare.bind(this);
   }
 
@@ -51,9 +48,7 @@ class NavBar extends Component {
    * @memberof NavBar
    */
   toggleSelect() {
-    this.setState(prevState => ({
-      selectOpen: !prevState.selectOpen
-    }));
+    this.navBarCommanderRef.toggleSelect();
   }
 
   /**
@@ -61,10 +56,8 @@ class NavBar extends Component {
    *
    * @memberof NavBar
    */
-  showAbout(state) {
-    this.setState({
-      aboutModalFlag: state
-    });
+  showAbout() {
+    this.aboutModalRef.toggle();
   }
 
   /**
@@ -72,37 +65,35 @@ class NavBar extends Component {
    *
    * @memberof NavBar
    */
-  showShare(state) {
-    this.setState({
-      shareModalFlag: state
-    });
+  showShare() {
+    this.shareModalRef.toggle();
   }
 
   render() {
     return (
       <React.Fragment>
-        {this.state.aboutModalFlag && <AboutModal showAbout={this.showAbout} />}
-        {this.state.shareModalFlag && <ShareModal showShare={this.showShare} />}
+        <AboutModal ref={component => (this.aboutModalRef = component)} />
+        <ShareModal ref={component => (this.shareModalRef = component)} />
 
-        <Navbar color="light" light expand="lg">
-          <NavbarBrand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
+        <Navbar bg="light" variant="light" expand="lg">
+          <Navbar.Brand id="nav-icon" style={{ cursor: 'pointer' }} href="/">
             <FontAwesomeIcon icon={faHome} />
-          </NavbarBrand>
+          </Navbar.Brand>
 
-          <NavbarBrand
+          <Navbar.Brand
             id="nav-icon"
             style={{ cursor: 'pointer' }}
             onClick={() => this.showAbout(true)}
           >
             <FontAwesomeIcon icon={faInfoCircle} />
-          </NavbarBrand>
+          </Navbar.Brand>
 
-          <NavbarBrand>{title}</NavbarBrand>
+          <Navbar.Brand>{title}</Navbar.Brand>
 
-          <NavbarToggler onClick={this.toggleNav} />
+          <Navbar.Toggle onClick={this.toggleNav} />
 
-          <Collapse isOpen={this.state.navOpen} navbar>
-            <Nav className="ml-auto" navbar>
+          <Navbar.Collapse>
+            <Nav className="ml-auto">
               <NavBarButtons
                 calcPointsSpent={this.props.calcPointsSpent}
                 resetTalents={this.props.resetTalents}
@@ -118,13 +109,12 @@ class NavBar extends Component {
               />
 
               <NavBarCommander
-                toggleSelect={this.toggleSelect}
+                ref={component => (this.navBarCommanderRef = component)}
                 changeCommander={this.props.changeCommander}
                 commander={this.props.commander}
-                selectOpen={this.state.selectOpen}
               />
             </Nav>
-          </Collapse>
+          </Navbar.Collapse>
         </Navbar>
       </React.Fragment>
     );
