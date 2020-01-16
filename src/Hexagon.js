@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FitText from '@kennethormandy/react-fittext';
+import { getTreeName } from './utils';
 
 /**
  * Component containing the central commander image and skill label hexagon
@@ -37,17 +38,17 @@ class Hexagon extends Component {
           <div id="hexagon-label-container">
             <div className="hexagon-label hexagon-label-red">
               <FitText compressor={0.7}>
-                {this.props.getTreeName('red')}
+                {getTreeName('red', this.props.commander)}
               </FitText>
             </div>
             <div className="hexagon-label hexagon-label-yellow">
               <FitText compressor={0.7}>
-                {this.props.getTreeName('yellow')}
+                {getTreeName('yellow', this.props.commander)}
               </FitText>
             </div>
             <div className="hexagon-label hexagon-label-blue">
               <FitText compressor={0.7}>
-                {this.props.getTreeName('blue')}
+                {getTreeName('blue', this.props.commander)}
               </FitText>
             </div>
           </div>

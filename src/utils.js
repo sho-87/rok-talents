@@ -1,4 +1,5 @@
 import { valuesToLetters, lettersToValues } from './values';
+import Commanders from './data/Commanders.json';
 
 /**
  * Sum all values of an array
@@ -60,6 +61,21 @@ export function replaceTalentText(text, talentValues, replacementIdx) {
 
   return newText;
 }
+
+  /**
+   * Get the full name of a talent tree (e.g. Skill, Garrison). The name
+   * depends on the tree color and the selected commander
+   *
+   * @param {string} color Color of the tree to retrieve the name for
+   * @param {string} commander Name of the commander
+   * @returns {string} full tree name
+   */
+  export function getTreeName(color, commander) {
+    const commanderData = Commanders[commander];
+    if (commanderData) {
+      return commanderData[color];
+    }
+  }
 
 /**
  * Encode/compress the passed text

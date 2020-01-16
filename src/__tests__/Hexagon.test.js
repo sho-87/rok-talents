@@ -5,9 +5,6 @@ import '@testing-library/jest-dom/extend-expect';
 import Hexagon from '../Hexagon';
 
 let props;
-beforeEach(() => {
-  props = { getTreeName: jest.fn() };
-});
 
 afterEach(cleanup);
 
@@ -20,7 +17,7 @@ describe('Hexagon component', () => {
 
   it('shows the correct commander image', () => {
     const { getByTestId } = render(
-      <Hexagon commander="Richard I" {...props} />
+      <Hexagon commander="Richard I" />
     );
     expect(getByTestId('hexagon-commander')).toHaveAttribute(
       'src',

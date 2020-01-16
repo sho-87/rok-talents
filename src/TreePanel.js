@@ -4,8 +4,8 @@ import panzoom from 'panzoom';
 import { PrereqToast, ToastMessage } from './Modals';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
+import { getTreeName } from './utils';
 
-import Commanders from './data/Commanders.json';
 import { dataVersion } from '../package.json';
 
 //FIXME: use shouldComponentUpdate
@@ -29,7 +29,6 @@ class TreePanel extends Component {
     this.panZoomInstance = null;
 
     // Context bindings
-    this.getTreeName = this.getTreeName.bind(this);
     this.showPrereqToast = this.showPrereqToast.bind(this);
     this.showPointLimitToast = this.showPointLimitToast.bind(this);
     this.setMousePosition = this.setMousePosition.bind(this);
@@ -102,7 +101,7 @@ class TreePanel extends Component {
       jsPlumb.setSuspendDrawing(true);
 
       ['red', 'yellow', 'blue'].forEach(color => {
-        const treeName = this.getTreeName(color);
+        const treeName = getTreeName(color, this.props.commander);
 
         Object.keys(this.props.treeData[treeName]).forEach(nodeID => {
           var activateState =
@@ -124,21 +123,6 @@ class TreePanel extends Component {
       });
 
       jsPlumb.setSuspendDrawing(false, true);
-    }
-  }
-
-  /**
-   * Get the full name of a talent tree (e.g. Skill, Garrison). The name
-   * depends on the tree color and the currently selected commander
-   *
-   * @param {string} color Color of the tree to retrieve the name for
-   * @returns
-   * @memberof TreePanel
-   */
-  getTreeName(color) {
-    const commander = Commanders[this.props.commander];
-    if (commander) {
-      return commander[color];
     }
   }
 
@@ -296,7 +280,7 @@ class TreePanel extends Component {
               <Tree
                 {...sharedTreeProps}
                 color={'red'}
-                treeName={this.getTreeName('red')}
+                treeName={getTreeName('red', this.props.commander)}
                 data={this.props.red}
                 mouseX={this.state.redX}
                 mouseY={this.state.redY}
@@ -304,7 +288,7 @@ class TreePanel extends Component {
               <Tree
                 {...sharedTreeProps}
                 color={'yellow'}
-                treeName={this.getTreeName('yellow')}
+                treeName={getTreeName('yellow', this.props.commander)}
                 data={this.props.yellow}
                 mouseX={this.state.yellowX}
                 mouseY={this.state.yellowY}
@@ -312,7 +296,7 @@ class TreePanel extends Component {
               <Tree
                 {...sharedTreeProps}
                 color={'blue'}
-                treeName={this.getTreeName('blue')}
+                treeName={getTreeName('blue', this.props.commander)}
                 data={this.props.blue}
                 mouseX={this.state.blueX}
                 mouseY={this.state.blueY}
@@ -320,7 +304,6 @@ class TreePanel extends Component {
               <Hexagon
                 toggleSelect={this.props.toggleSelect}
                 commander={this.props.commander}
-                getTreeName={this.getTreeName}
               />
             </div>
           </div>
