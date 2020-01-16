@@ -330,6 +330,7 @@ class App extends Component {
    */
   toggleSidePanel() {
     this.sidePanelRef.toggleSidePanel();
+    this.treePanelRef.repaint();
   }
 
   /**
