@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -170,13 +170,6 @@ class SidePanel extends Component {
         <div data-testid="side-panel-main-talents">
           {this.calcStats('Main')}
         </div>
-
-        {process.env.NODE_ENV === 'development' && (
-          <Fragment>
-            <h2>Debug</h2>
-            <p>URL length: {window.location.search.length}</p>
-          </Fragment>
-        )}
       </div>
     );
   }
