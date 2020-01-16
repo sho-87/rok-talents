@@ -223,6 +223,7 @@ class Node extends Component {
           delay={{ show: 0, hide: 0 }}
           overlay={
             <TalentTooltip
+              calcPointsRemaining={this.props.calcPointsRemaining}
               talentdecrease={this.talentDecrease}
               talentincrease={this.talentIncrease}
               idx={this.props.idx}

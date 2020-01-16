@@ -378,12 +378,14 @@ export class TalentTooltip extends Component {
             <Container id="node-tooltip-assign-container">
               <Row>
                 <Col>
-                  <FontAwesomeIcon
-                    className="node-tooltip-decrease-button"
-                    icon={faMinusSquare}
-                    size="2x"
-                    onClick={this.props.talentdecrease}
-                  />
+                  {this.props.value > 0 && (
+                    <FontAwesomeIcon
+                      className="node-tooltip-decrease-button"
+                      icon={faMinusSquare}
+                      size="2x"
+                      onClick={this.props.talentdecrease}
+                    />
+                  )}
                 </Col>
                 <Col xs={5}>
                   <span className="node-tooltip-assign-value">
@@ -391,12 +393,15 @@ export class TalentTooltip extends Component {
                   </span>
                 </Col>
                 <Col>
-                  <FontAwesomeIcon
-                    className="node-tooltip-increase-button"
-                    icon={faPlusSquare}
-                    size="2x"
-                    onClick={this.props.talentincrease}
-                  />
+                  {this.props.calcPointsRemaining() > 0 &&
+                    this.props.value !== this.props.max && (
+                      <FontAwesomeIcon
+                        className="node-tooltip-increase-button"
+                        icon={faPlusSquare}
+                        size="2x"
+                        onClick={this.props.talentincrease}
+                      />
+                    )}
                 </Col>
               </Row>
             </Container>
