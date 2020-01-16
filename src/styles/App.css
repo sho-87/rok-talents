@@ -11,15 +11,15 @@
   --line-width-active: 1;
 }
 
-.bg-red{
+.bg-red {
   background-color: var(--red);
 }
 
-.bg-yellow{
+.bg-yellow {
   background-color: var(--yellow);
 }
 
-.bg-blue{
+.bg-blue {
   background-color: var(--blue);
 }
 
@@ -488,6 +488,31 @@ div {
   text-align: right;
   letter-spacing: 1px;
   color: gray;
+}
+
+#node-tooltip-assign-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.node-tooltip-assign-value {
+  font-size: 2em;
+}
+
+.node-tooltip-decrease-button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0%, -50%);
+  color: red;
+}
+
+.node-tooltip-increase-button {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0%, -50%);
+  color: green;
 }
 
 .node-value {

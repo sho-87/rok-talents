@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import { isMobile } from 'react-device-detect';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Toast from 'react-bootstrap/Toast';
 import Popover from 'react-bootstrap/Popover';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import {
   faExclamationTriangle,
   faInfoCircle,
   faShareAlt,
   faLink,
-  faCopy
+  faCopy,
+  faPlusSquare,
+  faMinusSquare
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -344,12 +350,20 @@ export class TalentTooltip extends Component {
 
   render() {
     return (
-      <Popover {...this.props}>
+      <Popover
+        placement={this.props.placement}
+        style={this.props.style}
+        outOfBoundaries={this.props.outOfBoundaries}
+        arrowProps={this.props.arrowProps}
+        className={this.props.className}
+      >
         <Popover.Title>
           <span className="node-tooltip-title">{this.props.talentname}</span>
-          <span className="node-tooltip-title-value">
-            {this.props.value + '/' + this.props.max}
-          </span>
+          {!isMobile && (
+            <span className="node-tooltip-title-value">
+              {this.props.value + '/' + this.props.max}
+            </span>
+          )}
           <div style={{ clear: 'both' }}></div>
         </Popover.Title>
         <Popover.Content className="node-tooltip-body">
@@ -359,6 +373,35 @@ export class TalentTooltip extends Component {
             </div>
           )}
           {this.props.text}
+
+          {isMobile && (
+            <Container id="node-tooltip-assign-container">
+              <Row>
+                <Col>
+                  <FontAwesomeIcon
+                    className="node-tooltip-decrease-button"
+                    icon={faMinusSquare}
+                    size="2x"
+                    onClick={this.props.talentdecrease}
+                  />
+                </Col>
+                <Col xs={5}>
+                  <span className="node-tooltip-assign-value">
+                    {this.props.value + '/' + this.props.max}
+                  </span>
+                </Col>
+                <Col>
+                  <FontAwesomeIcon
+                    className="node-tooltip-increase-button"
+                    icon={faPlusSquare}
+                    size="2x"
+                    onClick={this.props.talentincrease}
+                  />
+                </Col>
+              </Row>
+            </Container>
+          )}
+
           {process.env.NODE_ENV === 'development' && (
             <div className="node-tooltip-id">ID: {this.props.talentid}</div>
           )}

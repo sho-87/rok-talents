@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { isMobile } from 'react-device-detect';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Modals';
 import { replaceTalentText, getMaxTalentCount } from './utils';
 
-//TODO: add easier node change for phone users, show temporary +/- buttons on node click?
 //TODO: use images for small nodes to avoid cross browser css issues?
 //FIXME: fix location of node labels. dont contain in node div
 
@@ -15,6 +15,14 @@ import { replaceTalentText, getMaxTalentCount } from './utils';
  * @extends {Component}
  */
 class Node extends Component {
+  constructor(props) {
+    super(props);
+
+    // Context bindings
+    this.talentIncrease = this.talentIncrease.bind(this);
+    this.talentDecrease = this.talentDecrease.bind(this);
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     if (
       this.props.value !== nextProps.value ||
@@ -163,8 +171,6 @@ class Node extends Component {
    * @memberof Node
    */
   talentDecrease(e) {
-    e.preventDefault();
-
     // Check dependent nodes
     const deps = this.props.treeData[this.props.treeName][this.props.idx].dep;
 
@@ -200,17 +206,43 @@ class Node extends Component {
   render() {
     let showValues = this.props.showValues && this.props.value !== 0;
 
+    let props, clickProps;
+    if (isMobile) {
+      props = {
+        trigger: 'click',
+        rootClose: true,
+        rootCloseEvent: 'mousedown'
+      };
+    } else {
+      props = { trigger: 'hover' };
+    }
+
+    if (!isMobile) {
+      clickProps = {
+        onClick: () => this.talentIncrease(),
+        onContextMenu: e => {
+          e.preventDefault();
+          this.talentDecrease();
+        }
+      };
+    } else {
+      clickProps = {
+        onClick: undefined,
+        onContextMenu: e => e.preventDefault()
+      };
+    }
+
     return (
       <React.Fragment>
         <OverlayTrigger
-          trigger="hover"
+          {...props}
           placement="right"
-          rootClose={true}
-          rootCloseEvent="mousedown"
           flip={true}
           delay={{ show: 0, hide: 0 }}
           overlay={
             <TalentTooltip
+              talentdecrease={this.talentDecrease}
+              talentincrease={this.talentIncrease}
               idx={this.props.idx}
               talentid={this.props.treeName + this.props.idx}
               talentname={this.props.talentName}
@@ -221,14 +253,13 @@ class Node extends Component {
           }
         >
           <div
+            {...clickProps}
             data-testid={this.props.treeName + this.props.idx}
             id={this.props.treeName + this.props.idx}
             className={`node ${this.props.type} ${
               this.props.value === 0 ? 'node-inactive' : ''
             } ${this.getSmallColor()}`}
             style={this.getStyle()}
-            onClick={() => this.talentIncrease()}
-            onContextMenu={e => this.talentDecrease(e)}
           >
             {showValues && (
               <div
