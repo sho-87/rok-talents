@@ -118,6 +118,10 @@ div {
   filter: saturate(10%);
 }
 
+.nav-button-text{
+  margin-left: 5px;
+}
+
 #settings-group {
   width: 160px;
   margin: 0px 10px 0px 10px;

@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { title } from '../package.json';
 
 //TODO: disable nav bar collapse/expand?
-//TODO: hide all text when screen width gets too small?
 
 /**
  * Nav bar component containing main application buttons/controls
@@ -80,6 +79,7 @@ class NavBar extends Component {
           <Navbar.Brand href="/">{title}</Navbar.Brand>
           <Navbar.Brand
             id="nav-icon"
+            className="mr-auto"
             style={{ cursor: 'pointer' }}
             onClick={() => this.showAbout(true)}
           >

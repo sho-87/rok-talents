@@ -100,11 +100,13 @@ class NavBarCommander extends Component {
           ) : (
             <FontAwesomeIcon icon={faUser} />
           )}
-          {this.props.commander
-            ? Commanders[this.props.commander]['shortName']
+          <span className="nav-button-text">
+            {this.props.commander
               ? Commanders[this.props.commander]['shortName']
-              : this.props.commander
-            : ' Commander'}
+                ? Commanders[this.props.commander]['shortName']
+                : this.props.commander
+              : ' Commander'}
+          </span>
         </Dropdown.Toggle>
 
         <Dropdown.Menu id="select-commander-menu">

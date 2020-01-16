@@ -19,7 +19,8 @@ class NavBarSettings extends Component {
     return (
       <Dropdown alignRight as={NavItem} id="select-settings">
         <Dropdown.Toggle as={NavLink}>
-          <FontAwesomeIcon icon={faCog} /> Settings
+          <FontAwesomeIcon icon={faCog} />
+          <span className="nav-button-text">Settings</span>
         </Dropdown.Toggle>
 
         <Dropdown.Menu>

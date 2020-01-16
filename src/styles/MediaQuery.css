@@ -1,0 +1,5 @@
+@media only screen and (max-width: 1040px) {
+  .nav-button-text {
+    display: none;
+  }
+}

@@ -24,7 +24,8 @@ class NavBarButtons extends Component {
           }
           onClick={this.props.resetTalents}
         >
-          <FontAwesomeIcon icon={faTrashAlt} /> Reset
+          <FontAwesomeIcon icon={faTrashAlt} />
+          <span className="nav-button-text">Reset</span>
         </button>
 
         <button
@@ -37,7 +38,8 @@ class NavBarButtons extends Component {
           className="btn btn-sm btn-primary"
           onClick={() => this.props.showShare()}
         >
-          <FontAwesomeIcon icon={faShareAlt} /> Share
+          <FontAwesomeIcon icon={faShareAlt} />
+          <span className="nav-button-text">Share</span>
         </button>
       </form>
     );
