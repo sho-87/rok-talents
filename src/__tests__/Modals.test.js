@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  InvalidBuildModal,
-  AboutModal,
-  ToastMessage,
-  PrereqToast,
-  TalentTooltip
-} from '../Modals';
+import { InvalidBuildModal, AboutModal, ShareModal } from '../Modals';
 
 describe('Modal', () => {
   it('renders without crashing', () => {
@@ -23,21 +17,7 @@ describe('Modal', () => {
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<ToastMessage />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<PrereqToast />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
-  it('renders without crashing', () => {
-    let props = { target: 'body' };
-
-    const div = document.createElement('div');
-    ReactDOM.render(<TalentTooltip {...props} />, div);
+    ReactDOM.render(<ShareModal />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { isMobile } from 'react-device-detect';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { jsPlumb } from 'jsplumb';
-import { TalentTooltip } from './Modals';
+import { TalentTooltip } from './Popovers';
 import { replaceTalentText, getMaxTalentCount } from './utils';
 
 //FIXME: fix location of node labels. dont contain in node div

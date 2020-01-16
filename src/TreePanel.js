@@ -3,7 +3,7 @@ import { jsPlumb } from 'jsplumb';
 import panzoom from 'panzoom';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
-import { PrereqToast, ToastMessage } from './Modals';
+import { PrereqToast, ToastMessage } from './Toasts';
 import { getTreeName } from './utils';
 
 import { dataVersion } from '../package.json';
