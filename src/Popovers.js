@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import { faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+//TODO: only show assign/remove button if prereqs/deps are ok
 //FIXME: fix popover size on small screens
 
 /**

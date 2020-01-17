@@ -23,6 +23,7 @@ export function sumArray(arr) {
 export function arraysEqual(a, b) {
   if (a === b) return true;
   if (a == null || b == null) return false;
+  // eslint-disable-next-line
   if (a.length != b.length) return false;
 
   for (var i = 0; i < a.length; ++i) {

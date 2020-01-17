@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { jsPlumb } from 'jsplumb';
-import panzoom from 'panzoom';
+// import panzoom from 'panzoom';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
 import { PrereqToast, ToastMessage } from './Toasts';
 import { getTreeName } from './utils';
 
 import { dataVersion } from '../package.json';
-
-//FIXME: remove panzoom bounds so scrolling works better on small mobile devices?
 
 /**
  * Component for the main tree panel. Controls the display of all nodes and
@@ -49,16 +47,16 @@ class TreePanel extends Component {
       this_.drawLines();
     });
 
-    let panZoomContainer = document.querySelector('#tree-square-container');
-    this.panZoomInstance = panzoom(panZoomContainer, {
-      minZoom: 0.9,
-      maxZoom: 3,
-      zoomDoubleClickSpeed: 1,
-      bounds: true,
-      onTouch: function(e) {
-        return false; // tells the library to not preventDefault on touch
-      }
-    });
+    // let panZoomContainer = document.querySelector('#tree-square-container');
+    // this.panZoomInstance = panzoom(panZoomContainer, {
+    //   minZoom: 0.9,
+    //   maxZoom: 3,
+    //   zoomDoubleClickSpeed: 1,
+    //   bounds: true,
+    //   onTouch: function(e) {
+    //     return false;
+    //   }
+    // });
   }
 
   /**

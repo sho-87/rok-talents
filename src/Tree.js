@@ -9,6 +9,8 @@ import { getMaxTalentCount } from './utils';
  * @class Tree
  * @extends {Component}
  */
+
+ //TODO: make nodes/trees larger so theyre easier to click on small screens
 class Tree extends Component {
   /**
    * Create an array of all talent nodes for the current commander
