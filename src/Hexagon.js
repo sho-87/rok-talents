@@ -30,34 +30,40 @@ class Hexagon extends Component {
           <div id="hexagon-label-container">
             <div className="hexagon-label hexagon-label-red">
               <FitText compressor={0.7}>
-                {this.props.showTotals && (
-                  <div className="tree-total">{`(${this.props.calcPointsSpent(
-                    'red'
-                  )})`}</div>
-                )}
-                {getTreeName('red', this.props.commander)}
+                <div>
+                  {this.props.showTotals && (
+                    <div className="tree-total">{`(${this.props.calcPointsSpent(
+                      'red'
+                    )})`}</div>
+                  )}
+                  {getTreeName('red', this.props.commander)}
+                </div>
               </FitText>
             </div>
 
             <div className="hexagon-label hexagon-label-yellow">
               <FitText compressor={0.7}>
-                {this.props.showTotals && (
-                  <div className="tree-total">{`(${this.props.calcPointsSpent(
-                    'yellow'
-                  )})`}</div>
-                )}
-                {getTreeName('yellow', this.props.commander)}
+                <div>
+                  {this.props.showTotals && (
+                    <div className="tree-total">{`(${this.props.calcPointsSpent(
+                      'yellow'
+                    )})`}</div>
+                  )}
+                  {getTreeName('yellow', this.props.commander)}
+                </div>
               </FitText>
             </div>
 
             <div className="hexagon-label hexagon-label-blue">
               <FitText compressor={0.7}>
-                {this.props.showTotals && (
-                  <div className="tree-total">{`(${this.props.calcPointsSpent(
-                    'blue'
-                  )})`}</div>
-                )}
-                {getTreeName('blue', this.props.commander)}
+                <div>
+                  {this.props.showTotals && (
+                    <div className="tree-total">{`(${this.props.calcPointsSpent(
+                      'blue'
+                    )})`}</div>
+                  )}
+                  {getTreeName('blue', this.props.commander)}
+                </div>
               </FitText>
             </div>
           </div>
