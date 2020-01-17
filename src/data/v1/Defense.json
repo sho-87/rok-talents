@@ -5,8 +5,190 @@
     "stats": "Defense",
     "text": "Increases the defense of all units led by this commander by ${1}%",
     "prereq": [],
-    "dep": [],
-    "pos": [18.5, 8.9],
+    "dep": [2, 3],
+    "pos": [18.6, 8.9],
     "type": "node-small"
+  },
+  "2": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [4, 5],
+    "pos": [36.1, -2.6],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [6, 7],
+    "pos": [17.3, 29.8],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Master Armorer",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "When troops led by this commander enter battle, increases defense by (${1} x Commander Star Level)%",
+    "prereq": [2],
+    "dep": [9, 10],
+    "pos": [47, 2.9],
+    "type": "node-large",
+    "image": "blueHelmetFront"
+  },
+  "5": {
+    "name": "Burning Blood",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "Grants an additional ${1} rage every time this commander's troops are attacked",
+    "prereq": [2],
+    "dep": [10],
+    "pos": [37.8, 8.9],
+    "type": "node-large",
+    "image": "blueSkullFire"
+  },
+  "6": {
+    "name": "No Weaknesses",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "Reduces damage taken by ${1}%",
+    "prereq": [3],
+    "dep": [11],
+    "pos": [28.8, 24.5],
+    "type": "node-large",
+    "image": "blueChest"
+  },
+  "7": {
+    "name": "Spiked Armor",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "Increases counterattack damage dealt by ${1}%",
+    "prereq": [3],
+    "dep": [11, 12],
+    "pos": [28.6, 35.4],
+    "type": "node-large",
+    "image": "blueSpikes"
+  },
+  "8": {
+    "name": "Balance",
+    "values": [
+      [1, 2, 3],
+      [0.5, 1, 1.5]
+    ],
+    "stats": "",
+    "text": "Reduces damage taken by ${1}%, but also reduces damage dealt by ${2}%",
+    "prereq": [9],
+    "dep": [],
+    "pos": [60.8, -10.2],
+    "type": "node-large",
+    "image": "blueYinYang"
+  },
+  "9": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [4],
+    "dep": [8],
+    "pos": [63.8, 5.8],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [4, 5],
+    "dep": [14],
+    "pos": [48.5, 20.8],
+    "type": "node-small"
+  },
+  "11": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [6, 7],
+    "dep": [15],
+    "pos": [43.9, 28.8],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [7],
+    "dep": [13],
+    "pos": [38.2, 49.5],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Loose Formation",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Reduces skill damage taken by ${1}%",
+    "prereq": [12],
+    "dep": [],
+    "pos": [24.5, 53.5],
+    "type": "node-large",
+    "image": "blueWaves"
+  },
+  "14": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [10],
+    "dep": [16],
+    "pos": [59.2, 23.4],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [11],
+    "dep": [17],
+    "pos": [51.2, 37.4],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "Testudo Formation",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Normal troop attacks have a 10% chance to reduce all damage taken by ${1}% during the next one second",
+    "prereq": [14],
+    "dep": [18],
+    "pos": [70.6, 20.2],
+    "type": "node-large",
+    "image": "blueShell"
+  },
+  "17": {
+    "name": "Medicinal Supplies",
+    "values": [100, 200, 300],
+    "stats": "",
+    "text": "After using a skill, heals a portion of slightly wounded units (Healing Factor ${1})",
+    "prereq": [15],
+    "dep": [18],
+    "pos": [55.2, 47.2],
+    "type": "node-large",
+    "image": "blueClover"
+  },
+  "18": {
+    "name": "Desperate Elegy",
+    "values": [5, 10, 15, 20, 25],
+    "stats": "",
+    "text": "When the army led by this commander has been reduced to 30% strength, greatly increases rage accumulation rate for the next 20 seconds. An additional ${1} rage will be received from each attack",
+    "prereq": [16, 17],
+    "dep": [],
+    "pos": [79.2, 42.8],
+    "type": "node-large",
+    "image": "blueMusic"
   }
 }
