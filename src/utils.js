@@ -13,6 +13,25 @@ export function sumArray(arr) {
 }
 
 /**
+ * Check if two arrays are equal
+ *
+ * @export
+ * @param {array} a First array
+ * @param {array} b Second array
+ * @returns {boolean} Are the two arrays equal?
+ */
+export function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length != b.length) return false;
+
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
+/**
  * Check if array is nested/multidimensional
  *
  * @param {Array} arr array to check for nesting
@@ -62,20 +81,20 @@ export function replaceTalentText(text, talentValues, replacementIdx) {
   return newText;
 }
 
-  /**
-   * Get the full name of a talent tree (e.g. Skill, Garrison). The name
-   * depends on the tree color and the selected commander
-   *
-   * @param {string} color Color of the tree to retrieve the name for
-   * @param {string} commander Name of the commander
-   * @returns {string} full tree name
-   */
-  export function getTreeName(color, commander) {
-    const commanderData = Commanders[commander];
-    if (commanderData) {
-      return commanderData[color];
-    }
+/**
+ * Get the full name of a talent tree (e.g. Skill, Garrison). The name
+ * depends on the tree color and the selected commander
+ *
+ * @param {string} color Color of the tree to retrieve the name for
+ * @param {string} commander Name of the commander
+ * @returns {string} full tree name
+ */
+export function getTreeName(color, commander) {
+  const commanderData = Commanders[commander];
+  if (commanderData) {
+    return commanderData[color];
   }
+}
 
 /**
  * Encode/compress the passed text
@@ -113,6 +132,7 @@ export function decode(encoded) {
 
 export default {
   sumArray,
+  arraysEqual,
   isMultidimensional,
   getMaxTalentCount,
   replaceTalentText,
