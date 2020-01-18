@@ -113,5 +113,13 @@
     "red": "Infantry",
     "yellow": "Versatility",
     "blue": "Defense"
+  },
+  "Charlemagne": {
+    "id": "15",
+    "title": "Pater Europae",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Skill"
   }
 }

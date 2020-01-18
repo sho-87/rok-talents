@@ -3,6 +3,7 @@ function loadTreeData(version) {
   const treeData = {
     Attack: require(`./v${version}/Attack.json`),
     Archer: require(`./v${version}/Archer.json`),
+    Conquering: require(`./v${version}/Conquering.json`),
     Defense: require(`./v${version}/Defense.json`),
     Garrison: require(`./v${version}/Garrison.json`),
     Infantry: require(`./v${version}/Infantry.json`),

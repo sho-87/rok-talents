@@ -1,0 +1,191 @@
+{
+  "1": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases attack of all units led by this commander by ${1}%",
+    "prereq": [],
+    "dep": [2, 3],
+    "pos": [77.4, 8.1],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increases defense of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [5, 6],
+    "pos": [63.8, 3],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases attack of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [7, 8],
+    "pos": [75.5, 23.4],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases defense of all units led by this commander by ${1}%",
+    "prereq": [5],
+    "dep": [10],
+    "pos": [37.6, -8.1],
+    "type": "node-small"
+  },
+  "5": {
+    "name": "Signal Flare",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Increases damage dealt to watchtowers by ${1}%",
+    "prereq": [2],
+    "dep": [4, 11],
+    "pos": [46.2, -1],
+    "type": "node-large",
+    "image": "yellowSplat"
+  },
+  "6": {
+    "name": "Marionette",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Reduces damage taken from watchtowers by ${1}%",
+    "prereq": [2],
+    "dep": [11],
+    "pos": [49, 13.1],
+    "type": "node-large",
+    "image": "yellowDoll"
+  },
+  "7": {
+    "name": "Moment of Triumph",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "While the army led by this commander is at more than 90% strength, increases all damage dealt by ${1}%",
+    "prereq": [3],
+    "dep": [7, 8],
+    "pos": [56.3, 25.4],
+    "type": "node-large",
+    "image": "yellowBeer"
+  },
+  "8": {
+    "name": "Buckler Shield",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Reduces counterattack damage taken by ${1}%",
+    "prereq": [3],
+    "dep": [9, 12],
+    "pos": [67.4, 35.8],
+    "type": "node-large",
+    "image": "yellowWoodShield"
+  },
+  "9": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases health of all units led by this commander by ${1}%",
+    "prereq": [8],
+    "dep": [13],
+    "pos": [70.9, 51.8],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "Well Provisioned",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Increases troop load by ${1}%",
+    "prereq": [4],
+    "dep": [],
+    "pos": [25, 3.8],
+    "type": "node-large",
+    "image": "yellowBarrel"
+  },
+  "11": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Health",
+    "text": "Increases health of all units led by this commander by ${1}%",
+    "prereq": [5, 6],
+    "dep": [14],
+    "pos": [36, 15.9],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases attack of all units led by this commander by ${1}%",
+    "prereq": [7, 8],
+    "dep": [16],
+    "pos": [48.9, 38.5],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Thoroughbreds",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "When this commander launches a rally attack, increases march speed of the rallied army by ${1}%",
+    "prereq": [9],
+    "dep": [],
+    "pos": [53.3, 53.6],
+    "type": "node-large",
+    "image": "yellowHorseHead"
+  },
+  "14": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases defense of all units led by this commander by ${1}%",
+    "prereq": [11],
+    "dep": [17],
+    "pos": [22.2, 23.6],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Meteor Shower",
+    "values": [10, 20, 30, 40, 50],
+    "stats": "",
+    "text": "When attacking garrisons, normal attacks have a 10% chance to increase all damage dealt on the next turn by ${1}%",
+    "prereq": [17, 18],
+    "dep": [],
+    "pos": [27, 34.2],
+    "type": "node-large",
+    "image": "yellowMeteor"
+  },
+  "16": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases march speed of all units led by this commander by ${1}%",
+    "prereq": [12],
+    "dep": [18],
+    "pos": [35.6, 46.1],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "Tear of Blessing",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "The number of troops that die when attacking another governor's city is reduced by ${1}%, and are instead severely wounded (and can be healed in the Hospital)",
+    "prereq": [14],
+    "dep": [15],
+    "pos": [7.1, 29.5],
+    "type": "node-large",
+    "image": "yellowWater"
+  },
+  "18": {
+    "name": "Entrenched",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "Increases all damage dealt to strongholds by ${1}%, and damage taken from stronghold garrisons is reduced by ${1}%",
+    "prereq": [16],
+    "dep": [15],
+    "pos": [20.1, 52.1],
+    "type": "node-large",
+    "image": "yellowTools"
+  }
+}
