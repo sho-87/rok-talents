@@ -268,10 +268,6 @@ class TreePanel extends Component {
           </div>
         )}
 
-        {!this.props.commander && (
-          <Instructions isMobile={this.props.isMobile} />
-        )}
-
         <div id="tree-square-container">
           <div id="tree-square-section">
             <div id="tree-square-content">
@@ -303,7 +299,7 @@ class TreePanel extends Component {
                 toggleSelect={this.props.toggleSelect}
                 calcPointsSpent={this.props.calcPointsSpent}
                 showTotals={this.state.showTotals && this.props.commander}
-                commander={this.props.commander}
+                commander={this.props.commander || 'unknown'}
               />
             </div>
           </div>
@@ -311,29 +307,6 @@ class TreePanel extends Component {
       </div>
     );
   }
-}
-
-function Instructions(props) {
-  return (
-    <div id="instructions">
-      <ol>
-        <li>Select commander in the top right</li>
-        {!props.isMobile && (
-          <div>
-            <li>Left click to add talent points</li>
-            <li>Right click to remove talent points</li>
-          </div>
-        )}
-        {props.isMobile && (
-          <div>
-            <li>Add/remove points in the tooltip</li>
-          </div>
-        )}
-        <li>Check your build stats on the left</li>
-        <li>Share your build</li>
-      </ol>
-    </div>
-  );
 }
 
 export default TreePanel;

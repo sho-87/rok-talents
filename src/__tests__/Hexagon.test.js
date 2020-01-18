@@ -22,4 +22,14 @@ describe('Hexagon component', () => {
       'images/commanders/Richard I.png'
     );
   });
+
+  it('shows unknown if no commander selected', () => {
+    const { getByTestId } = render(
+      <Hexagon commander="unknown" />
+    );
+    expect(getByTestId('hexagon-commander')).toHaveAttribute(
+      'src',
+      'images/commanders/unknown.png'
+    );
+  });
 });

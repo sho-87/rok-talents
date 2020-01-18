@@ -50,12 +50,6 @@ div {
   text-align: center;
 }
 
-#instructions {
-  position: absolute;
-  margin: 0 auto;
-  color: white;
-}
-
 #version-warning {
   position: absolute;
   top: 0px;
@@ -118,7 +112,7 @@ div {
   filter: saturate(10%);
 }
 
-.nav-button-text{
+.nav-button-text {
   margin-left: 5px;
 }
 
