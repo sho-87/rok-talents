@@ -21,6 +21,7 @@ let treeData;
 //TODO: shouldComponentUpdate pass
 //TODO: auto rotate the app on small landscape devices?
 //TODO: replace isMobile with react-responsive (mediaquery)?
+//FIXME: fix commander image borders
 //FIXME: only updateurl/encode if that particular tree has changed
 
 /**
