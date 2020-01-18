@@ -1,8 +1,25 @@
 import loadTreeData from '../data/AllTrees';
 import { isMultidimensional, arraysEqual } from '../utils';
+
+import Commanders from '../data/Commanders.json';
 import { dataVersion } from '../../package.json';
 
 const treeData = loadTreeData(dataVersion);
+
+test('Each tree has a data file', () => {
+  // Get every single tree from all commanders
+  let treeList = new Set();
+  Object.keys(Commanders).forEach(commander => {
+    treeList.add(Commanders[commander].red);
+    treeList.add(Commanders[commander].yellow);
+    treeList.add(Commanders[commander].blue);
+  });
+  treeList = [...treeList];
+
+  expect(arraysEqual(treeList.sort(), Object.keys(treeData).sort())).toEqual(
+    true
+  );
+});
 
 test('All tree data is sufficiently long', () => {
   const isLongEnough = Object.keys(treeData).every(tree => {
@@ -29,9 +46,7 @@ test('No repeat IDs', () => {
   expect(noRepeats).toEqual(true);
 });
 
-
 test('All multidimensional talent values are same length', () => {
-  let treeData = loadTreeData(dataVersion);
   let allSameLength = true;
 
   Object.keys(treeData).forEach(tree => {
