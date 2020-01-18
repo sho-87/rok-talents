@@ -322,8 +322,8 @@ div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -53%);
-  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.9));
   cursor: pointer;
 }
 
