@@ -1,0 +1,22 @@
+{
+  "1": {
+    "name": "Attack (Archers)",
+    "values": [1],
+    "stats": "Attack",
+    "text": "Increases attack of archer units by ${1}%",
+    "prereq": [],
+    "dep": [],
+    "pos": [-1.7, 75.7],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Attack (Archers)",
+    "values": [1],
+    "stats": "Attack",
+    "text": "Increases attack of archer units by ${1}%",
+    "prereq": [7],
+    "dep": [6],
+    "pos": [-34.2, 63.4],
+    "type": "node-small"
+  }
+}

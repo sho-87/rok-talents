@@ -42,6 +42,7 @@
   },
   "Eulji Mundeok": {
     "id": "6",
+    "shortName": "Eulji",
     "title": "Elegant Demeanor",
     "tier": "Epic",
     "red": "Infantry",
@@ -50,6 +51,7 @@
   },
   "Charles Martel": {
     "id": "7",
+    "shortName": "Charles",
     "title": "The Immortal Hammer",
     "tier": "Legendary",
     "red": "Infantry",
@@ -73,7 +75,7 @@
     "yellow": "Versatility",
     "blue": "Skill"
   },
-  "Constantine": {
+  "Constantine I": {
     "id": "10",
     "title": "Peerless Lord",
     "tier": "Legendary",
@@ -118,6 +120,187 @@
     "id": "15",
     "title": "Pater Europae",
     "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Skill"
+  },
+  "Minamoto no Yoshitsune": {
+    "id": "16",
+    "shortName": "Minamoto",
+    "title": "Kamakura's Warlord",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Peacekeeping",
+    "blue": "Skill"
+  },
+  "Cao Cao": {
+    "id": "17",
+    "title": "Conqueror of Chaos",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Peacekeeping",
+    "blue": "Mobility"
+  },
+  "Julius Caesar": {
+    "id": "18",
+    "title": "The Uncrowned Emperor",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Attack"
+  },
+  "Seondeok": {
+    "id": "19",
+    "title": "Queen of Silla",
+    "tier": "Legendary",
+    "red": "Integration",
+    "yellow": "Gathering",
+    "blue": "Attack"
+  },
+  "Ishida Mitsunari": {
+    "id": "20",
+    "shortName": "Ishida",
+    "title": "Tragic Hero of Azuchi-Momoyama",
+    "tier": "Legendary",
+    "red": "Integration",
+    "yellow": "Gathering",
+    "blue": "Support"
+  },
+  "Frederick I": {
+    "id": "21",
+    "title": "Barbarossa",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Skill"
+  },
+  "Mehmed II": {
+    "id": "22",
+    "title": "Conqueror of Istanbul",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Skill"
+  },
+  "Hannibal Barca": {
+    "id": "23",
+    "shortName": "Hannibal",
+    "title": "Carthage's Guardian",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Attack"
+  },
+  "Saladin": {
+    "id": "24",
+    "title": "Al-Malik an-Nasir",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Conquering",
+    "blue": "Support"
+  },
+  "Genghis Khan": {
+    "id": "25",
+    "title": "First Khagan",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Versatility",
+    "blue": "Skill"
+  },
+  "Takeda Shingen": {
+    "id": "26",
+    "shortName": "Takeda",
+    "title": "The Tiger of Kai",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Versatility",
+    "blue": "Mobility"
+  },
+  "Guan Yu": {
+    "id": "27",
+    "title": "Lord of the Magnificient Beard",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Conquering",
+    "blue": "Skill"
+  },
+  "Tomyris": {
+    "id": "28",
+    "title": "Queen of the Massagetae",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Conquering",
+    "blue": "Attack"
+  },
+  "Attila": {
+    "id": "29",
+    "title": "The Scourge of God",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Conquering",
+    "blue": "Attack"
+  },
+  "Joan of Arc": {
+    "id": "30",
+    "title": "The Maid of Orléans",
+    "tier": "Epic",
+    "red": "Integration",
+    "yellow": "Gathering",
+    "blue": "Support"
+  },
+  "Scipio Africanus": {
+    "id": "31",
+    "shortName": "Scipio",
+    "title": "Blades of Warfare",
+    "tier": "Epic",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Attack"
+  },
+  "Boudica": {
+    "id": "32",
+    "title": "Celtic Rose",
+    "tier": "Epic",
+    "red": "Integration",
+    "yellow": "Peacekeeping",
+    "blue": "Skill"
+  },
+  "Pelagius": {
+    "id": "33",
+    "title": "Unruly Revivalist",
+    "tier": "Epic",
+    "red": "Cavalry",
+    "yellow": "Garrison",
+    "blue": "Skill"
+  },
+  "Lohar": {
+    "id": "34",
+    "title": "Roaring Barbarian",
+    "tier": "Epic",
+    "red": "Integration",
+    "yellow": "Peacekeeping",
+    "blue": "Support"
+  },
+  "Belisarius": {
+    "id": "35",
+    "title": "Last of the Romans",
+    "tier": "Epic",
+    "red": "Cavalry",
+    "yellow": "Peacekeeping",
+    "blue": "Mobility"
+  },
+  "Baibars": {
+    "id": "36",
+    "title": "Father of Conquest",
+    "tier": "Epic",
+    "red": "Cavalry",
+    "yellow": "Conquering",
+    "blue": "Skill"
+  },
+  "Osman I": {
+    "id": "37",
+    "title": "Imperial Pioneer",
+    "tier": "Epic",
     "red": "Leadership",
     "yellow": "Conquering",
     "blue": "Skill"
