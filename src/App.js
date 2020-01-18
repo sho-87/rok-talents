@@ -334,7 +334,8 @@ class App extends Component {
   }
 
   /**
-   * Toggle display of node values. Uses a ref to the tree panel
+   * Toggle display of total number of points spent in each tree. Uses a ref
+   * to the tree panel
    *
    * @memberof App
    */
@@ -343,8 +344,7 @@ class App extends Component {
   }
 
   /**
-   * Toggle display of total number of points spent in each tree. Uses a ref
-   * to the tree panel
+   * Toggle display of node values. Uses a ref to the tree panel
    *
    * @memberof App
    */

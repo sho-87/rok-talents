@@ -34,7 +34,7 @@ class NavBarSettings extends Component {
               <Form.Check
                 type="switch"
                 id="settings-values"
-                label="Show values"
+                label="Show points"
                 defaultChecked={this.props.isMobile ? false : true}
                 onChange={e => this.props.toggleValueDisplay()}
               />

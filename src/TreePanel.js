@@ -195,7 +195,7 @@ class TreePanel extends Component {
   }
 
   /**
-   * Toggle display of node values
+   * Toggle display of total number of points spent in each tree
    *
    * @memberof TreePanel
    */
@@ -206,7 +206,7 @@ class TreePanel extends Component {
   }
 
   /**
-   * Toggle display of total number of points spent in each tree
+   * Toggle display of node values
    *
    * @memberof TreePanel
    */
