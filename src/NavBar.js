@@ -10,8 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { title } from '../package.json';
 
-//TODO: add screenshot
-
 /**
  * Nav bar component containing main application buttons/controls
  *
