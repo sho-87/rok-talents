@@ -259,10 +259,10 @@ div {
     rgb(8, 39, 57) 90%
   );
 
-  background-image: url('../template.jpg');
+  /* background-image: url('../template.jpg');
   background-repeat: no-repeat;
   background-size: 70%;
-  background-position: 42.5% 20%;
+  background-position: 42.5% 20%; */
 }
 
 #tree-square-container {
