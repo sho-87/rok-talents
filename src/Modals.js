@@ -169,7 +169,7 @@ export class ShareModal extends Component {
 
   copyURL() {
     const input = document.getElementById('url');
-    input.focus();
+    input.readOnly=true;
     input.select();
     document.execCommand('copy');
     document.getElementById('copyButton').innerHTML = '\u2713';
