@@ -523,6 +523,11 @@ div {
   color: green;
 }
 
+.popover {
+  max-width: 25vh;
+  max-height: 20vh;
+}
+
 .line path {
   opacity: var(--inactive-opacity);
   stroke: gray;
