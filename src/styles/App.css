@@ -452,17 +452,13 @@ div {
 }
 
 .node-value {
-  display: absolute;
-  font-size: 0.7em;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 95%);
+  height: 50%;
+  width: 80%;
   color: rgb(216, 216, 216);
-}
-
-.node-value-small {
-  transform: translateY(1.6vh);
-}
-
-.node-value-large {
-  transform: translateY(4vh);
 }
 
 .node-tooltip-title {

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import FitText from '@kennethormandy/react-fittext';
 import { isMobile } from 'react-device-detect';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Popovers';
 import { replaceTalentText, getMaxTalentCount } from './utils';
-
-//FIXME: fix location of node labels. dont contain in node div
 
 /**
  * Component for the individual talent nodes
@@ -245,15 +244,11 @@ class Node extends Component {
             style={this.getStyle()}
           >
             {showValues && (
-              <div
-                className={`node-value ${
-                  this.props.type === 'node-small'
-                    ? 'node-value-small'
-                    : 'node-value-large'
-                }`}
-              >
-                {this.props.value + '/' + this.props.max}
-              </div>
+              <FitText compressor={0.3}>
+                <div className="node-value">
+                  {this.props.value + '/' + this.props.max}
+                </div>
+              </FitText>
             )}
           </div>
         </OverlayTrigger>
