@@ -477,13 +477,14 @@ div {
 
 .node-tooltip-title {
   float: left;
-  font-size: 0.9em;
+  font-size: 0.8em;
   font-weight: bold;
 }
 
 .node-tooltip-title-value {
   float: right;
   font-size: 0.8em;
+  margin-left: 5px;
 }
 
 .node-tooltip-body {
