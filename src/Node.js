@@ -186,6 +186,7 @@ class Node extends Component {
 
   render() {
     let showValues = this.props.showValues && this.props.value !== 0;
+    let compressor = this.props.type === 'node-large' ? 0.3 : 0.25;
 
     let props, clickProps;
     if (isMobile) {
@@ -244,7 +245,7 @@ class Node extends Component {
             style={this.getStyle()}
           >
             {showValues && (
-              <FitText compressor={0.3}>
+              <FitText compressor={compressor}>
                 <div className="node-value">
                   {this.props.value + '/' + this.props.max}
                 </div>
