@@ -4,6 +4,8 @@ import { getMaxTalentCount, replaceTalentText } from './utils';
 
 import Commanders from './data/Commanders.json';
 
+//FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
+
 /**
  * Stats panel component displaying stats about the current talent build
  *

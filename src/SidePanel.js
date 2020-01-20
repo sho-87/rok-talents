@@ -3,7 +3,6 @@ import SummaryPanel from './SummaryPanel';
 import StatsPanel from './StatsPanel';
 
 //TODO: make side panel draggable and resizable?
-//FIXME: calc stats is super inefficient. each node is checked multiple times for each stat
 
 /**
  * Side panel component displaying stats about the current talent build
