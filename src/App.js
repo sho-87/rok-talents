@@ -123,6 +123,7 @@ class App extends Component {
           this.updateURL('clear');
         } else {
           this.updateURL('update');
+          document.title = `${commanderName} | ${title}`;
         }
         break;
       default:
