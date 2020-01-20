@@ -10,7 +10,7 @@ import { sumArray, getMaxTalentCount, encode, decode } from './utils';
 import loadTreeData from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 import { maxPoints } from './values';
-import { dataVersion } from '../package.json';
+import { dataVersion, title } from '../package.json';
 
 import './styles/App.css';
 import './styles/MediaQuery.css';
@@ -213,6 +213,7 @@ class App extends Component {
       () => {
         this.updateURL('update');
         this.treePanelRef.drawLines();
+        document.title = `${commander} | ${title}`;
       }
     );
 
