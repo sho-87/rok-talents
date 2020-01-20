@@ -65,33 +65,33 @@ describe('App component', () => {
     expect(treeTotal).not.toBeInTheDocument();
   });
 
-  it('shows main talents in the side panel', () => {
+  it('shows main talents in the stats panel', () => {
     const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;iaaaaaaaa`;
     const { getByTestId } = render(<App url={url} />);
-    expect(getByTestId('side-panel-main-talents')).not.toHaveTextContent(
+    expect(getByTestId('stats-panel-main-talents')).not.toHaveTextContent(
       'Lord of War'
     );
     fireEvent.click(getByTestId('Attack4'));
-    expect(getByTestId('side-panel-main-talents')).toHaveTextContent(
+    expect(getByTestId('stats-panel-main-talents')).toHaveTextContent(
       'Lord of War'
     );
   });
 
-  it('shows correct number of maximum multidimensional talent levels in side panel', () => {
+  it('shows correct number of maximum multidimensional talent levels in stats panel', () => {
     const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;idabacaaa`;
     const { getByTestId } = render(<App url={url} />);
-    expect(getByTestId('side-panel-main-talents')).toHaveTextContent(
+    expect(getByTestId('stats-panel-main-talents')).toHaveTextContent(
       'Fight To The Death (2/3)'
     );
-    expect(getByTestId('side-panel-main-talents')).not.toHaveTextContent(
+    expect(getByTestId('stats-panel-main-talents')).not.toHaveTextContent(
       'Fight To The Death (2/2)'
     );
   });
 
-  it('shows correct stat value of multidimensional talents in side panel', () => {
+  it('shows correct stat value of multidimensional talents in stats panel', () => {
     const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;idabacaaa`;
     const { getByTestId } = render(<App url={url} />);
-    expect(getByTestId('side-panel-main-talents')).toHaveTextContent(
+    expect(getByTestId('stats-panel-main-talents')).toHaveTextContent(
       'Increases all damage dealt by 4%, but also increases all damage taken by 2%'
     );
   });

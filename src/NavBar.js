@@ -10,8 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { title } from '../package.json';
 
-//TODO: use state for the settings checkboxes (dont rely on toggling)
-
 /**
  * Nav bar component containing main application buttons/controls
  *

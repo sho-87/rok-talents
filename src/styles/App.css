@@ -201,11 +201,13 @@ div {
   background-color: #555;
 }
 
-#side-panel-tree-icon-container {
+/* Summary Panel */
+
+#summary-panel-tree-icon-container {
   margin-bottom: 10px;
 }
 
-.side-panel-tree-icon {
+.summary-panel-tree-icon {
   border: 1px solid black;
   margin: 0 3px 5px 3px;
   text-align: center;
@@ -214,54 +216,44 @@ div {
   text-shadow: 0px 0px 4px black;
 }
 
-#side-panel-summary p {
+#summary-panel-summary p {
   margin-bottom: 0px;
 }
 
-#side-panel-stats p {
+/* Stats Panel */
+
+#stats-panel-stats p {
   margin-bottom: 0px;
 }
 
-.side-panel-expand {
+.stats-panel-expand {
   font-size: 0.4em;
 }
 
-.side-panel-expand:hover {
+.stats-panel-expand:hover {
   color: blue;
 }
 
-.side-panel-main {
+.stats-panel-main {
   margin-bottom: 5px;
 }
 
-.side-panel-main-title {
+.stats-panel-main-title {
   font-size: 0.9em;
   font-weight: bold;
 }
 
-.side-panel-main-text {
+.stats-panel-main-text {
   font-size: 0.8em;
   padding-left: 5px;
 }
 
-.side-panel-main-bullet {
+.stats-panel-main-bullet {
   float: left;
   width: 10px;
   height: 10px;
   margin: 5px;
   border: 1px solid rgba(0, 0, 0, 1);
-}
-
-.side-panel-main-red {
-  background: var(--red);
-}
-
-.side-panel-main-yellow {
-  background: var(--yellow);
-}
-
-.side-panel-main-blue {
-  background: var(--blue);
 }
 
 /* Talent tree */
