@@ -74,10 +74,10 @@ class TreePanel extends Component {
    *
    * @memberof TreePanel
    */
-  resetPanZoom() {
-    this.panZoomInstance.moveTo(0, 0);
-    this.panZoomInstance.zoomAbs(0, 0, 1);
-  }
+  // resetPanZoom() {
+  //   this.panZoomInstance.moveTo(0, 0);
+  //   this.panZoomInstance.zoomAbs(0, 0, 1);
+  // }
 
   /**
    * Call for repainting jsplumb lines on window resize
