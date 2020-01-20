@@ -101,7 +101,7 @@ class StatsPanel extends Component {
 
   render() {
     return (
-      <div>
+      <div id='stats-panel'>
         <h3>Stats</h3>
         <div id="stats-panel-stats">
           <p>Attack: {this.calcStats('Attack')}%</p>
@@ -110,7 +110,7 @@ class StatsPanel extends Component {
           <p>March Speed: {this.calcStats('March Speed')}%</p>
         </div>
 
-        <h3 onClick={this.toggleMain}>
+        <h3 onClick={this.toggleMainStats}>
           Main Talents{' '}
           <span className="stats-panel-expand">
             {this.state.isShownMainStats ? '(collapse)' : '(expand)'}

@@ -15,7 +15,7 @@ import Commanders from './data/Commanders.json';
 class SummaryPanel extends Component {
   render() {
     return (
-      <div>
+      <div id='summary-panel'>
         <h2>{this.props.commander ? this.props.commander : 'Summary'}</h2>
         <h3>
           {this.props.commander ? Commanders[this.props.commander].title : ''}

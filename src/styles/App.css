@@ -1,7 +1,7 @@
 /* Global variables */
 :root {
   --nav-bar-height: 50px;
-  --side-panel-width: 20%;
+  --side-panel-width: 25%;
   --hexagon-opacity: 1;
   --tree-box-outline: none;
   --red: rgba(190, 50, 25, 1);
@@ -202,6 +202,10 @@ div {
 }
 
 /* Summary Panel */
+#summary-panel {
+  background-color: white;
+  border: 0.5px solid black;
+}
 
 #summary-panel-tree-icon-container {
   margin-bottom: 10px;
@@ -221,6 +225,10 @@ div {
 }
 
 /* Stats Panel */
+#stats-panel {
+  background-color: white;
+  border: 0.5px solid black;
+}
 
 #stats-panel-stats p {
   margin-bottom: 0px;
