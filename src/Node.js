@@ -246,7 +246,7 @@ class Node extends Component {
           >
             {showValues && (
               <FitText compressor={compressor}>
-                <div className="node-value">
+                <div className="node-value" data-testid="node-value">
                   {this.props.value + '/' + this.props.max}
                 </div>
               </FitText>

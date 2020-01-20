@@ -251,7 +251,7 @@ class TreePanel extends Component {
     };
 
     return (
-      <div id="tree-panel">
+      <div id="tree-panel" data-testid="tree-panel">
         <PrereqToast
           ref={component => (this.prereqToastRef = component)}
           msg={this.state.prereqMsg}

@@ -121,6 +121,7 @@ class SidePanel extends Component {
     return (
       <div
         id="side-panel"
+        data-testid="side-panel"
         className={
           this.state.showSidePanel ? 'side-panel-open' : 'side-panel-closed'
         }

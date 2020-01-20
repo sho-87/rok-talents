@@ -27,6 +27,44 @@ describe('App component', () => {
     }
   });
 
+  it('toggles side panel on settings change', () => {
+    const { getByTestId } = render(<App url="/" />);
+    const sidePanel = getByTestId('side-panel');
+
+    expect(sidePanel).toHaveAttribute('class', 'side-panel-open');
+
+    fireEvent.click(getByTestId('select-settings'));
+    fireEvent.click(getByTestId('settings-side-panel'));
+    expect(sidePanel).toHaveAttribute('class', 'side-panel-closed');
+
+    fireEvent.click(getByTestId('settings-side-panel'));
+    expect(sidePanel).toHaveAttribute('class', 'side-panel-open');
+  });
+
+  it('toggles node point values on settings change', () => {
+    const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;idabacaaa`;
+    const { getByTestId, queryAllByTestId } = render(<App url={url} />);
+    const nodeValue = queryAllByTestId('node-value')[0];
+
+    expect(nodeValue).toBeInTheDocument();
+
+    fireEvent.click(getByTestId('select-settings'));
+    fireEvent.click(getByTestId('settings-values'));
+    expect(nodeValue).not.toBeInTheDocument();
+  });
+
+  it('toggles tree totals on settings change', () => {
+    const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;idabacaaa`;
+    const { getByTestId, queryAllByTestId } = render(<App url={url} />);
+    const treeTotal = queryAllByTestId('tree-total')[0];
+
+    expect(treeTotal).toBeInTheDocument();
+
+    fireEvent.click(getByTestId('select-settings'));
+    fireEvent.click(getByTestId('settings-totals'));
+    expect(treeTotal).not.toBeInTheDocument();
+  });
+
   it('shows main talents in the side panel', () => {
     const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;iaaaaaaaa`;
     const { getByTestId } = render(<App url={url} />);

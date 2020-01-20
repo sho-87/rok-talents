@@ -16,7 +16,7 @@ class NavBarSettings extends Component {
   render() {
     return (
       <Dropdown alignRight as={NavItem} id="select-settings">
-        <Dropdown.Toggle as={NavLink}>
+        <Dropdown.Toggle as={NavLink} data-testid="select-settings">
           <FontAwesomeIcon icon={faCog} />
           <span className="nav-button-text">Settings</span>
         </Dropdown.Toggle>
@@ -27,6 +27,7 @@ class NavBarSettings extends Component {
               <Form.Check
                 type="switch"
                 id="settings-side-panel"
+                data-testid="settings-side-panel"
                 label="Show side panel"
                 defaultChecked={this.props.isMobile ? false : true}
                 onChange={e => this.props.toggleSidePanel()}
@@ -34,6 +35,7 @@ class NavBarSettings extends Component {
               <Form.Check
                 type="switch"
                 id="settings-values"
+                data-testid="settings-values"
                 label="Show points"
                 defaultChecked={this.props.isMobile ? false : true}
                 onChange={e => this.props.toggleValueDisplay()}
@@ -41,6 +43,7 @@ class NavBarSettings extends Component {
               <Form.Check
                 type="switch"
                 id="settings-totals"
+                data-testid="settings-totals"
                 label="Show totals"
                 defaultChecked={this.props.isMobile ? false : true}
                 onChange={e => this.props.toggleTotalDisplay()}
@@ -53,6 +56,7 @@ class NavBarSettings extends Component {
                   <Form.Check
                     type="switch"
                     id="settings-mouse"
+                    data-testid="settings-mouse"
                     label="Show mouse XY"
                     defaultChecked={false}
                     onChange={e => this.props.toggleMousePosition()}

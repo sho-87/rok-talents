@@ -32,9 +32,10 @@ class Hexagon extends Component {
               <FitText compressor={0.7}>
                 <div>
                   {this.props.showTotals && (
-                    <div className="tree-total">{`(${this.props.calcPointsSpent(
-                      'red'
-                    )})`}</div>
+                    <div
+                      className="tree-total"
+                      data-testid="tree-total"
+                    >{`(${this.props.calcPointsSpent('red')})`}</div>
                   )}
                   {getTreeName('red', this.props.commander)}
                 </div>
@@ -45,9 +46,10 @@ class Hexagon extends Component {
               <FitText compressor={0.7}>
                 <div>
                   {this.props.showTotals && (
-                    <div className="tree-total">{`(${this.props.calcPointsSpent(
-                      'yellow'
-                    )})`}</div>
+                    <div
+                      className="tree-total"
+                      data-testid="tree-total"
+                    >{`(${this.props.calcPointsSpent('yellow')})`}</div>
                   )}
                   {getTreeName('yellow', this.props.commander)}
                 </div>
@@ -58,9 +60,10 @@ class Hexagon extends Component {
               <FitText compressor={0.7}>
                 <div>
                   {this.props.showTotals && (
-                    <div className="tree-total">{`(${this.props.calcPointsSpent(
-                      'blue'
-                    )})`}</div>
+                    <div
+                      className="tree-total"
+                      data-testid="tree-total"
+                    >{`(${this.props.calcPointsSpent('blue')})`}</div>
                   )}
                   {getTreeName('blue', this.props.commander)}
                 </div>
