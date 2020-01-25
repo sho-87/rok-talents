@@ -275,6 +275,7 @@ div {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  padding-bottom: 70px;
   background-image: radial-gradient(
     circle,
     rgb(10, 72, 97) 30%,
