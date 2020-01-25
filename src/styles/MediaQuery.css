@@ -1,6 +1,26 @@
 @media (orientation: portrait) {
+  h1 {
+    font-size: 4vw;
+  }
+  
+  h2 {
+    font-size: 3vw;
+  }
+
+  p {
+    font-size: 3vw;
+  }
+
   #main-container {
     flex-flow: column nowrap;
+  }
+
+  #summary-panel {
+    height: 100%;
+  }
+
+  .info-box {
+    margin-bottom: 0px;
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MediaQuery from 'react-responsive';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavBarButtons from './NavBarButtons';
@@ -74,7 +75,10 @@ class NavBar extends Component {
         <ShareModal ref={component => (this.shareModalRef = component)} />
 
         <Navbar bg="light" variant="light">
-          <Navbar.Brand href="/">{title}</Navbar.Brand>
+          <MediaQuery minDeviceWidth={380}>
+            <Navbar.Brand href="/">{title}</Navbar.Brand>
+          </MediaQuery>
+
           <Navbar.Brand
             id="nav-icon"
             className="mr-auto"

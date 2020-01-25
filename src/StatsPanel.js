@@ -101,23 +101,27 @@ class StatsPanel extends Component {
 
   render() {
     return (
-      <div id='stats-panel'>
-        <h3>Stats</h3>
-        <div id="stats-panel-stats">
-          <p>Attack: {this.calcStats('Attack')}%</p>
-          <p>Defense: {this.calcStats('Defense')}%</p>
-          <p>Health: {this.calcStats('Health')}%</p>
-          <p>March Speed: {this.calcStats('March Speed')}%</p>
+      <div id="stats-panel">
+        <div className="info-box">
+          <h1>Stats</h1>
+          <div id="stats-panel-stats">
+            <p>Attack: {this.calcStats('Attack')}%</p>
+            <p>Defense: {this.calcStats('Defense')}%</p>
+            <p>Health: {this.calcStats('Health')}%</p>
+            <p>March Speed: {this.calcStats('March Speed')}%</p>
+          </div>
         </div>
 
-        <h3 onClick={this.toggleMainStats}>
-          Main Talents{' '}
-          <span className="stats-panel-expand">
-            {this.state.isShownMainStats ? '(collapse)' : '(expand)'}
-          </span>
-        </h3>
-        <div data-testid="stats-panel-main-talents">
-          {this.calcStats('Main')}
+        <div className="info-box">
+          <h1 onClick={this.toggleMainStats}>
+            Main Talents{' '}
+            <span className="stats-panel-expand">
+              {this.state.isShownMainStats ? '(collapse)' : '(expand)'}
+            </span>
+          </h1>
+          <div data-testid="stats-panel-main-talents">
+            {this.calcStats('Main')}
+          </div>
         </div>
       </div>
     );
