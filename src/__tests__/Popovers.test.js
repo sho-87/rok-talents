@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { render, cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { TalentTooltip } from '../Popovers';
+
+let props;
+beforeEach(() => {
+  props = { target: 'body', calcPointsRemaining: jest.fn() };
+});
+
+afterEach(cleanup);
 
 describe('Popover', () => {
   it('renders without crashing', () => {
-    let props = { target: 'body' };
-
     const div = document.createElement('div');
     ReactDOM.render(<TalentTooltip {...props} />, div);
     ReactDOM.unmountComponentAtNode(div);
