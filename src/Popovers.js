@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import { faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-//FIXME: add mediaquery for portrait and landscape on mobile
+//TODO: remove isMobile. Use mediaqueries instead
 
 /**
  * Tooltip containing information about each talent node. Displayed when 

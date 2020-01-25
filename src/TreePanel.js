@@ -20,8 +20,8 @@ class TreePanel extends Component {
     super(props);
     this.state = {
       prereqMsg: '',
-      showTotals: this.props.isMobile ? false : true,
-      showValues: this.props.isMobile ? false : true,
+      showTotals: true,
+      showValues: true,
       showMouse: false
     };
     this.panZoomInstance = null;

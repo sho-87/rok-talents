@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import SummaryPanel from './SummaryPanel';
 import StatsPanel from './StatsPanel';
 
-//TODO: make side panel draggable and resizable?
-
 /**
  * Side panel component displaying stats about the current talent build
  *
@@ -14,7 +12,7 @@ class SidePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showSidePanel: this.props.isMobile ? false : true
+      showSidePanel: true
     };
 
     // Context bindings

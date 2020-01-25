@@ -29,7 +29,7 @@ class NavBarSettings extends Component {
                 id="settings-side-panel"
                 data-testid="settings-side-panel"
                 label="Show side panel"
-                defaultChecked={this.props.isMobile ? false : true}
+                defaultChecked={true}
                 onChange={e => this.props.toggleSidePanel()}
               />
               <Form.Check
@@ -37,7 +37,7 @@ class NavBarSettings extends Component {
                 id="settings-values"
                 data-testid="settings-values"
                 label="Show points"
-                defaultChecked={this.props.isMobile ? false : true}
+                defaultChecked={true}
                 onChange={e => this.props.toggleValueDisplay()}
               />
               <Form.Check
@@ -45,7 +45,7 @@ class NavBarSettings extends Component {
                 id="settings-totals"
                 data-testid="settings-totals"
                 label="Show totals"
-                defaultChecked={this.props.isMobile ? false : true}
+                defaultChecked={true}
                 onChange={e => this.props.toggleTotalDisplay()}
               />
 
