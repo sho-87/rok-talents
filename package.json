@@ -1,12 +1,12 @@
 {
-  "name": "rok-talent-builder",
-  "title": "RoK Talent Builder",
+  "name": "rok-talents",
+  "title": "RoK Talents",
   "version": "1.0.0",
   "dataVersion": 1,
   "description": "Rise of Kingdoms talent builder",
   "keywords": [
     "games",
-    "rise of kingdoms"
+    "Rise of Kingdoms"
   ],
   "private": true,
   "author": {
@@ -16,10 +16,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sho-87/rok-talent-builder.git"
+    "url": "https://github.com/sho-87/rok-talents.git"
   },
   "bugs": {
-    "url": "https://github.com/sho-87/rok-talent-builder/issues"
+    "url": "https://github.com/sho-87/rok-talents/issues"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
