@@ -4,6 +4,7 @@
   --side-panel-width: 25%;
   --hexagon-opacity: 1;
   --tree-box-outline: none;
+  --bg-color: rgb(8, 39, 57);
   --red: rgba(190, 50, 25, 1);
   --yellow: rgba(183, 156, 4, 1);
   --blue: rgba(22, 159, 227, 1);
@@ -173,11 +174,7 @@ p {
   flex-flow: row nowrap;
   justify-content: center; /* horizontal */
   align-items: center; /* vertical */
-  background-image: radial-gradient(
-    circle,
-    rgb(10, 72, 97) 30%,
-    rgb(8, 39, 57) 90%
-  );
+  background-color: var(--bg-color);
 }
 
 /* Side panel */
