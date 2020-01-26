@@ -46,10 +46,10 @@ class StatsPanel extends Component {
       <div id="stats-panel" className="info-box">
         <h2>Stats</h2>
         <div id="stats-panel-stats">
-          <p>Attack: {this.calcStats('Attack')}%</p>
-          <p>Defense: {this.calcStats('Defense')}%</p>
-          <p>Health: {this.calcStats('Health')}%</p>
-          <p>March Speed: {this.calcStats('March Speed')}%</p>
+          <div>Attack: {this.calcStats('Attack')}%</div>
+          <div>Defense: {this.calcStats('Defense')}%</div>
+          <div>Health: {this.calcStats('Health')}%</div>
+          <div>March Speed: {this.calcStats('March Speed')}%</div>
         </div>
       </div>
     );

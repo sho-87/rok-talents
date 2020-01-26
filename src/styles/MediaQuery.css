@@ -11,10 +11,6 @@
     font-size: 2.8vw;
   }
 
-  p {
-    font-size: 3vw;
-  }
-
   #main-container {
     flex-flow: column nowrap;
   }
@@ -46,7 +42,7 @@
   }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 570px) {
   .nav-button-text {
     display: none;
   }

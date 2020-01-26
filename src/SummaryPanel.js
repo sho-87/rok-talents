@@ -18,8 +18,8 @@ class SummaryPanel extends Component {
         </h3>
 
         <div id="summary-panel-summary">
-          <p>Points remaining: {this.props.calcPointsRemaining()}</p>
-          <p>Points spent: {this.props.calcPointsSpent()}</p>
+          <div>Points remaining: {this.props.calcPointsRemaining()}</div>
+          <div>Points spent: {this.props.calcPointsSpent()}</div>
         </div>
       </div>
     );
