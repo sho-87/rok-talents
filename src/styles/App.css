@@ -1,7 +1,7 @@
 /* Global variables */
 :root {
   --nav-bar-height: 50px;
-  --side-panel-width: 25%;
+  --side-panel-width: 20%;
   --hexagon-opacity: 1;
   --tree-box-outline: none;
   --bg-color: rgb(7, 68, 90);
@@ -241,20 +241,7 @@ p {
 }
 
 #summary-panel {
-  flex-grow: 2;
-}
-
-#summary-panel-tree-icon-container {
-  margin-bottom: 10px;
-}
-
-.summary-panel-tree-icon {
-  border: 1px solid black;
-  margin: 0 3px 5px 3px;
-  text-align: center;
-  font-size: 0.8em;
-  color: white;
-  text-shadow: 0px 0px 4px black;
+  flex-grow: 3;
 }
 
 #summary-panel-summary p {

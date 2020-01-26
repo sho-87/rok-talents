@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MediaQuery from 'react-responsive';
 import { faTrashAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
