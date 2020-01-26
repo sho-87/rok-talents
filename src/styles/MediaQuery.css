@@ -20,6 +20,7 @@
   }
 
   #side-panel {
+    padding: 3px;
     background-image: linear-gradient(
       to top,
       var(--bg-color),
@@ -37,7 +38,7 @@
 
   #stats-panel {
     height: 100%;
-    margin-left: 10px;
+    margin-left: 3px;
   }
 
   .info-box {

@@ -187,6 +187,9 @@ p {
 #side-panel {
   height: 100%;
   width: 100%;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-wrap: break-word;
   z-index: 10;
   background-image: linear-gradient(
     to left,
@@ -197,9 +200,6 @@ p {
 
 .side-panel-open {
   flex: 0 0 var(--side-panel-width);
-  overflow-y: auto;
-  overflow-wrap: break-word;
-  padding: 10px;
 }
 
 .side-panel-closed {

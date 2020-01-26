@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import MediaQuery from 'react-responsive';
-import {
-  faTrashAlt,
-  faShareAlt,
-  faChartBar
-} from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 /**
@@ -17,20 +13,6 @@ class NavBarButtons extends Component {
   render() {
     return (
       <form className="form-inline">
-        <MediaQuery orientation="portrait">
-          <button
-            id="button-stats"
-            data-testid="button-stats"
-            type="button"
-            className="btn btn-sm btn-info"
-            disabled={
-              this.props.commander | this.props.calcPointsSpent() ? false : true
-            }
-          >
-            <FontAwesomeIcon icon={faChartBar} />
-            <span className="nav-button-text">Stats</span>
-          </button>
-        </MediaQuery>
         <button
           id="button-reset"
           data-testid="button-reset"
