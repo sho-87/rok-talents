@@ -17,9 +17,9 @@ class SummaryPanel extends Component {
     return (
         <div id="summary-panel" className="info-box">
           <h1>{this.props.commander ? this.props.commander : 'Summary'}</h1>
-          <h2>
+          <h3>
             {this.props.commander ? Commanders[this.props.commander].title : ''}
-          </h2>
+          </h3>
           {this.props.commander ? (
             <Container id="summary-panel-tree-icon-container">
               <Row>

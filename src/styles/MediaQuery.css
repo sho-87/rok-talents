@@ -7,6 +7,10 @@
     font-size: 3vw;
   }
 
+  h3 {
+    font-size: 2.8vw;
+  }
+
   p {
     font-size: 3vw;
   }
@@ -23,8 +27,17 @@
     );
   }
 
+  #summary-panel-container {
+    height: 100%;
+  }
+
   #summary-panel {
     height: 100%;
+  }
+
+  #stats-panel {
+    height: 100%;
+    margin-left: 10px;
   }
 
   .info-box {

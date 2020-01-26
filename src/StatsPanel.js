@@ -44,7 +44,7 @@ class StatsPanel extends Component {
   render() {
     return (
       <div id="stats-panel" className="info-box">
-        <h1>Stats</h1>
+        <h2>Stats</h2>
         <div id="stats-panel-stats">
           <p>Attack: {this.calcStats('Attack')}%</p>
           <p>Defense: {this.calcStats('Defense')}%</p>

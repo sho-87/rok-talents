@@ -86,12 +86,12 @@ class StatsTalentsPanel extends Component {
   render() {
     return (
       <div className="info-box" onClick={this.toggleStatsTalents}>
-        <h1>
+        <h2>
           Main Talents{' '}
           <span className="stats-talents-expand">
             {this.state.isShownStatsTalents ? '(collapse)' : '(expand)'}
           </span>
-        </h1>
+        </h2>
         <div data-testid="stats-talents">{this.calcStatsTalents()}</div>
       </div>
     );

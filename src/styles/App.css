@@ -47,6 +47,11 @@ h2 {
   font-size: 1vw;
 }
 
+h3 {
+  font-size: 0.9vw;
+  font-style: italic;
+}
+
 p {
   font-size: 1vw;
 }
@@ -229,6 +234,16 @@ p {
 }
 
 /* Summary Panel */
+#summary-panel-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; /* horizontal */
+}
+
+#summary-panel {
+  flex-grow: 2;
+}
+
 #summary-panel-tree-icon-container {
   margin-bottom: 10px;
 }
@@ -247,6 +262,10 @@ p {
 }
 
 /* Stats Panel */
+#stats-panel {
+  flex-grow: 1;
+}
+
 #stats-panel-stats p {
   margin-bottom: 0px;
 }

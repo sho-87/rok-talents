@@ -43,11 +43,22 @@ class SidePanel extends Component {
         }
       >
         <ErrorBoundary>
-          <SummaryPanel
-            commander={this.props.commander}
-            calcPointsRemaining={this.props.calcPointsRemaining}
-            calcPointsSpent={this.props.calcPointsSpent}
-          />
+          <div id="summary-panel-container">
+            <SummaryPanel
+              commander={this.props.commander}
+              calcPointsRemaining={this.props.calcPointsRemaining}
+              calcPointsSpent={this.props.calcPointsSpent}
+            />
+            <MediaQuery orientation="portrait">
+              <StatsPanel
+                commander={this.props.commander}
+                treeData={this.props.treeData}
+                red={this.props.red}
+                yellow={this.props.yellow}
+                blue={this.props.blue}
+              />
+            </MediaQuery>
+          </div>
         </ErrorBoundary>
 
         <MediaQuery orientation="landscape">
