@@ -4,7 +4,7 @@
   --side-panel-width: 25%;
   --hexagon-opacity: 1;
   --tree-box-outline: none;
-  --bg-color: rgb(8, 39, 57);
+  --bg-color: rgb(7, 68, 90);
   --red: rgba(190, 50, 25, 1);
   --yellow: rgba(183, 156, 4, 1);
   --blue: rgba(22, 159, 227, 1);
@@ -245,29 +245,30 @@ p {
   margin-bottom: 0px;
 }
 
-.stats-panel-expand {
+/* Stats Talents Panel */
+.stats-talents-expand {
   font-size: 0.4em;
 }
 
-.stats-panel-expand:hover {
+.stats-talents-expand:hover {
   color: blue;
 }
 
-.stats-panel-main {
+.stats-talents-main {
   margin-bottom: 5px;
 }
 
-.stats-panel-main-title {
+.stats-talents-title {
   font-size: 0.9em;
   font-weight: bold;
 }
 
-.stats-panel-main-text {
+.stats-talents-text {
   font-size: 0.8em;
   padding-left: 5px;
 }
 
-.stats-panel-main-bullet {
+.stats-talents-bullet {
   float: left;
   width: 10px;
   height: 10px;

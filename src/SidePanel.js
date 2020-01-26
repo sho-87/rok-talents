@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MediaQuery from 'react-responsive';
 import SummaryPanel from './SummaryPanel';
 import StatsPanel from './StatsPanel';
+import StatsTalentsPanel from './StatsTalentsPanel';
 import ErrorBoundary from './Error';
 
 /**
@@ -52,6 +53,16 @@ class SidePanel extends Component {
         <MediaQuery orientation="landscape">
           <ErrorBoundary>
             <StatsPanel
+              commander={this.props.commander}
+              treeData={this.props.treeData}
+              red={this.props.red}
+              yellow={this.props.yellow}
+              blue={this.props.blue}
+            />
+          </ErrorBoundary>
+
+          <ErrorBoundary>
+            <StatsTalentsPanel
               commander={this.props.commander}
               treeData={this.props.treeData}
               red={this.props.red}

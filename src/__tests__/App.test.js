@@ -68,11 +68,11 @@ describe('App component', () => {
   // it('shows main talents in the stats panel', () => {
   //   const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;iaaaaaaaa`;
   //   const { getByTestId } = render(<App url={url} />);
-  //   expect(getByTestId('stats-panel-main-talents')).not.toHaveTextContent(
+  //   expect(getByTestId('stats-talents')).not.toHaveTextContent(
   //     'Lord of War'
   //   );
   //   fireEvent.click(getByTestId('Attack4'));
-  //   expect(getByTestId('stats-panel-main-talents')).toHaveTextContent(
+  //   expect(getByTestId('stats-talents')).toHaveTextContent(
   //     'Lord of War'
   //   );
   // });
@@ -80,10 +80,10 @@ describe('App component', () => {
   // it('shows correct number of maximum multidimensional talent levels in stats panel', () => {
   //   const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;idabacaaa`;
   //   const { getByTestId } = render(<App url={url} />);
-  //   expect(getByTestId('stats-panel-main-talents')).toHaveTextContent(
+  //   expect(getByTestId('stats-talents')).toHaveTextContent(
   //     'Fight To The Death (2/3)'
   //   );
-  //   expect(getByTestId('stats-panel-main-talents')).not.toHaveTextContent(
+  //   expect(getByTestId('stats-talents')).not.toHaveTextContent(
   //     'Fight To The Death (2/2)'
   //   );
   // });
@@ -91,7 +91,7 @@ describe('App component', () => {
   // it('shows correct stat value of multidimensional talents in stats panel', () => {
   //   const url = `?1;5;aaaaaaaaaa;aaaaaaaaa;idabacaaa`;
   //   const { getByTestId } = render(<App url={url} />);
-  //   expect(getByTestId('stats-panel-main-talents')).toHaveTextContent(
+  //   expect(getByTestId('stats-talents')).toHaveTextContent(
   //     'Increases all damage dealt by 4%, but also increases all damage taken by 2%'
   //   );
   // });
