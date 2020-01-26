@@ -15,6 +15,14 @@
     flex-flow: column nowrap;
   }
 
+  #side-panel {
+    background-image: linear-gradient(
+      to top,
+      var(--bg-color),
+      var(--bg-color-dark)
+    );
+  }
+
   #summary-panel {
     height: 100%;
   }

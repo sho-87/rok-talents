@@ -5,6 +5,7 @@
   --hexagon-opacity: 1;
   --tree-box-outline: none;
   --bg-color: rgb(7, 68, 90);
+  --bg-color-dark: rgb(0, 40, 66);
   --red: rgba(190, 50, 25, 1);
   --yellow: rgba(183, 156, 4, 1);
   --blue: rgba(22, 159, 227, 1);
@@ -182,6 +183,11 @@ p {
   height: 100%;
   width: 100%;
   z-index: 10;
+  background-image: linear-gradient(
+    to left,
+    var(--bg-color),
+    var(--bg-color-dark)
+  );
 }
 
 .side-panel-open {
