@@ -30,8 +30,8 @@
     "panzoom": "^8.7.5",
     "react": "^16.10.2",
     "react-bootstrap": "^1.0.0-beta.16",
-    "react-device-detect": "^1.11.14",
     "react-dom": "^16.10.2",
+    "react-responsive": "^8.0.3",
     "react-scripts": "^3.3.0",
     "react-share": "^3.0.1"
   },

@@ -1,4 +1,48 @@
-@media only screen and (max-width: 750px) {
+@media (orientation: portrait) {
+  h1 {
+    font-size: 4vw;
+  }
+  
+  h2 {
+    font-size: 3vw;
+  }
+
+  h3 {
+    font-size: 2.8vw;
+  }
+
+  #main-container {
+    flex-flow: column nowrap;
+  }
+
+  #side-panel {
+    padding: 3px;
+    background-image: linear-gradient(
+      to top,
+      var(--bg-color),
+      var(--bg-color-dark)
+    );
+  }
+
+  #summary-panel-container {
+    height: 100%;
+  }
+
+  #summary-panel {
+    height: 100%;
+  }
+
+  #stats-panel {
+    height: 100%;
+    margin-left: 3px;
+  }
+
+  .info-box {
+    margin-bottom: 0px;
+  }
+}
+
+@media only screen and (max-width: 570px) {
   .nav-button-text {
     display: none;
   }

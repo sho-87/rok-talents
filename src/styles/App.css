@@ -1,9 +1,11 @@
 /* Global variables */
 :root {
   --nav-bar-height: 50px;
-  --side-panel-width: 25%;
+  --side-panel-width: 20%;
   --hexagon-opacity: 1;
   --tree-box-outline: none;
+  --bg-color: rgb(7, 68, 90);
+  --bg-color-dark: rgb(0, 40, 66);
   --red: rgba(190, 50, 25, 1);
   --yellow: rgba(183, 156, 4, 1);
   --blue: rgba(22, 159, 227, 1);
@@ -35,6 +37,19 @@ body {
 
 div {
   outline-style: none;
+}
+
+h1 {
+  font-size: 1.5vw;
+}
+
+h2 {
+  font-size: 1vw;
+}
+
+h3 {
+  font-size: 0.9vw;
+  font-style: italic;
 }
 
 #app {
@@ -161,21 +176,26 @@ div {
   flex-flow: row nowrap;
   justify-content: center; /* horizontal */
   align-items: center; /* vertical */
+  background-color: var(--bg-color);
 }
 
 /* Side panel */
 #side-panel {
   height: 100%;
-  background-color: #838ca7;
-  border: 0.5px solid black;
+  width: 100%;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-wrap: break-word;
   z-index: 10;
+  background-image: linear-gradient(
+    to left,
+    var(--bg-color),
+    var(--bg-color-dark)
+  );
 }
 
 .side-panel-open {
   flex: 0 0 var(--side-panel-width);
-  overflow-y: auto;
-  overflow-wrap: break-word;
-  padding: 10px;
 }
 
 .side-panel-closed {
@@ -201,23 +221,23 @@ div {
   background-color: #555;
 }
 
-/* Summary Panel */
-#summary-panel {
+.info-box {
   background-color: white;
   border: 0.5px solid black;
-}
-
-#summary-panel-tree-icon-container {
+  border-radius: 10px;
+  padding: 10px;
   margin-bottom: 10px;
 }
 
-.summary-panel-tree-icon {
-  border: 1px solid black;
-  margin: 0 3px 5px 3px;
-  text-align: center;
-  font-size: 0.8em;
-  color: white;
-  text-shadow: 0px 0px 4px black;
+/* Summary Panel */
+#summary-panel-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; /* horizontal */
+}
+
+#summary-panel {
+  flex-grow: 3;
 }
 
 #summary-panel-summary p {
@@ -226,37 +246,37 @@ div {
 
 /* Stats Panel */
 #stats-panel {
-  background-color: white;
-  border: 0.5px solid black;
+  flex-grow: 1;
 }
 
 #stats-panel-stats p {
   margin-bottom: 0px;
 }
 
-.stats-panel-expand {
+/* Stats Talents Panel */
+.stats-talents-expand {
   font-size: 0.4em;
 }
 
-.stats-panel-expand:hover {
+.stats-talents-expand:hover {
   color: blue;
 }
 
-.stats-panel-main {
+.stats-talents-main {
   margin-bottom: 5px;
 }
 
-.stats-panel-main-title {
+.stats-talents-title {
   font-size: 0.9em;
   font-weight: bold;
 }
 
-.stats-panel-main-text {
+.stats-talents-text {
   font-size: 0.8em;
   padding-left: 5px;
 }
 
-.stats-panel-main-bullet {
+.stats-talents-bullet {
   float: left;
   width: 10px;
   height: 10px;
@@ -274,11 +294,7 @@ div {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-image: radial-gradient(
-    circle,
-    rgb(10, 72, 97) 30%,
-    rgb(8, 39, 57) 90%
-  );
+  padding-bottom: 70px;
 }
 
 #tree-square-container {

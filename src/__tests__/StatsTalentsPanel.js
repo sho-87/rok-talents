@@ -2,19 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { TalentTooltip } from '../Popovers';
+import StatsTalentsPanel from '../StatsTalentsPanel';
 
 let props;
 beforeEach(() => {
-  props = { target: 'body', calcPointsRemaining: jest.fn() };
+  props = {
+    red: [],
+    yellow: [],
+    blue: []
+  };
 });
 
 afterEach(cleanup);
 
-describe('Popover', () => {
+describe('Stats talent panel component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<TalentTooltip {...props} />, div);
+    ReactDOM.render(<StatsTalentsPanel {...props} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

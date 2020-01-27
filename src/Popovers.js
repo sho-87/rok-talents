@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
+import MediaQuery from 'react-responsive';
 import FitText from '@kennethormandy/react-fittext';
-import { isMobile } from 'react-device-detect';
 import Popover from 'react-bootstrap/Popover';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-//FIXME: add mediaquery for portrait and landscape on mobile
 
 /**
  * Tooltip containing information about each talent node. Displayed when 
@@ -41,12 +39,12 @@ export class TalentTooltip extends Component {
   //   }));
   // }
 
-  render() {
+  createPopover(orientation) {
     let compressor;
 
-    if (isMobile) {
+    if (orientation === 'portrait') {
       compressor = { large: 2.1, small: 0.8 };
-    } else {
+    } else if (orientation === 'landscape') {
       compressor = { large: 1.6, small: undefined };
     }
 
@@ -65,11 +63,11 @@ export class TalentTooltip extends Component {
                 <span className="node-tooltip-title">
                   {this.props.talentname}
                 </span>
-                {!isMobile && (
+                <MediaQuery orientation="landscape">
                   <span className="node-tooltip-title-value">
                     {this.props.value + '/' + this.props.max}
                   </span>
-                )}
+                </MediaQuery>
                 <div style={{ clear: 'both' }}></div>
               </div>
             </Popover.Title>
@@ -83,8 +81,7 @@ export class TalentTooltip extends Component {
                 )}
 
                 {this.props.text}
-
-                {isMobile && (
+                <MediaQuery orientation="portrait">
                   <Container id="node-tooltip-assign-container">
                     <Row>
                       <Col>
@@ -117,7 +114,7 @@ export class TalentTooltip extends Component {
                       </Col>
                     </Row>
                   </Container>
-                )}
+                </MediaQuery>
 
                 {process.env.NODE_ENV === 'development' && (
                   <div className="node-tooltip-id">
@@ -129,6 +126,19 @@ export class TalentTooltip extends Component {
           </div>
         </FitText>
       </Popover>
+    );
+  }
+
+  render() {
+    return (
+      <>
+        <MediaQuery orientation="landscape">
+          {this.createPopover('landscape')}
+        </MediaQuery>
+        <MediaQuery orientation="portrait">
+          {this.createPopover('portrait')}
+        </MediaQuery>
+      </>
     );
   }
 }

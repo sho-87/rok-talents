@@ -33,7 +33,7 @@ class NavBarButtons extends Component {
           disabled={
             this.props.commander | this.props.calcPointsSpent() ? false : true
           }
-          className="btn btn-sm btn-primary"
+          className="btn btn-sm btn-success"
           onClick={() => this.props.showShare()}
         >
           <FontAwesomeIcon icon={faShareAlt} />
