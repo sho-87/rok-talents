@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FitText from '@kennethormandy/react-fittext';
-import { isMobile } from 'react-device-detect';
+import { useMediaQuery } from 'react-responsive';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Popovers';
@@ -19,6 +19,8 @@ class Node extends Component {
     // Context bindings
     this.talentIncrease = this.talentIncrease.bind(this);
     this.talentDecrease = this.talentDecrease.bind(this);
+    this.setTooltip = this.setTooltip.bind(this);
+    this.getStyle = this.getStyle.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -188,74 +190,84 @@ class Node extends Component {
     let showValues = this.props.showValues && this.props.value !== 0;
     let compressor = this.props.type === 'node-large' ? 0.3 : 0.25;
 
-    let props, clickProps;
-    if (isMobile) {
-      props = {
-        trigger: 'click',
-        rootClose: true,
-        rootCloseEvent: 'mousedown'
-      };
-    } else {
-      props = { trigger: 'hover' };
-    }
-
-    if (!isMobile) {
-      clickProps = {
-        onClick: () => this.talentIncrease(),
-        onContextMenu: e => {
-          e.preventDefault();
-          this.talentDecrease();
-        }
-      };
-    } else {
-      clickProps = {
-        onClick: undefined,
-        onContextMenu: e => e.preventDefault()
-      };
-    }
-
     return (
-      <React.Fragment>
-        <OverlayTrigger
-          {...props}
-          placement="right"
-          flip={true}
-          delay={{ show: 0, hide: 0 }}
-          overlay={
-            <TalentTooltip
-              calcPointsRemaining={this.props.calcPointsRemaining}
-              talentdecrease={this.talentDecrease}
-              talentincrease={this.talentIncrease}
-              idx={this.props.idx}
-              talentid={this.props.treeName + this.props.idx}
-              talentname={this.props.talentName}
-              value={this.props.value}
-              max={this.props.max}
-              text={this.setTooltip()}
-            />
-          }
-        >
-          <div
-            {...clickProps}
-            data-testid={this.props.treeName + this.props.idx}
-            id={this.props.treeName + this.props.idx}
-            className={`node ${this.props.type} ${
-              this.props.value === 0 ? 'node-inactive' : ''
-            }`}
-            style={this.getStyle()}
-          >
-            {showValues && (
-              <FitText compressor={compressor}>
-                <div className="node-value" data-testid="node-value">
-                  {this.props.value + '/' + this.props.max}
-                </div>
-              </FitText>
-            )}
-          </div>
-        </OverlayTrigger>
-      </React.Fragment>
+      <NodeOverlay
+        {...this.props}
+        talentIncrease={this.talentIncrease}
+        talentDecrease={this.talentDecrease}
+        setTooltip={this.setTooltip}
+        getStyle={this.getStyle}
+        showValues={showValues}
+        compressor={compressor}
+      />
     );
   }
 }
+
+const NodeOverlay = props => {
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+  let triggerProps, clickProps;
+  
+  if (isPortrait) {
+    triggerProps = {
+      trigger: 'click',
+      rootClose: true,
+      rootCloseEvent: 'mousedown'
+    };
+    clickProps = {
+      onClick: undefined,
+      onContextMenu: e => e.preventDefault()
+    };
+  } else {
+    triggerProps = { trigger: 'hover' };
+    clickProps = {
+      onClick: () => props.talentIncrease(),
+      onContextMenu: e => {
+        e.preventDefault();
+        props.talentDecrease();
+      }
+    };
+  }
+
+  return (
+    <OverlayTrigger
+      {...triggerProps}
+      placement="right"
+      flip={true}
+      delay={{ show: 0, hide: 0 }}
+      overlay={
+        <TalentTooltip
+          calcPointsRemaining={props.calcPointsRemaining}
+          talentdecrease={props.talentDecrease}
+          talentincrease={props.talentIncrease}
+          idx={props.idx}
+          talentid={props.treeName + props.idx}
+          talentname={props.talentName}
+          value={props.value}
+          max={props.max}
+          text={props.setTooltip()}
+        />
+      }
+    >
+      <div
+        {...clickProps}
+        data-testid={props.treeName + props.idx}
+        id={props.treeName + props.idx}
+        className={`node ${props.type} ${
+          props.value === 0 ? 'node-inactive' : ''
+        }`}
+        style={props.getStyle()}
+      >
+        {props.showValues && (
+          <FitText compressor={props.compressor}>
+            <div className="node-value" data-testid="node-value">
+              {props.value + '/' + props.max}
+            </div>
+          </FitText>
+        )}
+      </div>
+    </OverlayTrigger>
+  );
+};
 
 export default Node;
