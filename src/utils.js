@@ -1,5 +1,6 @@
 import { valuesToLetters, lettersToValues } from './values';
 import Commanders from './data/Commanders.json';
+import { title } from '../package.json';
 
 /**
  * Sum all values of an array
@@ -98,6 +99,37 @@ export function getTreeName(color, commander) {
 }
 
 /**
+ * Set the window title with commander name and talents spent in each tree
+ *
+ * @param {string} commander Full name of the commander
+ * @param {Number[]} r Array of red tree values
+ * @param {Number[]} y Array of yellow tree values
+ * @param {Number[]} b Array of blue tree values
+ * @param {string} [sep='-'] Separator to use between point totals
+ */
+export function setTitle(commander, r, y, b, sep = '-') {
+  document.title = `${createSummaryString(commander, r, y, b, sep)} | ${title}`;
+}
+
+/**
+ * Create a string with commander name and talents spent in each tree
+ *
+ * @param {string} commander Full name of the commander
+ * @param {Number[]} r Array of red tree values
+ * @param {Number[]} y Array of yellow tree values
+ * @param {Number[]} b Array of blue tree values
+ * @param {string} [sep='-'] Separator to use between point totals
+ * @returns {string} String summarizing the commander and points spent
+ */
+export function createSummaryString(commander, r, y, b, sep = '-') {
+  const rSpent = sumArray(r);
+  const ySpent = sumArray(y);
+  const bSpent = sumArray(b);
+  const name = Commanders[commander].shortName || commander;
+  return `${name} (${rSpent}${sep}${ySpent}${sep}${bSpent})`;
+}
+
+/**
  * Encode/compress the passed text
  *
  * @param {string} text Text to be encoded/compressed
@@ -137,6 +169,8 @@ export default {
   isMultidimensional,
   getMaxTalentCount,
   replaceTalentText,
+  setTitle,
+  createSummaryString,
   encode,
   decode
 };

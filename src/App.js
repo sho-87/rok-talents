@@ -4,12 +4,11 @@ import NavBar from './NavBar';
 import SidePanel from './SidePanel';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
-
-import { sumArray, getMaxTalentCount, encode, decode } from './utils';
+import { sumArray, getMaxTalentCount, setTitle, encode, decode } from './utils';
 import loadTreeData from './data/AllTrees';
 import Commanders from './data/Commanders.json';
 import { maxPoints } from './values';
-import { dataVersion, title } from '../package.json';
+import { dataVersion } from '../package.json';
 
 import './styles/App.css';
 import './styles/MediaQuery.css';
@@ -124,7 +123,6 @@ class App extends Component {
           this.updateURL('clear');
         } else {
           this.updateURL('update');
-          document.title = `${commanderName} | ${title}`;
         }
         break;
       default:
@@ -187,6 +185,12 @@ class App extends Component {
             encode(this.state.blue.join(''))
           ].join(';');
 
+        setTitle(
+          this.state.commander,
+          this.state.red,
+          this.state.yellow,
+          this.state.blue
+        );
         break;
       case 'clear':
         queryString = '/';
@@ -215,7 +219,6 @@ class App extends Component {
       () => {
         this.updateURL('update');
         this.treePanelRef.drawLines();
-        document.title = `${commander} | ${title}`;
       }
     );
 
