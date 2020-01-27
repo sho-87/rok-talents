@@ -237,7 +237,22 @@ h3 {
 }
 
 #summary-panel {
+  width: 100%;
   flex-grow: 3;
+}
+
+#summary-panel-talents-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; /* horizontal */
+  margin-bottom: 5px;
+}
+
+.summary-panel-talents {
+  width: 33%;
+  margin: 0 1px 0 1px;
+  border: 0.5px solid black;
+  text-align: center;
 }
 
 #summary-panel-summary p {

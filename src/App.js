@@ -16,6 +16,7 @@ import './styles/MediaQuery.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
+//TODO: google analytics
 //TODO: CI/CD
 //TODO: github pages, cloudflare
 //TODO: store non-URL state in browser cache?

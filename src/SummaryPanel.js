@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { getTreeName } from './utils';
 import Commanders from './data/Commanders.json';
 
-//TODO: add colour coded tree names
 //TODO: set background to faded commander image
 
 /**
@@ -16,8 +16,21 @@ class SummaryPanel extends Component {
       <div id="summary-panel" className="info-box">
         <h1>{this.props.commander ? this.props.commander : 'Summary'}</h1>
         <h3>
-          {this.props.commander ? Commanders[this.props.commander].title : ''}
+          {this.props.commander && Commanders[this.props.commander].title}
         </h3>
+        {this.props.commander && (
+          <div id="summary-panel-talents-container">
+            <span className="summary-panel-talents bg-red">
+              {getTreeName('red', this.props.commander)}
+            </span>
+            <span className="summary-panel-talents bg-yellow">
+              {getTreeName('yellow', this.props.commander)}
+            </span>
+            <span className="summary-panel-talents bg-blue">
+              {getTreeName('blue', this.props.commander)}
+            </span>
+          </div>
+        )}
 
         <div id="summary-panel-summary">
           <div>Points remaining: {this.props.calcPointsRemaining()}</div>
