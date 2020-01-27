@@ -5,6 +5,8 @@ import StatsPanel from './StatsPanel';
 import StatsTalentsPanel from './StatsTalentsPanel';
 import ErrorBoundary from './Error';
 
+//TODO: dynamic/responsive typography
+
 /**
  * Side panel component displaying stats about the current talent build
  *

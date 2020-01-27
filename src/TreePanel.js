@@ -8,6 +8,10 @@ import { getTreeName } from './utils';
 
 import { dataVersion } from '../package.json';
 
+//TODO: add FAB for tree zoom
+//TODO: make hex regions clickable for zoom
+//TODO: change tooltip to fixed location?
+
 /**
  * Component for the main tree panel. Controls the display of all nodes and
  * node selections

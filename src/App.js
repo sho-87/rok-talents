@@ -17,6 +17,8 @@ import './styles/MediaQuery.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
+//TODO: CI/CD
+//TODO: github pages, cloudflare
 //TODO: shouldComponentUpdate pass
 //FIXME: only updateurl/encode if that particular tree has changed
 

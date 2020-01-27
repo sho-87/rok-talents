@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
 import Commanders from './data/Commanders.json';
+
+//TODO: add colour coded tree names
+//TODO: set background to faded commander image
 
 /**
  * Summary panel component displaying commander info
