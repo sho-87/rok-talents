@@ -101,6 +101,8 @@ class NavBar extends Component {
               toggleTotalDisplay={this.props.toggleTotalDisplay}
               toggleValueDisplay={this.props.toggleValueDisplay}
               toggleMousePosition={this.props.toggleMousePosition}
+              toggleNodeSize={this.props.toggleNodeSize}
+              nodeSize={this.props.nodeSize}
             />
 
             <NavBarCommander

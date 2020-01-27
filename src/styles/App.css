@@ -461,14 +461,34 @@ h3 {
   z-index: 10;
 }
 
-.node-small {
+.node-small-S {
   width: 4%;
   height: 4%;
 }
 
-.node-large {
+.node-small-M {
+  width: 5%;
+  height: 5%;
+}
+
+.node-small-L {
+  width: 5.5%;
+  height: 5.5%;
+}
+
+.node-large-S {
   width: 7.6%;
   height: 7.6%;
+}
+
+.node-large-M {
+  width: 8%;
+  height: 8%;
+}
+
+.node-large-L {
+  width: 9%;
+  height: 9%;
 }
 
 .node-inactive {

@@ -18,6 +18,7 @@ let treeData;
 
 //TODO: CI/CD
 //TODO: github pages, cloudflare
+//TODO: store non-URL state in browser cache?
 //TODO: shouldComponentUpdate pass
 //FIXME: only updateurl/encode if that particular tree has changed
 
@@ -38,6 +39,7 @@ class App extends Component {
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
     this.toggleMousePosition = this.toggleMousePosition.bind(this);
+    this.toggleNodeSize = this.toggleNodeSize.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
@@ -54,6 +56,8 @@ class App extends Component {
         this.updateURL('clear');
         break;
       case 5: // complete url
+        //FIXME: this load treeData twice if url is valid
+        this.state = this.getEmptyState();
         let [urlDataVersion, comID, red, yellow, blue] = urlParams;
         urlDataVersion = parseInt(urlDataVersion);
 
@@ -71,6 +75,7 @@ class App extends Component {
         } else {
           treeData = loadTreeData(urlDataVersion);
           this.state = {
+            ...this.state,
             dataVersion: urlDataVersion,
             commander: commanderName,
             ...this.createZeroTalents(commanderName)
@@ -148,7 +153,8 @@ class App extends Component {
       commander: '',
       red: [],
       yellow: [],
-      blue: []
+      blue: [],
+      nodeSize: 'S'
     };
   }
 
@@ -374,6 +380,11 @@ class App extends Component {
     this.navBarRef.toggleSelect();
   }
 
+  toggleNodeSize(size) {
+    this.setState({ nodeSize: size });
+    this.treePanelRef.repaint();
+  }
+
   render() {
     return (
       <div id="app">
@@ -388,10 +399,12 @@ class App extends Component {
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}
             toggleMousePosition={this.toggleMousePosition}
+            toggleNodeSize={this.toggleNodeSize}
             changeCommander={this.changeCommander}
             calcPointsSpent={this.calcPointsSpent}
             resetTalents={this.resetTalents}
             commander={this.state.commander}
+            nodeSize={this.state.nodeSize}
           />
         </ErrorBoundary>
 
@@ -433,6 +446,7 @@ class App extends Component {
                 red={this.state.red}
                 yellow={this.state.yellow}
                 blue={this.state.blue}
+                nodeSize={this.state.nodeSize}
               />
             </ErrorBoundary>
           </Suspense>

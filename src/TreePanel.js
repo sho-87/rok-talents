@@ -280,6 +280,7 @@ class TreePanel extends Component {
                 color={'red'}
                 treeName={getTreeName('red', this.props.commander)}
                 data={this.props.red}
+                nodeSize={this.props.nodeSize}
                 mouseX={this.state.redX}
                 mouseY={this.state.redY}
               />
@@ -288,6 +289,7 @@ class TreePanel extends Component {
                 color={'yellow'}
                 treeName={getTreeName('yellow', this.props.commander)}
                 data={this.props.yellow}
+                nodeSize={this.props.nodeSize}
                 mouseX={this.state.yellowX}
                 mouseY={this.state.yellowY}
               />
@@ -296,6 +298,7 @@ class TreePanel extends Component {
                 color={'blue'}
                 treeName={getTreeName('blue', this.props.commander)}
                 data={this.props.blue}
+                nodeSize={this.props.nodeSize}
                 mouseX={this.state.blueX}
                 mouseY={this.state.blueY}
               />

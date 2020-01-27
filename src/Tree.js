@@ -49,6 +49,7 @@ class Tree extends Component {
           x={curNode['pos'][0] + '%'}
           y={curNode['pos'][1] + '%'}
           color={this.props.color}
+          nodeSize={this.props.nodeSize}
         />
       );
     }

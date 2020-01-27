@@ -26,7 +26,8 @@ class Node extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (
       this.props.value !== nextProps.value ||
-      this.props.showValues !== nextProps.showValues
+      this.props.showValues !== nextProps.showValues ||
+      this.props.nodeSize !== nextProps.nodeSize
     ) {
       return true;
     } else {
@@ -199,6 +200,7 @@ class Node extends Component {
         getStyle={this.getStyle}
         showValues={showValues}
         compressor={compressor}
+        nodeSize={this.props.nodeSize}
       />
     );
   }
@@ -207,7 +209,6 @@ class Node extends Component {
 const NodeOverlay = props => {
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
   let triggerProps, clickProps;
-  
   if (isPortrait) {
     triggerProps = {
       trigger: 'click',
@@ -253,7 +254,7 @@ const NodeOverlay = props => {
         {...clickProps}
         data-testid={props.treeName + props.idx}
         id={props.treeName + props.idx}
-        className={`node ${props.type} ${
+        className={`node ${props.type}-${props.nodeSize} ${
           props.value === 0 ? 'node-inactive' : ''
         }`}
         style={props.getStyle()}
