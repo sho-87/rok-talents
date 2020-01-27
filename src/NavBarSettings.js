@@ -24,11 +24,12 @@ class NavBarSettings extends Component {
         <Dropdown.Menu>
           <Form>
             <Form.Group id="settings-group">
+            <Dropdown.Header>Display...</Dropdown.Header>
               <Form.Check
                 type="switch"
                 id="settings-side-panel"
                 data-testid="settings-side-panel"
-                label="Show side panel"
+                label="Side panel"
                 defaultChecked={true}
                 onChange={e => this.props.toggleSidePanel()}
               />
@@ -36,7 +37,7 @@ class NavBarSettings extends Component {
                 type="switch"
                 id="settings-values"
                 data-testid="settings-values"
-                label="Show points"
+                label="Talent values"
                 defaultChecked={true}
                 onChange={e => this.props.toggleValueDisplay()}
               />
@@ -44,7 +45,7 @@ class NavBarSettings extends Component {
                 type="switch"
                 id="settings-totals"
                 data-testid="settings-totals"
-                label="Show totals"
+                label="Total points"
                 defaultChecked={true}
                 onChange={e => this.props.toggleTotalDisplay()}
               />
