@@ -24,6 +24,7 @@ class TreePanel extends Component {
     super(props);
     this.state = {
       prereqMsg: '',
+      repainting: false,
       showTotals: true,
       showValues: true,
       showMouse: false

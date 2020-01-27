@@ -154,7 +154,7 @@ class App extends Component {
       red: [],
       yellow: [],
       blue: [],
-      nodeSize: 'S'
+      nodeSize: 'M'
     };
   }
 
@@ -382,6 +382,7 @@ class App extends Component {
 
   toggleNodeSize(size) {
     this.setState({ nodeSize: size });
+    //FIXME: repaint doesnt work because the dom isnt changing
     this.treePanelRef.repaint();
   }
 

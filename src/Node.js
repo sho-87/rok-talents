@@ -44,6 +44,7 @@ class Node extends Component {
    * @memberof Node
    */
   getStyle() {
+    //TODO: set node XY as center of its position
     let style = {};
 
     style.top = this.props.y;
