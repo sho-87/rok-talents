@@ -23,8 +23,7 @@ class TreePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      prereqMsg: '',
-      showMouse: false
+      prereqMsg: ''
     };
     // this.panZoomInstance = null;
 
@@ -127,23 +126,16 @@ class TreePanel extends Component {
   }
 
   /**
-   * Toggle event listeners for setting mouse position and display XY
+   * Toggle event listeners for setting mouse position
    *
    * @memberof TreePanel
    */
-  toggleMousePosition() {
-    this.setState(
-      prevState => ({
-        showMouse: !prevState.showMouse
-      }),
-      () => {
-        if (this.state.showMouse) {
-          window.addEventListener('mousemove', this.setMousePosition);
-        } else {
-          window.removeEventListener('mousemove', this.setMousePosition);
-        }
-      }
-    );
+  toggleMouseListeners() {
+    if (this.props.isShownMouseXY) {
+      window.addEventListener('mousemove', this.setMousePosition);
+    } else {
+      window.removeEventListener('mousemove', this.setMousePosition);
+    }
   }
 
   /**
@@ -224,7 +216,7 @@ class TreePanel extends Component {
       calcPointsRemaining: this.props.calcPointsRemaining,
       showPrereqToast: this.showPrereqToast,
       showPointLimitToast: this.showPointLimitToast,
-      showMouse: this.state.showMouse,
+      isShownMouseXY: this.props.isShownMouseXY,
       isShownValues: this.props.isShownValues,
       nodeSize: this.props.nodeSize,
       treeData: this.props.treeData,

@@ -39,7 +39,7 @@ class App extends Component {
     this.toggleSidePanel = this.toggleSidePanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
-    this.toggleMousePosition = this.toggleMousePosition.bind(this);
+    this.toggleMouseXY = this.toggleMouseXY.bind(this);
     this.toggleNodeSize = this.toggleNodeSize.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
@@ -158,7 +158,8 @@ class App extends Component {
       nodeSize: 'M',
       isShownSidePanel: true,
       isShownValues: true,
-      isShownTotals: true
+      isShownTotals: true,
+      isShownMouseXY: false
     };
   }
 
@@ -374,12 +375,19 @@ class App extends Component {
   }
 
   /**
-   * Toggle mouse position display. Uses a ref to the tree panel
+   * Toggle mouse XY position display
    *
    * @memberof App
    */
-  toggleMousePosition() {
-    this.treePanelRef.toggleMousePosition();
+  toggleMouseXY() {
+    this.setState(
+      prevState => ({
+        isShownMouseXY: !prevState.isShownMouseXY
+      }),
+      () => {
+        this.treePanelRef.toggleMouseListeners();
+      }
+    );
   }
 
   /**
@@ -414,7 +422,7 @@ class App extends Component {
             toggleSidePanel={this.toggleSidePanel}
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}
-            toggleMousePosition={this.toggleMousePosition}
+            toggleMouseXY={this.toggleMouseXY}
             toggleNodeSize={this.toggleNodeSize}
             changeCommander={this.changeCommander}
             calcPointsSpent={this.calcPointsSpent}
@@ -424,6 +432,7 @@ class App extends Component {
             isShownSidePanel={this.state.isShownSidePanel}
             isShownValues={this.state.isShownValues}
             isShownTotals={this.state.isShownTotals}
+            isShownMouseXY={this.state.isShownMouseXY}
           />
         </ErrorBoundary>
 
@@ -469,6 +478,7 @@ class App extends Component {
                 nodeSize={this.state.nodeSize}
                 isShownValues={this.state.isShownValues}
                 isShownTotals={this.state.isShownTotals}
+                isShownMouseXY={this.state.isShownMouseXY}
               />
             </ErrorBoundary>
           </Suspense>

@@ -100,8 +100,8 @@ class NavBarSettings extends Component {
                     id="settings-mouse"
                     data-testid="settings-mouse"
                     label="Show mouse XY"
-                    defaultChecked={false}
-                    onChange={e => this.props.toggleMousePosition()}
+                    checked={this.props.isShownMouseXY}
+                    onChange={e => this.props.toggleMouseXY()}
                   />
                 </React.Fragment>
               )}

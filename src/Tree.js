@@ -63,7 +63,7 @@ class Tree extends Component {
         <div id={`tree-${this.props.color}`} className="tree-container">
           {this.drawNodes()}
 
-          {this.props.showMouse && (
+          {this.props.isShownMouseXY && (
             <div id={`tree-${this.props.color}-mouse`}>
               X: {parseFloat(this.props.mouseX).toFixed(1)} Y:{' '}
               {parseFloat(this.props.mouseY).toFixed(1)}
