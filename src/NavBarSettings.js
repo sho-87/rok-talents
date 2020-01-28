@@ -48,7 +48,7 @@ class NavBarSettings extends Component {
                 id="settings-totals"
                 data-testid="settings-totals"
                 label="Total spent"
-                defaultChecked={true}
+                checked={this.props.isShownTotals}
                 onChange={e => this.props.toggleTotalDisplay()}
               />
 

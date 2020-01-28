@@ -31,7 +31,7 @@ class Hexagon extends Component {
             <div className="hexagon-label hexagon-label-red">
               <FitText compressor={0.7}>
                 <div>
-                  {this.props.showTotals && (
+                  {this.props.isShownTotals && (
                     <div
                       className="tree-total"
                       data-testid="tree-total"
@@ -45,7 +45,7 @@ class Hexagon extends Component {
             <div className="hexagon-label hexagon-label-yellow">
               <FitText compressor={0.7}>
                 <div>
-                  {this.props.showTotals && (
+                  {this.props.isShownTotals && (
                     <div
                       className="tree-total"
                       data-testid="tree-total"
@@ -59,7 +59,7 @@ class Hexagon extends Component {
             <div className="hexagon-label hexagon-label-blue">
               <FitText compressor={0.7}>
                 <div>
-                  {this.props.showTotals && (
+                  {this.props.isShownTotals && (
                     <div
                       className="tree-total"
                       data-testid="tree-total"

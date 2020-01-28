@@ -57,7 +57,7 @@ class App extends Component {
         this.updateURL('clear');
         break;
       case 5: // complete url
-        //FIXME: this load treeData twice if url is valid
+        //FIXME: this loads treeData twice if url is valid
         this.state = this.getEmptyState();
         let [urlDataVersion, comID, red, yellow, blue] = urlParams;
         urlDataVersion = parseInt(urlDataVersion);
@@ -157,7 +157,8 @@ class App extends Component {
       blue: [],
       nodeSize: 'M',
       isShownSidePanel: true,
-      isShownValues: true
+      isShownValues: true,
+      isShownTotals: true
     };
   }
 
@@ -351,13 +352,14 @@ class App extends Component {
   }
 
   /**
-   * Toggle display of total number of points spent in each tree. Uses a ref
-   * to the tree panel
+   * Toggle display of total number of points spent in each tree
    *
    * @memberof App
    */
   toggleTotalDisplay() {
-    this.treePanelRef.toggleTotalDisplay();
+    this.setState(prevState => ({
+      isShownTotals: !prevState.isShownTotals
+    }));
   }
 
   /**
@@ -421,6 +423,7 @@ class App extends Component {
             nodeSize={this.state.nodeSize}
             isShownSidePanel={this.state.isShownSidePanel}
             isShownValues={this.state.isShownValues}
+            isShownTotals={this.state.isShownTotals}
           />
         </ErrorBoundary>
 
@@ -465,6 +468,7 @@ class App extends Component {
                 blue={this.state.blue}
                 nodeSize={this.state.nodeSize}
                 isShownValues={this.state.isShownValues}
+                isShownTotals={this.state.isShownTotals}
               />
             </ErrorBoundary>
           </Suspense>

@@ -24,11 +24,9 @@ class TreePanel extends Component {
     super(props);
     this.state = {
       prereqMsg: '',
-      repainting: false,
-      showTotals: true,
       showMouse: false
     };
-    this.panZoomInstance = null;
+    // this.panZoomInstance = null;
 
     // Context bindings
     this.showPrereqToast = this.showPrereqToast.bind(this);
@@ -199,17 +197,6 @@ class TreePanel extends Component {
   }
 
   /**
-   * Toggle display of total number of points spent in each tree
-   *
-   * @memberof TreePanel
-   */
-  toggleTotalDisplay() {
-    this.setState(prevState => ({
-      showTotals: !prevState.showTotals
-    }));
-  }
-
-  /**
    * Show a toast containing a list of missing prerequisite talents. Toast is
    * hidden automatically after a delay.
    *
@@ -292,7 +279,7 @@ class TreePanel extends Component {
               <Hexagon
                 toggleSelect={this.props.toggleSelect}
                 calcPointsSpent={this.props.calcPointsSpent}
-                showTotals={this.state.showTotals && this.props.commander}
+                isShownTotals={this.props.isShownTotals && this.props.commander}
                 commander={this.props.commander || 'unknown'}
               />
             </div>
