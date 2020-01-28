@@ -155,7 +155,8 @@ class App extends Component {
       red: [],
       yellow: [],
       blue: [],
-      nodeSize: 'M'
+      nodeSize: 'M',
+      isShownSidePanel: true
     };
   }
 
@@ -335,13 +336,17 @@ class App extends Component {
   }
 
   /**
-   * Toggle display of side panel. Uses a ref to the side panel
+   * Toggle display of side panel
    *
    * @memberof App
    */
   toggleSidePanel() {
-    this.sidePanelRef.toggleSidePanel();
-    this.treePanelRef.repaint();
+    this.setState(
+      prevState => ({
+        isShownSidePanel: !prevState.isShownSidePanel
+      }),
+      () => this.treePanelRef.repaint()
+    );
   }
 
   /**
@@ -407,6 +412,7 @@ class App extends Component {
             resetTalents={this.resetTalents}
             commander={this.state.commander}
             nodeSize={this.state.nodeSize}
+            isShownSidePanel={this.state.isShownSidePanel}
           />
         </ErrorBoundary>
 
@@ -430,6 +436,7 @@ class App extends Component {
                 red={this.state.red}
                 yellow={this.state.yellow}
                 blue={this.state.blue}
+                isShownSidePanel={this.state.isShownSidePanel}
               />
             </ErrorBoundary>
 

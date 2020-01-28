@@ -14,34 +14,13 @@ import ErrorBoundary from './Error';
  * @extends {Component}
  */
 class SidePanel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showSidePanel: true
-    };
-
-    // Context bindings
-    this.toggleSidePanel = this.toggleSidePanel.bind(this);
-  }
-
-  /**
-   * Toggles visibility of the side panel
-   *
-   * @memberof SidePanel
-   */
-  toggleSidePanel() {
-    this.setState(prevState => ({
-      showSidePanel: !prevState.showSidePanel
-    }));
-  }
-
   render() {
     return (
       <div
         id="side-panel"
         data-testid="side-panel"
         className={
-          this.state.showSidePanel ? 'side-panel-open' : 'side-panel-closed'
+          this.props.isShownSidePanel ? 'side-panel-open' : 'side-panel-closed'
         }
       >
         <ErrorBoundary>

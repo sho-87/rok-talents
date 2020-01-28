@@ -32,7 +32,7 @@ class NavBarSettings extends Component {
                 id="settings-side-panel"
                 data-testid="settings-side-panel"
                 label="Side panel"
-                defaultChecked={true}
+                checked={this.props.isShownSidePanel}
                 onChange={e => this.props.toggleSidePanel()}
               />
               <Form.Check
