@@ -156,7 +156,8 @@ class App extends Component {
       yellow: [],
       blue: [],
       nodeSize: 'M',
-      isShownSidePanel: true
+      isShownSidePanel: true,
+      isShownValues: true
     };
   }
 
@@ -365,7 +366,9 @@ class App extends Component {
    * @memberof App
    */
   toggleValueDisplay() {
-    this.treePanelRef.toggleValueDisplay();
+    this.setState(prevState => ({
+      isShownValues: !prevState.isShownValues
+    }));
   }
 
   /**
@@ -413,6 +416,7 @@ class App extends Component {
             commander={this.state.commander}
             nodeSize={this.state.nodeSize}
             isShownSidePanel={this.state.isShownSidePanel}
+            isShownValues={this.state.isShownValues}
           />
         </ErrorBoundary>
 
@@ -456,6 +460,7 @@ class App extends Component {
                 yellow={this.state.yellow}
                 blue={this.state.blue}
                 nodeSize={this.state.nodeSize}
+                isShownValues={this.state.isShownValues}
               />
             </ErrorBoundary>
           </Suspense>

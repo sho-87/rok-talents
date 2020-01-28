@@ -10,7 +10,7 @@ import { getMaxTalentCount } from './utils';
  * @extends {Component}
  */
 
- //TODO: make nodes/trees larger so theyre easier to click on small screens
+//TODO: make nodes/trees larger so theyre easier to click on small screens
 class Tree extends Component {
   /**
    * Create an array of all talent nodes for the current commander
@@ -34,7 +34,8 @@ class Tree extends Component {
           calcPointsRemaining={this.props.calcPointsRemaining}
           showPrereqToast={this.props.showPrereqToast}
           showPointLimitToast={this.props.showPointLimitToast}
-          showValues={this.props.showValues}
+          isShownValues={this.props.isShownValues}
+          nodeSize={this.props.nodeSize}
           treeData={this.props.treeData}
           key={treeName + i}
           idx={i}
@@ -49,7 +50,6 @@ class Tree extends Component {
           x={curNode['pos'][0] + '%'}
           y={curNode['pos'][1] + '%'}
           color={this.props.color}
-          nodeSize={this.props.nodeSize}
         />
       );
     }

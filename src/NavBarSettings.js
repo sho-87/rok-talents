@@ -40,7 +40,7 @@ class NavBarSettings extends Component {
                 id="settings-values"
                 data-testid="settings-values"
                 label="Node values"
-                defaultChecked={true}
+                checked={this.props.isShownValues}
                 onChange={e => this.props.toggleValueDisplay()}
               />
               <Form.Check

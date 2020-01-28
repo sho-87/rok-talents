@@ -26,7 +26,7 @@ class Node extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (
       this.props.value !== nextProps.value ||
-      this.props.showValues !== nextProps.showValues ||
+      this.props.isShownValues !== nextProps.isShownValues ||
       this.props.nodeSize !== nextProps.nodeSize
     ) {
       return true;
@@ -189,7 +189,6 @@ class Node extends Component {
   }
 
   render() {
-    let showValues = this.props.showValues && this.props.value !== 0;
     let compressor = this.props.type === 'node-large' ? 0.3 : 0.25;
 
     return (
@@ -199,9 +198,9 @@ class Node extends Component {
         talentDecrease={this.talentDecrease}
         setTooltip={this.setTooltip}
         getStyle={this.getStyle}
-        showValues={showValues}
         compressor={compressor}
         nodeSize={this.props.nodeSize}
+        isShownValues={this.props.isShownValues && this.props.value !== 0}
       />
     );
   }
@@ -260,7 +259,7 @@ const NodeOverlay = props => {
         }`}
         style={props.getStyle()}
       >
-        {props.showValues && (
+        {props.isShownValues && (
           <FitText compressor={props.compressor}>
             <div className="node-value" data-testid="node-value">
               {props.value + '/' + props.max}

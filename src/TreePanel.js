@@ -26,7 +26,6 @@ class TreePanel extends Component {
       prereqMsg: '',
       repainting: false,
       showTotals: true,
-      showValues: true,
       showMouse: false
     };
     this.panZoomInstance = null;
@@ -211,17 +210,6 @@ class TreePanel extends Component {
   }
 
   /**
-   * Toggle display of node values
-   *
-   * @memberof TreePanel
-   */
-  toggleValueDisplay() {
-    this.setState(prevState => ({
-      showValues: !prevState.showValues
-    }));
-  }
-
-  /**
    * Show a toast containing a list of missing prerequisite talents. Toast is
    * hidden automatically after a delay.
    *
@@ -249,8 +237,9 @@ class TreePanel extends Component {
       calcPointsRemaining: this.props.calcPointsRemaining,
       showPrereqToast: this.showPrereqToast,
       showPointLimitToast: this.showPointLimitToast,
-      showValues: this.state.showValues,
       showMouse: this.state.showMouse,
+      isShownValues: this.props.isShownValues,
+      nodeSize: this.props.nodeSize,
       treeData: this.props.treeData,
       commander: this.props.commander
     };
@@ -281,7 +270,6 @@ class TreePanel extends Component {
                 color={'red'}
                 treeName={getTreeName('red', this.props.commander)}
                 data={this.props.red}
-                nodeSize={this.props.nodeSize}
                 mouseX={this.state.redX}
                 mouseY={this.state.redY}
               />
@@ -290,7 +278,6 @@ class TreePanel extends Component {
                 color={'yellow'}
                 treeName={getTreeName('yellow', this.props.commander)}
                 data={this.props.yellow}
-                nodeSize={this.props.nodeSize}
                 mouseX={this.state.yellowX}
                 mouseY={this.state.yellowY}
               />
@@ -299,7 +286,6 @@ class TreePanel extends Component {
                 color={'blue'}
                 treeName={getTreeName('blue', this.props.commander)}
                 data={this.props.blue}
-                nodeSize={this.props.nodeSize}
                 mouseX={this.state.blueX}
                 mouseY={this.state.blueY}
               />

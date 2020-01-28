@@ -104,6 +104,7 @@ class NavBar extends Component {
               toggleNodeSize={this.props.toggleNodeSize}
               nodeSize={this.props.nodeSize}
               isShownSidePanel={this.props.isShownSidePanel}
+              isShownValues={this.props.isShownValues}
             />
 
             <NavBarCommander
