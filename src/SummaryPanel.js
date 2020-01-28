@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { getTreeName } from './utils';
 import Commanders from './data/Commanders.json';
 
-//TODO: set background to faded commander image
-
 /**
  * Summary panel component displaying commander info
  *
@@ -14,6 +12,11 @@ class SummaryPanel extends Component {
   render() {
     return (
       <div id="summary-panel" className="info-box">
+        <img
+          src={`images/commanders/${this.props.commander}.png`}
+          alt={this.props.commander}
+        ></img>
+
         <h1>{this.props.commander ? this.props.commander : 'Summary'}</h1>
         <h3>
           {this.props.commander && Commanders[this.props.commander].title}
