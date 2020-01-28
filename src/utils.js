@@ -105,9 +105,9 @@ export function getTreeName(color, commander) {
  * @param {Number[]} r Array of red tree values
  * @param {Number[]} y Array of yellow tree values
  * @param {Number[]} b Array of blue tree values
- * @param {string} [sep='-'] Separator to use between point totals
+ * @param {string} [sep='/'] Separator to use between point totals
  */
-export function setTitle(commander, r, y, b, sep = '-') {
+export function setTitle(commander, r, y, b, sep = '/') {
   document.title = `${createSummaryString(commander, r, y, b, sep)} | ${title}`;
 }
 
@@ -118,10 +118,10 @@ export function setTitle(commander, r, y, b, sep = '-') {
  * @param {Number[]} r Array of red tree values
  * @param {Number[]} y Array of yellow tree values
  * @param {Number[]} b Array of blue tree values
- * @param {string} [sep='-'] Separator to use between point totals
+ * @param {string} [sep='/'] Separator to use between point totals
  * @returns {string} String summarizing the commander and points spent
  */
-export function createSummaryString(commander, r, y, b, sep = '-') {
+export function createSummaryString(commander, r, y, b, sep = '/') {
   const rSpent = sumArray(r);
   const ySpent = sumArray(y);
   const bSpent = sumArray(b);
