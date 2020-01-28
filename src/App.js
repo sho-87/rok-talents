@@ -361,7 +361,7 @@ class App extends Component {
   }
 
   /**
-   * Toggle display of node values. Uses a ref to the tree panel
+   * Toggle display of node values
    *
    * @memberof App
    */
@@ -389,10 +389,14 @@ class App extends Component {
     this.navBarRef.toggleSelect();
   }
 
+  /**
+   * Toggle node size
+   *
+   * @param {string} size Desired node size
+   * @memberof App
+   */
   toggleNodeSize(size) {
-    this.setState({ nodeSize: size });
-    //FIXME: repaint doesnt work because the dom isnt changing
-    this.treePanelRef.repaint();
+    this.setState({ nodeSize: size }, () => this.treePanelRef.repaint());
   }
 
   render() {
