@@ -19,7 +19,6 @@ let treeData;
 //TODO: google analytics
 //TODO: CI/CD
 //TODO: github pages, cloudflare
-//TODO: store non-URL state in browser cache?
 //TODO: shouldComponentUpdate pass
 //FIXME: only updateurl/encode if that particular tree has changed
 
@@ -141,7 +140,8 @@ class App extends Component {
   }
 
   /**
-   * Get empty state values for new application instance
+   * Get empty state values for new application instance. Also checks
+   * local storage for saved settings
    *
    * @returns {object} Object containing blank state values
    * @memberof App
@@ -149,17 +149,24 @@ class App extends Component {
   getEmptyState() {
     treeData = loadTreeData(dataVersion);
 
+    const isShownSidePanel = JSON.parse(
+      localStorage.getItem('isShownSidePanel')
+    );
+    const isShownValues = JSON.parse(localStorage.getItem('isShownValues'));
+    const isShownTotals = JSON.parse(localStorage.getItem('isShownTotals'));
+    const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
+
     return {
       dataVersion: dataVersion,
       commander: '',
       red: [],
       yellow: [],
       blue: [],
-      nodeSize: 'M',
-      isShownSidePanel: true,
-      isShownValues: true,
-      isShownTotals: true,
-      isShownMouseXY: false
+      nodeSize: localStorage.getItem('nodeSize') || 'M',
+      isShownSidePanel: isShownSidePanel === null ? true : isShownSidePanel,
+      isShownValues: isShownValues === null ? true : isShownValues,
+      isShownTotals: isShownTotals === null ? true : isShownTotals,
+      isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY
     };
   }
 
@@ -348,7 +355,10 @@ class App extends Component {
       prevState => ({
         isShownSidePanel: !prevState.isShownSidePanel
       }),
-      () => this.treePanelRef.repaint()
+      () => {
+        this.treePanelRef.repaint();
+        localStorage.setItem('isShownSidePanel', this.state.isShownSidePanel);
+      }
     );
   }
 
@@ -358,9 +368,14 @@ class App extends Component {
    * @memberof App
    */
   toggleTotalDisplay() {
-    this.setState(prevState => ({
-      isShownTotals: !prevState.isShownTotals
-    }));
+    this.setState(
+      prevState => ({
+        isShownTotals: !prevState.isShownTotals
+      }),
+      () => {
+        localStorage.setItem('isShownTotals', this.state.isShownTotals);
+      }
+    );
   }
 
   /**
@@ -369,9 +384,14 @@ class App extends Component {
    * @memberof App
    */
   toggleValueDisplay() {
-    this.setState(prevState => ({
-      isShownValues: !prevState.isShownValues
-    }));
+    this.setState(
+      prevState => ({
+        isShownValues: !prevState.isShownValues
+      }),
+      () => {
+        localStorage.setItem('isShownValues', this.state.isShownValues);
+      }
+    );
   }
 
   /**
@@ -386,17 +406,9 @@ class App extends Component {
       }),
       () => {
         this.treePanelRef.toggleMouseListeners();
+        localStorage.setItem('isShownMouseXY', this.state.isShownMouseXY);
       }
     );
-  }
-
-  /**
-   * Toggle commander select dropdown. Uses a ref to the navbar
-   *
-   * @memberof App
-   */
-  toggleSelect() {
-    this.navBarRef.toggleSelect();
   }
 
   /**
@@ -406,7 +418,19 @@ class App extends Component {
    * @memberof App
    */
   toggleNodeSize(size) {
-    this.setState({ nodeSize: size }, () => this.treePanelRef.repaint());
+    this.setState({ nodeSize: size }, () => {
+      this.treePanelRef.repaint();
+      localStorage.setItem('nodeSize', this.state.nodeSize);
+    });
+  }
+
+  /**
+   * Toggle commander select dropdown. Uses a ref to the navbar
+   *
+   * @memberof App
+   */
+  toggleSelect() {
+    this.navBarRef.toggleSelect();
   }
 
   render() {
