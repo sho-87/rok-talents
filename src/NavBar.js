@@ -10,6 +10,7 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { title } from '../package.json';
+import './styles/NavBar.css';
 
 /**
  * Nav bar component containing main application buttons/controls

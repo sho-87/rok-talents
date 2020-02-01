@@ -1,0 +1,59 @@
+.tree-container {
+  position: absolute;
+  height: 50%;
+  width: 50%;
+  text-align: center;
+  padding: 0px;
+}
+
+.tree-total {
+  font-weight: 400;
+}
+
+#tree-red {
+  top: 0%;
+  left: 50%;
+  border: 0.5px var(--tree-box-outline) var(--red);
+}
+
+#tree-red-mouse {
+  position: absolute;
+  top: 0%;
+  left: -100%;
+  color: var(--red);
+  padding: 2px;
+  background-color: white;
+  border: 0.5px solid black;
+}
+
+#tree-yellow {
+  top: 50%;
+  left: 0%;
+  border: 0.5px var(--tree-box-outline) var(--yellow);
+}
+
+#tree-yellow-mouse {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  color: var(--yellow);
+  padding: 2px;
+  background-color: white;
+  border: 0.5px solid black;
+}
+
+#tree-blue {
+  top: 50%;
+  left: 50%;
+  border: 0.5px var(--tree-box-outline) var(--blue);
+}
+
+#tree-blue-mouse {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  color: var(--blue);
+  padding: 2px;
+  background-color: white;
+  border: 0.5px solid black;
+}

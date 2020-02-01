@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import FitText from '@kennethormandy/react-fittext';
 import { getTreeName } from './utils';
 
+import './styles/Hexagon.css';
+
 /**
  * Component containing the central commander image and skill label hexagon
  *

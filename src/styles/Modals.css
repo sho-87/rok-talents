@@ -1,0 +1,21 @@
+/* Modals */
+.modal-icon {
+  margin-right: 5px;
+}
+
+.about-label {
+  font-weight: bold;
+}
+
+.share-modal-label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+#share-modal-social {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center; /* horizontal */
+  align-items: center; /* vertical */
+  cursor: pointer;
+}

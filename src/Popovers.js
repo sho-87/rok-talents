@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 import { faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import './styles/Popovers.css';
+
 /**
  * Tooltip containing information about each talent node. Displayed when 
  user hovers over a talent

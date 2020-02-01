@@ -1,0 +1,8 @@
+/* Stats Panel */
+#stats-panel {
+  flex-grow: 1;
+}
+
+#stats-panel-stats p {
+  margin-bottom: 0px;
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Toast from 'react-bootstrap/Toast';
 
+import './styles/Toasts.css';
+
 /**
  * Generic toast component
  *

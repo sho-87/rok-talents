@@ -5,6 +5,8 @@ import StatsPanel from './StatsPanel';
 import StatsTalentsPanel from './StatsTalentsPanel';
 import ErrorBoundary from './Error';
 
+import './styles/SidePanel.css';
+
 //TODO: dynamic/responsive typography
 
 /**

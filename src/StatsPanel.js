@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Commanders from './data/Commanders.json';
+import './styles/StatsPanel.css';
 
 //FIXME: calcStats is inefficient. Iterate once over everything (instead of once for each stat)
 

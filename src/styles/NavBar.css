@@ -1,0 +1,14 @@
+/* Nav bar */
+.navbar {
+  height: var(--nav-bar-height);
+  width: 100vw;
+  z-index: 20;
+}
+
+#nav-icon {
+  color: black;
+}
+
+#nav-icon:hover {
+  color: blue;
+}

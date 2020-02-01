@@ -1,0 +1,60 @@
+#hexagon-bg img {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#hexagon-commander {
+  position: absolute;
+  height: 44%;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -53%);
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
+  cursor: pointer;
+}
+
+#hexagon-label-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hexagon-label {
+  position: absolute;
+  font-weight: 700;
+  mix-blend-mode: multiply;
+  text-align: center;
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2));
+}
+
+.hexagon-label-red {
+  width: 40%;
+  bottom: 75%;
+}
+
+.hexagon-label-yellow {
+  width: 40%;
+  bottom: 22%;
+  transform: translateX(-58%);
+}
+
+.hexagon-label-blue {
+  width: 40%;
+  bottom: 22%;
+  transform: translateX(58%);
+}

@@ -3,6 +3,7 @@ import Collapse from 'react-bootstrap/Collapse';
 import { getMaxTalentCount, replaceTalentText } from './utils';
 
 import Commanders from './data/Commanders.json';
+import './styles/StatsTalentsPanel.css';
 
 /**
  * Stats talents panel component containing selected main talents

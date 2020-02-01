@@ -6,6 +6,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Commanders from './data/Commanders.json';
+import './styles/NavBarCommander.css';
 
 /**
  * Nav bar component containing commander drop down

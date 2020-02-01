@@ -6,6 +6,8 @@ import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Popovers';
 import { replaceTalentText, getMaxTalentCount } from './utils';
 
+import './styles/Node.css';
+
 /**
  * Component for the individual talent nodes
  *

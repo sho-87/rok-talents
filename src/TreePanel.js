@@ -7,6 +7,7 @@ import { PrereqToast, ToastMessage } from './Toasts';
 import { getTreeName } from './utils';
 
 import { dataVersion } from '../package.json';
+import './styles/TreePanel.css';
 
 //TODO: add FAB for tree zoom
 //TODO: make hex regions clickable for zoom

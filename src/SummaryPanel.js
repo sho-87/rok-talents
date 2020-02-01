@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { getTreeName } from './utils';
+
 import Commanders from './data/Commanders.json';
+import './styles/SummaryPanel.css';
 
 /**
  * Summary panel component displaying commander info

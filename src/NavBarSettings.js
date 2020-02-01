@@ -8,6 +8,8 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import './styles/NavBarSettings.css';
+
 /**
  * Nav bar component containing drop down menu item for settings
  *

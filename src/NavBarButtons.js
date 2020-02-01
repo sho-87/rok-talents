@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { faTrashAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import './styles/NavBarButtons.css';
+
 /**
  * Nav bar component containing main buttons
  *

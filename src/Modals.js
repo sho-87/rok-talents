@@ -23,6 +23,7 @@ import {
 } from 'react-share';
 
 import { title, author, version, dataVersion } from '../package.json';
+import './styles/Modals.css';
 
 /**
  * Modal displaying warning about an invalid build retrived from URL
