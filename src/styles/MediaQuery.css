@@ -1,16 +1,4 @@
 @media (orientation: portrait) {
-  h1 {
-    font-size: 4vw;
-  }
-  
-  h2 {
-    font-size: 3vw;
-  }
-
-  h3 {
-    font-size: 2.8vw;
-  }
-
   #main-container {
     flex-flow: column nowrap;
   }
@@ -42,8 +30,25 @@
   }
 }
 
-@media only screen and (max-width: 570px) {
+/* Phone portrait */
+@media (max-width: 599px) {
   .nav-button-text {
     display: none;
   }
+}
+
+/* Tablet portrait */
+@media (min-width: 600px) {
+}
+
+/* Tablet landscape */
+@media (min-width: 900px) {
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+}
+
+/* Desktop large */
+@media (min-width: 1800px) {
 }

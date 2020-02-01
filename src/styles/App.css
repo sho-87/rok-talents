@@ -39,19 +39,6 @@ div {
   outline-style: none;
 }
 
-h1 {
-  font-size: 1.5vw;
-}
-
-h2 {
-  font-size: 1vw;
-}
-
-h3 {
-  font-size: 0.9vw;
-  font-style: italic;
-}
-
 #app {
   height: 100vh;
   width: 100vw;
