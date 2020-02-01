@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import MediaQuery from 'react-responsive';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -58,6 +59,10 @@ class NavBar extends Component {
    */
   showAbout() {
     this.aboutModalRef.toggle();
+    ReactGA.event({
+      category: 'App',
+      action: 'View about modal'
+    });
   }
 
   /**
@@ -67,6 +72,10 @@ class NavBar extends Component {
    */
   showShare() {
     this.shareModalRef.toggle();
+    ReactGA.event({
+      category: 'Share',
+      action: 'View share modal'
+    });
   }
 
   render() {

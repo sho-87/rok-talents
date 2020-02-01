@@ -1,4 +1,5 @@
 import React, { Component, Suspense } from 'react';
+import ReactGA from 'react-ga';
 import Spinner from 'react-bootstrap/Spinner';
 import NavBar from './NavBar';
 import SidePanel from './SidePanel';
@@ -16,7 +17,6 @@ import './styles/MediaQuery.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
-//TODO: google analytics
 //TODO: CI/CD
 //TODO: github pages, cloudflare
 //TODO: shouldComponentUpdate pass
@@ -237,6 +237,12 @@ class App extends Component {
       () => {
         this.updateURL('update');
         this.treePanelRef.drawLines();
+
+        ReactGA.event({
+          category: 'Navigation',
+          action: 'Change commander',
+          label: commander
+        });
       }
     );
 
@@ -272,6 +278,10 @@ class App extends Component {
    * @memberof App
    */
   resetTalents() {
+    ReactGA.event({
+      category: 'App',
+      action: 'Reset build'
+    });
     this.changeCommander(this.state.commander);
   }
 
@@ -360,6 +370,11 @@ class App extends Component {
         localStorage.setItem('isShownSidePanel', this.state.isShownSidePanel);
       }
     );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle side panel'
+    });
   }
 
   /**
@@ -376,6 +391,11 @@ class App extends Component {
         localStorage.setItem('isShownTotals', this.state.isShownTotals);
       }
     );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle tree totals'
+    });
   }
 
   /**
@@ -392,6 +412,11 @@ class App extends Component {
         localStorage.setItem('isShownValues', this.state.isShownValues);
       }
     );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle node values'
+    });
   }
 
   /**
@@ -421,6 +446,12 @@ class App extends Component {
     this.setState({ nodeSize: size }, () => {
       this.treePanelRef.repaint();
       localStorage.setItem('nodeSize', this.state.nodeSize);
+    });
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle node size',
+      label: size
     });
   }
 

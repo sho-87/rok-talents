@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {
@@ -174,6 +175,10 @@ export class ShareModal extends Component {
     input.select();
     document.execCommand('copy');
     document.getElementById('copyButton').innerHTML = '\u2713';
+    ReactGA.event({
+      category: 'Share',
+      action: 'Copy URL'
+    });
   }
 
   render() {
