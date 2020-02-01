@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import Collapse from 'react-bootstrap/Collapse';
 import { getMaxTalentCount, replaceTalentText } from './utils';
 
@@ -31,6 +32,11 @@ class StatsTalentsPanel extends Component {
     this.setState(prevState => ({
       isShownStatsTalents: !prevState.isShownStatsTalents
     }));
+
+    ReactGA.event({
+      category: 'App',
+      action: 'Toggle stats talents'
+    });
   }
 
   /**
