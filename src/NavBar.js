@@ -59,10 +59,7 @@ class NavBar extends Component {
    */
   showAbout() {
     this.aboutModalRef.toggle();
-    ReactGA.event({
-      category: 'App',
-      action: 'View about modal'
-    });
+    ReactGA.modalview('/about');
   }
 
   /**
@@ -72,10 +69,7 @@ class NavBar extends Component {
    */
   showShare() {
     this.shareModalRef.toggle();
-    ReactGA.event({
-      category: 'Share',
-      action: 'View share modal'
-    });
+    ReactGA.modalview('/share');
   }
 
   render() {

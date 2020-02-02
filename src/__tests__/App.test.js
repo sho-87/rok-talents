@@ -6,6 +6,7 @@ import App from '../App';
 import Commanders from '../data/Commanders.json';
 import { dataVersion } from '../../package.json';
 
+jest.mock("react-ga");
 afterEach(cleanup);
 
 describe('App component', () => {
