@@ -63,3 +63,35 @@ div {
   align-items: center; /* vertical */
   background-color: var(--bg-color);
 }
+
+@media (orientation: portrait) {
+  #main-container {
+    flex-flow: column nowrap;
+  }
+
+  #side-panel {
+    padding: 3px;
+    background-image: linear-gradient(
+      to top,
+      var(--bg-color),
+      var(--bg-color-dark)
+    );
+  }
+
+  #summary-panel-container {
+    height: 100%;
+  }
+
+  #summary-panel {
+    height: 100%;
+  }
+
+  #stats-panel {
+    height: 100%;
+    margin-left: 3px;
+  }
+
+  .info-box {
+    margin-bottom: 0px;
+  }
+}

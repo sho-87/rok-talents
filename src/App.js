@@ -12,7 +12,7 @@ import { maxPoints } from './values';
 import { dataVersion } from '../package.json';
 
 import './styles/App.css';
-import './styles/MediaQuery.css';
+import './styles/fonts.css';
 
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;

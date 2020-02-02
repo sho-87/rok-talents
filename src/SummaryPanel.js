@@ -25,21 +25,21 @@ class SummaryPanel extends Component {
         </h3>
         {this.props.commander && (
           <div id="summary-panel-talents-container">
-            <span className="summary-panel-talents bg-red">
+            <p className="summary-panel-talents bg-red">
               {getTreeName('red', this.props.commander)}
-            </span>
-            <span className="summary-panel-talents bg-yellow">
+            </p>
+            <p className="summary-panel-talents bg-yellow">
               {getTreeName('yellow', this.props.commander)}
-            </span>
-            <span className="summary-panel-talents bg-blue">
+            </p>
+            <p className="summary-panel-talents bg-blue">
               {getTreeName('blue', this.props.commander)}
-            </span>
+            </p>
           </div>
         )}
 
         <div id="summary-panel-summary">
-          <div>Points remaining: {this.props.calcPointsRemaining()}</div>
-          <div>Points spent: {this.props.calcPointsSpent()}</div>
+          <p>Points remaining: {this.props.calcPointsRemaining()}</p>
+          <p>Points spent: {this.props.calcPointsSpent()}</p>
         </div>
       </div>
     );
