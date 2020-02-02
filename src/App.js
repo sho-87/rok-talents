@@ -38,8 +38,9 @@ class App extends Component {
     this.toggleSidePanel = this.toggleSidePanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
-    this.toggleMouseXY = this.toggleMouseXY.bind(this);
     this.toggleNodeSize = this.toggleNodeSize.bind(this);
+    this.toggleMouseXY = this.toggleMouseXY.bind(this);
+    this.toggleTalentID = this.toggleTalentID.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
@@ -155,6 +156,7 @@ class App extends Component {
     const isShownValues = JSON.parse(localStorage.getItem('isShownValues'));
     const isShownTotals = JSON.parse(localStorage.getItem('isShownTotals'));
     const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
+    const isShownTalentID = JSON.parse(localStorage.getItem('isShownTalentID'));
 
     return {
       dataVersion: dataVersion,
@@ -166,7 +168,8 @@ class App extends Component {
       isShownSidePanel: isShownSidePanel === null ? true : isShownSidePanel,
       isShownValues: isShownValues === null ? true : isShownValues,
       isShownTotals: isShownTotals === null ? true : isShownTotals,
-      isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY
+      isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
+      isShownTalentID: isShownTalentID === null ? false : isShownTalentID
     };
   }
 
@@ -420,6 +423,25 @@ class App extends Component {
   }
 
   /**
+   * Toggle node size
+   *
+   * @param {string} size Desired node size
+   * @memberof App
+   */
+  toggleNodeSize(size) {
+    this.setState({ nodeSize: size }, () => {
+      this.treePanelRef.repaint();
+      localStorage.setItem('nodeSize', this.state.nodeSize);
+    });
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle node size',
+      label: size
+    });
+  }
+
+  /**
    * Toggle mouse XY position display
    *
    * @memberof App
@@ -437,22 +459,14 @@ class App extends Component {
   }
 
   /**
-   * Toggle node size
+   * Toggle tooltip talent ID
    *
-   * @param {string} size Desired node size
    * @memberof App
    */
-  toggleNodeSize(size) {
-    this.setState({ nodeSize: size }, () => {
-      this.treePanelRef.repaint();
-      localStorage.setItem('nodeSize', this.state.nodeSize);
-    });
-
-    ReactGA.event({
-      category: 'Settings',
-      action: 'Toggle node size',
-      label: size
-    });
+  toggleTalentID() {
+    this.setState(prevState => ({
+      isShownTalentID: !prevState.isShownTalentID
+    }));
   }
 
   /**
@@ -477,8 +491,9 @@ class App extends Component {
             toggleSidePanel={this.toggleSidePanel}
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}
-            toggleMouseXY={this.toggleMouseXY}
             toggleNodeSize={this.toggleNodeSize}
+            toggleMouseXY={this.toggleMouseXY}
+            toggleTalentID={this.toggleTalentID}
             changeCommander={this.changeCommander}
             calcPointsSpent={this.calcPointsSpent}
             resetTalents={this.resetTalents}
@@ -488,6 +503,7 @@ class App extends Component {
             isShownValues={this.state.isShownValues}
             isShownTotals={this.state.isShownTotals}
             isShownMouseXY={this.state.isShownMouseXY}
+            isShownTalentID={this.state.isShownTalentID}
           />
         </ErrorBoundary>
 
@@ -534,6 +550,7 @@ class App extends Component {
                 isShownValues={this.state.isShownValues}
                 isShownTotals={this.state.isShownTotals}
                 isShownMouseXY={this.state.isShownMouseXY}
+                isShownTalentID={this.state.isShownTalentID}
               />
             </ErrorBoundary>
           </Suspense>

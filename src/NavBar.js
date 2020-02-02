@@ -110,12 +110,14 @@ class NavBar extends Component {
               toggleSidePanel={this.props.toggleSidePanel}
               toggleTotalDisplay={this.props.toggleTotalDisplay}
               toggleValueDisplay={this.props.toggleValueDisplay}
-              toggleMouseXY={this.props.toggleMouseXY}
               toggleNodeSize={this.props.toggleNodeSize}
+              toggleMouseXY={this.props.toggleMouseXY}
+              toggleTalentID={this.props.toggleTalentID}
               isShownSidePanel={this.props.isShownSidePanel}
               isShownValues={this.props.isShownValues}
               isShownTotals={this.props.isShownTotals}
               isShownMouseXY={this.props.isShownMouseXY}
+              isShownTalentID={this.props.isShownTalentID}
               nodeSize={this.props.nodeSize}
             />
 

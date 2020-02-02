@@ -28,8 +28,9 @@ class Node extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (
       this.props.value !== nextProps.value ||
+      this.props.nodeSize !== nextProps.nodeSize ||
       this.props.isShownValues !== nextProps.isShownValues ||
-      this.props.nodeSize !== nextProps.nodeSize
+      this.props.isShownTalentID !== nextProps.isShownTalentID
     ) {
       return true;
     } else {
@@ -242,6 +243,7 @@ const NodeOverlay = props => {
           calcPointsRemaining={props.calcPointsRemaining}
           talentdecrease={props.talentDecrease}
           talentincrease={props.talentIncrease}
+          isShownTalentID={props.isShownTalentID}
           idx={props.idx}
           talentid={props.treeName + props.idx}
           talentname={props.talentName}

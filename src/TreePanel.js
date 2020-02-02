@@ -217,8 +217,9 @@ class TreePanel extends Component {
       calcPointsRemaining: this.props.calcPointsRemaining,
       showPrereqToast: this.showPrereqToast,
       showPointLimitToast: this.showPointLimitToast,
-      isShownMouseXY: this.props.isShownMouseXY,
       isShownValues: this.props.isShownValues,
+      isShownMouseXY: this.props.isShownMouseXY,
+      isShownTalentID: this.props.isShownTalentID,
       nodeSize: this.props.nodeSize,
       treeData: this.props.treeData,
       commander: this.props.commander

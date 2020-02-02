@@ -118,7 +118,7 @@ export class TalentTooltip extends Component {
                   </Container>
                 </MediaQuery>
 
-                {process.env.NODE_ENV === 'development' && (
+                {this.props.isShownTalentID && (
                   <div className="node-tooltip-id">
                     ID: {this.props.talentid}
                   </div>

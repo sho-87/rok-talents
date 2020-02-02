@@ -105,6 +105,13 @@ class NavBarSettings extends Component {
                     checked={this.props.isShownMouseXY}
                     onChange={e => this.props.toggleMouseXY()}
                   />
+                  <Form.Check
+                    type="switch"
+                    id="settings-talentID"
+                    label="Show talent ID"
+                    checked={this.props.isShownTalentID}
+                    onChange={e => this.props.toggleTalentID()}
+                  />
                 </React.Fragment>
               )}
             </Form.Group>
