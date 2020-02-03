@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import './styles/index.css';
+import App from './App';
 
 ReactGA.initialize('UA-114296077-2');
 ReactGA.pageview('/');
