@@ -46,7 +46,7 @@
     "stats": "",
     "text": "Enhances healing effects received by troops by ${1}%",
     "prereq": [2],
-    "dep": [9],
+    "dep": [8, 9],
     "pos": [29, 22.6],
     "type": "node-large",
     "image": "blueVial"
@@ -57,7 +57,7 @@
     "stats": "",
     "text": "When troops led by this commander depart from a structure, increases march speed by ${1}% for the next 10 seconds",
     "prereq": [3],
-    "dep": [10],
+    "dep": [10, 11],
     "pos": [36.6, 10],
     "type": "node-large",
     "image": "blueHorseHead"
