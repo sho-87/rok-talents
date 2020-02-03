@@ -464,9 +464,14 @@ class App extends Component {
    * @memberof App
    */
   toggleTalentID() {
-    this.setState(prevState => ({
-      isShownTalentID: !prevState.isShownTalentID
-    }));
+    this.setState(
+      prevState => ({
+        isShownTalentID: !prevState.isShownTalentID
+      }),
+      () => {
+        localStorage.setItem('isShownTalentID', this.state.isShownTalentID);
+      }
+    );
   }
 
   /**
