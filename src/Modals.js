@@ -120,6 +120,7 @@ export class AboutModal extends Component {
 
         <Modal.Body>
           <div>
+            <img id="modal-app-icon" src="logo192.jpg" alt="RoK Talents Logo"></img>
             Talent builder for Rise of Kingdoms. Best viewed on PC/laptop.
           </div>
           <br />

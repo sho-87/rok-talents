@@ -1,4 +1,11 @@
 /* Modals */
+#modal-app-icon {
+  float: left;
+  margin-right: 10px;
+  height: 50px;
+  border-radius: 5px;
+}
+
 .modal-icon {
   margin-right: 5px;
 }

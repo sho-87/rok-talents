@@ -5,6 +5,11 @@
   z-index: 20;
 }
 
+#nav-app-icon {
+  height: 25px;
+  border-radius: 3px;
+}
+
 #nav-icon {
   color: black;
 }

@@ -19,7 +19,6 @@ let treeData;
 
 //TODO: CI/CD
 //TODO: github pages, cloudflare
-//TODO: icons
 //TODO: shouldComponentUpdate pass
 //FIXME: only updateurl/encode if that particular tree has changed
 

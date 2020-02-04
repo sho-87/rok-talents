@@ -85,6 +85,14 @@ class NavBar extends Component {
         <ShareModal ref={component => (this.shareModalRef = component)} />
 
         <Navbar bg="light" variant="light">
+          <Navbar.Brand href="/">
+            <img
+              id="nav-app-icon"
+              src="logo192.jpg"
+              alt="RoK Talents Logo"
+            ></img>
+          </Navbar.Brand>
+
           <MediaQuery minDeviceWidth={380}>
             <Navbar.Brand href="/">{title}</Navbar.Brand>
           </MediaQuery>
