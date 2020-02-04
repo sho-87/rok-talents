@@ -3,6 +3,10 @@
   color: blue;
 }
 
+#stats-talents {
+  cursor: pointer;
+}
+
 .stats-talents-main {
   margin-bottom: 5px;
 }

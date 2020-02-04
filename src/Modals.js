@@ -119,7 +119,7 @@ export class AboutModal extends Component {
         </Modal.Header>
 
         <Modal.Body>
-          <div>Talent buider for Rise of Kingdoms. Best viewed on desktop.</div>
+          <div>Talent builder for Rise of Kingdoms. Best viewed on desktop.</div>
           <br />
           <div>
             <span className="about-label">App version:</span> {version}

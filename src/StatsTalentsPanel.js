@@ -92,7 +92,7 @@ class StatsTalentsPanel extends Component {
 
   render() {
     return (
-      <div className="info-box" onClick={this.toggleStatsTalents}>
+      <div id="stats-talents" className="info-box" onClick={this.toggleStatsTalents}>
         <h2>
           Main Talents{' '}
           <span className="stats-talents-expand">
