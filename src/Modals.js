@@ -119,7 +119,9 @@ export class AboutModal extends Component {
         </Modal.Header>
 
         <Modal.Body>
-          <div>Talent builder for Rise of Kingdoms. Best viewed on desktop.</div>
+          <div>
+            Talent builder for Rise of Kingdoms. Best viewed on desktop.
+          </div>
           <br />
           <div>
             <span className="about-label">App version:</span> {version}
@@ -153,6 +155,20 @@ export class AboutModal extends Component {
               rel="noopener noreferrer"
             >
               Request
+            </a>
+          </div>
+          <div>
+            <span className="about-label">Support development:</span>{' '}
+            <a
+              href="https://www.buymeacoffee.com/simonho"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
+                alt="Buy Me A Coffee"
+                style={{ height: '28px', borderRadius: 5 }}
+              ></img>
             </a>
           </div>
         </Modal.Body>
