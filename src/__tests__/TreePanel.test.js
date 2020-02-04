@@ -13,8 +13,7 @@ afterEach(cleanup);
 
 describe('Tree panel component', () => {
   it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<TreePanel {...props} />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    const { getByTestId } = render(<TreePanel {...props} />);
+    expect(getByTestId('tree-panel')).toBeTruthy();
   });
 });
