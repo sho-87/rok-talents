@@ -120,7 +120,7 @@ export class AboutModal extends Component {
 
         <Modal.Body>
           <div>
-            Talent builder for Rise of Kingdoms. Best viewed on desktop.
+            Talent builder for Rise of Kingdoms. Best viewed on PC/laptop.
           </div>
           <br />
           <div>
