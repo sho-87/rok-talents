@@ -165,9 +165,9 @@ export class AboutModal extends Component {
               rel="noopener noreferrer"
             >
               <img
+                id="coffee"
                 src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
                 alt="Buy Me A Coffee"
-                style={{ height: '28px', borderRadius: 5 }}
               ></img>
             </a>
           </div>

@@ -5,9 +5,9 @@ import NavBar from './NavBar';
 import SidePanel from './SidePanel';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
-import { sumArray, getMaxTalentCount, setTitle, encode, decode } from './utils';
 import loadTreeData from './data/AllTrees';
 import Commanders from './data/Commanders.json';
+import { sumArray, getMaxTalentCount, setTitle, encode, decode } from './utils';
 import { maxPoints } from './values';
 import { dataVersion } from '../package.json';
 
@@ -19,6 +19,7 @@ let treeData;
 
 //TODO: CI/CD
 //TODO: github pages, cloudflare
+//TODO: icons
 //TODO: shouldComponentUpdate pass
 //FIXME: only updateurl/encode if that particular tree has changed
 
