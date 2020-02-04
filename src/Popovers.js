@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { mobileBreakpoint } from './values';
 
 import './styles/Popovers.css';
 
@@ -19,9 +20,9 @@ export class TalentTooltip extends Component {
   createPopover(orientation) {
     let compressor;
 
-    if (orientation === 'portrait') {
+    if (orientation === 'mobile') {
       compressor = { large: 2.1, small: 0.8 };
-    } else if (orientation === 'landscape') {
+    } else if (orientation === 'desktop') {
       compressor = { large: 1.6, small: undefined };
     }
 
@@ -40,7 +41,7 @@ export class TalentTooltip extends Component {
                 <span className="node-tooltip-title">
                   {this.props.talentname}
                 </span>
-                <MediaQuery orientation="landscape">
+                <MediaQuery minDeviceWidth={mobileBreakpoint + 1}>
                   <span className="node-tooltip-title-value">
                     {this.props.value + '/' + this.props.max}
                   </span>
@@ -58,7 +59,8 @@ export class TalentTooltip extends Component {
                 )}
 
                 {this.props.text}
-                <MediaQuery orientation="portrait">
+
+                <MediaQuery maxDeviceWidth={mobileBreakpoint}>
                   <Container id="node-tooltip-assign-container">
                     <Row>
                       <Col>
@@ -109,11 +111,11 @@ export class TalentTooltip extends Component {
   render() {
     return (
       <>
-        <MediaQuery orientation="landscape">
-          {this.createPopover('landscape')}
+        <MediaQuery minDeviceWidth={mobileBreakpoint + 1}>
+          {this.createPopover('desktop')}
         </MediaQuery>
-        <MediaQuery orientation="portrait">
-          {this.createPopover('portrait')}
+        <MediaQuery maxDeviceWidth={mobileBreakpoint}>
+          {this.createPopover('mobile')}
         </MediaQuery>
       </>
     );

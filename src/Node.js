@@ -5,6 +5,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Popovers';
 import { replaceTalentText, getMaxTalentCount } from './utils';
+import { mobileBreakpoint } from './values';
 
 import './styles/Node.css';
 
@@ -208,12 +209,13 @@ class Node extends Component {
   }
 }
 
-//FIXME: dont use portrait. detect mobile or use screen width instead
 const NodeOverlay = props => {
-  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${mobileBreakpoint}px)`
+  });
   let triggerProps, clickProps;
 
-  if (isPortrait) {
+  if (isMobile) {
     triggerProps = { trigger: 'click' };
     clickProps = {
       onClick: undefined,
