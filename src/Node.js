@@ -208,6 +208,7 @@ class Node extends Component {
   }
 }
 
+//FIXME: dont use portrait. detect mobile or use screen width instead
 const NodeOverlay = props => {
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
   let triggerProps, clickProps;
