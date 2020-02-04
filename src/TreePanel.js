@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { jsPlumb } from 'jsplumb';
-// import panzoom from 'panzoom';
+import panzoom from 'panzoom';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
 import { PrereqToast, ToastMessage } from './Toasts';
@@ -8,10 +8,6 @@ import { getTreeName } from './utils';
 
 import { dataVersion } from '../package.json';
 import './styles/TreePanel.css';
-
-//TODO: add FAB for tree zoom
-//TODO: make hex regions clickable for zoom
-//TODO: change tooltip to fixed location?
 
 /**
  * Component for the main tree panel. Controls the display of all nodes and
@@ -26,7 +22,6 @@ class TreePanel extends Component {
     this.state = {
       prereqMsg: ''
     };
-    // this.panZoomInstance = null;
 
     // Context bindings
     this.showPrereqToast = this.showPrereqToast.bind(this);
@@ -49,16 +44,27 @@ class TreePanel extends Component {
       this_.drawLines();
     });
 
-    // let panZoomContainer = document.querySelector('#tree-square-container');
-    // this.panZoomInstance = panzoom(panZoomContainer, {
-    //   minZoom: 0.9,
-    //   maxZoom: 3,
-    //   zoomDoubleClickSpeed: 1,
-    //   bounds: true,
-    //   onTouch: function(e) {
-    //     return false;
-    //   }
-    // });
+    let panZoomContainer = document.querySelector('#tree-square-content');
+    this.panZoomInstance = panzoom(panZoomContainer, {
+      minZoom: 1,
+      maxZoom: 3,
+      pinchSpeed: 1,
+      zoomDoubleClickSpeed: 1,
+      bounds: true,
+      boundsPadding: 0.5,
+      smoothScroll: false,
+      onTouch: function(e) {
+        return false;
+      },
+      filterKey: function(e) {
+        return true;
+      }
+    });
+
+    // This has the effect of closing any open popovers
+    this.panZoomInstance.on('transform', function(e) {
+      document.body.click();
+    });
   }
 
   /**
@@ -76,10 +82,10 @@ class TreePanel extends Component {
    *
    * @memberof TreePanel
    */
-  // resetPanZoom() {
-  //   this.panZoomInstance.moveTo(0, 0);
-  //   this.panZoomInstance.zoomAbs(0, 0, 1);
-  // }
+  resetPanZoom() {
+    this.panZoomInstance.moveTo(0, 0);
+    this.panZoomInstance.zoomAbs(0, 0, 1);
+  }
 
   /**
    * Call for repainting jsplumb lines on window resize

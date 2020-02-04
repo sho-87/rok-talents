@@ -33,6 +33,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  overscroll-behavior: contain;
   margin: 0;
 }
 
