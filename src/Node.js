@@ -211,12 +211,9 @@ class Node extends Component {
 const NodeOverlay = props => {
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
   let triggerProps, clickProps;
+
   if (isPortrait) {
-    triggerProps = {
-      trigger: 'click',
-      rootClose: true,
-      rootCloseEvent: 'mousedown'
-    };
+    triggerProps = { trigger: 'click' };
     clickProps = {
       onClick: undefined,
       onContextMenu: e => e.preventDefault()
@@ -236,6 +233,7 @@ const NodeOverlay = props => {
     <OverlayTrigger
       {...triggerProps}
       placement="right"
+      rootClose={true}
       flip={true}
       delay={{ show: 0, hide: 0 }}
       overlay={

@@ -249,7 +249,7 @@ class App extends Component {
       }
     );
 
-    //this.treePanelRef.resetPanZoom();
+    this.treePanelRef.resetPanZoom();
   }
 
   /**

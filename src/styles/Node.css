@@ -46,10 +46,6 @@
   opacity: var(--inactive-opacity);
 }
 
-.node-inactive:hover {
-  opacity: 1;
-}
-
 .node-value {
   position: absolute;
   bottom: 0;

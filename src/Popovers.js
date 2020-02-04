@@ -16,31 +16,6 @@ import './styles/Popovers.css';
  *
  */
 export class TalentTooltip extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { popoverOpen: false };
-
-  //   // Context bindings
-  //   this.togglePopover = this.togglePopover.bind(this);
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (
-  //     this.state.popoverOpen !== nextState.popoverOpen ||
-  //     this.props.value !== nextProps.value
-  //   ) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  // togglePopover() {
-  //   this.setState(prevState => ({
-  //     popoverOpen: !prevState.popoverOpen
-  //   }));
-  // }
-
   createPopover(orientation) {
     let compressor;
 
