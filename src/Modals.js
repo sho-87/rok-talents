@@ -140,15 +140,19 @@ export class AboutModal extends Component {
             </a>
           </div>
           <div>
-            <span className="about-label">Bug report:</span>{' '}
-            <a href={bugs.url} target="_blank" rel="noopener noreferrer">
-              GitHub
+            <span className="about-label">Report a bug:</span>{' '}
+            <a href={bugs.reportBug} target="_blank" rel="noopener noreferrer">
+              Report
             </a>
           </div>
           <div>
-            <span className="about-label">Feature request:</span>{' '}
-            <a href={bugs.url} target="_blank" rel="noopener noreferrer">
-              GitHub
+            <span className="about-label">Request a feature:</span>{' '}
+            <a
+              href={bugs.requestFeature}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Request
             </a>
           </div>
         </Modal.Body>
