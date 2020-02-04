@@ -23,7 +23,14 @@ import {
   EmailIcon
 } from 'react-share';
 
-import { title, author, version, dataVersion } from '../package.json';
+import {
+  title,
+  author,
+  repository,
+  bugs,
+  version,
+  dataVersion
+} from '../package.json';
 import './styles/Modals.css';
 
 /**
@@ -112,27 +119,36 @@ export class AboutModal extends Component {
         </Modal.Header>
 
         <Modal.Body>
+          <div>Talent buider for Rise of Kingdoms. Best viewed on desktop.</div>
+          <br />
           <div>
-            <span className="about-label">Application version:</span> {version}
+            <span className="about-label">App version:</span> {version}
           </div>
           <div>
-            <span className="about-label">Game data version:</span>{' '}
-            {dataVersion}
+            <span className="about-label">Data version:</span> {dataVersion}
           </div>
           <div>
-            <span className="about-label">Author:</span>{' '}
-            <a
-              href={`mailto: ${author.email}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <span className="about-label">Creator:</span>{' '}
+            <a href={author.url} target="_blank" rel="noopener noreferrer">
               {author.name}
             </a>
           </div>
           <div>
-            <span className="about-label">Website:</span>{' '}
-            <a href={author.url} target="_blank" rel="noopener noreferrer">
-              {author.url}
+            <span className="about-label">Code:</span>{' '}
+            <a href={repository.url} target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          </div>
+          <div>
+            <span className="about-label">Bug report:</span>{' '}
+            <a href={bugs.url} target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          </div>
+          <div>
+            <span className="about-label">Feature request:</span>{' '}
+            <a href={bugs.url} target="_blank" rel="noopener noreferrer">
+              GitHub
             </a>
           </div>
         </Modal.Body>
@@ -171,7 +187,7 @@ export class ShareModal extends Component {
 
   copyURL() {
     const input = document.getElementById('url');
-    input.readOnly=true;
+    input.readOnly = true;
     input.select();
     document.execCommand('copy');
     document.getElementById('copyButton').innerHTML = '\u2713';
