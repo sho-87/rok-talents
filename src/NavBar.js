@@ -88,7 +88,7 @@ class NavBar extends Component {
           <Navbar.Brand href="/">
             <img
               id="nav-app-icon"
-              src="logo192.jpg"
+              src={`${process.env.PUBLIC_URL}/logo192.jpg`}
               alt="RoK Talents Logo"
             ></img>
           </Navbar.Brand>
