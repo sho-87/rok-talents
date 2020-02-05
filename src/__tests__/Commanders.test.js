@@ -1,4 +1,4 @@
-import Commanders from '../data/Commanders.json';
+import Commanders from '../data/commanders.json';
 
 test('Commander keys are all present and unique', () => {
   const correctIDs = Array.from(

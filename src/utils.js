@@ -1,5 +1,5 @@
 import { valuesToLetters, lettersToValues } from './values';
-import Commanders from './data/Commanders.json';
+import Commanders from './data/commanders.json';
 import { title } from '../package.json';
 
 /**

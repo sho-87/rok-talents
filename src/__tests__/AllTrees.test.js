@@ -1,7 +1,7 @@
 import loadTreeData from '../data/AllTrees';
 import { isMultidimensional, arraysEqual } from '../utils';
 
-import Commanders from '../data/Commanders.json';
+import Commanders from '../data/commanders.json';
 import { dataVersion } from '../../package.json';
 
 const treeData = loadTreeData(dataVersion);

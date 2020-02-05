@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getTreeName } from './utils';
 
-import Commanders from './data/Commanders.json';
+import Commanders from './data/commanders.json';
 import './styles/SummaryPanel.css';
 
 /**

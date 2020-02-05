@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import App from '../App';
-import Commanders from '../data/Commanders.json';
+import Commanders from '../data/commanders.json';
 import { dataVersion } from '../../package.json';
 
 jest.mock("react-ga");

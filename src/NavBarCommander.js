@@ -5,7 +5,7 @@ import NavLink from 'react-bootstrap/NavLink';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Commanders from './data/Commanders.json';
+import Commanders from './data/commanders.json';
 import './styles/NavBarCommander.css';
 
 /**

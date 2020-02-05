@@ -3,7 +3,7 @@ import ReactGA from 'react-ga';
 import Collapse from 'react-bootstrap/Collapse';
 import { getMaxTalentCount, replaceTalentText } from './utils';
 
-import Commanders from './data/Commanders.json';
+import Commanders from './data/commanders.json';
 import './styles/StatsTalentsPanel.css';
 
 /**

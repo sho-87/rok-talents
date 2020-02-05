@@ -6,7 +6,7 @@ import SidePanel from './SidePanel';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
 import loadTreeData from './data/AllTrees';
-import Commanders from './data/Commanders.json';
+import Commanders from './data/commanders.json';
 import { sumArray, getMaxTalentCount, setTitle, encode, decode } from './utils';
 import { maxPoints } from './values';
 import { dataVersion } from '../package.json';
