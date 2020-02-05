@@ -3,14 +3,14 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  installAndTest:
-    name: Install and test
-    runs-on: windows-latest
+  install-and-test:
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Use Node.js
+      - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 10
