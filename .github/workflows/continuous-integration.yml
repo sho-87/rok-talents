@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   installAndTest:
     name: Install and test
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -19,4 +19,4 @@ jobs:
         run: npm install
 
       - name: Test
-        run: npm test
+        run: npm test --watchAll=false
