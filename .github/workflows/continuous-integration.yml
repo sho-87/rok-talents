@@ -6,20 +6,20 @@ jobs:
   buildAndTest:
     name: Build and Test
     runs-on: windows-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-      
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10
 
-    - name: Install Dependencies
-      run: npm install
-      
-    - name: Test
-      run: react-scripts test
-      
-    - name: Build
-      run: react-scripts build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
