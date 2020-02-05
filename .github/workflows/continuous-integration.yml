@@ -1,11 +1,11 @@
-name: Continuous Integration
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  buildAndTest:
-    name: Build and Test
-    runs-on: windows-latest
+  installAndTest:
+    name: Install and test
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -20,6 +20,3 @@ jobs:
 
       - name: Test
         run: npm test
-
-      - name: Build
-        run: npm run build

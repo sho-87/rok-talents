@@ -1,3 +1,3 @@
-# Rise of Kingdoms Talent Tree
+# RoK Talents
 
-Took inspiration from https://github.com/Nkmol/RoC-talent-tree
+![Continuous Integration](https://github.com/sho-87/rok-talents/workflows/CI/badge.svg)
