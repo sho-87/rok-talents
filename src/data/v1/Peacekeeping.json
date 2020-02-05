@@ -1,0 +1,211 @@
+{
+  "1": {
+    "name": "March Speed (All Troops)",
+    "values": [3],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [],
+    "dep": [2, 3],
+    "pos": [77.6, 8.1],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [4, 5],
+    "pos": [59.7, 0.5],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increased the defense of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [6, 7],
+    "pos": [75.5, 27],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Killer Instinct",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Increases normal attack damage dealt to barbarians and other neutral units by ${1}%",
+    "prereq": [2],
+    "dep": [8],
+    "pos": [45.5, -7.2],
+    "type": "node-large",
+    "image": "yellowBroke"
+  },
+  "5": {
+    "name": "Domination",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Increases skill damage dealt to barbarians and other neutral units by ${1}%",
+    "prereq": [2],
+    "dep": [9],
+    "pos": [45.8, 5.6],
+    "type": "node-large",
+    "image": "yellowFlail"
+  },
+  "6": {
+    "name": "Quick Study",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Increases experience obtained from defeating barbarians and other neutral units by ${1}%",
+    "prereq": [3],
+    "dep": [12],
+    "pos": [61.2, 32.4],
+    "type": "node-large",
+    "image": "yellowScroll"
+  },
+  "7": {
+    "name": "Insight",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Reduces action point cost to attack barbarians and other neutral units by ${1}%",
+    "prereq": [3],
+    "dep": [13],
+    "pos": [72.9, 39.5],
+    "type": "node-large",
+    "image": "yellowEagleHead"
+  },
+  "8": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [4],
+    "dep": [14],
+    "pos": [36.2, 0.8],
+    "type": "node-small"
+  },
+  "9": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [5],
+    "dep": [10],
+    "pos": [37.6, 13.2],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "Mighty Force",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "When this commander launches a rally attack, all damage dealt to barbarians and other neutral units is increased by ${1}%",
+    "prereq": [9],
+    "dep": [],
+    "pos": [35.4, 20.8],
+    "type": "node-large",
+    "image": "yellowGriffin"
+  },
+  "11": {
+    "name": "Trophy Hunter",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "After defeating barbarians or other neutral units, armies led by this commander will receive ${1} x lvl.1 Resource Pack C (Randomly grants you 1,000 Food, 1,000 Wood, 750 Stone or 500 Gold)",
+    "prereq": [12],
+    "dep": [],
+    "pos": [43, 33.8],
+    "type": "node-large",
+    "image": "yellowSack"
+  },
+  "12": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [6],
+    "dep": [11, 17],
+    "pos": [53.0, 40],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [7],
+    "dep": [17],
+    "pos": [63.6, 47.8],
+    "type": "node-small"
+  },
+  "14": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [8, 9],
+    "dep": [15, 18],
+    "pos": [25.6, 7.2],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [14],
+    "dep": [],
+    "pos": [28, 28.1],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [17],
+    "dep": [],
+    "pos": [35.4, 41.2],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [12, 13],
+    "dep": [16, 19],
+    "pos": [52.6, 54],
+    "type": "node-small"
+  },
+  "18": {
+    "name": "Double-Edged Sword",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Increases damage dealt to barbarians and other neutral units by ${1}%, but also increases damage taken from these units by ${1}%. Enhances healing effects received by troops by ${1}%",
+    "prereq": [14],
+    "dep": [20],
+    "pos": [12.6, 11.6],
+    "type": "node-large",
+    "image": "yellowAxe"
+  },
+  "19": {
+    "name": "Thoroughbreds",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Increases march speed of all troops by ${1}%",
+    "prereq": [17],
+    "dep": [20],
+    "pos": [39.8, 58.6],
+    "type": "node-large",
+    "image": "yellowHorseHead"
+  },
+  "20": {
+    "name": "Curing Chant",
+    "values": [100, 200, 300, 400, 500],
+    "stats": "",
+    "text": "Heals a portion of slightly wounded units (healing factor ${1}) after defeating barbarians or other neutral units",
+    "prereq": [18, 19],
+    "dep": [],
+    "pos": [19.5, 38.7],
+    "type": "node-large",
+    "image": "yellowLeaf"
+  }
+}

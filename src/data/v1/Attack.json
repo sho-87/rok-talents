@@ -1,0 +1,197 @@
+{
+  "1": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [],
+    "dep": [2, 3],
+    "pos": [18.6, 8.9],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander ${1}%",
+    "prereq": [1],
+    "dep": [4, 5],
+    "pos": [34.5, 0.3],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [6, 7],
+    "pos": [18.9, 26.8],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Lord of War",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "When troops led by this commander enter battle, increases attack by (${1} x Commander Star Level)%",
+    "prereq": [2],
+    "dep": [8, 9],
+    "pos": [45.5, -5],
+    "type": "node-large",
+    "image": "blueSword"
+  },
+  "5": {
+    "name": "Burning Blood",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "Grants an additional ${1} rage every time this commander's troops are attacked",
+    "prereq": [2],
+    "dep": [9],
+    "pos": [37.2, 10.3],
+    "type": "node-large",
+    "image": "blueSkullFire"
+  },
+  "6": {
+    "name": "Unyielding",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "Increases counterattack damage dealt by ${1}%",
+    "prereq": [3],
+    "dep": [10],
+    "pos": [29.5, 22.9],
+    "type": "node-large",
+    "image": "blueSnap"
+  },
+  "7": {
+    "name": "Armored Joints",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "Reduces all damage taken by ${1}%",
+    "prereq": [3],
+    "dep": [10, 11],
+    "pos": [20.3, 37.8],
+    "type": "node-large",
+    "image": "blueGloves"
+  },
+  "8": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [4],
+    "dep": [12],
+    "pos": [59.4, -6.5],
+    "type": "node-small"
+  },
+  "9": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [4, 5],
+    "dep": [13],
+    "pos": [52.9, 10.8],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [6, 7],
+    "dep": [14],
+    "pos": [37.6, 37.5],
+    "type": "node-small"
+  },
+  "11": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [7],
+    "dep": [15],
+    "pos": [25.9, 51.8],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "Fight To The Death",
+    "values": [
+      [2, 4, 6],
+      [1, 2, 3]
+    ],
+    "stats": "",
+    "text": "Increases all damage dealt by ${1}%, but also increases all damage taken by ${2}%",
+    "prereq": [8],
+    "dep": [],
+    "pos": [69.8, -0.4],
+    "type": "node-large",
+    "image": "blueSwordsMoon"
+  },
+  "13": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [9],
+    "dep": [16],
+    "pos": [61.8, 15.8],
+    "type": "node-small"
+  },
+  "14": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [10],
+    "dep": [17],
+    "pos": [46.2, 42.7],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Martial Mastery",
+    "values": [
+      [2, 4, 6],
+      [1, 2, 3]
+    ],
+    "stats": "",
+    "text": "Increases normal attack damage by ${1}%, but decreases active skill damage by ${2}%",
+    "prereq": [11],
+    "dep": [],
+    "pos": [36.6, 58.4],
+    "type": "node-large",
+    "image": "blueHammer"
+  },
+  "16": {
+    "name": "Effortless",
+    "values": [0.5, 1, 2.5],
+    "stats": "",
+    "text": "During battles, increases all damage dealt by ${1}% every 10 seconds (up to a maximum of 10%)",
+    "prereq": [13],
+    "dep": [18],
+    "pos": [70.6, 20.2],
+    "type": "node-large",
+    "image": "blueWaves"
+  },
+  "17": {
+    "name": "Victory Charge",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "When armies led by this commander defeat an army (excluding garrison) belonging to another governor, attack is increased by ${1}% for the next 10 seconds. (This effect will be removed once troops have left battle)",
+    "prereq": [14],
+    "dep": [18],
+    "pos": [55.4, 47.1],
+    "type": "node-large",
+    "image": "blueMan"
+  },
+  "18": {
+    "name": "Last Stand",
+    "values": [2, 4, 6, 8, 10],
+    "stats": "",
+    "text": "Normal troop attacks have a 10% chance to cause this commander's troops to go on a rampage (increases damage by ${1}% for the next 3 seconds, but skills cannot be used for the duration of the effect)",
+    "prereq": [16, 17],
+    "dep": [],
+    "pos": [79.4, 42.7],
+    "type": "node-large",
+    "image": "blueSkull"
+  }
+}

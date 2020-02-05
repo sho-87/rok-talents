@@ -1,0 +1,12 @@
+.navbar .btn {
+  margin: 1px;
+}
+
+.navbar .btn.btn-sm:disabled {
+  -webkit-filter: saturate(10%);
+  filter: saturate(10%);
+}
+
+.nav-button-text {
+  margin-left: 5px;
+}

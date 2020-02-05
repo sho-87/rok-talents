@@ -1,0 +1,211 @@
+{
+  "1": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [],
+    "dep": [4],
+    "pos": [77.6, 8.1],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [3],
+    "dep": [7],
+    "pos": [61.6, -5.5],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Empty Fortress Strategem",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "While this commander is serving as garrison commander, increases damage dealt to attacking armies by ${1}%",
+    "prereq": [4],
+    "dep": [2, 12],
+    "pos": [59.8, 2.6],
+    "type": "node-large",
+    "image": "yellowTrap"
+  },
+  "4": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [3, 5, 8, 9],
+    "pos": [64.6, 15.6],
+    "type": "node-small"
+  },
+  "5": {
+    "name": "Impenetrable Fortifications",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "When this commander is serving as garrison commander, damage taken by the garrison from the attacking army is reduced by ${1}%",
+    "prereq": [4],
+    "dep": [6, 15],
+    "pos": [70.8, 21.6],
+    "type": "node-large",
+    "image": "yellowArmor"
+  },
+  "6": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [5],
+    "dep": [10],
+    "pos": [81.5, 29.6],
+    "type": "node-small"
+  },
+  "7": {
+    "name": "Impregnable",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "When this commander is serving as garrison commander, skill damage taken by the garrison is reduced by ${1}%",
+    "prereq": [2],
+    "dep": [],
+    "pos": [47.0, -8.9],
+    "type": "node-large",
+    "image": "yellowCrossShield"
+  },
+  "8": {
+    "name": "Adamantine Walls",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Increases watchtower defense by ${1}% when this commander is serving as garrison commander",
+    "prereq": [4],
+    "dep": [13],
+    "pos": [49.2, 13.4],
+    "type": "node-large",
+    "image": "yellowTower"
+  },
+  "9": {
+    "name": "City Guardian",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Increases watchtower attack by ${1}% when this commander is serving as garrison commander",
+    "prereq": [4],
+    "dep": [14],
+    "pos": [56.1, 25.7],
+    "type": "node-large",
+    "image": "yellowArrows"
+  },
+  "10": {
+    "name": "Nowhere To Turn",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "When this commander is serving as garrison commander, grants an additional ${1} rage every time the city is attacked",
+    "prereq": [6],
+    "dep": [],
+    "pos": [74.7, 39.2],
+    "type": "node-large",
+    "image": "yellowSkullFire"
+  },
+  "11": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [12],
+    "dep": [17],
+    "pos": [34.2, -6.5],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [3],
+    "dep": [11],
+    "pos": [35.4, 6.4],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [8],
+    "dep": [17, 18],
+    "pos": [38.6, 22.6],
+    "type": "node-small"
+  },
+  "14": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [9],
+    "dep": [18, 19],
+    "pos": [45.8, 34.9],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [5],
+    "dep": [16],
+    "pos": [57.8, 45.5],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [15],
+    "dep": [19],
+    "pos": [68.8, 53],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "Know Thy Enemy",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "While this commander is serving as garrison commander, damage reduction effect is enhanced by ${1}% if the garrison becomes surrounded",
+    "prereq": [11, 13],
+    "dep": [20],
+    "pos": [22.4, 11.3],
+    "type": "node-large",
+    "image": "yellowScope"
+  },
+  "18": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [13, 14],
+    "dep": [],
+    "pos": [34, 33.4],
+    "type": "node-small"
+  },
+  "19": {
+    "name": "Kings Guard",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "Increases garrison attack, defense, and health by ${1}% when this commander is serving as garrison commander (no effect when garrisoning cities)",
+    "prereq": [14, 16],
+    "dep": [20],
+    "pos": [44.5, 50.2],
+    "type": "node-large",
+    "image": "yellowHelmetFront2"
+  },
+  "20": {
+    "name": "Divine Favor",
+    "values": [100, 200, 300, 400, 500],
+    "stats": "",
+    "text": "When this commander is serving as garrison commander, gives the garrison a 10% chance to receive a damage-absorbing shield (Damage Factor ${1}) after being attacked",
+    "prereq": [17, 19],
+    "dep": [],
+    "pos": [20.5, 38.1],
+    "type": "node-large",
+    "image": "yellowStaff"
+  }
+}

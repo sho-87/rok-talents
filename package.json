@@ -1,17 +1,50 @@
 {
-  "name": "rok-talent-builder",
-  "version": "0.1.0",
+  "name": "rok-talents",
+  "title": "RoK Talents",
+  "version": "1.0.0",
+  "dataVersion": 1,
+  "description": "Rise of Kingdoms talent builder",
+  "keywords": [
+    "games",
+    "Rise of Kingdoms"
+  ],
   "private": true,
+  "author": {
+    "name": "Simon Ho",
+    "email": "simonho213@gmail.com",
+    "url": "http://www.simonho.ca"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sho-87/rok-talents.git",
+    "releases": "https://github.com/sho-87/rok-talents/releases"
+  },
+  "bugs": {
+    "url": "https://github.com/sho-87/rok-talents/issues",
+    "reportBug": "https://github.com/sho-87/rok-talents/issues/new",
+    "requestFeature": "https://github.com/sho-87/rok-talents/issues/new"
+  },
   "dependencies": {
-    "bootstrap": "^4.3.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
+    "@kennethormandy/react-fittext": "^0.6.0",
+    "jsplumb": "2.12.8",
+    "panzoom": "^8.7.5",
     "react": "^16.10.2",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.1"
+    "react-ga": "^2.7.0",
+    "react-responsive": "^8.0.3",
+    "react-scripts": "^3.3.0",
+    "react-share": "^3.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --host 0.0.0.0",
     "build": "react-scripts build",
     "build-serve": "serve -s build",
     "test": "react-scripts test",

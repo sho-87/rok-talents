@@ -1,0 +1,82 @@
+/* Talent tree */
+#tree-panel {
+  position: relative;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 70px;
+}
+
+#tree-square-container {
+  height: 100%;
+  width: 100%;
+  max-width: calc(100vh - var(--nav-bar-height)); /* height of nav bar */
+  max-height: calc(100vw - var(--side-panel-width)); /* width of side bar */
+  margin: 0 auto;
+}
+
+#tree-square-section {
+  position: relative;
+  padding-bottom: 100%;
+}
+
+#tree-square-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+#tree-center {
+  position: absolute;
+  height: 17%;
+  width: 17%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: var(--hexagon-opacity);
+}
+
+#version-warning {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 5px;
+  text-align: right;
+  color: orange;
+}
+
+.line path {
+  opacity: var(--inactive-opacity);
+  stroke: gray;
+  stroke-width: 1;
+  z-index: 0;
+}
+
+.line-red path {
+  opacity: 1;
+  stroke: var(--red);
+  stroke-width: var(--line-width-active);
+}
+
+.line-yellow path {
+  opacity: 1;
+  stroke: var(--yellow);
+  stroke-width: var(--line-width-active);
+}
+
+.line-blue path {
+  opacity: 1;
+  stroke: var(--blue);
+  stroke-width: var(--line-width-active);
+}
+
+.line-endpoint {
+  visibility: hidden;
+  z-index: -1;
+}

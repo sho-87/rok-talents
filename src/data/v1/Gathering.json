@@ -1,0 +1,211 @@
+{
+  "1": {
+    "name": "March Speed (All Troops)",
+    "values": [3],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [],
+    "dep": [2, 3],
+    "pos": [77.6, 8.1],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [4, 5],
+    "pos": [61.3, -0.5],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Attack",
+    "text": "Increases the attack of units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [7, 6],
+    "pos": [76.9, 26.3],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Gathering Mastery (Gold)",
+    "values": [10, 20, 30],
+    "stats": "",
+    "text": "Increases gold gathering speed by ${1}%",
+    "prereq": [2],
+    "dep": [8],
+    "pos": [48.1, -9.0],
+    "type": "node-large",
+    "image": "yellowMoney"
+  },
+  "5": {
+    "name": "Gathering Mastery (Stone)",
+    "values": [10, 20, 30],
+    "stats": "",
+    "text": "Increases stone gathering speed by ${1}%",
+    "prereq": [2],
+    "dep": [9],
+    "pos": [54.7, 8.3],
+    "type": "node-large",
+    "image": "yellowRune"
+  },
+  "6": {
+    "name": "Gathering Mastery (Food)",
+    "values": [10, 20, 30],
+    "stats": "",
+    "text": "Increases food gathering by ${1}%",
+    "prereq": [3],
+    "dep": [9],
+    "pos": [63.2, 23.2],
+    "type": "node-large",
+    "image": "yellowWheat"
+  },
+  "7": {
+    "name": "Gathering Mastery (Wood)",
+    "values": [10, 20, 30],
+    "stats": "",
+    "text": "Increases wood gathering speed by ${1}%",
+    "prereq": [3],
+    "dep": [10],
+    "pos": [75.3, 38.2],
+    "type": "node-large",
+    "image": "yellowTree"
+  },
+  "8": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [4],
+    "dep": [11, 13],
+    "pos": [37.4, 0],
+    "type": "node-small"
+  },
+  "9": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [5, 6],
+    "dep": [14],
+    "pos": [50.4, 23.9],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [7],
+    "dep": [15, 12],
+    "pos": [64.4, 47.2],
+    "type": "node-small"
+  },
+  "11": {
+    "name": "Tourniquet",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "When troops led by this commander are in battle, decreases the number of severely wounded units by ${1}% (these units will instead be slightly wounded)",
+    "prereq": [8],
+    "dep": [],
+    "pos": [35.6, 11.4],
+    "type": "node-large",
+    "image": "yellowLeaf"
+  },
+  "12": {
+    "name": "Modified Axle",
+    "values": [10, 20, 30],
+    "stats": "",
+    "text": "Increases march speed of siege units by ${1}%",
+    "prereq": [10],
+    "dep": [],
+    "pos": [51, 38.3],
+    "type": "node-large",
+    "image": "yellowGear"
+  },
+  "13": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [8],
+    "dep": [18, 14],
+    "pos": [24.8, 7.4],
+    "type": "node-small"
+  },
+  "14": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [13, 15, 9],
+    "dep": [16, 17],
+    "pos": [38.2, 30.6],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [10],
+    "dep": [14, 20],
+    "pos": [52, 54.6],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [14],
+    "dep": [],
+    "pos": [27.8, 28.1],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [14],
+    "dep": [],
+    "pos": [34.2, 42.0],
+    "type": "node-small"
+  },
+  "18": {
+    "name": "The More The Better",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "Troops led by this commander receive an additional ${1}% resources upon completion of gathering",
+    "prereq": [13],
+    "dep": [19],
+    "pos": [13.4, 11.2],
+    "type": "node-large",
+    "image": "yellowSack"
+  },
+  "19": {
+    "name": "Superior Tools",
+    "values": [5, 10, 15, 20, 25],
+    "stats": "",
+    "text": "Increases gathering speed of all kinds of resources by ${1}%",
+    "prereq": [18, 20],
+    "dep": [],
+    "pos": [19.4, 38.6],
+    "type": "node-large",
+    "image": "yellowSickle"
+  },
+  "20": {
+    "name": "Armed Convoy",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Increases troop defense by ${1}% while gathering resources on the map",
+    "prereq": [15],
+    "dep": [19],
+    "pos": [40.8, 58.2],
+    "type": "node-large",
+    "image": "yellowWoodShield"
+  }
+}

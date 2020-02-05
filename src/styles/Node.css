@@ -1,0 +1,93 @@
+.node {
+  position: absolute;
+  text-align: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+  cursor: pointer;
+  z-index: 10;
+}
+
+.node-small-S {
+  width: 3%;
+  height: 3%;
+}
+
+.node-small-M {
+  width: 4%;
+  height: 4%;
+}
+
+.node-small-L {
+  width: 5%;
+  height: 5%;
+}
+
+.node-large-S {
+  width: 7%;
+  height: 7%;
+}
+
+.node-large-M {
+  width: 7.6%;
+  height: 7.6%;
+}
+
+.node-large-L {
+  width: 8.5%;
+  height: 8.5%;
+}
+
+.node-inactive {
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7)) grayscale(100%);
+  opacity: var(--inactive-opacity);
+}
+
+.node-value {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 95%);
+  height: 50%;
+  width: 80%;
+  color: rgb(216, 216, 216);
+}
+
+.node-tooltip-title {
+  float: left;
+}
+
+.node-tooltip-title-value {
+  float: right;
+  margin-left: 5px;
+}
+
+.node-tooltip-id {
+  margin-top: 5px;
+  text-align: right;
+  color: gray;
+}
+
+#node-tooltip-assign-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.node-tooltip-decrease-button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0%, -50%);
+  color: red;
+}
+
+.node-tooltip-increase-button {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0%, -50%);
+  color: green;
+}

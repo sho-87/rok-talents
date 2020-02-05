@@ -1,0 +1,211 @@
+{
+  "1": {
+    "name": "March Speed (All Troops)",
+    "values": [3],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [],
+    "dep": [2, 3, 4],
+    "pos": [18.6, 9],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [5, 6],
+    "pos": [33.4, 2.2],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [7, 6],
+    "pos": [26.8, 13.8],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [7, 8],
+    "pos": [20, 25.8],
+    "type": "node-small"
+  },
+  "5": {
+    "name": "Saving Cross",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Reduces skill damage taken by ${1}%",
+    "prereq": [2],
+    "dep": [10],
+    "pos": [45.2, -0.3],
+    "type": "node-large",
+    "image": "blueSpinner"
+  },
+  "6": {
+    "name": "Vortex",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Grants a 10% chance to decrease target march speed by ${1}% for the next 3 seconds whenever an active skill is used",
+    "prereq": [2, 3],
+    "dep": [11],
+    "pos": [38.2, 11.8],
+    "type": "node-large",
+    "image": "blueSpiral"
+  },
+  "7": {
+    "name": "Lightning Charge",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "Increases march speed of all troops by ${1}%",
+    "prereq": [3, 4],
+    "dep": [12],
+    "pos": [31.4, 23.6],
+    "type": "node-large",
+    "image": "blueHorse"
+  },
+  "8": {
+    "name": "Spiked Armor",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "Increases counterattack damage dealt by ${1}%",
+    "prereq": [4],
+    "dep": [13],
+    "pos": [24.8, 35.4],
+    "type": "node-large",
+    "image": "blueSpikes"
+  },
+  "9": {
+    "name": "Swiftness",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "When troops led by this commander are attacked by an active skill, increases march speed by ${1}% for the next 5 seconds",
+    "prereq": [10],
+    "dep": [],
+    "pos": [63.8, -4],
+    "type": "node-large",
+    "image": "blueBoots"
+  },
+  "10": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [5],
+    "dep": [15],
+    "pos": [59.2, 9],
+    "type": "node-small"
+  },
+  "11": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [6],
+    "dep": [15, 16],
+    "pos": [52.3, 21],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [7],
+    "dep": [16, 17],
+    "pos": [45.6, 32.6],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [8],
+    "dep": [14, 17],
+    "pos": [39, 44.2],
+    "type": "node-small"
+  },
+  "14": {
+    "name": "Hasty Departure",
+    "values": [20, 40, 60],
+    "stats": "",
+    "text": "When troops led by this commander depart from a structure, increases march speed by ${1}% for the next 10 seconds",
+    "prereq": [13],
+    "dep": [],
+    "pos": [30.6, 53.4],
+    "type": "node-large",
+    "image": "blueHorseHead"
+  },
+  "15": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [10, 11],
+    "dep": [18],
+    "pos": [65.4, 21.4],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [11, 12],
+    "dep": [],
+    "pos": [59, 32.4],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [12, 13],
+    "dep": [20],
+    "pos": [51.8, 44.8],
+    "type": "node-small"
+  },
+  "18": {
+    "name": "Alacrity",
+    "values": [10, 20, 30],
+    "stats": "",
+    "text": "Troops led by this commander have a ${1}% chance to resist enemy slow effects",
+    "prereq": [15],
+    "dep": [19],
+    "pos": [77.4, 18.4],
+    "type": "node-large",
+    "image": "blueMind"
+  },
+  "19": {
+    "name": "Time Management",
+    "values": [2, 4, 6, 8, 10],
+    "stats": "",
+    "text": "Increases march speed of all troops by ${1}% when not in combat, but decreases march speed by ${1}% while in combat",
+    "prereq": [18, 20],
+    "dep": [],
+    "pos": [67.8, 36.4],
+    "type": "node-large",
+    "image": "blueHourglass"
+  },
+  "20": {
+    "name": "Triumphant March",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "When armies led by this commander defeat an army belonging to another governor, increases march speed by ${1}% for the next 10 seconds",
+    "prereq": [17],
+    "dep": [19],
+    "pos": [56.9, 53.6],
+    "type": "node-large",
+    "image": "blueStaff"
+  }
+}

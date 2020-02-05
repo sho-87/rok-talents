@@ -1,0 +1,191 @@
+{
+  "1": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [],
+    "dep": [4, 5],
+    "pos": [-1.5, 75.6],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Fresh Recruits",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "Increases maximum troop capacity by ${1}%",
+    "prereq": [4],
+    "dep": [6],
+    "pos": [-25.6, 68.6],
+    "type": "node-large",
+    "image": "redFlag"
+  },
+  "3": {
+    "name": "Healing Herbs",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Enhances healing effects received by troops by ${1}%",
+    "prereq": [5],
+    "dep": [9],
+    "pos": [19.1, 68.6],
+    "type": "node-large",
+    "image": "redLeaf"
+  },
+  "4": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [2, 7],
+    "pos": [-10.4, 63.6],
+    "type": "node-small"
+  },
+  "5": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [3, 8],
+    "pos": [7.5, 63.5],
+    "type": "node-small"
+  },
+  "6": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [2],
+    "dep": [10, 14],
+    "pos": [-23.8, 56],
+    "type": "node-small"
+  },
+  "7": {
+    "name": "Steely Soul",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "Increased normal attack damage by ${1}%",
+    "prereq": [4],
+    "dep": [11],
+    "pos": [-12.2, 48.4],
+    "type": "node-large",
+    "image": "redAnvil"
+  },
+  "8": {
+    "name": "Hidden Wrath",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "Grants an additional ${1} rage every time this commander's troops are attacked",
+    "prereq": [5],
+    "dep": [12],
+    "pos": [5.8, 48.4],
+    "type": "node-large",
+    "image": "redSwordShield"
+  },
+  "9": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [3],
+    "dep": [13, 15],
+    "pos": [20.9, 56.0],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "Armored To The Teeth",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "When armies led by this commander contain 3 or more different unit types, all damage taken is reduced by ${1}%",
+    "prereq": [6],
+    "dep": [],
+    "pos": [-44.9, 35.9],
+    "type": "node-large",
+    "image": "redWoodShield"
+  },
+  "11": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [7],
+    "dep": [14],
+    "pos": [-10.4, 37.7],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [8],
+    "dep": [15],
+    "pos": [7.6, 37.7],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Armed To The Teeth",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "When armies led by this commander contain 3 or more different unit types, all damage dealt is increased by ${1}%",
+    "prereq": [9],
+    "dep": [],
+    "pos": [38.1, 35.9],
+    "type": "node-large",
+    "image": "redSword"
+  },
+  "14": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [6, 11],
+    "dep": [16],
+    "pos": [-23.9, 27.8],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [9, 12],
+    "dep": [17],
+    "pos": [21, 27.8],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "Close Formation",
+    "values": [3, 6, 9, 12],
+    "stats": "",
+    "text": "When the army led by this commander has been reduced to 50% strength, increases attack by ${1}%",
+    "prereq": [14],
+    "dep": [18],
+    "pos": [-25.6, 15.8],
+    "type": "node-large",
+    "image": "redSpiral"
+  },
+  "17": {
+    "name": "Strategic Prowess",
+    "values": [5, 10, 15, 20],
+    "stats": "",
+    "text": "After using a skill, increases troop defense by ${1}% for the next 2 seconds",
+    "prereq": [15],
+    "dep": [18],
+    "pos": [19.1, 15.9],
+    "type": "node-large",
+    "image": "RedScroll"
+  },
+  "18": {
+    "name": "Name Of The King",
+    "values": [1, 2, 3, 4, 5],
+    "stats": "",
+    "text": "When this commander launches a rally attack, increases attack of the rallied army by ${1}%",
+    "prereq": [16, 17],
+    "dep": [],
+    "pos": [-2.7, 10.4],
+    "type": "node-large",
+    "image": "RedCrown"
+  }
+}

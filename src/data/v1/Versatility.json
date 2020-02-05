@@ -1,0 +1,191 @@
+{
+  "1": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [],
+    "dep": [3],
+    "pos": [77.6, 8.2],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Superior Tools",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Increases gathering speed of all troops by ${1}%",
+    "prereq": [3],
+    "dep": [6, 11],
+    "pos": [59.9, 2.8],
+    "type": "node-large",
+    "image": "yellowSickle"
+  },
+  "3": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [2, 4, 7, 8],
+    "pos": [64.6, 15.7],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Marionette",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Reduces damage taken from watchtowers by ${1}% when attacking other cities",
+    "prereq": [3],
+    "dep": [9, 14],
+    "pos": [70.8, 21.8],
+    "type": "node-large",
+    "image": "yellowDoll"
+  },
+  "5": {
+    "name": "Nowhere To Turn",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "When this commander is serving as garrison commander, grants an additional ${1} rage everytime the city is attacked",
+    "prereq": [6],
+    "dep": [],
+    "pos": [34.2, -7.0],
+    "type": "node-large",
+    "image": "yellowSkullFire"
+  },
+  "6": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [2],
+    "dep": [5],
+    "pos": [46, 2.2],
+    "type": "node-small"
+  },
+  "7": {
+    "name": "City Guardian",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Increases watchtower attack by ${1}% when this commander is serving as garrison commander",
+    "prereq": [3],
+    "dep": [12],
+    "pos": [50.0, 12.6],
+    "type": "node-large",
+    "image": "yellowArrows"
+  },
+  "8": {
+    "name": "Insight",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Reduces action point cost to attack barbarians and other neutral units by ${1}",
+    "prereq": [3],
+    "dep": [13],
+    "pos": [57.8, 25.6],
+    "type": "node-large",
+    "image": "yellowEagleHead"
+  },
+  "9": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense ",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [4],
+    "dep": [10],
+    "pos": [68.4, 37.4],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "Buckler Shield",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "When attacking other governors' cities, decreases the number of units that die in battle by ${1}% (these units will instead be severely wounded and sent to the hospital)",
+    "prereq": [9],
+    "dep": [],
+    "pos": [69.2, 48],
+    "type": "node-large",
+    "image": "yellowWoodShield"
+  },
+  "11": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [2],
+    "dep": [15],
+    "pos": [38.3, 9.2],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack ",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [7],
+    "dep": [15, 16],
+    "pos": [41.8, 20.6],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [8],
+    "dep": [16, 17],
+    "pos": [49.4, 33.4],
+    "type": "node-small"
+  },
+  "14": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [4],
+    "dep": [17],
+    "pos": [57.3, 42.1],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "King's Guard",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "Increases garrison attack, defense, and health by ${1}% when this commander is serving as garrison commander",
+    "prereq": [11, 12],
+    "dep": [18],
+    "pos": [28.6, 22],
+    "type": "node-large",
+    "image": "yellowHelmetFront2"
+  },
+  "16": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [12, 13],
+    "dep": [],
+    "pos": [38.1, 31],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "Meteor Shower",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "Increases damage dealt to the garrison by ${1}% when attacking other cities",
+    "prereq": [13, 14],
+    "dep": [18],
+    "pos": [38.4, 39.6],
+    "type": "node-large",
+    "image": "yellowMeteor"
+  },
+  "18": {
+    "name": "Turn Of Fate",
+    "values": [1, 2, 3, 4, 5],
+    "stats": "",
+    "text": "When troops led by this commander enter battle, randomly grants all units one of the following buffs for the next 5 seconds: Attack +${1}%, Defense -${1}%, Damage Dealt +${1}% or March Speed -${1}%",
+    "prereq": [15, 17],
+    "dep": [],
+    "pos": [20.8, 38.1],
+    "type": "node-large",
+    "image": "yellowDice"
+  }
+}

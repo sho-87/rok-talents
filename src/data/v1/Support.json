@@ -1,0 +1,211 @@
+{
+  "1": {
+    "name": "March Speed (All Troops)",
+    "values": [3],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [],
+    "dep": [2, 3],
+    "pos": [18.7, 8.8],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [4, 5],
+    "pos": [20.8, 24.3],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1, 1.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [1],
+    "dep": [6, 7],
+    "pos": [33.6, 1.9],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Loose Formation",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Reduces skill damage taken by ${1}%",
+    "prereq": [2],
+    "dep": [8],
+    "pos": [22.8, 34],
+    "type": "node-large",
+    "image": "blueWaves"
+  },
+  "5": {
+    "name": "Elixir",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Enhances healing effects received by troops by ${1}%",
+    "prereq": [2],
+    "dep": [8, 9],
+    "pos": [29, 22.6],
+    "type": "node-large",
+    "image": "blueVial"
+  },
+  "6": {
+    "name": "Hasty Departure",
+    "values": [20, 40, 60],
+    "stats": "",
+    "text": "When troops led by this commander depart from a structure, increases march speed by ${1}% for the next 10 seconds",
+    "prereq": [3],
+    "dep": [10, 11],
+    "pos": [36.6, 10],
+    "type": "node-large",
+    "image": "blueHorseHead"
+  },
+  "7": {
+    "name": "Burning Blood",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Normal attacks grant an additional ${1} rage",
+    "prereq": [3],
+    "dep": [11],
+    "pos": [43.2, -1.3],
+    "type": "node-large",
+    "image": "blueSkullFire"
+  },
+  "8": {
+    "name": "Defense (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [4, 5],
+    "dep": [12],
+    "pos": [32.6, 40.4],
+    "type": "node-small"
+  },
+  "9": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [5],
+    "dep": [13],
+    "pos": [39, 29.3],
+    "type": "node-small"
+  },
+  "10": {
+    "name": "Health (All Troops)",
+    "values": [0.5],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [6],
+    "dep": [14],
+    "pos": [46.2, 16.3],
+    "type": "node-small"
+  },
+  "11": {
+    "name": "Attack (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [6, 7],
+    "dep": [15],
+    "pos": [53, 5.3],
+    "type": "node-small"
+  },
+  "12": {
+    "name": "Defense (All Troops)",
+    "values": [0.5],
+    "stats": "Defense",
+    "text": "Increases the defense of all units led by this commander by ${1}%",
+    "prereq": [8],
+    "dep": [16],
+    "pos": [41.4, 45.5],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Counterattack",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "When healed, troops led by this commander will have their attack increased by ${1}% for the next 3 seconds",
+    "prereq": [9],
+    "dep": [],
+    "pos": [46, 32.7],
+    "type": "node-large",
+    "image": "blueStrong"
+  },
+  "14": {
+    "name": "Expert Design",
+    "values": [2, 4, 6],
+    "stats": "",
+    "text": "Increases attack, defense, and health of siege units by ${1}%",
+    "prereq": [10],
+    "dep": [],
+    "pos": [53.4, 19.7],
+    "type": "node-large",
+    "image": "blueGear"
+  },
+  "15": {
+    "name": "Attack (All Troops)",
+    "values": [0.5],
+    "stats": "Attack",
+    "text": "Increases the attack of all units led by this commander by ${1}%",
+    "prereq": [11],
+    "dep": [17],
+    "pos": [61.7, 10.2],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "Health (All Troops)",
+    "values": [0.5, 1],
+    "stats": "Health",
+    "text": "Increases the health of all units led by this commander by ${1}%",
+    "prereq": [12],
+    "dep": [18],
+    "pos": [48.9, 49.8],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "March Speed (All Troops)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases the march speed of all units led by this commander by ${1}%",
+    "prereq": [15],
+    "dep": [19],
+    "pos": [69.2, 14.6],
+    "type": "node-small"
+  },
+  "18": {
+    "name": "Emergency Protection",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "When troops led by this commander take skill damage, there is a 50% chance that they will gain an additional ${1}% skill damage reduction for the next 3 seconds",
+    "prereq": [16],
+    "dep": [20],
+    "pos": [56.8, 53.7],
+    "type": "node-large",
+    "image": "blueCrossShield"
+  },
+  "19": {
+    "name": "Rejuvenate",
+    "values": [50, 100, 150],
+    "stats": "",
+    "text": "Instantly restores ${1} rage whenever a skill is used",
+    "prereq": [17],
+    "dep": [20],
+    "pos": [77.4, 18.4],
+    "type": "node-large",
+    "image": "blueHand"
+  },
+  "20": {
+    "name": "Cage of Thorns",
+    "values": [5, 10, 15, 20, 25],
+    "stats": "",
+    "text": "After using an active skill, reduces march speed of nearby enemy troops by ${1}% (Duration: 3 seconds; maximum 5 targets)",
+    "prereq": [18, 19],
+    "dep": [],
+    "pos": [78.2, 42.5],
+    "type": "node-large",
+    "image": "blueThorns"
+  }
+}

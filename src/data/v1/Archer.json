@@ -1,0 +1,211 @@
+{
+  "1": {
+    "name": "Attack (Archers)",
+    "values": [1],
+    "stats": "Attack",
+    "text": "Increases attack of archer units by ${1}%",
+    "prereq": [],
+    "dep": [],
+    "pos": [-1.7, 75.7],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Attack (Archers)",
+    "values": [1],
+    "stats": "Attack",
+    "text": "Increases attack of archer units by ${1}%",
+    "prereq": [7],
+    "dep": [6],
+    "pos": [-34.2, 63.4],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Attack (Archers)",
+    "values": [1, 2],
+    "stats": "Attack",
+    "text": "Increases attack of archer units by ${1}%",
+    "prereq": [1],
+    "dep": [7, 10],
+    "pos": [-10, 64.7],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "March Speed (Archers)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases march speed of archer units by ${1}%",
+    "prereq": [1],
+    "dep": [8, 11],
+    "pos": [7.2, 64.7],
+    "type": "node-small"
+  },
+  "5": {
+    "name": "Defense (Archers)",
+    "values": [1],
+    "stats": "Defense",
+    "text": "Increases defense of archer units by ${1}%",
+    "prereq": [8],
+    "dep": [9],
+    "pos": [29.2, 63.3],
+    "type": "node-small"
+  },
+  "6": {
+    "name": "Full Quiver",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "Increases attack of archer units by ${1}%",
+    "prereq": [2],
+    "dep": [],
+    "pos": [-48.8, 53.4],
+    "type": "node-large",
+    "image": "redRing"
+  },
+  "7": {
+    "name": "Arrows Nocked",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "When the army led by this commander has been reduced to 50% strength, increases attack of all troops by ${1}%",
+    "prereq": [3],
+    "dep": [2, 12],
+    "pos": [-26.4, 53.6],
+    "type": "node-large",
+    "image": "redQuiver"
+  },
+  "8": {
+    "name": "Thumb Ring",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Archer units led by this commander deal an additional ${1}% damage to infantry units",
+    "prereq": [4],
+    "dep": [5, 13],
+    "pos": [19.2, 53.6],
+    "type": "node-large",
+    "image": "redArrows"
+  },
+  "9": {
+    "name": "Razor Sharp",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Grants an additional ${1} rage after launching a normal attack",
+    "prereq": [5],
+    "dep": [],
+    "pos": [41.6, 53.4],
+    "type": "node-large",
+    "image": "redCrossbow"
+  },
+  "10": {
+    "name": "Rapid Fire",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "Increases normal attack damage of all troops led by this commander by ${1}%",
+    "prereq": [3],
+    "dep": [12],
+    "pos": [-11.8, 48.2],
+    "type": "node-large",
+    "image": "redBow"
+  },
+  "11": {
+    "name": "Armed and Armored",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Increases health of archer units by ${1}%",
+    "prereq": [4],
+    "dep": [13],
+    "pos": [5.3, 47.5],
+    "type": "node-large",
+    "image": "redArmor"
+  },
+  "12": {
+    "name": "Attack (Archers)",
+    "values": [1, 2, 3],
+    "stats": "Attack",
+    "text": "Increases attack of archer units by ${1}%",
+    "prereq": [7, 10],
+    "dep": [14, 15],
+    "pos": [-18.7, 42.5],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "March Speed (Archers)",
+    "values": [3, 6, 9],
+    "stats": "March Speed",
+    "text": "Increases march speed of archer units by ${1}%",
+    "prereq": [8, 11],
+    "dep": [16, 17],
+    "pos": [16.8, 42.5],
+    "type": "node-small"
+  },
+  "14": {
+    "name": "Health (Archers)",
+    "values": [1],
+    "stats": "Health",
+    "text": "Increases health of archer units by ${1}%",
+    "prereq": [12],
+    "dep": [18],
+    "pos": [-18.8, 33.9],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Health (Archers)",
+    "values": [1],
+    "stats": "Health",
+    "text": "Increases health of archer units by ${1}%",
+    "prereq": [12],
+    "dep": [18],
+    "pos": [-7.8, 33.9],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "Defense (Archers)",
+    "values": [1],
+    "stats": "Defense",
+    "text": "Increases defense of archer units by ${1}%",
+    "prereq": [13],
+    "dep": [19],
+    "pos": [5.8, 33.9],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "March Speed (Archers)",
+    "values": [3],
+    "stats": "March Speed",
+    "text": "Increases march speed of archer units by ${1}%",
+    "prereq": [13],
+    "dep": [19],
+    "pos": [16.8, 33.9],
+    "type": "node-small"
+  },
+  "18": {
+    "name": "Phoenix-Tail Arrrows",
+    "values": [50, 100, 150, 200],
+    "stats": "",
+    "text": "When the army led by this commander contains only archer units, normal attacks have a 10% chance to trigger an additional attack (Damage Factor ${1}) on the target",
+    "prereq": [14, 15],
+    "dep": [20],
+    "pos": [-20.6, 21.4],
+    "type": "node-large",
+    "image": "redFeather"
+  },
+  "19": {
+    "name": "Venomous Sting",
+    "values": [2, 4, 6, 8],
+    "stats": "",
+    "text": "Increases active skill damage of primary and secondary commanders by ${1}%",
+    "prereq": [16, 17],
+    "dep": [20],
+    "pos": [15, 21.4],
+    "type": "node-large",
+    "image": "redScorpion"
+  },
+  "20": {
+    "name": "Whistling Arrows",
+    "values": [5, 10, 15, 20, 25],
+    "stats": "",
+    "text": "When the army led by this commander contains only archer units, normal attacks have a 10% chance to increase all damage dealth by ${1}% for the next 2 seconds",
+    "prereq": [18, 19],
+    "dep": [],
+    "pos": [-2.8, 10.4],
+    "type": "node-large",
+    "image": "redEagle"
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "1": {
+    "name": "March Speed (Cavalry)",
+    "values": [3],
+    "stats": "March Speed",
+    "text": "Increases march speed of cavalry units by ${1}%",
+    "prereq": [],
+    "dep": [2, 3, 4],
+    "pos": [-1.4, 75.7],
+    "type": "node-small"
+  },
+  "2": {
+    "name": "Attack (Cavalry)",
+    "values": [1, 2],
+    "stats": "Attack",
+    "text": "Increases attack of cavalry units by ${1}%",
+    "prereq": [1],
+    "dep": [5, 8],
+    "pos": [-13.5, 64.8],
+    "type": "node-small"
+  },
+  "3": {
+    "name": "Defense (Cavalry)",
+    "values": [1],
+    "stats": "Defense",
+    "text": "Increases defense of cavalry units by ${1}%",
+    "prereq": [1],
+    "dep": [8, 9],
+    "pos": [-1.4, 62.4],
+    "type": "node-small"
+  },
+  "4": {
+    "name": "Health (Cavalry)",
+    "values": [1, 2],
+    "stats": "Health",
+    "text": "Increases health of cavalry units by ${1}%",
+    "prereq": [1],
+    "dep": [9, 6],
+    "pos": [10.8, 64.8],
+    "type": "node-small"
+  },
+  "5": {
+    "name": "Dragon Saber",
+    "values": [0.5, 1, 1.5],
+    "stats": "",
+    "text": "Increases normal attack damage of all troops led by this commander by ${1}%",
+    "prereq": [2],
+    "dep": [7],
+    "pos": [-29, 55.6],
+    "type": "node-large",
+    "image": "redHilt"
+  },
+  "6": {
+    "name": "Galea",
+    "values": [1, 2, 3],
+    "stats": "",
+    "text": "Increases health of cavalry units by ${1}%",
+    "prereq": [4],
+    "dep": [10],
+    "pos": [22, 55.6],
+    "type": "node-large",
+    "image": "redHelmetSide"
+  },
+  "7": {
+    "name": "Attack (Cavalry)",
+    "values": [1],
+    "stats": "Attack",
+    "text": "Increases attack of cavalry units by ${1}%",
+    "prereq": [5],
+    "dep": [11, 18],
+    "pos": [-36.8, 47.8],
+    "type": "node-small"
+  },
+  "8": {
+    "name": "Halberd",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Cavalry units led by this commander deal an additional ${1}% damage to archer units",
+    "prereq": [2, 3],
+    "dep": [13],
+    "pos": [-11.8, 48.2],
+    "type": "node-large",
+    "image": "redHalberd"
+  },
+  "9": {
+    "name": "Charge",
+    "values": [10, 20, 30],
+    "stats": "",
+    "text": "When the army led by this commander has been reduced to less than 50% strength, increases march speed by ${1}% ",
+    "prereq": [3, 4],
+    "dep": [15],
+    "pos": [6.0, 48.2],
+    "type": "node-large",
+    "image": "redHorse"
+  },
+  "10": {
+    "name": "March Speed (Cavalry)",
+    "values": [3],
+    "stats": "March Speed",
+    "text": "Increases march speed of cavalry units by ${1}%",
+    "prereq": [6],
+    "dep": [17, 19],
+    "pos": [32.5, 47.8],
+    "type": "node-small"
+  },
+  "11": {
+    "name": "Undying Fury",
+    "values": [3, 6, 9],
+    "stats": "",
+    "text": "Normal attacks grant an additional ${1} rage",
+    "prereq": [7],
+    "dep": [],
+    "pos": [-48.8, 37.2],
+    "type": "node-large",
+    "image": "redSkullFire"
+  },
+  "12": {
+    "name": "March Speed (Cavalry)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases march speed of cavalry units by ${1}%",
+    "prereq": [13],
+    "dep": [18],
+    "pos": [-18.8, 36.5],
+    "type": "node-small"
+  },
+  "13": {
+    "name": "Attack (Cavalry)",
+    "values": [1, 2, 3],
+    "stats": "Attack",
+    "text": "Increases attack of cavalry units by ${1}%",
+    "prereq": [8],
+    "dep": [12, 14],
+    "pos": [-10, 39],
+    "type": "node-small"
+  },
+  "14": {
+    "name": "Health (Cavalry)",
+    "values": [1],
+    "stats": "Health",
+    "text": "Increases health of cavalry units by ${1}%",
+    "prereq": [13, 15],
+    "dep": [],
+    "pos": [-1.2, 33],
+    "type": "node-small"
+  },
+  "15": {
+    "name": "Defense (Cavalry)",
+    "values": [1, 2, 3],
+    "stats": "Defense",
+    "text": "Increases defense of cavalry units by ${1}%",
+    "prereq": [9],
+    "dep": [14, 16],
+    "pos": [7.8, 39],
+    "type": "node-small"
+  },
+  "16": {
+    "name": "March Speed (Cavalry)",
+    "values": [3, 6],
+    "stats": "March Speed",
+    "text": "Increases march speed of cavalry units by ${1}%",
+    "prereq": [15],
+    "dep": [19],
+    "pos": [16.7, 36.5],
+    "type": "node-small"
+  },
+  "17": {
+    "name": "Equestrian Excellence",
+    "values": [5, 10, 15],
+    "stats": "",
+    "text": "Normal troop attacks have a 10% chance to increase march speed by ${1}% for the next 2 seconds",
+    "prereq": [10],
+    "dep": [],
+    "pos": [41, 37.2],
+    "type": "node-large",
+    "image": "redHorseHead"
+  },
+  "18": {
+    "name": "Disarm",
+    "values": [5, 10, 15, 20],
+    "stats": "",
+    "text": "Normal troop attacks have a 10% chance to reduce enemy attack by ${1}% for the next 2 seconds",
+    "prereq": [7, 12],
+    "dep": [20],
+    "pos": [-20.2, 23.7],
+    "type": "node-large",
+    "image": "redBroken"
+  },
+  "19": {
+    "name": "Emblazoned Shield",
+    "values": [3, 6, 9, 12],
+    "stats": "",
+    "text": "Reduces skill damage taken by ${1}%",
+    "prereq": [16, 10],
+    "dep": [20],
+    "pos": [15, 23.7],
+    "type": "node-large",
+    "image": "redCrossShield"
+  },
+  "20": {
+    "name": "Rallying Cry",
+    "values": [3, 6, 9, 12, 15],
+    "stats": "",
+    "text": "Increases all damage dealt by ${1}% during the first 10 seconds after entering battle",
+    "prereq": [18, 19],
+    "dep": [],
+    "pos": [-3.2, 10.4],
+    "type": "node-large",
+    "image": "redSwordFloral"
+  }
+}
