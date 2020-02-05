@@ -120,12 +120,23 @@ export class AboutModal extends Component {
 
         <Modal.Body>
           <div>
-            <img id="modal-app-icon" src="logo192.jpg" alt="RoK Talents Logo"></img>
+            <img
+              id="modal-app-icon"
+              src="logo192.jpg"
+              alt="RoK Talents Logo"
+            ></img>
             Talent builder for Rise of Kingdoms. Best viewed on PC/laptop.
           </div>
           <br />
           <div>
-            <span className="about-label">App version:</span> {version}
+            <span className="about-label">App version:</span>{' '}
+            <a
+              href={repository.releases}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {version}
+            </a>
           </div>
           <div>
             <span className="about-label">Data version:</span> {dataVersion}
@@ -146,16 +157,6 @@ export class AboutModal extends Component {
             <span className="about-label">Report a bug:</span>{' '}
             <a href={bugs.reportBug} target="_blank" rel="noopener noreferrer">
               Report
-            </a>
-          </div>
-          <div>
-            <span className="about-label">Request a feature:</span>{' '}
-            <a
-              href={bugs.requestFeature}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Request
             </a>
           </div>
           <div>

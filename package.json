@@ -16,7 +16,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sho-87/rok-talents.git"
+    "url": "https://github.com/sho-87/rok-talents.git",
+    "releases": "https://github.com/sho-87/rok-talents/releases"
   },
   "bugs": {
     "url": "https://github.com/sho-87/rok-talents/issues",
