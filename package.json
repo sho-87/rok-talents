@@ -46,7 +46,7 @@
     "start": "react-scripts start --host 0.0.0.0",
     "build": "react-scripts build",
     "build-serve": "serve -s build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
