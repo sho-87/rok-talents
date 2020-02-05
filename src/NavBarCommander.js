@@ -59,7 +59,7 @@ class NavBarCommander extends Component {
           <img
             className="select-commander-icon"
             alt={c}
-            src={`images/commanders/${c}.png`}
+            src={`${process.env.PUBLIC_URL}/images/commanders/${c}.png`}
           ></img>
           {Commanders[c]['shortName'] ? Commanders[c]['shortName'] : c}
         </Dropdown.Item>
@@ -94,7 +94,7 @@ class NavBarCommander extends Component {
               data-testid="select-commander-icon"
               className="select-commander-icon"
               alt={this.props.commander}
-              src={`images/commanders/${this.props.commander}.png`}
+              src={`${process.env.PUBLIC_URL}/images/commanders/${this.props.commander}.png`}
             ></img>
           ) : (
             <FontAwesomeIcon icon={faUser} />

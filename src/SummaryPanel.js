@@ -15,7 +15,7 @@ class SummaryPanel extends Component {
     return (
       <div id="summary-panel" className="info-box">
         <img
-          src={`images/commanders/${this.props.commander}.png`}
+          src={`${process.env.PUBLIC_URL}/images/commanders/${this.props.commander}.png`}
           alt={this.props.commander}
         ></img>
 

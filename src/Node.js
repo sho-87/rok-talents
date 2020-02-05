@@ -54,9 +54,9 @@ class Node extends Component {
     style.left = this.props.x;
 
     if (this.props.type === 'node-large') {
-      style.backgroundImage = `url(images/talents/${this.props.image}.png)`;
+      style.backgroundImage = `url(${process.env.PUBLIC_URL}/images/talents/${this.props.image}.png)`;
     } else {
-      style.backgroundImage = `url(images/talents/${this.props.color}GenericSmall.png)`;
+      style.backgroundImage = `url(${process.env.PUBLIC_URL}/images/talents/${this.props.color}GenericSmall.png)`;
     }
 
     return style;

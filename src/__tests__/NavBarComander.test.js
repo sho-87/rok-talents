@@ -48,7 +48,7 @@ describe('Nav bar commander select component', () => {
     const { getByTestId } = render(<NavBarCommander commander="Richard I" />);
     expect(getByTestId('select-commander-icon')).toHaveAttribute(
       'src',
-      'images/commanders/Richard I.png'
+      '/images/commanders/Richard I.png'
     );
   });
 });

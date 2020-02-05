@@ -19,7 +19,7 @@ describe('Hexagon component', () => {
     );
     expect(getByTestId('hexagon-commander')).toHaveAttribute(
       'src',
-      'images/commanders/Richard I.png'
+      `${process.env.PUBLIC_URL}/images/commanders/Richard I.png`
     );
   });
 
@@ -29,7 +29,7 @@ describe('Hexagon component', () => {
     );
     expect(getByTestId('hexagon-commander')).toHaveAttribute(
       'src',
-      'images/commanders/unknown.png'
+      `${process.env.PUBLIC_URL}/images/commanders/unknown.png`
     );
   });
 });

@@ -17,7 +17,7 @@ class Hexagon extends Component {
         <div id="tree-center">
           <div id="hexagon-bg">
             <img
-              src={process.env.PUBLIC_URL + '/images/ui/hexagon.png'}
+              src={`${process.env.PUBLIC_URL}/images/ui/hexagon.png`}
               alt={'Commander Hexagon'}
             ></img>
           </div>
@@ -25,7 +25,7 @@ class Hexagon extends Component {
           <img
             data-testid="hexagon-commander"
             id="hexagon-commander"
-            src={`images/commanders/${this.props.commander}.png`}
+            src={`${process.env.PUBLIC_URL}/images/commanders/${this.props.commander}.png`}
             alt={this.props.commander}
             onClick={() => {
               this.props.toggleSelect();
