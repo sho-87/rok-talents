@@ -16,7 +16,7 @@ class Hexagon extends Component {
       return (
         <div id="tree-center">
           <div id="hexagon-bg">
-            <img src={`images/ui/hexagon.png`} alt={'Commander Hexagon'}></img>
+            <img src={`./images/ui/hexagon.png`} alt={'Commander Hexagon'}></img>
           </div>
 
           <img
