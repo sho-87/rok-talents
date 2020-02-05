@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/rok-talents/precache-manifest.46fd0432e55f39147242ff0d31c3baec.js"
+  "/rok-talents/precache-manifest.131640fb54ffcdea4f7c33bebe548221.js"
 );
 
 self.addEventListener('message', (event) => {
