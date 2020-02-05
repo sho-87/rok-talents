@@ -21,8 +21,7 @@
   },
   "bugs": {
     "url": "https://github.com/sho-87/rok-talents/issues",
-    "reportBug": "https://github.com/sho-87/rok-talents/issues/new",
-    "requestFeature": "https://github.com/sho-87/rok-talents/issues/new"
+    "report": "https://github.com/sho-87/rok-talents/issues/new/choose"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
