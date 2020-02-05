@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.8ddbbcef.chunk.css",
-    "main.js": "/static/js/main.c387a64a.chunk.js",
-    "main.js.map": "/static/js/main.c387a64a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.f160c77a.js",
-    "runtime-main.js.map": "/static/js/runtime-main.f160c77a.js.map",
-    "static/js/2.5c526644.chunk.js": "/static/js/2.5c526644.chunk.js",
-    "static/js/2.5c526644.chunk.js.map": "/static/js/2.5c526644.chunk.js.map",
-    "static/js/3.b5d21738.chunk.js": "/static/js/3.b5d21738.chunk.js",
-    "static/js/3.b5d21738.chunk.js.map": "/static/js/3.b5d21738.chunk.js.map",
-    "static/css/4.4af7e8ea.chunk.css": "/static/css/4.4af7e8ea.chunk.css",
-    "static/js/4.da9449d4.chunk.js": "/static/js/4.da9449d4.chunk.js",
-    "static/js/4.da9449d4.chunk.js.map": "/static/js/4.da9449d4.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.bd9f25d0ad71a365aa50f2ea76b9ab6d.js": "/precache-manifest.bd9f25d0ad71a365aa50f2ea76b9ab6d.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/4.4af7e8ea.chunk.css.map": "/static/css/4.4af7e8ea.chunk.css.map",
-    "static/css/main.8ddbbcef.chunk.css.map": "/static/css/main.8ddbbcef.chunk.css.map",
-    "static/js/2.5c526644.chunk.js.LICENSE.txt": "/static/js/2.5c526644.chunk.js.LICENSE.txt"
+    "main.css": "/rok-talents/static/css/main.8ddbbcef.chunk.css",
+    "main.js": "/rok-talents/static/js/main.30f3e161.chunk.js",
+    "main.js.map": "/rok-talents/static/js/main.30f3e161.chunk.js.map",
+    "runtime-main.js": "/rok-talents/static/js/runtime-main.d19d221c.js",
+    "runtime-main.js.map": "/rok-talents/static/js/runtime-main.d19d221c.js.map",
+    "static/js/2.cebf5be5.chunk.js": "/rok-talents/static/js/2.cebf5be5.chunk.js",
+    "static/js/2.cebf5be5.chunk.js.map": "/rok-talents/static/js/2.cebf5be5.chunk.js.map",
+    "static/js/3.b5d21738.chunk.js": "/rok-talents/static/js/3.b5d21738.chunk.js",
+    "static/js/3.b5d21738.chunk.js.map": "/rok-talents/static/js/3.b5d21738.chunk.js.map",
+    "static/css/4.4af7e8ea.chunk.css": "/rok-talents/static/css/4.4af7e8ea.chunk.css",
+    "static/js/4.f6f6ebe5.chunk.js": "/rok-talents/static/js/4.f6f6ebe5.chunk.js",
+    "static/js/4.f6f6ebe5.chunk.js.map": "/rok-talents/static/js/4.f6f6ebe5.chunk.js.map",
+    "index.html": "/rok-talents/index.html",
+    "precache-manifest.d1d08572af9d59afd1d06991e0f8149b.js": "/rok-talents/precache-manifest.d1d08572af9d59afd1d06991e0f8149b.js",
+    "service-worker.js": "/rok-talents/service-worker.js",
+    "static/css/4.4af7e8ea.chunk.css.map": "/rok-talents/static/css/4.4af7e8ea.chunk.css.map",
+    "static/css/main.8ddbbcef.chunk.css.map": "/rok-talents/static/css/main.8ddbbcef.chunk.css.map",
+    "static/js/2.cebf5be5.chunk.js.LICENSE.txt": "/rok-talents/static/js/2.cebf5be5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f160c77a.js",
-    "static/js/2.5c526644.chunk.js",
+    "static/js/runtime-main.d19d221c.js",
+    "static/js/2.cebf5be5.chunk.js",
     "static/css/main.8ddbbcef.chunk.css",
-    "static/js/main.c387a64a.chunk.js"
+    "static/js/main.30f3e161.chunk.js"
   ]
 }
