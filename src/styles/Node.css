@@ -55,39 +55,3 @@
   width: 80%;
   color: rgb(216, 216, 216);
 }
-
-.node-tooltip-title {
-  float: left;
-}
-
-.node-tooltip-title-value {
-  float: right;
-  margin-left: 5px;
-}
-
-.node-tooltip-id {
-  margin-top: 5px;
-  text-align: right;
-  color: gray;
-}
-
-#node-tooltip-assign-container {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.node-tooltip-decrease-button {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(0%, -50%);
-  color: red;
-}
-
-.node-tooltip-increase-button {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(0%, -50%);
-  color: green;
-}

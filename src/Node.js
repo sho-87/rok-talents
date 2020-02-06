@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import FitText from '@kennethormandy/react-fittext';
-import { useMediaQuery } from 'react-responsive';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Popovers';
 import { replaceTalentText, getMaxTalentCount } from './utils';
-import { mobileBreakpoint } from './values';
 
 import './styles/Node.css';
 
@@ -210,31 +208,9 @@ class Node extends Component {
 }
 
 const NodeOverlay = props => {
-  const isMobile = useMediaQuery({
-    query: `(max-width: ${mobileBreakpoint}px)`
-  });
-  let triggerProps, clickProps;
-
-  if (isMobile) {
-    triggerProps = { trigger: 'click' };
-    clickProps = {
-      onClick: undefined,
-      onContextMenu: e => e.preventDefault()
-    };
-  } else {
-    triggerProps = { trigger: 'hover' };
-    clickProps = {
-      onClick: () => props.talentIncrease(),
-      onContextMenu: e => {
-        e.preventDefault();
-        props.talentDecrease();
-      }
-    };
-  }
-
   return (
     <OverlayTrigger
-      {...triggerProps}
+      trigger="click"
       placement="right"
       rootClose={true}
       flip={true}
@@ -255,13 +231,13 @@ const NodeOverlay = props => {
       }
     >
       <div
-        {...clickProps}
         data-testid={props.treeName + props.idx}
         id={props.treeName + props.idx}
         className={`node ${props.type}-${props.nodeSize} ${
           props.value === 0 ? 'node-inactive' : ''
         }`}
         style={props.getStyle()}
+        onContextMenu={e => e.preventDefault()}
       >
         {props.isShownValues && (
           <FitText compressor={props.compressor}>

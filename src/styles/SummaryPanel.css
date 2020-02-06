@@ -8,8 +8,7 @@
 #summary-panel {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  flex-grow: 3;
+  flex-grow: 2;
 }
 
 #summary-panel img {

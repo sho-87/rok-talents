@@ -23,7 +23,7 @@ export class TalentTooltip extends Component {
     if (orientation === 'mobile') {
       compressor = { large: 2.1, small: 0.8 };
     } else if (orientation === 'desktop') {
-      compressor = { large: 1.6, small: undefined };
+      compressor = { large: 1.6, small: 0.8 };
     }
 
     return (
@@ -37,69 +37,57 @@ export class TalentTooltip extends Component {
         <FitText compressor={compressor.large}>
           <div>
             <Popover.Title>
-              <div>
-                <span className="node-tooltip-title">
-                  {this.props.talentname}
-                </span>
-                <MediaQuery minDeviceWidth={mobileBreakpoint + 1}>
-                  <span className="node-tooltip-title-value">
-                    {this.props.value + '/' + this.props.max}
-                  </span>
-                </MediaQuery>
-                <div style={{ clear: 'both' }}></div>
-              </div>
+              <div className="node-tooltip-title">{this.props.talentname}</div>
+              {this.props.isShownTalentID && (
+                <div className="node-tooltip-id">{this.props.talentid}</div>
+              )}
+              <div style={{ clear: 'both' }}></div>
             </Popover.Title>
 
             <Popover.Content className="node-tooltip-body">
               <div>
-                {this.props.value !== this.props.max && (
-                  <div>
-                    <b>Next point:</b>
-                  </div>
-                )}
+                <div>
+                  <b>
+                    {this.props.value !== this.props.max
+                      ? 'Next point:'
+                      : 'Maxed:'}
+                  </b>
+                </div>
 
                 {this.props.text}
 
-                <MediaQuery maxDeviceWidth={mobileBreakpoint}>
-                  <Container id="node-tooltip-assign-container">
-                    <Row>
-                      <Col>
-                        {this.props.value > 0 && (
+                <Container id="node-tooltip-assign-container">
+                  <Row>
+                    <Col>
+                      {this.props.value > 0 && (
+                        <FontAwesomeIcon
+                          className="node-tooltip-decrease-button"
+                          icon={faMinusSquare}
+                          size="2x"
+                          onClick={this.props.talentdecrease}
+                        />
+                      )}
+                    </Col>
+                    <Col xs={5}>
+                      <FitText compressor={compressor.small}>
+                        <span className="node-tooltip-assign-value">
+                          {this.props.value + '/' + this.props.max}
+                        </span>
+                      </FitText>
+                    </Col>
+                    <Col>
+                      {this.props.calcPointsRemaining() > 0 &&
+                        this.props.value !== this.props.max && (
                           <FontAwesomeIcon
-                            className="node-tooltip-decrease-button"
-                            icon={faMinusSquare}
+                            className="node-tooltip-increase-button"
+                            icon={faPlusSquare}
                             size="2x"
-                            onClick={this.props.talentdecrease}
+                            onClick={this.props.talentincrease}
                           />
                         )}
-                      </Col>
-                      <Col xs={5}>
-                        <FitText compressor={compressor.small}>
-                          <span className="node-tooltip-assign-value">
-                            {this.props.value + '/' + this.props.max}
-                          </span>
-                        </FitText>
-                      </Col>
-                      <Col>
-                        {this.props.calcPointsRemaining() > 0 &&
-                          this.props.value !== this.props.max && (
-                            <FontAwesomeIcon
-                              className="node-tooltip-increase-button"
-                              icon={faPlusSquare}
-                              size="2x"
-                              onClick={this.props.talentincrease}
-                            />
-                          )}
-                      </Col>
-                    </Row>
-                  </Container>
-                </MediaQuery>
-
-                {this.props.isShownTalentID && (
-                  <div className="node-tooltip-id">
-                    ID: {this.props.talentid}
-                  </div>
-                )}
+                    </Col>
+                  </Row>
+                </Container>
               </div>
             </Popover.Content>
           </div>
