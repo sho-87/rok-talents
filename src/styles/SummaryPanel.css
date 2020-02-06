@@ -22,18 +22,6 @@
   filter: blur(6px);
 }
 
-#summary-panel-talents-container {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between; /* horizontal */
-}
-
-.summary-panel-talents {
-  width: 33%;
-  border: 0.5px solid black;
-  text-align: center;
-}
-
 #summary-panel-summary p {
   margin-bottom: 0px;
 }

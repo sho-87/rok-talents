@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { getTreeName } from './utils';
 
 import Commanders from './data/commanders.json';
 import './styles/SummaryPanel.css';
@@ -25,19 +24,6 @@ class SummaryPanel extends Component {
         <h3>
           {this.props.commander && Commanders[this.props.commander].title}
         </h3>
-        {this.props.commander && (
-          <div id="summary-panel-talents-container">
-            <p className="summary-panel-talents bg-red">
-              {getTreeName('red', this.props.commander)}
-            </p>
-            <p className="summary-panel-talents bg-yellow">
-              {getTreeName('yellow', this.props.commander)}
-            </p>
-            <p className="summary-panel-talents bg-blue">
-              {getTreeName('blue', this.props.commander)}
-            </p>
-          </div>
-        )}
 
         <div id="summary-panel-summary">
           <p>Points remaining: {this.props.calcPointsRemaining()}</p>
