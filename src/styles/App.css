@@ -66,6 +66,14 @@ div {
   text-align: center;
 }
 
+.bullet {
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
 /* Main panel container */
 #main-container {
   width: 100vw;

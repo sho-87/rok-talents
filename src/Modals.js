@@ -70,7 +70,7 @@ export class InvalidBuildModal extends Component {
         <Modal.Body>
           <p>
             The talent build you're trying to view is invalid. Please make sure
-            you've copied and pasted the correct link.
+            you've copied and pasted the link correctly.
           </p>
           <p data-testid="invalid-modal-body">
             <b>Reason:</b> {this.props.message}

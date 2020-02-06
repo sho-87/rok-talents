@@ -64,7 +64,7 @@ class StatsTalentsPanel extends Component {
             talents.push(
               <div key={talentInfo.name} className={`stats-talents-main`}>
                 <div className="stats-talents-title">
-                  <span className={`stats-talents-bullet bg-${color}`}></span>
+                  <span className={`bullet bg-${color}`}></span>
 
                   {`${talentInfo.name} (${value}/${getMaxTalentCount(
                     talentInfo.values
@@ -92,7 +92,11 @@ class StatsTalentsPanel extends Component {
 
   render() {
     return (
-      <div id="stats-talents" className="info-box" onClick={this.toggleStatsTalents}>
+      <div
+        id="stats-talents"
+        className="info-box"
+        onClick={this.toggleStatsTalents}
+      >
         <h2>
           Main Talents{' '}
           <span className="stats-talents-expand">
