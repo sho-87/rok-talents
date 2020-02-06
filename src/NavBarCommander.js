@@ -18,7 +18,7 @@ class NavBarCommander extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: this.props.commander ? false : true
+      isOpen: false
     };
 
     // Context bindings

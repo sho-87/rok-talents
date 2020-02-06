@@ -17,7 +17,6 @@ import './styles/fonts.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
-//FIXME: commander dropdown doesnt stay open on empty page
 //TODO: shouldComponentUpdate pass
 //FIXME: only updateurl/encode if that particular tree has changed
 
@@ -515,7 +514,7 @@ class App extends Component {
           <Suspense
             fallback={
               <div id="spinner">
-                <Spinner size="lg" animation="border" variant="status" />
+                <Spinner size="lg" animation="border" variant="light" />
                 <br />
                 <span className="sr-only">Loading...</span>
               </div>
