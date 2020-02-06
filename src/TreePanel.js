@@ -48,7 +48,7 @@ class TreePanel extends Component {
     this.panZoomInstance = panzoom(panZoomContainer, {
       minZoom: 1,
       maxZoom: 3,
-      pinchSpeed: 1,
+      pinchSpeed: 0.5,
       zoomDoubleClickSpeed: 1,
       bounds: true,
       boundsPadding: 0.5,
