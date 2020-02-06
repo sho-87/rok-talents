@@ -14,10 +14,12 @@ class SummaryPanel extends Component {
   render() {
     return (
       <div id="summary-panel" className="info-box">
-        <img
-          src={`${process.env.PUBLIC_URL}/images/commanders/${this.props.commander}.png`}
-          alt={this.props.commander}
-        ></img>
+        {this.props.commander && (
+          <img
+            src={`${process.env.PUBLIC_URL}/images/commanders/${this.props.commander}.png`}
+            alt={this.props.commander}
+          ></img>
+        )}
 
         <h1>{this.props.commander ? this.props.commander : 'Summary'}</h1>
         <h3>

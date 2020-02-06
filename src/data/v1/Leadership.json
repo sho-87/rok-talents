@@ -175,7 +175,7 @@
     "dep": [18],
     "pos": [19.1, 15.9],
     "type": "node-large",
-    "image": "RedScroll"
+    "image": "redScroll"
   },
   "18": {
     "name": "Name Of The King",
@@ -186,6 +186,6 @@
     "dep": [],
     "pos": [-2.7, 10.4],
     "type": "node-large",
-    "image": "RedCrown"
+    "image": "redCrown"
   }
 }
