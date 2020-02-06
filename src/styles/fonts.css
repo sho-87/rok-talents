@@ -12,51 +12,25 @@ code {
     monospace;
 }
 
+/* Styles */
 h1 {
-  font-size: 2em;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 1.5em;
+  font-weight: bold;
 }
 
 h3 {
-  font-size: 1em;
   font-style: italic;
 }
 
-p {
-  font-size: 1em;
-}
-
-.stats-talents-expand {
-  font-size: 0.4em;
-}
-
 .stats-talents-title {
-  font-size: 0.9em;
   font-weight: bold;
-}
-
-.stats-talents-text {
-  font-size: 0.8em;
 }
 
 .node-tooltip-title {
-  font-size: 0.8em;
   font-weight: bold;
-}
-
-.node-tooltip-body {
-  font-size: 0.8em;
-}
-
-.node-tooltip-id {
-  font-size: 0.7em;
-}
-
-.node-tooltip-assign-value {
-  font-size: 2em;
 }
 
 /* Phone portrait */
@@ -74,6 +48,45 @@ p {
 @media (min-width: 900px) {
 }
 
-/* Desktop small */
-@media (min-width: 1200px) {
+/* Desktop */
+@media (min-width: 1280px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  h3 {
+    font-size: 1em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .summary-panel-talents {
+    font-size: 0.7em;
+  }
+
+  .stats-talents-expand {
+    font-size: 0.5em;
+  }
+
+  .stats-talents-title {
+    font-size: 0.9em;
+  }
+
+  .stats-talents-text {
+    font-size: 0.8em;
+  }
+
+  .node-tooltip-title {
+    font-size: 0.75em;
+  }
+
+  .node-tooltip-id {
+    font-size: 0.5em;
+  }
 }

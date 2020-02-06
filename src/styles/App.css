@@ -78,6 +78,10 @@ div {
   background-color: var(--bg-color);
 }
 
+.info-box {
+  padding: 6px;
+}
+
 @media (orientation: portrait) {
   #main-container {
     flex-flow: column nowrap;

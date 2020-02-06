@@ -8,7 +8,7 @@
 }
 
 .node-tooltip-id {
-  float: right;;
+  float: right;
   color: gray;
 }
 
@@ -23,6 +23,7 @@
   right: 0;
   transform: translate(0%, -50%);
   color: red;
+  cursor: pointer;
 }
 
 .node-tooltip-increase-button {
@@ -31,4 +32,5 @@
   left: 0;
   transform: translate(0%, -50%);
   color: green;
+  cursor: pointer;
 }

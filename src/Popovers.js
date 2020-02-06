@@ -18,14 +18,6 @@ import './styles/Popovers.css';
  */
 export class TalentTooltip extends Component {
   createPopover(orientation) {
-    let compressor;
-
-    if (orientation === 'mobile') {
-      compressor = { large: 2.1, small: 0.8 };
-    } else if (orientation === 'desktop') {
-      compressor = { large: 1.6, small: 0.8 };
-    }
-
     return (
       <Popover
         placement={this.props.placement}
@@ -34,7 +26,7 @@ export class TalentTooltip extends Component {
         arrowProps={this.props.arrowProps}
         className={this.props.className}
       >
-        <FitText compressor={compressor.large}>
+        <FitText compressor={2.1}>
           <div>
             <Popover.Title>
               <div className="node-tooltip-title">{this.props.talentname}</div>
@@ -48,9 +40,7 @@ export class TalentTooltip extends Component {
               <div>
                 <div>
                   <b>
-                    {this.props.value !== this.props.max
-                      ? 'Next point:'
-                      : 'Maxed:'}
+                    {this.props.value !== this.props.max ? 'Next:' : 'Maxed:'}
                   </b>
                 </div>
 
@@ -69,10 +59,8 @@ export class TalentTooltip extends Component {
                       )}
                     </Col>
                     <Col xs={5}>
-                      <FitText compressor={compressor.small}>
-                        <span className="node-tooltip-assign-value">
-                          {this.props.value + '/' + this.props.max}
-                        </span>
+                      <FitText compressor={0.4}>
+                        <span>{this.props.value + '/' + this.props.max}</span>
                       </FitText>
                     </Col>
                     <Col>
@@ -99,10 +87,10 @@ export class TalentTooltip extends Component {
   render() {
     return (
       <>
-        <MediaQuery minDeviceWidth={mobileBreakpoint + 1}>
+        <MediaQuery minDeviceWidth={mobileBreakpoint}>
           {this.createPopover('desktop')}
         </MediaQuery>
-        <MediaQuery maxDeviceWidth={mobileBreakpoint}>
+        <MediaQuery maxDeviceWidth={mobileBreakpoint - 1}>
           {this.createPopover('mobile')}
         </MediaQuery>
       </>

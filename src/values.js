@@ -2,7 +2,7 @@
 export const maxPoints = 74;
 
 // Max width of mobile/tablet devices (px)
-export const mobileBreakpoint = 1366;
+export const mobileBreakpoint = 1280;
 
 /** Mapping value pairs to letters for encoding */
 export const valuesToLetters = {
