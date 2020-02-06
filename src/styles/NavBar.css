@@ -2,6 +2,7 @@
 .navbar {
   height: var(--nav-bar-height);
   width: 100vw;
+  border-bottom: 1px solid black;
   z-index: 20;
 }
 
