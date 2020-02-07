@@ -84,7 +84,10 @@ class NavBar extends Component {
         <AboutModal ref={component => (this.aboutModalRef = component)} />
         <ShareModal ref={component => (this.shareModalRef = component)} />
 
-        <Navbar bg="light" variant="light">
+        <Navbar
+          variant="light"
+          className={this.props.isSpeedMode ? 'nav-speed' : 'navbar'}
+        >
           <Navbar.Brand href="/">
             <img
               id="nav-app-icon"
@@ -119,11 +122,13 @@ class NavBar extends Component {
               toggleTotalDisplay={this.props.toggleTotalDisplay}
               toggleValueDisplay={this.props.toggleValueDisplay}
               toggleNodeSize={this.props.toggleNodeSize}
+              toggleSpeedMode={this.props.toggleSpeedMode}
               toggleMouseXY={this.props.toggleMouseXY}
               toggleTalentID={this.props.toggleTalentID}
               isShownSidePanel={this.props.isShownSidePanel}
               isShownValues={this.props.isShownValues}
               isShownTotals={this.props.isShownTotals}
+              isSpeedMode={this.props.isSpeedMode}
               isShownMouseXY={this.props.isShownMouseXY}
               isShownTalentID={this.props.isShownTalentID}
               nodeSize={this.props.nodeSize}

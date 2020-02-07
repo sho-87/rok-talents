@@ -7,6 +7,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { HelpTooltip } from './Tooltips';
 
 import './styles/NavBarSettings.css';
 
@@ -91,6 +92,22 @@ class NavBarSettings extends Component {
                     L
                   </ToggleButton>
                 </ToggleButtonGroup>
+
+                <Dropdown.Divider />
+                <Dropdown.Header>Expert</Dropdown.Header>
+                <div className="help-wrapper">
+                  <Form.Check
+                    type="switch"
+                    id="settings-speed-mode"
+                    label="Speed mode"
+                    checked={this.props.isSpeedMode}
+                    onChange={e => this.props.toggleSpeedMode()}
+                  />
+                  <HelpTooltip
+                    tooltip="No tooltips. Left/right click nodes directly to assign/remove
+            points"
+                  />
+                </div>
               </div>
 
               {process.env.NODE_ENV === 'development' && (

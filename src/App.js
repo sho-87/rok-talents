@@ -37,6 +37,7 @@ class App extends Component {
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
     this.toggleNodeSize = this.toggleNodeSize.bind(this);
+    this.toggleSpeedMode = this.toggleSpeedMode.bind(this);
     this.toggleMouseXY = this.toggleMouseXY.bind(this);
     this.toggleTalentID = this.toggleTalentID.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
@@ -153,6 +154,7 @@ class App extends Component {
     );
     const isShownValues = JSON.parse(localStorage.getItem('isShownValues'));
     const isShownTotals = JSON.parse(localStorage.getItem('isShownTotals'));
+    const isSpeedMode = JSON.parse(localStorage.getItem('isSpeedMode'));
     const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
     const isShownTalentID = JSON.parse(localStorage.getItem('isShownTalentID'));
 
@@ -166,6 +168,7 @@ class App extends Component {
       isShownSidePanel: isShownSidePanel === null ? true : isShownSidePanel,
       isShownValues: isShownValues === null ? true : isShownValues,
       isShownTotals: isShownTotals === null ? true : isShownTotals,
+      isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
       isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
       isShownTalentID: isShownTalentID === null ? false : isShownTalentID
     };
@@ -440,6 +443,28 @@ class App extends Component {
   }
 
   /**
+   * Toggle speed mode
+   *
+   * @memberof App
+   */
+  toggleSpeedMode() {
+    this.setState(
+      prevState => ({
+        isSpeedMode: !prevState.isSpeedMode
+      }),
+      () => {
+        this.treePanelRef.drawLines();
+        localStorage.setItem('isSpeedMode', this.state.isSpeedMode);
+      }
+    );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle speed mode'
+    });
+  }
+
+  /**
    * Toggle mouse XY position display
    *
    * @memberof App
@@ -495,6 +520,7 @@ class App extends Component {
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}
             toggleNodeSize={this.toggleNodeSize}
+            toggleSpeedMode={this.toggleSpeedMode}
             toggleMouseXY={this.toggleMouseXY}
             toggleTalentID={this.toggleTalentID}
             changeCommander={this.changeCommander}
@@ -505,6 +531,7 @@ class App extends Component {
             isShownSidePanel={this.state.isShownSidePanel}
             isShownValues={this.state.isShownValues}
             isShownTotals={this.state.isShownTotals}
+            isSpeedMode={this.state.isSpeedMode}
             isShownMouseXY={this.state.isShownMouseXY}
             isShownTalentID={this.state.isShownTalentID}
           />
@@ -552,6 +579,7 @@ class App extends Component {
                 nodeSize={this.state.nodeSize}
                 isShownValues={this.state.isShownValues}
                 isShownTotals={this.state.isShownTotals}
+                isSpeedMode={this.state.isSpeedMode}
                 isShownMouseXY={this.state.isShownMouseXY}
                 isShownTalentID={this.state.isShownTalentID}
               />

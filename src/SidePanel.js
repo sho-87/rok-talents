@@ -8,6 +8,7 @@ import ErrorBoundary from './Error';
 import './styles/SidePanel.css';
 
 //TODO: dynamic/responsive typography
+//TODO: rename side panel to info panel
 
 /**
  * Side panel component displaying stats about the current talent build
