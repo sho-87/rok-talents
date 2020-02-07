@@ -13,11 +13,9 @@
 
 #summary-panel img {
   position: absolute;
-  width: 200%;
   height: auto;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
   opacity: 0.2;
   filter: blur(6px);
 }

@@ -26,7 +26,7 @@ class NavBarSettings extends Component {
           <span className="nav-button-text">Settings</span>
         </Dropdown.Toggle>
 
-        <Dropdown.Menu>
+        <Dropdown.Menu id="settings-menu" className="nav-menu">
           <Form>
             <Form.Group id="settings-group">
               <Dropdown.Header>Display</Dropdown.Header>

@@ -33,33 +33,74 @@ h3 {
   font-weight: bold;
 }
 
-/* Phone portrait */
-@media (max-width: 599px) {
+@media (max-width: 625px) {
   .nav-button-text {
     display: none;
   }
 }
 
-/* Tablet portrait */
-@media (min-width: 600px) {
-}
-
-/* Tablet landscape */
-@media (min-width: 900px) {
+/* Phone */
+@media (max-width: 599px) and (orientation: portrait) {
   h1 {
-    font-size: 1.5em;
+    font-size: 1em;
   }
 
   h2 {
-    font-size: 1.2em;
+    font-size: 0.9em;
   }
 
   h3 {
-    font-size: 1em;
+    font-size: 0.7em;
   }
 
   p {
+    font-size: 0.6em;
+  }
+
+  .node-tooltip-title {
+    font-size: 0.53em;
+  }
+
+  .node-tooltip-id {
+    font-size: 0.3em;
+  }
+
+  .node-tooltip-bg {
+    font-size: 0.94em;
+  }
+
+  .node-tooltip-value {
     font-size: 1em;
+  }
+
+  #summary-panel img {
+    width: 130%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-height: 599px) and (orientation: landscape) {
+  h1 {
+    font-size: 0.8em;
+  }
+
+  h2 {
+    font-size: 0.7em;
+  }
+
+  h3 {
+    font-size: 0.6em;
+  }
+
+  p {
+    font-size: 0.6em;
+  }
+
+  .bullet {
+    width: 7px;
+    height: 7px;
+    margin-top: 5px;
+    margin-right: 4px;
   }
 
   .stats-talents-expand {
@@ -72,6 +113,47 @@ h3 {
 
   .stats-talents-text {
     font-size: 0.8em;
+    padding-left: 5px;
+  }
+
+  .node-tooltip-title {
+    font-size: 0.4em;
+  }
+
+  .node-tooltip-id {
+    font-size: 0.25em;
+  }
+
+  .node-tooltip-bg {
+    font-size: 1em;
+  }
+
+  .node-tooltip-value {
+    font-size: 5em;
+  }
+
+  #summary-panel img {
+    width: 180%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Tablet */
+@media (min-width: 600px) and (orientation: portrait) {
+  h1 {
+    font-size: 1.3em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  h3 {
+    font-size: 0.8em;
+  }
+
+  p {
+    font-size: 0.7em;
   }
 
   .node-tooltip-title {
@@ -80,11 +162,83 @@ h3 {
 
   .node-tooltip-id {
     font-size: 0.5em;
+  }
+
+  .node-tooltip-bg {
+    font-size: 0.89em;
+  }
+
+  .node-tooltip-value {
+    font-size: 1em;
+  }
+
+  #summary-panel img {
+    width: 130%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 900px) and (orientation: landscape) {
+  h1 {
+    font-size: 1.2em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  h3 {
+    font-size: 0.8em;
+  }
+
+  p {
+    font-size: 0.8em;
+  }
+
+  .bullet {
+    width: 7px;
+    height: 7px;
+    margin-top: 5px;
+    margin-right: 4px;
+  }
+
+  .stats-talents-expand {
+    font-size: 0.4em;
+  }
+
+  .stats-talents-title {
+    font-size: 0.7em;
+  }
+
+  .stats-talents-text {
+    font-size: 0.6em;
+    padding-left: 4px;
+  }
+
+  .node-tooltip-title {
+    font-size: 0.55em;
+  }
+
+  .node-tooltip-id {
+    font-size: 0.4em;
+  }
+
+  .node-tooltip-bg {
+    font-size: 0.99em;
+  }
+
+  .node-tooltip-value {
+    font-size: 1em;
+  }
+
+  #summary-panel img {
+    width: 150%;
+    transform: translate(-50%, -50%);
   }
 }
 
 /* Desktop */
-@media (min-width: 1280px) {
+@media (min-width: 1280px) and (orientation: landscape) {
   h1 {
     font-size: 1.5em;
   }
@@ -101,6 +255,13 @@ h3 {
     font-size: 1em;
   }
 
+  .bullet {
+    width: 10px;
+    height: 10px;
+    margin-top: 6px;
+    margin-right: 5px;
+  }
+
   .stats-talents-expand {
     font-size: 0.5em;
   }
@@ -111,6 +272,7 @@ h3 {
 
   .stats-talents-text {
     font-size: 0.8em;
+    padding-left: 5px;
   }
 
   .node-tooltip-title {
@@ -119,5 +281,18 @@ h3 {
 
   .node-tooltip-id {
     font-size: 0.5em;
+  }
+
+  .node-tooltip-bg {
+    font-size: 1.1em;
+  }
+
+  .node-tooltip-value {
+    font-size: 1em;
+  }
+
+  #summary-panel img {
+    width: 150%;
+    transform: translate(-50%, -50%);
   }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MediaQuery from 'react-responsive';
 import FitText from '@kennethormandy/react-fittext';
 import Popover from 'react-bootstrap/Popover';
 import Container from 'react-bootstrap/Container';
@@ -7,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { mobileBreakpoint } from './values';
 
 import './styles/Popovers.css';
 
@@ -17,7 +15,7 @@ import './styles/Popovers.css';
  *
  */
 export class TalentTooltip extends Component {
-  createPopover(orientation) {
+  render() {
     return (
       <Popover
         placement={this.props.placement}
@@ -67,7 +65,9 @@ export class TalentTooltip extends Component {
                     </Col>
                     <Col xs={5}>
                       <FitText compressor={0.4}>
-                        <span>{this.props.value + '/' + this.props.max}</span>
+                        <span className="node-tooltip-value">
+                          {this.props.value + '/' + this.props.max}
+                        </span>
                       </FitText>
                     </Col>
                     <Col>
@@ -88,19 +88,6 @@ export class TalentTooltip extends Component {
           </div>
         </FitText>
       </Popover>
-    );
-  }
-
-  render() {
-    return (
-      <>
-        <MediaQuery minDeviceWidth={mobileBreakpoint}>
-          {this.createPopover('desktop')}
-        </MediaQuery>
-        <MediaQuery maxDeviceWidth={mobileBreakpoint - 1}>
-          {this.createPopover('mobile')}
-        </MediaQuery>
-      </>
     );
   }
 }

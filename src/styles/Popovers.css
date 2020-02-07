@@ -3,9 +3,13 @@
   max-height: 20vh;
 }
 
+.node-tooltip-body {
+  padding: 5px;
+}
+
 .node-tooltip-bg {
   border-radius: 3px;
-  padding: 5px;
+  padding: 2px;
 }
 
 .node-tooltip-bg-next {
