@@ -23,13 +23,7 @@ import {
   EmailIcon
 } from 'react-share';
 
-import {
-  title,
-  author,
-  repository,
-  bugs,
-  version
-} from '../package.json';
+import { title, author, repository, bugs, version } from '../package.json';
 import './styles/Modals.css';
 
 /**
@@ -99,6 +93,14 @@ export class AboutModal extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.modal !== nextState.modal) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   toggle() {
@@ -195,6 +197,14 @@ export class ShareModal extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.modal !== nextState.modal) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   toggle() {

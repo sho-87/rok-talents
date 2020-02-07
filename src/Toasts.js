@@ -18,6 +18,18 @@ export class ToastMessage extends Component {
     this.hide = this.hide.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      this.props.header !== nextProps.header ||
+      this.props.body !== nextProps.body ||
+      this.state.open !== nextState.open
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   show() {
     this.setState({ open: true });
   }
@@ -52,6 +64,17 @@ export class PrereqToast extends Component {
 
     // Context bindings
     this.hide = this.hide.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      this.props.msg !== nextProps.msg ||
+      this.state.open !== nextState.open
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   show() {

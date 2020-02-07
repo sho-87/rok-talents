@@ -18,6 +18,22 @@ import './styles/NavBarSettings.css';
  * @extends {Component}
  */
 class NavBarSettings extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      this.props.isShownInfoPanel !== nextProps.isShownInfoPanel ||
+      this.props.isShownValues !== nextProps.isShownValues ||
+      this.props.isShownTotals !== nextProps.isShownTotals ||
+      this.props.isSpeedMode !== nextProps.isSpeedMode ||
+      this.props.isShownMouseXY !== nextProps.isShownMouseXY ||
+      this.props.isShownTalentID !== nextProps.isShownTalentID ||
+      this.props.nodeSize !== nextProps.nodeSize
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
     return (
       <Dropdown alignRight as={NavItem} id="select-settings">

@@ -25,6 +25,17 @@ class NavBarCommander extends Component {
     this.toggleSelect = this.toggleSelect.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      this.props.commander !== nextProps.commander ||
+      this.state.isOpen !== nextState.isOpen
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   /**
    * Toggle open state of the commander select dropdown
    *
