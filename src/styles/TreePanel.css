@@ -15,7 +15,7 @@
   height: 100%;
   width: 100%;
   max-width: calc(100vh - var(--nav-bar-height)); /* height of nav bar */
-  max-height: calc(100vw - var(--side-panel-width)); /* width of side bar */
+  max-height: calc(100vw - var(--info-panel-size)); /* width of info panel */
   margin: 0 auto;
 }
 

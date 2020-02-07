@@ -118,14 +118,14 @@ class NavBar extends Component {
             />
 
             <NavBarSettings
-              toggleSidePanel={this.props.toggleSidePanel}
+              toggleInfoPanel={this.props.toggleInfoPanel}
               toggleTotalDisplay={this.props.toggleTotalDisplay}
               toggleValueDisplay={this.props.toggleValueDisplay}
               toggleNodeSize={this.props.toggleNodeSize}
               toggleSpeedMode={this.props.toggleSpeedMode}
               toggleMouseXY={this.props.toggleMouseXY}
               toggleTalentID={this.props.toggleTalentID}
-              isShownSidePanel={this.props.isShownSidePanel}
+              isShownInfoPanel={this.props.isShownInfoPanel}
               isShownValues={this.props.isShownValues}
               isShownTotals={this.props.isShownTotals}
               isSpeedMode={this.props.isSpeedMode}

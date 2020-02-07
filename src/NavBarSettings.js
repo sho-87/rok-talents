@@ -32,11 +32,11 @@ class NavBarSettings extends Component {
               <Dropdown.Header>Display</Dropdown.Header>
               <Form.Check
                 type="switch"
-                id="settings-side-panel"
-                data-testid="settings-side-panel"
-                label="Side panel"
-                checked={this.props.isShownSidePanel}
-                onChange={e => this.props.toggleSidePanel()}
+                id="settings-info-panel"
+                data-testid="settings-info-panel"
+                label="Info panel"
+                checked={this.props.isShownInfoPanel}
+                onChange={e => this.props.toggleInfoPanel()}
               />
               <Form.Check
                 type="switch"
