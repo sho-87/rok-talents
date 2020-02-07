@@ -108,7 +108,7 @@ class NavBarCommander extends Component {
           </span>
         </Dropdown.Toggle>
 
-        <Dropdown.Menu id="select-commander-menu">
+        <Dropdown.Menu id="select-commander-menu" className="nav-menu">
           {this.createSelectItems()}
         </Dropdown.Menu>
       </Dropdown>

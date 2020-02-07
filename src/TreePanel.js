@@ -4,7 +4,7 @@ import panzoom from 'panzoom';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
 import { PrereqToast, ToastMessage } from './Toasts';
-import { getTreeName } from './utils';
+import { getTreeName, isTouchDevice } from './utils';
 
 import { dataVersion } from '../package.json';
 import './styles/TreePanel.css';
@@ -44,27 +44,29 @@ class TreePanel extends Component {
       this_.drawLines();
     });
 
-    let panZoomContainer = document.querySelector('#tree-square-content');
-    this.panZoomInstance = panzoom(panZoomContainer, {
-      minZoom: 1,
-      maxZoom: 3,
-      pinchSpeed: 0.5,
-      zoomDoubleClickSpeed: 1,
-      bounds: true,
-      boundsPadding: 0.5,
-      smoothScroll: false,
-      onTouch: function(e) {
-        return false;
-      },
-      filterKey: function(e) {
-        return true;
-      }
-    });
+    if (!isTouchDevice()) {
+      let panZoomContainer = document.querySelector('#tree-square-content');
+      this.panZoomInstance = panzoom(panZoomContainer, {
+        minZoom: 1,
+        maxZoom: 3,
+        pinchSpeed: 0.5,
+        zoomDoubleClickSpeed: 1,
+        bounds: true,
+        boundsPadding: 0.5,
+        smoothScroll: false,
+        onTouch: function(e) {
+          return false;
+        },
+        filterKey: function(e) {
+          return true;
+        }
+      });
 
-    // This has the effect of closing any open popovers
-    this.panZoomInstance.on('transform', function(e) {
-      document.body.click();
-    });
+      // This has the effect of closing any open popovers
+      this.panZoomInstance.on('transform', function(e) {
+        document.body.click();
+      });
+    }
   }
 
   /**

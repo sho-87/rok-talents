@@ -6,7 +6,21 @@ import App from '../App';
 import Commanders from '../data/commanders.json';
 import { dataVersion } from '../../package.json';
 
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn()
+  }))
+});
 jest.mock('react-ga');
+
 afterEach(cleanup);
 
 describe('App component', () => {

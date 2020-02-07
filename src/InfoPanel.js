@@ -7,8 +7,6 @@ import ErrorBoundary from './Error';
 
 import './styles/InfoPanel.css';
 
-//TODO: dynamic/responsive typography
-
 /**
  * Info panel component displaying stats about the current talent build
  *

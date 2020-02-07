@@ -128,6 +128,18 @@ export function createSummaryString(commander, r, y, b, sep = '/') {
   const name = Commanders[commander].shortName || commander;
   return `${name} (${rSpent}${sep}${ySpent}${sep}${bSpent})`;
 }
+/**
+ * Detect if device is touch enabled
+ *
+ * @returns {boolean} Whether device is touch or not
+ */
+export function isTouchDevice() {
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 /**
  * Encode/compress the passed text
@@ -171,6 +183,7 @@ export default {
   replaceTalentText,
   setTitle,
   createSummaryString,
+  isTouchDevice,
   encode,
   decode
 };
