@@ -11,6 +11,8 @@ import { mobileBreakpoint } from './values';
 
 import './styles/Popovers.css';
 
+//TODO: add text color background
+
 /**
  * Tooltip containing information about each talent node. Displayed when 
  user hovers over a talent
@@ -29,9 +31,9 @@ export class TalentTooltip extends Component {
         <FitText compressor={2.1}>
           <div>
             <Popover.Title>
-              <div className="node-tooltip-title">{this.props.talentname}</div>
+              <div className="node-tooltip-title">{this.props.talentName}</div>
               {this.props.isShownTalentID && (
-                <div className="node-tooltip-id">{this.props.talentid}</div>
+                <div className="node-tooltip-id">{this.props.talentID}</div>
               )}
               <div style={{ clear: 'both' }}></div>
             </Popover.Title>
@@ -40,7 +42,7 @@ export class TalentTooltip extends Component {
               <div>
                 <div>
                   <b>
-                    {this.props.value !== this.props.max ? 'Next:' : 'Maxed:'}
+                    {this.props.value !== this.props.max ? 'Next level:' : 'Maxed:'}
                   </b>
                 </div>
 
@@ -54,7 +56,7 @@ export class TalentTooltip extends Component {
                           className="node-tooltip-decrease-button"
                           icon={faMinusSquare}
                           size="2x"
-                          onClick={this.props.talentdecrease}
+                          onClick={this.props.talentDecrease}
                         />
                       )}
                     </Col>
@@ -70,7 +72,7 @@ export class TalentTooltip extends Component {
                             className="node-tooltip-increase-button"
                             icon={faPlusSquare}
                             size="2x"
-                            onClick={this.props.talentincrease}
+                            onClick={this.props.talentIncrease}
                           />
                         )}
                     </Col>

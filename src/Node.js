@@ -7,6 +7,8 @@ import { replaceTalentText, getMaxTalentCount } from './utils';
 
 import './styles/Node.css';
 
+//FIXME: node content into component
+
 /**
  * Component for the individual talent nodes
  *
@@ -29,7 +31,8 @@ class Node extends Component {
       this.props.value !== nextProps.value ||
       this.props.nodeSize !== nextProps.nodeSize ||
       this.props.isShownValues !== nextProps.isShownValues ||
-      this.props.isShownTalentID !== nextProps.isShownTalentID
+      this.props.isShownTalentID !== nextProps.isShownTalentID ||
+      this.props.isSpeedMode !== nextProps.isSpeedMode
     ) {
       return true;
     } else {
@@ -190,20 +193,47 @@ class Node extends Component {
   }
 
   render() {
-    let compressor = this.props.type === 'node-large' ? 0.3 : 0.25;
+    let compressor = this.props.type === 'node-large' ? 0.3 : 0.2;
+    let isShownValues = this.props.isShownValues && this.props.value !== 0;
 
-    return (
-      <NodeOverlay
-        {...this.props}
-        talentIncrease={this.talentIncrease}
-        talentDecrease={this.talentDecrease}
-        setTooltip={this.setTooltip}
-        getStyle={this.getStyle}
-        compressor={compressor}
-        nodeSize={this.props.nodeSize}
-        isShownValues={this.props.isShownValues && this.props.value !== 0}
-      />
-    );
+    if (this.props.isSpeedMode) {
+      return (
+        <div
+          data-testid={this.props.treeName + this.props.idx}
+          id={this.props.treeName + this.props.idx}
+          className={`node ${this.props.type}-${this.props.nodeSize} ${
+            this.props.value === 0 ? 'node-inactive' : ''
+          }`}
+          style={this.getStyle()}
+          onClick={this.talentIncrease}
+          onContextMenu={e => {
+            e.preventDefault();
+            this.talentDecrease();
+          }}
+        >
+          {isShownValues && (
+            <FitText compressor={compressor}>
+              <div className="node-value" data-testid="node-value">
+                {this.props.value + '/' + this.props.max}
+              </div>
+            </FitText>
+          )}
+        </div>
+      );
+    } else {
+      return (
+        <NodeOverlay
+          {...this.props}
+          talentIncrease={this.talentIncrease}
+          talentDecrease={this.talentDecrease}
+          setTooltip={this.setTooltip}
+          getStyle={this.getStyle}
+          compressor={compressor}
+          nodeSize={this.props.nodeSize}
+          isShownValues={isShownValues}
+        />
+      );
+    }
   }
 }
 
@@ -218,12 +248,12 @@ const NodeOverlay = props => {
       overlay={
         <TalentTooltip
           calcPointsRemaining={props.calcPointsRemaining}
-          talentdecrease={props.talentDecrease}
-          talentincrease={props.talentIncrease}
+          talentDecrease={props.talentDecrease}
+          talentIncrease={props.talentIncrease}
           isShownTalentID={props.isShownTalentID}
           idx={props.idx}
-          talentid={props.treeName + props.idx}
-          talentname={props.talentName}
+          talentID={props.treeName + props.idx}
+          talentName={props.talentName}
           value={props.value}
           max={props.max}
           text={props.setTooltip()}

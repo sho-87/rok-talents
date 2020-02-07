@@ -9,6 +9,8 @@ import { getTreeName } from './utils';
 import { dataVersion } from '../package.json';
 import './styles/TreePanel.css';
 
+//FIXME: repaint lines on side panel change
+
 /**
  * Component for the main tree panel. Controls the display of all nodes and
  * node selections
@@ -226,6 +228,7 @@ class TreePanel extends Component {
       isShownValues: this.props.isShownValues,
       isShownMouseXY: this.props.isShownMouseXY,
       isShownTalentID: this.props.isShownTalentID,
+      isSpeedMode: this.props.isSpeedMode,
       nodeSize: this.props.nodeSize,
       treeData: this.props.treeData,
       commander: this.props.commander

@@ -3,7 +3,12 @@
   height: var(--nav-bar-height);
   width: 100vw;
   border-bottom: 1px solid black;
+  background-color: #fff;
   z-index: 20;
+}
+
+.nav-speed {
+  background-color: rgb(255, 235, 204);
 }
 
 #nav-app-icon {

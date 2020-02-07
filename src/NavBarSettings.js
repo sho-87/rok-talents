@@ -7,8 +7,11 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { HelpText } from './Tooltips';
 
 import './styles/NavBarSettings.css';
+
+//TODO: split help text from button
 
 /**
  * Nav bar component containing drop down menu item for settings
@@ -91,6 +94,22 @@ class NavBarSettings extends Component {
                     L
                   </ToggleButton>
                 </ToggleButtonGroup>
+
+                <Dropdown.Divider />
+                <Dropdown.Header>Expert</Dropdown.Header>
+                <Form.Check
+                  type="switch"
+                  id="settings-speed-mode"
+                  label={
+                    <HelpText
+                      text="Speed mode"
+                      tooltip="No tooltips. Left/right click nodes directly to assign/remove
+                  points"
+                    />
+                  }
+                  checked={this.props.isSpeedMode}
+                  onChange={e => this.props.toggleSpeedMode()}
+                />
               </div>
 
               {process.env.NODE_ENV === 'development' && (
