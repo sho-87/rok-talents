@@ -1,3 +1,3 @@
 # RoK Talents
 
-![Continuous Integration](https://github.com/sho-87/rok-talents/workflows/CI/badge.svg) ![Continuous Delivery](https://github.com/sho-87/rok-talents/workflows/CD/badge.svg) ![License](https://img.shields.io/github/license/sho-87/rok-talents) ![Issues](https://img.shields.io/github/issues/sho-87/rok-talents) ![Dependencies](https://img.shields.io/david/sho-87/rok-talents) ![Coverage](https://img.shields.io/coveralls/github/sho-87/rok-talents)
+![Continuous Delivery](https://github.com/sho-87/rok-talents/workflows/CD/badge.svg?branch=master) ![Continuous Integration](https://github.com/sho-87/rok-talents/workflows/CI/badge.svg?branch=develop) ![License](https://img.shields.io/github/license/sho-87/rok-talents) ![Issues](https://img.shields.io/github/issues/sho-87/rok-talents) ![Dependencies](https://img.shields.io/david/sho-87/rok-talents) ![Coverage](https://img.shields.io/coveralls/github/sho-87/rok-talents)
