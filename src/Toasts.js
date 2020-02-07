@@ -30,7 +30,6 @@ export class ToastMessage extends Component {
     return (
       <Toast autohide delay={2000} show={this.state.open} onClose={this.hide}>
         <Toast.Header>
-          <span className={`bullet bg-red`}></span>
           <strong className="mr-auto">{this.props.header}</strong>
         </Toast.Header>
         <Toast.Body>{this.props.body}</Toast.Body>
@@ -67,7 +66,6 @@ export class PrereqToast extends Component {
     return (
       <Toast autohide delay={2000} show={this.state.open} onClose={this.hide}>
         <Toast.Header>
-          <span className={`bullet bg-red`}></span>
           <strong className="mr-auto">Incomplete Talents</strong>
         </Toast.Header>
         <Toast.Body>
