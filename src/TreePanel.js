@@ -9,8 +9,6 @@ import { getTreeName } from './utils';
 import { dataVersion } from '../package.json';
 import './styles/TreePanel.css';
 
-//FIXME: repaint lines on side panel change
-
 /**
  * Component for the main tree panel. Controls the display of all nodes and
  * node selections

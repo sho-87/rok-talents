@@ -453,6 +453,7 @@ class App extends Component {
         isSpeedMode: !prevState.isSpeedMode
       }),
       () => {
+        this.treePanelRef.drawLines();
         localStorage.setItem('isSpeedMode', this.state.isSpeedMode);
       }
     );
