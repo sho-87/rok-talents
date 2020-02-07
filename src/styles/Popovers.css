@@ -3,6 +3,19 @@
   max-height: 20vh;
 }
 
+.node-tooltip-bg {
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.node-tooltip-bg-next {
+  background-color: #d5ecd5;
+}
+
+.node-tooltip-bg-max {
+  background-color: #f0e6d2;
+}
+
 .node-tooltip-title {
   float: left;
 }
