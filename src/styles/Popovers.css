@@ -30,24 +30,26 @@
 }
 
 #node-tooltip-assign-container {
-  margin-top: 10px;
-  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 5px;
 }
 
-.node-tooltip-decrease-button {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(0%, -50%);
+.node-tooltip-decrease {
+  flex-grow: 1;
   color: red;
   cursor: pointer;
 }
 
-.node-tooltip-increase-button {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(0%, -50%);
+.node-tooltip-value {
+  flex-grow: 1;
+}
+
+.node-tooltip-increase {
+  flex-grow: 1;
   color: green;
   cursor: pointer;
 }

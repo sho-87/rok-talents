@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import FitText from '@kennethormandy/react-fittext';
 import Popover from 'react-bootstrap/Popover';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -51,38 +48,27 @@ export class TalentTooltip extends Component {
 
                   {this.props.text}
                 </div>
-                <Container id="node-tooltip-assign-container">
-                  <Row>
-                    <Col>
-                      {this.props.value > 0 && (
-                        <FontAwesomeIcon
-                          className="node-tooltip-decrease-button"
-                          icon={faMinusSquare}
-                          size="2x"
-                          onClick={this.props.talentDecrease}
-                        />
-                      )}
-                    </Col>
-                    <Col xs={5}>
-                      <FitText compressor={0.4}>
-                        <span className="node-tooltip-value">
-                          {this.props.value + '/' + this.props.max}
-                        </span>
-                      </FitText>
-                    </Col>
-                    <Col>
-                      {this.props.calcPointsRemaining() > 0 &&
-                        this.props.value !== this.props.max && (
-                          <FontAwesomeIcon
-                            className="node-tooltip-increase-button"
-                            icon={faPlusSquare}
-                            size="2x"
-                            onClick={this.props.talentIncrease}
-                          />
-                        )}
-                    </Col>
-                  </Row>
-                </Container>
+                <div id="node-tooltip-assign-container">
+                  <FontAwesomeIcon
+                    className="node-tooltip-decrease"
+                    icon={faMinusSquare}
+                    size="2x"
+                    onClick={this.props.talentDecrease}
+                  />
+
+                  <FitText compressor={0.15}>
+                    <span className="node-tooltip-value">
+                      {this.props.value + '/' + this.props.max}
+                    </span>
+                  </FitText>
+
+                  <FontAwesomeIcon
+                    className="node-tooltip-increase"
+                    icon={faPlusSquare}
+                    size="2x"
+                    onClick={this.props.talentIncrease}
+                  />
+                </div>
               </div>
             </Popover.Content>
           </div>
