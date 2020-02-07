@@ -7,28 +7,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './styles/Tooltips.css';
 
 /**
- * Tooltip showing text with a hoverable 'help' tooltip
+ * Tooltip showing a hoverable 'help' tooltip
  *
- * @class HelpText
+ * @class HelpTooltip
  * @extends {Component}
  */
-export class HelpText extends Component {
+export class HelpTooltip extends Component {
   render() {
     return (
-      <div>
-        {this.props.text}
-        <span> </span>
-        <OverlayTrigger
-          placement="top"
-          flip={true}
-          trigger={['hover', 'click']}
-          overlay={<Tooltip>{this.props.tooltip}</Tooltip>}
-        >
-          <FontAwesomeIcon icon={faQuestionCircle} className="help-icon" />
-        </OverlayTrigger>
-      </div>
+      <OverlayTrigger
+        placement="top"
+        flip={true}
+        trigger={['hover', 'click']}
+        overlay={<Tooltip>{this.props.tooltip}</Tooltip>}
+      >
+        <FontAwesomeIcon icon={faQuestionCircle} className="help-icon" />
+      </OverlayTrigger>
     );
   }
 }
 
-export default { HelpText };
+export default { HelpTooltip };
