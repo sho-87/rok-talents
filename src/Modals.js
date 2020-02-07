@@ -28,8 +28,7 @@ import {
   author,
   repository,
   bugs,
-  version,
-  dataVersion
+  version
 } from '../package.json';
 import './styles/Modals.css';
 
@@ -137,9 +136,6 @@ export class AboutModal extends Component {
             >
               {version}
             </a>
-          </div>
-          <div>
-            <span className="about-label">Data version:</span> {dataVersion}
           </div>
           <div>
             <span className="about-label">Creator:</span>{' '}
