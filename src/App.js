@@ -2,7 +2,7 @@ import React, { Component, Suspense } from 'react';
 import ReactGA from 'react-ga';
 import Spinner from 'react-bootstrap/Spinner';
 import NavBar from './NavBar';
-import SidePanel from './SidePanel';
+import InfoPanel from './InfoPanel';
 import { InvalidBuildModal } from './Modals';
 import ErrorBoundary from './Error';
 import loadTreeData from './data/AllTrees';
@@ -33,10 +33,11 @@ class App extends Component {
     this.invalidBuildMessage = '';
 
     // Context bindings
-    this.toggleSidePanel = this.toggleSidePanel.bind(this);
+    this.toggleInfoPanel = this.toggleInfoPanel.bind(this);
     this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
     this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
     this.toggleNodeSize = this.toggleNodeSize.bind(this);
+    this.toggleSpeedMode = this.toggleSpeedMode.bind(this);
     this.toggleMouseXY = this.toggleMouseXY.bind(this);
     this.toggleTalentID = this.toggleTalentID.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
@@ -148,11 +149,12 @@ class App extends Component {
   getEmptyState() {
     treeData = loadTreeData(dataVersion);
 
-    const isShownSidePanel = JSON.parse(
-      localStorage.getItem('isShownSidePanel')
+    const isShownInfoPanel = JSON.parse(
+      localStorage.getItem('isShownInfoPanel')
     );
     const isShownValues = JSON.parse(localStorage.getItem('isShownValues'));
     const isShownTotals = JSON.parse(localStorage.getItem('isShownTotals'));
+    const isSpeedMode = JSON.parse(localStorage.getItem('isSpeedMode'));
     const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
     const isShownTalentID = JSON.parse(localStorage.getItem('isShownTalentID'));
 
@@ -163,9 +165,10 @@ class App extends Component {
       yellow: [],
       blue: [],
       nodeSize: localStorage.getItem('nodeSize') || 'M',
-      isShownSidePanel: isShownSidePanel === null ? true : isShownSidePanel,
+      isShownInfoPanel: isShownInfoPanel === null ? true : isShownInfoPanel,
       isShownValues: isShownValues === null ? true : isShownValues,
       isShownTotals: isShownTotals === null ? true : isShownTotals,
+      isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
       isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
       isShownTalentID: isShownTalentID === null ? false : isShownTalentID
     };
@@ -357,24 +360,24 @@ class App extends Component {
   }
 
   /**
-   * Toggle display of side panel
+   * Toggle display of info panel
    *
    * @memberof App
    */
-  toggleSidePanel() {
+  toggleInfoPanel() {
     this.setState(
       prevState => ({
-        isShownSidePanel: !prevState.isShownSidePanel
+        isShownInfoPanel: !prevState.isShownInfoPanel
       }),
       () => {
         this.treePanelRef.repaint();
-        localStorage.setItem('isShownSidePanel', this.state.isShownSidePanel);
+        localStorage.setItem('isShownInfoPanel', this.state.isShownInfoPanel);
       }
     );
 
     ReactGA.event({
       category: 'Settings',
-      action: 'Toggle side panel'
+      action: 'Toggle info panel'
     });
   }
 
@@ -440,6 +443,28 @@ class App extends Component {
   }
 
   /**
+   * Toggle speed mode
+   *
+   * @memberof App
+   */
+  toggleSpeedMode() {
+    this.setState(
+      prevState => ({
+        isSpeedMode: !prevState.isSpeedMode
+      }),
+      () => {
+        this.treePanelRef.drawLines();
+        localStorage.setItem('isSpeedMode', this.state.isSpeedMode);
+      }
+    );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle speed mode'
+    });
+  }
+
+  /**
    * Toggle mouse XY position display
    *
    * @memberof App
@@ -491,10 +516,11 @@ class App extends Component {
         <ErrorBoundary>
           <NavBar
             ref={component => (this.navBarRef = component)}
-            toggleSidePanel={this.toggleSidePanel}
+            toggleInfoPanel={this.toggleInfoPanel}
             toggleTotalDisplay={this.toggleTotalDisplay}
             toggleValueDisplay={this.toggleValueDisplay}
             toggleNodeSize={this.toggleNodeSize}
+            toggleSpeedMode={this.toggleSpeedMode}
             toggleMouseXY={this.toggleMouseXY}
             toggleTalentID={this.toggleTalentID}
             changeCommander={this.changeCommander}
@@ -502,9 +528,10 @@ class App extends Component {
             resetTalents={this.resetTalents}
             commander={this.state.commander}
             nodeSize={this.state.nodeSize}
-            isShownSidePanel={this.state.isShownSidePanel}
+            isShownInfoPanel={this.state.isShownInfoPanel}
             isShownValues={this.state.isShownValues}
             isShownTotals={this.state.isShownTotals}
+            isSpeedMode={this.state.isSpeedMode}
             isShownMouseXY={this.state.isShownMouseXY}
             isShownTalentID={this.state.isShownTalentID}
           />
@@ -521,8 +548,8 @@ class App extends Component {
             }
           >
             <ErrorBoundary>
-              <SidePanel
-                ref={component => (this.sidePanelRef = component)}
+              <InfoPanel
+                ref={component => (this.infoPanelRef = component)}
                 calcPointsSpent={this.calcPointsSpent}
                 calcPointsRemaining={this.calcPointsRemaining}
                 treeData={treeData}
@@ -530,7 +557,7 @@ class App extends Component {
                 red={this.state.red}
                 yellow={this.state.yellow}
                 blue={this.state.blue}
-                isShownSidePanel={this.state.isShownSidePanel}
+                isShownInfoPanel={this.state.isShownInfoPanel}
               />
             </ErrorBoundary>
 
@@ -552,6 +579,7 @@ class App extends Component {
                 nodeSize={this.state.nodeSize}
                 isShownValues={this.state.isShownValues}
                 isShownTotals={this.state.isShownTotals}
+                isSpeedMode={this.state.isSpeedMode}
                 isShownMouseXY={this.state.isShownMouseXY}
                 isShownTalentID={this.state.isShownTalentID}
               />

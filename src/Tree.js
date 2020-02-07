@@ -37,6 +37,7 @@ class Tree extends Component {
           showPointLimitToast={this.props.showPointLimitToast}
           isShownValues={this.props.isShownValues}
           isShownTalentID={this.props.isShownTalentID}
+          isSpeedMode={this.props.isSpeedMode}
           nodeSize={this.props.nodeSize}
           treeData={this.props.treeData}
           key={treeName + i}

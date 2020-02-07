@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import SidePanel from '../SidePanel';
+import InfoPanel from '../InfoPanel';
 
 let props;
 beforeEach(() => {
@@ -17,10 +17,10 @@ beforeEach(() => {
 
 afterEach(cleanup);
 
-describe('Side panel component', () => {
+describe('Info panel component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<SidePanel {...props} />, div);
+    ReactDOM.render(<InfoPanel {...props} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

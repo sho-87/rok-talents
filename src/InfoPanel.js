@@ -5,24 +5,24 @@ import StatsPanel from './StatsPanel';
 import StatsTalentsPanel from './StatsTalentsPanel';
 import ErrorBoundary from './Error';
 
-import './styles/SidePanel.css';
+import './styles/InfoPanel.css';
 
 //TODO: dynamic/responsive typography
 
 /**
- * Side panel component displaying stats about the current talent build
+ * Info panel component displaying stats about the current talent build
  *
- * @class SidePanel
+ * @class InfoPanel
  * @extends {Component}
  */
-class SidePanel extends Component {
+class InfoPanel extends Component {
   render() {
     return (
       <div
-        id="side-panel"
-        data-testid="side-panel"
+        id="info-panel"
+        data-testid="info-panel"
         className={
-          this.props.isShownSidePanel ? 'side-panel-open' : 'side-panel-closed'
+          this.props.isShownInfoPanel ? 'info-panel-open' : 'info-panel-closed'
         }
       >
         <ErrorBoundary>
@@ -70,4 +70,4 @@ class SidePanel extends Component {
   }
 }
 
-export default SidePanel;
+export default InfoPanel;

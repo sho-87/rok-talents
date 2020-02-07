@@ -1,7 +1,7 @@
 /* Global variables */
 :root {
   --nav-bar-height: 50px;
-  --side-panel-width: 20%;
+  --info-panel-size: 20%;
   --hexagon-opacity: 1;
   --tree-box-outline: none;
   --bg-color: rgb(7, 68, 90);
@@ -95,7 +95,7 @@ div {
     flex-flow: column nowrap;
   }
 
-  #side-panel {
+  #info-panel {
     padding: 3px;
     background-image: linear-gradient(
       to top,

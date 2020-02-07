@@ -6,7 +6,7 @@ import App from '../App';
 import Commanders from '../data/commanders.json';
 import { dataVersion } from '../../package.json';
 
-jest.mock("react-ga");
+jest.mock('react-ga');
 afterEach(cleanup);
 
 describe('App component', () => {
@@ -28,18 +28,18 @@ describe('App component', () => {
     }
   });
 
-  it('toggles side panel on settings change', () => {
+  it('toggles info panel on settings change', () => {
     const { getByTestId } = render(<App url="/" />);
-    const sidePanel = getByTestId('side-panel');
+    const infoPanel = getByTestId('info-panel');
 
-    expect(sidePanel).toHaveAttribute('class', 'side-panel-open');
+    expect(infoPanel).toHaveAttribute('class', 'info-panel-open');
 
     fireEvent.click(getByTestId('select-settings'));
-    fireEvent.click(getByTestId('settings-side-panel'));
-    expect(sidePanel).toHaveAttribute('class', 'side-panel-closed');
+    fireEvent.click(getByTestId('settings-info-panel'));
+    expect(infoPanel).toHaveAttribute('class', 'info-panel-closed');
 
-    fireEvent.click(getByTestId('settings-side-panel'));
-    expect(sidePanel).toHaveAttribute('class', 'side-panel-open');
+    fireEvent.click(getByTestId('settings-info-panel'));
+    expect(infoPanel).toHaveAttribute('class', 'info-panel-open');
   });
 
   it('toggles node point values on settings change', () => {

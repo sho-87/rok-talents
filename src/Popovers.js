@@ -26,26 +26,33 @@ export class TalentTooltip extends Component {
         arrowProps={this.props.arrowProps}
         className={this.props.className}
       >
-        <FitText compressor={2.1}>
+        <FitText compressor={2.2}>
           <div>
             <Popover.Title>
-              <div className="node-tooltip-title">{this.props.talentname}</div>
+              <div className="node-tooltip-title">{this.props.talentName}</div>
               {this.props.isShownTalentID && (
-                <div className="node-tooltip-id">{this.props.talentid}</div>
+                <div className="node-tooltip-id">{this.props.talentID}</div>
               )}
               <div style={{ clear: 'both' }}></div>
             </Popover.Title>
 
             <Popover.Content className="node-tooltip-body">
               <div>
-                <div>
-                  <b>
-                    {this.props.value !== this.props.max ? 'Next:' : 'Maxed:'}
-                  </b>
+                <div
+                  className={`node-tooltip-bg node-tooltip-bg${
+                    this.props.value === this.props.max ? '-max' : '-next'
+                  }`}
+                >
+                  <div>
+                    <b>
+                      {this.props.value !== this.props.max
+                        ? 'Next level:'
+                        : 'Maxed:'}
+                    </b>
+                  </div>
+
+                  {this.props.text}
                 </div>
-
-                {this.props.text}
-
                 <Container id="node-tooltip-assign-container">
                   <Row>
                     <Col>
@@ -54,7 +61,7 @@ export class TalentTooltip extends Component {
                           className="node-tooltip-decrease-button"
                           icon={faMinusSquare}
                           size="2x"
-                          onClick={this.props.talentdecrease}
+                          onClick={this.props.talentDecrease}
                         />
                       )}
                     </Col>
@@ -70,7 +77,7 @@ export class TalentTooltip extends Component {
                             className="node-tooltip-increase-button"
                             icon={faPlusSquare}
                             size="2x"
-                            onClick={this.props.talentincrease}
+                            onClick={this.props.talentIncrease}
                           />
                         )}
                     </Col>
