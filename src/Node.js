@@ -7,8 +7,6 @@ import { replaceTalentText, getMaxTalentCount } from './utils';
 
 import './styles/Node.css';
 
-//FIXME: node content into component
-
 /**
  * Component for the individual talent nodes
  *
@@ -198,27 +196,21 @@ class Node extends Component {
 
     if (this.props.isSpeedMode) {
       return (
-        <div
-          data-testid={this.props.treeName + this.props.idx}
-          id={this.props.treeName + this.props.idx}
-          className={`node ${this.props.type}-${this.props.nodeSize} ${
-            this.props.value === 0 ? 'node-inactive' : ''
-          }`}
-          style={this.getStyle()}
+        <NodeContent
+          talentID={this.props.treeName + this.props.idx}
+          getStyle={this.getStyle}
+          isShownValues={isShownValues}
+          nodeSize={this.props.nodeSize}
+          type={this.props.type}
+          compressor={compressor}
+          value={this.props.value}
+          max={this.props.max}
           onClick={this.talentIncrease}
           onContextMenu={e => {
             e.preventDefault();
             this.talentDecrease();
           }}
-        >
-          {isShownValues && (
-            <FitText compressor={compressor}>
-              <div className="node-value" data-testid="node-value">
-                {this.props.value + '/' + this.props.max}
-              </div>
-            </FitText>
-          )}
-        </div>
+        />
       );
     } else {
       return (
@@ -260,24 +252,41 @@ const NodeOverlay = props => {
         />
       }
     >
-      <div
-        data-testid={props.treeName + props.idx}
-        id={props.treeName + props.idx}
-        className={`node ${props.type}-${props.nodeSize} ${
-          props.value === 0 ? 'node-inactive' : ''
-        }`}
-        style={props.getStyle()}
+      <NodeContent
+        talentID={props.treeName + props.idx}
+        getStyle={props.getStyle}
+        isShownValues={props.isShownValues}
+        nodeSize={props.nodeSize}
+        type={props.type}
+        compressor={props.compressor}
+        value={props.value}
+        max={props.max}
         onContextMenu={e => e.preventDefault()}
-      >
-        {props.isShownValues && (
-          <FitText compressor={props.compressor}>
-            <div className="node-value" data-testid="node-value">
-              {props.value + '/' + props.max}
-            </div>
-          </FitText>
-        )}
-      </div>
+      />
     </OverlayTrigger>
+  );
+};
+
+const NodeContent = props => {
+  return (
+    <div
+      data-testid={props.talentID}
+      id={props.talentID}
+      className={`node ${props.type}-${props.nodeSize} ${
+        props.value === 0 ? 'node-inactive' : ''
+      }`}
+      style={props.getStyle()}
+      onClick={props.onClick}
+      onContextMenu={props.onContextMenu}
+    >
+      {props.isShownValues && (
+        <FitText compressor={props.compressor}>
+          <div className="node-value" data-testid="node-value">
+            {props.value + '/' + props.max}
+          </div>
+        </FitText>
+      )}
+    </div>
   );
 };
 
