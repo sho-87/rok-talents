@@ -11,8 +11,6 @@ import { mobileBreakpoint } from './values';
 
 import './styles/Popovers.css';
 
-//TODO: add text color background
-
 /**
  * Tooltip containing information about each talent node. Displayed when 
  user hovers over a talent
@@ -28,7 +26,7 @@ export class TalentTooltip extends Component {
         arrowProps={this.props.arrowProps}
         className={this.props.className}
       >
-        <FitText compressor={2.1}>
+        <FitText compressor={2.2}>
           <div>
             <Popover.Title>
               <div className="node-tooltip-title">{this.props.talentName}</div>
@@ -40,14 +38,21 @@ export class TalentTooltip extends Component {
 
             <Popover.Content className="node-tooltip-body">
               <div>
-                <div>
-                  <b>
-                    {this.props.value !== this.props.max ? 'Next level:' : 'Maxed:'}
-                  </b>
+                <div
+                  className={`node-tooltip-bg node-tooltip-bg${
+                    this.props.value === this.props.max ? '-max' : '-next'
+                  }`}
+                >
+                  <div>
+                    <b>
+                      {this.props.value !== this.props.max
+                        ? 'Next level:'
+                        : 'Maxed:'}
+                    </b>
+                  </div>
+
+                  {this.props.text}
                 </div>
-
-                {this.props.text}
-
                 <Container id="node-tooltip-assign-container">
                   <Row>
                     <Col>
