@@ -31,26 +31,14 @@ class InfoPanel extends Component {
               calcPointsSpent={this.props.calcPointsSpent}
             />
             <MediaQuery orientation="portrait">
-              <StatsPanel
-                commander={this.props.commander}
-                treeData={this.props.treeData}
-                red={this.props.red}
-                yellow={this.props.yellow}
-                blue={this.props.blue}
-              />
+              <StatsPanel stats={this.props.stats} />
             </MediaQuery>
           </div>
         </ErrorBoundary>
 
         <MediaQuery orientation="landscape">
           <ErrorBoundary>
-            <StatsPanel
-              commander={this.props.commander}
-              treeData={this.props.treeData}
-              red={this.props.red}
-              yellow={this.props.yellow}
-              blue={this.props.blue}
-            />
+            <StatsPanel stats={this.props.stats} />
           </ErrorBoundary>
 
           <ErrorBoundary>
