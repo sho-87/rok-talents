@@ -125,9 +125,18 @@ class App extends Component {
               for (let i = 0; i < talents.length; i++) {
                 const talentData = treeData[treeName][i + 1];
                 const stat = talentData['stats'];
+
                 if (talents[i] > 0 && stat) {
-                  this.state.stats[stat] +=
-                    talentData['values'][talents[i] - 1];
+                  const multiStat = Array.isArray(stat);
+                  if (multiStat) {
+                    for (let j = 0; j < stat.length; j++) {
+                      this.state.stats[stat[j]] +=
+                        talentData['values'][talents[i] - 1];
+                    }
+                  } else {
+                    this.state.stats[stat] +=
+                      talentData['values'][talents[i] - 1];
+                  }
                 }
               }
             }
@@ -326,26 +335,55 @@ class App extends Component {
   changeTalentValue(color, idx, valueIdx, how) {
     let talent = treeData[Commanders[this.state.commander][color]][idx];
     let stat = talent['stats'];
+    let multiStat = Array.isArray(stat);
     let newArr = this.state[color];
     let newStats = { ...this.state.stats };
 
     if (how === 'increase') {
       newArr[idx - 1] += 1;
+
       // increase stat value
-      if (valueIdx === 0) {
-        newStats[stat] += talent['values'][0];
+      if (multiStat) {
+        // multi-stat
+        stat.forEach(curStat => {
+          if (valueIdx === 0) {
+            newStats[curStat] += talent['values'][0];
+          } else {
+            newStats[curStat] +=
+              talent['values'][valueIdx] - talent['values'][valueIdx - 1];
+          }
+        });
       } else {
-        newStats[stat] +=
-          talent['values'][valueIdx] - talent['values'][valueIdx - 1];
+        // single stat
+        if (valueIdx === 0) {
+          newStats[stat] += talent['values'][0];
+        } else {
+          newStats[stat] +=
+            talent['values'][valueIdx] - talent['values'][valueIdx - 1];
+        }
       }
     } else if (how === 'decrease') {
       newArr[idx - 1] -= 1;
+
       // decrease stat value
-      if (valueIdx <= 1) {
-        newStats[stat] -= talent['values'][0];
+      if (multiStat) {
+        // multi-stat
+        stat.forEach(curStat => {
+          if (valueIdx <= 1) {
+            newStats[curStat] -= talent['values'][0];
+          } else {
+            newStats[curStat] -=
+              talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
+          }
+        });
       } else {
-        newStats[stat] -=
-          talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
+        // single stat
+        if (valueIdx <= 1) {
+          newStats[stat] -= talent['values'][0];
+        } else {
+          newStats[stat] -=
+            talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
+        }
       }
     }
 

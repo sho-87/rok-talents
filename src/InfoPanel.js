@@ -9,7 +9,6 @@ import { isTouchDevice } from './utils';
 import './styles/InfoPanel.css';
 
 //TODO: add help text for info boxes
-//TODO: multistat talents (eg elite soldiers) should be added to stat panel
 //TODO: automatically add stats to panel
 
 /**
