@@ -43,6 +43,7 @@ class InfoPanel extends Component {
 
           <ErrorBoundary>
             <StatsTalentsPanel
+              calcPointsSpent={this.props.calcPointsSpent}
               commander={this.props.commander}
               treeData={this.props.treeData}
               red={this.props.red}

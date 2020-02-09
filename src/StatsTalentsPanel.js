@@ -90,6 +90,7 @@ class StatsTalentsPanel extends Component {
   }
 
   render() {
+    const mainTalents = this.calcStatsTalents();
     return (
       <div
         id="stats-talents"
@@ -97,7 +98,9 @@ class StatsTalentsPanel extends Component {
         onClick={this.toggleStatsTalents}
       >
         <h2 id="stats-talents-title">Main Talents</h2>
-        <div data-testid="stats-talents">{this.calcStatsTalents()}</div>
+        <div data-testid="stats-talents">
+          {mainTalents.length === 0 ? 'None' : mainTalents}
+        </div>
       </div>
     );
   }
