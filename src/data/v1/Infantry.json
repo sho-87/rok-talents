@@ -64,7 +64,7 @@
   "7": {
     "name": "Double-Headed Axe",
     "values": [0.5, 1, 1.5],
-    "stats": "",
+    "stats": "Attack",
     "text": "Increases normal attack damage by ${1}%",
     "prereq": [3],
     "dep": [11],
@@ -96,7 +96,7 @@
   "10": {
     "name": "Strong of Body",
     "values": [2, 4, 6],
-    "stats": "",
+    "stats": "Health",
     "text": "Increases health of infantry units by ${1}%",
     "prereq": [6],
     "dep": [],
@@ -127,7 +127,7 @@
   "13": {
     "name": "Fleet Of Foot",
     "values": [2, 4, 6],
-    "stats": "",
+    "stats": "March Speed",
     "text": "Increases march speed of infantry units by ${1}%",
     "prereq": [9],
     "dep": [],
@@ -158,7 +158,7 @@
   "16": {
     "name": "Elite Soldiers",
     "values": [0.5, 1, 1.5, 2, 2.5],
-    "stats": "",
+    "stats": ["Attack", "Defense", "Health"],
     "text": "When the army led by this commander contains only infantry units, attack, defense, and health are increased by ${1}%",
     "prereq": [19, 20],
     "dep": [],

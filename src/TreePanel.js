@@ -248,7 +248,7 @@ class TreePanel extends Component {
 
         {this.props.dataVersion < dataVersion && (
           <div data-testid="version-warning" id="version-warning">
-            (warning: this build uses an old <br /> version of the game data)
+            Warning: this build uses an old version <br /> of the game data
           </div>
         )}
 

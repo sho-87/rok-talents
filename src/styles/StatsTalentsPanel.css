@@ -1,10 +1,10 @@
 /* Stats Talents Panel */
-.stats-talents-expand:hover {
-  color: blue;
-}
-
 #stats-talents {
   cursor: pointer;
+}
+
+#stats-talents-title:hover {
+  color: var(--bg-color);
 }
 
 .stats-talents-main {

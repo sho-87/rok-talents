@@ -10,6 +10,7 @@ import Commanders from './data/commanders.json';
 import {
   sumArray,
   getMaxTalentCount,
+  getTreeName,
   setTitle,
   isTouchDevice,
   encode,
@@ -23,8 +24,6 @@ import './styles/fonts.css';
 
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
-
-//FIXME: only updateurl/encode if that particular tree has changed
 
 /**
  * Main application component. Contains high level logic for managing application state
@@ -59,11 +58,10 @@ class App extends Component {
     switch (urlParams.length) {
       case 1: // blank url
         this.state = this.getEmptyState();
+        treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
         break;
       case 5: // complete url
-        //FIXME: this loads treeData twice if url is valid
-        this.state = this.getEmptyState();
         let [urlDataVersion, comID, red, yellow, blue] = urlParams;
         urlDataVersion = parseInt(urlDataVersion);
 
@@ -79,6 +77,7 @@ class App extends Component {
           this.invalidBuildMessage = 'Unknown commander ID';
           this.invalidModalFlag = true;
         } else {
+          this.state = this.getEmptyState();
           treeData = loadTreeData(urlDataVersion);
           this.state = {
             ...this.state,
@@ -118,7 +117,28 @@ class App extends Component {
               this.invalidModalFlag = true;
               break;
             } else {
+              // Store color array in state
               this.state[color[1]] = talents;
+
+              // Calculate stats for the color
+              const treeName = getTreeName(color[1], commanderName);
+              for (let i = 0; i < talents.length; i++) {
+                const talentData = treeData[treeName][i + 1];
+                const stat = talentData['stats'];
+
+                if (talents[i] > 0 && stat) {
+                  const multiStat = Array.isArray(stat);
+                  if (multiStat) {
+                    for (let j = 0; j < stat.length; j++) {
+                      this.state.stats[stat[j]] +=
+                        talentData['values'][talents[i] - 1];
+                    }
+                  } else {
+                    this.state.stats[stat] +=
+                      talentData['values'][talents[i] - 1];
+                  }
+                }
+              }
             }
           }
 
@@ -131,6 +151,7 @@ class App extends Component {
 
         if (this.invalidModalFlag) {
           this.state = this.getEmptyState();
+          treeData = loadTreeData(dataVersion);
           this.updateURL('clear');
         } else {
           this.updateURL('update');
@@ -141,6 +162,7 @@ class App extends Component {
         this.invalidBuildMessage = `Incorrect number of build parameters (length: ${urlParams.length}, expected: 5)`;
         this.invalidModalFlag = true;
         this.state = this.getEmptyState();
+        treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
     }
   }
@@ -153,8 +175,6 @@ class App extends Component {
    * @memberof App
    */
   getEmptyState() {
-    treeData = loadTreeData(dataVersion);
-
     const isShownInfoPanel = JSON.parse(
       localStorage.getItem('isShownInfoPanel')
     );
@@ -170,6 +190,7 @@ class App extends Component {
       red: [],
       yellow: [],
       blue: [],
+      stats: this.getEmptyStats(),
       nodeSize: localStorage.getItem('nodeSize') || 'M',
       isShownInfoPanel: isShownInfoPanel === null ? true : isShownInfoPanel,
       isShownValues: isShownValues === null ? true : isShownValues,
@@ -181,14 +202,13 @@ class App extends Component {
   }
 
   /**
-   * Set app state to empty and update the current URL
+   * Get object containing all stats and set them to 0
    *
+   * @returns {object} Object containing stats with 0 values
    * @memberof App
    */
-  setEmptyState() {
-    this.setState(this.getEmptyState(), () => {
-      this.updateURL('clear');
-    });
+  getEmptyStats() {
+    return { Attack: 0, Defense: 0, Health: 0, 'March Speed': 0 };
   }
 
   /**
@@ -243,7 +263,12 @@ class App extends Component {
 
     const zeroTalents = this.createZeroTalents(commander);
     this.setState(
-      { dataVersion: dataVersion, commander: commander, ...zeroTalents },
+      {
+        dataVersion: dataVersion,
+        commander: commander,
+        ...zeroTalents,
+        stats: this.getEmptyStats()
+      },
       () => {
         this.updateURL('update');
         this.treePanelRef.drawLines();
@@ -302,18 +327,73 @@ class App extends Component {
    *
    * @param {string} color Color of the tree the node belongs to
    * @param {number} idx Index of the node in the tree/color array.
+   * @param {number} valueIdx Index of the changed value.
    * @param {string} how {increase | decrease} Should node value be increased
    *  or decreased?
    * @memberof App
    */
-  changeTalentValue(color, idx, how) {
+  changeTalentValue(color, idx, valueIdx, how) {
+    let talent = treeData[Commanders[this.state.commander][color]][idx];
+    let stat = talent['stats'];
+    let multiStat = Array.isArray(stat);
     let newArr = this.state[color];
+    let newStats = { ...this.state.stats };
+
     if (how === 'increase') {
       newArr[idx - 1] += 1;
+
+      // increase stat value
+      if (stat) {
+        if (multiStat) {
+          // multi-stat
+          stat.forEach(curStat => {
+            if (valueIdx === 0) {
+              newStats[curStat] += talent['values'][0];
+            } else {
+              newStats[curStat] +=
+                talent['values'][valueIdx] - talent['values'][valueIdx - 1];
+            }
+          });
+        } else {
+          // single stat
+          if (valueIdx === 0) {
+            newStats[stat] += talent['values'][0];
+          } else {
+            newStats[stat] +=
+              talent['values'][valueIdx] - talent['values'][valueIdx - 1];
+          }
+        }
+      }
     } else if (how === 'decrease') {
       newArr[idx - 1] -= 1;
+
+      // decrease stat value
+      if (stat) {
+        if (multiStat) {
+          // multi-stat
+          stat.forEach(curStat => {
+            if (valueIdx <= 1) {
+              newStats[curStat] -= talent['values'][0];
+            } else {
+              newStats[curStat] -=
+                talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
+            }
+          });
+        } else {
+          // single stat
+          if (valueIdx <= 1) {
+            newStats[stat] -= talent['values'][0];
+          } else {
+            newStats[stat] -=
+              talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
+          }
+        }
+      }
     }
-    this.setState({ [color]: newArr }, () => this.updateURL('update'));
+
+    this.setState({ [color]: newArr, stats: newStats }, () =>
+      this.updateURL('update')
+    );
   }
 
   /**
@@ -565,6 +645,7 @@ class App extends Component {
                 red={this.state.red}
                 yellow={this.state.yellow}
                 blue={this.state.blue}
+                stats={this.state.stats}
                 isShownInfoPanel={this.state.isShownInfoPanel}
               />
             </ErrorBoundary>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import Collapse from 'react-bootstrap/Collapse';
+import { HelpTooltip } from './Tooltips';
 import { getMaxTalentCount, replaceTalentText } from './utils';
 
 import Commanders from './data/commanders.json';
@@ -40,11 +41,10 @@ class StatsTalentsPanel extends Component {
   }
 
   /**
-   * Calculate an array of the bonus stats that don't belong in any of
-   * the base state categories
+   * Calculate an array of main talents that don't belong in any of
+   * the base stat categories
    *
-   * @param {string} stat Name of the stat to be calculated (e.g. Defense)
-   * @returns {String[]} Array of all selected main talents
+   * @returns {DOMElement[]} Array of all selected main talents
    * @memberof StatsTalentsPanel
    */
   calcStatsTalents() {
@@ -60,7 +60,7 @@ class StatsTalentsPanel extends Component {
             idx + 1
           ];
 
-          if (value > 0 && !talentInfo.stats) {
+          if (value > 0 && talentInfo.type === 'node-large') {
             talents.push(
               <div key={talentInfo.name} className={`stats-talents-main`}>
                 <div className="stats-talents-title">
@@ -91,19 +91,20 @@ class StatsTalentsPanel extends Component {
   }
 
   render() {
+    const mainTalents = this.calcStatsTalents();
     return (
       <div
         id="stats-talents"
         className="info-box"
         onClick={this.toggleStatsTalents}
       >
-        <h2>
+        <h2 id="stats-talents-title">
           Main Talents{' '}
-          <span className="stats-talents-expand">
-            {this.state.isShownStatsTalents ? '(collapse)' : '(expand)'}
-          </span>
+          <HelpTooltip tooltip="List of all selected main (large) talents" />
         </h2>
-        <div data-testid="stats-talents">{this.calcStatsTalents()}</div>
+        <div data-testid="stats-talents">
+          {mainTalents.length === 0 ? 'None' : mainTalents}
+        </div>
       </div>
     );
   }

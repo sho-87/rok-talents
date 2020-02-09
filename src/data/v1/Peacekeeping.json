@@ -189,7 +189,7 @@
   "19": {
     "name": "Thoroughbreds",
     "values": [3, 6, 9],
-    "stats": "",
+    "stats": "March Speed",
     "text": "Increases march speed of all troops by ${1}%",
     "prereq": [17],
     "dep": [20],
