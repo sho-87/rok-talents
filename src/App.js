@@ -60,11 +60,10 @@ class App extends Component {
     switch (urlParams.length) {
       case 1: // blank url
         this.state = this.getEmptyState();
+        treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
         break;
       case 5: // complete url
-        //FIXME: this loads treeData twice if url is valid
-        this.state = this.getEmptyState();
         let [urlDataVersion, comID, red, yellow, blue] = urlParams;
         urlDataVersion = parseInt(urlDataVersion);
 
@@ -80,6 +79,7 @@ class App extends Component {
           this.invalidBuildMessage = 'Unknown commander ID';
           this.invalidModalFlag = true;
         } else {
+          this.state = this.getEmptyState();
           treeData = loadTreeData(urlDataVersion);
           this.state = {
             ...this.state,
@@ -144,6 +144,7 @@ class App extends Component {
 
         if (this.invalidModalFlag) {
           this.state = this.getEmptyState();
+          treeData = loadTreeData(dataVersion);
           this.updateURL('clear');
         } else {
           this.updateURL('update');
@@ -154,6 +155,7 @@ class App extends Component {
         this.invalidBuildMessage = `Incorrect number of build parameters (length: ${urlParams.length}, expected: 5)`;
         this.invalidModalFlag = true;
         this.state = this.getEmptyState();
+        treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
     }
   }
@@ -166,8 +168,6 @@ class App extends Component {
    * @memberof App
    */
   getEmptyState() {
-    treeData = loadTreeData(dataVersion);
-
     const isShownInfoPanel = JSON.parse(
       localStorage.getItem('isShownInfoPanel')
     );
@@ -202,17 +202,6 @@ class App extends Component {
    */
   getEmptyStats() {
     return { Attack: 0, Defense: 0, Health: 0, 'March Speed': 0 };
-  }
-
-  /**
-   * Set app state to empty and update the current URL
-   *
-   * @memberof App
-   */
-  setEmptyState() {
-    this.setState(this.getEmptyState(), () => {
-      this.updateURL('clear');
-    });
   }
 
   /**
