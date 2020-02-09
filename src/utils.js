@@ -108,7 +108,9 @@ export function getTreeName(color, commander) {
  * @param {string} [sep='/'] Separator to use between point totals
  */
 export function setTitle(commander, r, y, b, sep = '/') {
-  document.title = `${createSummaryString(commander, r, y, b, sep)} | ${title}`;
+  const newTitle = `${createSummaryString(commander, r, y, b, sep)} | ${title}`;
+  document.getElementsByTagName('meta')['application-name'].content = newTitle;
+  document.title = newTitle;
 }
 
 /**
