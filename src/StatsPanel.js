@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HelpTooltip } from './Tooltips';
 
 import './styles/StatsPanel.css';
 
@@ -30,7 +31,10 @@ class StatsPanel extends Component {
   render() {
     return (
       <div id="stats-panel" className="info-box">
-        <h2>Stats</h2>
+        <h2>
+          Stats{' '}
+          <HelpTooltip tooltip="Totals only include unconditional and direct stat boosting talents. For example, does not include stats from rallies/garrison/% chance etc." />
+        </h2>
         <div id="stats-panel-stats">{this.getAllStats()}</div>
       </div>
     );

@@ -8,8 +8,6 @@ import { isTouchDevice } from './utils';
 
 import './styles/InfoPanel.css';
 
-//TODO: add help text for info boxes
-
 /**
  * Info panel component displaying stats about the current talent build
  *

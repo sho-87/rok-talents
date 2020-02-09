@@ -19,7 +19,7 @@ export class HelpTooltip extends Component {
         placement="top"
         flip={true}
         trigger={['hover', 'click']}
-        overlay={<Tooltip>{this.props.tooltip}</Tooltip>}
+        overlay={<Tooltip className="help-text">{this.props.tooltip}</Tooltip>}
       >
         <FontAwesomeIcon icon={faQuestionCircle} className="help-icon" />
       </OverlayTrigger>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import Collapse from 'react-bootstrap/Collapse';
+import { HelpTooltip } from './Tooltips';
 import { getMaxTalentCount, replaceTalentText } from './utils';
 
 import Commanders from './data/commanders.json';
@@ -97,7 +98,10 @@ class StatsTalentsPanel extends Component {
         className="info-box"
         onClick={this.toggleStatsTalents}
       >
-        <h2 id="stats-talents-title">Main Talents</h2>
+        <h2 id="stats-talents-title">
+          Main Talents{' '}
+          <HelpTooltip tooltip="List of all selected main (large) talents" />
+        </h2>
         <div data-testid="stats-talents">
           {mainTalents.length === 0 ? 'None' : mainTalents}
         </div>
