@@ -45,7 +45,7 @@
 #version-warning {
   position: absolute;
   font-size: 0.7em;
-  bottom: 0px;
+  top: 0px;
   right: 0px;
   margin: 5px;
   text-align: right;
