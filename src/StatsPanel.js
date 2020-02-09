@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import './styles/StatsPanel.css';
 
-//TODO: add main stats to small stats (e.g. march speed peacekeeping)
-
 /**
  * Stats panel component displaying stats about the current talent build
  *

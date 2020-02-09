@@ -64,7 +64,7 @@
   "7": {
     "name": "Lightning Charge",
     "values": [2, 4, 6],
-    "stats": "",
+    "stats": "March Speed",
     "text": "Increases march speed of all troops by ${1}%",
     "prereq": [3, 4],
     "dep": [12],

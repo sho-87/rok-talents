@@ -59,7 +59,7 @@ class StatsTalentsPanel extends Component {
             idx + 1
           ];
 
-          if (value > 0 && !talentInfo.stats) {
+          if (value > 0 && talentInfo.type === 'node-large') {
             talents.push(
               <div key={talentInfo.name} className={`stats-talents-main`}>
                 <div className="stats-talents-title">

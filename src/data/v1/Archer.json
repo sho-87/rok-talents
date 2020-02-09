@@ -52,7 +52,7 @@
   "6": {
     "name": "Full Quiver",
     "values": [1, 2, 3],
-    "stats": "",
+    "stats": "Attack",
     "text": "Increases attack of archer units by ${1}%",
     "prereq": [2],
     "dep": [],
@@ -96,7 +96,7 @@
   "10": {
     "name": "Rapid Fire",
     "values": [0.5, 1, 1.5],
-    "stats": "",
+    "stats": "Attack",
     "text": "Increases normal attack damage of all troops led by this commander by ${1}%",
     "prereq": [3],
     "dep": [12],
@@ -107,7 +107,7 @@
   "11": {
     "name": "Armed and Armored",
     "values": [3, 6, 9],
-    "stats": "",
+    "stats": "Health",
     "text": "Increases health of archer units by ${1}%",
     "prereq": [4],
     "dep": [13],
