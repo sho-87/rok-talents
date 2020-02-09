@@ -10,6 +10,7 @@ import Commanders from './data/commanders.json';
 import {
   sumArray,
   getMaxTalentCount,
+  getTreeName,
   setTitle,
   isTouchDevice,
   encode,
@@ -25,7 +26,6 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
 //FIXME: only updateurl/encode if that particular tree has changed
-//FIXME: recalculate all stats on reload/copied url
 
 /**
  * Main application component. Contains high level logic for managing application state
@@ -119,7 +119,19 @@ class App extends Component {
               this.invalidModalFlag = true;
               break;
             } else {
+              // Store color array in state
               this.state[color[1]] = talents;
+
+              // Calculate stats for the color
+              const treeName = getTreeName(color[1], commanderName);
+              for (let i = 0; i < talents.length; i++) {
+                const talentData = treeData[treeName][i + 1];
+                const stat = talentData['stats'];
+                if (talents[i] > 0 && stat) {
+                  this.state.stats[stat] +=
+                    talentData['values'][talents[i] - 1];
+                }
+              }
             }
           }
 
@@ -171,7 +183,7 @@ class App extends Component {
       red: [],
       yellow: [],
       blue: [],
-      stats: { Attack: 0, Defense: 0, Health: 0, 'March Speed': 0 },
+      stats: this.getEmptyStats(),
       nodeSize: localStorage.getItem('nodeSize') || 'M',
       isShownInfoPanel: isShownInfoPanel === null ? true : isShownInfoPanel,
       isShownValues: isShownValues === null ? true : isShownValues,
@@ -180,6 +192,16 @@ class App extends Component {
       isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
       isShownTalentID: isShownTalentID === null ? false : isShownTalentID
     };
+  }
+
+  /**
+   * Get object containing all minor stats and set them to 0
+   *
+   * @returns {object} Object containing stats with 0 values
+   * @memberof App
+   */
+  getEmptyStats() {
+    return { Attack: 0, Defense: 0, Health: 0, 'March Speed': 0 };
   }
 
   /**
@@ -245,7 +267,12 @@ class App extends Component {
 
     const zeroTalents = this.createZeroTalents(commander);
     this.setState(
-      { dataVersion: dataVersion, commander: commander, ...zeroTalents },
+      {
+        dataVersion: dataVersion,
+        commander: commander,
+        ...zeroTalents,
+        stats: this.getEmptyStats()
+      },
       () => {
         this.updateURL('update');
         this.treePanelRef.drawLines();

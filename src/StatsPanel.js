@@ -11,29 +11,6 @@ import './styles/StatsPanel.css';
  * @extends {Component}
  */
 class StatsPanel extends Component {
-  // calcStats(stat) {
-  //   const commander = this.props.commander;
-  //   let statValue = 0;
-
-  //   ['red', 'yellow', 'blue'].forEach(color => {
-  //     const nodes = this.props[color];
-
-  //     if (nodes.some(values => values !== 0)) {
-  //       nodes.forEach((value, idx) => {
-  //         const talentInfo = this.props.treeData[Commanders[commander][color]][
-  //           idx + 1
-  //         ];
-
-  //         if (value > 0 && talentInfo.stats === stat) {
-  //           statValue += talentInfo.values[value - 1];
-  //         }
-  //       });
-  //     }
-  //   });
-
-  //   return statValue;
-  // }
-
   render() {
     return (
       <div id="stats-panel" className="info-box">
