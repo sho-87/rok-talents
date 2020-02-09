@@ -21,7 +21,7 @@
 }
 
 #nav-icon:hover {
-  color: blue;
+  color: var(--bg-color);
 }
 
 .nav-menu {
