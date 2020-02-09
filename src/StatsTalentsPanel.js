@@ -41,9 +41,9 @@ class StatsTalentsPanel extends Component {
 
   /**
    * Calculate an array of main talents that don't belong in any of
-   * the base state categories
+   * the base stat categories
    *
-   * @returns {String[]} Array of all selected main talents
+   * @returns {DOMElement[]} Array of all selected main talents
    * @memberof StatsTalentsPanel
    */
   calcStatsTalents() {
