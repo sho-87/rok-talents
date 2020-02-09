@@ -109,7 +109,6 @@ export function getTreeName(color, commander) {
  */
 export function setTitle(commander, r, y, b, sep = '/') {
   const newTitle = `${createSummaryString(commander, r, y, b, sep)} | ${title}`;
-  document.getElementsByTagName('meta')['application-name'].content = newTitle;
   document.title = newTitle;
 }
 
