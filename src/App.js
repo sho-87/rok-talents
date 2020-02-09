@@ -343,46 +343,50 @@ class App extends Component {
       newArr[idx - 1] += 1;
 
       // increase stat value
-      if (multiStat) {
-        // multi-stat
-        stat.forEach(curStat => {
+      if (stat) {
+        if (multiStat) {
+          // multi-stat
+          stat.forEach(curStat => {
+            if (valueIdx === 0) {
+              newStats[curStat] += talent['values'][0];
+            } else {
+              newStats[curStat] +=
+                talent['values'][valueIdx] - talent['values'][valueIdx - 1];
+            }
+          });
+        } else {
+          // single stat
           if (valueIdx === 0) {
-            newStats[curStat] += talent['values'][0];
+            newStats[stat] += talent['values'][0];
           } else {
-            newStats[curStat] +=
+            newStats[stat] +=
               talent['values'][valueIdx] - talent['values'][valueIdx - 1];
           }
-        });
-      } else {
-        // single stat
-        if (valueIdx === 0) {
-          newStats[stat] += talent['values'][0];
-        } else {
-          newStats[stat] +=
-            talent['values'][valueIdx] - talent['values'][valueIdx - 1];
         }
       }
     } else if (how === 'decrease') {
       newArr[idx - 1] -= 1;
 
       // decrease stat value
-      if (multiStat) {
-        // multi-stat
-        stat.forEach(curStat => {
+      if (stat) {
+        if (multiStat) {
+          // multi-stat
+          stat.forEach(curStat => {
+            if (valueIdx <= 1) {
+              newStats[curStat] -= talent['values'][0];
+            } else {
+              newStats[curStat] -=
+                talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
+            }
+          });
+        } else {
+          // single stat
           if (valueIdx <= 1) {
-            newStats[curStat] -= talent['values'][0];
+            newStats[stat] -= talent['values'][0];
           } else {
-            newStats[curStat] -=
+            newStats[stat] -=
               talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
           }
-        });
-      } else {
-        // single stat
-        if (valueIdx <= 1) {
-          newStats[stat] -= talent['values'][0];
-        } else {
-          newStats[stat] -=
-            talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
         }
       }
     }
