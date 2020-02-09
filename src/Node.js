@@ -131,6 +131,7 @@ class Node extends Component {
           this.props.changeTalentValue(
             this.props.color,
             this.props.idx,
+            this.props.value,
             'increase'
           );
           jsPlumb
@@ -175,6 +176,7 @@ class Node extends Component {
       this.props.changeTalentValue(
         this.props.color,
         this.props.idx,
+        this.props.value,
         'decrease'
       );
 

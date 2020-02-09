@@ -40,11 +40,10 @@ class StatsTalentsPanel extends Component {
   }
 
   /**
-   * Calculate an array of the bonus stats that don't belong in any of
-   * the base state categories
+   * Calculate an array of main talents that don't belong in any of
+   * the base stat categories
    *
-   * @param {string} stat Name of the stat to be calculated (e.g. Defense)
-   * @returns {String[]} Array of all selected main talents
+   * @returns {DOMElement[]} Array of all selected main talents
    * @memberof StatsTalentsPanel
    */
   calcStatsTalents() {
@@ -91,19 +90,17 @@ class StatsTalentsPanel extends Component {
   }
 
   render() {
+    const mainTalents = this.calcStatsTalents();
     return (
       <div
         id="stats-talents"
         className="info-box"
         onClick={this.toggleStatsTalents}
       >
-        <h2>
-          Main Talents{' '}
-          <span className="stats-talents-expand">
-            {this.state.isShownStatsTalents ? '(collapse)' : '(expand)'}
-          </span>
-        </h2>
-        <div data-testid="stats-talents">{this.calcStatsTalents()}</div>
+        <h2 id="stats-talents-title">Main Talents</h2>
+        <div data-testid="stats-talents">
+          {mainTalents.length === 0 ? 'None' : mainTalents}
+        </div>
       </div>
     );
   }
