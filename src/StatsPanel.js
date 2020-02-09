@@ -9,16 +9,29 @@ import './styles/StatsPanel.css';
  * @extends {Component}
  */
 class StatsPanel extends Component {
+  /**
+   * Get all calculated stats and their values
+   *
+   * @returns {DOMElement[]} Array of DOM elements containing stats and values
+   * @memberof StatsPanel
+   */
+  getAllStats() {
+    let allStats = [];
+    const keys = Object.keys(this.props.stats);
+    keys.sort();
+    for (var i = 0; i < keys.length; i++) {
+      allStats.push(
+        <p key={keys[i]}>{`${keys[i]}: ${this.props.stats[keys[i]]}%`}</p>
+      );
+    }
+    return allStats;
+  }
+
   render() {
     return (
       <div id="stats-panel" className="info-box">
         <h2>Stats</h2>
-        <div id="stats-panel-stats">
-          <p>Attack: {this.props.stats['Attack']}%</p>
-          <p>Defense: {this.props.stats['Defense']}%</p>
-          <p>Health: {this.props.stats['Health']}%</p>
-          <p>March Speed: {this.props.stats['March Speed']}%</p>
-        </div>
+        <div id="stats-panel-stats">{this.getAllStats()}</div>
       </div>
     );
   }

@@ -202,7 +202,7 @@ class App extends Component {
   }
 
   /**
-   * Get object containing all minor stats and set them to 0
+   * Get object containing all stats and set them to 0
    *
    * @returns {object} Object containing stats with 0 values
    * @memberof App
