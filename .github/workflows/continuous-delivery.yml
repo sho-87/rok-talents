@@ -46,10 +46,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Create Release
-        uses: 'marvinpinto/action-automatic-releases@latest'
+        uses: K-Phoen/semver-release-action@master
         if: steps.version-updated.outputs.has-updated
         with:
-          repo_token: '${{ secrets.ACCESS_TOKEN }}'
-          automatic_release_tag: 'latest'
-          title: ${{ steps.version-updated.outputs.current-package-version }}
-          prerelease: false
+          release_branch: master
+          release_strategy: release
+          tag: ${{ steps.version-updated.outputs.current-package-version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
