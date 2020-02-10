@@ -36,8 +36,8 @@ html {
   margin: 0;
 }
 
-/* Prevents auto hiding URL bar on mobile */
-body {
+/* Prevents auto hiding URL bar on mobile. Useful if panzoom is enabled */
+/* body {
   position: fixed;
   margin: 0;
   padding: 0;
@@ -47,7 +47,7 @@ body {
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
   overflow-y: hidden;
-}
+} */
 
 div {
   outline-style: none;
