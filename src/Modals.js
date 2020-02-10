@@ -123,7 +123,7 @@ export class AboutModal extends Component {
           <div>
             <img
               id="modal-app-icon"
-              src={`${process.env.PUBLIC_URL}/logo192.jpg`}
+              src={`${process.env.PUBLIC_URL}/logo192.png`}
               alt="RoK Talents Logo"
             ></img>
             Talent builder for Rise of Kingdoms. Best viewed on PC/laptop.
