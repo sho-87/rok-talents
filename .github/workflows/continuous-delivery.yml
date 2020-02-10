@@ -40,7 +40,7 @@ jobs:
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
 
       - name: Check Version Change
-        uses: MontyD/package-json-updated-action
+        uses: MontyD/package-json-updated-action@1.0.0
         id: version-updated
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
