@@ -53,4 +53,4 @@ jobs:
           release_strategy: release
           tag: ${{ steps.version-updated.outputs.current-package-version }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
