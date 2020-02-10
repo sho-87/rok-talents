@@ -26,7 +26,6 @@ const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
 //TODO react helmet
-//TODO reenable android url bar hide and drag refresh
 
 /**
  * Main application component. Contains high level logic for managing application state
