@@ -25,8 +25,6 @@ import './styles/fonts.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
-//TODO react helmet
-
 /**
  * Main application component. Contains high level logic for managing application state
  *
