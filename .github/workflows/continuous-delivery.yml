@@ -50,5 +50,6 @@ jobs:
         if: steps.version-updated.outputs.has-updated
         with:
           repo_token: '${{ secrets.ACCESS_TOKEN }}'
+          automatic_release_tag: 'latest'
           title: steps.version-updated.outputs.current-package-version
           prerelease: false
