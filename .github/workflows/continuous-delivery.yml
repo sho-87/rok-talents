@@ -38,19 +38,3 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-
-      - name: Check Version Change
-        uses: MontyD/package-json-updated-action@1.0.0
-        id: version-updated
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
-      - name: Create Release
-        uses: K-Phoen/semver-release-action@master
-        if: steps.version-updated.outputs.has-updated
-        with:
-          release_branch: master
-          release_strategy: release
-          tag: ${{ steps.version-updated.outputs.current-package-version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
