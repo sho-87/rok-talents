@@ -38,3 +38,17 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+
+      - name: Check Version Change
+        uses: MontyD/package-json-updated-action
+        id: version-updated
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Create Release
+        uses: 'marvinpinto/action-automatic-releases@latest'
+        if: steps.version-updated.outputs.has-updated
+        with:
+          repo_token: '${{ secrets.ACCESS_TOKEN }}'
+          title: steps.version-updated.outputs.current-package-version
+          prerelease: false
