@@ -1,6 +1,6 @@
 # RoK Talents
 
-![Continuous Delivery](https://github.com/sho-87/rok-talents/workflows/CD/badge.svg?branch=master) ![Continuous Integration](https://github.com/sho-87/rok-talents/workflows/CI/badge.svg?branch=develop) ![Dependencies](https://img.shields.io/david/sho-87/rok-talents) ![Issues](https://img.shields.io/github/issues/sho-87/rok-talents?link=https://github.com/sho-87/rok-talents/issues&link=https://github.com/sho-87/rok-talents/issues) ![Donate](https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-blue?link=https://www.buymeacoffee.com/simonho&link=https://www.buymeacoffee.com/simonho)
+![Continuous Delivery](https://github.com/sho-87/rok-talents/workflows/CD/badge.svg?branch=master) ![Continuous Integration](https://github.com/sho-87/rok-talents/workflows/CI/badge.svg?branch=develop) ![Dependencies](https://img.shields.io/david/sho-87/rok-talents) [![Issues](https://img.shields.io/github/issues/sho-87/rok-talents "Issues")](https://github.com/sho-87/rok-talents/issues) [![Donate](https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-blue "Donate")](https://www.buymeacoffee.com/simonho)
 
 Online talent builder for Rise of Kingdoms. The talent builder itself can be found here: [roktalents.com](https://www.roktalents.com)
 
