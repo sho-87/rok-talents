@@ -153,7 +153,7 @@ export class AboutModal extends Component {
           </div>
           <div>
             <span className="about-label">Report a bug:</span>{' '}
-            <a href={bugs.report} target="_blank" rel="noopener noreferrer">
+            <a href={bugs.url} target="_blank" rel="noopener noreferrer">
               Report
             </a>
           </div>
