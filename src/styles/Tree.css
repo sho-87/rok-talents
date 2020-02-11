@@ -11,8 +11,8 @@
 }
 
 #tree-red {
-  top: 0%;
-  left: 50%;
+  top: -1%;
+  left: 49.8%;
   border: 0.5px var(--tree-box-outline) var(--red);
 }
 
