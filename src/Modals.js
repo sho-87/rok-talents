@@ -130,14 +130,7 @@ export class AboutModal extends Component {
           </div>
           <br />
           <div>
-            <span className="about-label">App version:</span>{' '}
-            <a
-              href={repository.releases}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {version}
-            </a>
+            <span className="about-label">App version:</span> {version}
           </div>
           <div>
             <span className="about-label">Creator:</span>{' '}
@@ -145,7 +138,7 @@ export class AboutModal extends Component {
               {author.name}
             </a>
           </div>
-          <div>
+          {/* <div>
             <span className="about-label">Code:</span>{' '}
             <a href={repository.url} target="_blank" rel="noopener noreferrer">
               GitHub
@@ -156,7 +149,7 @@ export class AboutModal extends Component {
             <a href={bugs.url} target="_blank" rel="noopener noreferrer">
               Report
             </a>
-          </div>
+          </div> */}
           <div>
             <span className="about-label">Support development:</span>{' '}
             <a
