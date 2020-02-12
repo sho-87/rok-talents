@@ -75,7 +75,7 @@
   },
   "8": {
     "name": "Health (All Troops)",
-    "values": [0.5, 1, 1.5],
+    "values": [0.5, 1],
     "stats": "Health",
     "text": "Increases the health of all units led by this commander by ${1}%",
     "prereq": [4],
@@ -85,7 +85,7 @@
   },
   "9": {
     "name": "Attack (All Troops)",
-    "values": [0.5, 1, 1.5],
+    "values": [0.5],
     "stats": "Attack",
     "text": "Increases the attack of all units led by this commander by ${1}%",
     "prereq": [5],
