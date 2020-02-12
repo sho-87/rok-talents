@@ -23,7 +23,14 @@ import {
   EmailIcon
 } from 'react-share';
 
-import { title, author, repository, bugs, version } from '../package.json';
+import {
+  title,
+  author,
+  contributors,
+  repository,
+  bugs,
+  version
+} from '../package.json';
 import './styles/Modals.css';
 
 /**
@@ -137,6 +144,10 @@ export class AboutModal extends Component {
             <a href={author.url} target="_blank" rel="noopener noreferrer">
               {author.name}
             </a>
+          </div>
+          <div>
+            <span className="about-label">Contributors:</span>{' '}
+            {contributors.join(', ')}
           </div>
           {/* <div>
             <span className="about-label">Code:</span>{' '}

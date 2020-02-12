@@ -1,7 +1,7 @@
 {
   "name": "rok-talents",
   "title": "RoK Talents",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "dataVersion": 1,
   "description": "Rise of Kingdoms talent builder",
   "homepage": "http://www.roktalents.com",
@@ -15,6 +15,10 @@
     "email": "simonho213@gmail.com",
     "url": "http://www.simonho.ca"
   },
+  "contributors": [
+    "Sara Ahmadian",
+    "Legends Gaming (K1196)"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/sho-87/rok-talents.git",
