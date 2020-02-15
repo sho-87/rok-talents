@@ -29,8 +29,8 @@ import {
   title,
   author,
   contributors,
-  repository,
-  bugs,
+  // repository,
+  // bugs,
   version
 } from '../package.json';
 import './styles/Modals.css';
@@ -191,6 +191,17 @@ export class AboutModal extends Component {
                   <strong>shareable link</strong> to your build
                 </li>
               </ol>
+              <button
+                id="button-tour"
+                type="button"
+                className="btn btn-sm"
+                onClick={() => {
+                  this.toggle();
+                  this.props.toggleTour();
+                }}
+              >
+                Run guided tour
+              </button>
             </Tab>
           </Tabs>
         </Modal.Body>

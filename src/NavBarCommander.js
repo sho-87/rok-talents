@@ -94,6 +94,7 @@ class NavBarCommander extends Component {
   render() {
     return (
       <Dropdown
+        id="select-commander"
         alignRight
         as={NavItem}
         show={this.state.isOpen}

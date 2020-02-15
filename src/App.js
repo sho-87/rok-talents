@@ -1,6 +1,7 @@
 import React, { Component, Suspense } from 'react';
 import ReactGA from 'react-ga';
 import Spinner from 'react-bootstrap/Spinner';
+import GuidedTour from './GuidedTour';
 import NavBar from './NavBar';
 import InfoPanel from './InfoPanel';
 import { InvalidBuildModal } from './Modals';
@@ -46,6 +47,7 @@ class App extends Component {
     this.toggleMouseXY = this.toggleMouseXY.bind(this);
     this.toggleTalentID = this.toggleTalentID.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
+    this.toggleTour = this.toggleTour.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
     this.changeTalentValue = this.changeTalentValue.bind(this);
@@ -197,7 +199,8 @@ class App extends Component {
       isShownTotals: isShownTotals === null ? true : isShownTotals,
       isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
       isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
-      isShownTalentID: isShownTalentID === null ? false : isShownTalentID
+      isShownTalentID: isShownTalentID === null ? false : isShownTalentID,
+      isShownTour: true
     };
   }
 
@@ -594,9 +597,20 @@ class App extends Component {
     this.navBarRef.toggleSelect();
   }
 
+  /**
+   * Toggle the guided tour
+   *
+   * @memberof App
+   */
+  toggleTour() {
+    this.setState({ isShownTour: true });
+  }
+
   render() {
     return (
       <div id="app">
+        <GuidedTour isShownTour={this.state.isShownTour} />
+
         {this.invalidModalFlag && (
           <InvalidBuildModal message={this.invalidBuildMessage} />
         )}
@@ -611,6 +625,7 @@ class App extends Component {
             toggleSpeedMode={this.toggleSpeedMode}
             toggleMouseXY={this.toggleMouseXY}
             toggleTalentID={this.toggleTalentID}
+            toggleTour={this.toggleTour}
             changeCommander={this.changeCommander}
             calcPointsSpent={this.calcPointsSpent}
             resetTalents={this.resetTalents}
