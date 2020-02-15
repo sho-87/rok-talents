@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {
@@ -127,29 +129,31 @@ export class AboutModal extends Component {
         </Modal.Header>
 
         <Modal.Body>
-          <div>
-            <img
-              id="modal-app-icon"
-              src={`${process.env.PUBLIC_URL}/logo192.png`}
-              alt="RoK Talents Logo"
-            ></img>
-            Talent builder for Rise of Kingdoms. Best viewed on PC/laptop.
-          </div>
-          <br />
-          <div>
-            <span className="about-label">App version:</span> {version}
-          </div>
-          <div>
-            <span className="about-label">Creator:</span>{' '}
-            <a href={author.url} target="_blank" rel="noopener noreferrer">
-              {author.name}
-            </a>
-          </div>
-          <div>
-            <span className="about-label">Contributors:</span>{' '}
-            {contributors.join(', ')}
-          </div>
-          {/* <div>
+          <Tabs defaultActiveKey="about" className="tab-title">
+            <Tab eventKey="about" title="About">
+              <div>
+                <img
+                  id="modal-app-icon"
+                  src={`${process.env.PUBLIC_URL}/logo192.png`}
+                  alt="RoK Talents Logo"
+                ></img>
+                Talent builder for Rise of Kingdoms. Best viewed on PC/laptop.
+              </div>
+              <br />
+              <div>
+                <span className="about-label">App version:</span> {version}
+              </div>
+              <div>
+                <span className="about-label">Creator:</span>{' '}
+                <a href={author.url} target="_blank" rel="noopener noreferrer">
+                  {author.name}
+                </a>
+              </div>
+              <div>
+                <span className="about-label">Contributors:</span>{' '}
+                {contributors.join(', ')}
+              </div>
+              {/* <div>
             <span className="about-label">Code:</span>{' '}
             <a href={repository.url} target="_blank" rel="noopener noreferrer">
               GitHub
@@ -161,27 +165,35 @@ export class AboutModal extends Component {
               Report
             </a>
           </div> */}
-          <div>
-            <span className="about-label">Support development:</span>{' '}
-            <a
-              href="https://www.buymeacoffee.com/simonho"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                id="coffee"
-                src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
-                alt="Buy Me A Coffee"
-              ></img>
-            </a>
-          </div>
-        </Modal.Body>
+              <div>
+                <span className="about-label">Support development:</span>{' '}
+                <a
+                  href="https://www.buymeacoffee.com/simonho"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    id="coffee"
+                    src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
+                    alt="Buy Me A Coffee"
+                  ></img>
+                </a>
+              </div>
+            </Tab>
 
-        <Modal.Footer>
-          <Button color="success" onClick={this.toggle}>
-            Close
-          </Button>
-        </Modal.Footer>
+            <Tab eventKey="instructions" title="Instructions">
+              <ol>
+                <li>Choose commander in the top-right dropdown list</li>
+                <li>Assign points by clicking on talent nodes</li>
+                <li>Check your build stats in the Stats panel</li>
+                <li>
+                  Click the Share button to get a{' '}
+                  <strong>shareable link</strong> to your build
+                </li>
+              </ol>
+            </Tab>
+          </Tabs>
+        </Modal.Body>
       </Modal>
     );
   }
