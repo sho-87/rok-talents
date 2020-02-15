@@ -1,13 +1,25 @@
 /* Modals */
+.modal-icon {
+  margin-right: 5px;
+}
+
+.modal-body {
+  padding: 10px;
+}
+
 #modal-app-icon {
-  float: left;
-  margin-right: 10px;
+  float: right;
   height: 50px;
   border-radius: 10px;
 }
 
-.modal-icon {
-  margin-right: 5px;
+.tab-title {
+  font-size: 0.8em;
+}
+
+.tab-content {
+  margin-top: 5px;
+  padding: 5px;
 }
 
 .about-label {
