@@ -12,7 +12,7 @@ class GuidedTour extends Component {
     super(props);
 
     this.state = {
-      run: true,
+      run: localStorage.getItem('version') ? false : true,
       stepIndex: 0,
       steps: [
         {
@@ -102,7 +102,8 @@ class GuidedTour extends Component {
         disableOverlayClose={true}
         styles={{
           options: {
-            primaryColor: 'var(--color-highlight)'
+            primaryColor: 'var(--color-highlight)',
+            overlayColor: 'rgba(0, 0, 0, 0.6)'
           }
         }}
       />
