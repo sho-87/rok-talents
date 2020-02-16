@@ -3,9 +3,18 @@
   padding-top: 0;
 }
 
+.select-commander-icon-header {
+  margin-right: 0px !important;
+}
+
 .select-commander-icon {
-  margin-right: 5px;
-  width: 23px;
-  height: 29px;
-  transform: translateY(-5%);
+  margin-right: 6px;
+  width: 28px;
+  height: auto;
+  transform: translateY(-10%);
+}
+
+.dropdown-item {
+  padding-left: 20px;
+  padding-bottom: 0px;
 }

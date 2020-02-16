@@ -104,7 +104,7 @@ class NavBarCommander extends Component {
           {this.props.commander ? (
             <img
               data-testid="select-commander-icon"
-              className="select-commander-icon"
+              className="select-commander-icon select-commander-icon-header"
               alt={this.props.commander}
               src={`${process.env.PUBLIC_URL}/images/commanders/${this.props.commander}.png`}
             ></img>

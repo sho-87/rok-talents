@@ -21,7 +21,7 @@
   width: auto;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -53%);
+  transform: translate(-50%, -57%);
   -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
   cursor: pointer;
