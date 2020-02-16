@@ -191,17 +191,17 @@ export class AboutModal extends Component {
                   <strong>shareable link</strong> to your build
                 </li>
               </ol>
-              <button
+              <Button
                 id="button-tour"
-                type="button"
-                className="btn btn-sm"
+                variant="success"
+                size="sm"
                 onClick={() => {
                   this.toggle();
                   this.props.toggleTour();
                 }}
               >
                 Run guided tour
-              </button>
+              </Button>
             </Tab>
           </Tabs>
         </Modal.Body>

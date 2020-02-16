@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Joyride from 'react-joyride';
+import Joyride, { ACTIONS, EVENTS, STATUS } from 'react-joyride';
 
 /**
  * Component containing the guided tour for app onboarding
@@ -12,6 +12,8 @@ class GuidedTour extends Component {
     super(props);
 
     this.state = {
+      run: true,
+      stepIndex: 0,
       steps: [
         {
           content: 'Select your commander using this dropdown',
@@ -56,10 +58,43 @@ class GuidedTour extends Component {
     };
   }
 
+  /**
+   * Restart the guided tour by resetting the current tour step
+   *
+   * @memberof GuidedTour
+   */
+  restartTour = () => {
+    this.setState({
+      run: true,
+      stepIndex: 0
+    });
+  };
+
+  /**
+   * Handle tour events (next step, tour close etc)
+   *
+   * @memberof GuidedTour
+   */
+  handleJoyrideCallback = data => {
+    const { action, index, status, type } = data;
+
+    if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
+      // Need to set our running state to false, so we can restart if we click start again.
+      this.setState({ run: false, stepIndex: 0 });
+    } else if (action === ACTIONS.CLOSE) {
+      this.setState({ run: false, stepIndex: 0 });
+    } else if (type === EVENTS.STEP_AFTER || type === EVENTS.TARGET_NOT_FOUND) {
+      // Update state to advance the tour
+      this.setState({ stepIndex: index + (action === ACTIONS.PREV ? -1 : 1) });
+    }
+  };
+
   render() {
     return (
       <Joyride
-        run={this.props.isShownTour}
+        run={this.state.run}
+        callback={this.handleJoyrideCallback}
+        stepIndex={this.state.stepIndex}
         steps={this.state.steps}
         continuous={true}
         showProgress={true}

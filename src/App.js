@@ -199,8 +199,7 @@ class App extends Component {
       isShownTotals: isShownTotals === null ? true : isShownTotals,
       isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
       isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
-      isShownTalentID: isShownTalentID === null ? false : isShownTalentID,
-      isShownTour: true
+      isShownTalentID: isShownTalentID === null ? false : isShownTalentID
     };
   }
 
@@ -598,18 +597,18 @@ class App extends Component {
   }
 
   /**
-   * Toggle the guided tour
+   * Toggle guided tour
    *
    * @memberof App
    */
   toggleTour() {
-    this.setState({ isShownTour: true });
+    this.tourRef.restartTour();
   }
 
   render() {
     return (
       <div id="app">
-        <GuidedTour isShownTour={this.state.isShownTour} />
+        <GuidedTour ref={component => (this.tourRef = component)} />
 
         {this.invalidModalFlag && (
           <InvalidBuildModal message={this.invalidBuildMessage} />
