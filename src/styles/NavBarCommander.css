@@ -5,16 +5,18 @@
 
 .select-commander-icon-header {
   margin-right: 0px !important;
+  width: 27px !important;
 }
 
 .select-commander-icon {
   margin-right: 6px;
-  width: 28px;
+  width: 30px;
   height: auto;
   transform: translateY(-10%);
 }
 
 .dropdown-item {
   padding-left: 20px;
-  padding-bottom: 0px;
+  padding-bottom: 2px;
+  padding-top: 0px;
 }
