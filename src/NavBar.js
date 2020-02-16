@@ -81,7 +81,10 @@ class NavBar extends Component {
   render() {
     return (
       <React.Fragment>
-        <AboutModal ref={component => (this.aboutModalRef = component)} />
+        <AboutModal
+          ref={component => (this.aboutModalRef = component)}
+          toggleTour={this.props.toggleTour}
+        />
         <ShareModal ref={component => (this.shareModalRef = component)} />
 
         <Navbar

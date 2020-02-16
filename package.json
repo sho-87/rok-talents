@@ -1,7 +1,7 @@
 {
   "name": "rok-talents",
   "title": "RoK Talents",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "dataVersion": 1,
   "description": "Rise of Kingdoms talent builder",
   "homepage": "http://www.roktalents.com",
@@ -38,6 +38,7 @@
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.10.2",
     "react-ga": "^2.7.0",
+    "react-joyride": "^2.2.1",
     "react-responsive": "^8.0.3",
     "react-scripts": "3.3.1",
     "react-share": "^3.0.1"

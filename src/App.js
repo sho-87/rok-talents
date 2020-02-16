@@ -1,6 +1,7 @@
 import React, { Component, Suspense } from 'react';
 import ReactGA from 'react-ga';
 import Spinner from 'react-bootstrap/Spinner';
+import GuidedTour from './GuidedTour';
 import NavBar from './NavBar';
 import InfoPanel from './InfoPanel';
 import { InvalidBuildModal } from './Modals';
@@ -17,7 +18,7 @@ import {
   decode
 } from './utils';
 import { maxPoints } from './values';
-import { dataVersion } from '../package.json';
+import { version, dataVersion } from '../package.json';
 
 import './styles/App.css';
 import './styles/fonts.css';
@@ -46,6 +47,7 @@ class App extends Component {
     this.toggleMouseXY = this.toggleMouseXY.bind(this);
     this.toggleTalentID = this.toggleTalentID.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
+    this.toggleTour = this.toggleTour.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
     this.changeTalentValue = this.changeTalentValue.bind(this);
@@ -165,6 +167,11 @@ class App extends Component {
         treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
     }
+  }
+
+  componentDidMount() {
+    // Store current app version
+    localStorage.setItem('version', version);
   }
 
   /**
@@ -594,9 +601,20 @@ class App extends Component {
     this.navBarRef.toggleSelect();
   }
 
+  /**
+   * Toggle guided tour
+   *
+   * @memberof App
+   */
+  toggleTour() {
+    this.tourRef.restartTour();
+  }
+
   render() {
     return (
       <div id="app">
+        <GuidedTour ref={component => (this.tourRef = component)} />
+
         {this.invalidModalFlag && (
           <InvalidBuildModal message={this.invalidBuildMessage} />
         )}
@@ -611,6 +629,7 @@ class App extends Component {
             toggleSpeedMode={this.toggleSpeedMode}
             toggleMouseXY={this.toggleMouseXY}
             toggleTalentID={this.toggleTalentID}
+            toggleTour={this.toggleTour}
             changeCommander={this.changeCommander}
             calcPointsSpent={this.calcPointsSpent}
             resetTalents={this.resetTalents}
