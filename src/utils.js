@@ -132,10 +132,27 @@ export function createSummaryString(commander, r, y, b, sep = '/') {
 /**
  * Detect if device is touch enabled
  *
- * @returns {boolean} Whether device is touch or not
+ * @returns {Boolean} Whether device is touch or not
  */
 export function isTouchDevice() {
   if (window.matchMedia('(pointer: coarse)').matches) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Check whether user is new or returning
+ *
+ * @returns {Boolean} Whether user is new or returning
+ */
+export function isNewUser() {
+  if (
+    !localStorage.getItem('isNewUser') ||
+    JSON.parse(localStorage.getItem('isNewUser') === true)
+  ) {
+    localStorage.setItem('isNewUser', false);
     return true;
   } else {
     return false;
@@ -185,6 +202,7 @@ export default {
   setTitle,
   createSummaryString,
   isTouchDevice,
+  isNewUser,
   encode,
   decode
 };

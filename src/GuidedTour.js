@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Joyride, { ACTIONS, EVENTS, STATUS } from 'react-joyride';
+import { isNewUser } from './utils';
 
 /**
  * Component containing the guided tour for app onboarding
@@ -12,7 +13,7 @@ class GuidedTour extends Component {
     super(props);
 
     this.state = {
-      run: localStorage.getItem('version') ? false : true,
+      run: isNewUser() ? true : false,
       stepIndex: 0,
       steps: [
         {

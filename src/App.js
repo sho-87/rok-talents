@@ -18,7 +18,7 @@ import {
   decode
 } from './utils';
 import { maxPoints } from './values';
-import { version, dataVersion } from '../package.json';
+import { dataVersion } from '../package.json';
 
 import './styles/App.css';
 import './styles/fonts.css';
@@ -167,11 +167,6 @@ class App extends Component {
         treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
     }
-  }
-
-  componentDidMount() {
-    // Store current app version
-    localStorage.setItem('version', version);
   }
 
   /**
