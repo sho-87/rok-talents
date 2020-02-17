@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import NavItem from 'react-bootstrap/NavItem';
 import NavLink from 'react-bootstrap/NavLink';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Commanders from './data/commanders.json';
 import './styles/NavBarCommander.css';
@@ -109,7 +107,12 @@ class NavBarCommander extends Component {
               src={`${process.env.PUBLIC_URL}/images/commanders/${this.props.commander}.png`}
             ></img>
           ) : (
-            <FontAwesomeIcon icon={faUser} />
+            <img
+              data-testid="select-commander-icon"
+              className="select-commander-icon select-commander-icon-header"
+              alt="Unknown commander"
+              src={`${process.env.PUBLIC_URL}/images/commanders/unknown.png`}
+            ></img>
           )}
           <span className="nav-button-text">
             {this.props.commander
