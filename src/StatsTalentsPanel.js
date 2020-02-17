@@ -100,7 +100,7 @@ class StatsTalentsPanel extends Component {
       >
         <h2 id="stats-talents-title">
           Main Talents{' '}
-          <HelpTooltip tooltip="List of all selected main (large) talents" />
+          <HelpTooltip tooltip="Expandable list of all selected main talents" />
         </h2>
         <div data-testid="stats-talents">
           {mainTalents.length === 0 ? 'None' : mainTalents}

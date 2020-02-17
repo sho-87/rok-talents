@@ -33,7 +33,7 @@ class StatsPanel extends Component {
       <div id="stats-panel" className="info-box">
         <h2>
           Stats{' '}
-          <HelpTooltip tooltip="Totals only include unconditional and direct stat boosting talents. For example, does not include stats from rallies/garrison/% chance etc." />
+          <HelpTooltip tooltip="Totals only include unconditional and direct stat boosts. For example, does not include stats from rallies/garrison/% chance etc." />
         </h2>
         <div id="stats-panel-stats">{this.getAllStats()}</div>
       </div>
