@@ -193,7 +193,7 @@ class Node extends Component {
   }
 
   render() {
-    let compressor = this.props.type === 'node-large' ? 0.3 : 0.2;
+    let compressor = this.props.type === 'node-large' ? 0.31 : 0.21;
     let isShownValues = this.props.isShownValues && this.props.value !== 0;
 
     if (this.props.isSpeedMode) {
