@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { InvalidBuildModal, AboutModal, ShareModal } from '../Modals';
+import {
+  InvalidBuildModal,
+  AboutModal,
+  ResetModal,
+  ShareModal
+} from '../Modals';
 
 describe('Modal', () => {
   it('renders without crashing', () => {
@@ -12,6 +17,12 @@ describe('Modal', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<AboutModal />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<ResetModal />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 

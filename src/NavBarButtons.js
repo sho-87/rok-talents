@@ -22,7 +22,7 @@ class NavBarButtons extends Component {
           disabled={
             this.props.commander | this.props.calcPointsSpent() ? false : true
           }
-          onClick={this.props.resetTalents}
+          onClick={() => this.props.showReset()}
         >
           <FontAwesomeIcon icon={faTrashAlt} />
           <span className="nav-button-text">Reset</span>

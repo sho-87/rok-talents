@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import NavBarButtons from './NavBarButtons';
 import NavBarSettings from './NavBarSettings';
 import NavBarCommander from './NavBarCommander';
-import { AboutModal, ShareModal } from './Modals';
+import { AboutModal, ResetModal, ShareModal } from './Modals';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -29,6 +29,7 @@ class NavBar extends Component {
     // Context bindings
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleSelect = this.toggleSelect.bind(this);
+    this.showReset = this.showReset.bind(this);
     this.showShare = this.showShare.bind(this);
   }
 
@@ -66,6 +67,15 @@ class NavBar extends Component {
   }
 
   /**
+   * Control visibility of the "Reset" modal
+   *
+   * @memberof NavBar
+   */
+  showReset() {
+    this.resetModalRef.toggle();
+  }
+
+  /**
    * Control visibility of the "Share" modal
    *
    * @memberof NavBar
@@ -84,6 +94,10 @@ class NavBar extends Component {
         <AboutModal
           ref={component => (this.aboutModalRef = component)}
           toggleTour={this.props.toggleTour}
+        />
+        <ResetModal
+          ref={component => (this.resetModalRef = component)}
+          resetTalents={this.props.resetTalents}
         />
         <ShareModal ref={component => (this.shareModalRef = component)} />
 
@@ -115,7 +129,7 @@ class NavBar extends Component {
           <Nav className="ml-auto">
             <NavBarButtons
               calcPointsSpent={this.props.calcPointsSpent}
-              resetTalents={this.props.resetTalents}
+              showReset={this.showReset}
               showShare={this.showShare}
               commander={this.props.commander}
             />

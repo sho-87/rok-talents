@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import {
   faExclamationTriangle,
   faInfoCircle,
+  faTrashAlt,
   faShareAlt,
   faLink,
   faCopy
@@ -69,17 +70,19 @@ export class InvalidBuildModal extends Component {
           </span>
           Invalid Talent Build
         </Modal.Header>
-        <Modal.Body>
-          <p>
-            The talent build you're trying to view is invalid. Please make sure
-            you've copied and pasted the link correctly.
-          </p>
-          <p data-testid="invalid-modal-body">
+        <Modal.Body className="modal-body">
+          <div>
+            The talent build you're trying to view is invalid. Make sure you've
+            copied and pasted the link correctly.
+            <br />
+            <br />
+          </div>
+          <div data-testid="invalid-modal-body">
             <b>Reason:</b> {this.props.message}
-          </p>
+          </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button color="primary" onClick={this.toggle}>
+          <Button variant="primary" onClick={this.toggle}>
             Close
           </Button>
         </Modal.Footer>
@@ -200,11 +203,75 @@ export class AboutModal extends Component {
                   this.props.toggleTour();
                 }}
               >
-                Run guided tour
+                Show Guided Tour
               </Button>
             </Tab>
           </Tabs>
         </Modal.Body>
+      </Modal>
+    );
+  }
+}
+
+/**
+ * Modal displaying reset/delete confirmation
+ *
+ * @class ResetModal
+ * @extends {Component}
+ */
+export class ResetModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.modal !== nextState.modal) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
+  render() {
+    return (
+      <Modal centered show={this.state.modal} onHide={this.toggle}>
+        <Modal.Header closeButton>
+          <span>
+            <FontAwesomeIcon icon={faTrashAlt} className="modal-icon" />
+          </span>
+          Reset
+        </Modal.Header>
+
+        <Modal.Body className="modal-body">
+          <div>Are you sure you want to reset the talent build?</div>
+          <div>This will remove all assigned talent points.</div>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button
+            variant="danger"
+            onClick={() => {
+              this.props.resetTalents();
+              this.toggle();
+            }}
+          >
+            Reset
+          </Button>
+          <Button variant="secondary" onClick={this.toggle}>
+            Cancel
+          </Button>
+        </Modal.Footer>
       </Modal>
     );
   }
@@ -315,7 +382,7 @@ export class ShareModal extends Component {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button color="primary" onClick={this.toggle}>
+          <Button variant="primary" onClick={this.toggle}>
             Close
           </Button>
         </Modal.Footer>
@@ -324,4 +391,4 @@ export class ShareModal extends Component {
   }
 }
 
-export default { InvalidBuildModal, AboutModal, ShareModal };
+export default { InvalidBuildModal, AboutModal, ResetModal, ShareModal };
