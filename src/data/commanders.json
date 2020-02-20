@@ -304,5 +304,13 @@
     "red": "Leadership",
     "yellow": "Conquering",
     "blue": "Skill"
+  },
+  "Cleopatra VII": {
+    "id": "38",
+    "title": "Queen of Egypt",
+    "tier": "Legendary",
+    "red": "Integration",
+    "yellow": "Gathering",
+    "blue": "Support"
   }
 }
