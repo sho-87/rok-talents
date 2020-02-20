@@ -4,7 +4,7 @@
 
 Online talent builder for Rise of Kingdoms. The talent builder itself can be found here: [roktalents.com](https://www.roktalents.com)
 
-**Note**: Best viewed on PC/laptop. Functionality is limited on mobile/tablet and more work needs to be done to optimize the experience for mobile devices.
+**Note**: The site is currently best viewed on PC or laptop. Functionality is limited on mobile/tablet and more work needs to be done to optimize the experience for mobile devices.
 
 This website has 2 main purposes:
 
@@ -18,8 +18,8 @@ This website has 2 main purposes:
  1. Choose your commander in the top-right dropdown menu, or by clicking on the commander image in the middle of the talent tree
  2. Click talent nodes to bring up the tooltip. Click `+` and `-` to add/remove talents points
     - If `Speed mode` is enabled in the `Settings`, you can left or right click directly on the nodes to assign talent points. **Note:** Speed mode disables tooltips
- 3. Check the stats of your build in the Info Panel
- 4. Copy the URL or click the `Share` button to get a pastable link that you can share with other players
+ 3. Check the stats of your build in the info panels
+ 4. Copy the URL, or click the `Share` button, to get a link that you can share with other players
 
 ## :confused: Getting help
 
