@@ -121,6 +121,13 @@ export class AboutModal extends Component {
     }));
   }
 
+  showDonate() {
+    ReactGA.event({
+      category: 'App',
+      action: 'Donate'
+    });
+  }
+
   render() {
     return (
       <Modal centered show={this.state.modal} onHide={this.toggle}>
@@ -179,6 +186,7 @@ export class AboutModal extends Component {
                     id="coffee"
                     src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
                     alt="Buy Me A Coffee"
+                    onClick={this.showDonate}
                   ></img>
                 </a>
               </div>
@@ -319,6 +327,13 @@ export class ShareModal extends Component {
     });
   }
 
+  shareSocial() {
+    ReactGA.event({
+      category: 'Share',
+      action: 'Share social media'
+    });
+  }
+
   render() {
     return (
       <Modal centered show={this.state.modal} onHide={this.toggle}>
@@ -362,7 +377,7 @@ export class ShareModal extends Component {
 
           <div className="share-modal-label">Share to social media:</div>
 
-          <div id="share-modal-social">
+          <div id="share-modal-social" onClick={this.shareSocial}>
             <EmailShareButton url={window.location.href}>
               <EmailIcon size={32} round />
             </EmailShareButton>

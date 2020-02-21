@@ -83,7 +83,7 @@ class NavBar extends Component {
   showShare() {
     this.shareModalRef.toggle();
     ReactGA.event({
-      category: 'App',
+      category: 'Share',
       action: 'View share modal'
     });
   }
