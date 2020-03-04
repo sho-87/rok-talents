@@ -121,6 +121,17 @@ export class AboutModal extends Component {
     }));
   }
 
+  getContributors() {
+    let contributorsList = contributors.map((c, i) => [
+      i > 0 && ', ',
+      <a href={c.url} target="_blank" rel="noopener noreferrer">
+        {c.name}
+      </a>
+    ]);
+
+    return contributorsList;
+  }
+
   showDonate() {
     ReactGA.event({
       category: 'App',
@@ -161,7 +172,7 @@ export class AboutModal extends Component {
               </div>
               <div>
                 <span className="about-label">Contributors:</span>{' '}
-                {contributors.join(', ')}
+                {this.getContributors()}
               </div>
               {/* <div>
             <span className="about-label">Code:</span>{' '}

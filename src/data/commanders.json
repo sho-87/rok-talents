@@ -5,7 +5,8 @@
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Peacekeeping",
-    "blue": "Support"
+    "blue": "Support",
+    "guide": "https://rok.guide/aethelflaed/"
   },
   "Richard I": {
     "id": "2",
@@ -13,7 +14,8 @@
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Garrison",
-    "blue": "Defense"
+    "blue": "Defense",
+    "guide": "https://rok.guide/commanders/richard-i/"
   },
   "Yi Seong-Gye": {
     "id": "3",

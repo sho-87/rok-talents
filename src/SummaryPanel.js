@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { GeneralTooltip } from './Tooltips';
 import Commanders from './data/commanders.json';
 import './styles/SummaryPanel.css';
 
@@ -10,17 +10,21 @@ import './styles/SummaryPanel.css';
  * @extends {Component}
  */
 class SummaryPanel extends Component {
+  getHeader() {
+    return (
+      <>
+        <span>{this.props.commander}</span>
+        {Commanders[this.props.commander].guide && (
+          <GuideIcon commander={this.props.commander} />
+        )}
+      </>
+    );
+  }
+
   render() {
     return (
       <div id="summary-panel" className="info-box">
-        {this.props.commander && (
-          <img
-            src={`${process.env.PUBLIC_URL}/images/commanders/${this.props.commander}.png`}
-            alt={this.props.commander}
-          ></img>
-        )}
-
-        <h1>{this.props.commander ? this.props.commander : 'Summary'}</h1>
+        <h1>{this.props.commander ? this.getHeader() : 'Summary'}</h1>
         <h3>
           {this.props.commander && Commanders[this.props.commander].title}
         </h3>
@@ -32,6 +36,29 @@ class SummaryPanel extends Component {
       </div>
     );
   }
+}
+
+/**
+ * Icon for commander guides
+ *
+ * @returns {DOMElement} Icon linking to the external commander guide
+ */
+function GuideIcon(props) {
+  return (
+    <GeneralTooltip tooltip="Commander guide">
+      <a
+        href={Commanders[props.commander].guide}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          className="summary-panel-guide-icon"
+          src={`${process.env.PUBLIC_URL}/images/guide-icon.png`}
+          alt={`${props.commander} guide`}
+        ></img>
+      </a>
+    </GeneralTooltip>
+  );
 }
 
 export default SummaryPanel;
