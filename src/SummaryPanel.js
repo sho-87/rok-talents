@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { GeneralTooltip } from './Tooltips';
 import Commanders from './data/commanders.json';
 import './styles/SummaryPanel.css';
 
@@ -44,17 +45,19 @@ class SummaryPanel extends Component {
  */
 function GuideIcon(props) {
   return (
-    <a
-      href={Commanders[props.commander].guide}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img
-        className="summary-panel-guide-icon"
-        src={`${process.env.PUBLIC_URL}/images/guide-icon.png`}
-        alt={`${props.commander} guide`}
-      ></img>
-    </a>
+    <GeneralTooltip tooltip="Commander guide">
+      <a
+        href={Commanders[props.commander].guide}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          className="summary-panel-guide-icon"
+          src={`${process.env.PUBLIC_URL}/images/guide-icon.png`}
+          alt={`${props.commander} guide`}
+        ></img>
+      </a>
+    </GeneralTooltip>
   );
 }
 

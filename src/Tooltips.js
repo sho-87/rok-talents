@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
@@ -9,22 +9,37 @@ import './styles/Tooltips.css';
 /**
  * Tooltip showing a hoverable 'help' tooltip
  *
- * @class HelpTooltip
- * @extends {Component}
+ * @returns {Tooltip} Tooltip
  */
-export class HelpTooltip extends Component {
-  render() {
-    return (
-      <OverlayTrigger
-        placement="top"
-        flip={true}
-        trigger={['hover', 'click']}
-        overlay={<Tooltip className="help-text">{this.props.tooltip}</Tooltip>}
-      >
-        <FontAwesomeIcon icon={faQuestionCircle} className="help-icon" />
-      </OverlayTrigger>
-    );
-  }
+export function HelpTooltip(props) {
+  return (
+    <OverlayTrigger
+      placement="top"
+      flip={true}
+      trigger={['hover', 'click']}
+      overlay={<Tooltip className="help-text">{props.tooltip}</Tooltip>}
+    >
+      <FontAwesomeIcon icon={faQuestionCircle} className="help-icon" />
+    </OverlayTrigger>
+  );
 }
 
-export default { HelpTooltip };
+/**
+ * General tooltip component
+ *
+ * @returns {Tooltip} Tooltip
+ */
+export function GeneralTooltip(props) {
+  return (
+    <OverlayTrigger
+      placement="top"
+      flip={true}
+      trigger={['hover', 'click']}
+      overlay={<Tooltip className="help-text">{props.tooltip}</Tooltip>}
+    >
+      {props.children}
+    </OverlayTrigger>
+  );
+}
+
+export default { HelpTooltip, GeneralTooltip };
