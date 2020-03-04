@@ -127,7 +127,7 @@ class NavBarSettings extends Component {
               </div>
 
               {process.env.NODE_ENV === 'development' && (
-                <React.Fragment>
+                <>
                   <Dropdown.Divider />
                   <Dropdown.Header>Dev Mode</Dropdown.Header>
                   <Form.Check
@@ -145,7 +145,7 @@ class NavBarSettings extends Component {
                     checked={this.props.isShownTalentID}
                     onChange={e => this.props.toggleTalentID()}
                   />
-                </React.Fragment>
+                </>
               )}
             </Form.Group>
           </Form>

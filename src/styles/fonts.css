@@ -93,10 +93,6 @@ h3 {
   .node-tooltip-increase {
     font-size: 0.8em;
   }
-
-  #summary-panel img {
-    width: 180%;
-  }
 }
 
 @media (max-height: 599px) and (orientation: landscape) {
@@ -168,10 +164,6 @@ h3 {
   .node-tooltip-increase {
     font-size: 0.6em;
   }
-
-  #summary-panel img {
-    width: 300%;
-  }
 }
 
 /* Tablet */
@@ -214,10 +206,6 @@ h3 {
 
   .node-tooltip-increase {
     font-size: 1.6em;
-  }
-
-  #summary-panel img {
-    width: 150%;
   }
 }
 
@@ -277,10 +265,6 @@ h3 {
   .node-tooltip-increase {
     font-size: 1.2em;
   }
-
-  #summary-panel img {
-    width: 200%;
-  }
 }
 
 /* Desktop */
@@ -323,10 +307,6 @@ h3 {
 
   .node-tooltip-increase {
     font-size: 2em;
-  }
-
-  #summary-panel img {
-    width: 190%;
   }
 }
 
@@ -385,9 +365,5 @@ h3 {
 
   .node-tooltip-increase {
     font-size: 1.6em;
-  }
-
-  #summary-panel img {
-    width: 190%;
   }
 }

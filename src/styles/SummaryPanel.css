@@ -11,14 +11,11 @@
   flex-grow: 2;
 }
 
-#summary-panel img {
-  position: absolute;
-  height: auto;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.2;
-  filter: blur(8px);
+.summary-panel-guide-icon {
+  height: 0.4em;
+  width: auto;
+  margin-left: 0.4em;
+  vertical-align: baseline;
 }
 
 #summary-panel-summary p {
