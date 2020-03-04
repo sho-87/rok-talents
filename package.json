@@ -16,7 +16,13 @@
     "url": "http://www.simonho.ca"
   },
   "contributors": [
-    "Sara Ahmadian"
+    {
+      "name": "Sara Ahmadian"
+    },
+    {
+      "name": "rok.guide",
+      "url": "https://rok.guide"
+    }
   ],
   "repository": {
     "type": "git",
