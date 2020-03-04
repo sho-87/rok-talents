@@ -62,6 +62,10 @@ class App extends Component {
         this.state = this.getEmptyState();
         treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
+        ReactGA.event({
+          category: 'Load',
+          action: 'New'
+        });
         break;
       case 5: // complete url
         let [urlDataVersion, comID, red, yellow, blue] = urlParams;
@@ -155,8 +159,18 @@ class App extends Component {
           this.state = this.getEmptyState();
           treeData = loadTreeData(dataVersion);
           this.updateURL('clear');
+          ReactGA.event({
+            category: 'Load',
+            action: 'Error',
+            label: this.props.url
+          });
         } else {
           this.updateURL('update');
+          ReactGA.event({
+            category: 'Load',
+            action: 'Existing',
+            label: this.props.url
+          });
         }
         break;
       default:
@@ -166,6 +180,11 @@ class App extends Component {
         this.state = this.getEmptyState();
         treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
+        ReactGA.event({
+          category: 'Load',
+          action: 'Error',
+          label: this.props.url
+        });
     }
   }
 
