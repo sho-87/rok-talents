@@ -90,7 +90,8 @@
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Garrison",
-    "blue": "Support"
+    "blue": "Support",
+    "guide": "https://rok.guide/commanders/constantine/"
   },
   "Kusunoki Masashige": {
     "id": "11",
@@ -182,7 +183,8 @@
     "tier": "Legendary",
     "red": "Integration",
     "yellow": "Gathering",
-    "blue": "Support"
+    "blue": "Support",
+    "guide": "https://rok.guide/ishida/"
   },
   "Frederick I": {
     "id": "21",
@@ -199,7 +201,8 @@
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Conquering",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/mehmed/"
   },
   "Hannibal Barca": {
     "id": "23",
@@ -217,7 +220,8 @@
     "tier": "Legendary",
     "red": "Cavalry",
     "yellow": "Conquering",
-    "blue": "Support"
+    "blue": "Support",
+    "guide": "https://rok.guide/saladin/"
   },
   "Genghis Khan": {
     "id": "25",
