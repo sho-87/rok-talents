@@ -46,7 +46,6 @@ class App extends Component {
     this.toggleSpeedMode = this.toggleSpeedMode.bind(this);
     this.toggleMouseXY = this.toggleMouseXY.bind(this);
     this.toggleTalentID = this.toggleTalentID.bind(this);
-    this.toggleSelect = this.toggleSelect.bind(this);
     this.toggleTour = this.toggleTour.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
@@ -611,15 +610,6 @@ class App extends Component {
   }
 
   /**
-   * Toggle commander select dropdown. Uses a ref to the navbar
-   *
-   * @memberof App
-   */
-  toggleSelect() {
-    this.navBarRef.toggleSelect();
-  }
-
-  /**
    * Toggle guided tour
    *
    * @memberof App
@@ -631,36 +621,38 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        <GuidedTour ref={component => (this.tourRef = component)} />
+        {!this.props.isEmbed && (
+          <GuidedTour ref={component => (this.tourRef = component)} />
+        )}
 
         {this.invalidModalFlag && (
           <InvalidBuildModal message={this.invalidBuildMessage} />
         )}
-
-        <ErrorBoundary>
-          <NavBar
-            ref={component => (this.navBarRef = component)}
-            toggleInfoPanel={this.toggleInfoPanel}
-            toggleTotalDisplay={this.toggleTotalDisplay}
-            toggleValueDisplay={this.toggleValueDisplay}
-            toggleNodeSize={this.toggleNodeSize}
-            toggleSpeedMode={this.toggleSpeedMode}
-            toggleMouseXY={this.toggleMouseXY}
-            toggleTalentID={this.toggleTalentID}
-            toggleTour={this.toggleTour}
-            changeCommander={this.changeCommander}
-            calcPointsSpent={this.calcPointsSpent}
-            resetTalents={this.resetTalents}
-            commander={this.state.commander}
-            nodeSize={this.state.nodeSize}
-            isShownInfoPanel={this.state.isShownInfoPanel}
-            isShownValues={this.state.isShownValues}
-            isShownTotals={this.state.isShownTotals}
-            isSpeedMode={this.state.isSpeedMode}
-            isShownMouseXY={this.state.isShownMouseXY}
-            isShownTalentID={this.state.isShownTalentID}
-          />
-        </ErrorBoundary>
+        {!this.props.isEmbed && (
+          <ErrorBoundary>
+            <NavBar
+              toggleInfoPanel={this.toggleInfoPanel}
+              toggleTotalDisplay={this.toggleTotalDisplay}
+              toggleValueDisplay={this.toggleValueDisplay}
+              toggleNodeSize={this.toggleNodeSize}
+              toggleSpeedMode={this.toggleSpeedMode}
+              toggleMouseXY={this.toggleMouseXY}
+              toggleTalentID={this.toggleTalentID}
+              toggleTour={this.toggleTour}
+              changeCommander={this.changeCommander}
+              calcPointsSpent={this.calcPointsSpent}
+              resetTalents={this.resetTalents}
+              commander={this.state.commander}
+              nodeSize={this.state.nodeSize}
+              isShownInfoPanel={this.state.isShownInfoPanel}
+              isShownValues={this.state.isShownValues}
+              isShownTotals={this.state.isShownTotals}
+              isSpeedMode={this.state.isSpeedMode}
+              isShownMouseXY={this.state.isShownMouseXY}
+              isShownTalentID={this.state.isShownTalentID}
+            />
+          </ErrorBoundary>
+        )}
 
         <div id="main-container">
           <Suspense
@@ -672,25 +664,26 @@ class App extends Component {
               </div>
             }
           >
-            <ErrorBoundary>
-              <InfoPanel
-                ref={component => (this.infoPanelRef = component)}
-                calcPointsSpent={this.calcPointsSpent}
-                calcPointsRemaining={this.calcPointsRemaining}
-                treeData={treeData}
-                commander={this.state.commander}
-                red={this.state.red}
-                yellow={this.state.yellow}
-                blue={this.state.blue}
-                stats={this.state.stats}
-                isShownInfoPanel={this.state.isShownInfoPanel}
-              />
-            </ErrorBoundary>
+            {!this.props.isEmbed && (
+              <ErrorBoundary>
+                <InfoPanel
+                  ref={component => (this.infoPanelRef = component)}
+                  calcPointsSpent={this.calcPointsSpent}
+                  calcPointsRemaining={this.calcPointsRemaining}
+                  treeData={treeData}
+                  commander={this.state.commander}
+                  red={this.state.red}
+                  yellow={this.state.yellow}
+                  blue={this.state.blue}
+                  stats={this.state.stats}
+                  isShownInfoPanel={this.state.isShownInfoPanel}
+                />
+              </ErrorBoundary>
+            )}
 
             <ErrorBoundary>
               <TreePanel
                 ref={component => (this.treePanelRef = component)}
-                toggleSelect={this.toggleSelect}
                 changeCommander={this.changeCommander}
                 resetTalents={this.resetTalents}
                 changeTalentValue={this.changeTalentValue}
@@ -708,6 +701,7 @@ class App extends Component {
                 isSpeedMode={this.state.isSpeedMode}
                 isShownMouseXY={this.state.isShownMouseXY}
                 isShownTalentID={this.state.isShownTalentID}
+                isEmbed={this.props.isEmbed}
               />
             </ErrorBoundary>
           </Suspense>

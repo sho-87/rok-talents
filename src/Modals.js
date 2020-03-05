@@ -36,6 +36,7 @@ import {
   // bugs,
   version
 } from '../package.json';
+import { createEmbedURL } from './utils';
 import './styles/Modals.css';
 
 /**
@@ -415,7 +416,22 @@ export class ShareModal extends Component {
             </Tab>
 
             <Tab eventKey="embed" title="Embed">
-              Embed
+              <div className="input-group mb-3">
+                <textarea
+                  id="embed"
+                  className="form-control"
+                  defaultValue={createEmbedURL()}
+                ></textarea>
+                <div className="input-group-append">
+                  <button
+                    id="copyEmbedButton"
+                    className="btn btn-success"
+                    type="button"
+                  >
+                    <FontAwesomeIcon icon={faCopy} />
+                  </button>
+                </div>
+              </div>
             </Tab>
           </Tabs>
         </Modal.Body>

@@ -52,6 +52,19 @@
   color: orange;
 }
 
+#embed-message {
+  position: absolute;
+  font-size: 0.7em;
+  bottom: 0px;
+  left: 0px;
+  margin: 2px;
+  padding: 3px;
+  text-align: left;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 1);
+  z-index: 100;
+}
+
 .line path {
   opacity: var(--inactive-opacity);
   stroke: gray;

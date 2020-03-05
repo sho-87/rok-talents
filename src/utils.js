@@ -143,6 +143,25 @@ export function createSummaryString(commander, r, y, b, sep = '/') {
 }
 
 /**
+ * Create a URL an embeddable talent viewer
+ *
+ * @returns {String} URL for embeddable talent viewer
+ */
+export function createEmbedURL() {
+  return `${window.location.origin}/embed/${window.location.search}`;
+}
+
+/**
+ * Check whether app is launched in embed mode
+ *
+ * @param {String} path URL path to check for embed
+ * @returns {Boolean} Whether URL path contains an embed directive
+ */
+export function isEmbed(path) {
+  return path.includes('embed') ? true : false;
+}
+
+/**
  * Detect if device is touch enabled
  *
  * @returns {Boolean} Whether device is touch or not
@@ -215,6 +234,8 @@ export default {
   replaceTalentText,
   setTitle,
   createSummaryString,
+  createEmbedURL,
+  isEmbed,
   isTouchDevice,
   isNewUser,
   encode,

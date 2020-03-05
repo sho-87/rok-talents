@@ -27,9 +27,6 @@ class Hexagon extends Component {
             id="hexagon-commander"
             src={`${process.env.PUBLIC_URL}/images/commanders/${this.props.commander}.png`}
             alt={this.props.commander}
-            onClick={() => {
-              this.props.toggleSelect();
-            }}
           ></img>
 
           <div id="hexagon-label-container">

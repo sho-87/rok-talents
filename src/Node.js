@@ -225,6 +225,7 @@ class Node extends Component {
           compressor={compressor}
           nodeSize={this.props.nodeSize}
           isShownValues={isShownValues}
+          isEmbed={this.props.isEmbed}
         />
       );
     }
@@ -245,6 +246,7 @@ const NodeOverlay = props => {
           talentDecrease={props.talentDecrease}
           talentIncrease={props.talentIncrease}
           isShownTalentID={props.isShownTalentID}
+          isEmbed={props.isEmbed}
           idx={props.idx}
           talentID={props.treeName + props.idx}
           talentName={props.talentName}

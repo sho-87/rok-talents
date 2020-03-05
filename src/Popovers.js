@@ -42,26 +42,27 @@ export class TalentTooltip extends Component {
 
             {this.props.text}
           </div>
+          {!this.props.isEmbed && (
+            <div id="node-tooltip-assign-container">
+              <FontAwesomeIcon
+                className="node-tooltip-decrease"
+                icon={faMinusSquare}
+                size="2x"
+                onClick={this.props.talentDecrease}
+              />
 
-          <div id="node-tooltip-assign-container">
-            <FontAwesomeIcon
-              className="node-tooltip-decrease"
-              icon={faMinusSquare}
-              size="2x"
-              onClick={this.props.talentDecrease}
-            />
+              <span className="node-tooltip-value">
+                {this.props.value + '/' + this.props.max}
+              </span>
 
-            <span className="node-tooltip-value">
-              {this.props.value + '/' + this.props.max}
-            </span>
-
-            <FontAwesomeIcon
-              className="node-tooltip-increase"
-              icon={faPlusSquare}
-              size="2x"
-              onClick={this.props.talentIncrease}
-            />
-          </div>
+              <FontAwesomeIcon
+                className="node-tooltip-increase"
+                icon={faPlusSquare}
+                size="2x"
+                onClick={this.props.talentIncrease}
+              />
+            </div>
+          )}
         </Popover.Content>
       </Popover>
     );
