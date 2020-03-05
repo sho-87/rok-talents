@@ -358,58 +358,66 @@ export class ShareModal extends Component {
         </Modal.Header>
 
         <Modal.Body>
-          <div className="share-modal-label">
-            Copy talent build link to your clipboard:
-          </div>
+          <Tabs defaultActiveKey="link" className="tab-title">
+            <Tab eventKey="link" title="Link">
+              <div className="share-modal-label">
+                Copy talent build link to your clipboard:
+              </div>
 
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <FontAwesomeIcon icon={faLink} />
-              </span>
-            </div>
-            <input
-              id="url"
-              type="text"
-              className="form-control"
-              defaultValue={window.location.href}
-            ></input>
-            <div className="input-group-append">
-              <button
-                id="copyButton"
-                className="btn btn-success"
-                type="button"
-                onClick={this.copyURL}
-              >
-                <FontAwesomeIcon icon={faCopy} />
-              </button>
-            </div>
-          </div>
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">
+                    <FontAwesomeIcon icon={faLink} />
+                  </span>
+                </div>
+                <input
+                  id="url"
+                  type="text"
+                  className="form-control"
+                  defaultValue={window.location.href}
+                ></input>
+                <div className="input-group-append">
+                  <button
+                    id="copyButton"
+                    className="btn btn-success"
+                    type="button"
+                    onClick={this.copyURL}
+                  >
+                    <FontAwesomeIcon icon={faCopy} />
+                  </button>
+                </div>
+              </div>
 
-          <hr />
+              <hr />
 
-          <div className="share-modal-label">Share to social media:</div>
+              <div className="share-modal-label">Share to social media:</div>
 
-          <div id="share-modal-social" onClick={this.shareSocial}>
-            <EmailShareButton url={window.location.href}>
-              <EmailIcon size={32} round />
-            </EmailShareButton>
-            <RedditShareButton url={window.location.href}>
-              <RedditIcon size={32} round />
-            </RedditShareButton>
-            <TwitterShareButton url={window.location.href}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-            <WeiboShareButton url={window.location.href}>
-              <WeiboIcon size={32} round />
-            </WeiboShareButton>
-            <WhatsappShareButton url={window.location.href}>
-              <WhatsappIcon size={32} round />
-            </WhatsappShareButton>
-            <PocketShareButton url={window.location.href}>
-              <PocketIcon size={32} round />
-            </PocketShareButton>
-          </div>
+              <div id="share-modal-social" onClick={this.shareSocial}>
+                <EmailShareButton url={window.location.href}>
+                  <EmailIcon size={32} round />
+                </EmailShareButton>
+                <RedditShareButton url={window.location.href}>
+                  <RedditIcon size={32} round />
+                </RedditShareButton>
+                <TwitterShareButton url={window.location.href}>
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+                <WeiboShareButton url={window.location.href}>
+                  <WeiboIcon size={32} round />
+                </WeiboShareButton>
+                <WhatsappShareButton url={window.location.href}>
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
+                <PocketShareButton url={window.location.href}>
+                  <PocketIcon size={32} round />
+                </PocketShareButton>
+              </div>
+            </Tab>
+
+            <Tab eventKey="embed" title="Embed">
+              Embed
+            </Tab>
+          </Tabs>
         </Modal.Body>
 
         <Modal.Footer>
