@@ -23,7 +23,8 @@
     "tier": "Legendary",
     "red": "Archer",
     "yellow": "Garrison",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/yi-seong-gye/"
   },
   "Sun Tzu": {
     "id": "4",
@@ -31,7 +32,8 @@
     "tier": "Epic",
     "red": "Infantry",
     "yellow": "Garrison",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/sun-tzu/"
   },
   "Alexander the Great": {
     "id": "5",
@@ -40,7 +42,8 @@
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Versatility",
-    "blue": "Attack"
+    "blue": "Attack",
+    "guide": "https://rok.guide/alexander-the-great/"
   },
   "Eulji Mundeok": {
     "id": "6",
@@ -49,7 +52,8 @@
     "tier": "Epic",
     "red": "Infantry",
     "yellow": "Garrison",
-    "blue": "Attack"
+    "blue": "Attack",
+    "guide": "https://rok.guide/commanders/eulji-mundeok/"
   },
   "Charles Martel": {
     "id": "7",
@@ -58,7 +62,8 @@
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Garrison",
-    "blue": "Defense"
+    "blue": "Defense",
+    "guide": "https://rok.guide/commanders/charles-martel/"
   },
   "Edward of Woodstock": {
     "id": "8",
@@ -67,7 +72,8 @@
     "tier": "Legendary",
     "red": "Archer",
     "yellow": "Versatility",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/edward-of-woodstock/"
   },
   "El Cid": {
     "id": "9",
@@ -75,7 +81,8 @@
     "tier": "Legendary",
     "red": "Archer",
     "yellow": "Versatility",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/el-cid/"
   },
   "Constantine I": {
     "id": "10",
@@ -92,7 +99,8 @@
     "tier": "Epic",
     "red": "Archer",
     "yellow": "Garrison",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/kusunoki-masashige/"
   },
   "Hermann": {
     "id": "12",
@@ -100,7 +108,8 @@
     "tier": "Epic",
     "red": "Archer",
     "yellow": "Garrison",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/hermann/"
   },
   "Wu Zetian": {
     "id": "13",
@@ -108,7 +117,8 @@
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Garrison",
-    "blue": "Support"
+    "blue": "Support",
+    "guide": "https://rok.guide/wu-zetian/"
   },
   "Leonidas I": {
     "id": "14",
@@ -116,7 +126,8 @@
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Versatility",
-    "blue": "Defense"
+    "blue": "Defense",
+    "guide": "https://rok.guide/leonidas-i/"
   },
   "Charlemagne": {
     "id": "15",
@@ -124,7 +135,8 @@
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Conquering",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/charlemagne/"
   },
   "Minamoto no Yoshitsune": {
     "id": "16",
@@ -133,7 +145,8 @@
     "tier": "Legendary",
     "red": "Cavalry",
     "yellow": "Peacekeeping",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/minamoto-no-yoshitsune/"
   },
   "Cao Cao": {
     "id": "17",
@@ -141,7 +154,8 @@
     "tier": "Legendary",
     "red": "Cavalry",
     "yellow": "Peacekeeping",
-    "blue": "Mobility"
+    "blue": "Mobility",
+    "guide": "https://rok.guide/commanders/cao-cao/"
   },
   "Julius Caesar": {
     "id": "18",
@@ -149,7 +163,8 @@
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Conquering",
-    "blue": "Attack"
+    "blue": "Attack",
+    "guide": "https://rok.guide/commanders/julius-caesar/"
   },
   "Seondeok": {
     "id": "19",
@@ -157,7 +172,8 @@
     "tier": "Legendary",
     "red": "Integration",
     "yellow": "Gathering",
-    "blue": "Attack"
+    "blue": "Attack",
+    "guide": "https://rok.guide/seondeok/"
   },
   "Ishida Mitsunari": {
     "id": "20",
@@ -174,7 +190,8 @@
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Conquering",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/frederick-i/"
   },
   "Mehmed II": {
     "id": "22",
@@ -191,7 +208,8 @@
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Conquering",
-    "blue": "Attack"
+    "blue": "Attack",
+    "guide": "https://rok.guide/commanders/hannibal-barca/"
   },
   "Saladin": {
     "id": "24",
@@ -207,7 +225,8 @@
     "tier": "Legendary",
     "red": "Cavalry",
     "yellow": "Versatility",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/genghis-khan/"
   },
   "Takeda Shingen": {
     "id": "26",
@@ -216,7 +235,8 @@
     "tier": "Legendary",
     "red": "Cavalry",
     "yellow": "Versatility",
-    "blue": "Mobility"
+    "blue": "Mobility",
+    "guide": "https://rok.guide/takeda-shingen/"
   },
   "Guan Yu": {
     "id": "27",
@@ -224,7 +244,8 @@
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Conquering",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/guan-yu/"
   },
   "Tomyris": {
     "id": "28",
@@ -232,7 +253,8 @@
     "tier": "Legendary",
     "red": "Archer",
     "yellow": "Conquering",
-    "blue": "Attack"
+    "blue": "Attack",
+    "guide": "https://rok.guide/tomyris/"
   },
   "Attila": {
     "id": "29",
@@ -240,7 +262,8 @@
     "tier": "Legendary",
     "red": "Cavalry",
     "yellow": "Conquering",
-    "blue": "Attack"
+    "blue": "Attack",
+    "guide": "https://rok.guide/attila/"
   },
   "Joan of Arc": {
     "id": "30",
@@ -248,7 +271,8 @@
     "tier": "Epic",
     "red": "Integration",
     "yellow": "Gathering",
-    "blue": "Support"
+    "blue": "Support",
+    "guide": "https://rok.guide/commanders/joan-of-arc/"
   },
   "Scipio Africanus": {
     "id": "31",
@@ -257,7 +281,8 @@
     "tier": "Epic",
     "red": "Leadership",
     "yellow": "Conquering",
-    "blue": "Attack"
+    "blue": "Attack",
+    "guide": "https://rok.guide/commanders/scipio-africanus/"
   },
   "Boudica": {
     "id": "32",
@@ -265,7 +290,8 @@
     "tier": "Epic",
     "red": "Integration",
     "yellow": "Peacekeeping",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/boudica/"
   },
   "Pelagius": {
     "id": "33",
@@ -273,7 +299,8 @@
     "tier": "Epic",
     "red": "Cavalry",
     "yellow": "Garrison",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/pelagius/"
   },
   "Lohar": {
     "id": "34",
@@ -281,7 +308,8 @@
     "tier": "Epic",
     "red": "Integration",
     "yellow": "Peacekeeping",
-    "blue": "Support"
+    "blue": "Support",
+    "guide": "https://rok.guide/lohar/"
   },
   "Belisarius": {
     "id": "35",
@@ -289,7 +317,8 @@
     "tier": "Epic",
     "red": "Cavalry",
     "yellow": "Peacekeeping",
-    "blue": "Mobility"
+    "blue": "Mobility",
+    "guide": "https://rok.guide/commanders/belisarius/"
   },
   "Baibars": {
     "id": "36",
@@ -297,7 +326,8 @@
     "tier": "Epic",
     "red": "Cavalry",
     "yellow": "Conquering",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/baibars/"
   },
   "Osman I": {
     "id": "37",
@@ -305,7 +335,8 @@
     "tier": "Epic",
     "red": "Leadership",
     "yellow": "Conquering",
-    "blue": "Skill"
+    "blue": "Skill",
+    "guide": "https://rok.guide/commanders/osman-i/"
   },
   "Cleopatra VII": {
     "id": "38",
@@ -313,6 +344,7 @@
     "tier": "Legendary",
     "red": "Integration",
     "yellow": "Gathering",
-    "blue": "Support"
+    "blue": "Support",
+    "guide": "https://rok.guide/cleopatra"
   }
 }

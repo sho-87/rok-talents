@@ -1,4 +1,5 @@
 import Commanders from '../data/commanders.json';
+import { arrayAllUnique } from '../utils';
 
 test('Commander keys are all present and unique', () => {
   const correctIDs = Array.from(
@@ -13,4 +14,16 @@ test('Commander keys are all present and unique', () => {
   });
 
   expect(ids).toEqual(correctIDs);
+});
+
+test('All commander guides are unique', () => {
+  let guides = [];
+
+  Object.keys(Commanders).forEach(commander => {
+    if (Commanders[commander]['guide']) {
+      guides.push(Commanders[commander]['guide']);
+    }
+  });
+
+  expect(arrayAllUnique(guides)).toEqual(true);
 });

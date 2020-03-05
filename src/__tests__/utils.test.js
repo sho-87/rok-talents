@@ -1,5 +1,6 @@
 import {
   sumArray,
+  arrayAllUnique,
   isMultidimensional,
   getMaxTalentCount,
   replaceTalentText,
@@ -16,6 +17,16 @@ test('nested arrays sum correctly', () => {
   const arr1 = [1, 2, 3];
   const arr2 = [4, 5, 6];
   expect(sumArray([...arr1, ...arr2])).toEqual(21);
+});
+
+test('array to be unique', () => {
+  const arr = [1, 2, 3];
+  expect(arrayAllUnique(arr)).toEqual(true);
+});
+
+test('array to contain duplicates', () => {
+  const arr = [1, 2, 2];
+  expect(arrayAllUnique(arr)).toEqual(false);
 });
 
 test('arrays are not multidimensional', () => {

@@ -45,7 +45,7 @@ class SummaryPanel extends Component {
  */
 function GuideIcon(props) {
   return (
-    <GeneralTooltip tooltip="Commander guide">
+    <GeneralTooltip tooltip="rok.guide">
       <a
         href={Commanders[props.commander].guide}
         target="_blank"

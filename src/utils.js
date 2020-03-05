@@ -5,7 +5,6 @@ import { title } from '../package.json';
 /**
  * Sum all values of an array
  *
- * @export
  * @param {Number[]} arr Array to calculate sum of
  * @returns {Number} Sum of the array
  */
@@ -16,7 +15,6 @@ export function sumArray(arr) {
 /**
  * Check if two arrays are equal
  *
- * @export
  * @param {array} a First array
  * @param {array} b Second array
  * @returns {boolean} Are the two arrays equal?
@@ -31,6 +29,20 @@ export function arraysEqual(a, b) {
     if (a[i] !== b[i]) return false;
   }
   return true;
+}
+
+/**
+ * Check if all array elements are different/unique
+ *
+ * @param {Array} arr Array to check
+ * @returns {Boolean} Whether all elements are different/unique
+ */
+export function arrayAllUnique(arr) {
+  const tmp = new Set(arr);
+  if (tmp.size === arr.length) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -129,6 +141,7 @@ export function createSummaryString(commander, r, y, b, sep = '/') {
   const name = Commanders[commander].shortName || commander;
   return `${name} (${rSpent}${sep}${ySpent}${sep}${bSpent})`;
 }
+
 /**
  * Detect if device is touch enabled
  *
@@ -196,6 +209,7 @@ export function decode(encoded) {
 export default {
   sumArray,
   arraysEqual,
+  arrayAllUnique,
   isMultidimensional,
   getMaxTalentCount,
   replaceTalentText,
