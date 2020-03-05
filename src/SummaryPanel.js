@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import { GeneralTooltip } from './Tooltips';
 import Commanders from './data/commanders.json';
 import './styles/SummaryPanel.css';
@@ -44,12 +45,21 @@ class SummaryPanel extends Component {
  * @returns {DOMElement} Icon linking to the external commander guide
  */
 function GuideIcon(props) {
+  function clickGuide() {
+    ReactGA.event({
+      category: 'Navigation',
+      action: 'View guide',
+      label: props.commander
+    });
+  }
+
   return (
     <GeneralTooltip tooltip="rok.guide">
       <a
         href={Commanders[props.commander].guide}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={clickGuide}
       >
         <img
           className="summary-panel-guide-icon"
