@@ -17,13 +17,15 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
   RedditShareButton,
+  WeiboShareButton,
   PocketShareButton,
   EmailShareButton,
   TwitterIcon,
   WhatsappIcon,
   RedditIcon,
   PocketIcon,
-  EmailIcon
+  EmailIcon,
+  WeiboIcon
 } from 'react-share';
 
 import {
@@ -124,7 +126,7 @@ export class AboutModal extends Component {
   getContributors() {
     let contributorsList = contributors.map((c, i) => [
       i > 0 && ', ',
-      <a href={c.url} target="_blank" rel="noopener noreferrer">
+      <a href={c.url} target="_blank" rel="noopener noreferrer" key={c.name}>
         {c.name}
       </a>
     ]);
@@ -398,6 +400,9 @@ export class ShareModal extends Component {
             <TwitterShareButton url={window.location.href}>
               <TwitterIcon size={32} round />
             </TwitterShareButton>
+            <WeiboShareButton url={window.location.href}>
+              <WeiboIcon size={32} round />
+            </WeiboShareButton>
             <WhatsappShareButton url={window.location.href}>
               <WhatsappIcon size={32} round />
             </WhatsappShareButton>
