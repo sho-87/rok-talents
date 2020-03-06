@@ -24,7 +24,6 @@
   transform: translate(-50%, -57%);
   -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
-  cursor: pointer;
 }
 
 #hexagon-label-container {

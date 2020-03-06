@@ -10,6 +10,7 @@ import {
   faTrashAlt,
   faShareAlt,
   faLink,
+  faCode,
   faCopy
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -36,6 +37,7 @@ import {
   // bugs,
   version
 } from '../package.json';
+import { getURL } from './utils';
 import './styles/Modals.css';
 
 /**
@@ -340,6 +342,18 @@ export class ShareModal extends Component {
     });
   }
 
+  copyEmbedURL() {
+    const input = document.getElementById('url-embed');
+    input.readOnly = true;
+    input.select();
+    document.execCommand('copy');
+    document.getElementById('copyEmbedButton').innerHTML = '\u2713';
+    ReactGA.event({
+      category: 'Share',
+      action: 'Copy Embed URL'
+    });
+  }
+
   shareSocial() {
     ReactGA.event({
       category: 'Share',
@@ -358,58 +372,103 @@ export class ShareModal extends Component {
         </Modal.Header>
 
         <Modal.Body>
-          <div className="share-modal-label">
-            Copy talent build link to your clipboard:
-          </div>
+          <Tabs defaultActiveKey="link" className="tab-title">
+            <Tab eventKey="link" title="Link">
+              <div className="share-modal-label">
+                Shareable link to this talent build:
+              </div>
 
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <FontAwesomeIcon icon={faLink} />
-              </span>
-            </div>
-            <input
-              id="url"
-              type="text"
-              className="form-control"
-              defaultValue={window.location.href}
-            ></input>
-            <div className="input-group-append">
-              <button
-                id="copyButton"
-                className="btn btn-success"
-                type="button"
-                onClick={this.copyURL}
-              >
-                <FontAwesomeIcon icon={faCopy} />
-              </button>
-            </div>
-          </div>
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">
+                    <FontAwesomeIcon icon={faLink} />
+                  </span>
+                </div>
+                <input
+                  id="url"
+                  type="text"
+                  className="form-control"
+                  defaultValue={getURL()}
+                  readOnly
+                ></input>
+                <div className="input-group-append">
+                  <button
+                    id="copyButton"
+                    className="btn btn-success"
+                    type="button"
+                    onClick={this.copyURL}
+                  >
+                    <FontAwesomeIcon icon={faCopy} />
+                  </button>
+                </div>
+              </div>
 
-          <hr />
+              <hr />
 
-          <div className="share-modal-label">Share to social media:</div>
+              <div className="share-modal-label">Share to social media:</div>
 
-          <div id="share-modal-social" onClick={this.shareSocial}>
-            <EmailShareButton url={window.location.href}>
-              <EmailIcon size={32} round />
-            </EmailShareButton>
-            <RedditShareButton url={window.location.href}>
-              <RedditIcon size={32} round />
-            </RedditShareButton>
-            <TwitterShareButton url={window.location.href}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-            <WeiboShareButton url={window.location.href}>
-              <WeiboIcon size={32} round />
-            </WeiboShareButton>
-            <WhatsappShareButton url={window.location.href}>
-              <WhatsappIcon size={32} round />
-            </WhatsappShareButton>
-            <PocketShareButton url={window.location.href}>
-              <PocketIcon size={32} round />
-            </PocketShareButton>
-          </div>
+              <div id="share-modal-social" onClick={this.shareSocial}>
+                <EmailShareButton url={window.location.href}>
+                  <EmailIcon size={32} round />
+                </EmailShareButton>
+                <RedditShareButton url={window.location.href}>
+                  <RedditIcon size={32} round />
+                </RedditShareButton>
+                <TwitterShareButton url={window.location.href}>
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+                <WeiboShareButton url={window.location.href}>
+                  <WeiboIcon size={32} round />
+                </WeiboShareButton>
+                <WhatsappShareButton url={window.location.href}>
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
+                <PocketShareButton url={window.location.href}>
+                  <PocketIcon size={32} round />
+                </PocketShareButton>
+              </div>
+            </Tab>
+
+            <Tab eventKey="embed" title="Embed">
+              <div>
+                If you have a blog or website, you can use the{' '}
+                <strong>HTML</strong> code below to embed this talent build
+                directly into your site.
+              </div>
+              <div>
+                <strong>Note</strong>: The embedded talent build will be
+                view-only.
+              </div>
+              <br />
+
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">
+                    <FontAwesomeIcon icon={faCode} />
+                  </span>
+                </div>
+                <textarea
+                  id="url-embed"
+                  className="form-control"
+                  rows={5}
+                  defaultValue={`<iframe height="400" width="400" allowfullscreen="true" sandbox="allow-scripts allow-modals allow-same-origin allow-popups allow-popups-to-escape-sandbox" src="${getURL(
+                    true
+                  )}"></iframe>`}
+                  readOnly
+                ></textarea>
+                <div className="input-group-append">
+                  <button
+                    id="copyEmbedButton"
+                    className="btn btn-success"
+                    type="button"
+                    onClick={this.copyEmbedURL}
+                  >
+                    <FontAwesomeIcon icon={faCopy} />
+                  </button>
+                </div>
+              </div>
+            </Tab>
+          </Tabs>
         </Modal.Body>
 
         <Modal.Footer>

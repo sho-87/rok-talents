@@ -28,7 +28,6 @@ class NavBar extends Component {
 
     // Context bindings
     this.toggleNav = this.toggleNav.bind(this);
-    this.toggleSelect = this.toggleSelect.bind(this);
     this.showReset = this.showReset.bind(this);
     this.showShare = this.showShare.bind(this);
   }
@@ -42,15 +41,6 @@ class NavBar extends Component {
     this.setState(prevState => ({
       navOpen: !prevState.navOpen
     }));
-  }
-
-  /**
-   * Toggle open state of the commander select dropdown
-   *
-   * @memberof NavBar
-   */
-  toggleSelect() {
-    this.navBarCommanderRef.toggleSelect();
   }
 
   /**
@@ -152,7 +142,6 @@ class NavBar extends Component {
             />
 
             <NavBarCommander
-              ref={component => (this.navBarCommanderRef = component)}
               changeCommander={this.props.changeCommander}
               commander={this.props.commander}
             />

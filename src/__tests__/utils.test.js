@@ -5,7 +5,9 @@ import {
   getMaxTalentCount,
   replaceTalentText,
   encode,
-  decode
+  decode,
+  getURL,
+  isEmbed
 } from '../utils';
 
 test('shallow arrays sum correctly', () => {
@@ -102,4 +104,22 @@ test('string is encoded correctly', () => {
 test('string is decoded correctly', () => {
   const text = 'irnsscpkv';
   expect(decode(text)).toEqual('133223333302302040');
+});
+
+test('embeddable url contains embed path', () => {
+  const path = 'roktalents.com/embed/?1;1;irnsscpkv;faaaaaaaaa;issralahnq';
+  expect(isEmbed(path)).toEqual(true);
+});
+
+test('non-embeddable url doesnt contain embed path', () => {
+  const path = 'roktalents.com/?1;1;irnsscpkv;faaaaaaaaa;issralahnq';
+  expect(isEmbed(path)).toEqual(false);
+});
+
+test('returns embed URL', () => {
+  expect(getURL(true).includes('embed')).toEqual(true);
+});
+
+test('returns non-embed URL', () => {
+  expect(getURL().includes('embed')).toEqual(false);
 });

@@ -4,9 +4,9 @@ import panzoom from 'panzoom';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
 import { PrereqToast, ToastMessage } from './Toasts';
-import { getTreeName, isTouchDevice } from './utils';
+import { getTreeName, getURL, isTouchDevice } from './utils';
 
-import { dataVersion } from '../package.json';
+import { dataVersion, homepage } from '../package.json';
 import './styles/TreePanel.css';
 
 /**
@@ -252,6 +252,19 @@ class TreePanel extends Component {
           </div>
         )}
 
+        {this.props.isEmbed && (
+          <div data-testid="embed-message" id="embed-message">
+            View full build at:{' '}
+            <a
+              href={getURL()}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {homepage.split('//')[1]}
+            </a>
+          </div>
+        )}
+
         <div id="tree-square-container">
           <div id="tree-square-section">
             <div id="tree-square-content">
@@ -262,6 +275,7 @@ class TreePanel extends Component {
                 data={this.props.red}
                 mouseX={this.state.redX}
                 mouseY={this.state.redY}
+                isEmbed={this.props.isEmbed}
               />
               <Tree
                 {...sharedTreeProps}
@@ -270,6 +284,7 @@ class TreePanel extends Component {
                 data={this.props.yellow}
                 mouseX={this.state.yellowX}
                 mouseY={this.state.yellowY}
+                isEmbed={this.props.isEmbed}
               />
               <Tree
                 {...sharedTreeProps}
@@ -278,9 +293,9 @@ class TreePanel extends Component {
                 data={this.props.blue}
                 mouseX={this.state.blueX}
                 mouseY={this.state.blueY}
+                isEmbed={this.props.isEmbed}
               />
               <Hexagon
-                toggleSelect={this.props.toggleSelect}
                 calcPointsSpent={this.props.calcPointsSpent}
                 isShownTotals={this.props.isShownTotals && this.props.commander}
                 commander={this.props.commander || 'unknown'}
