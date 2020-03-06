@@ -151,8 +151,9 @@ export function createSummaryString(commander, r, y, b, sep = '/') {
 export function getURL(embed = false) {
   if (embed) {
     return `${window.location.origin}/embed/${window.location.search}`;
+  } else {
+    return `${window.location.origin}/${window.location.search}`;
   }
-  return window.location.href;
 }
 
 /**

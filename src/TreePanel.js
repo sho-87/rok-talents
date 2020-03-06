@@ -4,7 +4,7 @@ import panzoom from 'panzoom';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
 import { PrereqToast, ToastMessage } from './Toasts';
-import { getTreeName, isTouchDevice } from './utils';
+import { getTreeName, getURL, isTouchDevice } from './utils';
 
 import { dataVersion, homepage } from '../package.json';
 import './styles/TreePanel.css';
@@ -256,7 +256,7 @@ class TreePanel extends Component {
           <div data-testid="embed-message" id="embed-message">
             View full build at:{' '}
             <a
-              href={homepage}
+              href={getURL()}
               target="_blank"
               rel="noopener noreferrer"
             >
