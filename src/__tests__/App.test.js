@@ -52,6 +52,14 @@ describe('App component', () => {
     }
   });
 
+  it('shows embed message', () => {
+    const url = `?1;1;irnsscpkv;faaaaaaaaa;issralahnq`;
+    const { getByTestId } = render(<App url={url} isEmbed={true} />);
+    const message = getByTestId('embed-message');
+
+    expect(message).toBeInTheDocument();
+  });
+
   it('toggles info panel on settings change', () => {
     const { getByTestId } = render(<App url="/" />);
     const infoPanel = getByTestId('info-panel');
