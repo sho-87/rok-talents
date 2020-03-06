@@ -6,7 +6,7 @@ import Hexagon from './Hexagon';
 import { PrereqToast, ToastMessage } from './Toasts';
 import { getTreeName, isTouchDevice } from './utils';
 
-import { dataVersion } from '../package.json';
+import { dataVersion, homepage } from '../package.json';
 import './styles/TreePanel.css';
 
 /**
@@ -256,11 +256,11 @@ class TreePanel extends Component {
           <div data-testid="embed-message" id="embed-message">
             View full build at:{' '}
             <a
-              href="https://roktalents.com"
+              href={homepage}
               target="_blank"
               rel="noopener noreferrer"
             >
-              roktalents.com
+              {homepage.split('//')[1]}
             </a>
           </div>
         )}

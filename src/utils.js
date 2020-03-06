@@ -143,12 +143,16 @@ export function createSummaryString(commander, r, y, b, sep = '/') {
 }
 
 /**
- * Create a URL an embeddable talent viewer
+ * Get current talent URL
  *
- * @returns {String} URL for embeddable talent viewer
+ * @param {Boolean} embed Should returned URL be embeddable?
+ * @returns {String} Current/embeddable URL
  */
-export function createEmbedURL() {
-  return `${window.location.origin}/embed/${window.location.search}`;
+export function getURL(embed = false) {
+  if (embed) {
+    return `${window.location.origin}/embed/${window.location.search}`;
+  }
+  return window.location.href;
 }
 
 /**
@@ -234,7 +238,7 @@ export default {
   replaceTalentText,
   setTitle,
   createSummaryString,
-  createEmbedURL,
+  getURL,
   isEmbed,
   isTouchDevice,
   isNewUser,

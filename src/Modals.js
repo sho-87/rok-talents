@@ -10,6 +10,7 @@ import {
   faTrashAlt,
   faShareAlt,
   faLink,
+  faCode,
   faCopy
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -36,7 +37,7 @@ import {
   // bugs,
   version
 } from '../package.json';
-import { createEmbedURL } from './utils';
+import { getURL } from './utils';
 import './styles/Modals.css';
 
 /**
@@ -341,6 +342,18 @@ export class ShareModal extends Component {
     });
   }
 
+  copyEmbedURL() {
+    const input = document.getElementById('url-embed');
+    input.readOnly = true;
+    input.select();
+    document.execCommand('copy');
+    document.getElementById('copyEmbedButton').innerHTML = '\u2713';
+    ReactGA.event({
+      category: 'Share',
+      action: 'Copy Embed URL'
+    });
+  }
+
   shareSocial() {
     ReactGA.event({
       category: 'Share',
@@ -362,7 +375,7 @@ export class ShareModal extends Component {
           <Tabs defaultActiveKey="link" className="tab-title">
             <Tab eventKey="link" title="Link">
               <div className="share-modal-label">
-                Copy talent build link to your clipboard:
+                Shareable link to this talent build:
               </div>
 
               <div className="input-group mb-3">
@@ -375,7 +388,8 @@ export class ShareModal extends Component {
                   id="url"
                   type="text"
                   className="form-control"
-                  defaultValue={window.location.href}
+                  defaultValue={getURL()}
+                  readOnly
                 ></input>
                 <div className="input-group-append">
                   <button
@@ -416,17 +430,38 @@ export class ShareModal extends Component {
             </Tab>
 
             <Tab eventKey="embed" title="Embed">
+              <div>
+                If you have a blog or website, you can use the{' '}
+                <strong>HTML</strong> code below to embed this talent build
+                directly into your site.
+              </div>
+              <div>
+                <strong>Note</strong>: The embedded talent build will be
+                view-only.
+              </div>
+              <br />
+
               <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">
+                    <FontAwesomeIcon icon={faCode} />
+                  </span>
+                </div>
                 <textarea
-                  id="embed"
+                  id="url-embed"
                   className="form-control"
-                  defaultValue={createEmbedURL()}
+                  rows={5}
+                  defaultValue={`<iframe height="400" width="400" allowfullscreen="true" sandbox="allow-scripts allow-modals allow-same-origin allow-popups allow-popups-to-escape-sandbox" src="${getURL(
+                    true
+                  )}"></iframe>`}
+                  readOnly
                 ></textarea>
                 <div className="input-group-append">
                   <button
                     id="copyEmbedButton"
                     className="btn btn-success"
                     type="button"
+                    onClick={this.copyEmbedURL}
                   >
                     <FontAwesomeIcon icon={faCopy} />
                   </button>
