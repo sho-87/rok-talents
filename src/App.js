@@ -199,14 +199,42 @@ class App extends Component {
    * @memberof App
    */
   getEmptyState() {
-    const isShownInfoPanel = JSON.parse(
-      localStorage.getItem('isShownInfoPanel')
-    );
-    const isShownValues = JSON.parse(localStorage.getItem('isShownValues'));
-    const isShownTotals = JSON.parse(localStorage.getItem('isShownTotals'));
-    const isSpeedMode = JSON.parse(localStorage.getItem('isSpeedMode'));
-    const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
-    const isShownTalentID = JSON.parse(localStorage.getItem('isShownTalentID'));
+    let storage;
+
+    if (this.props.isEmbed) {
+      // Set default settings for embedded mode
+      storage = {
+        nodeSize: 'L',
+        isShownInfoPanel: false,
+        isShownValues: true,
+        isShownTotals: true,
+        isSpeedMode: false,
+        isShownMouseXY: false,
+        isShownTalentID: false
+      };
+    } else {
+      // Get/set default settings for regular mode
+      const isShownInfoPanel = JSON.parse(
+        localStorage.getItem('isShownInfoPanel')
+      );
+      const isShownValues = JSON.parse(localStorage.getItem('isShownValues'));
+      const isShownTotals = JSON.parse(localStorage.getItem('isShownTotals'));
+      const isSpeedMode = JSON.parse(localStorage.getItem('isSpeedMode'));
+      const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
+      const isShownTalentID = JSON.parse(
+        localStorage.getItem('isShownTalentID')
+      );
+
+      storage = {
+        nodeSize: localStorage.getItem('nodeSize') || 'M',
+        isShownInfoPanel: isShownInfoPanel === null ? true : isShownInfoPanel,
+        isShownValues: isShownValues === null ? true : isShownValues,
+        isShownTotals: isShownTotals === null ? true : isShownTotals,
+        isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
+        isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
+        isShownTalentID: isShownTalentID === null ? false : isShownTalentID
+      };
+    }
 
     return {
       dataVersion: dataVersion,
@@ -215,13 +243,7 @@ class App extends Component {
       yellow: [],
       blue: [],
       stats: this.getEmptyStats(),
-      nodeSize: localStorage.getItem('nodeSize') || 'M',
-      isShownInfoPanel: isShownInfoPanel === null ? true : isShownInfoPanel,
-      isShownValues: isShownValues === null ? true : isShownValues,
-      isShownTotals: isShownTotals === null ? true : isShownTotals,
-      isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
-      isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
-      isShownTalentID: isShownTalentID === null ? false : isShownTalentID
+      ...storage
     };
   }
 
