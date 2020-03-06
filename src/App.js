@@ -56,6 +56,13 @@ class App extends Component {
     // Set initial state from query string
     const urlParams = this.props.url.slice(1).split(';');
 
+    if (this.props.isEmbed) {
+      ReactGA.event({
+        category: 'Load',
+        action: 'Embed'
+      });
+    }
+
     switch (urlParams.length) {
       case 1: // blank url
         this.state = this.getEmptyState();
