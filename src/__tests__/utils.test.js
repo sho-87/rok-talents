@@ -7,7 +7,8 @@ import {
   encode,
   decode,
   getURL,
-  isEmbed
+  isEmbed,
+  isUpgrade
 } from '../utils';
 
 test('shallow arrays sum correctly', () => {
@@ -60,6 +61,7 @@ test('max number of multi dimensional talent values is correct', () => {
 
 test('single dimensional text is replaced correctly', () => {
   const values = [5, 6];
+  // eslint-disable-next-line no-template-curly-in-string
   const text = 'String containing value of ${1}';
   expect(replaceTalentText(text, values, 0)).toEqual(
     'String containing value of 5'
@@ -68,6 +70,7 @@ test('single dimensional text is replaced correctly', () => {
 
 test('single dimensional text is replaced correctly globally', () => {
   const values = [5, 6];
+  // eslint-disable-next-line no-template-curly-in-string
   const text = 'String containing double value of ${1} and ${1}';
   expect(replaceTalentText(text, values, 0)).toEqual(
     'String containing double value of 5 and 5'
@@ -79,6 +82,7 @@ test('multi dimensional text is replaced correctly', () => {
     [2, 9],
     [4, 7]
   ];
+  // eslint-disable-next-line no-template-curly-in-string
   const text = 'String containing values of ${1} and ${2}';
   expect(replaceTalentText(text, values, 1)).toEqual(
     'String containing values of 9 and 7'
@@ -90,6 +94,7 @@ test('multi dimensional text is replaced correctly globally', () => {
     [2, 9],
     [4, 7]
   ];
+  // eslint-disable-next-line no-template-curly-in-string
   const text = 'String containing values of ${1} and ${2}, and again ${1}';
   expect(replaceTalentText(text, values, 1)).toEqual(
     'String containing values of 9 and 7, and again 9'
@@ -122,4 +127,17 @@ test('returns embed URL', () => {
 
 test('returns non-embed URL', () => {
   expect(getURL().includes('embed')).toEqual(false);
+});
+
+test('version change upgrade is correctly detected', () => {
+  localStorage.setItem('isNewUser', false);
+
+  expect(isUpgrade('1.2.1', '2.2.1')).toEqual(true);
+  expect(isUpgrade('1.2.1', '1.3.1')).toEqual(true);
+  expect(isUpgrade('1.2.1', '2.1.1')).toEqual(true);
+
+  expect(isUpgrade('1.2.1', '1.2.1')).toEqual(false);
+  expect(isUpgrade('2.2.1', '1.2.1')).toEqual(false);
+  expect(isUpgrade('1.2.1', '1.1.1')).toEqual(false);
+  expect(isUpgrade('1.2.1', '1.2.2')).toEqual(false);
 });

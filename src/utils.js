@@ -197,6 +197,29 @@ export function isNewUser() {
 }
 
 /**
+ * Check whether release is an upgrade. Ignores hotfix/patch releases
+ *
+ * @param {String} oldVer SemVer string of old version
+ * @param {String} newVer SemVer string of new version
+ * @returns {Boolean} Whether newVer is an upgrade
+ */
+export function isUpgrade(oldVer, newVer) {
+  // New users are never considered upgrades
+  if (isNewUser()) {
+    return false;
+  }
+
+  const [oldMajor, oldMinor] = oldVer.split('.').map(Number);
+  const [newMajor, newMinor] = newVer.split('.').map(Number);
+
+  if (newMajor > oldMajor || newMinor > oldMinor) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
  * Encode/compress the passed text
  *
  * @param {string} text Text to be encoded/compressed
@@ -243,6 +266,7 @@ export default {
   isEmbed,
   isTouchDevice,
   isNewUser,
+  isUpgrade,
   encode,
   decode
 };
