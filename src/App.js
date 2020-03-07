@@ -682,7 +682,11 @@ class App extends Component {
         <AnnouncementModal
           ref={component => (this.announceRef = component)}
           isEmbed={this.props.isEmbed}
-          isUpgrade={isUpgrade(localStorage.getItem('version'), version)}
+          isUpgrade={
+            localStorage.getItem('version')
+              ? isUpgrade(localStorage.getItem('version'), version)
+              : true
+          }
           isInvalidBuild={this.invalidModalFlag}
         />
 
