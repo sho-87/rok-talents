@@ -145,6 +145,10 @@ export class AnnouncementModal extends Component {
           <Announcement />
         </Modal.Body>
         <Modal.Footer>
+          <span className="modal-reminder">
+            ( You can view this announcement again on the info page
+            <FontAwesomeIcon icon={faInfoCircle} className="modal-icon" />)
+          </span>
           <Button variant="primary" onClick={this.toggle}>
             Close
           </Button>
