@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
+import Announcement from './Announcement';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
@@ -11,7 +12,8 @@ import {
   faShareAlt,
   faLink,
   faCode,
-  faCopy
+  faCopy,
+  faBullhorn
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -84,6 +86,63 @@ export class InvalidBuildModal extends Component {
           <div data-testid="invalid-modal-body">
             <b>Reason:</b> {this.props.message}
           </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={this.toggle}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+}
+
+/**
+ * Modal displaying announcements
+ *
+ * @class AnnouncementModal
+ * @extends {Component}
+ */
+export class AnnouncementModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal:
+        this.props.isEmbed || !this.props.isUpgrade || this.props.isInvalidBuild
+          ? false
+          : true
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
+  show() {
+    this.setState({ modal: true });
+  }
+
+  render() {
+    return (
+      <Modal
+        data-testid="announce-modal"
+        centered
+        size="lg"
+        show={this.state.modal}
+        onHide={this.toggle}
+      >
+        <Modal.Header closeButton>
+          <span>
+            <FontAwesomeIcon icon={faBullhorn} className="modal-icon" />
+          </span>
+          Announcement
+        </Modal.Header>
+        <Modal.Body className="modal-body">
+          <Announcement />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={this.toggle}>
@@ -205,6 +264,20 @@ export class AboutModal extends Component {
                   ></img>
                 </a>
               </div>
+            </Tab>
+
+            <Tab eventKey="releases" title="Releases">
+              <Button
+                id="button-releases"
+                variant="success"
+                size="sm"
+                onClick={() => {
+                  this.toggle();
+                  this.props.toggleAnnounce();
+                }}
+              >
+                View latest release
+              </Button>
             </Tab>
 
             <Tab eventKey="instructions" title="Instructions">
@@ -481,4 +554,10 @@ export class ShareModal extends Component {
   }
 }
 
-export default { InvalidBuildModal, AboutModal, ResetModal, ShareModal };
+export default {
+  InvalidBuildModal,
+  AnnouncementModal,
+  AboutModal,
+  ResetModal,
+  ShareModal
+};
