@@ -11,7 +11,7 @@ This website has 2 main purposes:
  1. Design and fine-tune your commander talents without worrying about resetting in-game talents
  2. Make it easy to share your talent builds with other players
 
-![Screenshot](screenshot.png)
+![Screenshot](/public/screenshots/app.png)
 
 ## :smile: Usage
 

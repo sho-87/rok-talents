@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
+import Announcement from './Announcement';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
@@ -11,7 +12,8 @@ import {
   faShareAlt,
   faLink,
   faCode,
-  faCopy
+  faCopy,
+  faBullhorn
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -126,18 +128,21 @@ export class AnnouncementModal extends Component {
 
   render() {
     return (
-      <Modal centered show={this.state.modal} onHide={this.toggle}>
+      <Modal
+        data-testid="announce-modal"
+        centered
+        size="lg"
+        show={this.state.modal}
+        onHide={this.toggle}
+      >
         <Modal.Header closeButton>
           <span>
-            <FontAwesomeIcon
-              icon={faExclamationTriangle}
-              className="modal-icon"
-            />
+            <FontAwesomeIcon icon={faBullhorn} className="modal-icon" />
           </span>
           Announcement
         </Modal.Header>
         <Modal.Body className="modal-body">
-          <div>Announcement</div>
+          <Announcement />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={this.toggle}>
