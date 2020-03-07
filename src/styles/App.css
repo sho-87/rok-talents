@@ -6,6 +6,7 @@
   --tree-box-outline: none;
   --bg-color: rgb(16, 56, 79);
   --bg-color-dark: rgb(0, 40, 66);
+  --bg-color-light: rgb(16, 75, 109);
   --color-highlight: rgb(236, 95, 0);
   --red: rgba(190, 50, 25, 1);
   --yellow: rgba(183, 156, 4, 1);
@@ -100,7 +101,6 @@ div {
   flex-flow: row nowrap;
   justify-content: center; /* horizontal */
   align-items: center; /* vertical */
-  background-color: var(--bg-color);
 }
 
 @media (orientation: portrait) {

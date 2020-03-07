@@ -9,6 +9,11 @@
   width: 100%;
   overflow: hidden;
   padding-bottom: 70px;
+  background-image: radial-gradient(
+    circle closest-side,
+    var(--bg-color-light) 0%,
+    var(--bg-color) 100%
+  );
 }
 
 #tree-square-container {
