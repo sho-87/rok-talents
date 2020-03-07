@@ -6,7 +6,7 @@ import { homepage } from '../package.json';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 
-const embed = isEmbed(window.location.pathname);
+const embed = isEmbed(window.location.search);
 
 if (window.self === window.top || embed) {
   ReactGA.initialize('UA-114296077-2');

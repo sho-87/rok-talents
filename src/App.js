@@ -76,7 +76,14 @@ class App extends Component {
         });
         break;
       case 5: // complete url
-        let [urlDataVersion, comID, red, yellow, blue] = urlParams;
+      case 6: // embed url
+        // eslint-disable-next-line
+        let path, urlDataVersion, comID, red, yellow, blue;
+        if (urlParams.length === 5) {
+          [urlDataVersion, comID, red, yellow, blue] = urlParams;
+        } else if (urlParams.length === 6) {
+          [path, urlDataVersion, comID, red, yellow, blue] = urlParams;
+        }
         urlDataVersion = parseInt(urlDataVersion);
 
         const commanderName = Object.keys(Commanders).find(
@@ -282,6 +289,7 @@ class App extends Component {
       case 'update':
         queryString =
           '?' +
+          (this.props.isEmbed ? 'embed;' : '') +
           [
             this.state.dataVersion,
             Commanders[this.state.commander].id,

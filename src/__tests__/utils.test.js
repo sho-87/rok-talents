@@ -112,17 +112,13 @@ test('string is decoded correctly', () => {
 });
 
 test('embeddable url contains embed path', () => {
-  const path = 'roktalents.com/embed/?1;1;irnsscpkv;faaaaaaaaa;issralahnq';
+  const path = 'roktalents.com/?embed;1;1;irnsscpkv;faaaaaaaaa;issralahnq';
   expect(isEmbed(path)).toEqual(true);
 });
 
 test('non-embeddable url doesnt contain embed path', () => {
   const path = 'roktalents.com/?1;1;irnsscpkv;faaaaaaaaa;issralahnq';
   expect(isEmbed(path)).toEqual(false);
-});
-
-test('returns embed URL', () => {
-  expect(getURL(true).includes('embed')).toEqual(true);
 });
 
 test('returns non-embed URL', () => {
