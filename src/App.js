@@ -197,7 +197,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    localStorage.setItem('version', version);
+    if (!this.props.isEmbed) {
+      localStorage.setItem('version', version);
+    }
   }
 
   /**
