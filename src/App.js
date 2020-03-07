@@ -4,7 +4,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import GuidedTour from './GuidedTour';
 import NavBar from './NavBar';
 import InfoPanel from './InfoPanel';
-import { InvalidBuildModal } from './Modals';
+import { InvalidBuildModal, AnnouncementModal } from './Modals';
 import ErrorBoundary from './Error';
 import loadTreeData from './data/AllTrees';
 import Commanders from './data/commanders.json';
@@ -14,6 +14,7 @@ import {
   getTreeName,
   setTitle,
   isTouchDevice,
+  isUpgrade,
   encode,
   decode
 } from './utils';
@@ -46,6 +47,7 @@ class App extends Component {
     this.toggleSpeedMode = this.toggleSpeedMode.bind(this);
     this.toggleMouseXY = this.toggleMouseXY.bind(this);
     this.toggleTalentID = this.toggleTalentID.bind(this);
+    this.toggleAnnounce = this.toggleAnnounce.bind(this);
     this.toggleTour = this.toggleTour.bind(this);
     this.changeCommander = this.changeCommander.bind(this);
     this.resetTalents = this.resetTalents.bind(this);
@@ -647,6 +649,15 @@ class App extends Component {
     this.tourRef.restartTour();
   }
 
+  /**
+   * Toggle announcement
+   *
+   * @memberof App
+   */
+  toggleAnnounce() {
+    this.announceRef.show();
+  }
+
   render() {
     return (
       <div id="app">
@@ -657,6 +668,14 @@ class App extends Component {
         {this.invalidModalFlag && (
           <InvalidBuildModal message={this.invalidBuildMessage} />
         )}
+
+        <AnnouncementModal
+          ref={component => (this.announceRef = component)}
+          isEmbed={this.props.isEmbed}
+          isUpgrade={isUpgrade(localStorage.getItem('version'), version)}
+          isInvalidBuild={this.invalidModalFlag}
+        />
+
         {!this.props.isEmbed && (
           <ErrorBoundary>
             <NavBar
@@ -667,6 +686,7 @@ class App extends Component {
               toggleSpeedMode={this.toggleSpeedMode}
               toggleMouseXY={this.toggleMouseXY}
               toggleTalentID={this.toggleTalentID}
+              toggleAnnounce={this.toggleAnnounce}
               toggleTour={this.toggleTour}
               changeCommander={this.changeCommander}
               calcPointsSpent={this.calcPointsSpent}

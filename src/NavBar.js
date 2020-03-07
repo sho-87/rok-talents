@@ -84,6 +84,7 @@ class NavBar extends Component {
         <AboutModal
           ref={component => (this.aboutModalRef = component)}
           toggleTour={this.props.toggleTour}
+          toggleAnnounce={this.props.toggleAnnounce}
         />
         <ResetModal
           ref={component => (this.resetModalRef = component)}

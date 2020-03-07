@@ -96,6 +96,60 @@ export class InvalidBuildModal extends Component {
 }
 
 /**
+ * Modal displaying announcements
+ *
+ * @class AnnouncementModal
+ * @extends {Component}
+ */
+export class AnnouncementModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal:
+        this.props.isEmbed || !this.props.isUpgrade || this.props.isInvalidBuild
+          ? false
+          : true
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
+  show() {
+    this.setState({ modal: true });
+  }
+
+  render() {
+    return (
+      <Modal centered show={this.state.modal} onHide={this.toggle}>
+        <Modal.Header closeButton>
+          <span>
+            <FontAwesomeIcon
+              icon={faExclamationTriangle}
+              className="modal-icon"
+            />
+          </span>
+          Announcement
+        </Modal.Header>
+        <Modal.Body className="modal-body">
+          <div>Announcement</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={this.toggle}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+}
+
+/**
  * Modal displaying information about the application
  *
  * @class AboutModal
@@ -205,6 +259,20 @@ export class AboutModal extends Component {
                   ></img>
                 </a>
               </div>
+            </Tab>
+
+            <Tab eventKey="releases" title="Releases">
+              <Button
+                id="button-releases"
+                variant="success"
+                size="sm"
+                onClick={() => {
+                  this.toggle();
+                  this.props.toggleAnnounce();
+                }}
+              >
+                View latest release
+              </Button>
             </Tab>
 
             <Tab eventKey="instructions" title="Instructions">
@@ -481,4 +549,10 @@ export class ShareModal extends Component {
   }
 }
 
-export default { InvalidBuildModal, AboutModal, ResetModal, ShareModal };
+export default {
+  InvalidBuildModal,
+  AnnouncementModal,
+  AboutModal,
+  ResetModal,
+  ShareModal
+};

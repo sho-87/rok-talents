@@ -205,7 +205,7 @@ export function isNewUser() {
  */
 export function isUpgrade(oldVer, newVer) {
   // New users are never considered upgrades
-  if (isNewUser()) {
+  if (!localStorage.getItem('isNewUser')) {
     return false;
   }
 
