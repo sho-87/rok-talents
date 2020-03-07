@@ -150,9 +150,19 @@ export function createSummaryString(commander, r, y, b, sep = '/') {
  */
 export function getURL(embed = false) {
   if (embed) {
-    return `${window.location.origin}/embed/${window.location.search}`;
+    return `${window.location.origin}/${window.location.search.replace(
+      '?',
+      '?embed;'
+    )}`;
   } else {
-    return `${window.location.origin}/${window.location.search}`;
+    if (isEmbed(window.location.search)) {
+      return `${window.location.origin}/${window.location.search.replace(
+        '?embed;',
+        '?'
+      )}`;
+    } else {
+      return `${window.location.origin}/${window.location.search}`;
+    }
   }
 }
 

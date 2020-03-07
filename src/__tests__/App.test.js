@@ -191,7 +191,7 @@ describe('App component', () => {
     });
 
     it('causes invalid modal when too many URL params', () => {
-      const url = `?1;1;irnsscpkv;faaaaaaaab;issralahnq;123`;
+      const url = `?1;1;irnsscpkv;faaaaaaaab;issralahnq;123;12`;
       const { getByTestId } = render(<App url={url} />);
 
       expect(document.body).toHaveClass('modal-open');
