@@ -1,4 +1,5 @@
 import React from 'react';
+import { bugs } from '../package.json';
 import './styles/Announcement.css';
 
 function Announcement() {
@@ -36,6 +37,22 @@ function Announcement() {
         src={`${process.env.PUBLIC_URL}/screenshots/embed.png`}
         className="announce-img"
         alt="guide"
+      ></img>
+
+      <hr className="announce-hr" />
+
+      <div>
+        You can now submit bug reports directly to{' '}
+        <a href={bugs.url} target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+        . Please file your bug reports and feature requests there. You can find
+        the Submit link on the Info screen:
+      </div>
+      <img
+        src={`${process.env.PUBLIC_URL}/screenshots/reportbug.png`}
+        className="announce-img"
+        alt="report bug"
       ></img>
 
       <h2>Other Changes</h2>

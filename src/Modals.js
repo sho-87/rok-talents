@@ -36,7 +36,7 @@ import {
   author,
   contributors,
   // repository,
-  // bugs,
+  bugs,
   version
 } from '../package.json';
 import { getURL } from './utils';
@@ -242,17 +242,21 @@ export class AboutModal extends Component {
                 {this.getContributors()}
               </div>
               {/* <div>
-            <span className="about-label">Code:</span>{' '}
-            <a href={repository.url} target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-          </div>
-          <div>
-            <span className="about-label">Report a bug:</span>{' '}
-            <a href={bugs.url} target="_blank" rel="noopener noreferrer">
-              Report
-            </a>
-          </div> */}
+                <span className="about-label">Code:</span>{' '}
+                <a
+                  href={repository.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div> */}
+              <div>
+                <span className="about-label">Report bug:</span>{' '}
+                <a href={bugs.url} target="_blank" rel="noopener noreferrer">
+                  Submit
+                </a>
+              </div>
               <div>
                 <span className="about-label">Support development:</span>{' '}
                 <a

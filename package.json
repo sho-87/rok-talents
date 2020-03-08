@@ -1,7 +1,7 @@
 {
   "name": "rok-talents",
   "title": "RoK Talents",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "dataVersion": 1,
   "description": "Rise of Kingdoms talent builder",
   "homepage": "https://roktalents.com",
@@ -30,7 +30,7 @@
     "releases": "https://github.com/sho-87/rok-talents/releases"
   },
   "bugs": {
-    "url": "https://github.com/sho-87/rok-talents/issues"
+    "url": "https://github.com/sho-87/rok-talents-issues/issues"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
