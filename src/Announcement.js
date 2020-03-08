@@ -1,4 +1,6 @@
 import React from 'react';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { bugs } from '../package.json';
 import './styles/Announcement.css';
 
@@ -46,8 +48,10 @@ function Announcement() {
         <a href={bugs.url} target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
-        . Please file your bug reports and feature requests there. You can find
-        the Submit link on the Info screen:
+        . Please file your bug reports and feature requests there - I'll monitor
+        the issues as often as I can! You can find the Submit link on the Info
+        page
+        {<FontAwesomeIcon icon={faInfoCircle} className="modal-icon" />}:
       </div>
       <img
         src={`${process.env.PUBLIC_URL}/screenshots/reportbug.png`}
