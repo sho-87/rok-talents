@@ -261,11 +261,6 @@ class TreePanel extends Component {
           </div>
         )}
 
-        <div id="watermark">
-          <img src={`${process.env.PUBLIC_URL}/logo192.png`} alt="logo"></img>
-          <span>{homepage.split('//')[1]}</span>
-        </div>
-
         <div id="tree-square-container">
           <div id="tree-square-section">
             <div id="tree-square-content">
