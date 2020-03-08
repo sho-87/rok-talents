@@ -18,9 +18,13 @@ import './styles/NavBarButtons.css';
  */
 class NavBarButtons extends Component {
   takeScreenshot() {
-    let node = document.getElementById('tree-panel');
+    const node = document.getElementById('tree-panel');
+    const watermark = document.getElementById('watermark');
+    watermark.style.visibility = 'visible';
 
     domtoimage.toPng(node).then(dataUrl => {
+      watermark.style.visibility = 'hidden';
+
       const img = document.createElement('a');
       img.href = dataUrl;
       img.download = `${createSummaryString(

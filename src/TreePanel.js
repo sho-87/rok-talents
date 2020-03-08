@@ -255,15 +255,16 @@ class TreePanel extends Component {
         {this.props.isEmbed && (
           <div data-testid="embed-message" id="embed-message">
             View full build at:{' '}
-            <a
-              href={getURL()}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={getURL()} target="_blank" rel="noopener noreferrer">
               {homepage.split('//')[1]}
             </a>
           </div>
         )}
+
+        <div id="watermark">
+          <img src={`${process.env.PUBLIC_URL}/logo192.png`} alt="logo"></img>
+          <span>{homepage.split('//')[1]}</span>
+        </div>
 
         <div id="tree-square-container">
           <div id="tree-square-section">
