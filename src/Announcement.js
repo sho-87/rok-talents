@@ -49,8 +49,10 @@ function Announcement() {
           GitHub
         </a>
         . Please file your bug reports and feature requests there - I'll monitor
-        the issues as often as I can! You can find the Submit link on the Info
-        page
+        the issues as often as I can!
+        <br />
+        <br />
+        You can find the Submit link on the Info page
         {<FontAwesomeIcon icon={faInfoCircle} className="modal-icon" />}:
       </div>
       <img
