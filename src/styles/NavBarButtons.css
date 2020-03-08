@@ -1,5 +1,6 @@
 .navbar .btn {
   margin: 1px;
+  margin-right: 2px;
 }
 
 .navbar .btn.btn-sm:disabled {
