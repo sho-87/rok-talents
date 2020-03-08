@@ -706,6 +706,9 @@ class App extends Component {
               calcPointsSpent={this.calcPointsSpent}
               resetTalents={this.resetTalents}
               commander={this.state.commander}
+              red={this.state.red}
+              yellow={this.state.yellow}
+              blue={this.state.blue}
               nodeSize={this.state.nodeSize}
               isShownInfoPanel={this.state.isShownInfoPanel}
               isShownValues={this.state.isShownValues}

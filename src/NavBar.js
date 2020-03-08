@@ -104,7 +104,7 @@ class NavBar extends Component {
             ></img>
           </Navbar.Brand>
 
-          <MediaQuery minDeviceWidth={380}>
+          <MediaQuery minDeviceWidth={450}>
             <Navbar.Brand href="/">{title}</Navbar.Brand>
           </MediaQuery>
 
@@ -123,6 +123,9 @@ class NavBar extends Component {
               showReset={this.showReset}
               showShare={this.showShare}
               commander={this.props.commander}
+              red={this.props.red}
+              yellow={this.props.yellow}
+              blue={this.props.blue}
             />
 
             <NavBarSettings

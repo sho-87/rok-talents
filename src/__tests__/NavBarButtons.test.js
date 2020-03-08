@@ -15,6 +15,7 @@ describe('Buttons', () => {
       <NavBarButtons calcPointsSpent={calcPointsSpent} commander="" />
     );
     expect(getByTestId('button-reset')).toBeDisabled();
+    expect(getByTestId('button-screenshot')).toBeDisabled();
     expect(getByTestId('button-share')).toBeDisabled();
   });
 
@@ -26,6 +27,7 @@ describe('Buttons', () => {
       <NavBarButtons calcPointsSpent={calcPointsSpent} commander="Richard I" />
     );
     expect(getByTestId('button-reset')).toBeDisabled();
+    expect(getByTestId('button-screenshot')).toBeDisabled();
     expect(getByTestId('button-share')).toBeDisabled();
   });
 
@@ -37,6 +39,7 @@ describe('Buttons', () => {
       <NavBarButtons calcPointsSpent={calcPointsSpent} commander="Richard I" />
     );
     expect(getByTestId('button-reset')).toBeEnabled();
+    expect(getByTestId('button-screenshot')).toBeEnabled();
     expect(getByTestId('button-share')).toBeEnabled();
   });
 });

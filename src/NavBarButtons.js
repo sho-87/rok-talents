@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import { faTrashAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import domtoimage from 'dom-to-image';
+import {
+  faTrashAlt,
+  faShareAlt,
+  faCamera
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { createSummaryString } from './utils';
 
 import './styles/NavBarButtons.css';
 
@@ -11,6 +17,26 @@ import './styles/NavBarButtons.css';
  * @extends {Component}
  */
 class NavBarButtons extends Component {
+  takeScreenshot() {
+    let node = document.getElementById('tree-panel');
+
+    domtoimage.toPng(node).then(dataUrl => {
+      const img = document.createElement('a');
+      img.href = dataUrl;
+      img.download = `${createSummaryString(
+        this.props.commander,
+        this.props.red,
+        this.props.yellow,
+        this.props.blue,
+        '-'
+      )}.png`;
+
+      document.body.appendChild(img);
+      img.click();
+      document.body.removeChild(img);
+    });
+  }
+
   render() {
     return (
       <form className="form-inline">
@@ -26,6 +52,20 @@ class NavBarButtons extends Component {
         >
           <FontAwesomeIcon icon={faTrashAlt} />
           <span className="nav-button-text">Reset</span>
+        </button>
+
+        <button
+          id="button-screenshot"
+          data-testid="button-screenshot"
+          type="button"
+          disabled={
+            this.props.commander | this.props.calcPointsSpent() ? false : true
+          }
+          className="btn btn-sm btn-primary"
+          onClick={() => this.takeScreenshot()}
+        >
+          <FontAwesomeIcon icon={faCamera} />
+          <span className="nav-button-text">Screenshot</span>
         </button>
 
         <button
