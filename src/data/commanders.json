@@ -357,7 +357,8 @@
     "tier": "Legendary",
     "red": "Archer",
     "yellow": "Versatility",
-    "blue": "Attack"
+    "blue": "Attack",
+    "guide": "https://rok.guide/ramesses-ii/"
   },
   "Artemisia I": {
     "id": "40",
@@ -365,6 +366,7 @@
     "tier": "Legendary",
     "red": "Archer",
     "yellow": "Garrison",
-    "blue": "Defense"
+    "blue": "Defense",
+    "guide": "https://rok.guide/artemisia-i/"
   }
 }
