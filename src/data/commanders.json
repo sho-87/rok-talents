@@ -350,5 +350,21 @@
     "yellow": "Gathering",
     "blue": "Support",
     "guide": "https://rok.guide/cleopatra"
+  },
+  "Ramesses II": {
+    "id": "39",
+    "title": "Favored by Gods",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Versatility",
+    "blue": "Attack"
+  },
+  "Artemisia I": {
+    "id": "40",
+    "title": "Queen of Caria",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Garrison",
+    "blue": "Defense"
   }
 }
