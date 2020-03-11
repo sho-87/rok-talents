@@ -201,7 +201,7 @@
     "name": "Whistling Arrows",
     "values": [5, 10, 15, 20, 25],
     "stats": "",
-    "text": "When the army led by this commander contains only archer units, normal attacks have a 10% chance to increase all damage dealth by ${1}% for the next 2 seconds",
+    "text": "When the army led by this commander contains only archer units, normal attacks have a 10% chance to increase all damage dealt by ${1}% for the next 2 seconds",
     "prereq": [18, 19],
     "dep": [],
     "pos": [-2.8, 10.4],
