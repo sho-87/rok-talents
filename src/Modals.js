@@ -108,7 +108,10 @@ export class AnnouncementModal extends Component {
     super(props);
     this.state = {
       modal:
-        this.props.isEmbed || !this.props.isUpgrade || this.props.isInvalidBuild
+        this.props.isNewUser ||
+        this.props.isEmbed ||
+        !this.props.isUpgrade ||
+        this.props.isInvalidBuild
           ? false
           : true
     };

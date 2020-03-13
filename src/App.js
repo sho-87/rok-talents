@@ -15,6 +15,7 @@ import {
   setTitle,
   isTouchDevice,
   isUpgrade,
+  isNewUser,
   encode,
   decode
 } from './utils';
@@ -687,6 +688,7 @@ class App extends Component {
               ? isUpgrade(localStorage.getItem('version'), version)
               : true
           }
+          isNewUser={isNewUser}
           isInvalidBuild={this.invalidModalFlag}
         />
 
