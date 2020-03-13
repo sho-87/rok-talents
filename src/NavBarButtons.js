@@ -36,82 +36,96 @@ function NavBarButtons(props) {
     });
 
     const node = document.getElementById('tree-panel');
+    const dpr = window.devicePixelRatio || 1;
 
-    domtoimage.toPng(node).then(nodeDataUrl => {
-      // add watermark
-      watermark([nodeDataUrl, `${process.env.PUBLIC_URL}/logo.svg`])
-        .dataUrl((treePanel, logo) => {
-          const context = treePanel.getContext('2d', { alpha: false });
-          // context.imageSmoothingEnabled = false;
+    domtoimage
+      .toPng(node, {
+        height: node.offsetHeight * dpr,
+        width: node.offsetWidth * dpr,
+        style: {
+          transform: 'scale(' + dpr + ')',
+          transformOrigin: 'top left',
+          width: node.offsetWidth + 'px',
+          height: node.offsetHeight + 'px'
+        }
+      })
+      .then(nodeDataUrl => {
+        // add watermark
+        watermark([nodeDataUrl, `${process.env.PUBLIC_URL}/logo.svg`])
+          .dataUrl((treePanel, logo) => {
+            const context = treePanel.getContext('2d', { alpha: false });
+            context.scale(dpr, dpr);
 
-          // fix blurry canvas and hidpi devices
-          // const dpr = window.devicePixelRatio || 1;
-          // const rect = node.getBoundingClientRect();
-          // node.width = rect.width * dpr;
-          // node.height = rect.height * dpr;
+            if (addLogo) {
+              const logoAspectRatio = logo.height / logo.width;
+              let logoResizedWidth;
+              let logoResizedHeight;
 
-          if (addLogo) {
-            const logoAspectRatio = logo.height / logo.width;
-            let logoResizedWidth;
-            let logoResizedHeight;
+              if (isPortrait) {
+                logoResizedHeight = node.offsetHeight * 0.1;
+                logoResizedWidth = logoResizedHeight * (1 / logoAspectRatio);
+              } else {
+                logoResizedWidth = node.offsetWidth * 0.1;
+                logoResizedHeight = logoResizedWidth * logoAspectRatio;
+              }
 
-            logoResizedWidth = node.offsetWidth * 0.1;
-            logoResizedHeight = logoResizedWidth * logoAspectRatio;
+              context.save();
+              context.globalAlpha = 1;
+              context.drawImage(
+                logo,
+                10,
+                10,
+                logoResizedWidth,
+                logoResizedHeight
+              );
+              context.restore();
+            }
+            if (addText) {
+              context.save();
+              context.globalAlpha = 0.15;
 
-            context.save();
-            context.globalAlpha = 1;
-            context.drawImage(
-              logo,
-              10,
-              10,
-              logoResizedWidth,
-              logoResizedHeight
-            );
-            context.restore();
-          }
-          if (addText) {
-            context.save();
-            context.globalAlpha = 0.15;
+              // lower font size until the text fits the canvas
+              const text = homepage.split('//')[1];
+              let fontsize = 70;
+              do {
+                fontsize--;
+                context.font = fontsize + 'px sans-serif';
+              } while (
+                context.measureText(text).width >
+                document.getElementById('tree-square-content').offsetWidth * 0.3
+              );
 
-            // lower font size until the text fits the canvas
-            const text = homepage.split('//')[1];
-            let fontsize = 70;
-            do {
-              fontsize--;
-              context.font = fontsize + 'px sans-serif';
-            } while (
-              context.measureText(text).width >
-              document.getElementById('tree-square-content').offsetWidth * 0.3
-            );
+              context.fillStyle = '#ffffff';
+              context.textAlign = 'center';
+              context.textBaseline = 'middle';
+              context.fillText(
+                text,
+                node.offsetWidth / 2,
+                node.offsetHeight / 2
+              );
+              context.restore();
+            }
 
-            context.fillStyle = '#ffffff';
-            context.textAlign = 'center';
-            context.textBaseline = 'middle';
-            context.fillText(text, node.offsetWidth / 2, node.offsetHeight / 2);
-            context.restore();
-          }
+            return treePanel;
+          })
+          .then(dataUrl => {
+            // save
+            const img = document.createElement('a');
+            img.href = dataUrl;
+            img.download = `${createSummaryString(
+              props.commander,
+              props.red,
+              props.yellow,
+              props.blue,
+              '-'
+            )}.png`;
 
-          // context.scale(dpr, dpr);
-          return treePanel;
-        })
-        .then(dataUrl => {
-          // save
-          const img = document.createElement('a');
-          img.href = dataUrl;
-          img.download = `${createSummaryString(
-            props.commander,
-            props.red,
-            props.yellow,
-            props.blue,
-            '-'
-          )}.png`;
-
-          document.body.appendChild(img);
-          img.click();
-          document.body.removeChild(img);
-        });
-      watermark.destroy();
-    });
+            document.body.appendChild(img);
+            img.click();
+            document.body.removeChild(img);
+          });
+        watermark.destroy();
+      });
   }
 
   return (
