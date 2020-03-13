@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ReactGA from 'react-ga';
+import { useMediaQuery } from 'react-responsive';
 import domtoimage from 'dom-to-image';
 import watermark from 'watermarkjs';
 import {
@@ -15,10 +17,10 @@ import './styles/NavBarButtons.css';
 /**
  * Nav bar component containing main buttons
  *
- * @class NavBarButtons
- * @extends {Component}
  */
-class NavBarButtons extends Component {
+function NavBarButtons(props) {
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+
   /**
    * Take a screenshot of the talent tree, add watermark, and download
    *
@@ -26,19 +28,35 @@ class NavBarButtons extends Component {
    * @param {boolean} [addText=true] Should watermark text be rendered?
    * @memberof NavBarButtons
    */
-  takeScreenshot(addLogo = true, addText = true) {
+  function takeScreenshot(addLogo = true, addText = true) {
+    ReactGA.event({
+      category: 'App',
+      action: 'Screenshot',
+      label: props.commander
+    });
+
     const node = document.getElementById('tree-panel');
 
     domtoimage.toPng(node).then(nodeDataUrl => {
       // add watermark
-      watermark([nodeDataUrl, `${process.env.PUBLIC_URL}/logo192.png`])
+      watermark([nodeDataUrl, `${process.env.PUBLIC_URL}/logo.svg`])
         .dataUrl((treePanel, logo) => {
-          const context = treePanel.getContext('2d');
+          const context = treePanel.getContext('2d', { alpha: false });
+          // context.imageSmoothingEnabled = false;
+
+          // fix blurry canvas and hidpi devices
+          // const dpr = window.devicePixelRatio || 1;
+          // const rect = node.getBoundingClientRect();
+          // node.width = rect.width * dpr;
+          // node.height = rect.height * dpr;
 
           if (addLogo) {
             const logoAspectRatio = logo.height / logo.width;
-            const logoResizedWidth = node.offsetWidth * 0.1;
-            const logoResizedHeight = logoResizedWidth * logoAspectRatio;
+            let logoResizedWidth;
+            let logoResizedHeight;
+
+            logoResizedWidth = node.offsetWidth * 0.1;
+            logoResizedHeight = logoResizedWidth * logoAspectRatio;
 
             context.save();
             context.globalAlpha = 1;
@@ -72,6 +90,8 @@ class NavBarButtons extends Component {
             context.fillText(text, node.offsetWidth / 2, node.offsetHeight / 2);
             context.restore();
           }
+
+          // context.scale(dpr, dpr);
           return treePanel;
         })
         .then(dataUrl => {
@@ -79,10 +99,10 @@ class NavBarButtons extends Component {
           const img = document.createElement('a');
           img.href = dataUrl;
           img.download = `${createSummaryString(
-            this.props.commander,
-            this.props.red,
-            this.props.yellow,
-            this.props.blue,
+            props.commander,
+            props.red,
+            props.yellow,
+            props.blue,
             '-'
           )}.png`;
 
@@ -94,53 +114,45 @@ class NavBarButtons extends Component {
     });
   }
 
-  render() {
-    return (
-      <form className="form-inline">
-        <button
-          id="button-reset"
-          data-testid="button-reset"
-          type="button"
-          className="btn btn-sm btn-danger"
-          disabled={
-            this.props.commander | this.props.calcPointsSpent() ? false : true
-          }
-          onClick={() => this.props.showReset()}
-        >
-          <FontAwesomeIcon icon={faTrashAlt} />
-          <span className="nav-button-text">Reset</span>
-        </button>
+  return (
+    <form className="form-inline">
+      <button
+        id="button-reset"
+        data-testid="button-reset"
+        type="button"
+        className="btn btn-sm btn-danger"
+        disabled={props.commander | props.calcPointsSpent() ? false : true}
+        onClick={() => props.showReset()}
+      >
+        <FontAwesomeIcon icon={faTrashAlt} />
+        <span className="nav-button-text">Reset</span>
+      </button>
 
-        <button
-          id="button-screenshot"
-          data-testid="button-screenshot"
-          type="button"
-          disabled={
-            this.props.commander | this.props.calcPointsSpent() ? false : true
-          }
-          className="btn btn-sm btn-primary"
-          onClick={() => this.takeScreenshot()}
-        >
-          <FontAwesomeIcon icon={faCamera} />
-          <span className="nav-button-text">Screenshot</span>
-        </button>
+      <button
+        id="button-screenshot"
+        data-testid="button-screenshot"
+        type="button"
+        disabled={props.commander | props.calcPointsSpent() ? false : true}
+        className="btn btn-sm btn-primary"
+        onClick={() => takeScreenshot()}
+      >
+        <FontAwesomeIcon icon={faCamera} />
+        <span className="nav-button-text">Screenshot</span>
+      </button>
 
-        <button
-          id="button-share"
-          data-testid="button-share"
-          type="button"
-          disabled={
-            this.props.commander | this.props.calcPointsSpent() ? false : true
-          }
-          className="btn btn-sm btn-success"
-          onClick={() => this.props.showShare()}
-        >
-          <FontAwesomeIcon icon={faShareAlt} />
-          <span className="nav-button-text">Share</span>
-        </button>
-      </form>
-    );
-  }
+      <button
+        id="button-share"
+        data-testid="button-share"
+        type="button"
+        disabled={props.commander | props.calcPointsSpent() ? false : true}
+        className="btn btn-sm btn-success"
+        onClick={() => props.showShare()}
+      >
+        <FontAwesomeIcon icon={faShareAlt} />
+        <span className="nav-button-text">Share</span>
+      </button>
+    </form>
+  );
 }
 
 export default NavBarButtons;
