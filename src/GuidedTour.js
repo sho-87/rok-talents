@@ -23,7 +23,7 @@ class GuidedTour extends Component {
           disableBeacon: true
         },
         {
-          content: 'Check the number of points you have left to spend',
+          content: 'View guides for the selected commander and check the number of points you have left to spend',
           target: '#summary-panel',
           placement: 'auto'
         },
@@ -36,6 +36,12 @@ class GuidedTour extends Component {
           content:
             'Reset your talent build. This will delete all assigned talent points',
           target: '#button-reset',
+          placement: 'auto'
+        },
+        {
+          content:
+            'Save a screenshot of your current talent build. No need to settle for those blurry in-game screenshots anymore!',
+          target: '#button-screenshot',
           placement: 'auto'
         },
         {

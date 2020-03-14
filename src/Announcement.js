@@ -1,76 +1,61 @@
 import React from 'react';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { bugs } from '../package.json';
 import './styles/Announcement.css';
 
 function Announcement() {
   return (
     <>
-      <h1>{`New release: v1.2.0`}</h1>
+      <h1>{`New release: v1.3.0`}</h1>
 
       <h2>New Features</h2>
       <div>
-        Thanks to a partnership with{' '}
-        <a href="https://rok.guide" target="_blank" rel="noopener noreferrer">
-          rok.guide
-        </a>
-        , each commander now has a guide. Clicking on the guide icon next to the
-        commander name now takes you to the guide for that commander:
+        I have received many requests for this feature and it is finally here:
+        screenshots!
+        <br />
+        <br />
+        Click the Screenshot button in the top navigation bar to take a
+        screenshot of your current talent build. Whatever you see in the middle talent
+        tree window will be what gets saved.
+        <br />
+        <br />
+        Don't settle for those blurry in-game screenshots anymore!
       </div>
       <img
-        src={`${process.env.PUBLIC_URL}/screenshots/guide.png`}
-        className="announce-img"
+        src={`${process.env.PUBLIC_URL}/screenshots/screenshot.png`}
+        className="announce-img announce-img-border"
         alt="guide"
       ></img>
 
       <hr className="announce-hr" />
 
       <div>
-        You can now embed talent builds directly into other websites. If you run
-        your own website or blog, your talent build can be directly embedded
-        into your site using an iframe.
-        <br />
-        <br />
-        The embedded talent build will be view-only (i.e. talent points cannot
-        be changed). You can find the embed code in the Share menu:
+        Two new legendary commanders have been added: Artemisia I and Ramesses
+        II. This includes full talent trees as well as commander guides.
       </div>
       <img
-        src={`${process.env.PUBLIC_URL}/screenshots/embed.png`}
+        src={`${process.env.PUBLIC_URL}/screenshots/artemisia_ramesses.png`}
         className="announce-img"
         alt="guide"
-      ></img>
-
-      <hr className="announce-hr" />
-
-      <div>
-        You can now submit bug reports directly to{' '}
-        <a href={bugs.url} target="_blank" rel="noopener noreferrer">
-          GitHub
-        </a>
-        . Please file your bug reports and feature requests there - I'll monitor
-        the issues as often as I can!
-        <br />
-        <br />
-        You can find the Submit link on the Info page
-        {<FontAwesomeIcon icon={faInfoCircle} className="modal-icon" />}:
-      </div>
-      <img
-        src={`${process.env.PUBLIC_URL}/screenshots/reportbug.png`}
-        className="announce-img"
-        alt="report bug"
       ></img>
 
       <h2>Other Changes</h2>
       <ul>
-        <li>Added Cleopatra to the commander list</li>
-        <li>Added a share button for Weibo</li>
-        <li>Removed the commander background image from the info panel</li>
+        <li>
+          Created a new icon and logo for the website
+        </li>
+        <li>
+          Commander image sizes have been reduced, so the commander list should
+          load faster. Image quality has not been reduced.
+        </li>
       </ul>
 
       <h2>Bug Fixes</h2>
       <ul>
-        <li>Fixed resolution of images and site logo</li>
+        <li>
+          Fixed a bug where new users would always see the announcement window.
+        </li>
+        <li>
+          Fixed some talent description typos.
+        </li>
       </ul>
     </>
   );
