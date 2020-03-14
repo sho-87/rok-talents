@@ -248,14 +248,14 @@ class TreePanel extends Component {
 
         {this.props.dataVersion < dataVersion && (
           <div data-testid="version-warning" id="version-warning">
-            Warning: this build uses an old version <br /> of the game data
+            Warning: this build uses <br /> an old version of the game data
           </div>
         )}
 
         {this.props.isEmbed && (
           <>
             <div data-testid="embed-message" id="embed-message">
-              View full build at:{' '}
+              View full build:{' '}
               <a href={getURL()} target="_blank" rel="noopener noreferrer">
                 {homepage.split('//')[1]}
               </a>
