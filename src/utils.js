@@ -199,7 +199,6 @@ export function isNewUser() {
     !localStorage.getItem('isNewUser') ||
     JSON.parse(localStorage.getItem('isNewUser') === true)
   ) {
-    localStorage.setItem('isNewUser', false);
     return true;
   } else {
     return false;
@@ -215,7 +214,7 @@ export function isNewUser() {
  */
 export function isUpgrade(oldVer, newVer) {
   // New users are never considered upgrades
-  if (!localStorage.getItem('isNewUser')) {
+  if (isNewUser()) {
     return false;
   }
 

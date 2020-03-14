@@ -208,6 +208,10 @@ class App extends Component {
     if (!this.props.isEmbed) {
       localStorage.setItem('version', version);
     }
+
+    if (isNewUser()) {
+      localStorage.setItem('isNewUser', false);
+    }
   }
 
   /**
@@ -688,7 +692,7 @@ class App extends Component {
               ? isUpgrade(localStorage.getItem('version'), version)
               : true
           }
-          isNewUser={isNewUser}
+          isNewUser={isNewUser()}
           isInvalidBuild={this.invalidModalFlag}
         />
 
