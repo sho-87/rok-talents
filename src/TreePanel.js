@@ -253,16 +253,22 @@ class TreePanel extends Component {
         )}
 
         {this.props.isEmbed && (
-          <div data-testid="embed-message" id="embed-message">
-            View full build at:{' '}
-            <a
-              href={getURL()}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {homepage.split('//')[1]}
+          <>
+            <div data-testid="embed-message" id="embed-message">
+              View full build at:{' '}
+              <a href={getURL()} target="_blank" rel="noopener noreferrer">
+                {homepage.split('//')[1]}
+              </a>
+            </div>
+            <a href={getURL()} target="_blank" rel="noopener noreferrer">
+              <img
+                data-testid="embed-banner"
+                id="embed-banner"
+                src={`${process.env.PUBLIC_URL}/banner.svg`}
+                alt="roktalents banner"
+              ></img>
             </a>
-          </div>
+          </>
         )}
 
         <div id="tree-square-container">

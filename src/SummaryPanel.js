@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactGA from 'react-ga';
 import { GeneralTooltip } from './Tooltips';
 import Commanders from './data/commanders.json';
@@ -7,36 +7,30 @@ import './styles/SummaryPanel.css';
 /**
  * Summary panel component displaying commander info
  *
- * @class SummaryPanel
- * @extends {Component}
  */
-class SummaryPanel extends Component {
-  getHeader() {
+function SummaryPanel(props) {
+  function getHeader() {
     return (
       <>
-        <span>{this.props.commander}</span>
-        {Commanders[this.props.commander].guide && (
-          <GuideIcon commander={this.props.commander} />
+        <span>{props.commander}</span>
+        {Commanders[props.commander].guide && (
+          <GuideIcon commander={props.commander} />
         )}
       </>
     );
   }
 
-  render() {
-    return (
-      <div id="summary-panel" className="info-box">
-        <h1>{this.props.commander ? this.getHeader() : 'Summary'}</h1>
-        <h3>
-          {this.props.commander && Commanders[this.props.commander].title}
-        </h3>
+  return (
+    <div id="summary-panel" className="info-box">
+      <h1>{props.commander ? getHeader() : 'Summary'}</h1>
+      <h3>{props.commander && Commanders[props.commander].title}</h3>
 
-        <div id="summary-panel-summary">
-          <p>Points remaining: {this.props.calcPointsRemaining()}</p>
-          <p>Points spent: {this.props.calcPointsSpent()}</p>
-        </div>
+      <div id="summary-panel-summary">
+        <p>Points remaining: {props.calcPointsRemaining()}</p>
+        <p>Points spent: {props.calcPointsSpent()}</p>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 /**
