@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { useMediaQuery } from 'react-responsive';
 import domtoimage from 'dom-to-image';
 import watermark from 'watermarkjs';
 import {
@@ -19,8 +18,6 @@ import './styles/NavBarButtons.css';
  *
  */
 function NavBarButtons(props) {
-  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
-
   /**
    * Take a screenshot of the talent tree, add watermark, and download
    *
@@ -28,7 +25,7 @@ function NavBarButtons(props) {
    * @param {boolean} [addText=true] Should watermark text be rendered?
    * @memberof NavBarButtons
    */
-  function takeScreenshot(addLogo = true, addText = true) {
+  function takeScreenshot(addLogo = true, addText = false) {
     ReactGA.event({
       category: 'App',
       action: 'Screenshot',
@@ -51,7 +48,7 @@ function NavBarButtons(props) {
       })
       .then(nodeDataUrl => {
         // add watermark
-        watermark([nodeDataUrl, `${process.env.PUBLIC_URL}/logo.svg`])
+        watermark([nodeDataUrl, `${process.env.PUBLIC_URL}/banner.svg`])
           .dataUrl((treePanel, logo) => {
             const context = treePanel.getContext('2d', { alpha: false });
             context.scale(dpr, dpr);
@@ -60,21 +57,15 @@ function NavBarButtons(props) {
               const logoAspectRatio = logo.height / logo.width;
               let logoResizedWidth;
               let logoResizedHeight;
-
-              if (isPortrait) {
-                logoResizedHeight = node.offsetHeight * 0.1;
-                logoResizedWidth = logoResizedHeight * (1 / logoAspectRatio);
-              } else {
-                logoResizedWidth = node.offsetWidth * 0.1;
-                logoResizedHeight = logoResizedWidth * logoAspectRatio;
-              }
+              logoResizedWidth = node.offsetWidth * 0.24;
+              logoResizedHeight = logoResizedWidth * logoAspectRatio;
 
               context.save();
               context.globalAlpha = 1;
               context.drawImage(
                 logo,
-                10,
-                10,
+                5,
+                node.offsetHeight - logoResizedHeight - 5,
                 logoResizedWidth,
                 logoResizedHeight
               );

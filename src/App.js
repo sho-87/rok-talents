@@ -27,8 +27,6 @@ import './styles/fonts.css';
 const TreePanel = React.lazy(() => import('./TreePanel'));
 let treeData;
 
-//TODO screenshot logo? watermark? release?
-//TODO add logo to embedded view?
 //TODO memoize stats calculation
 
 /**
