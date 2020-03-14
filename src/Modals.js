@@ -146,6 +146,13 @@ export class AnnouncementModal extends Component {
         </Modal.Header>
         <Modal.Body className="modal-body">
           <Announcement />
+          <hr className="announce-hr" />
+          If you have any feature requests, or notice any website issues, you
+          can make a post{' '}
+          <a href={bugs.url} target="_blank" rel="noopener noreferrer">
+            here
+          </a>
+          .
         </Modal.Body>
         <Modal.Footer>
           <span className="modal-reminder">
