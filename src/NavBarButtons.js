@@ -57,7 +57,7 @@ function NavBarButtons(props) {
               const logoAspectRatio = logo.height / logo.width;
               let logoResizedWidth;
               let logoResizedHeight;
-              logoResizedWidth = node.offsetWidth * 0.24;
+              logoResizedWidth = node.offsetWidth * 0.22;
               logoResizedHeight = logoResizedWidth * logoAspectRatio;
 
               context.save();

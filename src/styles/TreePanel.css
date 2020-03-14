@@ -60,13 +60,22 @@
 #embed-message {
   position: absolute;
   font-size: 0.7em;
-  bottom: 0px;
-  left: 0px;
+  top: 0px;
+  right: 0px;
   margin: 2px;
   padding: 3px;
-  text-align: left;
+  text-align: right;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 1);
+  z-index: 100;
+}
+
+#embed-banner {
+  position: absolute;
+  width: 24%;
+  bottom: 0px;
+  left: 0px;
+  margin: 5px;
   z-index: 100;
 }
 
