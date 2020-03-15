@@ -79,6 +79,10 @@
   z-index: 100;
 }
 
+#external-icon {
+  margin-left: 4px;
+}
+
 .line path {
   opacity: var(--inactive-opacity);
   stroke: gray;

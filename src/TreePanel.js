@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { jsPlumb } from 'jsplumb';
 import panzoom from 'panzoom';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
 import { PrereqToast, ToastMessage } from './Toasts';
@@ -258,6 +260,7 @@ class TreePanel extends Component {
               View full build:{' '}
               <a href={getURL()} target="_blank" rel="noopener noreferrer">
                 {homepage.split('//')[1]}
+                <FontAwesomeIcon id="external-icon" icon={faExternalLinkAlt} />
               </a>
             </div>
             <a href={getURL()} target="_blank" rel="noopener noreferrer">
