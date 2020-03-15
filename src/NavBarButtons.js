@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactGA from 'react-ga';
+import Spinner from 'react-bootstrap/Spinner';
 import domtoimage from 'dom-to-image';
 import watermark from 'watermarkjs';
 import {
@@ -18,6 +19,8 @@ import './styles/NavBarButtons.css';
  *
  */
 function NavBarButtons(props) {
+  const [isDownloading, setIsDownloading] = useState(false);
+
   /**
    * Take a screenshot of the talent tree, add watermark, and download
    *
@@ -32,6 +35,7 @@ function NavBarButtons(props) {
       label: props.commander
     });
 
+    setIsDownloading(true);
     const node = document.getElementById('tree-panel');
     const dpr = window.devicePixelRatio || 1;
 
@@ -112,6 +116,7 @@ function NavBarButtons(props) {
             document.body.appendChild(img);
             img.click();
             document.body.removeChild(img);
+            setIsDownloading(false);
           });
         watermark.destroy();
       });
@@ -139,7 +144,11 @@ function NavBarButtons(props) {
         className="btn btn-sm btn-primary"
         onClick={() => takeScreenshot()}
       >
-        <FontAwesomeIcon icon={faCamera} />
+        {isDownloading ? (
+          <Spinner size="sm" animation="border" variant="light" />
+        ) : (
+          <FontAwesomeIcon icon={faCamera} />
+        )}
         <span className="nav-button-text">Screenshot</span>
       </button>
 
