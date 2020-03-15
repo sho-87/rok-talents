@@ -36,7 +36,7 @@ function NavBarButtons(props) {
     const dpr = window.devicePixelRatio || 1;
 
     domtoimage
-      .toPng(node, {
+      .toJpeg(node, {
         height: node.offsetHeight * dpr,
         width: node.offsetWidth * dpr,
         style: {
@@ -107,7 +107,7 @@ function NavBarButtons(props) {
               props.yellow,
               props.blue,
               '-'
-            )}.png`;
+            )}.jpg`;
 
             document.body.appendChild(img);
             img.click();
