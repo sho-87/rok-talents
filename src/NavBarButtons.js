@@ -52,21 +52,21 @@ function NavBarButtons(props) {
       })
       .then(nodeDataUrl => {
         // add watermark
-        watermark([nodeDataUrl, `${process.env.PUBLIC_URL}/banner.svg`])
+        watermark([nodeDataUrl, `${process.env.PUBLIC_URL}/banner-sm.svg`])
           .dataUrl((treePanel, logo) => {
             const context = treePanel.getContext('2d', { alpha: false });
             context.scale(dpr, dpr);
 
             if (addLogo) {
               const logoAspectRatio = logo.width / logo.height;
-              const logoResizedHeight = node.offsetHeight * 0.05;
+              const logoResizedHeight = node.offsetHeight * 0.03;
               const logoResizedWidth = logoResizedHeight * logoAspectRatio;
 
               context.save();
               context.globalAlpha = 1;
               context.drawImage(
                 logo,
-                5,
+                node.offsetWidth - logoResizedWidth - 5,
                 node.offsetHeight - logoResizedHeight - 5,
                 logoResizedWidth,
                 logoResizedHeight

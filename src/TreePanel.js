@@ -250,7 +250,7 @@ class TreePanel extends Component {
 
         {this.props.dataVersion < dataVersion && (
           <div data-testid="version-warning" id="version-warning">
-            Warning: this build uses <br /> an old version of the game data
+            Warning: this build uses an <br /> old version of the game data
           </div>
         )}
 
@@ -267,7 +267,7 @@ class TreePanel extends Component {
               <img
                 data-testid="embed-banner"
                 id="embed-banner"
-                src={`${process.env.PUBLIC_URL}/banner.svg`}
+                src={`${process.env.PUBLIC_URL}/banner-sm.svg`}
                 alt="roktalents banner"
               ></img>
             </a>

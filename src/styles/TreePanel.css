@@ -50,10 +50,10 @@
 #version-warning {
   position: absolute;
   font-size: 0.7em;
-  bottom: 0px;
-  right: 0px;
+  top: 0px;
+  left: 0px;
   margin: 5px;
-  text-align: right;
+  text-align: left;
   color: orange;
 }
 
@@ -72,10 +72,10 @@
 
 #embed-banner {
   position: absolute;
-  height: 4%;
+  height: 2.5%;
   width: auto;
   bottom: 0px;
-  left: 0px;
+  right: 0px;
   margin: 5px;
   z-index: 100;
 }
