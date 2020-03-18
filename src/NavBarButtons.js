@@ -111,7 +111,7 @@ function NavBarButtons(props) {
               props.yellow,
               props.blue,
               '-'
-            )}.jpg`;
+            )}.jpeg`;
 
             document.body.appendChild(img);
             img.click();
