@@ -85,6 +85,7 @@ div {
 
 #spinner {
   text-align: center;
+  color: white;
 }
 
 .bullet {
@@ -101,6 +102,7 @@ div {
   flex-flow: row nowrap;
   justify-content: center; /* horizontal */
   align-items: center; /* vertical */
+  background-color: var(--bg-color);
 }
 
 @media (orientation: portrait) {

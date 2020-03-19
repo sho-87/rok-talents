@@ -732,7 +732,7 @@ class App extends Component {
               <div id="spinner">
                 <Spinner size="lg" animation="border" variant="light" />
                 <br />
-                <span className="sr-only">Loading...</span>
+                <span>Loading</span>
               </div>
             }
           >
