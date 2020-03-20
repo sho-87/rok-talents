@@ -6,7 +6,7 @@
     "red": "Leadership",
     "yellow": "Peacekeeping",
     "blue": "Support",
-    "guide": "https://rok.guide/aethelflaed/"
+    "guides": { "rokguide": "https://rok.guide/aethelflaed/" }
   },
   "Richard I": {
     "id": "2",
@@ -15,7 +15,7 @@
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Defense",
-    "guide": "https://rok.guide/commanders/richard-i/"
+    "guides": { "rokguide": "https://rok.guide/commanders/richard-i/" }
   },
   "Yi Seong-Gye": {
     "id": "3",
@@ -24,7 +24,7 @@
     "red": "Archer",
     "yellow": "Garrison",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/yi-seong-gye/"
+    "guides": { "rokguide": "https://rok.guide/commanders/yi-seong-gye/" }
   },
   "Sun Tzu": {
     "id": "4",
@@ -33,7 +33,7 @@
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/sun-tzu/"
+    "guides": { "rokguide": "https://rok.guide/commanders/sun-tzu/" }
   },
   "Alexander the Great": {
     "id": "5",
@@ -43,7 +43,7 @@
     "red": "Infantry",
     "yellow": "Versatility",
     "blue": "Attack",
-    "guide": "https://rok.guide/alexander-the-great/"
+    "guides": { "rokguide": "https://rok.guide/alexander-the-great/" }
   },
   "Eulji Mundeok": {
     "id": "6",
@@ -53,7 +53,7 @@
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Attack",
-    "guide": "https://rok.guide/commanders/eulji-mundeok/"
+    "guides": { "rokguide": "https://rok.guide/commanders/eulji-mundeok/" }
   },
   "Charles Martel": {
     "id": "7",
@@ -63,7 +63,7 @@
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Defense",
-    "guide": "https://rok.guide/commanders/charles-martel/"
+    "guides": { "rokguide": "https://rok.guide/commanders/charles-martel/" }
   },
   "Edward of Woodstock": {
     "id": "8",
@@ -73,7 +73,7 @@
     "red": "Archer",
     "yellow": "Versatility",
     "blue": "Skill",
-    "guide": "https://rok.guide/edward-of-woodstock/"
+    "guides": { "rokguide": "https://rok.guide/edward-of-woodstock/" }
   },
   "El Cid": {
     "id": "9",
@@ -82,7 +82,7 @@
     "red": "Archer",
     "yellow": "Versatility",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/el-cid/"
+    "guides": { "rokguide": "https://rok.guide/commanders/el-cid/" }
   },
   "Constantine I": {
     "id": "10",
@@ -91,7 +91,7 @@
     "red": "Infantry",
     "yellow": "Garrison",
     "blue": "Support",
-    "guide": "https://rok.guide/commanders/constantine/"
+    "guides": { "rokguide": "https://rok.guide/commanders/constantine/" }
   },
   "Kusunoki Masashige": {
     "id": "11",
@@ -101,7 +101,7 @@
     "red": "Archer",
     "yellow": "Garrison",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/kusunoki-masashige/"
+    "guides": { "rokguide": "https://rok.guide/commanders/kusunoki-masashige/" }
   },
   "Hermann": {
     "id": "12",
@@ -110,7 +110,7 @@
     "red": "Archer",
     "yellow": "Garrison",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/hermann/"
+    "guides": { "rokguide": "https://rok.guide/commanders/hermann/" }
   },
   "Wu Zetian": {
     "id": "13",
@@ -119,7 +119,7 @@
     "red": "Leadership",
     "yellow": "Garrison",
     "blue": "Support",
-    "guide": "https://rok.guide/wu-zetian/"
+    "guides": { "rokguide": "https://rok.guide/wu-zetian/" }
   },
   "Leonidas I": {
     "id": "14",
@@ -128,7 +128,7 @@
     "red": "Infantry",
     "yellow": "Versatility",
     "blue": "Defense",
-    "guide": "https://rok.guide/leonidas-i/"
+    "guides": { "rokguide": "https://rok.guide/leonidas-i/" }
   },
   "Charlemagne": {
     "id": "15",
@@ -137,7 +137,7 @@
     "red": "Leadership",
     "yellow": "Conquering",
     "blue": "Skill",
-    "guide": "https://rok.guide/charlemagne/"
+    "guides": { "rokguide": "https://rok.guide/charlemagne/" }
   },
   "Minamoto no Yoshitsune": {
     "id": "16",
@@ -147,7 +147,9 @@
     "red": "Cavalry",
     "yellow": "Peacekeeping",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/minamoto-no-yoshitsune/"
+    "guides": {
+      "rokguide": "https://rok.guide/commanders/minamoto-no-yoshitsune/"
+    }
   },
   "Cao Cao": {
     "id": "17",
@@ -156,7 +158,7 @@
     "red": "Cavalry",
     "yellow": "Peacekeeping",
     "blue": "Mobility",
-    "guide": "https://rok.guide/commanders/cao-cao/"
+    "guides": { "rokguide": "https://rok.guide/commanders/cao-cao/" }
   },
   "Julius Caesar": {
     "id": "18",
@@ -165,7 +167,7 @@
     "red": "Leadership",
     "yellow": "Conquering",
     "blue": "Attack",
-    "guide": "https://rok.guide/commanders/julius-caesar/"
+    "guides": { "rokguide": "https://rok.guide/commanders/julius-caesar/" }
   },
   "Seondeok": {
     "id": "19",
@@ -174,7 +176,7 @@
     "red": "Integration",
     "yellow": "Gathering",
     "blue": "Attack",
-    "guide": "https://rok.guide/seondeok/"
+    "guides": { "rokguide": "https://rok.guide/seondeok/" }
   },
   "Ishida Mitsunari": {
     "id": "20",
@@ -184,7 +186,7 @@
     "red": "Integration",
     "yellow": "Gathering",
     "blue": "Support",
-    "guide": "https://rok.guide/ishida/"
+    "guides": { "rokguide": "https://rok.guide/ishida/" }
   },
   "Frederick I": {
     "id": "21",
@@ -193,7 +195,7 @@
     "red": "Leadership",
     "yellow": "Conquering",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/frederick-i/"
+    "guides": { "rokguide": "https://rok.guide/commanders/frederick-i/" }
   },
   "Mehmed II": {
     "id": "22",
@@ -202,7 +204,7 @@
     "red": "Leadership",
     "yellow": "Conquering",
     "blue": "Skill",
-    "guide": "https://rok.guide/mehmed/"
+    "guides": { "rokguide": "https://rok.guide/mehmed/" }
   },
   "Hannibal Barca": {
     "id": "23",
@@ -212,7 +214,7 @@
     "red": "Leadership",
     "yellow": "Conquering",
     "blue": "Attack",
-    "guide": "https://rok.guide/commanders/hannibal-barca/"
+    "guides": { "rokguide": "https://rok.guide/commanders/hannibal-barca/" }
   },
   "Saladin": {
     "id": "24",
@@ -221,7 +223,7 @@
     "red": "Cavalry",
     "yellow": "Conquering",
     "blue": "Support",
-    "guide": "https://rok.guide/saladin/"
+    "guides": { "rokguide": "https://rok.guide/saladin/" }
   },
   "Genghis Khan": {
     "id": "25",
@@ -230,7 +232,7 @@
     "red": "Cavalry",
     "yellow": "Versatility",
     "blue": "Skill",
-    "guide": "https://rok.guide/genghis-khan/"
+    "guides": { "rokguide": "https://rok.guide/genghis-khan/" }
   },
   "Takeda Shingen": {
     "id": "26",
@@ -240,7 +242,7 @@
     "red": "Cavalry",
     "yellow": "Versatility",
     "blue": "Mobility",
-    "guide": "https://rok.guide/takeda-shingen/"
+    "guides": { "rokguide": "https://rok.guide/takeda-shingen/" }
   },
   "Guan Yu": {
     "id": "27",
@@ -249,7 +251,7 @@
     "red": "Infantry",
     "yellow": "Conquering",
     "blue": "Skill",
-    "guide": "https://rok.guide/guan-yu/"
+    "guides": { "rokguide": "https://rok.guide/guan-yu/" }
   },
   "Tomyris": {
     "id": "28",
@@ -258,7 +260,7 @@
     "red": "Archer",
     "yellow": "Conquering",
     "blue": "Attack",
-    "guide": "https://rok.guide/tomyris/"
+    "guides": { "rokguide": "https://rok.guide/tomyris/" }
   },
   "Attila": {
     "id": "29",
@@ -267,7 +269,7 @@
     "red": "Cavalry",
     "yellow": "Conquering",
     "blue": "Attack",
-    "guide": "https://rok.guide/attila/"
+    "guides": { "rokguide": "https://rok.guide/attila/" }
   },
   "Joan of Arc": {
     "id": "30",
@@ -276,7 +278,7 @@
     "red": "Integration",
     "yellow": "Gathering",
     "blue": "Support",
-    "guide": "https://rok.guide/commanders/joan-of-arc/"
+    "guides": { "rokguide": "https://rok.guide/commanders/joan-of-arc/" }
   },
   "Scipio Africanus": {
     "id": "31",
@@ -286,7 +288,7 @@
     "red": "Leadership",
     "yellow": "Conquering",
     "blue": "Attack",
-    "guide": "https://rok.guide/commanders/scipio-africanus/"
+    "guides": { "rokguide": "https://rok.guide/commanders/scipio-africanus/" }
   },
   "Boudica": {
     "id": "32",
@@ -295,7 +297,7 @@
     "red": "Integration",
     "yellow": "Peacekeeping",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/boudica/"
+    "guides": { "rokguide": "https://rok.guide/commanders/boudica/" }
   },
   "Pelagius": {
     "id": "33",
@@ -304,7 +306,7 @@
     "red": "Cavalry",
     "yellow": "Garrison",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/pelagius/"
+    "guides": { "rokguide": "https://rok.guide/commanders/pelagius/" }
   },
   "Lohar": {
     "id": "34",
@@ -313,7 +315,7 @@
     "red": "Integration",
     "yellow": "Peacekeeping",
     "blue": "Support",
-    "guide": "https://rok.guide/lohar/"
+    "guides": { "rokguide": "https://rok.guide/lohar/" }
   },
   "Belisarius": {
     "id": "35",
@@ -322,7 +324,7 @@
     "red": "Cavalry",
     "yellow": "Peacekeeping",
     "blue": "Mobility",
-    "guide": "https://rok.guide/commanders/belisarius/"
+    "guides": { "rokguide": "https://rok.guide/commanders/belisarius/" }
   },
   "Baibars": {
     "id": "36",
@@ -331,7 +333,7 @@
     "red": "Cavalry",
     "yellow": "Conquering",
     "blue": "Skill",
-    "guide": "https://rok.guide/baibars/"
+    "guides": { "rokguide": "https://rok.guide/baibars/" }
   },
   "Osman I": {
     "id": "37",
@@ -340,7 +342,7 @@
     "red": "Leadership",
     "yellow": "Conquering",
     "blue": "Skill",
-    "guide": "https://rok.guide/commanders/osman-i/"
+    "guides": { "rokguide": "https://rok.guide/commanders/osman-i/" }
   },
   "Cleopatra VII": {
     "id": "38",
@@ -349,7 +351,9 @@
     "red": "Integration",
     "yellow": "Gathering",
     "blue": "Support",
-    "guide": "https://rok.guide/cleopatra"
+    "guides": {
+      "rokguide": "https://rok.guide/cleopatra"
+    }
   },
   "Ramesses II": {
     "id": "39",
@@ -358,7 +362,10 @@
     "red": "Archer",
     "yellow": "Versatility",
     "blue": "Attack",
-    "guide": "https://rok.guide/ramesses-ii/"
+    "guides": {
+      "rokguide": "https://rok.guide/ramesses-ii/",
+      "shinchi42": "https://www.youtube.com/watch?v=UAadVht3huo"
+    }
   },
   "Artemisia I": {
     "id": "40",
@@ -367,6 +374,6 @@
     "red": "Archer",
     "yellow": "Garrison",
     "blue": "Defense",
-    "guide": "https://rok.guide/artemisia-i/"
+    "guides": { "rokguide": "https://rok.guide/artemisia-i/" }
   }
 }

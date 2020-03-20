@@ -9,21 +9,24 @@ import './styles/SummaryPanel.css';
  *
  */
 function SummaryPanel(props) {
-  function getHeader() {
-    return (
-      <>
-        <span>{props.commander}</span>
-        {Commanders[props.commander].guide && (
-          <GuideIcon commander={props.commander} />
-        )}
-      </>
-    );
+  function getGuides() {
+    if (Commanders[props.commander].guides) {
+      let guides = [];
+
+      for (let guide in Commanders[props.commander].guides) {
+        guides.push(
+          <GuideIcon key={guide} commander={props.commander} name={guide} />
+        );
+      }
+      return <div id="summary-panel-guides">Guide: {guides}</div>;
+    }
   }
 
   return (
     <div id="summary-panel" className="info-box">
-      <h1>{props.commander ? getHeader() : 'Summary'}</h1>
+      <h1>{props.commander ? props.commander : 'Summary'}</h1>
       <h3>{props.commander && Commanders[props.commander].title}</h3>
+      <h3>{props.commander && getGuides()}</h3>
 
       <div id="summary-panel-summary">
         <p>Points remaining: {props.calcPointsRemaining()}</p>
@@ -42,23 +45,23 @@ function GuideIcon(props) {
   function clickGuide() {
     ReactGA.event({
       category: 'Navigation',
-      action: 'View guide',
+      action: `View guide (${props.name})`,
       label: props.commander
     });
   }
 
   return (
-    <GeneralTooltip tooltip="rok.guide">
+    <GeneralTooltip tooltip={props.name}>
       <a
-        href={Commanders[props.commander].guide}
+        href={Commanders[props.commander].guides[props.name]}
         target="_blank"
         rel="noopener noreferrer"
         onClick={clickGuide}
       >
         <img
           className="summary-panel-guide-icon"
-          src={`${process.env.PUBLIC_URL}/images/guide-icon.png`}
-          alt={`${props.commander} guide`}
+          src={`${process.env.PUBLIC_URL}/images/guides/${props.name}.png`}
+          alt={props.name}
         ></img>
       </a>
     </GeneralTooltip>

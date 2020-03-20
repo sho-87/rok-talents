@@ -2,7 +2,7 @@
 #info-panel {
   height: 100%;
   width: 100%;
-  padding: 10px;
+  padding: 4px;
   overflow-y: auto;
   overflow-wrap: break-word;
   z-index: 10;
@@ -26,5 +26,5 @@
   border: 0.5px solid black;
   border-radius: 5px;
   padding: 6px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }

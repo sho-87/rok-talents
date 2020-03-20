@@ -111,7 +111,6 @@ div {
   }
 
   #info-panel {
-    padding: 3px;
     background-image: linear-gradient(
       to top,
       var(--bg-color),
