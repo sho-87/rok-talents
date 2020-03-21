@@ -67,7 +67,7 @@
     "stats": "",
     "text": "While the army led by this commander is at more than 90% strength, increases all damage dealt by ${1}%",
     "prereq": [3],
-    "dep": [7, 8],
+    "dep": [12],
     "pos": [56.3, 25.4],
     "type": "node-large",
     "image": "yellowBeer"
