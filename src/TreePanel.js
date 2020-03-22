@@ -24,11 +24,6 @@ class TreePanel extends Component {
     this.state = {
       prereqMsg: ''
     };
-
-    // Context bindings
-    this.showPrereqToast = this.showPrereqToast.bind(this);
-    this.showPointLimitToast = this.showPointLimitToast.bind(this);
-    this.setMousePosition = this.setMousePosition.bind(this);
   }
 
   /**
@@ -86,26 +81,26 @@ class TreePanel extends Component {
    *
    * @memberof TreePanel
    */
-  resetPanZoom() {
+  resetPanZoom = () => {
     this.panZoomInstance.moveTo(0, 0);
     this.panZoomInstance.zoomAbs(0, 0, 1);
-  }
+  };
 
   /**
    * Call for repainting jsplumb lines on window resize
    *
    * @memberof TreePanel
    */
-  repaint() {
+  repaint = () => {
     jsPlumb.repaintEverything();
-  }
+  };
 
   /**
    * Draw lines between nodes
    *
    * @memberof TreePanel
    */
-  drawLines() {
+  drawLines = () => {
     if (this.props.commander) {
       jsPlumb.deleteEveryEndpoint();
       jsPlumb.setSuspendDrawing(true);
@@ -134,20 +129,20 @@ class TreePanel extends Component {
 
       jsPlumb.setSuspendDrawing(false, true);
     }
-  }
+  };
 
   /**
    * Toggle event listeners for setting mouse position
    *
    * @memberof TreePanel
    */
-  toggleMouseListeners() {
+  toggleMouseListeners = () => {
     if (this.props.isShownMouseXY) {
       window.addEventListener('mousemove', this.setMousePosition);
     } else {
       window.removeEventListener('mousemove', this.setMousePosition);
     }
-  }
+  };
 
   /**
    * Store mouse position relative to each tree container
@@ -155,7 +150,7 @@ class TreePanel extends Component {
    * @param {MouseEvent} e Mouse move event
    * @memberof TreePanel
    */
-  setMousePosition(e) {
+  setMousePosition = e => {
     const redContainer = document
       .getElementById('tree-red')
       .getBoundingClientRect();
@@ -197,7 +192,7 @@ class TreePanel extends Component {
       }),
       2000
     );
-  }
+  };
 
   /**
    * Show a toast containing a list of missing prerequisite talents. Toast is
@@ -205,11 +200,11 @@ class TreePanel extends Component {
    *
    * @memberof TreePanel
    */
-  showPrereqToast(msg) {
+  showPrereqToast = msg => {
     this.setState({ prereqMsg: msg }, () => {
       this.prereqToastRef.show();
     });
-  }
+  };
 
   /**
    * Show toast warning about reaching the maximum talent point limit. Toast
@@ -217,9 +212,9 @@ class TreePanel extends Component {
    *
    * @memberof TreePanel
    */
-  showPointLimitToast() {
+  showPointLimitToast = () => {
     this.pointLimitToastRef.show();
-  }
+  };
 
   render() {
     const sharedTreeProps = {

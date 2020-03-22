@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Toast from 'react-bootstrap/Toast';
-
 import './styles/Toasts.css';
 
 /**
@@ -13,9 +12,6 @@ export class ToastMessage extends Component {
   constructor(props) {
     super(props);
     this.state = { open: false };
-
-    // Context bindings
-    this.hide = this.hide.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -30,13 +26,13 @@ export class ToastMessage extends Component {
     }
   }
 
-  show() {
+  show = () => {
     this.setState({ open: true });
-  }
+  };
 
-  hide() {
+  hide = () => {
     this.setState({ open: false });
-  }
+  };
 
   render() {
     return (
@@ -61,9 +57,6 @@ export class PrereqToast extends Component {
   constructor(props) {
     super(props);
     this.state = { open: false };
-
-    // Context bindings
-    this.hide = this.hide.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -77,13 +70,13 @@ export class PrereqToast extends Component {
     }
   }
 
-  show() {
+  show = () => {
     this.setState({ open: true });
-  }
+  };
 
-  hide() {
+  hide = () => {
     this.setState({ open: false });
-  }
+  };
 
   render() {
     return (

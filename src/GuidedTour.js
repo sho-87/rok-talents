@@ -23,7 +23,8 @@ class GuidedTour extends Component {
           disableBeacon: true
         },
         {
-          content: 'View guides for the selected commander and check the number of points you have left to spend',
+          content:
+            'View guides for the selected commander and check the number of points you have left to spend',
           target: '#summary-panel',
           placement: 'auto'
         },

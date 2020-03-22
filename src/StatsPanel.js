@@ -16,7 +16,7 @@ class StatsPanel extends Component {
    * @returns {DOMElement[]} Array of DOM elements containing stats and values
    * @memberof StatsPanel
    */
-  getAllStats() {
+  getAllStats = () => {
     let allStats = [];
     const keys = Object.keys(this.props.stats);
     keys.sort();
@@ -26,7 +26,7 @@ class StatsPanel extends Component {
       );
     }
     return allStats;
-  }
+  };
 
   render() {
     return (

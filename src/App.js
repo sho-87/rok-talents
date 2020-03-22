@@ -8,6 +8,8 @@ import { InvalidBuildModal, AnnouncementModal } from './Modals';
 import ErrorBoundary from './Error';
 import loadTreeData from './data/AllTrees';
 import Commanders from './data/commanders.json';
+import { maxPoints } from './values';
+import { version, dataVersion } from '../package.json';
 import {
   sumArray,
   getMaxTalentCount,
@@ -19,8 +21,6 @@ import {
   encode,
   decode
 } from './utils';
-import { maxPoints } from './values';
-import { version, dataVersion } from '../package.json';
 
 import './styles/App.css';
 import './styles/fonts.css';
@@ -39,22 +39,6 @@ class App extends Component {
     super(props);
     this.invalidModalFlag = false;
     this.invalidBuildMessage = '';
-
-    // Context bindings
-    this.toggleInfoPanel = this.toggleInfoPanel.bind(this);
-    this.toggleTotalDisplay = this.toggleTotalDisplay.bind(this);
-    this.toggleValueDisplay = this.toggleValueDisplay.bind(this);
-    this.toggleNodeSize = this.toggleNodeSize.bind(this);
-    this.toggleSpeedMode = this.toggleSpeedMode.bind(this);
-    this.toggleMouseXY = this.toggleMouseXY.bind(this);
-    this.toggleTalentID = this.toggleTalentID.bind(this);
-    this.toggleAnnounce = this.toggleAnnounce.bind(this);
-    this.toggleTour = this.toggleTour.bind(this);
-    this.changeCommander = this.changeCommander.bind(this);
-    this.resetTalents = this.resetTalents.bind(this);
-    this.changeTalentValue = this.changeTalentValue.bind(this);
-    this.calcPointsSpent = this.calcPointsSpent.bind(this);
-    this.calcPointsRemaining = this.calcPointsRemaining.bind(this);
 
     // Set initial state from query string
     const urlParams = this.props.url.slice(1).split(';');
@@ -221,7 +205,7 @@ class App extends Component {
    * @returns {object} Object containing blank state values
    * @memberof App
    */
-  getEmptyState() {
+  getEmptyState = () => {
     let storage;
 
     if (this.props.isEmbed) {
@@ -268,7 +252,7 @@ class App extends Component {
       stats: this.getEmptyStats(),
       ...storage
     };
-  }
+  };
 
   /**
    * Get object containing all stats and set them to 0
@@ -276,9 +260,9 @@ class App extends Component {
    * @returns {object} Object containing stats with 0 values
    * @memberof App
    */
-  getEmptyStats() {
+  getEmptyStats = () => {
     return { Attack: 0, Defense: 0, Health: 0, 'March Speed': 0 };
-  }
+  };
 
   /**
    * Update the current URL
@@ -287,7 +271,7 @@ class App extends Component {
    * with the new state or cleared (new app state)?
    * @memberof App
    */
-  updateURL(method) {
+  updateURL = method => {
     let queryString;
 
     switch (method) {
@@ -317,7 +301,7 @@ class App extends Component {
         break;
     }
     window.history.replaceState('', '', queryString);
-  }
+  };
 
   /**
    * Set blank state object for the newly selected commander,
@@ -326,7 +310,7 @@ class App extends Component {
    * @param {string} commander Name of the commander being changed to
    * @memberof App
    */
-  changeCommander(commander) {
+  changeCommander = commander => {
     if (this.state.dataVersion !== dataVersion) {
       treeData = loadTreeData(dataVersion);
     }
@@ -354,7 +338,7 @@ class App extends Component {
     if (!isTouchDevice()) {
       this.treePanelRef.resetPanZoom();
     }
-  }
+  };
 
   /**
    * Create a new/blank state object for a commander. The individual talent
@@ -364,7 +348,7 @@ class App extends Component {
    * @returns {object} Object containing `0` arrays for each tree color
    * @memberof App
    */
-  createZeroTalents(commander) {
+  createZeroTalents = commander => {
     const numRed = Object.keys(treeData[Commanders[commander]['red']]).length;
     const numYellow = Object.keys(treeData[Commanders[commander]['yellow']])
       .length;
@@ -377,20 +361,20 @@ class App extends Component {
     };
 
     return zeroTalents;
-  }
+  };
 
   /**
    * Set all tree node values to `0` for the currently selected commander
    *
    * @memberof App
    */
-  resetTalents() {
+  resetTalents = () => {
     ReactGA.event({
       category: 'App',
       action: 'Reset build'
     });
     this.changeCommander(this.state.commander);
-  }
+  };
 
   /**
    * Change the value of a single talent node. Followed by `this.updateURL()`
@@ -402,7 +386,7 @@ class App extends Component {
    *  or decreased?
    * @memberof App
    */
-  changeTalentValue(color, idx, valueIdx, how) {
+  changeTalentValue = (color, idx, valueIdx, how) => {
     let talent = treeData[Commanders[this.state.commander][color]][idx];
     let stat = talent['stats'];
     let multiStat = Array.isArray(stat);
@@ -464,7 +448,7 @@ class App extends Component {
     this.setState({ [color]: newArr, stats: newStats }, () =>
       this.updateURL('update')
     );
-  }
+  };
 
   /**
    * Get the maximum number of available points for each talent
@@ -474,7 +458,7 @@ class App extends Component {
    * @returns {Number[]} Array of maximum available points for each talent in the tree
    * @memberof App
    */
-  createMaxValueArray(commander, color) {
+  createMaxValueArray = (commander, color) => {
     let maxArray = [];
 
     Object.keys(treeData[Commanders[commander][color]]).forEach(id => {
@@ -484,7 +468,7 @@ class App extends Component {
     });
 
     return maxArray;
-  }
+  };
 
   /**
    * Calculate the total number of talent points spent. This is just a sum
@@ -495,7 +479,7 @@ class App extends Component {
    * @returns {number} Total number of talent points spent
    * @memberof App
    */
-  calcPointsSpent(color = 'total') {
+  calcPointsSpent = (color = 'total') => {
     let points;
 
     if (color === 'total') {
@@ -505,7 +489,7 @@ class App extends Component {
     }
 
     return sumArray(points);
-  }
+  };
 
   /**
    * Calculate number of remaining talent points available to be spent
@@ -513,16 +497,16 @@ class App extends Component {
    * @returns {number} Number of remaining talent points
    * @memberof App
    */
-  calcPointsRemaining() {
+  calcPointsRemaining = () => {
     return maxPoints - this.calcPointsSpent();
-  }
+  };
 
   /**
    * Toggle display of info panel
    *
    * @memberof App
    */
-  toggleInfoPanel() {
+  toggleInfoPanel = () => {
     this.setState(
       prevState => ({
         isShownInfoPanel: !prevState.isShownInfoPanel
@@ -537,14 +521,14 @@ class App extends Component {
       category: 'Settings',
       action: 'Toggle info panel'
     });
-  }
+  };
 
   /**
    * Toggle display of total number of points spent in each tree
    *
    * @memberof App
    */
-  toggleTotalDisplay() {
+  toggleTotalDisplay = () => {
     this.setState(
       prevState => ({
         isShownTotals: !prevState.isShownTotals
@@ -558,14 +542,14 @@ class App extends Component {
       category: 'Settings',
       action: 'Toggle tree totals'
     });
-  }
+  };
 
   /**
    * Toggle display of node values
    *
    * @memberof App
    */
-  toggleValueDisplay() {
+  toggleValueDisplay = () => {
     this.setState(
       prevState => ({
         isShownValues: !prevState.isShownValues
@@ -579,7 +563,7 @@ class App extends Component {
       category: 'Settings',
       action: 'Toggle node values'
     });
-  }
+  };
 
   /**
    * Toggle node size
@@ -587,7 +571,7 @@ class App extends Component {
    * @param {string} size Desired node size
    * @memberof App
    */
-  toggleNodeSize(size) {
+  toggleNodeSize = size => {
     this.setState({ nodeSize: size }, () => {
       this.treePanelRef.repaint();
       localStorage.setItem('nodeSize', this.state.nodeSize);
@@ -598,14 +582,14 @@ class App extends Component {
       action: 'Toggle node size',
       label: size
     });
-  }
+  };
 
   /**
    * Toggle speed mode
    *
    * @memberof App
    */
-  toggleSpeedMode() {
+  toggleSpeedMode = () => {
     this.setState(
       prevState => ({
         isSpeedMode: !prevState.isSpeedMode
@@ -620,14 +604,14 @@ class App extends Component {
       category: 'Settings',
       action: 'Toggle speed mode'
     });
-  }
+  };
 
   /**
    * Toggle mouse XY position display
    *
    * @memberof App
    */
-  toggleMouseXY() {
+  toggleMouseXY = () => {
     this.setState(
       prevState => ({
         isShownMouseXY: !prevState.isShownMouseXY
@@ -637,14 +621,14 @@ class App extends Component {
         localStorage.setItem('isShownMouseXY', this.state.isShownMouseXY);
       }
     );
-  }
+  };
 
   /**
    * Toggle tooltip talent ID
    *
    * @memberof App
    */
-  toggleTalentID() {
+  toggleTalentID = () => {
     this.setState(
       prevState => ({
         isShownTalentID: !prevState.isShownTalentID
@@ -653,25 +637,25 @@ class App extends Component {
         localStorage.setItem('isShownTalentID', this.state.isShownTalentID);
       }
     );
-  }
+  };
 
   /**
    * Toggle guided tour
    *
    * @memberof App
    */
-  toggleTour() {
+  toggleTour = () => {
     this.tourRef.restartTour();
-  }
+  };
 
   /**
    * Toggle announcement
    *
    * @memberof App
    */
-  toggleAnnounce() {
+  toggleAnnounce = () => {
     this.announceRef.show();
-  }
+  };
 
   render() {
     return (

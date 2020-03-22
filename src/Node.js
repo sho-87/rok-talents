@@ -14,16 +14,6 @@ import './styles/Node.css';
  * @extends {Component}
  */
 class Node extends Component {
-  constructor(props) {
-    super(props);
-
-    // Context bindings
-    this.talentIncrease = this.talentIncrease.bind(this);
-    this.talentDecrease = this.talentDecrease.bind(this);
-    this.setTooltip = this.setTooltip.bind(this);
-    this.getStyle = this.getStyle.bind(this);
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     if (
       this.props.value !== nextProps.value ||
@@ -46,7 +36,7 @@ class Node extends Component {
    * (e.g. positioning, background image) for the node
    * @memberof Node
    */
-  getStyle() {
+  getStyle = () => {
     let style = {};
 
     style.top = this.props.y;
@@ -59,7 +49,7 @@ class Node extends Component {
     }
 
     return style;
-  }
+  };
 
   /**
    * Set tooltip for the node. Tooltip text is dynamic as it depends on the
@@ -68,7 +58,7 @@ class Node extends Component {
    * @returns {string} Updated tooltip text reflecting the level of the node
    * @memberof Node
    */
-  setTooltip() {
+  setTooltip = () => {
     let tooltip;
     let talentValues = this.props.treeData[this.props.treeName][this.props.idx][
       'values'
@@ -89,7 +79,7 @@ class Node extends Component {
     }
 
     return tooltip;
-  }
+  };
 
   /**
    * Increase the value of the clicked node. Controls whether the node can
@@ -100,7 +90,7 @@ class Node extends Component {
    *
    * @memberof Node
    */
-  talentIncrease() {
+  talentIncrease = () => {
     if (this.props.calcPointsRemaining() > 0) {
       // Check prerequisites
       const prereqs = this.props.treeData[this.props.treeName][this.props.idx]
@@ -148,7 +138,7 @@ class Node extends Component {
     } else {
       this.props.showPointLimitToast();
     }
-  }
+  };
 
   /**
    * Decrease value of the clicked node and update `this.state` to reflect
@@ -158,7 +148,7 @@ class Node extends Component {
    * @param {MouseEvent} e Mouse context event
    * @memberof Node
    */
-  talentDecrease(e) {
+  talentDecrease = e => {
     // Check dependent nodes
     const deps = this.props.treeData[this.props.treeName][this.props.idx].dep;
 
@@ -190,7 +180,7 @@ class Node extends Component {
           .removeClass(`line-${this.props.color}`);
       }
     }
-  }
+  };
 
   render() {
     let compressor = this.props.type === 'node-large' ? 0.31 : 0.21;

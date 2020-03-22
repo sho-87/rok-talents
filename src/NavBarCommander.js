@@ -18,9 +18,6 @@ class NavBarCommander extends Component {
     this.state = {
       isOpen: false
     };
-
-    // Context bindings
-    this.toggleSelect = this.toggleSelect.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -39,11 +36,11 @@ class NavBarCommander extends Component {
    *
    * @memberof NavBarCommander
    */
-  toggleSelect() {
+  toggleSelect = () => {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen
     }));
-  }
+  };
 
   /**
    * Create a list of all available commanders (sorted)
@@ -51,7 +48,7 @@ class NavBarCommander extends Component {
    * @returns {Dropdown.Item[]} Array of Dropdown items for all commanders
    * @memberof NavBarCommander
    */
-  createSelectItems() {
+  createSelectItems = () => {
     const commanderList = Object.keys(Commanders).sort();
     let legendaryCommanders = [];
     let epicCommanders = [];
@@ -87,7 +84,7 @@ class NavBarCommander extends Component {
       <Dropdown.Header key="header-epic">Epic</Dropdown.Header>,
       ...epicCommanders
     ];
-  }
+  };
 
   render() {
     return (

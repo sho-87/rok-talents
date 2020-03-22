@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Node from './Node';
 import ErrorBoundary from './Error';
 import { getMaxTalentCount } from './utils';
-
 import './styles/Tree.css';
 
 /**
@@ -16,13 +15,10 @@ class Tree extends Component {
   /**
    * Create an array of all talent nodes for the current commander
    *
-   * @param {number[]} values Array containing the node values stored
-   * in `this.state` for a given tree color
-   * @param {string} color Color of the tree to generate nodes for
    * @returns {Array} Array of `Node`'s for a given tree
    * @memberof Tree
    */
-  drawNodes() {
+  drawNodes = () => {
     let nodes = [];
     const treeName = this.props.treeName;
 
@@ -59,7 +55,7 @@ class Tree extends Component {
     }
 
     return nodes;
-  }
+  };
 
   render() {
     return (

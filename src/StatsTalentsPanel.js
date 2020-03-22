@@ -19,9 +19,6 @@ class StatsTalentsPanel extends Component {
     this.state = {
       isShownStatsTalents: false
     };
-
-    // Context bindings
-    this.toggleStatsTalents = this.toggleStatsTalents.bind(this);
   }
 
   /**
@@ -29,7 +26,7 @@ class StatsTalentsPanel extends Component {
    *
    * @memberof StatsTalentsPanel
    */
-  toggleStatsTalents() {
+  toggleStatsTalents = () => {
     this.setState(prevState => ({
       isShownStatsTalents: !prevState.isShownStatsTalents
     }));
@@ -38,7 +35,7 @@ class StatsTalentsPanel extends Component {
       category: 'App',
       action: 'Toggle stats talents'
     });
-  }
+  };
 
   /**
    * Calculate an array of main talents that don't belong in any of
@@ -47,7 +44,7 @@ class StatsTalentsPanel extends Component {
    * @returns {DOMElement[]} Array of all selected main talents
    * @memberof StatsTalentsPanel
    */
-  calcStatsTalents() {
+  calcStatsTalents = () => {
     const commander = this.props.commander;
     let talents = [];
 
@@ -88,7 +85,7 @@ class StatsTalentsPanel extends Component {
     });
 
     return talents;
-  }
+  };
 
   render() {
     const mainTalents = this.calcStatsTalents();

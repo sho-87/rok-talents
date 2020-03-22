@@ -31,14 +31,7 @@ import {
   WeiboIcon
 } from 'react-share';
 
-import {
-  title,
-  author,
-  contributors,
-  // repository,
-  bugs,
-  version
-} from '../package.json';
+import { title, author, contributors, bugs, version } from '../package.json';
 import { getURL } from './utils';
 import './styles/Modals.css';
 
@@ -54,15 +47,13 @@ export class InvalidBuildModal extends Component {
     this.state = {
       modal: true
     };
-
-    this.toggle = this.toggle.bind(this);
   }
 
-  toggle() {
+  toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
+  };
 
   render() {
     return (
@@ -115,19 +106,17 @@ export class AnnouncementModal extends Component {
           ? false
           : true
     };
-
-    this.toggle = this.toggle.bind(this);
   }
 
-  toggle() {
+  toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
+  };
 
-  show() {
+  show = () => {
     this.setState({ modal: true });
-  }
+  };
 
   render() {
     return (
@@ -180,8 +169,6 @@ export class AboutModal extends Component {
     this.state = {
       modal: false
     };
-
-    this.toggle = this.toggle.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -192,13 +179,13 @@ export class AboutModal extends Component {
     }
   }
 
-  toggle() {
+  toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
+  };
 
-  getContributors() {
+  getContributors = () => {
     let contributorsList = contributors.map((c, i) => [
       i > 0 && ', ',
       <a href={c.url} target="_blank" rel="noopener noreferrer" key={c.name}>
@@ -207,14 +194,14 @@ export class AboutModal extends Component {
     ]);
 
     return contributorsList;
-  }
+  };
 
-  showDonate() {
+  showDonate = () => {
     ReactGA.event({
       category: 'App',
       action: 'Donate'
     });
-  }
+  };
 
   render() {
     return (
@@ -251,16 +238,6 @@ export class AboutModal extends Component {
                 <span className="about-label">Contributors:</span>{' '}
                 {this.getContributors()}
               </div>
-              {/* <div>
-                <span className="about-label">Code:</span>{' '}
-                <a
-                  href={repository.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
-              </div> */}
               <div>
                 <span className="about-label">Report bug:</span>{' '}
                 <a href={bugs.url} target="_blank" rel="noopener noreferrer">
@@ -339,8 +316,6 @@ export class ResetModal extends Component {
     this.state = {
       modal: false
     };
-
-    this.toggle = this.toggle.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -351,11 +326,11 @@ export class ResetModal extends Component {
     }
   }
 
-  toggle() {
+  toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
+  };
 
   render() {
     return (
@@ -403,8 +378,6 @@ export class ShareModal extends Component {
     this.state = {
       modal: false
     };
-
-    this.toggle = this.toggle.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -415,13 +388,13 @@ export class ShareModal extends Component {
     }
   }
 
-  toggle() {
+  toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
+  };
 
-  copyURL() {
+  copyURL = () => {
     const input = document.getElementById('url');
     input.readOnly = true;
     input.select();
@@ -431,9 +404,9 @@ export class ShareModal extends Component {
       category: 'Share',
       action: 'Copy URL'
     });
-  }
+  };
 
-  copyEmbedURL() {
+  copyEmbedURL = () => {
     const input = document.getElementById('url-embed');
     input.readOnly = true;
     input.select();
@@ -443,14 +416,14 @@ export class ShareModal extends Component {
       category: 'Share',
       action: 'Copy Embed URL'
     });
-  }
+  };
 
-  shareSocial() {
+  shareSocial = () => {
     ReactGA.event({
       category: 'Share',
       action: 'Share social media'
     });
-  }
+  };
 
   render() {
     return (

@@ -20,63 +20,40 @@ import './styles/NavBar.css';
  * @extends {Component}
  */
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      navOpen: false
-    };
-
-    // Context bindings
-    this.toggleNav = this.toggleNav.bind(this);
-    this.showReset = this.showReset.bind(this);
-    this.showShare = this.showShare.bind(this);
-  }
-
-  /**
-   * Toggle visibility of the nav bar collapse/expand menu icon
-   *
-   * @memberof NavBar
-   */
-  toggleNav() {
-    this.setState(prevState => ({
-      navOpen: !prevState.navOpen
-    }));
-  }
-
   /**
    * Control visibility of the "About" modal
    *
    * @memberof NavBar
    */
-  showAbout() {
+  showAbout = () => {
     this.aboutModalRef.toggle();
     ReactGA.event({
       category: 'App',
       action: 'View about modal'
     });
-  }
+  };
 
   /**
    * Control visibility of the "Reset" modal
    *
    * @memberof NavBar
    */
-  showReset() {
+  showReset = () => {
     this.resetModalRef.toggle();
-  }
+  };
 
   /**
    * Control visibility of the "Share" modal
    *
    * @memberof NavBar
    */
-  showShare() {
+  showShare = () => {
     this.shareModalRef.toggle();
     ReactGA.event({
       category: 'Share',
       action: 'View share modal'
     });
-  }
+  };
 
   render() {
     return (
