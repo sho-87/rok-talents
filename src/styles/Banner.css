@@ -1,0 +1,24 @@
+#banner {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0px;
+  right: 0px;
+  margin: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 0.8em;
+  background-color: rgb(243, 243, 243);
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 3px;
+  z-index: 100;
+}
+
+#banner img {
+  height: 18px;
+  width: auto;
+  margin-left: 5px;
+}

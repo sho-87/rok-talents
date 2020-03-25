@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/Announcement.css';
 
-function Announcement() {
+function Announcement(props) {
   return (
     <>
       <h1>{`New release: v1.3.0`}</h1>
@@ -13,8 +13,8 @@ function Announcement() {
         <br />
         <br />
         Click the Screenshot button in the top navigation bar to take a
-        screenshot of your current talent build. Whatever you see in the middle talent
-        tree window will be what gets saved.
+        screenshot of your current talent build. Whatever you see in the middle
+        talent tree window will be what gets saved.
         <br />
         <br />
         Don't settle for those blurry in-game screenshots anymore!
@@ -39,9 +39,7 @@ function Announcement() {
 
       <h2>Other Changes</h2>
       <ul>
-        <li>
-          Created a new icon and logo for the website
-        </li>
+        <li>Created a new icon and logo for the website</li>
         <li>
           Commander image sizes have been reduced, so the commander list should
           load faster. Image quality has not been reduced.
@@ -53,9 +51,7 @@ function Announcement() {
         <li>
           Fixed a bug where new users would always see the announcement window.
         </li>
-        <li>
-          Fixed some talent description typos.
-        </li>
+        <li>Fixed some talent description typos.</li>
       </ul>
     </>
   );

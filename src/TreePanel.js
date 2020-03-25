@@ -5,10 +5,16 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tree from './Tree';
 import Hexagon from './Hexagon';
+import Banner from './Banner';
 import { PrereqToast, ToastMessage } from './Toasts';
-import { getTreeName, getURL, isTouchDevice } from './utils';
+import {
+  createSummaryString,
+  getTreeName,
+  getURL,
+  isTouchDevice
+} from './utils';
 
-import { dataVersion, homepage } from '../package.json';
+import { dataVersion } from '../package.json';
 import './styles/TreePanel.css';
 
 /**
@@ -254,18 +260,16 @@ class TreePanel extends Component {
             <div data-testid="embed-message" id="embed-message">
               View full build:{' '}
               <a href={getURL()} target="_blank" rel="noopener noreferrer">
-                {homepage.split('//')[1]}
+                {createSummaryString(
+                  this.props.commander,
+                  this.props.red,
+                  this.props.yellow,
+                  this.props.blue
+                )}
                 <FontAwesomeIcon id="external-icon" icon={faExternalLinkAlt} />
               </a>
             </div>
-            <a href={getURL()} target="_blank" rel="noopener noreferrer">
-              <img
-                data-testid="embed-banner"
-                id="embed-banner"
-                src={`${process.env.PUBLIC_URL}/banner-sm.svg`}
-                alt="roktalents banner"
-              ></img>
-            </a>
+            <Banner />
           </>
         )}
 

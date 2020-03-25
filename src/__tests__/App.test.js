@@ -57,7 +57,7 @@ describe('App component', () => {
     const { getByTestId } = render(<App url={url} isEmbed={true} />);
 
     expect(getByTestId('embed-message')).toBeInTheDocument();
-    expect(getByTestId('embed-banner')).toBeInTheDocument();
+    expect(getByTestId('banner')).toBeInTheDocument();
   });
 
   it('toggles info panel on settings change', () => {

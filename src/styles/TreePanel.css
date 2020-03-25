@@ -70,16 +70,6 @@
   z-index: 100;
 }
 
-#embed-banner {
-  position: absolute;
-  height: 2.5%;
-  width: auto;
-  bottom: 0px;
-  right: 0px;
-  margin: 5px;
-  z-index: 100;
-}
-
 #external-icon {
   margin-left: 4px;
 }
