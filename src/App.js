@@ -1,5 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import ReactGA from 'react-ga';
+import Progress from './Progress';
 import Spinner from 'react-bootstrap/Spinner';
 import GuidedTour from './GuidedTour';
 import NavBar from './NavBar';
@@ -196,6 +197,8 @@ class App extends Component {
     if (isNewUser()) {
       localStorage.setItem('isNewUser', false);
     }
+
+    this.setState({ showProgress: false });
   }
 
   /**
@@ -251,6 +254,7 @@ class App extends Component {
     }
 
     return {
+      showProgress: true,
       dataVersion: dataVersion,
       commander: '',
       red: [],
@@ -706,6 +710,11 @@ class App extends Component {
           }
           isNewUser={isNewUser()}
           isInvalidBuild={this.invalidModalFlag}
+        />
+
+        <Progress
+          isAnimating={this.state.showProgress}
+          animationDuration={1000}
         />
 
         {!this.props.isEmbed && (
