@@ -374,6 +374,9 @@
     "red": "Archer",
     "yellow": "Garrison",
     "blue": "Defense",
-    "guides": { "rokguide": "https://rok.guide/artemisia-i/" }
+    "guides": {
+      "rokguide": "https://rok.guide/artemisia-i/",
+      "shinchi42": "https://www.youtube.com/watch?v=C1W_nAWYRf0"
+    }
   }
 }
