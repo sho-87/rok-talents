@@ -255,7 +255,7 @@ class TreePanel extends Component {
           </div>
         )}
 
-        {this.props.isEmbed && (
+        {this.props.isEmbed ? (
           <>
             <div data-testid="embed-message" id="embed-message">
               View full build:{' '}
@@ -269,8 +269,10 @@ class TreePanel extends Component {
                 <FontAwesomeIcon id="external-icon" icon={faExternalLinkAlt} />
               </a>
             </div>
-            <Banner />
+            <Banner show={true} embed={true} />
           </>
+        ) : (
+          <Banner show={false} embed={false} />
         )}
 
         <div id="tree-square-container">

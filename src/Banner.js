@@ -3,14 +3,19 @@ import { homepage } from '../package.json';
 import './styles/Banner.css';
 
 function Banner(props) {
+  const style = {
+    visibility: props.show ? 'visible' : 'hidden',
+    fontSize: props.embed ? '0.9em' : ''
+  };
+
   return (
-    <div id="banner" data-testid="banner">
-      <span>
+    <div id="banner" data-testid="banner" style={style}>
+      <div>
         Created at{' '}
         <a href={homepage} target="_blank" rel="noopener noreferrer">
           {homepage.split('//')[1]}
         </a>
-      </span>
+      </div>
       <img
         src={`${process.env.PUBLIC_URL}/icon.svg`}
         alt="roktalents banner"

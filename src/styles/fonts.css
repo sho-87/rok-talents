@@ -57,6 +57,14 @@ h3 {
     font-size: 0.5em;
   }
 
+  #banner {
+    font-size: 0.55em;
+  }
+
+  #banner img {
+    height: 1.1em;
+  }
+
   .popover {
     border-radius: 5px !important;
   }
@@ -110,6 +118,14 @@ h3 {
 
   p {
     font-size: 0.6em;
+  }
+
+  #banner {
+    font-size: 0.55em;
+  }
+
+  #banner img {
+    height: 1.1em;
   }
 
   .bullet {
@@ -184,6 +200,14 @@ h3 {
     font-size: 1.2em;
   }
 
+  #banner {
+    font-size: 0.9em;
+  }
+
+  #banner img {
+    height: 1.1em;
+  }
+
   .node-tooltip-title {
     font-size: 1.2em;
   }
@@ -224,6 +248,14 @@ h3 {
 
   p {
     font-size: 0.8em;
+  }
+
+  #banner {
+    font-size: 0.9em;
+  }
+
+  #banner img {
+    height: 1.1em;
   }
 
   .bullet {
@@ -285,6 +317,14 @@ h3 {
     font-size: 1.5em;
   }
 
+  #banner {
+    font-size: 1em;
+  }
+
+  #banner img {
+    height: 1.2em;
+  }
+
   .node-tooltip-title {
     font-size: 1.4em;
   }
@@ -325,6 +365,14 @@ h3 {
 
   p {
     font-size: 1em;
+  }
+
+  #banner {
+    font-size: 1em;
+  }
+
+  #banner img {
+    height: 1.2em;
   }
 
   .bullet {

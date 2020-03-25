@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ReactGA from 'react-ga';
 import Spinner from 'react-bootstrap/Spinner';
 import domtoimage from 'dom-to-image';
-import watermark from 'watermarkjs';
 import {
   faTrashAlt,
   faCamera,
@@ -10,7 +9,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createSummaryString } from './utils';
-import { homepage } from '../package.json';
 
 import './styles/NavBarButtons.css';
 
@@ -22,13 +20,12 @@ function NavBarButtons(props) {
   const [isDownloading, setIsDownloading] = useState(false);
 
   /**
-   * Take a screenshot of the talent tree, add watermark, and download
+   * Take a screenshot of the talent tree, add banner, and download
    *
-   * @param {boolean} [addLogo=true] Should a logo be rendered?
-   * @param {boolean} [addText=true] Should watermark text be rendered?
+   * @param {boolean} [addBanner=true] Should a logo/banner be rendered?
    * @memberof NavBarButtons
    */
-  function takeScreenshot(addLogo = true, addText = false) {
+  function takeScreenshot(addBanner = true) {
     ReactGA.event({
       category: 'App',
       action: 'Screenshot',
@@ -36,8 +33,12 @@ function NavBarButtons(props) {
     });
 
     setIsDownloading(true);
-    const node = document.getElementById('tree-panel');
     const dpr = window.devicePixelRatio || 1;
+    const node = document.getElementById('tree-panel');
+
+    if (addBanner) {
+      document.getElementById('banner').style.visibility = 'visible';
+    }
 
     domtoimage
       .toJpeg(node, {
@@ -50,75 +51,20 @@ function NavBarButtons(props) {
           height: node.offsetHeight + 'px'
         }
       })
-      .then(nodeDataUrl => {
-        // add watermark
-        watermark([nodeDataUrl, `${process.env.PUBLIC_URL}/banner-sm.svg`])
-          .dataUrl((treePanel, logo) => {
-            const context = treePanel.getContext('2d', { alpha: false });
-            context.scale(dpr, dpr);
+      .then(dataUrl => {
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = `${createSummaryString(
+          props.commander,
+          props.red,
+          props.yellow,
+          props.blue,
+          '-'
+        )}.jpeg`;
+        link.click();
 
-            if (addLogo) {
-              const logoAspectRatio = logo.width / logo.height;
-              const logoResizedHeight = node.offsetHeight * 0.03;
-              const logoResizedWidth = logoResizedHeight * logoAspectRatio;
-
-              context.save();
-              context.globalAlpha = 1;
-              context.drawImage(
-                logo,
-                node.offsetWidth - logoResizedWidth - 5,
-                node.offsetHeight - logoResizedHeight - 5,
-                logoResizedWidth,
-                logoResizedHeight
-              );
-              context.restore();
-            }
-            if (addText) {
-              context.save();
-              context.globalAlpha = 0.15;
-
-              // lower font size until the text fits the canvas
-              const text = homepage.split('//')[1];
-              let fontsize = 70;
-              do {
-                fontsize--;
-                context.font = fontsize + 'px sans-serif';
-              } while (
-                context.measureText(text).width >
-                document.getElementById('tree-square-content').offsetWidth * 0.3
-              );
-
-              context.fillStyle = '#ffffff';
-              context.textAlign = 'center';
-              context.textBaseline = 'middle';
-              context.fillText(
-                text,
-                node.offsetWidth / 2,
-                node.offsetHeight / 2
-              );
-              context.restore();
-            }
-
-            return treePanel;
-          })
-          .then(dataUrl => {
-            // save
-            const img = document.createElement('a');
-            img.href = dataUrl;
-            img.download = `${createSummaryString(
-              props.commander,
-              props.red,
-              props.yellow,
-              props.blue,
-              '-'
-            )}.jpeg`;
-
-            document.body.appendChild(img);
-            img.click();
-            document.body.removeChild(img);
-            setIsDownloading(false);
-          });
-        watermark.destroy();
+        document.getElementById('banner').style.visibility = 'hidden';
+        setIsDownloading(false);
       });
   }
 
