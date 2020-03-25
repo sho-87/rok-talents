@@ -215,6 +215,7 @@ class App extends Component {
         isShownInfoPanel: false,
         isShownValues: true,
         isShownTotals: true,
+        isScreenshotStats: false,
         isSpeedMode: false,
         isShownMouseXY: false,
         isShownTalentID: false
@@ -226,17 +227,23 @@ class App extends Component {
       );
       const isShownValues = JSON.parse(localStorage.getItem('isShownValues'));
       const isShownTotals = JSON.parse(localStorage.getItem('isShownTotals'));
+      const isScreenshotStats = JSON.parse(
+        localStorage.getItem('isScreenshotStats')
+      );
       const isSpeedMode = JSON.parse(localStorage.getItem('isSpeedMode'));
       const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
       const isShownTalentID = JSON.parse(
         localStorage.getItem('isShownTalentID')
       );
 
+      // Default values
       storage = {
         nodeSize: localStorage.getItem('nodeSize') || 'M',
         isShownInfoPanel: isShownInfoPanel === null ? true : isShownInfoPanel,
         isShownValues: isShownValues === null ? true : isShownValues,
         isShownTotals: isShownTotals === null ? true : isShownTotals,
+        isScreenshotStats:
+          isScreenshotStats === null ? false : isScreenshotStats,
         isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
         isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
         isShownTalentID: isShownTalentID === null ? false : isShownTalentID
@@ -585,6 +592,27 @@ class App extends Component {
   };
 
   /**
+   * Toggle screenshot stats
+   *
+   * @memberof App
+   */
+  toggleScreenshotStats = () => {
+    this.setState(
+      prevState => ({
+        isScreenshotStats: !prevState.isScreenshotStats
+      }),
+      () => {
+        localStorage.setItem('isScreenshotStats', this.state.isScreenshotStats);
+      }
+    );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle screenshot stats'
+    });
+  };
+
+  /**
    * Toggle speed mode
    *
    * @memberof App
@@ -687,6 +715,7 @@ class App extends Component {
               toggleTotalDisplay={this.toggleTotalDisplay}
               toggleValueDisplay={this.toggleValueDisplay}
               toggleNodeSize={this.toggleNodeSize}
+              toggleScreenshotStats={this.toggleScreenshotStats}
               toggleSpeedMode={this.toggleSpeedMode}
               toggleMouseXY={this.toggleMouseXY}
               toggleTalentID={this.toggleTalentID}
@@ -703,6 +732,7 @@ class App extends Component {
               isShownInfoPanel={this.state.isShownInfoPanel}
               isShownValues={this.state.isShownValues}
               isShownTotals={this.state.isShownTotals}
+              isScreenshotStats={this.state.isScreenshotStats}
               isSpeedMode={this.state.isSpeedMode}
               isShownMouseXY={this.state.isShownMouseXY}
               isShownTalentID={this.state.isShownTalentID}

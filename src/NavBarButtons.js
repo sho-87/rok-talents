@@ -25,7 +25,7 @@ function NavBarButtons(props) {
    * @param {boolean} [addBanner=true] Should a logo/banner be rendered?
    * @memberof NavBarButtons
    */
-  function takeScreenshot(addBanner = true) {
+  function takeScreenshot(elementID, addBanner = true) {
     ReactGA.event({
       category: 'App',
       action: 'Screenshot',
@@ -34,7 +34,7 @@ function NavBarButtons(props) {
 
     setIsDownloading(true);
     const dpr = window.devicePixelRatio || 1;
-    const node = document.getElementById('tree-panel');
+    const node = document.getElementById(elementID);
 
     if (addBanner) {
       document.getElementById('banner').style.visibility = 'visible';
@@ -88,7 +88,12 @@ function NavBarButtons(props) {
         type="button"
         disabled={props.commander | props.calcPointsSpent() ? false : true}
         className="btn btn-sm btn-primary"
-        onClick={() => takeScreenshot()}
+        onClick={() => {
+          const elementID = props.isScreenshotStats
+            ? 'main-container'
+            : 'tree-panel';
+          takeScreenshot(elementID);
+        }}
       >
         {isDownloading ? (
           <Spinner size="sm" animation="border" variant="light" />

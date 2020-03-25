@@ -18,7 +18,7 @@
 
 #tree-red-mouse {
   position: absolute;
-  top: 0%;
+  top: 2%;
   left: -100%;
   color: var(--red);
   padding: 2px;

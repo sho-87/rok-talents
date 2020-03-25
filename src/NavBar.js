@@ -96,6 +96,7 @@ class NavBar extends Component {
 
           <Nav className="ml-auto">
             <NavBarButtons
+              isScreenshotStats={this.props.isScreenshotStats}
               calcPointsSpent={this.props.calcPointsSpent}
               showReset={this.showReset}
               showShare={this.showShare}
@@ -110,12 +111,14 @@ class NavBar extends Component {
               toggleTotalDisplay={this.props.toggleTotalDisplay}
               toggleValueDisplay={this.props.toggleValueDisplay}
               toggleNodeSize={this.props.toggleNodeSize}
+              toggleScreenshotStats={this.props.toggleScreenshotStats}
               toggleSpeedMode={this.props.toggleSpeedMode}
               toggleMouseXY={this.props.toggleMouseXY}
               toggleTalentID={this.props.toggleTalentID}
               isShownInfoPanel={this.props.isShownInfoPanel}
               isShownValues={this.props.isShownValues}
               isShownTotals={this.props.isShownTotals}
+              isScreenshotStats={this.props.isScreenshotStats}
               isSpeedMode={this.props.isSpeedMode}
               isShownMouseXY={this.props.isShownMouseXY}
               isShownTalentID={this.props.isShownTalentID}
