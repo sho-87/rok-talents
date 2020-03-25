@@ -91,7 +91,7 @@ function NavBarSettings(props) {
               <Form.Check
                 type="switch"
                 id="settings-screenshot-stats"
-                label="Include Stats"
+                label="Include stats"
                 checked={props.isScreenshotStats}
                 onChange={e => props.toggleScreenshotStats()}
               />
