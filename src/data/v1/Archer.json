@@ -106,7 +106,7 @@
   },
   "11": {
     "name": "Armed and Armored",
-    "values": [3, 6, 9],
+    "values": [1, 2, 3],
     "stats": "Health",
     "text": "Increases health of archer units by ${1}%",
     "prereq": [4],
