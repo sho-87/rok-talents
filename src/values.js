@@ -1,9 +1,6 @@
 /** Maximum number of talent points available in the game */
 export const maxPoints = 74;
 
-// Max width of mobile/tablet devices (px)
-export const mobileBreakpoint = 1280;
-
 /** Mapping value pairs to letters for encoding */
 export const valuesToLetters = {
   '00': 'a',
