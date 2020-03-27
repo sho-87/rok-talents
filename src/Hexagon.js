@@ -3,7 +3,7 @@ import FitText from '@kennethormandy/react-fittext';
 import { getTreeName } from './utils';
 import './styles/Hexagon.css';
 
-function Hexagon(props) {
+export function Hexagon(props) {
   if (props.commander) {
     return (
       <div id="tree-center">

@@ -14,7 +14,6 @@ import { version, dataVersion } from '../package.json';
 import {
   sumArray,
   getMaxTalentCount,
-  getTreeName,
   setTitle,
   isTouchDevice,
   isUpgrade,
@@ -126,26 +125,6 @@ class App extends Component {
             } else {
               // Store color array in state
               this.state[color[1]] = talents;
-
-              // Calculate stats for the color
-              const treeName = getTreeName(color[1], commanderName);
-              for (let i = 0; i < talents.length; i++) {
-                const talentData = treeData[treeName][i + 1];
-                const stat = talentData['stats'];
-
-                if (talents[i] > 0 && stat) {
-                  const multiStat = Array.isArray(stat);
-                  if (multiStat) {
-                    for (let j = 0; j < stat.length; j++) {
-                      this.state.stats[stat[j]] +=
-                        talentData['values'][talents[i] - 1];
-                    }
-                  } else {
-                    this.state.stats[stat] +=
-                      talentData['values'][talents[i] - 1];
-                  }
-                }
-              }
             }
           }
 
@@ -260,19 +239,8 @@ class App extends Component {
       red: [],
       yellow: [],
       blue: [],
-      stats: this.getEmptyStats(),
       ...storage
     };
-  };
-
-  /**
-   * Get object containing all stats and set them to 0
-   *
-   * @returns {object} Object containing stats with 0 values
-   * @memberof App
-   */
-  getEmptyStats = () => {
-    return { Attack: 0, Defense: 0, Health: 0, 'March Speed': 0 };
   };
 
   /**
@@ -328,12 +296,7 @@ class App extends Component {
 
     const zeroTalents = this.createZeroTalents(commander);
     this.setState(
-      {
-        dataVersion: dataVersion,
-        commander: commander,
-        ...zeroTalents,
-        stats: this.getEmptyStats()
-      },
+      { dataVersion: dataVersion, commander: commander, ...zeroTalents },
       () => {
         this.updateURL('update');
         this.treePanelRef.drawLines();
@@ -392,73 +355,21 @@ class App extends Component {
    *
    * @param {string} color Color of the tree the node belongs to
    * @param {number} idx Index of the node in the tree/color array.
-   * @param {number} valueIdx Index of the changed value.
    * @param {string} how {increase | decrease} Should node value be increased
    *  or decreased?
+   * @param {number} amount How much to change the value by
    * @memberof App
    */
-  changeTalentValue = (color, idx, valueIdx, how) => {
-    let talent = treeData[Commanders[this.state.commander][color]][idx];
-    let stat = talent['stats'];
-    let multiStat = Array.isArray(stat);
+  changeTalentValue = (color, idx, how, amount) => {
     let newArr = this.state[color];
-    let newStats = { ...this.state.stats };
 
     if (how === 'increase') {
-      newArr[idx - 1] += 1;
-
-      // increase stat value
-      if (stat) {
-        if (multiStat) {
-          // multi-stat
-          stat.forEach(curStat => {
-            if (valueIdx === 0) {
-              newStats[curStat] += talent['values'][0];
-            } else {
-              newStats[curStat] +=
-                talent['values'][valueIdx] - talent['values'][valueIdx - 1];
-            }
-          });
-        } else {
-          // single stat
-          if (valueIdx === 0) {
-            newStats[stat] += talent['values'][0];
-          } else {
-            newStats[stat] +=
-              talent['values'][valueIdx] - talent['values'][valueIdx - 1];
-          }
-        }
-      }
+      newArr[idx - 1] += amount;
     } else if (how === 'decrease') {
-      newArr[idx - 1] -= 1;
-
-      // decrease stat value
-      if (stat) {
-        if (multiStat) {
-          // multi-stat
-          stat.forEach(curStat => {
-            if (valueIdx <= 1) {
-              newStats[curStat] -= talent['values'][0];
-            } else {
-              newStats[curStat] -=
-                talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
-            }
-          });
-        } else {
-          // single stat
-          if (valueIdx <= 1) {
-            newStats[stat] -= talent['values'][0];
-          } else {
-            newStats[stat] -=
-              talent['values'][valueIdx - 1] - talent['values'][valueIdx - 2];
-          }
-        }
-      }
+      newArr[idx - 1] -= amount;
     }
 
-    this.setState({ [color]: newArr, stats: newStats }, () =>
-      this.updateURL('update')
-    );
+    this.setState({ [color]: newArr }, () => this.updateURL('update'));
   };
 
   /**
@@ -762,7 +673,6 @@ class App extends Component {
             {!this.props.isEmbed && (
               <ErrorBoundary>
                 <InfoPanel
-                  ref={component => (this.infoPanelRef = component)}
                   calcPointsSpent={this.calcPointsSpent}
                   calcPointsRemaining={this.calcPointsRemaining}
                   treeData={treeData}
@@ -770,7 +680,6 @@ class App extends Component {
                   red={this.state.red}
                   yellow={this.state.yellow}
                   blue={this.state.blue}
-                  stats={this.state.stats}
                   isShownInfoPanel={this.state.isShownInfoPanel}
                 />
               </ErrorBoundary>

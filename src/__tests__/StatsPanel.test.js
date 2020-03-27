@@ -7,7 +7,7 @@ import StatsPanel from '../StatsPanel';
 let props;
 beforeEach(() => {
   props = {
-    stats: { stats: { Attack: 0, Defense: 0, Health: 0, 'March Speed': 0 } }
+    stats: {}
   };
 });
 

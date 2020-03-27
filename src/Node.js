@@ -121,8 +121,8 @@ class Node extends Component {
           this.props.changeTalentValue(
             this.props.color,
             this.props.idx,
-            this.props.value,
-            'increase'
+            'increase',
+            1
           );
           jsPlumb
             .select({
@@ -166,8 +166,8 @@ class Node extends Component {
       this.props.changeTalentValue(
         this.props.color,
         this.props.idx,
-        this.props.value,
-        'decrease'
+        'decrease',
+        1
       );
 
       if (this.props.value === 1) {

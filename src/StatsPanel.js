@@ -25,7 +25,8 @@ class StatsPanel extends Component {
         <p key={keys[i]}>{`${keys[i]}: ${this.props.stats[keys[i]]}%`}</p>
       );
     }
-    return allStats;
+
+    return allStats.length > 0 ? allStats : 'None';
   };
 
   render() {
