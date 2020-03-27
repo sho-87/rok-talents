@@ -20,7 +20,8 @@ class Node extends Component {
       this.props.nodeSize !== nextProps.nodeSize ||
       this.props.isShownValues !== nextProps.isShownValues ||
       this.props.isShownTalentID !== nextProps.isShownTalentID ||
-      this.props.isSpeedMode !== nextProps.isSpeedMode
+      this.props.isSpeedMode !== nextProps.isSpeedMode ||
+      this.props.isInstantMax !== nextProps.isInstantMax
     ) {
       return true;
     } else {
@@ -91,7 +92,9 @@ class Node extends Component {
    * @memberof Node
    */
   talentIncrease = () => {
-    if (this.props.calcPointsRemaining() > 0) {
+    const pointsRemaining = this.props.calcPointsRemaining();
+
+    if (pointsRemaining > 0) {
       // Check prerequisites
       const prereqs = this.props.treeData[this.props.treeName][this.props.idx]
         .prereq;
@@ -118,11 +121,22 @@ class Node extends Component {
 
       if (prereqsOK) {
         if (this.props.value < this.props.max) {
+          let numberAssignable = 1;
+
+          if (this.props.isInstantMax) {
+            if (this.props.max - this.props.value > pointsRemaining) {
+              numberAssignable = pointsRemaining;
+              this.props.showPointLimitToast();
+            } else {
+              numberAssignable = this.props.max - this.props.value;
+            }
+          }
+
           this.props.changeTalentValue(
             this.props.color,
             this.props.idx,
             'increase',
-            1
+            numberAssignable
           );
           jsPlumb
             .select({

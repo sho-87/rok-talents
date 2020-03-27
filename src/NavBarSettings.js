@@ -111,6 +111,16 @@ function NavBarSettings(props) {
             points"
                 />
               </div>
+              <div className="help-wrapper">
+                <Form.Check
+                  type="switch"
+                  id="settings-instant-max"
+                  label="Instant max"
+                  checked={props.isInstantMax}
+                  onChange={e => props.toggleInstantMax()}
+                />
+                <HelpTooltip tooltip="Assign max points with a single click" />
+              </div>
             </div>
 
             {process.env.NODE_ENV === 'development' && (
