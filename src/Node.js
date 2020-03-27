@@ -3,7 +3,7 @@ import FitText from '@kennethormandy/react-fittext';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Popovers';
-import { replaceTalentText, getMaxTalentCount } from './utils';
+import { replaceTalentText, getMaxTalentCount, findAllPrereqs } from './utils';
 
 import './styles/Node.css';
 
@@ -20,9 +20,7 @@ class Node extends Component {
       this.props.nodeSize !== nextProps.nodeSize ||
       this.props.isShownValues !== nextProps.isShownValues ||
       this.props.isShownTalentID !== nextProps.isShownTalentID ||
-      this.props.isSpeedMode !== nextProps.isSpeedMode ||
-      this.props.isInstantZero !== nextProps.isInstantZero ||
-      this.props.isInstantMax !== nextProps.isInstantMax
+      this.props.isSpeedMode !== nextProps.isSpeedMode
     ) {
       return true;
     } else {

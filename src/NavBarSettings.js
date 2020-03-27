@@ -129,7 +129,17 @@ function NavBarSettings(props) {
                   checked={props.isInstantMax}
                   onChange={e => props.toggleInstantMax()}
                 />
-                <HelpTooltip tooltip="Assign max points with a single click" />
+                <HelpTooltip tooltip="Max talent with a single click" />
+              </div>
+              <div className="help-wrapper">
+                <Form.Check
+                  type="switch"
+                  id="settings-auto-fill"
+                  label="Auto fill"
+                  checked={props.isAutoFill}
+                  onChange={e => props.toggleAutoFill()}
+                />
+                <HelpTooltip tooltip="Automatically fill all prerequisite talents" />
               </div>
             </div>
 

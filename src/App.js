@@ -201,6 +201,7 @@ class App extends Component {
         isSpeedMode: false,
         isInstantZero: false,
         isInstantMax: false,
+        isAutoFill: false,
         isShownMouseXY: false,
         isShownTalentID: false
       };
@@ -217,6 +218,7 @@ class App extends Component {
       const isSpeedMode = JSON.parse(localStorage.getItem('isSpeedMode'));
       const isInstantZero = JSON.parse(localStorage.getItem('isInstantZero'));
       const isInstantMax = JSON.parse(localStorage.getItem('isInstantMax'));
+      const isAutoFill = JSON.parse(localStorage.getItem('isAutoFill'));
       const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
       const isShownTalentID = JSON.parse(
         localStorage.getItem('isShownTalentID')
@@ -233,6 +235,7 @@ class App extends Component {
         isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
         isInstantZero: isInstantZero === null ? false : isInstantZero,
         isInstantMax: isInstantMax === null ? false : isInstantMax,
+        isAutoFill: isAutoFill === null ? false : isAutoFill,
         isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
         isShownTalentID: isShownTalentID === null ? false : isShownTalentID
       };
@@ -598,6 +601,27 @@ class App extends Component {
   };
 
   /**
+   * Toggle auto fill mode
+   *
+   * @memberof App
+   */
+  toggleAutoFill = () => {
+    this.setState(
+      prevState => ({
+        isAutoFill: !prevState.isAutoFill
+      }),
+      () => {
+        localStorage.setItem('isAutoFill', this.state.isAutoFill);
+      }
+    );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle auto fill'
+    });
+  };
+
+  /**
    * Toggle mouse XY position display
    *
    * @memberof App
@@ -687,6 +711,7 @@ class App extends Component {
               toggleSpeedMode={this.toggleSpeedMode}
               toggleInstantZero={this.toggleInstantZero}
               toggleInstantMax={this.toggleInstantMax}
+              toggleAutoFill={this.toggleAutoFill}
               toggleMouseXY={this.toggleMouseXY}
               toggleTalentID={this.toggleTalentID}
               toggleAnnounce={this.toggleAnnounce}
@@ -706,6 +731,7 @@ class App extends Component {
               isSpeedMode={this.state.isSpeedMode}
               isInstantZero={this.state.isInstantZero}
               isInstantMax={this.state.isInstantMax}
+              isAutoFill={this.state.isAutoFill}
               isShownMouseXY={this.state.isShownMouseXY}
               isShownTalentID={this.state.isShownTalentID}
             />
