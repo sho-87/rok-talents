@@ -4,8 +4,9 @@ import SummaryPanel from './SummaryPanel';
 import StatsPanel from './StatsPanel';
 import StatsTalentsPanel from './StatsTalentsPanel';
 import ErrorBoundary from './Error';
-import { isTouchDevice } from './utils';
 
+import Commanders from './data/commanders.json';
+import { getMaxTalentCount, replaceTalentText, isTouchDevice } from './utils';
 import './styles/InfoPanel.css';
 
 /**
@@ -15,7 +16,60 @@ import './styles/InfoPanel.css';
  * @extends {Component}
  */
 class InfoPanel extends Component {
+  /**
+   * Calculate all stats on point assignment
+   *
+   * @returns {[Array, Object]} Calculated stats and object containing main talents
+   * @memberof InfoPanel
+   */
+  calcStats() {
+    let mainTalents = [];
+    let stats = {};
+
+    if (this.props.commander) {
+      const commanderData = Commanders[this.props.commander];
+
+      for (let color of ['red', 'yellow', 'blue']) {
+        const talentData = this.props.treeData[commanderData[color]];
+        const selectedValues = this.props[color];
+
+        for (let i = 1; i < selectedValues.length + 1; i++) {
+          const pointsAssigned = selectedValues[i - 1];
+
+          if (pointsAssigned !== 0) {
+            const talent = talentData[i];
+            const statName = talent.stats;
+
+            if (statName) {
+              if (!(statName in stats)) {
+                stats[statName] = 0;
+              }
+              stats[statName] += talent.values[pointsAssigned - 1];
+            }
+
+            if (talent.type === 'node-large') {
+              mainTalents.push({
+                name: talent.name,
+                color: color,
+                points: pointsAssigned,
+                maxPoints: getMaxTalentCount(talent.values),
+                text: replaceTalentText(
+                  talent.text,
+                  talent.values,
+                  pointsAssigned - 1
+                )
+              });
+            }
+          }
+        }
+      }
+    }
+    return [stats, mainTalents];
+  }
+
   render() {
+    const [stats, mainTalents] = this.calcStats();
+
     return (
       <div
         id="info-panel"
@@ -32,26 +86,19 @@ class InfoPanel extends Component {
               calcPointsSpent={this.props.calcPointsSpent}
             />
             <MediaQuery orientation="portrait">
-              <StatsPanel stats={this.props.stats} />
+              <StatsPanel stats={stats} />
             </MediaQuery>
           </div>
         </ErrorBoundary>
 
         <MediaQuery orientation="landscape">
           <ErrorBoundary>
-            <StatsPanel stats={this.props.stats} />
+            <StatsPanel stats={stats} />
           </ErrorBoundary>
 
           {!isTouchDevice() && (
             <ErrorBoundary>
-              <StatsTalentsPanel
-                calcPointsSpent={this.props.calcPointsSpent}
-                commander={this.props.commander}
-                treeData={this.props.treeData}
-                red={this.props.red}
-                yellow={this.props.yellow}
-                blue={this.props.blue}
-              />
+              <StatsTalentsPanel mainTalents={mainTalents} />
             </ErrorBoundary>
           )}
         </MediaQuery>

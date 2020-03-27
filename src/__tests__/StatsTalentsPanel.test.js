@@ -7,9 +7,7 @@ import StatsTalentsPanel from '../StatsTalentsPanel';
 let props;
 beforeEach(() => {
   props = {
-    red: [],
-    yellow: [],
-    blue: []
+    mainTalents: []
   };
 });
 

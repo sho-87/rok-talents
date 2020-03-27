@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import Collapse from 'react-bootstrap/Collapse';
 import { HelpTooltip } from './Tooltips';
-import { getMaxTalentCount, replaceTalentText } from './utils';
-
-import Commanders from './data/commanders.json';
 import './styles/StatsTalentsPanel.css';
 
 /**
@@ -38,57 +35,32 @@ class StatsTalentsPanel extends Component {
   };
 
   /**
-   * Calculate an array of main talents that don't belong in any of
-   * the base stat categories
+   * Get all main talents and their values/text
    *
-   * @returns {DOMElement[]} Array of all selected main talents
+   * @returns {DOMElement[]} Array of DOM elements containing main talents and values
    * @memberof StatsTalentsPanel
    */
-  calcStatsTalents = () => {
-    const commander = this.props.commander;
-    let talents = [];
+  getAllMainTalents = () => {
+    let allMainTalents = [];
 
-    ['red', 'yellow', 'blue'].forEach(color => {
-      const nodes = this.props[color];
+    for (let talent of this.props.mainTalents) {
+      allMainTalents.push(
+        <MainTalent
+          isShownStatsTalents={this.state.isShownStatsTalents}
+          key={talent.name}
+          name={talent.name}
+          color={talent.color}
+          points={talent.points}
+          maxPoints={talent.maxPoints}
+          text={talent.text}
+        />
+      );
+    }
 
-      if (nodes.some(values => values !== 0)) {
-        nodes.forEach((value, idx) => {
-          const talentInfo = this.props.treeData[Commanders[commander][color]][
-            idx + 1
-          ];
-
-          if (value > 0 && talentInfo.type === 'node-large') {
-            talents.push(
-              <div key={talentInfo.name} className={`stats-talents-main`}>
-                <div className="stats-talents-title">
-                  <span className={`bullet bg-${color}`}></span>
-
-                  {`${talentInfo.name} (${value}/${getMaxTalentCount(
-                    talentInfo.values
-                  )})`}
-                </div>
-
-                <Collapse in={this.state.isShownStatsTalents}>
-                  <div className="stats-talents-text">
-                    {replaceTalentText(
-                      talentInfo.text,
-                      talentInfo.values,
-                      value - 1
-                    )}
-                  </div>
-                </Collapse>
-              </div>
-            );
-          }
-        });
-      }
-    });
-
-    return talents;
+    return allMainTalents.length > 0 ? allMainTalents : 'None';
   };
 
   render() {
-    const mainTalents = this.calcStatsTalents();
     return (
       <div
         id="stats-talents"
@@ -99,12 +71,26 @@ class StatsTalentsPanel extends Component {
           Main Talents{' '}
           <HelpTooltip tooltip="Expandable list of all selected main talents" />
         </h2>
-        <div data-testid="stats-talents">
-          {mainTalents.length === 0 ? 'None' : mainTalents}
-        </div>
+        <div data-testid="stats-talents">{this.getAllMainTalents()}</div>
       </div>
     );
   }
+}
+
+function MainTalent(props) {
+  return (
+    <div className={`stats-talents-main`}>
+      <div className="stats-talents-title">
+        <span className={`bullet bg-${props.color}`}></span>
+
+        {`${props.name} (${props.points}/${props.maxPoints})`}
+      </div>
+
+      <Collapse in={props.isShownStatsTalents}>
+        <div className="stats-talents-text">{props.text}</div>
+      </Collapse>
+    </div>
+  );
 }
 
 export default StatsTalentsPanel;
