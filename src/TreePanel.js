@@ -232,6 +232,7 @@ class TreePanel extends Component {
       isShownMouseXY: this.props.isShownMouseXY,
       isShownTalentID: this.props.isShownTalentID,
       isSpeedMode: this.props.isSpeedMode,
+      isInstantZero: this.props.isInstantZero,
       isInstantMax: this.props.isInstantMax,
       nodeSize: this.props.nodeSize,
       treeData: this.props.treeData,

@@ -114,6 +114,16 @@ function NavBarSettings(props) {
               <div className="help-wrapper">
                 <Form.Check
                   type="switch"
+                  id="settings-instant-zero"
+                  label="Instant zero"
+                  checked={props.isInstantZero}
+                  onChange={e => props.toggleInstantZero()}
+                />
+                <HelpTooltip tooltip="Set talent to zero with a single click" />
+              </div>
+              <div className="help-wrapper">
+                <Form.Check
+                  type="switch"
                   id="settings-instant-max"
                   label="Instant max"
                   checked={props.isInstantMax}

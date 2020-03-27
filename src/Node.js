@@ -21,6 +21,7 @@ class Node extends Component {
       this.props.isShownValues !== nextProps.isShownValues ||
       this.props.isShownTalentID !== nextProps.isShownTalentID ||
       this.props.isSpeedMode !== nextProps.isSpeedMode ||
+      this.props.isInstantZero !== nextProps.isInstantZero ||
       this.props.isInstantMax !== nextProps.isInstantMax
     ) {
       return true;
@@ -177,14 +178,22 @@ class Node extends Component {
     }
 
     if (depsOK & (this.props.value > 0)) {
+      let numberRemovable;
+
+      if (this.props.isInstantZero) {
+        numberRemovable = this.props.value;
+      } else {
+        numberRemovable = 1;
+      }
+
       this.props.changeTalentValue(
         this.props.color,
         this.props.idx,
         'decrease',
-        1
+        numberRemovable
       );
 
-      if (this.props.value === 1) {
+      if (this.props.value - numberRemovable === 0) {
         jsPlumb
           .select({
             source: document.getElementById(

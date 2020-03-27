@@ -113,6 +113,7 @@ class NavBar extends Component {
               toggleNodeSize={this.props.toggleNodeSize}
               toggleScreenshotStats={this.props.toggleScreenshotStats}
               toggleSpeedMode={this.props.toggleSpeedMode}
+              toggleInstantZero={this.props.toggleInstantZero}
               toggleInstantMax={this.props.toggleInstantMax}
               toggleMouseXY={this.props.toggleMouseXY}
               toggleTalentID={this.props.toggleTalentID}
@@ -121,6 +122,7 @@ class NavBar extends Component {
               isShownTotals={this.props.isShownTotals}
               isScreenshotStats={this.props.isScreenshotStats}
               isSpeedMode={this.props.isSpeedMode}
+              isInstantZero={this.props.isInstantZero}
               isInstantMax={this.props.isInstantMax}
               isShownMouseXY={this.props.isShownMouseXY}
               isShownTalentID={this.props.isShownTalentID}

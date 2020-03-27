@@ -199,6 +199,7 @@ class App extends Component {
         isShownTotals: true,
         isScreenshotStats: false,
         isSpeedMode: false,
+        isInstantZero: false,
         isInstantMax: false,
         isShownMouseXY: false,
         isShownTalentID: false
@@ -214,6 +215,7 @@ class App extends Component {
         localStorage.getItem('isScreenshotStats')
       );
       const isSpeedMode = JSON.parse(localStorage.getItem('isSpeedMode'));
+      const isInstantZero = JSON.parse(localStorage.getItem('isInstantZero'));
       const isInstantMax = JSON.parse(localStorage.getItem('isInstantMax'));
       const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
       const isShownTalentID = JSON.parse(
@@ -229,6 +231,7 @@ class App extends Component {
         isScreenshotStats:
           isScreenshotStats === null ? false : isScreenshotStats,
         isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
+        isInstantZero: isInstantZero === null ? false : isInstantZero,
         isInstantMax: isInstantMax === null ? false : isInstantMax,
         isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
         isShownTalentID: isShownTalentID === null ? false : isShownTalentID
@@ -553,6 +556,27 @@ class App extends Component {
   };
 
   /**
+   * Toggle instant zero mode
+   *
+   * @memberof App
+   */
+  toggleInstantZero = () => {
+    this.setState(
+      prevState => ({
+        isInstantZero: !prevState.isInstantZero
+      }),
+      () => {
+        localStorage.setItem('isInstantZero', this.state.isInstantZero);
+      }
+    );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle instant zero'
+    });
+  };
+
+  /**
    * Toggle instant max mode
    *
    * @memberof App
@@ -661,6 +685,7 @@ class App extends Component {
               toggleNodeSize={this.toggleNodeSize}
               toggleScreenshotStats={this.toggleScreenshotStats}
               toggleSpeedMode={this.toggleSpeedMode}
+              toggleInstantZero={this.toggleInstantZero}
               toggleInstantMax={this.toggleInstantMax}
               toggleMouseXY={this.toggleMouseXY}
               toggleTalentID={this.toggleTalentID}
@@ -679,6 +704,7 @@ class App extends Component {
               isShownTotals={this.state.isShownTotals}
               isScreenshotStats={this.state.isScreenshotStats}
               isSpeedMode={this.state.isSpeedMode}
+              isInstantZero={this.state.isInstantZero}
               isInstantMax={this.state.isInstantMax}
               isShownMouseXY={this.state.isShownMouseXY}
               isShownTalentID={this.state.isShownTalentID}
@@ -729,6 +755,7 @@ class App extends Component {
                 isShownValues={this.state.isShownValues}
                 isShownTotals={this.state.isShownTotals}
                 isSpeedMode={this.state.isSpeedMode}
+                isInstantZero={this.state.isInstantZero}
                 isInstantMax={this.state.isInstantMax}
                 isShownMouseXY={this.state.isShownMouseXY}
                 isShownTalentID={this.state.isShownTalentID}
