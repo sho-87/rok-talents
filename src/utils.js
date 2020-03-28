@@ -111,6 +111,22 @@ export function getTreeName(color, commander) {
 }
 
 /**
+ * Recursively find all prereqs for a talent node
+ *
+ * @param {Number} id ID of the talent node
+ * @param {Object} treeData Full data for the talent tree of interest
+ * @param {Array} acc Accumulator for all prereq talent IDs
+ * @returns {Array} Array of IDs for all prereq talents
+ */
+export function findAllPrereqs(id, treeData, acc) {
+  for (let prereq of treeData[id].prereq) {
+    acc.push(prereq);
+    findAllPrereqs(prereq, treeData, acc);
+  }
+  return acc.reverse();
+}
+
+/**
  * Set the window title with commander name and talents spent in each tree
  *
  * @param {string} commander Full name of the commander

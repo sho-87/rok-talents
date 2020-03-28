@@ -93,6 +93,14 @@ class Node extends Component {
   talentIncrease = () => {
     const pointsRemaining = this.props.calcPointsRemaining();
 
+    let allPrereqs = [];
+    findAllPrereqs(
+      this.props.idx,
+      this.props.treeData[this.props.treeName],
+      allPrereqs
+    );
+    console.log(allPrereqs);
+
     if (pointsRemaining > 0) {
       // Check prerequisites
       const prereqs = this.props.treeData[this.props.treeName][this.props.idx]
