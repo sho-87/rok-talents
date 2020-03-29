@@ -8,8 +8,8 @@ import './styles/SummaryPanel.css';
  * Summary panel component displaying commander info
  *
  */
-function SummaryPanel(props) {
-  function getGuides() {
+const SummaryPanel = props => {
+  const getGuides = () => {
     if (Commanders[props.commander].guides) {
       let guides = [];
 
@@ -20,7 +20,7 @@ function SummaryPanel(props) {
       }
       return <div id="summary-panel-guides">Guide: {guides}</div>;
     }
-  }
+  };
 
   return (
     <div id="summary-panel" className="info-box">
@@ -34,21 +34,21 @@ function SummaryPanel(props) {
       </div>
     </div>
   );
-}
+};
 
 /**
  * Icon for commander guides
  *
  * @returns {DOMElement} Icon linking to the external commander guide
  */
-function GuideIcon(props) {
-  function clickGuide() {
+const GuideIcon = React.memo(props => {
+  const clickGuide = () => {
     ReactGA.event({
       category: 'Navigation',
       action: `View guide (${props.name})`,
       label: props.commander
     });
-  }
+  };
 
   return (
     <GeneralTooltip tooltip={props.name}>
@@ -66,6 +66,6 @@ function GuideIcon(props) {
       </a>
     </GeneralTooltip>
   );
-}
+});
 
 export default SummaryPanel;

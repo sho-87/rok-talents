@@ -16,7 +16,7 @@ import './styles/NavBarButtons.css';
  * Nav bar component containing main buttons
  *
  */
-function NavBarButtons(props) {
+const NavBarButtons = props => {
   const [isDownloading, setIsDownloading] = useState(false);
 
   /**
@@ -25,7 +25,7 @@ function NavBarButtons(props) {
    * @param {boolean} [addBanner=true] Should a logo/banner be rendered?
    * @memberof NavBarButtons
    */
-  function takeScreenshot(elementID, addBanner = true) {
+  const takeScreenshot = (elementID, addBanner = true) => {
     ReactGA.event({
       category: 'App',
       action: 'Screenshot',
@@ -66,7 +66,7 @@ function NavBarButtons(props) {
         document.getElementById('banner').style.visibility = 'hidden';
         setIsDownloading(false);
       });
-  }
+  };
 
   return (
     <form className="form-inline">
@@ -116,6 +116,6 @@ function NavBarButtons(props) {
       </button>
     </form>
   );
-}
+};
 
 export default NavBarButtons;

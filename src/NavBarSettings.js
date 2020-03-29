@@ -11,7 +11,7 @@ import { HelpTooltip } from './Tooltips';
 
 import './styles/NavBarSettings.css';
 
-function NavBarSettings(props) {
+const NavBarSettings = props => {
   return (
     <Dropdown alignRight as={NavItem} id="select-settings">
       <Dropdown.Toggle as={NavLink} data-testid="select-settings">
@@ -169,6 +169,6 @@ function NavBarSettings(props) {
       </Dropdown.Menu>
     </Dropdown>
   );
-}
+};
 
 export default NavBarSettings;
