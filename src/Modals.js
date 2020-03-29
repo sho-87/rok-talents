@@ -285,6 +285,7 @@ export class AboutModal extends Component {
                   <strong>shareable link</strong> to your build
                 </li>
               </ol>
+
               <Button
                 id="button-tour"
                 variant="success"
@@ -296,6 +297,18 @@ export class AboutModal extends Component {
               >
                 Show Guided Tour
               </Button>
+
+              <br />
+              <div>
+                Video guide:{' '}
+                <a
+                  href="https://www.youtube.com/watch?v=jBv_BZXjFgM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Legend Rhony
+                </a>
+              </div>
             </Tab>
           </Tabs>
         </Modal.Body>
