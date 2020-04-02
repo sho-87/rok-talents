@@ -86,75 +86,126 @@ class Node extends Component {
    * be increased (e.g. max level reached, max talent points spent), as well
    * as the display of associated toasts and missing prerequisite talents
    *
-   * Additionally, `this.state` is updated to reflect current node value
+   * so...much...spaghetti...
    *
    * @memberof Node
    */
   talentIncrease = () => {
     const pointsRemaining = this.props.calcPointsRemaining();
 
-    let allPrereqs = [];
-    findAllPrereqs(
-      this.props.idx,
-      this.props.treeData[this.props.treeName],
-      allPrereqs
-    );
-    console.log(allPrereqs);
-
     if (pointsRemaining > 0) {
-      // Check prerequisites
-      const prereqs = this.props.treeData[this.props.treeName][this.props.idx]
-        .prereq;
-
-      let prereqsOK = true;
-      let missingPrereqs = [];
-
-      prereqs.forEach(idx => {
-        const prereqValue = this.props.fullTree[idx - 1];
-        const prereqMax = getMaxTalentCount(
-          this.props.treeData[this.props.treeName][idx].values
+      if (this.props.isAutoFill) {
+        // Handle prereqs
+        let allPrereqs = [];
+        findAllPrereqs(
+          this.props.idx,
+          this.props.treeData[this.props.treeName],
+          allPrereqs
         );
-        if (prereqValue !== prereqMax) {
-          prereqsOK = false;
-          missingPrereqs.push(
-            <li key={idx}>
-              <strong>
-                {this.props.treeData[this.props.treeName][idx].name}
-              </strong>
-            </li>
-          );
-        }
-      });
+        allPrereqs = Array.from(new Set(allPrereqs.reverse()));
+        allPrereqs.push(this.props.idx);
 
-      if (prereqsOK) {
-        if (this.props.value < this.props.max) {
-          let numberAssignable = 1;
+        allPrereqs.forEach(prereq => {
+          const prereqValue = this.props.fullTree[prereq - 1];
+          const prereqMax = this.props.treeData[this.props.treeName][prereq]
+            .values.length;
+          //FIXME: this fails if there is 1 talent point to spend as it compares the full difference
+          let numberAssignable = prereqMax - prereqValue;
+          if (numberAssignable <= this.props.calcPointsRemaining()) {
+            if (numberAssignable !== 0) {
+              if (prereq === this.props.idx) {
+                // Handle selected talent
+                if (this.props.isInstantMax) {
+                  if (
+                    this.props.max - this.props.value >
+                    this.props.calcPointsRemaining()
+                  ) {
+                    numberAssignable = this.props.calcPointsRemaining();
+                    this.props.showPointLimitToast();
+                  } else {
+                    numberAssignable = this.props.max - this.props.value;
+                  }
+                } else {
+                  numberAssignable = 1;
+                }
+              }
 
-          if (this.props.isInstantMax) {
-            if (this.props.max - this.props.value > pointsRemaining) {
-              numberAssignable = pointsRemaining;
-              this.props.showPointLimitToast();
-            } else {
-              numberAssignable = this.props.max - this.props.value;
+              this.props.changeTalentValue(
+                this.props.color,
+                prereq,
+                'increase',
+                numberAssignable
+              );
+
+              jsPlumb
+                .select({
+                  source: document.getElementById(
+                    `${this.props.treeName + prereq}`
+                  )
+                })
+                .addClass(`line-${this.props.color}`);
             }
+          } else {
+            this.props.showPointLimitToast();
           }
-
-          this.props.changeTalentValue(
-            this.props.color,
-            this.props.idx,
-            'increase',
-            numberAssignable
-          );
-          jsPlumb
-            .select({
-              source: document.getElementById(
-                `${this.props.treeName + this.props.idx}`
-              )
-            })
-            .addClass(`line-${this.props.color}`);
-        }
+        });
       } else {
-        this.props.showPrereqToast(missingPrereqs);
+        // Check prerequisites
+        const prereqs = this.props.treeData[this.props.treeName][this.props.idx]
+          .prereq;
+
+        let prereqsOK = true;
+        let missingPrereqs = [];
+
+        prereqs.forEach(idx => {
+          const prereqValue = this.props.fullTree[idx - 1];
+          const prereqMax = getMaxTalentCount(
+            this.props.treeData[this.props.treeName][idx].values
+          );
+          if (prereqValue !== prereqMax) {
+            prereqsOK = false;
+            missingPrereqs.push(
+              <li key={idx}>
+                <strong>
+                  {this.props.treeData[this.props.treeName][idx].name}
+                </strong>
+              </li>
+            );
+          }
+        });
+
+        if (prereqsOK) {
+          if (this.props.value < this.props.max) {
+            let numberAssignable;
+
+            if (this.props.isInstantMax) {
+              if (this.props.max - this.props.value > pointsRemaining) {
+                numberAssignable = pointsRemaining;
+                this.props.showPointLimitToast();
+              } else {
+                numberAssignable = this.props.max - this.props.value;
+              }
+            } else {
+              numberAssignable = 1;
+            }
+
+            this.props.changeTalentValue(
+              this.props.color,
+              this.props.idx,
+              'increase',
+              numberAssignable
+            );
+            jsPlumb
+              .select({
+                source: document.getElementById(
+                  `${this.props.treeName + this.props.idx}`
+                )
+              })
+              .addClass(`line-${this.props.color}`);
+          }
+        } else {
+          this.props.showPrereqToast(missingPrereqs);
+        }
       }
     } else {
       this.props.showPointLimitToast();

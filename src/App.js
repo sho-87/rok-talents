@@ -711,6 +711,7 @@ class App extends Component {
                 isSpeedMode={this.state.isSpeedMode}
                 isInstantZero={this.state.isInstantZero}
                 isInstantMax={this.state.isInstantMax}
+                isAutoFill={this.state.isAutoFill}
                 isShownMouseXY={this.state.isShownMouseXY}
                 isShownTalentID={this.state.isShownTalentID}
                 isEmbed={this.props.isEmbed}

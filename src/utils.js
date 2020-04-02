@@ -123,7 +123,7 @@ export function findAllPrereqs(id, treeData, acc) {
     acc.push(prereq);
     findAllPrereqs(prereq, treeData, acc);
   }
-  return acc.reverse();
+  return acc;
 }
 
 /**
