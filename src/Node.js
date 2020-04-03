@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FitText from '@kennethormandy/react-fittext';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Popovers';
 import { replaceTalentText, getMaxTalentCount, findAllPrereqs } from './utils';
 
@@ -86,8 +85,6 @@ class Node extends Component {
    * be increased (e.g. max level reached, max talent points spent), as well
    * as the display of associated toasts and missing prerequisite talents
    *
-   * so...much...spaghetti...
-   *
    * @memberof Node
    */
   talentIncrease = () => {
@@ -131,19 +128,12 @@ class Node extends Component {
               }
 
               this.props.changeTalentValue(
+                this.props.treeName,
                 this.props.color,
                 prereq,
                 'increase',
                 numberAssignable
               );
-
-              jsPlumb
-                .select({
-                  source: document.getElementById(
-                    `${this.props.treeName + prereq}`
-                  )
-                })
-                .addClass(`line-${this.props.color}`);
             }
           } else {
             this.props.showPointLimitToast();
@@ -190,18 +180,13 @@ class Node extends Component {
             }
 
             this.props.changeTalentValue(
+              this.props.treeName,
               this.props.color,
               this.props.idx,
               'increase',
               numberAssignable
             );
-            jsPlumb
-              .select({
-                source: document.getElementById(
-                  `${this.props.treeName + this.props.idx}`
-                )
-              })
-              .addClass(`line-${this.props.color}`);
+            
           }
         } else {
           this.props.showPrereqToast(missingPrereqs);
@@ -244,21 +229,12 @@ class Node extends Component {
       }
 
       this.props.changeTalentValue(
+        this.props.treeName,
         this.props.color,
         this.props.idx,
         'decrease',
         numberRemovable
       );
-
-      if (this.props.value - numberRemovable === 0) {
-        jsPlumb
-          .select({
-            source: document.getElementById(
-              `${this.props.treeName + this.props.idx}`
-            )
-          })
-          .removeClass(`line-${this.props.color}`);
-      }
     }
   };
 

@@ -1,5 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import ReactGA from 'react-ga';
+import { jsPlumb } from 'jsplumb';
 import Progress from './Progress';
 import Spinner from 'react-bootstrap/Spinner';
 import GuidedTour from './GuidedTour';
@@ -290,6 +291,7 @@ class App extends Component {
   /**
    * Change the value of a single talent node. Followed by `this.updateURL()`
    *
+   * @param {string} treeName Name of the tree the node belongs to
    * @param {string} color Color of the tree the node belongs to
    * @param {number} idx Index of the node in the tree/color array.
    * @param {string} how {increase | decrease} Should node value be increased
@@ -297,13 +299,26 @@ class App extends Component {
    * @param {number} amount How much to change the value by
    * @memberof App
    */
-  changeTalentValue = (color, idx, how, amount) => {
+  changeTalentValue = (treeName, color, idx, how, amount) => {
     let newArr = this.state[color];
+    const lines = jsPlumb.select({
+      source: document.getElementById(`${treeName + idx}`)
+    });
 
-    if (how === 'increase') {
-      newArr[idx - 1] += amount;
-    } else if (how === 'decrease') {
-      newArr[idx - 1] -= amount;
+    switch (how) {
+      case 'increase':
+        newArr[idx - 1] += amount;
+        if (newArr[idx - 1] > 0) {
+          lines.addClass(`line-${color}`);
+        }
+        break;
+      case 'decrease':
+        newArr[idx - 1] -= amount;
+        if (newArr[idx - 1] === 0) {
+          lines.removeClass(`line-${color}`);
+        }
+        break;
+      default:
     }
 
     this.setState({ [color]: newArr }, () => this.updateURL('update'));
