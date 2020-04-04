@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import FitText from '@kennethormandy/react-fittext';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { TalentTooltip } from './Popovers';
-import { replaceTalentText, getMaxTalentCount, findAllPrereqs } from './utils';
+import {
+  replaceTalentText,
+  getMaxTalentCount,
+  getIncompletePrereqs
+} from './utils';
 
 import './styles/Node.css';
 
@@ -94,8 +98,9 @@ class Node extends Component {
       if (this.props.isAutoFill) {
         // Handle prereqs
         let allPrereqs = [];
-        findAllPrereqs(
+        getIncompletePrereqs(
           this.props.idx,
+          this.props.fullTree,
           this.props.treeData[this.props.treeName],
           allPrereqs
         );
@@ -186,7 +191,6 @@ class Node extends Component {
               'increase',
               numberAssignable
             );
-            
           }
         } else {
           this.props.showPrereqToast(missingPrereqs);
