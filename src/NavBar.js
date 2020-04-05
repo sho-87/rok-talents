@@ -22,6 +22,14 @@ import './styles/NavBar.css';
  * @extends {Component}
  */
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    let donateStyles = Array(10).fill('outline-danger');
+    donateStyles.push('danger');
+    this.donateStyle =
+      donateStyles[Math.floor(Math.random() * donateStyles.length)];
+  }
+
   /**
    * Handle donate button click
    *
@@ -119,7 +127,7 @@ class NavBar extends Component {
                 <Button
                   id="button-donate"
                   data-testid="button-donate"
-                  variant="outline-danger"
+                  variant={this.donateStyle}
                   size="sm"
                   onClick={() => this.showDonate()}
                 >
