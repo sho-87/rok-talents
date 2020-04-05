@@ -3,7 +3,7 @@ import FitText from '@kennethormandy/react-fittext';
 import { getTreeName } from './utils';
 import './styles/Hexagon.css';
 
-const Hexagon = React.memo(props => {
+const Hexagon = (props) => {
   if (props.commander) {
     return (
       <div id="tree-center">
@@ -69,6 +69,6 @@ const Hexagon = React.memo(props => {
   } else {
     return false;
   }
-});
+};
 
 export default Hexagon;
