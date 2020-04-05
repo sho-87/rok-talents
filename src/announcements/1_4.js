@@ -19,7 +19,7 @@ const Announcement = React.memo((props) => {
         More video guides will be added once they are created.
       </div>
       <img
-        src={`${process.env.PUBLIC_URL}/screenshots/shinchi.png`}
+        src={`${process.env.PUBLIC_URL}/screenshots/shinchi.PNG`}
         className="announce-img announce-img-border"
         alt="guide"
       ></img>
@@ -30,7 +30,7 @@ const Announcement = React.memo((props) => {
         <i>much</i> faster. Like, seriously fast.
       </div>
       <img
-        src={`${process.env.PUBLIC_URL}/screenshots/settings-autofill.png`}
+        src={`${process.env.PUBLIC_URL}/screenshots/settings-autofill.PNG`}
         className="announce-img announce-img-border"
         alt="settings"
       ></img>
