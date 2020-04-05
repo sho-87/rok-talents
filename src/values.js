@@ -1,8 +1,75 @@
 /** Maximum number of talent points available in the game */
 export const maxPoints = 74;
 
-// Max width of mobile/tablet devices (px)
-export const mobileBreakpoint = 1280;
+/**
+ * Get default state values for new application instance. Also checks
+ * local storage for saved settings values
+ *
+ * @param {Number} dataVersion Data version number to use
+ * @param {Boolean} isEmbed Is app in embed mode?
+ * @returns {object} Object containing blank state values
+ */
+export function getEmptyState(dataVersion, isEmbed) {
+  let storage;
+
+  if (isEmbed) {
+    // Set default settings for embedded mode
+    storage = {
+      nodeSize: 'L',
+      isShownInfoPanel: false,
+      isShownValues: true,
+      isShownTotals: true,
+      isScreenshotStats: false,
+      isSpeedMode: false,
+      isInstantZero: false,
+      isInstantMax: false,
+      isAutoFill: false,
+      isShownMouseXY: false,
+      isShownTalentID: false
+    };
+  } else {
+    // Get/set default settings for regular mode
+    const isShownInfoPanel = JSON.parse(
+      localStorage.getItem('isShownInfoPanel')
+    );
+    const isShownValues = JSON.parse(localStorage.getItem('isShownValues'));
+    const isShownTotals = JSON.parse(localStorage.getItem('isShownTotals'));
+    const isScreenshotStats = JSON.parse(
+      localStorage.getItem('isScreenshotStats')
+    );
+    const isSpeedMode = JSON.parse(localStorage.getItem('isSpeedMode'));
+    const isInstantZero = JSON.parse(localStorage.getItem('isInstantZero'));
+    const isInstantMax = JSON.parse(localStorage.getItem('isInstantMax'));
+    const isAutoFill = JSON.parse(localStorage.getItem('isAutoFill'));
+    const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
+    const isShownTalentID = JSON.parse(localStorage.getItem('isShownTalentID'));
+
+    // Default values
+    storage = {
+      nodeSize: localStorage.getItem('nodeSize') || 'M',
+      isShownInfoPanel: isShownInfoPanel === null ? true : isShownInfoPanel,
+      isShownValues: isShownValues === null ? true : isShownValues,
+      isShownTotals: isShownTotals === null ? true : isShownTotals,
+      isScreenshotStats: isScreenshotStats === null ? false : isScreenshotStats,
+      isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
+      isInstantZero: isInstantZero === null ? false : isInstantZero,
+      isInstantMax: isInstantMax === null ? false : isInstantMax,
+      isAutoFill: isAutoFill === null ? false : isAutoFill,
+      isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
+      isShownTalentID: isShownTalentID === null ? false : isShownTalentID
+    };
+  }
+
+  return {
+    showProgress: true,
+    dataVersion: dataVersion,
+    commander: '',
+    red: [],
+    yellow: [],
+    blue: [],
+    ...storage
+  };
+}
 
 /** Mapping value pairs to letters for encoding */
 export const valuesToLetters = {

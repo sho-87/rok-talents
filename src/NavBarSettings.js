@@ -11,7 +11,7 @@ import { HelpTooltip } from './Tooltips';
 
 import './styles/NavBarSettings.css';
 
-function NavBarSettings(props) {
+const NavBarSettings = props => {
   return (
     <Dropdown alignRight as={NavItem} id="select-settings">
       <Dropdown.Toggle as={NavLink} data-testid="select-settings">
@@ -111,6 +111,36 @@ function NavBarSettings(props) {
             points"
                 />
               </div>
+              <div className="help-wrapper">
+                <Form.Check
+                  type="switch"
+                  id="settings-instant-zero"
+                  label="Instant zero"
+                  checked={props.isInstantZero}
+                  onChange={e => props.toggleInstantZero()}
+                />
+                <HelpTooltip tooltip="Set a single talent to zero with 1 click" />
+              </div>
+              <div className="help-wrapper">
+                <Form.Check
+                  type="switch"
+                  id="settings-instant-max"
+                  label="Instant max"
+                  checked={props.isInstantMax}
+                  onChange={e => props.toggleInstantMax()}
+                />
+                <HelpTooltip tooltip="Max a single talent with 1 click" />
+              </div>
+              <div className="help-wrapper">
+                <Form.Check
+                  type="switch"
+                  id="settings-auto-fill"
+                  label="Auto fill"
+                  checked={props.isAutoFill}
+                  onChange={e => props.toggleAutoFill()}
+                />
+                <HelpTooltip tooltip="Automatically fill all prerequisites for a talent" />
+              </div>
             </div>
 
             {process.env.NODE_ENV === 'development' && (
@@ -139,6 +169,6 @@ function NavBarSettings(props) {
       </Dropdown.Menu>
     </Dropdown>
   );
-}
+};
 
 export default NavBarSettings;

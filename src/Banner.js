@@ -2,7 +2,7 @@ import React from 'react';
 import { homepage } from '../package.json';
 import './styles/Banner.css';
 
-function Banner(props) {
+const Banner = React.memo(props => {
   const style = {
     visibility: props.show ? 'visible' : 'hidden',
     fontSize: props.embed ? '0.9em' : ''
@@ -22,6 +22,6 @@ function Banner(props) {
       ></img>
     </div>
   );
-}
+});
 
 export default Banner;

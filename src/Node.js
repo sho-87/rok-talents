@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import FitText from '@kennethormandy/react-fittext';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { jsPlumb } from 'jsplumb';
 import { TalentTooltip } from './Popovers';
-import { replaceTalentText, getMaxTalentCount } from './utils';
+import { replaceTalentText, getIncompletePrereqs } from './utils';
 
 import './styles/Node.css';
 
@@ -86,27 +85,56 @@ class Node extends Component {
    * be increased (e.g. max level reached, max talent points spent), as well
    * as the display of associated toasts and missing prerequisite talents
    *
-   * Additionally, `this.state` is updated to reflect current node value
-   *
    * @memberof Node
    */
-  talentIncrease = () => {
-    if (this.props.calcPointsRemaining() > 0) {
-      // Check prerequisites
-      const prereqs = this.props.treeData[this.props.treeName][this.props.idx]
-        .prereq;
+  increaseTalent = () => {
+    // Get all incomplete prereqs
+    let directPrereqsOK = true;
+    let directInfo = [];
+    let incompletePrereqs = [];
+    getIncompletePrereqs(
+      this.props.idx,
+      this.props.fullTree,
+      this.props.treeData[this.props.treeName],
+      incompletePrereqs
+    );
+    incompletePrereqs = Array.from(new Set(incompletePrereqs.reverse()));
 
-      let prereqsOK = true;
-      let missingPrereqs = [];
+    // Handle autofill mode (incomplete nodes only)
+    if (this.props.isAutoFill) {
+      incompletePrereqs.forEach((prereq) => {
+        const prereqValue = this.props.fullTree[prereq - 1];
+        const prereqMax = this.props.treeData[this.props.treeName][prereq]
+          .values.length;
+        const pointsRemaining = this.props.calcPointsRemaining();
 
-      prereqs.forEach(idx => {
-        const prereqValue = this.props.fullTree[idx - 1];
-        const prereqMax = getMaxTalentCount(
-          this.props.treeData[this.props.treeName][idx].values
-        );
-        if (prereqValue !== prereqMax) {
-          prereqsOK = false;
-          missingPrereqs.push(
+        let numberAssignable = prereqMax - prereqValue;
+        if (numberAssignable > pointsRemaining) {
+          directPrereqsOK = false;
+          numberAssignable = pointsRemaining;
+          this.props.showPointLimitToast();
+        }
+
+        if (numberAssignable !== 0) {
+          this.props.changeTalentValue(
+            this.props.treeName,
+            this.props.color,
+            prereq,
+            'increase',
+            numberAssignable
+          );
+        }
+      });
+    } else {
+      // No autofill. Check direct prereqs for this node
+      const directPrereqs = this.props.treeData[this.props.treeName][
+        this.props.idx
+      ].prereq;
+
+      directPrereqs.forEach((idx) => {
+        if (incompletePrereqs.includes(idx)) {
+          directPrereqsOK = false;
+          directInfo.push(
             <li key={idx}>
               <strong>
                 {this.props.treeData[this.props.treeName][idx].name}
@@ -115,28 +143,43 @@ class Node extends Component {
           );
         }
       });
+    }
 
-      if (prereqsOK) {
-        if (this.props.value < this.props.max) {
+    // Set value for selected node
+    if (directPrereqsOK) {
+      if (this.props.value < this.props.max) {
+        const pointsRemaining = this.props.calcPointsRemaining();
+        const pointDifference = this.props.max - this.props.value;
+        let numberAssignable;
+
+        if (this.props.isInstantMax) {
+          if (pointDifference > pointsRemaining) {
+            numberAssignable = pointsRemaining;
+            this.props.showPointLimitToast();
+          } else {
+            numberAssignable = pointDifference;
+          }
+        } else {
+          if (pointsRemaining === 0) {
+            numberAssignable = 0;
+            this.props.showPointLimitToast();
+          } else {
+            numberAssignable = 1;
+          }
+        }
+
+        if (numberAssignable !== 0) {
           this.props.changeTalentValue(
+            this.props.treeName,
             this.props.color,
             this.props.idx,
             'increase',
-            1
+            numberAssignable
           );
-          jsPlumb
-            .select({
-              source: document.getElementById(
-                `${this.props.treeName + this.props.idx}`
-              )
-            })
-            .addClass(`line-${this.props.color}`);
         }
-      } else {
-        this.props.showPrereqToast(missingPrereqs);
       }
-    } else {
-      this.props.showPointLimitToast();
+    } else if (!this.props.isAutoFill) {
+      this.props.showPrereqToast(directInfo);
     }
   };
 
@@ -148,7 +191,7 @@ class Node extends Component {
    * @param {MouseEvent} e Mouse context event
    * @memberof Node
    */
-  talentDecrease = e => {
+  decreaseTalent = (e) => {
     // Check dependent nodes
     const deps = this.props.treeData[this.props.treeName][this.props.idx].dep;
 
@@ -163,22 +206,21 @@ class Node extends Component {
     }
 
     if (depsOK & (this.props.value > 0)) {
+      let numberRemovable;
+
+      if (this.props.isInstantZero) {
+        numberRemovable = this.props.value;
+      } else {
+        numberRemovable = 1;
+      }
+
       this.props.changeTalentValue(
+        this.props.treeName,
         this.props.color,
         this.props.idx,
         'decrease',
-        1
+        numberRemovable
       );
-
-      if (this.props.value === 1) {
-        jsPlumb
-          .select({
-            source: document.getElementById(
-              `${this.props.treeName + this.props.idx}`
-            )
-          })
-          .removeClass(`line-${this.props.color}`);
-      }
     }
   };
 
@@ -197,10 +239,10 @@ class Node extends Component {
           compressor={compressor}
           value={this.props.value}
           max={this.props.max}
-          onClick={this.talentIncrease}
-          onContextMenu={e => {
+          onClick={this.increaseTalent}
+          onContextMenu={(e) => {
             e.preventDefault();
-            this.talentDecrease();
+            this.decreaseTalent();
           }}
         />
       );
@@ -208,8 +250,8 @@ class Node extends Component {
       return (
         <NodeOverlay
           {...this.props}
-          talentIncrease={this.talentIncrease}
-          talentDecrease={this.talentDecrease}
+          increaseTalent={this.increaseTalent}
+          decreaseTalent={this.decreaseTalent}
           setTooltip={this.setTooltip}
           getStyle={this.getStyle}
           compressor={compressor}
@@ -222,7 +264,7 @@ class Node extends Component {
   }
 }
 
-const NodeOverlay = props => {
+const NodeOverlay = (props) => {
   return (
     <OverlayTrigger
       trigger="click"
@@ -233,8 +275,8 @@ const NodeOverlay = props => {
       overlay={
         <TalentTooltip
           calcPointsRemaining={props.calcPointsRemaining}
-          talentDecrease={props.talentDecrease}
-          talentIncrease={props.talentIncrease}
+          increaseTalent={props.increaseTalent}
+          decreaseTalent={props.decreaseTalent}
           isShownTalentID={props.isShownTalentID}
           isEmbed={props.isEmbed}
           idx={props.idx}
@@ -255,13 +297,13 @@ const NodeOverlay = props => {
         compressor={props.compressor}
         value={props.value}
         max={props.max}
-        onContextMenu={e => e.preventDefault()}
+        onContextMenu={(e) => e.preventDefault()}
       />
     </OverlayTrigger>
   );
 };
 
-const NodeContent = props => {
+const NodeContent = (props) => {
   return (
     <div
       data-testid={props.talentID}

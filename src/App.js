@@ -1,5 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import ReactGA from 'react-ga';
+import { jsPlumb } from 'jsplumb';
 import Progress from './Progress';
 import Spinner from 'react-bootstrap/Spinner';
 import GuidedTour from './GuidedTour';
@@ -9,7 +10,7 @@ import { InvalidBuildModal, AnnouncementModal } from './Modals';
 import ErrorBoundary from './Error';
 import loadTreeData from './data/AllTrees';
 import Commanders from './data/commanders.json';
-import { maxPoints } from './values';
+import { maxPoints, getEmptyState } from './values';
 import { version, dataVersion } from '../package.json';
 import {
   sumArray,
@@ -52,7 +53,7 @@ class App extends Component {
 
     switch (urlParams.length) {
       case 1: // blank url
-        this.state = this.getEmptyState();
+        this.state = getEmptyState(dataVersion, this.props.isEmbed);
         treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
         ReactGA.event({
@@ -83,7 +84,7 @@ class App extends Component {
           this.invalidBuildMessage = 'Unknown commander ID';
           this.invalidModalFlag = true;
         } else {
-          this.state = this.getEmptyState();
+          this.state = getEmptyState(urlDataVersion, this.props.isEmbed);
           treeData = loadTreeData(urlDataVersion);
           this.state = {
             ...this.state,
@@ -136,7 +137,7 @@ class App extends Component {
         }
 
         if (this.invalidModalFlag) {
-          this.state = this.getEmptyState();
+          this.state = getEmptyState(dataVersion, this.props.isEmbed);
           treeData = loadTreeData(dataVersion);
           this.updateURL('clear');
           ReactGA.event({
@@ -157,7 +158,7 @@ class App extends Component {
         // Incorrect number of url params
         this.invalidBuildMessage = `Incorrect number of build parameters (length: ${urlParams.length}, expected: 5)`;
         this.invalidModalFlag = true;
-        this.state = this.getEmptyState();
+        this.state = getEmptyState(dataVersion, this.props.isEmbed);
         treeData = loadTreeData(dataVersion);
         this.updateURL('clear');
         ReactGA.event({
@@ -179,69 +180,6 @@ class App extends Component {
 
     this.setState({ showProgress: false });
   }
-
-  /**
-   * Get empty state values for new application instance. Also checks
-   * local storage for saved settings
-   *
-   * @returns {object} Object containing blank state values
-   * @memberof App
-   */
-  getEmptyState = () => {
-    let storage;
-
-    if (this.props.isEmbed) {
-      // Set default settings for embedded mode
-      storage = {
-        nodeSize: 'L',
-        isShownInfoPanel: false,
-        isShownValues: true,
-        isShownTotals: true,
-        isScreenshotStats: false,
-        isSpeedMode: false,
-        isShownMouseXY: false,
-        isShownTalentID: false
-      };
-    } else {
-      // Get/set default settings for regular mode
-      const isShownInfoPanel = JSON.parse(
-        localStorage.getItem('isShownInfoPanel')
-      );
-      const isShownValues = JSON.parse(localStorage.getItem('isShownValues'));
-      const isShownTotals = JSON.parse(localStorage.getItem('isShownTotals'));
-      const isScreenshotStats = JSON.parse(
-        localStorage.getItem('isScreenshotStats')
-      );
-      const isSpeedMode = JSON.parse(localStorage.getItem('isSpeedMode'));
-      const isShownMouseXY = JSON.parse(localStorage.getItem('isShownMouseXY'));
-      const isShownTalentID = JSON.parse(
-        localStorage.getItem('isShownTalentID')
-      );
-
-      // Default values
-      storage = {
-        nodeSize: localStorage.getItem('nodeSize') || 'M',
-        isShownInfoPanel: isShownInfoPanel === null ? true : isShownInfoPanel,
-        isShownValues: isShownValues === null ? true : isShownValues,
-        isShownTotals: isShownTotals === null ? true : isShownTotals,
-        isScreenshotStats:
-          isScreenshotStats === null ? false : isScreenshotStats,
-        isSpeedMode: isSpeedMode === null ? false : isSpeedMode,
-        isShownMouseXY: isShownMouseXY === null ? false : isShownMouseXY,
-        isShownTalentID: isShownTalentID === null ? false : isShownTalentID
-      };
-    }
-
-    return {
-      showProgress: true,
-      dataVersion: dataVersion,
-      commander: '',
-      red: [],
-      yellow: [],
-      blue: [],
-      ...storage
-    };
-  };
 
   /**
    * Update the current URL
@@ -353,6 +291,7 @@ class App extends Component {
   /**
    * Change the value of a single talent node. Followed by `this.updateURL()`
    *
+   * @param {string} treeName Name of the tree the node belongs to
    * @param {string} color Color of the tree the node belongs to
    * @param {number} idx Index of the node in the tree/color array.
    * @param {string} how {increase | decrease} Should node value be increased
@@ -360,13 +299,26 @@ class App extends Component {
    * @param {number} amount How much to change the value by
    * @memberof App
    */
-  changeTalentValue = (color, idx, how, amount) => {
+  changeTalentValue = (treeName, color, idx, how, amount) => {
     let newArr = this.state[color];
+    const lines = jsPlumb.select({
+      source: document.getElementById(`${treeName + idx}`)
+    });
 
-    if (how === 'increase') {
-      newArr[idx - 1] += amount;
-    } else if (how === 'decrease') {
-      newArr[idx - 1] -= amount;
+    switch (how) {
+      case 'increase':
+        newArr[idx - 1] += amount;
+        if (newArr[idx - 1] > 0) {
+          lines.addClass(`line-${color}`);
+        }
+        break;
+      case 'decrease':
+        newArr[idx - 1] -= amount;
+        if (newArr[idx - 1] === 0) {
+          lines.removeClass(`line-${color}`);
+        }
+        break;
+      default:
     }
 
     this.setState({ [color]: newArr }, () => this.updateURL('update'));
@@ -550,6 +502,69 @@ class App extends Component {
   };
 
   /**
+   * Toggle instant zero mode
+   *
+   * @memberof App
+   */
+  toggleInstantZero = () => {
+    this.setState(
+      prevState => ({
+        isInstantZero: !prevState.isInstantZero
+      }),
+      () => {
+        localStorage.setItem('isInstantZero', this.state.isInstantZero);
+      }
+    );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle instant zero'
+    });
+  };
+
+  /**
+   * Toggle instant max mode
+   *
+   * @memberof App
+   */
+  toggleInstantMax = () => {
+    this.setState(
+      prevState => ({
+        isInstantMax: !prevState.isInstantMax
+      }),
+      () => {
+        localStorage.setItem('isInstantMax', this.state.isInstantMax);
+      }
+    );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle instant max'
+    });
+  };
+
+  /**
+   * Toggle auto fill mode
+   *
+   * @memberof App
+   */
+  toggleAutoFill = () => {
+    this.setState(
+      prevState => ({
+        isAutoFill: !prevState.isAutoFill
+      }),
+      () => {
+        localStorage.setItem('isAutoFill', this.state.isAutoFill);
+      }
+    );
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Toggle auto fill'
+    });
+  };
+
+  /**
    * Toggle mouse XY position display
    *
    * @memberof App
@@ -637,6 +652,9 @@ class App extends Component {
               toggleNodeSize={this.toggleNodeSize}
               toggleScreenshotStats={this.toggleScreenshotStats}
               toggleSpeedMode={this.toggleSpeedMode}
+              toggleInstantZero={this.toggleInstantZero}
+              toggleInstantMax={this.toggleInstantMax}
+              toggleAutoFill={this.toggleAutoFill}
               toggleMouseXY={this.toggleMouseXY}
               toggleTalentID={this.toggleTalentID}
               toggleAnnounce={this.toggleAnnounce}
@@ -654,6 +672,9 @@ class App extends Component {
               isShownTotals={this.state.isShownTotals}
               isScreenshotStats={this.state.isScreenshotStats}
               isSpeedMode={this.state.isSpeedMode}
+              isInstantZero={this.state.isInstantZero}
+              isInstantMax={this.state.isInstantMax}
+              isAutoFill={this.state.isAutoFill}
               isShownMouseXY={this.state.isShownMouseXY}
               isShownTalentID={this.state.isShownTalentID}
             />
@@ -703,6 +724,9 @@ class App extends Component {
                 isShownValues={this.state.isShownValues}
                 isShownTotals={this.state.isShownTotals}
                 isSpeedMode={this.state.isSpeedMode}
+                isInstantZero={this.state.isInstantZero}
+                isInstantMax={this.state.isInstantMax}
+                isAutoFill={this.state.isAutoFill}
                 isShownMouseXY={this.state.isShownMouseXY}
                 isShownTalentID={this.state.isShownTalentID}
                 isEmbed={this.props.isEmbed}

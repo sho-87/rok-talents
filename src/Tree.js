@@ -34,6 +34,9 @@ class Tree extends Component {
           isShownValues={this.props.isShownValues}
           isShownTalentID={this.props.isShownTalentID}
           isSpeedMode={this.props.isSpeedMode}
+          isInstantZero={this.props.isInstantZero}
+          isInstantMax={this.props.isInstantMax}
+          isAutoFill={this.props.isAutoFill}
           isEmbed={this.props.isEmbed}
           nodeSize={this.props.nodeSize}
           treeData={this.props.treeData}

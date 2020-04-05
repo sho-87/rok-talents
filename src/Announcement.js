@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/Announcement.css';
 
-function Announcement(props) {
+const Announcement = React.memo(props => {
   return (
     <>
       <h1>{`New release: v1.3.0`}</h1>
@@ -55,6 +55,6 @@ function Announcement(props) {
       </ul>
     </>
   );
-}
+});
 
 export default Announcement;

@@ -111,6 +111,27 @@ export function getTreeName(color, commander) {
 }
 
 /**
+ * Recursively find all incomplete prereqs for a talent node
+ *
+ * @param {Number} id ID of the talent node
+ * @param {Number[]} values Array of selected values for the tree
+ * @param {Object} treeData Full data for the talent tree of interest
+ * @param {Array} acc Accumulator for all prereq talent IDs
+ * @returns {Array} Array of IDs for all prereq talents
+ */
+export function getIncompletePrereqs(id, values, treeData, acc) {
+  for (let prereq of treeData[id].prereq) {
+    const nodeValue = values[prereq - 1];
+    const nodeMax = getMaxTalentCount(treeData[prereq].values);
+    if (nodeValue < nodeMax) {
+      acc.push(prereq);
+    }
+    getIncompletePrereqs(prereq, values, treeData, acc);
+  }
+  return acc;
+}
+
+/**
  * Set the window title with commander name and talents spent in each tree
  *
  * @param {string} commander Full name of the commander

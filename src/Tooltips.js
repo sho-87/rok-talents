@@ -10,7 +10,7 @@ import './styles/Tooltips.css';
  *
  * @returns {Tooltip} Tooltip
  */
-export function HelpTooltip(props) {
+export const HelpTooltip = props => {
   return (
     <OverlayTrigger
       placement="top"
@@ -21,14 +21,14 @@ export function HelpTooltip(props) {
       <FontAwesomeIcon icon={faQuestionCircle} className="help-icon" />
     </OverlayTrigger>
   );
-}
+};
 
 /**
  * General tooltip component
  *
  * @returns {Tooltip} Tooltip
  */
-export function GeneralTooltip(props) {
+export const GeneralTooltip = props => {
   return (
     <OverlayTrigger
       placement="top"
@@ -39,6 +39,6 @@ export function GeneralTooltip(props) {
       {props.children}
     </OverlayTrigger>
   );
-}
+};
 
 export default { HelpTooltip, GeneralTooltip };
