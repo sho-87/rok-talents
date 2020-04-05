@@ -1,10 +1,10 @@
 import React from 'react';
-import './styles/Announcement.css';
+import '../styles/Announcement.css';
 
-const Announcement = React.memo(props => {
+const Announcement = React.memo((props) => {
   return (
     <>
-      <h1>{`New release: v1.3.0`}</h1>
+      <h1>{`Update: v1.3.0`}</h1>
 
       <h2>New Features</h2>
       <div>

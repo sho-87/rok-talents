@@ -35,8 +35,14 @@
   border-radius: 5px;
 }
 
-#button-releases {
+.button-releases {
   margin: 0 auto;
+  display: block;
+}
+
+.button-releases-history {
+  margin-left: 2px;
+  margin-bottom: 2px;
   display: block;
 }
 

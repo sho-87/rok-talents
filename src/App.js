@@ -20,7 +20,7 @@ import {
   isUpgrade,
   isNewUser,
   encode,
-  decode
+  decode,
 } from './utils';
 
 import './styles/App.css';
@@ -47,7 +47,7 @@ class App extends Component {
     if (this.props.isEmbed) {
       ReactGA.event({
         category: 'Load',
-        action: 'Embed'
+        action: 'Embed',
       });
     }
 
@@ -58,7 +58,7 @@ class App extends Component {
         this.updateURL('clear');
         ReactGA.event({
           category: 'Load',
-          action: 'New'
+          action: 'New',
         });
         break;
       case 5: // complete url
@@ -73,7 +73,7 @@ class App extends Component {
         urlDataVersion = parseInt(urlDataVersion);
 
         const commanderName = Object.keys(Commanders).find(
-          key => Commanders[key]['id'] === comID
+          (key) => Commanders[key]['id'] === comID
         );
 
         // Check for invalid build
@@ -90,20 +90,18 @@ class App extends Component {
             ...this.state,
             dataVersion: urlDataVersion,
             commander: commanderName,
-            ...this.createZeroTalents(commanderName)
+            ...this.createZeroTalents(commanderName),
           };
 
           const colorPairs = [
             [red, 'red'],
             [yellow, 'yellow'],
-            [blue, 'blue']
+            [blue, 'blue'],
           ];
 
           for (let color of colorPairs) {
             // Decode and split talent string into array
-            let talents = decode(color[0])
-              .split('')
-              .map(Number);
+            let talents = decode(color[0]).split('').map(Number);
             const maxArray = this.createMaxValueArray(
               this.state.commander,
               color[1]
@@ -116,7 +114,7 @@ class App extends Component {
               break;
             } else if (
               // Check spent values are not too large
-              talents.some(function(el, idx) {
+              talents.some(function (el, idx) {
                 return el > maxArray[idx];
               })
             ) {
@@ -143,14 +141,14 @@ class App extends Component {
           ReactGA.event({
             category: 'Load',
             action: 'Error',
-            label: this.props.url
+            label: this.props.url,
           });
         } else {
           this.updateURL('update');
           ReactGA.event({
             category: 'Load',
             action: 'Existing',
-            label: this.props.url
+            label: this.props.url,
           });
         }
         break;
@@ -164,7 +162,7 @@ class App extends Component {
         ReactGA.event({
           category: 'Load',
           action: 'Error',
-          label: this.props.url
+          label: this.props.url,
         });
     }
   }
@@ -188,7 +186,7 @@ class App extends Component {
    * with the new state or cleared (new app state)?
    * @memberof App
    */
-  updateURL = method => {
+  updateURL = (method) => {
     let queryString;
 
     switch (method) {
@@ -201,7 +199,7 @@ class App extends Component {
             Commanders[this.state.commander].id,
             encode(this.state.red.join('')),
             encode(this.state.yellow.join('')),
-            encode(this.state.blue.join(''))
+            encode(this.state.blue.join('')),
           ].join(';');
 
         setTitle(
@@ -227,7 +225,7 @@ class App extends Component {
    * @param {string} commander Name of the commander being changed to
    * @memberof App
    */
-  changeCommander = commander => {
+  changeCommander = (commander) => {
     if (this.state.dataVersion !== dataVersion) {
       treeData = loadTreeData(dataVersion);
     }
@@ -242,7 +240,7 @@ class App extends Component {
         ReactGA.event({
           category: 'Navigation',
           action: 'Change commander',
-          label: commander
+          label: commander,
         });
       }
     );
@@ -260,7 +258,7 @@ class App extends Component {
    * @returns {object} Object containing `0` arrays for each tree color
    * @memberof App
    */
-  createZeroTalents = commander => {
+  createZeroTalents = (commander) => {
     const numRed = Object.keys(treeData[Commanders[commander]['red']]).length;
     const numYellow = Object.keys(treeData[Commanders[commander]['yellow']])
       .length;
@@ -269,7 +267,7 @@ class App extends Component {
     const zeroTalents = {
       red: Array(numRed).fill(0),
       yellow: Array(numYellow).fill(0),
-      blue: Array(numBlue).fill(0)
+      blue: Array(numBlue).fill(0),
     };
 
     return zeroTalents;
@@ -283,7 +281,7 @@ class App extends Component {
   resetTalents = () => {
     ReactGA.event({
       category: 'App',
-      action: 'Reset build'
+      action: 'Reset build',
     });
     this.changeCommander(this.state.commander);
   };
@@ -302,7 +300,7 @@ class App extends Component {
   changeTalentValue = (treeName, color, idx, how, amount) => {
     let newArr = this.state[color];
     const lines = jsPlumb.select({
-      source: document.getElementById(`${treeName + idx}`)
+      source: document.getElementById(`${treeName + idx}`),
     });
 
     switch (how) {
@@ -335,7 +333,7 @@ class App extends Component {
   createMaxValueArray = (commander, color) => {
     let maxArray = [];
 
-    Object.keys(treeData[Commanders[commander][color]]).forEach(id => {
+    Object.keys(treeData[Commanders[commander][color]]).forEach((id) => {
       maxArray.push(
         getMaxTalentCount(treeData[Commanders[commander][color]][id]['values'])
       );
@@ -382,8 +380,8 @@ class App extends Component {
    */
   toggleInfoPanel = () => {
     this.setState(
-      prevState => ({
-        isShownInfoPanel: !prevState.isShownInfoPanel
+      (prevState) => ({
+        isShownInfoPanel: !prevState.isShownInfoPanel,
       }),
       () => {
         this.treePanelRef.repaint();
@@ -393,7 +391,7 @@ class App extends Component {
 
     ReactGA.event({
       category: 'Settings',
-      action: 'Toggle info panel'
+      action: 'Toggle info panel',
     });
   };
 
@@ -404,8 +402,8 @@ class App extends Component {
    */
   toggleTotalDisplay = () => {
     this.setState(
-      prevState => ({
-        isShownTotals: !prevState.isShownTotals
+      (prevState) => ({
+        isShownTotals: !prevState.isShownTotals,
       }),
       () => {
         localStorage.setItem('isShownTotals', this.state.isShownTotals);
@@ -414,7 +412,7 @@ class App extends Component {
 
     ReactGA.event({
       category: 'Settings',
-      action: 'Toggle tree totals'
+      action: 'Toggle tree totals',
     });
   };
 
@@ -425,8 +423,8 @@ class App extends Component {
    */
   toggleValueDisplay = () => {
     this.setState(
-      prevState => ({
-        isShownValues: !prevState.isShownValues
+      (prevState) => ({
+        isShownValues: !prevState.isShownValues,
       }),
       () => {
         localStorage.setItem('isShownValues', this.state.isShownValues);
@@ -435,7 +433,7 @@ class App extends Component {
 
     ReactGA.event({
       category: 'Settings',
-      action: 'Toggle node values'
+      action: 'Toggle node values',
     });
   };
 
@@ -445,7 +443,7 @@ class App extends Component {
    * @param {string} size Desired node size
    * @memberof App
    */
-  toggleNodeSize = size => {
+  toggleNodeSize = (size) => {
     this.setState({ nodeSize: size }, () => {
       this.treePanelRef.repaint();
       localStorage.setItem('nodeSize', this.state.nodeSize);
@@ -454,7 +452,7 @@ class App extends Component {
     ReactGA.event({
       category: 'Settings',
       action: 'Toggle node size',
-      label: size
+      label: size,
     });
   };
 
@@ -465,8 +463,8 @@ class App extends Component {
    */
   toggleScreenshotStats = () => {
     this.setState(
-      prevState => ({
-        isScreenshotStats: !prevState.isScreenshotStats
+      (prevState) => ({
+        isScreenshotStats: !prevState.isScreenshotStats,
       }),
       () => {
         localStorage.setItem('isScreenshotStats', this.state.isScreenshotStats);
@@ -475,7 +473,7 @@ class App extends Component {
 
     ReactGA.event({
       category: 'Settings',
-      action: 'Toggle screenshot stats'
+      action: 'Toggle screenshot stats',
     });
   };
 
@@ -486,8 +484,8 @@ class App extends Component {
    */
   toggleSpeedMode = () => {
     this.setState(
-      prevState => ({
-        isSpeedMode: !prevState.isSpeedMode
+      (prevState) => ({
+        isSpeedMode: !prevState.isSpeedMode,
       }),
       () => {
         this.treePanelRef.drawLines();
@@ -497,7 +495,7 @@ class App extends Component {
 
     ReactGA.event({
       category: 'Settings',
-      action: 'Toggle speed mode'
+      action: 'Toggle speed mode',
     });
   };
 
@@ -508,8 +506,8 @@ class App extends Component {
    */
   toggleInstantZero = () => {
     this.setState(
-      prevState => ({
-        isInstantZero: !prevState.isInstantZero
+      (prevState) => ({
+        isInstantZero: !prevState.isInstantZero,
       }),
       () => {
         localStorage.setItem('isInstantZero', this.state.isInstantZero);
@@ -518,7 +516,7 @@ class App extends Component {
 
     ReactGA.event({
       category: 'Settings',
-      action: 'Toggle instant zero'
+      action: 'Toggle instant zero',
     });
   };
 
@@ -529,8 +527,8 @@ class App extends Component {
    */
   toggleInstantMax = () => {
     this.setState(
-      prevState => ({
-        isInstantMax: !prevState.isInstantMax
+      (prevState) => ({
+        isInstantMax: !prevState.isInstantMax,
       }),
       () => {
         localStorage.setItem('isInstantMax', this.state.isInstantMax);
@@ -539,7 +537,7 @@ class App extends Component {
 
     ReactGA.event({
       category: 'Settings',
-      action: 'Toggle instant max'
+      action: 'Toggle instant max',
     });
   };
 
@@ -550,8 +548,8 @@ class App extends Component {
    */
   toggleAutoFill = () => {
     this.setState(
-      prevState => ({
-        isAutoFill: !prevState.isAutoFill
+      (prevState) => ({
+        isAutoFill: !prevState.isAutoFill,
       }),
       () => {
         localStorage.setItem('isAutoFill', this.state.isAutoFill);
@@ -560,7 +558,7 @@ class App extends Component {
 
     ReactGA.event({
       category: 'Settings',
-      action: 'Toggle auto fill'
+      action: 'Toggle auto fill',
     });
   };
 
@@ -571,8 +569,8 @@ class App extends Component {
    */
   toggleMouseXY = () => {
     this.setState(
-      prevState => ({
-        isShownMouseXY: !prevState.isShownMouseXY
+      (prevState) => ({
+        isShownMouseXY: !prevState.isShownMouseXY,
       }),
       () => {
         this.treePanelRef.toggleMouseListeners();
@@ -588,8 +586,8 @@ class App extends Component {
    */
   toggleTalentID = () => {
     this.setState(
-      prevState => ({
-        isShownTalentID: !prevState.isShownTalentID
+      (prevState) => ({
+        isShownTalentID: !prevState.isShownTalentID,
       }),
       () => {
         localStorage.setItem('isShownTalentID', this.state.isShownTalentID);
@@ -611,15 +609,15 @@ class App extends Component {
    *
    * @memberof App
    */
-  toggleAnnounce = () => {
-    this.announceRef.show();
+  toggleAnnounce = (version) => {
+    this.announceRef.show(version);
   };
 
   render() {
     return (
       <div id="app">
         {!this.props.isEmbed && (
-          <GuidedTour ref={component => (this.tourRef = component)} />
+          <GuidedTour ref={(component) => (this.tourRef = component)} />
         )}
 
         {this.invalidModalFlag && (
@@ -627,7 +625,7 @@ class App extends Component {
         )}
 
         <AnnouncementModal
-          ref={component => (this.announceRef = component)}
+          ref={(component) => (this.announceRef = component)}
           isEmbed={this.props.isEmbed}
           isUpgrade={
             localStorage.getItem('version')
@@ -708,7 +706,7 @@ class App extends Component {
 
             <ErrorBoundary>
               <TreePanel
-                ref={component => (this.treePanelRef = component)}
+                ref={(component) => (this.treePanelRef = component)}
                 changeCommander={this.changeCommander}
                 resetTalents={this.resetTalents}
                 changeTalentValue={this.changeTalentValue}
