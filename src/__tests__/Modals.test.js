@@ -10,8 +10,6 @@ import {
   ShareModal
 } from '../Modals';
 
-import { version } from '../../package.json';
-
 describe('Modal', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -23,18 +21,6 @@ describe('Modal', () => {
     const div = document.createElement('div');
     ReactDOM.render(<AnnouncementModal />, div);
     ReactDOM.unmountComponentAtNode(div);
-  });
-
-  it('announce displays the current app version', () => {
-    const currentVersion = `v${version.split('.')[0]}.${version.split('.')[1]}`;
-    const { getByTestId } = render(
-      <AnnouncementModal
-        isEmbed={false}
-        isUpgrade={true}
-        isInvalidBuild={false}
-      />
-    );
-    expect(getByTestId('announce-modal')).toHaveTextContent(currentVersion);
   });
 
   it('renders without crashing', () => {

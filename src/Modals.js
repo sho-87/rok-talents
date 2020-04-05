@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import ReactGA from 'react-ga';
-import Announcement from './Announcement';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';
@@ -13,7 +12,7 @@ import {
   faLink,
   faCode,
   faCopy,
-  faBullhorn
+  faBullhorn,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -28,7 +27,7 @@ import {
   RedditIcon,
   PocketIcon,
   EmailIcon,
-  WeiboIcon
+  WeiboIcon,
 } from 'react-share';
 
 import { title, author, contributors, bugs, version } from '../package.json';
@@ -45,13 +44,13 @@ export class InvalidBuildModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: true
+      modal: true,
     };
   }
 
   toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
+    this.setState((prevState) => ({
+      modal: !prevState.modal,
     }));
   };
 
@@ -98,27 +97,42 @@ export class AnnouncementModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      version: version,
       modal:
         this.props.isNewUser ||
         this.props.isEmbed ||
         !this.props.isUpgrade ||
         this.props.isInvalidBuild
           ? false
-          : true
+          : true,
     };
   }
 
   toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
+    this.setState((prevState) => ({
+      modal: !prevState.modal,
     }));
   };
 
-  show = () => {
-    this.setState({ modal: true });
+  show = (version) => {
+    this.setState({ modal: true, version: version });
   };
 
+  getFilenameFromVersion(version) {
+    const semVerValues = version.split('.');
+    return `${semVerValues[0]}_${semVerValues[1]}.js`;
+  }
+
+  loadAnnouncement(version) {
+    const Announcement = React.lazy(() =>
+      import(`./announcements/${this.getFilenameFromVersion(version)}`)
+    );
+    return Announcement;
+  }
+
   render() {
+    const Announcement = this.loadAnnouncement(this.state.version);
+
     return (
       <Modal
         data-testid="announce-modal"
@@ -134,7 +148,9 @@ export class AnnouncementModal extends Component {
           Announcement
         </Modal.Header>
         <Modal.Body className="modal-body">
-          <Announcement />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Announcement />
+          </Suspense>
           <hr className="announce-hr" />
           If you have any feature requests, or notice any website issues, you
           can make a post{' '}
@@ -167,7 +183,7 @@ export class AboutModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
     };
   }
 
@@ -180,9 +196,14 @@ export class AboutModal extends Component {
   }
 
   toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
+    this.setState((prevState) => ({
+      modal: !prevState.modal,
     }));
+  };
+
+  showAnnouncement = (version) => {
+    this.toggle();
+    this.props.toggleAnnounce(version);
   };
 
   getContributors = () => {
@@ -190,7 +211,7 @@ export class AboutModal extends Component {
       i > 0 && ', ',
       <a href={c.url} target="_blank" rel="noopener noreferrer" key={c.name}>
         {c.name}
-      </a>
+      </a>,
     ]);
 
     return contributorsList;
@@ -199,7 +220,7 @@ export class AboutModal extends Component {
   showDonate = () => {
     ReactGA.event({
       category: 'App',
-      action: 'Donate'
+      action: 'Donate',
     });
   };
 
@@ -263,15 +284,36 @@ export class AboutModal extends Component {
 
             <Tab eventKey="releases" title="Releases">
               <Button
-                id="button-releases"
+                className="button-releases"
                 variant="success"
                 size="sm"
                 onClick={() => {
-                  this.toggle();
-                  this.props.toggleAnnounce();
+                  this.showAnnouncement(version);
                 }}
               >
                 View latest release
+              </Button>
+              <hr />
+              <h2>Previous Releases (click to view):</h2>
+              <Button
+                className="button-releases-history"
+                variant="primary"
+                size="sm"
+                onClick={() => {
+                  this.showAnnouncement('1.3.0');
+                }}
+              >
+                1.3.0
+              </Button>
+              <Button
+                className="button-releases-history"
+                variant="primary"
+                size="sm"
+                onClick={() => {
+                  this.showAnnouncement('1.2.0');
+                }}
+              >
+                1.2.0
               </Button>
             </Tab>
 
@@ -327,7 +369,7 @@ export class ResetModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
     };
   }
 
@@ -340,8 +382,8 @@ export class ResetModal extends Component {
   }
 
   toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
+    this.setState((prevState) => ({
+      modal: !prevState.modal,
     }));
   };
 
@@ -389,7 +431,7 @@ export class ShareModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
     };
   }
 
@@ -402,8 +444,8 @@ export class ShareModal extends Component {
   }
 
   toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
+    this.setState((prevState) => ({
+      modal: !prevState.modal,
     }));
   };
 
@@ -415,7 +457,7 @@ export class ShareModal extends Component {
     document.getElementById('copyButton').innerHTML = '\u2713';
     ReactGA.event({
       category: 'Share',
-      action: 'Copy URL'
+      action: 'Copy URL',
     });
   };
 
@@ -427,14 +469,14 @@ export class ShareModal extends Component {
     document.getElementById('copyEmbedButton').innerHTML = '\u2713';
     ReactGA.event({
       category: 'Share',
-      action: 'Copy Embed URL'
+      action: 'Copy Embed URL',
     });
   };
 
   shareSocial = () => {
     ReactGA.event({
       category: 'Share',
-      action: 'Share social media'
+      action: 'Share social media',
     });
   };
 
@@ -563,5 +605,5 @@ export default {
   AnnouncementModal,
   AboutModal,
   ResetModal,
-  ShareModal
+  ShareModal,
 };
