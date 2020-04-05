@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import ReactGA from 'react-ga';
+import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import domtoimage from 'dom-to-image';
 import {
   faTrashAlt,
   faCamera,
-  faShareAlt
+  faShareAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createSummaryString } from './utils';
@@ -16,7 +17,7 @@ import './styles/NavBarButtons.css';
  * Nav bar component containing main buttons
  *
  */
-const NavBarButtons = props => {
+const NavBarButtons = (props) => {
   const [isDownloading, setIsDownloading] = useState(false);
 
   /**
@@ -29,7 +30,7 @@ const NavBarButtons = props => {
     ReactGA.event({
       category: 'App',
       action: 'Screenshot',
-      label: props.commander
+      label: props.commander,
     });
 
     setIsDownloading(true);
@@ -48,10 +49,10 @@ const NavBarButtons = props => {
           transform: 'scale(' + dpr + ')',
           transformOrigin: 'top left',
           width: node.offsetWidth + 'px',
-          height: node.offsetHeight + 'px'
-        }
+          height: node.offsetHeight + 'px',
+        },
       })
-      .then(dataUrl => {
+      .then((dataUrl) => {
         const link = document.createElement('a');
         link.href = dataUrl;
         link.download = `${createSummaryString(
@@ -70,24 +71,24 @@ const NavBarButtons = props => {
 
   return (
     <form className="form-inline">
-      <button
+      <Button
         id="button-reset"
         data-testid="button-reset"
-        type="button"
-        className="btn btn-sm btn-danger"
+        variant="danger"
+        size="sm"
         disabled={props.commander | props.calcPointsSpent() ? false : true}
         onClick={() => props.showReset()}
       >
         <FontAwesomeIcon icon={faTrashAlt} />
         <span className="nav-button-text">Reset</span>
-      </button>
+      </Button>
 
-      <button
+      <Button
         id="button-screenshot"
         data-testid="button-screenshot"
-        type="button"
+        variant="primary"
+        size="sm"
         disabled={props.commander | props.calcPointsSpent() ? false : true}
-        className="btn btn-sm btn-primary"
         onClick={() => {
           const elementID = props.isScreenshotStats
             ? 'main-container'
@@ -101,19 +102,19 @@ const NavBarButtons = props => {
           <FontAwesomeIcon icon={faCamera} />
         )}
         <span className="nav-button-text">Screenshot</span>
-      </button>
+      </Button>
 
-      <button
+      <Button
         id="button-share"
         data-testid="button-share"
-        type="button"
+        variant="success"
+        size="sm"
         disabled={props.commander | props.calcPointsSpent() ? false : true}
-        className="btn btn-sm btn-success"
         onClick={() => props.showShare()}
       >
         <FontAwesomeIcon icon={faShareAlt} />
         <span className="nav-button-text">Share</span>
-      </button>
+      </Button>
     </form>
   );
 };

@@ -33,7 +33,7 @@ h3 {
   font-weight: bold;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 820px) {
   .nav-button-text {
     display: none;
   }

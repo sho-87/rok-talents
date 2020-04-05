@@ -30,7 +30,14 @@ import {
   WeiboIcon,
 } from 'react-share';
 
-import { title, author, contributors, bugs, version } from '../package.json';
+import {
+  title,
+  donate,
+  author,
+  contributors,
+  bugs,
+  version,
+} from '../package.json';
 import { getURL } from './utils';
 import './styles/Modals.css';
 
@@ -266,12 +273,8 @@ export class AboutModal extends Component {
                 </a>
               </div>
               <div>
-                <span className="about-label">Support development:</span>{' '}
-                <a
-                  href="https://www.buymeacoffee.com/simonho"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <span className="about-label">Donate:</span>{' '}
+                <a href={donate} target="_blank" rel="noopener noreferrer">
                   <img
                     id="coffee"
                     src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
