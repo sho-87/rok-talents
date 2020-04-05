@@ -119,7 +119,7 @@ const NavBarSettings = props => {
                   checked={props.isInstantZero}
                   onChange={e => props.toggleInstantZero()}
                 />
-                <HelpTooltip tooltip="Set talent to zero with a single click" />
+                <HelpTooltip tooltip="Set a single talent to zero with 1 click" />
               </div>
               <div className="help-wrapper">
                 <Form.Check
@@ -129,7 +129,7 @@ const NavBarSettings = props => {
                   checked={props.isInstantMax}
                   onChange={e => props.toggleInstantMax()}
                 />
-                <HelpTooltip tooltip="Max talent with a single click" />
+                <HelpTooltip tooltip="Max a single talent with 1 click" />
               </div>
               <div className="help-wrapper">
                 <Form.Check
@@ -139,7 +139,7 @@ const NavBarSettings = props => {
                   checked={props.isAutoFill}
                   onChange={e => props.toggleAutoFill()}
                 />
-                <HelpTooltip tooltip="Automatically fill all prerequisite talents" />
+                <HelpTooltip tooltip="Automatically fill all prerequisites for a talent" />
               </div>
             </div>
 

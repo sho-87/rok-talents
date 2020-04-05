@@ -48,7 +48,7 @@ export class TalentTooltip extends Component {
                 className="node-tooltip-decrease"
                 icon={faMinusSquare}
                 size="2x"
-                onClick={this.props.talentDecrease}
+                onClick={this.props.decreaseTalent}
               />
 
               <span className="node-tooltip-value">
@@ -59,7 +59,7 @@ export class TalentTooltip extends Component {
                 className="node-tooltip-increase"
                 icon={faPlusSquare}
                 size="2x"
-                onClick={this.props.talentIncrease}
+                onClick={this.props.increaseTalent}
               />
             </div>
           )}
