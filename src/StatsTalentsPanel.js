@@ -14,7 +14,7 @@ class StatsTalentsPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShownStatsTalents: false
+      isShownStatsTalents: false,
     };
   }
 
@@ -24,13 +24,13 @@ class StatsTalentsPanel extends Component {
    * @memberof StatsTalentsPanel
    */
   toggleStatsTalents = () => {
-    this.setState(prevState => ({
-      isShownStatsTalents: !prevState.isShownStatsTalents
+    this.setState((prevState) => ({
+      isShownStatsTalents: !prevState.isShownStatsTalents,
     }));
 
     ReactGA.event({
       category: 'App',
-      action: 'Toggle stats talents'
+      action: 'Toggle stats talents',
     });
   };
 

@@ -6,7 +6,7 @@ import './styles/StatsPanel.css';
 /**
  * Stats panel component displaying stats about the current talent build
  */
-const StatsPanel = React.memo(props => {
+const StatsPanel = React.memo((props) => {
   /**
    * Get all calculated stats and their values
    *
@@ -22,7 +22,7 @@ const StatsPanel = React.memo(props => {
       );
     }
 
-    return allStats.length > 0 ? allStats : 'None';
+    return allStats.length > 0 ? allStats : <p>None</p>;
   };
 
   return (
