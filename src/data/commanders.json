@@ -378,5 +378,16 @@
       "rokguide": "https://rok.guide/artemisia-i/",
       "shinchi42": "https://www.youtube.com/watch?v=C1W_nAWYRf0"
     }
+  },
+  "Keira": {
+    "id": "41",
+    "title": "The Red Chameleon",
+    "tier": "Epic",
+    "red": "Archer",
+    "yellow": "Peacekeeping",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/keira/"
+    }
   }
 }
