@@ -38,13 +38,21 @@ class InfoPanel extends Component {
 
           if (pointsAssigned !== 0) {
             const talent = talentData[i];
-            const statName = talent.stats;
+
+            let statName;
+            if (talent.stats instanceof Array) {
+              statName = talent.stats;
+            } else if (talent.stats !== '') {
+              statName = [talent.stats];
+            }
 
             if (statName) {
-              if (!(statName in stats)) {
-                stats[statName] = 0;
+              for (let stat of statName) {
+                if (!(stat in stats)) {
+                  stats[stat] = 0;
+                }
+                stats[stat] += talent.values[pointsAssigned - 1];
               }
-              stats[statName] += talent.values[pointsAssigned - 1];
             }
 
             if (talent.type === 'node-large') {
@@ -57,7 +65,7 @@ class InfoPanel extends Component {
                   talent.text,
                   talent.values,
                   pointsAssigned - 1
-                )
+                ),
               });
             }
           }
