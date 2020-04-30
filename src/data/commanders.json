@@ -6,7 +6,10 @@
     "red": "Leadership",
     "yellow": "Peacekeeping",
     "blue": "Support",
-    "guides": { "rokguide": "https://rok.guide/aethelflaed/" }
+    "guides": {
+      "rokguide": "https://rok.guide/aethelflaed/",
+      "shinchi42": "https://www.youtube.com/watch?v=FrT0Kao_p-A"
+    }
   },
   "Richard I": {
     "id": "2",
