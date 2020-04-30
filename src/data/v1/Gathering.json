@@ -130,8 +130,8 @@
     "values": [0.5],
     "stats": "Defense",
     "text": "Increases the defense of all units led by this commander by ${1}%",
-    "prereq": [8],
-    "dep": [18, 14],
+    "prereq": [8, 14],
+    "dep": [18],
     "pos": [24.8, 7.4],
     "type": "node-small"
   },
@@ -140,7 +140,7 @@
     "values": [0.5, 1],
     "stats": "Health",
     "text": "Increases the health of all units led by this commander by ${1}%",
-    "prereq": [13, 15, 9],
+    "prereq": [9],
     "dep": [16, 17],
     "pos": [38.2, 30.6],
     "type": "node-small"
@@ -150,8 +150,8 @@
     "values": [0.5],
     "stats": "Attack",
     "text": "Increases the attack of all units led by this commander by ${1}%",
-    "prereq": [10],
-    "dep": [14, 20],
+    "prereq": [10, 14],
+    "dep": [20],
     "pos": [52, 54.6],
     "type": "node-small"
   },
