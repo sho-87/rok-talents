@@ -392,5 +392,21 @@
     "guides": {
       "rokguide": "https://rok.guide/keira/"
     }
+  },
+  "Theodora": {
+    "id": "42",
+    "title": "Heaven's Bounty",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Garrison",
+    "blue": "Defense"
+  },
+  "Yi Sun-sin": {
+    "id": "43",
+    "title": "Duke of Loyalty and Warfare",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Garrison",
+    "blue": "Defense"
   }
 }
