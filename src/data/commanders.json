@@ -399,7 +399,10 @@
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Garrison",
-    "blue": "Defense"
+    "blue": "Defense",
+    "guides": {
+      "rokguide": "https://rok.guide/theodora/"
+    }
   },
   "Yi Sun-sin": {
     "id": "43",
@@ -407,6 +410,9 @@
     "tier": "Legendary",
     "red": "Leadership",
     "yellow": "Garrison",
-    "blue": "Defense"
+    "blue": "Defense",
+    "guides": {
+      "rokguide": "https://rok.guide/yi-sun-sin/"
+    }
   }
 }
