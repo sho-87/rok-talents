@@ -414,5 +414,28 @@
     "guides": {
       "rokguide": "https://rok.guide/yi-sun-sin/"
     }
+  },
+  "Chandragupta Maurya": {
+    "id": "44",
+    "shortName": "Chandragupta",
+    "title": "Lord of the Peacocks",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Conquering",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/chandragupta-maurya/"
+    }
+  },
+  "William I": {
+    "id": "45",
+    "title": "The Conqueror",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Versatility",
+    "blue": "Attack",
+    "guides": {
+      "rokguide": "https://rok.guide/william-i/"
+    }
   }
 }
