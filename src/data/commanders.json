@@ -437,5 +437,17 @@
     "guides": {
       "rokguide": "https://rok.guide/william-i/"
     }
+  },
+  "Matilda of Flanders": {
+    "id": "46",
+    "shortName": "Matilda",
+    "title": "Duchess Regent of Normandy",
+    "tier": "Epic",
+    "red": "Integration",
+    "yellow": "Gathering",
+    "blue": "Defense",
+    "guides": {
+      "rokguide": "https://rok.guide/matilda-of-flanders/"
+    }
   }
 }

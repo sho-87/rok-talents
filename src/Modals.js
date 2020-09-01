@@ -297,7 +297,17 @@ export class AboutModal extends Component {
                 View latest release
               </Button>
               <hr />
-              <h2>Release History (click to view):</h2>
+              <h2>Release History</h2>
+              <Button
+                className="button-releases-history"
+                variant="primary"
+                size="sm"
+                onClick={() => {
+                  this.showAnnouncement('1.7.0');
+                }}
+              >
+                1.7.0
+              </Button>
               <Button
                 className="button-releases-history"
                 variant="primary"
