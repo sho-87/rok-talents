@@ -449,5 +449,39 @@
     "guides": {
       "rokguide": "https://rok.guide/matilda-of-flanders/"
     }
+  },
+  "Mulan": {
+    "id": "47",
+    "title": "Legendary Heroine",
+    "tier": "Legendary",
+    "red": "Integration",
+    "yellow": "Peacekeeping",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://rok.guide/mulan/"
+    }
+  },
+  "Harald Sigurdsson": {
+    "id": "48",
+    "shortName": "Harald",
+    "title": "Hardrada",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Conquering",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/harald-sigurdsson/"
+    }
+  },
+  "Zenobia": {
+    "id": "49",
+    "title": "Queen of Palmyra",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Garrison",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://rok.guide/zenobia/"
+    }
   }
 }
