@@ -483,5 +483,27 @@
     "guides": {
       "rokguide": "https://rok.guide/zenobia/"
     }
+  },
+  "Lu Bu": {
+    "id": "50",
+    "title": "The Powerful Demon God",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/lu-bu/"
+    }
+  },
+  "Diaochan": {
+    "id": "51",
+    "title": "The Intriguing Dancer",
+    "tier": "Epic",
+    "red": "Integration",
+    "yellow": "Peacekeeping",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://rok.guide/diaochan/"
+    }
   }
 }
