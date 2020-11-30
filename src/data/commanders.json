@@ -505,5 +505,29 @@
     "guides": {
       "rokguide": "https://rok.guide/diaochan/"
     }
+  },
+  "Nebuchadnezzar II": {
+    "id": "52",
+    "shortName": "Neb",
+    "title": "Restorer of Babylon",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Conquering",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/nebuchadnezzar-ii/"
+    }
+  },
+  "Cyrus the Great": {
+    "id": "53",
+    "shortName": "Cyrus",
+    "title": "Founder of the Persian Empire",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Versatility",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/cyrus-the-great/"
+    }
   }
 }
