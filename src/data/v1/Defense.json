@@ -184,7 +184,7 @@
     "name": "Desperate Elegy",
     "values": [5, 10, 15, 20, 25],
     "stats": "",
-    "text": "When the army led by this commander has been reduced to 30% strength, greatly increases rage accumulation rate for the next 20 seconds. An additional ${1} rage will be received from each attack",
+    "text": "When troops led by this commander are reduced to 30% of units remaining, they gain an extra ${1} rage from each normal attack",
     "prereq": [16, 17],
     "dep": [],
     "pos": [79.2, 42.8],
