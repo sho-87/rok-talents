@@ -508,7 +508,7 @@
   },
   "Nebuchadnezzar II": {
     "id": "52",
-    "shortName": "Neb",
+    "shortName": "Nebu",
     "title": "Restorer of Babylon",
     "tier": "Legendary",
     "red": "Archer",
@@ -528,6 +528,28 @@
     "blue": "Skill",
     "guides": {
       "rokguide": "https://rok.guide/cyrus-the-great/"
+    }
+  },
+  "Trajan": {
+    "id": "54",
+    "title": "Optimus Princeps",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Versatility",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://rok.guide/trajan/"
+    }
+  },
+  "Moctezuma I": {
+    "id": "55",
+    "title": "Aztec Eagle",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Peacekeeping",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/moctezuma-i/"
     }
   }
 }
