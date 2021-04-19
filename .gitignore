@@ -16,7 +16,8 @@
 .env.production.local
 .vscode
 src/template*.jpg
-/templates
+templates/*
+!templates/commander_icons.psd
 
 npm-debug.log*
 yarn-debug.log*
