@@ -551,5 +551,27 @@
     "guides": {
       "rokguide": "https://rok.guide/moctezuma-i/"
     }
+  },
+  "Jadwiga": {
+    "id": "56",
+    "title": "Holy Sovereign",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Garrison",
+    "blue": "Mobility",
+    "guides": {
+      "rokguide": "https://rok.guide/jadwiga/"
+    }
+  },
+  "Xiang Yu": {
+    "id": "57",
+    "title": "King of Western Chu",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Conquering",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/xiang-yu/"
+    }
   }
 }
