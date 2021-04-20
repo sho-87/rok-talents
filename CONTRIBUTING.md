@@ -41,6 +41,19 @@ Once `develop` is merged to `master`, a GitHub action will trigger to deploy the
  9. Merge your feature branch into local `develop`
  10. Make a pull request to upstream `develop` branch
 
+### Adding commanders
+
+The process for adding a new commander is straightforward:
+
+ 1. Add their info to `data/commanders.json`
+    - The `id` key must be unique and incremented by 1 for each new commander
+    - The `shortName` key is optional, and is used when a shorter name is preferred for the dropdown list
+ 2. Add commander image to `public/images/commanders`
+    - Images can be created using the Photoshop template found in `templates`
+    - The image filename *must* match the full name used in `commanders.json`
+
+The changes above should be picked up automatically and the commander will appear in the list with the correct talent trees/info.
+
 ## Notes
 
 ### Tests
