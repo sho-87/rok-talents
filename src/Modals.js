@@ -258,9 +258,7 @@ export class AboutModal extends Component {
               </div>
               <div>
                 <span className="about-label">Creator:</span>{' '}
-                <a href={author.url} target="_blank" rel="noopener noreferrer">
                   {author.name}
-                </a>
               </div>
               <div>
                 <span className="about-label">Contributors:</span>{' '}
