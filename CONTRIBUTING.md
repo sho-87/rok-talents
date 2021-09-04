@@ -15,7 +15,7 @@ Versioned releases are kept on `master` branch. The `develop` branch is the stag
 
 Continuous integration tests are run automatically on pull requests to `develop`.
 
-Once `develop` is merged to `master`, a GitHub action will trigger to deploy the site and purge the Cloudflare cache. Once a commit is tagged on `master`, a GitHub release will be created automatically.
+Once a commit is made to `master`, a GitHub action will trigger to deploy the site and purge the Cloudflare cache. Once a commit is tagged on `master`, a GitHub release will be created automatically.
 
 ### Environment setup
 
@@ -40,6 +40,7 @@ Once `develop` is merged to `master`, a GitHub action will trigger to deploy the
     - `npm test`
  9. Merge your feature branch into local `develop`
  10. Make a pull request to upstream `develop` branch
+ 11. Fast forward `master` to `develop` (this will release the site; more info below)
 
 ### Adding commanders
 
@@ -109,6 +110,10 @@ As soon as commits are merged into the `master` branch, the CD action will be ca
 
 **Important:** the changes go *live* as soon as anything is pushed to the `master` branch and the GitHub action succeeds! As a result, make sure you test locally and first push to the `develop` branch for testing. Make sure the site works before anything touches `master`.
 
-I strongly recommend to work in the `develop` branch, and when ready, merge into `master`. Then, push both branches to GitHub for deployment.
+I strongly recommend:
+
+1. Work in the `develop` branch
+2. When ready, *fast forward* `master` to `develop` (no merge commits)
+3. Then, push both branches to GitHub for deployment
 
 A second GitHub action exists for automatic release tagging. Whenever a commit is tagged with `vx.x.x` (e.g. `v1.9.0`), an action will trigger that creates an automatic release on GitHub.
