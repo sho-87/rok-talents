@@ -51,10 +51,11 @@ The process for adding a new commander is straightforward:
  2. Add commander image to `public/images/commanders`
     - Images can be created using the Photoshop template found in `templates`
     - The image filename *must* match the full name used in `commanders.json`
+    - Commander images should have dimensions of 120x133px and transparent background
 
 The changes above should be picked up automatically and the commander will appear in the list with the correct talent trees/info.
 
-## Notes
+## Additional Notes
 
 ### Tests
 
@@ -73,3 +74,41 @@ In-game talent data often changes (e.g. talent text, values) and this app tries 
 ### Talent build URL
 
 The encoding and decoding of a talent build is done using functions found in `utils.js`. Their implementation should almost *never* be changed, or at least changed very very very carefully. Breaking this has severe implications for the ability to share old talent builds. For example, if the encode/decode method is changed, any existing talent builds will basically be unusable as the URL will be different.
+
+The number-to-letter mapping can be found in `values.js`.
+
+### Announcements
+
+Announcements are found in the `announcements` directory and loaded into a modal. On the website, they can be accessed manually from the Info menu under Releases.
+
+The latest website version that the user has seen is stored in their browsers Local Storage. This is done in `App.js` when the main app component mounts. When a new major or minor website version is released (by incrementing the version in `package.json`), it is compared to the users stored version. If a new version is found, then the latest announcement is shown automatically when the user visits the site.
+
+### Website Settings
+
+User settings changes are persistent across sessions, and the values are stored in the browsers Local Storage. All of this is done in `App.js`.
+
+### Site Deployment
+
+#### GitHub Pages
+
+The entire site is served from GitHub Pages in the `gh-pages` branch of the main repo. This is tied to a custom domain, as can be seen in `Settings -> Pages`.
+
+Talent builds are linkable and shareable with other users (www.roktalents.com/xxx). As a result, changing the domain will break existing talent build links, and a non-trivial amount of work is required to ensure that both old and new links work if changing the domain. This is because a lot of information (e.g. embed state, point distribution etc.) is pulled directly from the URL to help populate the contents of the page when viewing existing builds. You can see this in `index.js` and `App.js`.
+
+Cloudflare is placed infront of GitHub pages to cache the site and limit the amount of traffic going to GitHub directly.
+
+#### GitHub Actions
+
+A number of GitHub actions are set up to automate deployment. You can see these in `.github/workflows`.
+
+As soon as commits are merged into the `master` branch, the CD action will be called which will:
+
+1. Run tests and build the app
+2. Deploy the `master` branch as a site to GitHub Pages. The changes are now live!
+3. Purge the Cloudflare cache so end users see the updated site
+
+**Important:** the changes go *live* as soon as anything is pushed to the `master` branch and the GitHub action succeeds! As a result, make sure you test locally and first push to the `develop` branch for testing. Make sure the site works before anything touches `master`.
+
+I strongly recommend to work in the `develop` branch, and when ready, merge into `master`. Then, push both branches to GitHub for deployment.
+
+A second GitHub action exists for automatic release tagging. Whenever a commit is tagged with `vx.x.x` (e.g. `v1.9.0`), an action will trigger that creates an automatic release on GitHub.
