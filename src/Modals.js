@@ -257,8 +257,7 @@ export class AboutModal extends Component {
                 <span className="about-label">App version:</span> {version}
               </div>
               <div>
-                <span className="about-label">Creator:</span>{' '}
-                  {author.name}
+                <span className="about-label">Creator:</span> {author.name}
               </div>
               <div>
                 <span className="about-label">Contributors:</span>{' '}
@@ -296,6 +295,16 @@ export class AboutModal extends Component {
               </Button>
               <hr />
               <h2>Release History</h2>
+              <Button
+                className="button-releases-history"
+                variant="primary"
+                size="sm"
+                onClick={() => {
+                  this.showAnnouncement('2.0.0');
+                }}
+              >
+                2.0.0
+              </Button>
               <Button
                 className="button-releases-history"
                 variant="primary"
