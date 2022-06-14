@@ -300,6 +300,16 @@ export class AboutModal extends Component {
                 variant="primary"
                 size="sm"
                 onClick={() => {
+                  this.showAnnouncement('2.1.0');
+                }}
+              >
+                2.1.0
+              </Button>
+              <Button
+                className="button-releases-history"
+                variant="primary"
+                size="sm"
+                onClick={() => {
                   this.showAnnouncement('2.0.0');
                 }}
               >

@@ -573,5 +573,190 @@
     "guides": {
       "rokguide": "https://rok.guide/xiang-yu/"
     }
+  },
+  "Gilgamesh": {
+    "id": "58",
+    "title": "Wrath of Ishtar",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Conquering",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/gilgamesh/"
+    }
+  },
+  "Amanitore": {
+    "id": "59",
+    "title": "Nubian Kandake",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Garrison",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://rok.guide/amani/"
+    }
+  },
+  "Alexander Nevsky": {
+    "id": "60",
+    "shortName": "Nevsky",
+    "title": "The Hero of Neva River",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Versatility",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/alexander-nevsky/"
+    }
+  },
+  "Bertrand du Guesclin": {
+    "id": "61",
+    "shortName": "Bertrand",
+    "title": "The Eagle of Brittany",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Versatility",
+    "blue": "Defense",
+    "guides": {
+      "rokguide": "https://rok.guide/bertrand/"
+    }
+  },
+  "Flavius Aetius": {
+    "id": "62",
+    "shortName": "Flavius",
+    "title": "Patrician of Rome",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Garrison",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://rok.guide/flavius/"
+    }
+  },
+  "Scipio Africanus Prime": {
+    "id": "63",
+    "shortName": "Scipio Prime",
+    "title": "Hero of Zama",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Versatility",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://.rok.guide/scipio-africanus-hero-of-zama/"
+    }
+  },
+  "Honda Tadakatsu": {
+    "id": "64",
+    "shortName": "Honda",
+    "title": "The Deer of Tokugawa",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Versatility",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/honda/"
+    }
+  },
+  "Boudica Prime": {
+    "id": "65",
+    "title": "Queen of the Iceni",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Versatility",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/boudica-queen-of-the-iceni/"
+    }
+  },
+  "Henry V": {
+    "id": "66",
+    "title": "Lancastrian King",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Conquering",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://rok.guide/henry-v/"
+    }
+  },
+  "Kinich Janaab Pakal": {
+    "id": "67",
+    "shortName": "Pakal",
+    "title": "",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Conquering",
+    "blue": "Defense",
+    "guides": {
+      "rokguide": "https://rok.guide/kinich-janaab-pakal/"
+    }
+  },
+  "Cheok Jun Gyeong": {
+    "id": "68",
+    "shortName": "Cheok",
+    "title": "",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Versatility",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/cheok-jun-gyeong/"
+    }
+  },
+  "Ragnar Lodbrok": {
+    "id": "69",
+    "shortName": "Ragnar",
+    "title": "Legend of the North",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Attack",
+    "guides": {
+      "rokguide": "https://rok.guide/ragnar-lodbrok/"
+    }
+  },
+  "Bjorn Ironside": {
+    "id": "70",
+    "shortName": "Bjorn",
+    "title": "King of Kattegat",
+    "tier": "Epic",
+    "red": "Infantry",
+    "yellow": "Conquering",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://rok.guide/bjorn-ironside/"
+    }
+  },
+  "Thutmose III": {
+    "id": "71",
+    "title": "Beloved of Thoth",
+    "tier": "Legendary",
+    "red": "Archer",
+    "yellow": "Versatility",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://rok.guide/thutmose-iii/"
+    }
+  },
+  "Imhotep": {
+    "id": "72",
+    "title": "Man of Peace",
+    "tier": "Epic",
+    "red": "Archer",
+    "yellow": "Garrison",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://rok.guide/imhotep/"
+    }
+  },
+  "Suleiman I": {
+    "id": "73",
+    "title": "Kanuni",
+    "tier": "Legendary",
+    "red": "Leadership",
+    "yellow": "Conquering",
+    "blue": "Attack",
+    "guides": {
+      "rokguide": "https://rok.guide/suleiman-i/"
+    }
   }
 }
