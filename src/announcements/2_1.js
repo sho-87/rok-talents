@@ -6,18 +6,23 @@ const Announcement = React.memo((props) => {
     <>
       <h1>{`Update: v2.1.0`}</h1>
       <div>
-        Added new commanders: Pakal, Cheok Jun, Gilgamesh, Amani, Alexander Nevsky, Bertand, Flavius, Scipio Prime,
-        Boudica Prime, Henry IV, Ragnar Lodbrok, Bjorn.
+        Added new commanders: Pakal, Cheok Jun Gyeong, Gilgamesh, Amanitore, Honda Tadakatsu, Suleiman I, Alexander
+        Nevsky, Bertand du Guesclin, Flavius Aetius, Scipio Prime, Boudica Prime, Henry V, Ragnar Lodbrok, Bjorn
+        Ironside, Imhotep, Thutmose III.
       </div>
 
       <div className="announce-img-container">
-        <img src={`${process.env.PUBLIC_URL}/images/commanders/Pakal.png`} className="announce-img" alt="Pakal"></img>
+        <img
+          src={`${process.env.PUBLIC_URL}/images/commanders/Kinich Janaab Pakal.png`}
+          className="announce-img"
+          alt="Kinich Janaab Pakal"
+        ></img>
       </div>
       <div className="announce-img-container">
         <img
-          src={`${process.env.PUBLIC_URL}/images/commanders/Cheok Jun.png`}
+          src={`${process.env.PUBLIC_URL}/images/commanders/Cheok Jun Gyeong.png`}
           className="announce-img"
-          alt="Cheok Jun"
+          alt="Cheok Jun Gyeong"
         ></img>
       </div>
       <div className="announce-img-container">
@@ -28,7 +33,25 @@ const Announcement = React.memo((props) => {
         ></img>
       </div>
       <div className="announce-img-container">
-        <img src={`${process.env.PUBLIC_URL}/images/commanders/Amani.png`} className="announce-img" alt="Amani"></img>
+        <img
+          src={`${process.env.PUBLIC_URL}/images/commanders/Amanitore.png`}
+          className="announce-img"
+          alt="Amanitore"
+        ></img>
+      </div>
+      <div className="announce-img-container">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/commanders/Honda Tadakatsu.png`}
+          className="announce-img"
+          alt="Honda Tadakatsu"
+        ></img>
+      </div>
+      <div className="announce-img-container">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/commanders/Suleiman I.png`}
+          className="announce-img"
+          alt="Amanitore"
+        ></img>
       </div>
       <div className="announce-img-container">
         <img
@@ -39,16 +62,16 @@ const Announcement = React.memo((props) => {
       </div>
       <div className="announce-img-container">
         <img
-          src={`${process.env.PUBLIC_URL}/images/commanders/Bertrand.png`}
+          src={`${process.env.PUBLIC_URL}/images/commanders/Bertrand du Guesclin.png`}
           className="announce-img"
           alt="Bertrand"
         ></img>
       </div>
       <div className="announce-img-container">
         <img
-          src={`${process.env.PUBLIC_URL}/images/commanders/Flavius.png`}
+          src={`${process.env.PUBLIC_URL}/images/commanders/Flavius Aetius.png`}
           className="announce-img"
-          alt="Flavius"
+          alt="Flavius Aetius"
         ></img>
       </div>
       <div className="announce-img-container">
@@ -67,9 +90,9 @@ const Announcement = React.memo((props) => {
       </div>
       <div className="announce-img-container">
         <img
-          src={`${process.env.PUBLIC_URL}/images/commanders/Henry IV.png`}
+          src={`${process.env.PUBLIC_URL}/images/commanders/Henry V.png`}
           className="announce-img"
-          alt="Henry IV"
+          alt="Henry V"
         ></img>
       </div>
       <div className="announce-img-container">
@@ -80,7 +103,25 @@ const Announcement = React.memo((props) => {
         ></img>
       </div>
       <div className="announce-img-container">
-        <img src={`${process.env.PUBLIC_URL}/images/commanders/Bjorn.png`} className="announce-img" alt="Bjorn"></img>
+        <img
+          src={`${process.env.PUBLIC_URL}/images/commanders/Thutmose III.png`}
+          className="announce-img"
+          alt="Thutmose III"
+        ></img>
+      </div>
+      <div className="announce-img-container">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/commanders/Bjorn Ironside.png`}
+          className="announce-img"
+          alt="Bjorn Ironside"
+        ></img>
+      </div>
+      <div className="announce-img-container">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/commanders/Imhotep.png`}
+          className="announce-img"
+          alt="Imhotep"
+        ></img>
       </div>
     </>
   );
