@@ -627,7 +627,7 @@
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Garrison",
-    "blue": "Support",
+    "blue": "Skill",
     "guides": {
       "rokguide": "https://rok.guide/flavius/"
     }
@@ -641,7 +641,7 @@
     "yellow": "Versatility",
     "blue": "Support",
     "guides": {
-      "rokguide": "https://.rok.guide/scipio-africanus-hero-of-zama/"
+      "rokguide": "https://rok.guide/scipio-africanus-hero-of-zama/"
     }
   },
   "Honda Tadakatsu": {
@@ -681,7 +681,7 @@
   "Kinich Janaab Pakal": {
     "id": "67",
     "shortName": "Pakal",
-    "title": "",
+    "title": "Sun of Eternal Glory",
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Conquering",
@@ -693,7 +693,7 @@
   "Cheok Jun Gyeong": {
     "id": "68",
     "shortName": "Cheok",
-    "title": "",
+    "title": "Minister Protector",
     "tier": "Legendary",
     "red": "Infantry",
     "yellow": "Versatility",

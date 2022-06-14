@@ -50,7 +50,7 @@ const Announcement = React.memo((props) => {
         <img
           src={`${process.env.PUBLIC_URL}/images/commanders/Suleiman I.png`}
           className="announce-img"
-          alt="Amanitore"
+          alt="Suleiman I"
         ></img>
       </div>
       <div className="announce-img-container">
