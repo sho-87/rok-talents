@@ -758,5 +758,28 @@
     "guides": {
       "rokguide": "https://rok.guide/suleiman-i/"
     }
+  },
+  "Joan of Arc Prime": {
+    "id": "74",
+    "shortName": "Joan Prime",
+    "title": " ",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Versatility",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://riseofkingdomsguides.com/legendary-joan-of-arc-prime-talent-tree-build-and-guide/"
+    }
+  },
+  "Jan Zizka": {
+    "id": "75",
+    "title": " ",
+    "tier": "Legendary",
+    "red": "Cavalry",
+    "yellow": "Garrison",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://riseofkingdomsguides.com/legendary-jan-zizka-talent-tree-build-and-guide/"
+    }
   }
 }
