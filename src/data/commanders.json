@@ -781,5 +781,17 @@
     "guides": {
       "rokguide": "https://riseofkingdomsguides.com/legendary-jan-zizka-talent-tree-build-and-guide/"
     }
+  },
+  "Queen Tamar of Georgia": {
+    "id": "76",
+    "shortName": "Tamar",
+    "title": "The Georgian Will",
+    "tier": "Epic",
+    "red": "Integration",
+    "yellow": "Gathering",
+    "blue": "Support",
+    "guides": {
+      "rokguide": "https://www.rok.guide/commander/queen-tamar-of-georgia/"
+    }
   }
 }
