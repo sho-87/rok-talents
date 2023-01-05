@@ -793,5 +793,29 @@
     "guides": {
       "rokguide": "https://www.rok.guide/commander/queen-tamar-of-georgia/"
     }
+  },
+  "Tariq ibn Ziyad": {
+    "id": "77",
+    "shortName": "Tariq",
+    "title": "Governor of al-Andalus",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Conquering",
+    "blue": "Defense",
+    "guides": {
+      "rokguide": "https://www.rok.guide/tariq-ibn-ziyad-governor-of-al-andalus/"
+    }
+  },
+  "Sargon the Great": {
+    "id": "78",
+    "shortName": "Sargon",
+    "title": "Emperor of Akkad",
+    "tier": "Legendary",
+    "red": "Infantry",
+    "yellow": "Versatility",
+    "blue": "Skill",
+    "guides": {
+      "rokguide": "https://www.rok.guide/sargon-the-great-emperor-of-akkad/"
+    }
   }
 }
