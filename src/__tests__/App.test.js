@@ -29,7 +29,7 @@ global.document.createRange = () => ({
   }
 });
 
-jest.mock('react-ga');
+jest.mock('react-ga4');
 
 afterEach(cleanup);
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import domtoimage from 'dom-to-image';

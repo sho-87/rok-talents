@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { isEmbed } from './utils';
 import { homepage } from '../package.json';
 import * as serviceWorker from './serviceWorker';
@@ -10,7 +10,6 @@ const embed = isEmbed(window.location.search);
 
 if (window.self === window.top || embed) {
   ReactGA.initialize('G-Z54088LPF3');
-  ReactGA.pageview('/');
 
   const url = window.location.search;
   ReactDOM.render(

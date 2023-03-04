@@ -34,6 +34,7 @@
     "url": "https://github.com/sho-87/rok-talents/issues"
   },
   "dependencies": {
+    "@ctrl/react-adsense": "^1.6.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
@@ -45,7 +46,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
-    "react-ga": "^3.3.1",
+    "react-ga4": "^2.0.0",
     "react-joyride": "^2.2.1",
     "react-responsive": "^8.0.3",
     "react-scripts": "3.4.1",

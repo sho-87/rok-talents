@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import MediaQuery from 'react-responsive';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import Collapse from 'react-bootstrap/Collapse';
 import { HelpTooltip } from './Tooltips';
 import './styles/StatsTalentsPanel.css';

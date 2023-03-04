@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Button from 'react-bootstrap/Button';

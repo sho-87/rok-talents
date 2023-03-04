@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import MediaQuery from 'react-responsive';
-import SummaryPanel from './SummaryPanel';
-import StatsPanel from './StatsPanel';
-import StatsTalentsPanel from './StatsTalentsPanel';
-import ErrorBoundary from './Error';
+import React, { Component } from "react";
+import MediaQuery from "react-responsive";
+import SummaryPanel from "./SummaryPanel";
+import StatsPanel from "./StatsPanel";
+import StatsTalentsPanel from "./StatsTalentsPanel";
+import ErrorBoundary from "./Error";
+import { Adsense } from "@ctrl/react-adsense";
 
-import Commanders from './data/commanders.json';
-import { getMaxTalentCount, replaceTalentText, isTouchDevice } from './utils';
-import './styles/InfoPanel.css';
+import Commanders from "./data/commanders.json";
+import { getMaxTalentCount, replaceTalentText, isTouchDevice } from "./utils";
+import "./styles/InfoPanel.css";
 
 /**
  * Info panel component displaying stats about the current talent build
@@ -29,7 +30,7 @@ class InfoPanel extends Component {
     if (this.props.commander) {
       const commanderData = Commanders[this.props.commander];
 
-      for (let color of ['red', 'yellow', 'blue']) {
+      for (let color of ["red", "yellow", "blue"]) {
         const talentData = this.props.treeData[commanderData[color]];
         const selectedValues = this.props[color];
 
@@ -42,7 +43,7 @@ class InfoPanel extends Component {
             let statName;
             if (talent.stats instanceof Array) {
               statName = talent.stats;
-            } else if (talent.stats !== '') {
+            } else if (talent.stats !== "") {
               statName = [talent.stats];
             }
 
@@ -55,7 +56,7 @@ class InfoPanel extends Component {
               }
             }
 
-            if (talent.type === 'node-large') {
+            if (talent.type === "node-large") {
               mainTalents.push({
                 name: talent.name,
                 color: color,
@@ -83,7 +84,7 @@ class InfoPanel extends Component {
         id="info-panel"
         data-testid="info-panel"
         className={
-          this.props.isShownInfoPanel ? 'info-panel-open' : 'info-panel-closed'
+          this.props.isShownInfoPanel ? "info-panel-open" : "info-panel-closed"
         }
       >
         <ErrorBoundary>
@@ -110,6 +111,13 @@ class InfoPanel extends Component {
             </ErrorBoundary>
           )}
         </MediaQuery>
+        <Adsense
+          client="ca-pub-7974265263691867"
+          slot="9163871084"
+          style={{ display: "block" }}
+          format="auto"
+          responsive="true"
+        />
       </div>
     );
   }

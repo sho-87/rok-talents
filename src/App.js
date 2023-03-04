@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { jsPlumb } from 'jsplumb';
 import Progress from './Progress';
 import Spinner from 'react-bootstrap/Spinner';
