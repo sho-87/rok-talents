@@ -9,7 +9,7 @@ import App from './App';
 const embed = isEmbed(window.location.search);
 
 if (window.self === window.top || embed) {
-  ReactGA.initialize('UA-114296077-2');
+  ReactGA.initialize('G-Z54088LPF3');
   ReactGA.pageview('/');
 
   const url = window.location.search;
